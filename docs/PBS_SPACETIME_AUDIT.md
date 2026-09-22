@@ -25,6 +25,10 @@ PBS episode pages expose closed-caption/transcript text for many episodes. The f
 - *Where Is The Center of The Universe?* — FLRW and Lemaître–Tolman cosmologies
 - *Space Does Not Expand Everywhere* — FLRW versus local Schwarzschild-like bound geometry
 - *What If Dark Energy is a New Quantum Field?* — quintessence
+- *Is The Alcubierre Warp Drive Possible?* — Alcubierre warp spacetime
+- *Do the Past and Future Exist?* — block universe / eternalism
+- *Our Antimatter, Mirrored, Time-Reversed Universe* — CPT-symmetric universe
+- *Do Black Holes Create New Universes?* — cosmological natural selection
 
 The machine-readable curated records live in `pbs-spacetime.js`.
 
@@ -64,7 +68,7 @@ The UI must label both as media/transcript evidence and keep them separate from 
 
 ## Current mapping posture
 
-This is a growing crosswalk, not a claim that every theory mentioned across every episode has already been found. The research queue in `research/PBS_SPACETIME_CANDIDATES.md` records terms discovered from the transcript index and their current disposition.
+The current machine-readable crosswalk contains **15 official-PBS transcript records**. This is a growing crosswalk, not a claim that every theory mentioned across every episode has already been found. The research queue in `research/PBS_SPACETIME_CANDIDATES.md` records terms discovered from the transcript index and their current disposition.
 
 ## Acceptance controls
 
