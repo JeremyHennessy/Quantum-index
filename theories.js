@@ -818,14 +818,13 @@ window.QI_DATA = (() => {
     R("consistent-histories","decoherent-histories-cosmology","extends"),R("quantum-cosmology","decoherent-histories-cosmology","extends"),R("hartle-hawking","decoherent-histories-cosmology","overlaps"),
     R("objective-collapse","diosi-gravitational-collapse","extends"),R("diosi-gravitational-collapse","diosi-penrose","precursor"),
     R("objective-collapse","energy-driven-collapse","extends"),R("nonlinear-qm","energy-driven-collapse","overlaps"),
-    R("canonical-quantization","canonical-quantum-gravity","extends"),R("canonical-quantum-gravity","wheeler-dewitt","supports"),R("canonical-quantum-gravity","loop-quantum-gravity","precursor")
-
+    R("canonical-quantization","canonical-quantum-gravity","extends"),R("canonical-quantum-gravity","wheeler-dewitt","supports"),R("canonical-quantum-gravity","loop-quantum-gravity","precursor"),
     R("generalized-probabilistic","operational-reconstruction-qm","supports"),R("quantum-information","operational-reconstruction-qm","motivates"),
     R("bohmian","bell-type-qft","extends"),R("bell","bell-type-qft","motivates"),R("primitive-ontology","bell-type-qft","supports"),
     R("holographic-principle","holographic-space-time","supports"),R("emergent-spacetime","holographic-space-time","overlaps"),R("quantum-information","holographic-space-time","overlaps"),
     R("higher-derivative-qg","infinite-derivative-gravity","generalizes"),R("effective-field-theory","infinite-derivative-gravity","overlaps"),
     R("loop-quantum-gravity","polymer-quantum-mechanics","motivates"),R("canonical-quantization","polymer-quantum-mechanics","overlaps"),
-    R("causal-sets","causal-set-quantum-dynamics","extends"),R("causal-set-growth","causal-set-quantum-dynamics","precursor"),R("quantum-measure-theory","causal-set-quantum-dynamics","supports")
+    R("causal-sets","causal-set-quantum-dynamics","extends"),R("causal-set-growth","causal-set-quantum-dynamics","precursor"),R("quantum-measure-theory","causal-set-quantum-dynamics","supports"),
 
   ].filter(r => theories.some(t=>t.id===r.from) && theories.some(t=>t.id===r.to));
 
