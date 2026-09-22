@@ -4,14 +4,12 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 
 ## Foundations / interpretation candidates
 
-- Bell-type quantum field theories
 - perspectival modal interpretations
 - Ithaca variants / correlation-only programs
 - consistent-histories variants
 - decoherent-histories cosmology
 - epistemically restricted theories beyond Spekkens
 - quantum Bayesian / personalist variants beyond core QBism
-- information-invariant / reconstruction interpretations
 - hidden-measurements approach
 - retrocausal Lagrangian-schema models
 - transactional variants
@@ -21,7 +19,6 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 
 - consistent quantum measure / generalized measure theories
 - operational quantum logic
-- convex-operational reconstructions
 
 ## QFT candidates
 
@@ -41,13 +38,10 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 - Stelle gravity primary branch
 - causal dynamical triangulation submodels
 - nonlocal gravity
-- ghost-free infinite-derivative gravity
-- causal diamonds / holographic spacetime
 - quantum graphity variants
 - relative locality subfamilies
 - doubly-special-relativity variants
 - generalized-uncertainty variants
-- causal-set path-integral programs
 
 ## Quantum-cosmology candidates
 
@@ -93,3 +87,8 @@ Promoted with dedicated provenance: Algebraic Quantum Gravity (AQG); tensorial g
 ## Integrated in the 2026-09-21 histories/canonical/collapse sweep
 
 Promoted with dedicated provenance: History Projection Operator (HPO) formalism; coevent/anhomomorphic-logic interpretation; decoherent-histories quantum cosmology; Diósi gravitational collapse as a distinct model from the broader Diósi–Penrose umbrella; energy-driven stochastic collapse; and canonical quantum gravity as an umbrella framework.
+
+
+## Integrated in the 2026-09-21 reconstruction/holography sweep
+
+Promoted with dedicated provenance: operational/informational reconstructions of quantum theory; Bell-type quantum field theories; Holographic Space-Time; ghost-free infinite-derivative/nonlocal gravity; polymer quantum mechanics; and causal-set quantum path-sum dynamics.
