@@ -58,3 +58,23 @@ main{width:min(1540px,94vw);margin:auto;padding:34px 0 80px}.hero{display:grid;g
 .tree-graph-year{fill:#71909f;font-size:8px;text-anchor:middle;pointer-events:none}
 .selected-lineage-panel{border-top:1px solid var(--line);margin-top:12px;padding-top:18px}
 @media(max-width:1050px){.thought-tree-card{min-height:unset}.tree-selector-card{position:static}}
+
+.formula-head{align-items:flex-start}
+.formula-controls{display:grid;grid-template-columns:2fr 1fr 1.5fr;gap:12px;padding:18px 20px 4px}
+.formula-controls label{display:block;font-size:10px;font-weight:750;color:var(--muted);margin:0 0 6px;text-transform:uppercase;letter-spacing:.06em}
+.formula-controls input,.formula-controls select{width:100%;height:42px;border:1px solid #2c4151;background:#09141d;color:var(--text);border-radius:11px;padding:0 12px;outline:none}
+.formula-controls input:focus,.formula-controls select:focus{border-color:var(--accent)}
+.formula-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:10px;padding:18px 20px 26px}
+.formula-card{min-width:0;border:1px solid #233845;border-radius:15px;background:#0a1620;padding:14px}
+.formula-card h4{font-size:15px;line-height:1.3;margin:7px 0 9px}
+.formula-card p{font-size:11px;line-height:1.55;color:#b6c8d1;margin:10px 0}
+.formula-meta{display:flex;justify-content:space-between;gap:10px;color:var(--accent);font-size:9px;text-transform:uppercase;letter-spacing:.04em}
+.formula-equation{min-height:76px;display:flex;align-items:center;justify-content:center;overflow-x:auto;background:#07121a;border:1px solid #1d3340;border-radius:11px;padding:12px 9px;margin:8px 0}
+.formula-equation mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden;margin:0!important}
+.formula-plain{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:9px;color:#718b98;overflow-wrap:anywhere}
+.formula-theories,.formula-sources{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}
+.formula-theory{border:1px solid #315064;background:#102432;color:#b7d9e8;border-radius:999px;padding:4px 7px;font-size:9px;cursor:pointer}
+.formula-theory:hover{border-color:#6f9db5;color:#eef9fd}
+.formula-source{display:inline-block;text-decoration:none;border:1px solid #334333;background:#101d18;color:#b9d8c2;border-radius:999px;padding:4px 7px;font-size:8px}
+.formula-source:hover{border-color:#56745e;color:#eaf5ed}
+@media(max-width:850px){.formula-controls{grid-template-columns:1fr}.formula-grid{grid-template-columns:1fr}.formula-equation{min-height:64px}}
