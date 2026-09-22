@@ -6,14 +6,14 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 
 ## Current corpus
 
-- **211** catalogued entities
-- **266** typed relationships
+- **218** catalogued entities
+- **283** typed relationships
 - **9** curated thought trees
 - **9** top-level categories
-- **207** bibliography/source records
-- **211 / 211 (100.0%)** entries currently have dedicated source provenance
-- **0 / 211** shipped entries remain catalogued-only
-- **153 / 211** are marked `primary-sourced`; the remaining **58 / 211** are review/authoritative-source backed
+- **212** bibliography/source records
+- **218 / 218 (100.0%)** entries currently have dedicated source provenance
+- **0 / 218** shipped entries remain catalogued-only
+- **156 / 218** are marked `primary-sourced`; the remaining **62 / 218** are review/authoritative-source backed
 
 ### Category coverage
 
@@ -21,11 +21,11 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 |---|---:|
 | Historical foundations | 5 |
 | Formulations | 16 |
-| Foundations & interpretations | 34 |
+| Foundations & interpretations | 38 |
 | Quantum field theory | 30 |
 | Quantum information & open systems | 33 |
-| Quantum gravity & spacetime | 50 |
-| Quantum cosmology | 15 |
+| Quantum gravity & spacetime | 52 |
+| Quantum cosmology | 16 |
 | Mathematical structures | 9 |
 | Beyond standard quantum theory | 19 |
 
@@ -38,8 +38,8 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 | 1940–1959 | 9 |
 | 1960–1979 | 38 |
 | 1980–1999 | 61 |
-| 2000–2014 | 49 |
-| 2015–present | 32 |
+| 2000–2014 | 55 |
+| 2015–present | 33 |
 
 ## What "all quantum theories" means operationally
 
@@ -112,6 +112,8 @@ The next gap sweep promoted 19 additional source-backed frameworks: the backgrou
 A second gap sweep added quantum collision models, quantum supermaps, causal boxes, the pseudo-density-matrix framework, Euclidean dynamical triangulations, twisted geometries, the LQG Master Constraint Programme, group-field cosmology, spin-foam cosmology and pre-big-bang string cosmology.
 
 The formal/QFT depth sweep added Weyl quantization, rigged Hilbert spaces, noncommutative probability, Schwinger–Dyson equations, integrable QFT, NRQED, NRQCD, topological strings, Davies weak-coupling generators and a resource theory of contextuality.
+
+The quantum-gravity/collapse depth sweep added Algebraic Quantum Gravity, tensorial group field theory, Lorentzian/Picard–Lefschetz quantum cosmology, the primitive-ontology program, GRW matter-density and flash ontologies, and QMUPL.
 
 ## Known coverage gaps / next research passes
 
