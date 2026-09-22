@@ -125,6 +125,51 @@ window.QI_SPACETIME = {
       theoryIds: ["lambda-cdm","mond"],
       terms: ["dark matter","galaxy rotation","modified gravity"],
       evidence: "official PBS transcript"
+    },
+    {
+      id: "pbs-alcubierre-2015",
+      episodeTitle: "Is The Alcubierre Warp Drive Possible?",
+      seasonEpisode: "S2 Ep6",
+      date: "2015-10-28",
+      pbsUrl: "https://www.pbs.org/video/pbs-space-time-alcubierre-warp-drive-possible/",
+      searchUrl: "https://search.pbsspacetime.com/?q=Alcubierre",
+      theoryIds: ["alcubierre-warp-drive","general-relativity"],
+      terms: ["Alcubierre drive","warp field","Einstein field equations"],
+      evidence: "official PBS transcript"
+    },
+    {
+      id: "pbs-block-universe-2020",
+      episodeTitle: "Do the Past and Future Exist?",
+      seasonEpisode: "S6 Ep31",
+      date: "2020-10-13",
+      pbsUrl: "https://www.pbs.org/video/do-the-past-and-future-exist-bdkzrs/",
+      searchUrl: "https://search.pbsspacetime.com/?q=block+universe",
+      theoryIds: ["eternalism-block-universe","special-relativity"],
+      terms: ["block universe","eternalism","relativity of simultaneity"],
+      evidence: "official PBS transcript"
+    },
+    {
+      id: "pbs-cpt-universe-2019",
+      episodeTitle: "Our Antimatter, Mirrored, Time-Reversed Universe",
+      seasonEpisode: "S5 Ep8",
+      date: "2019-01-16",
+      pbsUrl: "https://www.pbs.org/video/our-antimatter-mirrored-time-reversed-universe-nhe075/",
+      searchUrl: "https://search.pbsspacetime.com/?q=CPT+universe",
+      theoryIds: ["cpt-symmetric-universe"],
+      terms: ["CPT universe","CPT symmetry","time-reversed universe"],
+      evidence: "official PBS transcript"
+    },
+    {
+      id: "pbs-cosmological-natural-selection-2019",
+      episodeTitle: "Do Black Holes Create New Universes?",
+      seasonEpisode: "S5 Ep43",
+      date: "2019-12-17",
+      pbsUrl: "https://www.pbs.org/video/do-black-holes-create-new-universes-pzpk2m/",
+      searchUrl: "https://search.pbsspacetime.com/?q=cosmological+natural+selection",
+      theoryIds: ["cosmological-natural-selection"],
+      terms: ["cosmological natural selection","baby universe","black-hole reproduction"],
+      evidence: "official PBS transcript"
     }
+
   ]
 };
