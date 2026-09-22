@@ -109,3 +109,8 @@ Promoted with dedicated provenance: Hartree–Fock; configuration interaction; M
 ## Integrated in the 2026-09-22 audited-candidate promotion sweep
 
 Promoted after explicit add/alias/subtype review: Hidden-measurements approach; Operational quantum logic; Polymer quantum cosmology.
+
+
+## Astrophysics / PBS Space Time research queue — 2026-09-22
+
+The expansion promoted independently sourced first-class nodes for relativity, compact-object astrophysics, cosmology and the dark sector. Remaining transcript-driven candidates are tracked separately in `research/PBS_SPACETIME_CANDIDATES.md`; a media mention alone is not sufficient for promotion.
