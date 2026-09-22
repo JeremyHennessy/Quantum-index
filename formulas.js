@@ -1,6 +1,6 @@
 window.QI_FORMULAS = {
-  "version": "v1",
-  "scope": "Canonical equations and identities across the indexed quantum-theory landscape; not a claim of literally every derivable formula.",
+  "version": "v2",
+  "scope": "Canonical equations and identities across the indexed quantum-theory landscape; expanded with perturbation, scattering, response, advanced QFT, information, AMO, gravity and collapse equations. Not a claim of every algebraic rearrangement or derivable identity.",
   "formulas": [
     {
       "id": "planck-relation",
@@ -3000,6 +3000,1073 @@ window.QI_FORMULAS = {
       ],
       "tags": [
         "resource theory"
+      ]
+    },
+    {
+      "id": "perturb-first-energy",
+      "name": "First-order stationary perturbation energy",
+      "category": "Perturbation theory",
+      "latex": "E_n^{(1)}=\\langle n^{(0)}|V|n^{(0)}\\rangle",
+      "plain": "E_n^(1)=<n0|V|n0>",
+      "description": "First-order energy correction for a nondegenerate stationary state.",
+      "theoryIds": [
+        "wave-mechanics"
+      ],
+      "sourceIds": [
+        "sep-math-rigor",
+        "schrodinger-1926"
+      ],
+      "tags": [
+        "perturbation theory"
+      ]
+    },
+    {
+      "id": "perturb-second-energy",
+      "name": "Second-order stationary perturbation energy",
+      "category": "Perturbation theory",
+      "latex": "E_n^{(2)}=\\sum_{m\\ne n}\\frac{|\\langle m^{(0)}|V|n^{(0)}\\rangle|^2}{E_n^{(0)}-E_m^{(0)}}",
+      "plain": "E_n^(2)=sum_m!=n |<m|V|n>|^2/(E_n-E_m)",
+      "description": "Second-order nondegenerate energy correction.",
+      "theoryIds": [
+        "wave-mechanics"
+      ],
+      "sourceIds": [
+        "sep-math-rigor"
+      ],
+      "tags": [
+        "perturbation theory"
+      ]
+    },
+    {
+      "id": "perturb-first-state",
+      "name": "First-order perturbed state",
+      "category": "Perturbation theory",
+      "latex": "|n^{(1)}\\rangle=\\sum_{m\\ne n}\\frac{\\langle m^{(0)}|V|n^{(0)}\\rangle}{E_n^{(0)}-E_m^{(0)}}|m^{(0)}\\rangle",
+      "plain": "|n1>=sum_m!=n <m|V|n>/(E_n-E_m)|m>",
+      "description": "First-order correction to a nondegenerate eigenstate.",
+      "theoryIds": [
+        "wave-mechanics"
+      ],
+      "sourceIds": [
+        "sep-math-rigor"
+      ],
+      "tags": [
+        "perturbation theory"
+      ]
+    },
+    {
+      "id": "dyson-series",
+      "name": "Dyson time-ordered series",
+      "category": "Perturbation theory",
+      "latex": "U_I(t,t_0)=\\mathcal T\\exp\\!\\left[-\\frac{i}{\\hbar}\\int_{t_0}^t H_I(t')dt'\\right]",
+      "plain": "U_I = T exp[-i/hbar integral H_I dt]",
+      "description": "Interaction-picture time-evolution operator as a time-ordered exponential.",
+      "theoryIds": [
+        "qed",
+        "path-integral"
+      ],
+      "sourceIds": [
+        "dyson-qed-1949"
+      ],
+      "tags": [
+        "Dyson series"
+      ]
+    },
+    {
+      "id": "fermi-golden-rule",
+      "name": "Fermi golden rule",
+      "category": "Perturbation theory",
+      "latex": "\\Gamma_{i\\to f}=\\frac{2\\pi}{\\hbar}|\\langle f|V|i\\rangle|^2\\rho(E_f)",
+      "plain": "Gamma=2 pi/hbar |<f|V|i>|^2 rho(E_f)",
+      "description": "Leading transition rate into a continuum of final states.",
+      "theoryIds": [
+        "canonical-quantization",
+        "qed"
+      ],
+      "sourceIds": [
+        "dirac-1925"
+      ],
+      "tags": [
+        "transition rate"
+      ]
+    },
+    {
+      "id": "lippmann-schwinger",
+      "name": "Lippmann–Schwinger equation",
+      "category": "Scattering theory",
+      "latex": "|\\psi^{(\\pm)}\\rangle=|\\phi\\rangle+\\frac{1}{E-H_0\\pm i0}V|\\psi^{(\\pm)}\\rangle",
+      "plain": "psi± = phi + (E-H0±i0)^-1 V psi±",
+      "description": "Integral-equation form of stationary quantum scattering.",
+      "theoryIds": [
+        "wave-mechanics"
+      ],
+      "sourceIds": [
+        "sep-math-rigor"
+      ],
+      "tags": [
+        "scattering"
+      ]
+    },
+    {
+      "id": "t-matrix",
+      "name": "T-matrix equation",
+      "category": "Scattering theory",
+      "latex": "T(E)=V+V\\frac{1}{E-H_0+i0}T(E)",
+      "plain": "T=V+V G0 T",
+      "description": "Operator equation defining the scattering T matrix.",
+      "theoryIds": [
+        "wave-mechanics",
+        "qed"
+      ],
+      "sourceIds": [
+        "sep-qft"
+      ],
+      "tags": [
+        "scattering"
+      ]
+    },
+    {
+      "id": "born-scattering",
+      "name": "First Born scattering amplitude",
+      "category": "Scattering theory",
+      "latex": "f^{(1)}(\\mathbf q)=-\\frac{m}{2\\pi\\hbar^2}\\int d^3r\\,e^{-i\\mathbf q\\cdot\\mathbf r}V(\\mathbf r)",
+      "plain": "f1(q)=-m/(2pi hbar^2) Fourier[V]",
+      "description": "Leading weak-potential scattering amplitude.",
+      "theoryIds": [
+        "wave-mechanics"
+      ],
+      "sourceIds": [
+        "sep-math-rigor"
+      ],
+      "tags": [
+        "Born approximation"
+      ]
+    },
+    {
+      "id": "differential-cross-section",
+      "name": "Differential scattering cross section",
+      "category": "Scattering theory",
+      "latex": "\\frac{d\\sigma}{d\\Omega}=|f(\\theta,\\phi)|^2",
+      "plain": "d sigma/d Omega = |f|^2",
+      "description": "Differential cross section from the asymptotic scattering amplitude.",
+      "theoryIds": [
+        "wave-mechanics"
+      ],
+      "sourceIds": [
+        "sep-math-rigor"
+      ],
+      "tags": [
+        "cross section"
+      ]
+    },
+    {
+      "id": "optical-theorem",
+      "name": "Optical theorem",
+      "category": "Scattering theory",
+      "latex": "\\sigma_{\\rm tot}=\\frac{4\\pi}{k}\\operatorname{Im}f(0)",
+      "plain": "sigma_tot=4 pi Im f(0)/k",
+      "description": "Relates total cross section to the forward elastic scattering amplitude.",
+      "theoryIds": [
+        "qed",
+        "wave-mechanics"
+      ],
+      "sourceIds": [
+        "sep-qft"
+      ],
+      "tags": [
+        "unitarity"
+      ]
+    },
+    {
+      "id": "partial-wave-amplitude",
+      "name": "Partial-wave scattering amplitude",
+      "category": "Scattering theory",
+      "latex": "f(\\theta)=\\frac{1}{k}\\sum_{\\ell=0}^{\\infty}(2\\ell+1)e^{i\\delta_\\ell}\\sin\\delta_\\ell\\,P_\\ell(\\cos\\theta)",
+      "plain": "f(theta)=1/k sum (2l+1)e^iδ sinδ P_l",
+      "description": "Expansion of a central-potential scattering amplitude in phase shifts.",
+      "theoryIds": [
+        "wave-mechanics"
+      ],
+      "sourceIds": [
+        "sep-math-rigor"
+      ],
+      "tags": [
+        "partial waves"
+      ]
+    },
+    {
+      "id": "s-matrix-unitarity",
+      "name": "S-matrix unitarity",
+      "category": "Scattering theory",
+      "latex": "S^{\\dagger}S=SS^{\\dagger}=I",
+      "plain": "S†S=I",
+      "description": "Probability-conservation condition for the scattering matrix.",
+      "theoryIds": [
+        "qed",
+        "amplitudes-bootstrap"
+      ],
+      "sourceIds": [
+        "dyson-qed-1949",
+        "elvang-huang-amplitudes-2015"
+      ],
+      "tags": [
+        "S matrix"
+      ]
+    },
+    {
+      "id": "angular-ladder",
+      "name": "Angular-momentum ladder action",
+      "category": "Angular momentum",
+      "latex": "J_{\\pm}|j,m\\rangle=\\hbar\\sqrt{j(j+1)-m(m\\pm1)}\\,|j,m\\pm1\\rangle",
+      "plain": "J±|jm>=hbar sqrt[j(j+1)-m(m±1)] |j,m±1>",
+      "description": "Raises or lowers the magnetic quantum number of an angular-momentum state.",
+      "theoryIds": [
+        "dirac-electron-theory"
+      ],
+      "sourceIds": [
+        "sep-math-rigor"
+      ],
+      "tags": [
+        "angular momentum"
+      ]
+    },
+    {
+      "id": "cg-expansion",
+      "name": "Clebsch–Gordan expansion",
+      "category": "Angular momentum",
+      "latex": "|JM\\rangle=\\sum_{m_1,m_2}C^{JM}_{j_1m_1,j_2m_2}|j_1m_1\\rangle|j_2m_2\\rangle",
+      "plain": "|JM>=sum CG |j1m1>|j2m2>",
+      "description": "Expansion of coupled angular momentum states in an uncoupled basis.",
+      "theoryIds": [
+        "dirac-electron-theory"
+      ],
+      "sourceIds": [
+        "sep-math-rigor"
+      ],
+      "tags": [
+        "Clebsch-Gordan"
+      ]
+    },
+    {
+      "id": "wigner-eckart",
+      "name": "Wigner–Eckart theorem",
+      "category": "Angular momentum",
+      "latex": "\\langle jm|T_q^{(k)}|j'm'\\rangle=\\frac{\\langle j'||T^{(k)}||j\\rangle}{\\sqrt{2j+1}}\\,C^{jm}_{j'm',kq}",
+      "plain": "matrix element = reduced matrix element times CG coefficient",
+      "description": "Separates angular dependence from a reduced matrix element for spherical tensor operators.",
+      "theoryIds": [
+        "dirac-electron-theory"
+      ],
+      "sourceIds": [
+        "sep-math-rigor"
+      ],
+      "tags": [
+        "Wigner-Eckart"
+      ]
+    },
+    {
+      "id": "zeeman",
+      "name": "Zeeman interaction Hamiltonian",
+      "category": "Atomic and AMO physics",
+      "latex": "H_Z=-\\boldsymbol\\mu\\cdot\\mathbf B",
+      "plain": "H_Z = -mu dot B",
+      "description": "Magnetic-dipole interaction with an external magnetic field.",
+      "theoryIds": [
+        "dirac-electron-theory",
+        "quantum-optical-coherence"
+      ],
+      "sourceIds": [
+        "dirac-electron-1928"
+      ],
+      "tags": [
+        "Zeeman"
+      ]
+    },
+    {
+      "id": "spin-orbit",
+      "name": "Spin–orbit interaction",
+      "category": "Atomic and AMO physics",
+      "latex": "H_{SO}=\\xi(r)\\,\\mathbf L\\cdot\\mathbf S",
+      "plain": "H_SO = xi(r) L dot S",
+      "description": "Effective coupling between orbital and spin angular momentum.",
+      "theoryIds": [
+        "dirac-electron-theory"
+      ],
+      "sourceIds": [
+        "dirac-electron-1928"
+      ],
+      "tags": [
+        "spin orbit"
+      ]
+    },
+    {
+      "id": "stark-first",
+      "name": "First-order Stark shift",
+      "category": "Atomic and AMO physics",
+      "latex": "\\Delta E_n^{(1)}=\\langle n|(-\\mathbf d\\cdot\\mathbf E)|n\\rangle",
+      "plain": "Delta E1=<n|-d dot E|n>",
+      "description": "First-order electric-field energy shift.",
+      "theoryIds": [
+        "wave-mechanics",
+        "quantum-optical-coherence"
+      ],
+      "sourceIds": [
+        "sep-math-rigor"
+      ],
+      "tags": [
+        "Stark"
+      ]
+    },
+    {
+      "id": "dipole-rate",
+      "name": "Electric-dipole spontaneous-emission rate",
+      "category": "Quantum optics & AMO",
+      "latex": "\\Gamma_{eg}=\\frac{\\omega_{eg}^3|\\mathbf d_{eg}|^2}{3\\pi\\varepsilon_0\\hbar c^3}",
+      "plain": "Gamma=omega^3 |d|^2/(3 pi epsilon0 hbar c^3)",
+      "description": "Free-space spontaneous-emission rate in the electric-dipole approximation.",
+      "theoryIds": [
+        "quantum-optical-coherence",
+        "qed"
+      ],
+      "sourceIds": [
+        "glauber-coherence-1963",
+        "feynman-qed-1949"
+      ],
+      "tags": [
+        "spontaneous emission"
+      ]
+    },
+    {
+      "id": "lsz",
+      "name": "LSZ reduction formula (schematic)",
+      "category": "Quantum field theory",
+      "latex": "\\langle p'_1\\cdots|S|p_1\\cdots\\rangle\\propto\\prod_i\\lim_{p_i^2\\to m_i^2}(p_i^2-m_i^2)\\,\\tilde G_n",
+      "plain": "S matrix proportional amputated on-shell n-point function",
+      "description": "Relates S-matrix elements to amputated on-shell time-ordered correlation functions.",
+      "theoryIds": [
+        "wightman-qft",
+        "qed"
+      ],
+      "sourceIds": [
+        "sep-qft"
+      ],
+      "tags": [
+        "LSZ"
+      ]
+    },
+    {
+      "id": "ward-takahashi",
+      "name": "Ward–Takahashi identity",
+      "category": "Quantum field theory",
+      "latex": "q_\\mu\\Gamma^\\mu(p+q,p)=S^{-1}(p+q)-S^{-1}(p)",
+      "plain": "q_mu Gamma^mu = S^-1(p+q)-S^-1(p)",
+      "description": "Gauge-symmetry identity relating the QED vertex and fermion propagator.",
+      "theoryIds": [
+        "qed",
+        "brst"
+      ],
+      "sourceIds": [
+        "sep-qft",
+        "feynman-qed-1949"
+      ],
+      "tags": [
+        "Ward identity"
+      ]
+    },
+    {
+      "id": "callan-symanzik",
+      "name": "Callan–Symanzik equation",
+      "category": "Quantum field theory",
+      "latex": "\\left[\\mu\\partial_\\mu+\\beta(g)\\partial_g+n\\gamma(g)\\right]G^{(n)}=0",
+      "plain": "[mu d_mu + beta d_g + n gamma] G_n = 0",
+      "description": "Renormalization-group equation for renormalized correlation functions.",
+      "theoryIds": [
+        "renormalization-group",
+        "qed",
+        "qcd"
+      ],
+      "sourceIds": [
+        "wilson-rg-1971",
+        "sep-qft"
+      ],
+      "tags": [
+        "Callan-Symanzik"
+      ]
+    },
+    {
+      "id": "ope",
+      "name": "Operator-product expansion",
+      "category": "Quantum field theory",
+      "latex": "\\mathcal O_i(x)\\mathcal O_j(0)\\sim\\sum_k C_{ij}^{\\ k}(x)\\mathcal O_k(0)",
+      "plain": "O_i(x) O_j(0) ~ sum C_ij^k(x) O_k(0)",
+      "description": "Short-distance expansion central to CFT and general QFT.",
+      "theoryIds": [
+        "conformal-field-theory",
+        "conformal-bootstrap"
+      ],
+      "sourceIds": [
+        "bpz-1984",
+        "simmons-duffin-bootstrap-2016"
+      ],
+      "tags": [
+        "OPE"
+      ]
+    },
+    {
+      "id": "axial-anomaly",
+      "name": "Axial anomaly",
+      "category": "Quantum field theory",
+      "latex": "\\partial_\\mu j_5^\\mu=\\frac{e^2}{16\\pi^2}\\epsilon^{\\mu\\nu\\rho\\sigma}F_{\\mu\\nu}F_{\\rho\\sigma}",
+      "plain": "div j5 = e^2/(16pi^2) epsilon F F",
+      "description": "Quantum violation of classical axial-current conservation in a gauge background.",
+      "theoryIds": [
+        "qed",
+        "qcd"
+      ],
+      "sourceIds": [
+        "sep-qft"
+      ],
+      "tags": [
+        "anomaly"
+      ]
+    },
+    {
+      "id": "fp-determinant",
+      "name": "Faddeev–Popov determinant",
+      "category": "Quantum field theory",
+      "latex": "1=\\Delta_{FP}[A]\\int\\mathcal Dg\\,\\delta(G[A^g])",
+      "plain": "1 = Delta_FP integral Dg delta(gauge condition)",
+      "description": "Gauge-fixing identity underlying the Faddeev–Popov procedure.",
+      "theoryIds": [
+        "brst",
+        "yang-mills"
+      ],
+      "sourceIds": [
+        "becchi-rouet-stora-1976"
+      ],
+      "tags": [
+        "gauge fixing"
+      ]
+    },
+    {
+      "id": "bv-quantum-master",
+      "name": "BV quantum master equation",
+      "category": "Quantum field theory",
+      "latex": "\\frac12(S,S)-i\\hbar\\Delta S=0",
+      "plain": "1/2(S,S)-i hbar Delta S=0",
+      "description": "Quantum consistency condition in the Batalin–Vilkovisky formalism.",
+      "theoryIds": [
+        "bv-formalism"
+      ],
+      "sourceIds": [
+        "batalin-vilkovisky-1981"
+      ],
+      "tags": [
+        "BV"
+      ]
+    },
+    {
+      "id": "wilson-lattice-action",
+      "name": "Wilson lattice gauge action",
+      "category": "Quantum field theory",
+      "latex": "S_W=\\beta\\sum_p\\left(1-\\frac{1}{N}\\operatorname{ReTr}U_p\\right)",
+      "plain": "S_W=beta sum_p (1 - ReTr U_p/N)",
+      "description": "Standard plaquette action for lattice gauge theory.",
+      "theoryIds": [
+        "lattice-gauge"
+      ],
+      "sourceIds": [
+        "wilson-lattice-1974"
+      ],
+      "tags": [
+        "lattice gauge"
+      ]
+    },
+    {
+      "id": "polyakov-loop",
+      "name": "Polyakov loop",
+      "category": "Quantum field theory",
+      "latex": "P(\\mathbf x)=\\operatorname{Tr}\\prod_{\\tau=0}^{N_\\tau-1}U_0(\\mathbf x,\\tau)",
+      "plain": "P(x)=Tr product temporal links",
+      "description": "Thermal Wilson line used as an order parameter in pure gauge theory.",
+      "theoryIds": [
+        "lattice-gauge",
+        "qcd"
+      ],
+      "sourceIds": [
+        "wilson-lattice-1974"
+      ],
+      "tags": [
+        "confinement"
+      ]
+    },
+    {
+      "id": "green-time-ordered",
+      "name": "Time-ordered many-body Green function",
+      "category": "Many-body Green functions",
+      "latex": "G(1,2)=-i\\langle\\mathcal T\\,\\psi(1)\\psi^{\\dagger}(2)\\rangle",
+      "plain": "G=-i<T psi psi†>",
+      "description": "Single-particle time-ordered Green function.",
+      "theoryIds": [
+        "hubbard-model",
+        "schwinger-dyson"
+      ],
+      "sourceIds": [
+        "schwinger-green-1951",
+        "hubbard-1963"
+      ],
+      "tags": [
+        "Green function"
+      ]
+    },
+    {
+      "id": "dyson-green",
+      "name": "Dyson equation for Green functions",
+      "category": "Many-body Green functions",
+      "latex": "G^{-1}=G_0^{-1}-\\Sigma",
+      "plain": "G^-1 = G0^-1 - Sigma",
+      "description": "Defines the self-energy correction to a propagator.",
+      "theoryIds": [
+        "schwinger-dyson",
+        "hubbard-model"
+      ],
+      "sourceIds": [
+        "schwinger-green-1951"
+      ],
+      "tags": [
+        "self energy"
+      ]
+    },
+    {
+      "id": "lehmann",
+      "name": "Lehmann spectral representation (schematic)",
+      "category": "Many-body Green functions",
+      "latex": "G(\\omega)=\\sum_n\\frac{|\\langle n|A|0\\rangle|^2}{\\omega-(E_n-E_0)+i0}-\\cdots",
+      "plain": "G(omega)=sum spectral weights over excitation poles",
+      "description": "Expresses a Green function through exact energy eigenstates and spectral weights.",
+      "theoryIds": [
+        "schwinger-dyson",
+        "quantum-information"
+      ],
+      "sourceIds": [
+        "sep-qft"
+      ],
+      "tags": [
+        "spectral function"
+      ]
+    },
+    {
+      "id": "matsubara",
+      "name": "Matsubara Green function",
+      "category": "Many-body Green functions",
+      "latex": "G(\\tau)=-\\langle\\mathcal T_\\tau\\psi(\\tau)\\psi^{\\dagger}(0)\\rangle",
+      "plain": "G(tau)=-<T_tau psi(tau) psi†(0)>",
+      "description": "Imaginary-time thermal Green function.",
+      "theoryIds": [
+        "quantum-thermodynamics",
+        "hubbard-model"
+      ],
+      "sourceIds": [
+        "quantum-thermo-review"
+      ],
+      "tags": [
+        "Matsubara"
+      ]
+    },
+    {
+      "id": "kubo",
+      "name": "Kubo linear-response formula",
+      "category": "Many-body response",
+      "latex": "\\chi_{AB}(t)=\\frac{i}{\\hbar}\\Theta(t)\\langle[A(t),B(0)]\\rangle",
+      "plain": "chi_AB(t)=i Theta(t)<[A(t),B(0)]>/hbar",
+      "description": "Linear response of observable A to a perturbation coupling to B.",
+      "theoryIds": [
+        "quantum-thermodynamics",
+        "hubbard-model"
+      ],
+      "sourceIds": [
+        "quantum-thermo-review"
+      ],
+      "tags": [
+        "Kubo"
+      ]
+    },
+    {
+      "id": "fdt",
+      "name": "Quantum fluctuation–dissipation relation",
+      "category": "Many-body response",
+      "latex": "S_{AA}(\\omega)=\\hbar\\coth\\!\\left(\\frac{\\hbar\\omega}{2k_BT}\\right)\\operatorname{Im}\\chi_{AA}(\\omega)",
+      "plain": "S(omega)=hbar coth(hbar omega/2kBT) Im chi",
+      "description": "One common symmetrized form relating equilibrium fluctuations and response.",
+      "theoryIds": [
+        "quantum-thermodynamics",
+        "open-quantum-systems"
+      ],
+      "sourceIds": [
+        "quantum-thermo-review"
+      ],
+      "tags": [
+        "fluctuation dissipation"
+      ]
+    },
+    {
+      "id": "bdg",
+      "name": "Bogoliubov–de Gennes equation",
+      "category": "Quantum many-body & condensed matter",
+      "latex": "\\begin{pmatrix}H_0-\\mu&\\Delta\\\\\\Delta^*&-(H_0-\\mu)^*\\end{pmatrix}\\binom{u_n}{v_n}=E_n\\binom{u_n}{v_n}",
+      "plain": "BdG matrix acting on (u,v) equals E(u,v)",
+      "description": "Quasiparticle eigenproblem for mean-field superconductors and superfluids.",
+      "theoryIds": [
+        "bcs-theory"
+      ],
+      "sourceIds": [
+        "bcs-1957"
+      ],
+      "tags": [
+        "BdG"
+      ]
+    },
+    {
+      "id": "london",
+      "name": "London penetration relation",
+      "category": "Quantum many-body & condensed matter",
+      "latex": "\\nabla^2\\mathbf B=\\frac{\\mathbf B}{\\lambda_L^2}",
+      "plain": "nabla^2 B = B/lambda_L^2",
+      "description": "Magnetic-field screening equation in a local London superconductor.",
+      "theoryIds": [
+        "bcs-theory"
+      ],
+      "sourceIds": [
+        "bcs-1957"
+      ],
+      "tags": [
+        "superconductivity"
+      ]
+    },
+    {
+      "id": "choi",
+      "name": "Choi matrix of a channel",
+      "category": "Quantum information",
+      "latex": "J_{\\mathcal E}=(\\mathcal I\\otimes\\mathcal E)(|\\Phi\\rangle\\langle\\Phi|)",
+      "plain": "J_E=(I tensor E)(Phi)",
+      "description": "Operator representation of a quantum channel through a maximally entangled input.",
+      "theoryIds": [
+        "quantum-information",
+        "quantum-supermaps"
+      ],
+      "sourceIds": [
+        "quantum-supermaps-2008"
+      ],
+      "tags": [
+        "Choi"
+      ]
+    },
+    {
+      "id": "knill-laflamme",
+      "name": "Knill–Laflamme error-correction condition",
+      "category": "Quantum information",
+      "latex": "P E_a^{\\dagger}E_b P=c_{ab}P",
+      "plain": "P Ea† Eb P = c_ab P",
+      "description": "Condition for a code subspace to exactly correct a set of errors.",
+      "theoryIds": [
+        "quantum-information",
+        "toric-code"
+      ],
+      "sourceIds": [
+        "kitaev-anyons-2003",
+        "schumacher-1995"
+      ],
+      "tags": [
+        "quantum error correction"
+      ]
+    },
+    {
+      "id": "holevo",
+      "name": "Holevo quantity",
+      "category": "Quantum information",
+      "latex": "\\chi=S\\!\\left(\\sum_xp_x\\rho_x\\right)-\\sum_xp_xS(\\rho_x)",
+      "plain": "chi=S(sum p rho)-sum p S(rho)",
+      "description": "Upper bound on accessible classical information from a quantum ensemble.",
+      "theoryIds": [
+        "quantum-information"
+      ],
+      "sourceIds": [
+        "schumacher-1995"
+      ],
+      "tags": [
+        "Holevo"
+      ]
+    },
+    {
+      "id": "coherent-information",
+      "name": "Coherent information",
+      "category": "Quantum information",
+      "latex": "I_c(A\\rangle B)=S(\\rho_B)-S(\\rho_{AB})",
+      "plain": "I_c = S(B)-S(AB)",
+      "description": "Information quantity central to quantum channel capacities and entanglement transmission.",
+      "theoryIds": [
+        "quantum-information"
+      ],
+      "sourceIds": [
+        "schumacher-1995"
+      ],
+      "tags": [
+        "coherent information"
+      ]
+    },
+    {
+      "id": "negativity",
+      "name": "Entanglement negativity",
+      "category": "Quantum information",
+      "latex": "\\mathcal N(\\rho)=\\frac{\\|\\rho^{T_B}\\|_1-1}{2}",
+      "plain": "N=(||rho^TB||_1-1)/2",
+      "description": "Entanglement measure based on partial transposition.",
+      "theoryIds": [
+        "quantum-information",
+        "resource-theories"
+      ],
+      "sourceIds": [
+        "resource-rmp-2019"
+      ],
+      "tags": [
+        "negativity"
+      ]
+    },
+    {
+      "id": "log-negativity",
+      "name": "Logarithmic negativity",
+      "category": "Quantum information",
+      "latex": "E_{\\mathcal N}=\\log_2\\|\\rho^{T_B}\\|_1",
+      "plain": "E_N=log2 ||rho^TB||_1",
+      "description": "Computable entanglement monotone based on the trace norm of the partial transpose.",
+      "theoryIds": [
+        "quantum-information",
+        "resource-theories"
+      ],
+      "sourceIds": [
+        "resource-rmp-2019"
+      ],
+      "tags": [
+        "negativity"
+      ]
+    },
+    {
+      "id": "ssa",
+      "name": "Strong subadditivity",
+      "category": "Quantum information",
+      "latex": "S(ABC)+S(B)\\le S(AB)+S(BC)",
+      "plain": "S(ABC)+S(B) <= S(AB)+S(BC)",
+      "description": "Fundamental entropy inequality for tripartite quantum states.",
+      "theoryIds": [
+        "quantum-information"
+      ],
+      "sourceIds": [
+        "schumacher-1995"
+      ],
+      "tags": [
+        "entropy inequality"
+      ]
+    },
+    {
+      "id": "data-processing",
+      "name": "Quantum relative-entropy data processing",
+      "category": "Quantum information",
+      "latex": "D(\\mathcal E(\\rho)\\|\\mathcal E(\\sigma))\\le D(\\rho\\|\\sigma)",
+      "plain": "D(E(rho)||E(sigma)) <= D(rho||sigma)",
+      "description": "Distinguishability cannot increase under a quantum channel.",
+      "theoryIds": [
+        "quantum-information",
+        "resource-theories"
+      ],
+      "sourceIds": [
+        "resource-rmp-2019"
+      ],
+      "tags": [
+        "data processing"
+      ]
+    },
+    {
+      "id": "diamond-norm",
+      "name": "Diamond norm of a channel difference",
+      "category": "Quantum information",
+      "latex": "\\|\\Phi\\|_{\\diamond}=\\sup_{\\rho}\\|(\\Phi\\otimes I)(\\rho)\\|_1",
+      "plain": "||Phi||_diamond = sup_rho ||(Phi tensor I)(rho)||_1",
+      "description": "Completely bounded trace norm used to distinguish quantum channels.",
+      "theoryIds": [
+        "quantum-information",
+        "quantum-supermaps"
+      ],
+      "sourceIds": [
+        "quantum-supermaps-2008"
+      ],
+      "tags": [
+        "diamond norm"
+      ]
+    },
+    {
+      "id": "squeeze-operator",
+      "name": "Single-mode squeeze operator",
+      "category": "Quantum optics & AMO",
+      "latex": "S(\\zeta)=\\exp\\!\\left[\\frac12(\\zeta^*a^2-\\zeta a^{\\dagger2})\\right]",
+      "plain": "S(zeta)=exp[(zeta* a^2-zeta a†^2)/2]",
+      "description": "Unitary generating single-mode squeezed states.",
+      "theoryIds": [
+        "quantum-optical-coherence"
+      ],
+      "sourceIds": [
+        "glauber-coherence-1963"
+      ],
+      "tags": [
+        "squeezing"
+      ]
+    },
+    {
+      "id": "husimi-q",
+      "name": "Husimi Q function",
+      "category": "Quantum optics & AMO",
+      "latex": "Q(\\alpha)=\\frac{1}{\\pi}\\langle\\alpha|\\rho|\\alpha\\rangle",
+      "plain": "Q(alpha)=<alpha|rho|alpha>/pi",
+      "description": "Positive phase-space quasiprobability built from coherent states.",
+      "theoryIds": [
+        "quantum-optical-coherence",
+        "phase-space-qm"
+      ],
+      "sourceIds": [
+        "glauber-coherence-1963",
+        "wigner-1932"
+      ],
+      "tags": [
+        "Husimi"
+      ]
+    },
+    {
+      "id": "p-representation",
+      "name": "Glauber–Sudarshan P representation",
+      "category": "Quantum optics & AMO",
+      "latex": "\\rho=\\int d^2\\alpha\\,P(\\alpha)|\\alpha\\rangle\\langle\\alpha|",
+      "plain": "rho=integral P(alpha)|alpha><alpha| d2alpha",
+      "description": "Diagonal coherent-state representation of a field state.",
+      "theoryIds": [
+        "quantum-optical-coherence"
+      ],
+      "sourceIds": [
+        "glauber-coherence-1963"
+      ],
+      "tags": [
+        "P representation"
+      ]
+    },
+    {
+      "id": "input-output",
+      "name": "Cavity input–output relation",
+      "category": "Quantum optics & AMO",
+      "latex": "a_{\\rm out}=a_{\\rm in}-\\sqrt\\kappa\\,a",
+      "plain": "a_out = a_in - sqrt(kappa) a",
+      "description": "Standard single-port input–output relation up to convention-dependent signs.",
+      "theoryIds": [
+        "open-quantum-systems",
+        "quantum-optical-coherence"
+      ],
+      "sourceIds": [
+        "breuer-petruccione-2007"
+      ],
+      "tags": [
+        "input-output"
+      ]
+    },
+    {
+      "id": "purcell",
+      "name": "Purcell factor",
+      "category": "Quantum optics & AMO",
+      "latex": "F_P=\\frac{3}{4\\pi^2}\\left(\\frac{\\lambda}{n}\\right)^3\\frac{Q}{V}",
+      "plain": "F_P = 3/(4pi^2) (lambda/n)^3 Q/V",
+      "description": "Idealized cavity enhancement of spontaneous emission.",
+      "theoryIds": [
+        "jaynes-cummings",
+        "quantum-optical-coherence"
+      ],
+      "sourceIds": [
+        "jaynes-cummings-1963"
+      ],
+      "tags": [
+        "Purcell"
+      ]
+    },
+    {
+      "id": "cooperativity",
+      "name": "Cavity cooperativity",
+      "category": "Quantum optics & AMO",
+      "latex": "C=\\frac{4g^2}{\\kappa\\gamma}",
+      "plain": "C=4g^2/(kappa gamma)",
+      "description": "Dimensionless strong-coupling figure of merit for cavity QED.",
+      "theoryIds": [
+        "jaynes-cummings"
+      ],
+      "sourceIds": [
+        "jaynes-cummings-1963"
+      ],
+      "tags": [
+        "cavity QED"
+      ]
+    },
+    {
+      "id": "adm-hamiltonian",
+      "name": "ADM Hamiltonian constraint",
+      "category": "Quantum gravity & cosmology",
+      "latex": "\\mathcal H=\\frac{16\\pi G}{\\sqrt h}\\left(\\pi_{ij}\\pi^{ij}-\\frac12\\pi^2\\right)-\\frac{\\sqrt h}{16\\pi G}({}^{(3)}R-2\\Lambda)=0",
+      "plain": "ADM Hamiltonian constraint = 0",
+      "description": "Canonical general-relativistic Hamiltonian constraint underlying Wheeler–DeWitt quantization.",
+      "theoryIds": [
+        "canonical-quantum-gravity",
+        "wheeler-dewitt"
+      ],
+      "sourceIds": [
+        "dewitt-canonical-gravity-1967"
+      ],
+      "tags": [
+        "ADM"
+      ]
+    },
+    {
+      "id": "regge-action",
+      "name": "Regge action",
+      "category": "Quantum gravity & cosmology",
+      "latex": "S_R=\\frac{1}{8\\pi G}\\sum_h A_h\\,\\delta_h",
+      "plain": "S_R = 1/(8piG) sum hinge area times deficit angle",
+      "description": "Discrete Einstein–Hilbert action for piecewise-flat simplicial geometries.",
+      "theoryIds": [
+        "quantum-regge",
+        "euclidean-dynamical-triangulations",
+        "cdt"
+      ],
+      "sourceIds": [
+        "cdt-review"
+      ],
+      "tags": [
+        "Regge calculus"
+      ]
+    },
+    {
+      "id": "mukhanov-sasaki",
+      "name": "Mukhanov–Sasaki equation",
+      "category": "Quantum gravity & cosmology",
+      "latex": "v_k''+\\left(k^2-\\frac{z''}{z}\\right)v_k=0",
+      "plain": "v_k'' + (k^2-z''/z)v_k = 0",
+      "description": "Mode equation for scalar cosmological perturbations in single-field inflation.",
+      "theoryIds": [
+        "inflationary-fluctuations"
+      ],
+      "sourceIds": [
+        "quantum-cosmology-review"
+      ],
+      "tags": [
+        "inflation"
+      ]
+    },
+    {
+      "id": "scalar-index",
+      "name": "Scalar spectral index",
+      "category": "Quantum gravity & cosmology",
+      "latex": "n_s-1=\\frac{d\\ln\\mathcal P_{\\mathcal R}}{d\\ln k}\\approx-6\\epsilon+2\\eta",
+      "plain": "n_s-1 = d ln P_R/d ln k ~ -6 epsilon +2 eta",
+      "description": "Leading slow-roll expression for the scalar spectral tilt.",
+      "theoryIds": [
+        "inflationary-fluctuations"
+      ],
+      "sourceIds": [
+        "quantum-cosmology-review"
+      ],
+      "tags": [
+        "inflation"
+      ]
+    },
+    {
+      "id": "tensor-ratio",
+      "name": "Tensor-to-scalar ratio",
+      "category": "Quantum gravity & cosmology",
+      "latex": "r\\equiv\\frac{\\mathcal P_T}{\\mathcal P_{\\mathcal R}}\\approx16\\epsilon",
+      "plain": "r = P_T/P_R ~16 epsilon",
+      "description": "Leading single-field slow-roll tensor-to-scalar ratio.",
+      "theoryIds": [
+        "inflationary-fluctuations"
+      ],
+      "sourceIds": [
+        "quantum-cosmology-review"
+      ],
+      "tags": [
+        "inflation"
+      ]
+    },
+    {
+      "id": "csl-sde",
+      "name": "CSL stochastic state equation (schematic)",
+      "category": "Collapse theories",
+      "latex": "d|\\psi_t\\rangle=\\left[-\\frac{i}{\\hbar}Hdt+\\sqrt\\lambda(A-\\langle A\\rangle_t)dW_t-\\frac{\\lambda}{2}(A-\\langle A\\rangle_t)^2dt\\right]|\\psi_t\\rangle",
+      "plain": "dpsi = unitary + stochastic localization + nonlinear drift",
+      "description": "Representative normalized continuous-spontaneous-localization stochastic equation for one collapse operator.",
+      "theoryIds": [
+        "csl",
+        "objective-collapse"
+      ],
+      "sourceIds": [
+        "sep-collapse",
+        "bassi-ghirardi-collapse-2003"
+      ],
+      "tags": [
+        "CSL"
+      ]
+    },
+    {
+      "id": "qmupl-sde",
+      "name": "QMUPL stochastic state equation (schematic)",
+      "category": "Collapse theories",
+      "latex": "d|\\psi_t\\rangle=\\left[-\\frac{i}{\\hbar}Hdt+\\sqrt\\lambda(x-\\langle x\\rangle_t)dW_t-\\frac{\\lambda}{2}(x-\\langle x\\rangle_t)^2dt\\right]|\\psi_t\\rangle",
+      "plain": "QMUPL position-localizing stochastic equation",
+      "description": "Simplified position-localizing continuous-collapse dynamics.",
+      "theoryIds": [
+        "qmupl",
+        "objective-collapse"
+      ],
+      "sourceIds": [
+        "bassi-ghirardi-collapse-2003"
+      ],
+      "tags": [
+        "QMUPL"
+      ]
+    },
+    {
+      "id": "diosi-master",
+      "name": "Diósi gravitational master equation (schematic)",
+      "category": "Collapse theories",
+      "latex": "\\dot\\rho=-\\frac{i}{\\hbar}[H,\\rho]-\\frac{G}{2\\hbar}\\int d^3x\\,d^3y\\,\\frac{[\\hat\\mu(x),[\\hat\\mu(y),\\rho]]}{|x-y|}",
+      "plain": "rho-dot = unitary - gravitational double commutator",
+      "description": "Representative gravity-related decoherence/collapse master equation in the Diósi program.",
+      "theoryIds": [
+        "diosi-gravitational-collapse",
+        "diosi-penrose"
+      ],
+      "sourceIds": [
+        "diosi-gravity-collapse-1987"
+      ],
+      "tags": [
+        "Diosi"
+      ]
+    },
+    {
+      "id": "energy-collapse",
+      "name": "Energy-driven collapse SDE (schematic)",
+      "category": "Collapse theories",
+      "latex": "d|\\psi\\rangle=\\left[-iHdt-\\frac{\\sigma^2}{8}(H-\\langle H\\rangle)^2dt+\\frac{\\sigma}{2}(H-\\langle H\\rangle)dW_t\\right]|\\psi\\rangle",
+      "plain": "energy-driven stochastic collapse equation",
+      "description": "Representative norm-preserving stochastic energy-based reduction dynamics.",
+      "theoryIds": [
+        "energy-driven-collapse"
+      ],
+      "sourceIds": [
+        "hughston-energy-collapse-1996"
+      ],
+      "tags": [
+        "energy collapse"
       ]
     }
   ]

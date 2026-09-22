@@ -4,33 +4,15 @@ This backlog is deliberately broader than the shipped formula atlas. Candidates 
 
 ## Perturbation and scattering theory
 
-- nondegenerate first- and second-order stationary perturbation corrections
 - degenerate perturbation theory matrix problem
-- Dyson time-ordered series
 - interaction-picture evolution operator
-- Fermi golden rule
-- Lippmann–Schwinger equation
-- T-matrix definition
-- Born approximation
-- optical theorem
-- differential and total scattering cross sections
-- partial-wave expansion
-- phase-shift formula
-- S-matrix unitarity
 
 ## Angular momentum and atomic physics
 
-- angular-momentum ladder action
 - spin addition
-- Clebsch–Gordan expansion
-- Wigner–Eckart theorem
 - 3j, 6j and 9j symbols
-- Zeeman Hamiltonian and splitting
-- Stark shift
-- spin–orbit coupling
 - fine structure
 - hyperfine Hamiltonian
-- electric-dipole transition rate
 - atomic selection rules
 
 ## Quantum chemistry and electronic structure
@@ -48,51 +30,27 @@ This backlog is deliberately broader than the shipped formula atlas. Candidates 
 
 ## Many-body Green functions and response
 
-- time-ordered Green function
-- spectral representation
-- Dyson equation
 - self-energy definition
-- Matsubara Green function
-- Kubo formula
-- fluctuation–dissipation theorem
 - Lehmann representation
 - Bethe–Salpeter equation
 - random-phase approximation
-- BdG equations
 - superfluid stiffness and London relations
 - Josephson relations
 
 ## QFT and gauge theory
 
-- LSZ reduction
-- Ward identity
-- Ward–Takahashi identity
 - Slavnov–Taylor identities
-- Callan–Symanzik equation
-- operator-product expansion
 - trace anomaly
-- axial anomaly
-- Faddeev–Popov determinant
 - gauge-fixed generating functionals
 - BRST transformations by field
-- full BV quantum master equation
 - Schwinger parameterization
 - dimensional-regularization master integrals
-- lattice Wilson action
-- Polyakov loop
 
 ## Quantum information
 
-- Choi matrix
 - Jamiołkowski isomorphism
-- diamond norm
-- Holevo quantity
-- coherent information
 - entanglement of formation
 - concurrence
-- negativity and logarithmic negativity
-- strong subadditivity
-- data-processing inequality
 - channel-capacity formulas
 - stabilizer check equations
 - surface/toric code logical operators
@@ -102,45 +60,35 @@ This backlog is deliberately broader than the shipped formula atlas. Candidates 
 
 - optical Bloch equations
 - Wigner–Weisskopf decay
-- spontaneous-emission rate
-- Purcell factor
-- cavity cooperativity
-- input–output relations
 - squeezing operator
-- squeezed-vacuum expansion
-- Glauber–Sudarshan P representation
-- Husimi Q function
 - master equations for driven cavities
 - AC Stark shift
 - Lamb shift
 
 ## Quantum gravity and cosmology
 
-- ADM Hamiltonian constraints
 - Ashtekar Poisson brackets
 - LQG volume operator spectrum
 - spin-network Gauss/diffeomorphism constraints
 - EPRL/FK spin-foam amplitudes
-- Regge action
 - causal-set d'Alembertian and action
 - CDT/EDT discrete actions
 - GFT action and condensate Gross–Pitaevskii-type equation
 - tensor-model large-N scaling
 - no-boundary saddle weights
 - tunneling-wavefunction boundary condition
-- Mukhanov–Sasaki equation
 - tensor power spectrum
-- inflationary spectral index and tensor-to-scalar ratio
 - Page curve/generalized entropy variants
 
 ## Beyond-standard / modified quantum dynamics
 
-- CSL stochastic Schrödinger equation
-- QMUPL stochastic equation
-- Diósi master equation
-- energy-driven collapse SDE
 - Weinberg nonlinear Schrödinger structure
 - Doebner–Goldin equation family
 - q-oscillator algebra variants
 - quaternionic Schrödinger equation variants
 - p-adic propagators
+
+
+## Integrated in formula sweep 2
+
+Promoted with source links: stationary perturbation corrections; Dyson series; Fermi golden rule; Lippmann–Schwinger/T matrix/Born scattering/optical theorem/partial waves; angular-momentum ladder and coupling formulas; Zeeman/Stark/spin–orbit/dipole relations; LSZ, Ward–Takahashi, Callan–Symanzik, OPE, anomaly and gauge-fixing formulas; Wilson action and Polyakov loop; Green-function/Dyson/Lehmann/Matsubara/Kubo/FDT relations; BdG; Choi, Holevo, coherent information, negativity, SSA, data processing and diamond norm; squeezing/Husimi/P-representation/input–output/Purcell/cooperativity; ADM, Regge and inflationary perturbation formulas; CSL, QMUPL, Diósi and energy-driven collapse equations.
