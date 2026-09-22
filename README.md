@@ -52,7 +52,7 @@ A catalogued theory is not automatically "fully sourced." The UI displays a prov
 
 ## Development
 
-No build step is required. Open `index.html` or serve the repository as static files. GitHub Pages deployment is included under `.github/workflows/pages.yml`.
+No application build step is required. Open `index.html` or serve the repository as static files. GitHub Pages is deployed through the repository's native Pages configuration; catalog/formula integrity is enforced separately by `.github/workflows/validate.yml`.
 
 
 ## Research controls
