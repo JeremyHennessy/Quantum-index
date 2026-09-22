@@ -10,10 +10,10 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 - **195** typed relationships
 - **9** curated thought trees
 - **9** top-level categories
-- **126** bibliography/source records
-- **129 / 172 (75.0%)** entries currently have dedicated source provenance
-- **43 / 172** entries remain catalogued seeds pending a dedicated source pass
-- **86 / 172** are now marked `primary-sourced` after direct verification of original or program-defining papers
+- **135** bibliography/source records
+- **138 / 172 (80.2%)** entries currently have dedicated source provenance
+- **34 / 172** entries remain catalogued seeds pending a dedicated source pass
+- **92 / 172** are now marked `primary-sourced` after direct verification of original or program-defining papers
 
 ### Category coverage
 
@@ -96,6 +96,8 @@ The formal/emergent sweep then added 23 source-backed entities spanning Jordan-a
 The early-foundations source pass then verified Planck's quantization paper, Einstein's light-quantum paper, Bohr's 1913 atomic model, de Broglie's matter-wave thesis, Heisenberg's uncertainty paper, Dirac's transformation theory, von Neumann's probabilistic/density-operator formalism, EPR, Schrödinger's 1935 cat paper and the Leggett–Garg theorem. The old quantum theory umbrella is separately review-sourced rather than incorrectly assigned to a single primary paper.
 
 The information/formalism pass added dedicated provenance for quantum information, GPTs, resource theories, quantum causal modelling, open-system theory, quantum trajectories, quantum combs, the quantum switch, process tensors, categorical QM, the amplituhedron, deformation and geometric quantum mechanics, Wigner–Moyal phase-space QM, Schwinger–Keldysh, geometric and stochastic quantization, BV and BRST.
+
+The remaining-QFT pass then sourced the Standard Model, supersymmetry, lattice gauge theory, conformal field theory, topological QFT, scattering-amplitudes methods, conformal bootstrap, functional RG and perturbative AQFT. Broad umbrellas such as the Standard Model and modern amplitude/bootstrap programs use authoritative reviews or monographs where assigning one paper as the unique origin would be misleading.
 
 ## Known coverage gaps / next research passes
 
