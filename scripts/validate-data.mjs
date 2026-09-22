@@ -19,7 +19,7 @@ if (!formulaData || !Array.isArray(formulaData.formulas)) throw new Error("QI_FO
 const ids = data.theories.map(t=>t.id);
 const unique = new Set(ids);
 if (unique.size !== ids.length) throw new Error("Duplicate theory IDs");
-if (data.theories.length < 250) throw new Error(`Expected expanded seed corpus; found only ${data.theories.length}`);
+if (data.theories.length < 260) throw new Error(`Expected expanded seed corpus; found only ${data.theories.length}`);
 
 const sourceIds = data.sources.map(s=>s.id);
 const uniqueSources = new Set(sourceIds);
