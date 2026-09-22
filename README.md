@@ -15,7 +15,7 @@ Quantum Index is a source-aware map of quantum theory: historical foundations, f
 
 The current corpus is a broad research seed rather than a claim of literal completeness. The schema is designed to grow without changing the UI.
 
-Current audited branch metrics: **245 theory/framework entities**, **334 typed relationships**, **11 thought trees**, **238 bibliography/source records**, and a separate **169-entry formula atlas** spanning **17 formula categories**. All 245 shipped theory entries carry dedicated provenance: **176 primary-sourced** and **69 review/authoritative-source backed**. Catalog coverage and source coverage are intentionally reported separately.
+Current audited branch metrics: **245 theory/framework entities**, **334 typed relationships**, **11 thought trees**, **238 bibliography/source records**, and a separate **229-entry formula atlas** spanning **23 formula categories**. All 245 shipped theory entries carry dedicated provenance: **176 primary-sourced** and **69 review/authoritative-source backed**. Catalog coverage and source coverage are intentionally reported separately.
 
 Static app:
 - `index.html`
@@ -67,7 +67,7 @@ The application must not describe the catalog as literally complete until the do
 
 ## Formula atlas
 
-The formula atlas is a separate evidence layer linked to the theory graph. It currently contains **169 canonical equations, identities, inequalities, Hamiltonians, spectra and topological relations** across 17 categories. Every formula must link to at least one indexed theory and at least one existing source record.
+The formula atlas is a separate evidence layer linked to the theory graph. It currently contains **229 canonical equations, identities, inequalities, Hamiltonians, spectra and topological relations** across 23 categories. Every formula must link to at least one indexed theory and at least one existing source record.
 
 "All formulas" is treated operationally rather than literally: quantum physics admits arbitrarily many derived equations, equivalent rearrangements, special cases and model-specific identities. The completeness target is therefore **all materially distinct, named or canonical formulas used to define, derive, test, or operationalize indexed quantum theories**, with variants tracked explicitly when they carry different physical content.
 
