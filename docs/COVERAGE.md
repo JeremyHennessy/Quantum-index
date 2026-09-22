@@ -241,3 +241,15 @@ Current v4 formula audit:
 Every shipped formula now carries a formula-role field plus assumptions, variables, regime, units notes, theory relationship, and metadata-review state. Legacy formulas use a conservative baseline classification where detailed per-equation review has not yet been completed; newly added priority formulas have explicit metadata.
 
 The current formula sweep added the requested high-priority equations for Hartree–Fock, configuration interaction, MP2, coupled cluster, Kohn–Sham density, TDDFT, GW, Bethe–Salpeter, DMRG, DMFT, quantum Monte Carlo, the Master Constraint Programme, process tensors, pseudo-density matrices, Lorentzian quantum cosmology, GRWm, AQFT, supersymmetry, causal perturbation theory, chiral perturbation theory, HQET, supersymmetric localization, integrable QFT, GPTs, process matrices, quantum trajectories, collision models, measurement-based computation, decoherence, quantum Darwinism, string theory, asymptotic safety, matrix models, induced gravity, string field theory, IKKT, infinite-derivative gravity, minisuperspace, pre-big-bang duality, PT symmetry, nonlinear QM, generalized exclusion statistics, and q-deformed oscillators.
+
+
+## Relationship evidence coverage
+
+All **359** typed relationship edges now have explicit evidence metadata. The first relation-provenance pass has:
+
+- **54** source-backed relations
+- **45** high-confidence source-backed relations
+- **9** medium-confidence source-backed relations
+- **305** edges explicitly marked `editorial` pending relationship-specific evidence review
+
+An editorial edge remains visible because it is useful for navigation and conceptual mapping, but it is not represented as documented historical influence or a formally proved mathematical relation. Source coverage for nodes and source coverage for edges are reported separately.

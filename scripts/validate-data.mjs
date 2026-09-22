@@ -49,9 +49,18 @@ for (const t of data.theories) {
   }
 }
 
+const allowedRelationConfidence = new Set(["high","medium","editorial"]);
+const allowedEvidenceTypes = new Set(["documented historical influence","formal mathematical relation","editorial relation"]);
 for (const r of data.relations) {
   if (!unique.has(r.from) || !unique.has(r.to)) throw new Error(`Dangling relation ${r.from} -> ${r.to}`);
+  if (!Array.isArray(r.sourceIds)) throw new Error(`Relation ${r.from}->${r.to} sourceIds must be an array`);
+  if (!allowedEvidenceTypes.has(r.evidenceType)) throw new Error(`Relation ${r.from}->${r.to} has invalid evidenceType ${r.evidenceType}`);
+  if (!allowedRelationConfidence.has(r.confidence)) throw new Error(`Relation ${r.from}->${r.to} has invalid confidence ${r.confidence}`);
+  for (const sourceId of r.sourceIds) if (!uniqueSources.has(sourceId)) throw new Error(`Relation ${r.from}->${r.to} references missing source ${sourceId}`);
+  if (r.confidence !== "editorial" && r.sourceIds.length === 0) throw new Error(`Non-editorial relation ${r.from}->${r.to} lacks evidence sources`);
 }
+const sourcedRelations = data.relations.filter(r=>r.sourceIds.length);
+if (sourcedRelations.length < 50) throw new Error(`Expected at least 50 source-backed relations; found ${sourcedRelations.length}`);
 for (const tree of data.trees) {
   for (const id of tree.nodes) if (!unique.has(id)) throw new Error(`Tree ${tree.name} references missing ${id}`);
   const nodeSet = new Set(tree.nodes);
@@ -108,6 +117,8 @@ const sourceBacked = data.theories.filter(t=>t.provenance !== "catalogued").leng
 console.log(JSON.stringify({
   theories:data.theories.length,
   relations:data.relations.length,
+  sourcedRelations:data.relations.filter(r=>r.sourceIds.length).length,
+  editorialRelations:data.relations.filter(r=>r.confidence==="editorial").length,
   trees:data.trees.length,
   categories:[...new Set(data.theories.map(t=>t.category))].length,
   kinds:[...new Set(data.theories.map(t=>t.kind))].length,

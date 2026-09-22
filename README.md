@@ -62,6 +62,7 @@ See:
 - `docs/COVERAGE.md` for current coverage, provenance metrics, gaps and completion criteria.
 - `docs/TAXONOMY.md` for category, kind, status and relation semantics.
 - `docs/FORMULA_AUDIT.md` for the theory-by-theory formula-bearing audit and formula-gap controls.
+- `docs/RELATION_PROVENANCE.md` for edge-evidence semantics and the relation-source audit.
 - `research/CANDIDATES.md` for the unresolved candidate backlog.
 - `research/CANDIDATE_AUDIT.md` for add/alias/subtype/formula-only/duplicate decisions on remaining candidates.
 
@@ -91,3 +92,22 @@ The formula atlas is deliberately scoped to **canonical/source-linked equations*
 - source IDs and metadata review state.
 
 `formula-audit.js` classifies every theory as formula-bearing, a documented formula gap, primarily conceptual, theorem, interpretation, or thought experiment. A documented gap means a canonical equation has not yet been curated; it does **not** mean the theory lacks mathematics.
+
+
+## Relationship provenance
+
+Every relation edge now carries:
+
+- `sourceIds`
+- `evidenceType`
+- `confidence`
+- optional `evidenceNote`
+
+The first provenance pass source-backs the highest-confidence historical and formal edges. Unsourced edges are **explicitly labeled editorial** rather than silently presented as documented historical fact. This distinction is shown in theory details and graph tooltips.
+
+Current relation evidence states are:
+- `documented historical influence`
+- `formal mathematical relation`
+- `editorial relation`
+
+Confidence is `high`, `medium`, or `editorial`.

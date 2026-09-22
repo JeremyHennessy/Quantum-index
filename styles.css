@@ -85,3 +85,7 @@ main{width:min(1540px,94vw);margin:auto;padding:34px 0 80px}.hero{display:grid;g
 .formula-detail>div{display:grid;grid-template-columns:82px 1fr;gap:8px;padding-top:7px;border-top:1px solid #1d313d}
 .formula-detail dt{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 .formula-detail dd{margin:0;font-size:10px;line-height:1.45;color:#b8cbd4}
+
+.relation-main{display:grid;gap:3px;min-width:0}
+.relation-main strong{font-size:11px;font-weight:650;overflow:hidden;text-overflow:ellipsis}
+.relation-main em{font-size:8px;color:var(--muted);font-style:normal;text-transform:none;letter-spacing:.01em}
