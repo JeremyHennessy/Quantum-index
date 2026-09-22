@@ -27,8 +27,8 @@ This file extracts theory/model/hypothesis-like phrases that are useful for Quan
 | fuzzball model | existing: `fuzzball-model` |
 | cosmic string | existing: `cosmic-strings` |
 | cosmic inflation / inflation model | existing inflationary quantum-fluctuation and eternal-inflation branches |
-| de Sitter universe | represented through vacuum-energy/de Sitter formulas and cosmological-constant branches; not yet a separate entity |
-| AdS universe | represented through AdS/CFT/holography; geometry itself not yet a separate entity |
+| de Sitter universe | existing: `de-sitter-spacetime` |
+| AdS universe | existing: `anti-de-sitter-spacetime` |
 | dark matter | represented through ΛCDM plus WIMP, axion, PBH and alternative-gravity branches |
 | dark energy / cosmological constant | represented through ΛCDM, vacuum-energy formulas and quintessence |
 | classical gravity | existing: `newtonian-gravity` and `general-relativity` |
@@ -40,19 +40,19 @@ This file extracts theory/model/hypothesis-like phrases that are useful for Quan
 
 | PBS indexed term | Initial disposition | Reason |
 |---|---|---|
-| CPT universe | **review** | specific cosmological proposal; needs primary-source and distinctness audit |
-| Alcubierre drive | **review** | exact GR metric/proposal; astrophysics/relativity extension candidate |
+| CPT universe | **promoted** | existing: `cpt-symmetric-universe`; primary-sourced to Boyle–Finn–Turok |
+| Alcubierre drive | **promoted** | existing: `alcubierre-warp-drive`; primary-sourced to Alcubierre 1994 |
 | cosmic superstring | **review** | may deserve subtype under cosmic strings/string theory |
 | simulation hypothesis | **hold / philosophy** | not currently treated as a physical theory with predictive formalism |
-| block universe | **review / conceptual** | interpretation of relativity rather than distinct dynamics |
-| de Sitter universe | **formula/geometry or entity review** | important exact spacetime; assess alongside anti-de Sitter |
-| AdS universe | **formula/geometry or entity review** | important exact spacetime; avoid duplicating AdS/CFT |
+| block universe | **promoted as interpretation** | existing: `eternalism-block-universe`; explicitly not treated as a dynamical theory |
+| de Sitter universe | **promoted** | existing: `de-sitter-spacetime` |
+| AdS universe | **promoted** | existing: `anti-de-sitter-spacetime`; kept distinct from AdS/CFT |
 | Kruskal–Szekeres diagram | **tool / formula only** | coordinate extension/diagram, not a theory |
 | Carter–Penrose diagram | **tool / formula only** | causal-structure representation, not a theory |
 | Janus model | **identify before inclusion** | transcript-index term is ambiguous; determine exact referenced model and scientific literature |
 | Steinhardt–Turok model | **alias/subtype** | likely maps to existing cyclic cosmology unless a distinct first-class node is justified |
 | bubble universe | **subtype / cosmology concept** | overlaps eternal inflation and vacuum-transition cosmology |
-| baby universe | **review** | potentially distinct quantum-gravity/cosmology program |
+| baby universe | **review** | potentially distinct quantum-gravity/cosmology program; PBS cosmological-natural-selection transcript now maps to `cosmological-natural-selection` |
 | digital physics | **review / foundations** | broad family; needs scope and scientific-status audit |
 | Biefeld–Brown effect | **reject as theory** | phenomenon/claim, not a quantum/astrophysical theory node |
 | EM drive / Cannae drive | **reject as theory** | device claims, not theory frameworks |
@@ -73,6 +73,11 @@ This audit directly motivated or corroborated the current astrophysics expansion
 - cosmic strings
 - cosmic censorship
 - fuzzball black-hole proposal
+- de Sitter and anti-de Sitter spacetimes
+- Alcubierre warp spacetime
+- CPT-symmetric universe
+- cosmological natural selection
+- eternalism / block-universe interpretation
 
 Additional astrophysics frameworks were added from independent literature rather than PBS mentions: stellar structure, Lane–Emden polytropes, Jeans instability, Chandrasekhar limit, TOV stars, Eddington limit, Bondi accretion, Shakura–Sunyaev disks, Blandford–Znajek jets, ideal MHD, synchrotron radiation, diffusive shock acceleration, Press–Schechter structure formation and NFW halos.
 
