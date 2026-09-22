@@ -65,7 +65,7 @@ for (const tree of data.trees) {
 const formulaIds = formulaData.formulas.map(f=>f.id);
 const uniqueFormulaIds = new Set(formulaIds);
 if (uniqueFormulaIds.size !== formulaIds.length) throw new Error("Duplicate formula IDs");
-if (formulaData.formulas.length < 160) throw new Error(`Expected formula atlas >= 160 entries; found ${formulaData.formulas.length}`);
+if (formulaData.formulas.length < 225) throw new Error(`Expected formula atlas >= 225 entries; found ${formulaData.formulas.length}`);
 
 for (const f of formulaData.formulas) {
   for (const key of ["id","name","category","latex","plain","description"]) {
