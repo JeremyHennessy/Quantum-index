@@ -121,7 +121,7 @@
       <div class="detail-section"><h4>Connections · ${rel.length}</h4><div class="relation-list">
         ${rel.slice().sort((a,b)=>a.other.year-b.other.year).map(({r,other,outbound})=>`
           <div class="relation" data-id="${other.id}">
-            <span>${esc(other.name)}</span>
+            <span class="relation-main"><strong>${esc(other.name)}</strong><em>${esc(r.evidenceType)} · ${esc(r.confidence)}${r.sourceIds.length?` · ${r.sourceIds.length} source${r.sourceIds.length===1?"":"s"}`:" · unsourced editorial"}</em></span>
             <small>${esc(relationLabels[r.type]||r.type)}${outbound?" →":" ←"}</small>
           </div>`).join("")||'<p>No typed connections yet.</p>'}
       </div></div>
@@ -134,12 +134,13 @@
   function renderGraph(){
     const visible=filtered(), ids=new Set(visible.map(t=>t.id));
     const nodes=visible.map(t=>({...t}));
-    const links=relations.filter(r=>ids.has(r.from)&&ids.has(r.to)).map(r=>({source:r.from,target:r.to,type:r.type}));
+    const links=relations.filter(r=>ids.has(r.from)&&ids.has(r.to)).map(r=>({source:r.from,target:r.to,type:r.type,evidenceType:r.evidenceType,confidence:r.confidence,sourceIds:r.sourceIds}));
     const svg=d3.select("#network"), el=$("#network"), width=el.clientWidth||900, height=el.clientHeight||590;
     svg.selectAll("*").remove(); svg.attr("viewBox",[0,0,width,height]);
     const root=svg.append("g");
     svg.call(d3.zoom().scaleExtent([.25,3]).on("zoom",e=>root.attr("transform",e.transform)));
-    const link=root.append("g").selectAll("line").data(links).join("line").attr("class","link").attr("stroke-width",d=>d.type==="overlaps"?1:1.4);
+    const link=root.append("g").selectAll("line").data(links).join("line").attr("class","link").attr("stroke-width",d=>d.type==="overlaps"?1:1.4).attr("stroke-opacity",d=>d.confidence==="high"?.7:d.confidence==="medium"?.52:.3);
+    link.append("title").text(d=>`${relationLabels[d.type]||d.type} · ${d.evidenceType} · ${d.confidence}`);
     const node=root.append("g").selectAll("g").data(nodes,d=>d.id).join("g").attr("class",d=>"node"+(d.id===state.selected?" selected":"")).on("click",(e,d)=>{e.stopPropagation();selectTheory(d.id);});
     node.append("circle").attr("r",d=>d.status.includes("established")?9:7).attr("fill",d=>categoryColors.get(d.category)||"#94a3b8");
     node.append("text").attr("class","node-label").attr("y",17).text(d=>d.name.length>26?d.name.slice(0,24)+"…":d.name);
@@ -243,7 +244,7 @@
         return `M${sx},${sy} C${mx},${sy} ${mx},${ty} ${tx},${ty}`;
       })
       .attr("marker-end","url(#tree-arrowhead)")
-      .append("title").text(l=>relationLabels[l.type]||l.type);
+      .append("title").text(l=>`${relationLabels[l.type]||l.type} · ${l.evidenceType} · ${l.confidence}${l.sourceIds?.length?` · ${l.sourceIds.length} source${l.sourceIds.length===1?"":"s"}`:""}`);
 
     const nodeLayer=svg.append("g");
     const node=nodeLayer.selectAll("g").data(nodes,d=>d.id).join("g")
