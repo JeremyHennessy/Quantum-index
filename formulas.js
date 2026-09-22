@@ -2570,10 +2570,12 @@ window.QI_FORMULAS = {
       "theoryIds": [
         "hawking-radiation",
         "holographic-principle",
-        "fuzzball-model"
+        "fuzzball-model",
+        "black-hole-thermodynamics"
       ],
       "sourceIds": [
         "hawking-1975",
+        "bekenstein-entropy-1973",
         "thooft-holography-1993"
       ],
       "tags": [
@@ -2588,10 +2590,12 @@ window.QI_FORMULAS = {
       "plain": "T_H = hbar kappa/(2 pi c k_B)",
       "description": "Black-hole temperature in terms of surface gravity κ.",
       "theoryIds": [
-        "hawking-radiation"
+        "hawking-radiation",
+        "black-hole-thermodynamics"
       ],
       "sourceIds": [
-        "hawking-1975"
+        "hawking-1975",
+        "bekenstein-entropy-1973"
       ],
       "tags": [
         "Hawking radiation"
@@ -7592,6 +7596,114 @@ window.QI_FORMULAS = {
       "regime": "Cosmological natural selection hypothesis.",
       "units": "B is a count/fitness measure; parameter units depend on chosen dimensionless parametrization.",
       "theoryRelationship": "schematic falsifiability/fitness condition",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "inflation-acceleration-condition",
+      "name": "Inflationary acceleration condition",
+      "category": "Cosmology & dark sector",
+      "latex": "\\ddot a>0",
+      "plain": "d^2 a/dt^2 > 0",
+      "description": "Kinematic condition defining accelerated expansion of the cosmological scale factor during an inflationary phase.",
+      "theoryIds": ["cosmic-inflation"],
+      "sourceIds": ["guth-inflation-1981"],
+      "tags": ["inflation","scale factor","accelerated expansion"],
+      "formulaType": "defining",
+      "assumptions": ["Homogeneous and isotropic FLRW background"],
+      "variables": ["a(t): cosmological scale factor","t: cosmic proper time"],
+      "regime": "Background cosmological expansion during an inflationary epoch.",
+      "units": "a is conventionally dimensionless; d²a/dt² has inverse-time-squared units when a is dimensionless.",
+      "theoryRelationship": "defining kinematic condition",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "bbn-neutron-proton-ratio",
+      "name": "BBN neutron–proton equilibrium ratio",
+      "category": "Cosmology & dark sector",
+      "latex": "\\frac{n_n}{n_p}\\simeq\\exp\\!\\left[-\\frac{(m_n-m_p)c^2}{k_B T}\\right]",
+      "plain": "n_n/n_p ~= exp[-(m_n-m_p)c^2/(k_B T)]",
+      "description": "Approximate neutron-to-proton abundance ratio while weak interactions maintain thermal equilibrium before freeze-out.",
+      "theoryIds": ["big-bang-nucleosynthesis"],
+      "sourceIds": ["alpher-bethe-gamow-1948"],
+      "tags": ["BBN","neutron proton ratio","freeze-out"],
+      "formulaType": "approximation",
+      "assumptions": ["Thermal/chemical equilibrium for neutron-proton interconversion","Neglect of small chemical potentials and later neutron decay in the displayed ratio"],
+      "variables": ["n_n,n_p: neutron and proton number densities","m_n,m_p: neutron and proton masses","T: plasma temperature"],
+      "regime": "Hot early universe prior to or near weak-interaction freeze-out.",
+      "units": "Exponent is dimensionless.",
+      "theoryRelationship": "canonical approximation controlling primordial neutron availability",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "gravitational-wave-quadrupole-power",
+      "name": "Gravitational-wave quadrupole power",
+      "category": "Relativity & astrophysics",
+      "latex": "P=\\frac{G}{5c^5}\\left\\langle \\dddot Q_{ij}\\dddot Q_{ij}\\right\\rangle",
+      "plain": "P = G/(5 c^5) <Q'''_ij Q'''_ij>",
+      "description": "Leading weak-field gravitational-radiation power in terms of the third time derivative of the trace-free mass quadrupole.",
+      "theoryIds": ["gravitational-wave-theory","general-relativity"],
+      "sourceIds": ["peters-mathews-gw-1963","einstein-gr-1916"],
+      "tags": ["gravitational waves","quadrupole","radiated power"],
+      "formulaType": "approximation",
+      "assumptions": ["Weak gravitational field in the wave-generation zone","Source motions nonrelativistic compared with c","Leading quadrupole order"],
+      "variables": ["Q_ij: trace-free mass quadrupole tensor","P: radiated gravitational-wave power"],
+      "regime": "Slow-motion weak-field radiation; not a replacement for full numerical relativity in strong-field mergers.",
+      "units": "P has units of power.",
+      "theoryRelationship": "canonical leading-order radiation formula",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "einstein-lens-angle",
+      "name": "Point-mass Einstein angle",
+      "category": "Relativity & astrophysics",
+      "latex": "\\theta_E=\\sqrt{\\frac{4GM}{c^2}\\frac{D_{LS}}{D_LD_S}}",
+      "plain": "theta_E = sqrt[(4GM/c^2) D_LS/(D_L D_S)]",
+      "description": "Angular Einstein-ring scale for an isolated point-mass lens in the thin-lens approximation.",
+      "theoryIds": ["gravitational-lensing","general-relativity"],
+      "sourceIds": ["einstein-lensing-1936","einstein-gr-1916"],
+      "tags": ["gravitational lensing","Einstein ring","point lens"],
+      "formulaType": "canonical",
+      "assumptions": ["Point-mass lens","Thin-lens and small-angle approximations","Standard angular-diameter distance geometry"],
+      "variables": ["M: lens mass","D_L: observer-lens distance","D_S: observer-source distance","D_LS: lens-source distance"],
+      "regime": "Weak-field gravitational lensing by an isolated compact lens.",
+      "units": "theta_E is an angle (dimensionless in radians).",
+      "theoryRelationship": "canonical point-lens scale",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "boson-star-einstein-klein-gordon",
+      "name": "Einstein–Klein–Gordon system for a boson star",
+      "category": "Relativity & astrophysics",
+      "latex": "G_{\\mu\\nu}=\\frac{8\\pi G}{c^4}T^{(\\phi)}_{\\mu\\nu},\\qquad \\left(\\Box-\\frac{m^2c^2}{\\hbar^2}\\right)\\phi=0",
+      "plain": "G_mn = (8 pi G/c^4) T_mn(phi),  (Box - m^2 c^2/hbar^2) phi = 0",
+      "description": "Minimal coupled gravitational and Klein–Gordon field equations whose stationary self-gravitating solutions include non-self-interacting boson stars.",
+      "theoryIds": ["boson-stars","general-relativity"],
+      "sourceIds": ["kaup-boson-star-1968","einstein-gr-1916"],
+      "tags": ["boson star","Einstein-Klein-Gordon","scalar field"],
+      "formulaType": "defining",
+      "assumptions": ["Minimally coupled scalar field","Displayed Klein–Gordon form omits additional self-interaction potentials"],
+      "variables": ["phi: bosonic scalar field","m: boson mass","T_mn(phi): scalar-field stress-energy tensor"],
+      "regime": "Classical self-gravitating scalar-field configurations underlying the simplest boson-star models.",
+      "units": "Constants are explicit; tensor dimensions follow the Einstein equation convention.",
+      "theoryRelationship": "defining coupled field equations",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "ccc-conformal-matching",
+      "name": "CCC conformal matching relation",
+      "category": "Cosmology & dark sector",
+      "latex": "g^{(n+1)}_{ab}\\sim\\Omega^2 g^{(n)}_{ab}",
+      "plain": "g_(n+1) ~ Omega^2 g_(n)",
+      "description": "Schematic statement of the conformal rescaling used to relate the remote future geometry of one aeon to the big-bang boundary of the next in conformal cyclic cosmology.",
+      "theoryIds": ["conformal-cyclic-cosmology"],
+      "sourceIds": ["penrose-ccc-2014"],
+      "tags": ["CCC","conformal rescaling","aeon","crossover"],
+      "formulaType": "schematic",
+      "assumptions": ["Represents only the conformal-matching idea, not the complete crossover field equations","Conformal factors and metric conventions are source dependent"],
+      "variables": ["g_ab^(n): representative metric in one aeon","Omega: conformal rescaling factor"],
+      "regime": "Conceptual crossover relation in Penrose's CCC framework.",
+      "units": "Metric scaling depends on coordinate and conformal conventions.",
+      "theoryRelationship": "schematic representative of the crossover geometry",
       "metadataReview": "explicit"
     }
 
