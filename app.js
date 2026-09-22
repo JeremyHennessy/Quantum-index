@@ -1,8 +1,10 @@
 (() => {
   const { theories, relations, trees, sources } = window.QI_DATA;
+  const formulas = window.QI_FORMULAS?.formulas || [];
   const byId = new Map(theories.map(t => [t.id,t]));
   const sourceById = new Map(sources.map(s => [s.id,s]));
   const state = { search:"", category:"", kind:"", status:"", era:"", sourcedOnly:false, selected:null, selectedTree:0, view:"map" };
+  const formulaState = { search:"", category:"", theory:"" };
   const categoryColors = new Map([
     ["Historical foundations","#f59e0b"],["Formulations","#60a5fa"],["Foundations & interpretations","#c084fc"],
     ["Quantum field theory","#34d399"],["Quantum information & open systems","#22d3ee"],["Quantum gravity & spacetime","#f472b6"],
@@ -25,7 +27,7 @@
       (!state.kind || t.kind===state.kind) &&
       (!state.status || t.status===state.status) &&
       (!state.era || t.era===state.era) &&
-      (!state.sourcedOnly || t.provenance==="sourced")
+      (!state.sourcedOnly || t.provenance!=="catalogued")
     );
   }
 
@@ -37,6 +39,10 @@
   setOptions("#kindFilter",[...new Set(theories.map(t=>t.kind))].sort());
   setOptions("#statusFilter",[...new Set(theories.map(t=>t.status))].sort());
   setOptions("#eraFilter",[...new Set(theories.map(t=>t.era))]);
+  setOptions("#formulaCategory",[...new Set(formulas.map(f=>f.category))].sort());
+  const formulaTheoryIds=[...new Set(formulas.flatMap(f=>f.theoryIds))].filter(id=>byId.has(id)).sort((a,b)=>byId.get(a).name.localeCompare(byId.get(b).name));
+  const formulaTheorySelect=$("#formulaTheory");
+  formulaTheorySelect.innerHTML=formulaTheorySelect.firstElementChild.outerHTML+formulaTheoryIds.map(id=>`<option value="${id}">${esc(byId.get(id).name)}</option>`).join("");
 
   function renderStats(){
     const cat=new Set(theories.map(t=>t.category)).size;
@@ -45,6 +51,7 @@
       [theories.length,"catalogued theories & frameworks"],
       [cat,"major categories"],
       [relations.length,"typed connections"],
+      [formulas.length,"formula atlas entries"],
       [`${sourced}/${theories.length}`,"entries with review/source provenance"]
     ].map(([n,l])=>`<div class="stat"><strong>${n}</strong><span>${l}</span></div>`).join("");
   }
@@ -276,8 +283,62 @@
     $("#catalog").querySelectorAll("[data-id]").forEach(el=>el.addEventListener("click",()=>selectTheory(el.dataset.id)));
   }
 
+
+  function filteredFormulas(){
+    const q=formulaState.search.trim().toLowerCase();
+    return formulas.filter(f=>{
+      const theoryText=f.theoryIds.map(id=>byId.get(id)?.name||id).join(" ");
+      return (!q || [f.name,f.category,f.plain,f.description,...(f.tags||[]),theoryText].join(" ").toLowerCase().includes(q)) &&
+        (!formulaState.category || f.category===formulaState.category) &&
+        (!formulaState.theory || f.theoryIds.includes(formulaState.theory));
+    });
+  }
+
+  function typesetFormulaGrid(){
+    const el=$("#formulaGrid");
+    if(!el) return;
+    const doTypeset=()=>{
+      if(window.MathJax?.typesetPromise){
+        window.MathJax.typesetClear?.([el]);
+        window.MathJax.typesetPromise([el]).catch(()=>{});
+      }
+    };
+    doTypeset();
+    if(!window.MathJax?.typesetPromise) setTimeout(doTypeset,700);
+  }
+
+  function renderFormulas(){
+    const list=filteredFormulas();
+    $("#formulaCount").textContent=`${list.length} / ${formulas.length} formulas`;
+    $("#formulaGrid").innerHTML=list.map(f=>{
+      const theoriesHtml=f.theoryIds.map(id=>{
+        const t=byId.get(id);
+        return t?`<button class="formula-theory" data-theory="${id}">${esc(t.name)}</button>`:"";
+      }).join("");
+      const sourcesHtml=f.sourceIds.map(id=>{
+        const s=sourceById.get(id);
+        return s?`<a class="formula-source" href="${esc(s.url)}" target="_blank" rel="noreferrer">${esc(s.authors)} · ${esc(s.year)}</a>`:"";
+      }).join("");
+      return `
+        <article class="formula-card">
+          <div class="formula-meta"><span>${esc(f.category)}</span><span>${f.sourceIds.length} source${f.sourceIds.length===1?"":"s"}</span></div>
+          <h4>${esc(f.name)}</h4>
+          <div class="formula-equation">\\[${esc(f.latex)}\\]</div>
+          <div class="formula-plain">${esc(f.plain)}</div>
+          <p>${esc(f.description)}</p>
+          <div class="formula-theories">${theoriesHtml}</div>
+          <div class="formula-sources">${sourcesHtml}</div>
+        </article>`;
+    }).join("") || '<div class="empty-state">No formulas match these filters.</div>';
+    $("#formulaGrid").querySelectorAll("[data-theory]").forEach(el=>el.addEventListener("click",()=>{
+      selectTheory(el.dataset.theory);
+      switchView("map");
+    }));
+    typesetFormulaGrid();
+  }
+
   function renderAll(){
-    renderStats();renderLegend();renderGraph();renderTimeline();renderCatalog();renderLineage();renderDetail();
+    renderStats();renderLegend();renderGraph();renderTimeline();renderCatalog();renderLineage();renderDetail();renderFormulas();
   }
   function switchView(view){
     state.view=view;
@@ -286,6 +347,7 @@
     $("#"+view+"View").classList.add("active");
     if(view==="map") setTimeout(renderGraph,0);
     if(view==="lineage") setTimeout(renderThoughtTreeGraph,0);
+    if(view==="formula") setTimeout(()=>{renderFormulas();typesetFormulaGrid();},0);
   }
   $$(".tab").forEach(b=>b.addEventListener("click",()=>switchView(b.dataset.view)));
   $("#search").addEventListener("input",e=>{state.search=e.target.value;renderGraph();renderTimeline();renderCatalog();});
@@ -294,6 +356,9 @@
   $("#statusFilter").addEventListener("change",e=>{state.status=e.target.value;renderGraph();renderTimeline();renderCatalog();});
   $("#eraFilter").addEventListener("change",e=>{state.era=e.target.value;renderGraph();renderTimeline();renderCatalog();});
   $("#sourcedOnly").addEventListener("change",e=>{state.sourcedOnly=e.target.checked;renderGraph();renderTimeline();renderCatalog();});
+  $("#formulaSearch").addEventListener("input",e=>{formulaState.search=e.target.value;renderFormulas();});
+  $("#formulaCategory").addEventListener("change",e=>{formulaState.category=e.target.value;renderFormulas();});
+  $("#formulaTheory").addEventListener("change",e=>{formulaState.theory=e.target.value;renderFormulas();});
   $("#resetView").addEventListener("click",()=>{
     Object.assign(state,{search:"",category:"",kind:"",status:"",era:"",sourcedOnly:false});
     $("#search").value="";$("#categoryFilter").value="";$("#kindFilter").value="";$("#statusFilter").value="";$("#eraFilter").value="";$("#sourcedOnly").checked=false;renderAll();
