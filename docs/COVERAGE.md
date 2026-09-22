@@ -6,15 +6,15 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 
 ## Current corpus
 
-- **252** catalogued entities
-- **345** typed relationships
-- **12** curated thought trees
-- **11** top-level categories
-- **245** bibliography/source records
+- **262** catalogued entities
+- **359** typed relationships
+- **13** curated thought trees
+- **12** top-level categories
+- **253** bibliography/source records
 - **266** source-linked formula entries across **26** formula categories
-- **252 / 252 (100.0%)** entries currently have dedicated source provenance
-- **0 / 252** shipped entries remain catalogued-only
-- **181 / 252** are marked `primary-sourced`; the remaining **71 / 252** are review/authoritative-source backed
+- **262 / 262 (100.0%)** entries currently have dedicated source provenance
+- **0 / 262** shipped entries remain catalogued-only
+- **186 / 262** are marked `primary-sourced`; the remaining **76 / 262** are review/authoritative-source backed
 
 ### Category coverage
 
@@ -29,7 +29,8 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 | Quantum cosmology | 17 |
 | Mathematical structures | 10 |
 | Quantum optics & AMO | 3 |
-| Quantum many-body & condensed matter | 11 |
+| Quantum many-body & condensed matter | 14 |
+| Quantum chemistry & electronic structure | 7 |
 | Beyond standard quantum theory | 20 |
 
 ### Era coverage
@@ -37,10 +38,10 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 | Era | Entries |
 |---|---:|
 | 1900–1924 | 5 |
-| 1925–1939 | 19 |
-| 1940–1959 | 12 |
-| 1960–1979 | 45 |
-| 1980–1999 | 73 |
+| 1925–1939 | 21 |
+| 1940–1959 | 15 |
+| 1960–1979 | 46 |
+| 1980–1999 | 77 |
 | 2000–2014 | 64 |
 | 2015–present | 34 |
 
@@ -217,3 +218,8 @@ The current formula corpus emphasizes canonical equations and identities across 
 ## Quantum error correction and metrology expansion
 
 The latest theory sweep adds quantum error-correction theory, the stabilizer formalism, surface codes, continuous-variable quantum information, the GKP bosonic code, quantum metrology and spin squeezing. A dedicated thought tree now traces quantum-error-correction and sensing lineages through the existing information-theory graph.
+
+
+## Quantum chemistry and correlated-electron expansion
+
+The latest sweep adds a dedicated **Quantum chemistry & electronic structure** category and source-backed entries for Hartree–Fock, configuration interaction, Møller–Plesset perturbation theory, coupled-cluster theory, time-dependent DFT, GW and Bethe–Salpeter methods. It also adds DMRG, DMFT and Quantum Monte Carlo to the many-body catalog, plus a dedicated thought tree linking reference-state, correlated-wavefunction, Green-function and density-based methods.
