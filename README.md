@@ -15,7 +15,7 @@ Quantum Index is a source-aware map of quantum theory: historical foundations, f
 
 The current corpus is a broad research seed rather than a claim of literal completeness. The schema is designed to grow without changing the UI.
 
-Current audited branch metrics: **262 theory/framework entities**, **359 typed relationships**, **13 thought trees**, **253 bibliography/source records**, and a separate **320-entry formula atlas** spanning **27 formula categories**. All 262 shipped theory entries carry dedicated provenance: **186 primary-sourced** and **76 review/authoritative-source backed**. Catalog coverage and source coverage are intentionally reported separately.
+Current audited branch metrics: **262 theory/framework entities**, **359 typed relationships**, **13 thought trees**, **253 bibliography/source records**, and a separate **320-entry formula atlas** spanning **28 formula categories**. All 262 shipped theory entries carry dedicated provenance: **186 primary-sourced** and **76 review/authoritative-source backed**. Catalog coverage and source coverage are intentionally reported separately.
 
 Static app:
 - `index.html`
@@ -61,7 +61,9 @@ No application build step is required. Open `index.html` or serve the repository
 See:
 - `docs/COVERAGE.md` for current coverage, provenance metrics, gaps and completion criteria.
 - `docs/TAXONOMY.md` for category, kind, status and relation semantics.
+- `docs/FORMULA_AUDIT.md` for the theory-by-theory formula-bearing audit and formula-gap controls.
 - `research/CANDIDATES.md` for the unresolved candidate backlog.
+- `research/CANDIDATE_AUDIT.md` for add/alias/subtype/formula-only/duplicate decisions on remaining candidates.
 
 The application must not describe the catalog as literally complete until the documented completeness acceptance criteria are satisfied. Unsourced candidates remain in the research backlog rather than entering the shipped catalog.
 
