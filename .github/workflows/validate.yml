@@ -26,3 +26,6 @@ jobs:
           test -f styles.css
           grep -q './theories.js' index.html
           grep -q './app.js' index.html
+          grep -q 'id="thoughtTreeGraph"' index.html
+          grep -q 'id="treeGraphTitle"' index.html
+          grep -q 'function renderThoughtTreeGraph' app.js
