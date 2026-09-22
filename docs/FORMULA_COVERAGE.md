@@ -4,8 +4,8 @@ _Last audited: 2026-09-21_
 
 ## Current formula corpus
 
-- **266** formula entries
-- **26** formula categories
+- **301** formula entries
+- **28** formula categories
 - **0** duplicate formula IDs
 - **0** dangling theory references
 - **0** dangling source references
@@ -42,6 +42,8 @@ _Last audited: 2026-09-21_
 | Quantum error correction | 10 |
 | Continuous-variable quantum information | 6 |
 | Quantum metrology | 7 |
+| Quantum chemistry & electronic structure | 24 |
+| Many-body numerical methods | 11 |
 
 ## What “all known formulas” means operationally
 
@@ -113,3 +115,8 @@ The second sweep added 60 source-linked formulas covering stationary and time-de
 ## Formula sweep 3 additions
 
 The third sweep adds dedicated quantum-error-correction formulas (stabilizers, surface-code checks and GKP operators), continuous-variable covariance/symplectic relations, quantum-metrology and spin-squeezing formulas, additional AMO relations, and deeper canonical-gravity/cosmology expressions including Ashtekar brackets, LQG constraints, spin-foam/GFT schematic amplitudes, no-boundary/tunneling wavefunctions, causal-set sprinkling and CDT partition sums.
+
+
+## Formula sweep 4 additions
+
+The fourth sweep adds 35 source-linked formulas for quantum chemistry and correlated many-body methods: Slater determinants; Hartree–Fock/Fock/Roothaan–Hall equations and energies; CI and full-CI expansions; Møller–Plesset partitioning and MP2; coupled-cluster ansatz, similarity transform, energy and amplitude equations; TDDFT propagation and linear response; GW/Hedin relations and quasiparticle equations; Bethe–Salpeter excitations; DMRG Schmidt truncation/discarded weight; DMFT local/Weiss/impurity/Bethe-lattice self consistency; and variational/projector Quantum Monte Carlo estimators plus Trotter factorization.
