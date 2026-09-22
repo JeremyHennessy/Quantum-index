@@ -1,5 +1,5 @@
 window.QI_FORMULAS = {
-  "version": "v5",
+  "version": "v6",
   "scope": "Canonical, defining, exact, schematic, approximate, limiting and derived equations across the indexed quantum-theory landscape. Formula-bearing coverage is audited separately from theory coverage; this is not a claim of every formula ever derived.",
   "formulas": [
     {
@@ -7426,6 +7426,172 @@ window.QI_FORMULAS = {
       "regime": "Classical gravitational field of an ideal cosmic string.",
       "units": "Dimensionless angle in radians.",
       "theoryRelationship": "canonical gravitational signature",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "de-sitter-hubble",
+      "name": "de Sitter Hubble–cosmological-constant relation",
+      "category": "Cosmology & dark sector",
+      "latex": "H^2=\\frac{\\Lambda c^2}{3}",
+      "plain": "H^2 = Lambda c^2/3",
+      "description": "Expansion rate of four-dimensional de Sitter spacetime in a flat exponentially expanding slicing.",
+      "theoryIds": [
+        "de-sitter-spacetime"
+      ],
+      "sourceIds": [
+        "desitter-1917"
+      ],
+      "tags": [
+        "de Sitter",
+        "cosmological constant",
+        "Hubble"
+      ],
+      "formulaType": "exact",
+      "assumptions": [
+        "Four-dimensional vacuum Einstein equation with positive cosmological constant",
+        "Flat expanding slicing"
+      ],
+      "variables": [
+        "H: de Sitter Hubble parameter",
+        "Lambda: cosmological constant"
+      ],
+      "regime": "Four-dimensional de Sitter spacetime.",
+      "units": "Both sides have inverse-time-squared units.",
+      "theoryRelationship": "exact curvature/expansion relation",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "ads-curvature-radius",
+      "name": "AdS curvature-radius relation",
+      "category": "Relativity & astrophysics",
+      "latex": "R_{\\mu\\nu}=\\Lambda g_{\\mu\\nu},\\qquad \\Lambda=-\\frac{3}{L^2}",
+      "plain": "R_mn = Lambda g_mn, Lambda = -3/L^2",
+      "description": "Four-dimensional anti-de Sitter spacetime as a maximally symmetric Einstein space with negative cosmological constant.",
+      "theoryIds": [
+        "anti-de-sitter-spacetime"
+      ],
+      "sourceIds": [
+        "sokolowski-ads-2016"
+      ],
+      "tags": [
+        "AdS",
+        "negative cosmological constant",
+        "curvature"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Four spacetime dimensions",
+        "Vacuum Einstein equation with negative cosmological constant"
+      ],
+      "variables": [
+        "R_mn: Ricci tensor",
+        "L: AdS curvature radius",
+        "Lambda: negative cosmological constant"
+      ],
+      "regime": "Four-dimensional anti-de Sitter spacetime.",
+      "units": "Lambda and 1/L^2 have inverse-length-squared units.",
+      "theoryRelationship": "defining constant-curvature relation",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "alcubierre-metric",
+      "name": "Alcubierre warp-drive metric",
+      "category": "Relativity & astrophysics",
+      "latex": "ds^2=-c^2dt^2+\\left[dx-v_s(t)f(r_s)dt\\right]^2+dy^2+dz^2",
+      "plain": "ds^2 = -c^2 dt^2 + [dx - v_s(t) f(r_s) dt]^2 + dy^2 + dz^2",
+      "description": "Canonical form of the Alcubierre warp-bubble line element for motion along the x direction.",
+      "theoryIds": [
+        "alcubierre-warp-drive",
+        "general-relativity"
+      ],
+      "sourceIds": [
+        "alcubierre-1994"
+      ],
+      "tags": [
+        "Alcubierre",
+        "warp drive",
+        "metric"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Chosen Cartesian-like coordinates",
+        "Warp-bubble center moves along x",
+        "Shape function f approaches one inside and zero outside"
+      ],
+      "variables": [
+        "v_s(t): coordinate velocity of bubble center",
+        "r_s: distance from bubble center",
+        "f: warp shape function"
+      ],
+      "regime": "Alcubierre's original general-relativistic warp geometry.",
+      "units": "ds^2 has length-squared units when time is multiplied by c.",
+      "theoryRelationship": "defining exact metric ansatz",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "cpt-universe-tetrad",
+      "name": "CPT-symmetric-universe tetrad condition",
+      "category": "Cosmology & dark sector",
+      "latex": "e^{a}{}_{\\mu}(\\tau,\\mathbf x)=-e^{a}{}_{\\mu}(-\\tau,\\mathbf x)",
+      "plain": "e^a_mu(tau,x) = - e^a_mu(-tau,x)",
+      "description": "Central spacetime symmetry condition used to analytically extend the tetrad geometry across the big bang in the CPT-symmetric-universe proposal.",
+      "theoryIds": [
+        "cpt-symmetric-universe"
+      ],
+      "sourceIds": [
+        "boyle-finn-turok-2018"
+      ],
+      "tags": [
+        "CPT",
+        "tetrad",
+        "big bang",
+        "time reversal"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Flat FRW background continued through conformal time tau=0",
+        "Tetrad formulation with the conventions of Boyle, Finn and Turok"
+      ],
+      "variables": [
+        "e^a_mu: tetrad",
+        "tau: conformal time",
+        "x: comoving spatial coordinate"
+      ],
+      "regime": "CPT-symmetric-universe proposal near and across the bang.",
+      "units": "Tetrad convention dependent.",
+      "theoryRelationship": "defining CPT spacetime symmetry",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "cns-fitness-condition",
+      "name": "Cosmological-natural-selection fitness condition",
+      "category": "Cosmology & dark sector",
+      "latex": "B(p+\\delta p)\\lesssim B(p)",
+      "plain": "B(p + delta p) <= approximately B(p)",
+      "description": "Schematic local-optimality prediction of cosmological natural selection: small parameter changes away from observed values should not increase black-hole production.",
+      "theoryIds": [
+        "cosmological-natural-selection"
+      ],
+      "sourceIds": [
+        "smolin-evolve-1992"
+      ],
+      "tags": [
+        "cosmological natural selection",
+        "black holes",
+        "fitness"
+      ],
+      "formulaType": "schematic",
+      "assumptions": [
+        "B(p) denotes expected black-hole production for cosmological/particle parameters p",
+        "Observed parameters lie near a local maximum under the proposal"
+      ],
+      "variables": [
+        "p: vector of dimensionless physical parameters",
+        "B(p): black-hole production measure"
+      ],
+      "regime": "Cosmological natural selection hypothesis.",
+      "units": "B is a count/fitness measure; parameter units depend on chosen dimensionless parametrization.",
+      "theoryRelationship": "schematic falsifiability/fitness condition",
       "metadataReview": "explicit"
     }
 
