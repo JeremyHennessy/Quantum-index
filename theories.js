@@ -348,10 +348,22 @@ window.QI_DATA = (() => {
     {id:"almheiri-islands-2020",title:"The Page curve of Hawking radiation from semiclassical geometry",authors:"Ahmed Almheiri, Raghu Mahajan, Juan Maldacena, Ying Zhao",year:2020,type:"primary source",url:"https://doi.org/10.1007/JHEP03(2020)149"},
     {id:"pasterski-celestial-2017",title:"Flat space amplitudes and conformal symmetry of the celestial sphere",authors:"Sabrina Pasterski, Shu-Heng Shao, Andrew Strominger",year:2017,type:"primary source",url:"https://doi.org/10.1103/PhysRevD.96.065026"},
     {id:"sakharov-induced-1967",title:"Vacuum quantum fluctuations in curved space and the theory of gravitation",authors:"A. D. Sakharov",year:1967,type:"primary source",url:"https://doi.org/10.1070/PU1991v034n05ABEH002498"},
-    {id:"quantum-graphity-2006",title:"Quantum Graphity",authors:"Tomasz Konopka, Fotini Markopoulou, Lee Smolin",year:2006,type:"primary source",url:"https://arxiv.org/abs/hep-th/0611197"}
+    {id:"quantum-graphity-2006",title:"Quantum Graphity",authors:"Tomasz Konopka, Fotini Markopoulou, Lee Smolin",year:2006,type:"primary source",url:"https://arxiv.org/abs/hep-th/0611197"},
+    {id:"bojowald-lqc-2001",title:"Absence of Singularity in Loop Quantum Cosmology",authors:"Martin Bojowald",year:2001,type:"primary source",url:"https://doi.org/10.1103/PhysRevLett.86.5227"},
+    {id:"susskind-landscape-2003",title:"The Anthropic Landscape of String Theory",authors:"Leonard Susskind",year:2003,type:"primary source",url:"https://arxiv.org/abs/hep-th/0302219"},
+    {id:"guth-pi-1982",title:"Fluctuations in the New Inflationary Universe",authors:"Alan H. Guth, So-Young Pi",year:1982,type:"primary source",url:"https://doi.org/10.1103/PhysRevLett.49.1110"},
+    {id:"vilenkin-eternal-1983",title:"Birth of inflationary universes",authors:"Alexander Vilenkin",year:1983,type:"primary source",url:"https://doi.org/10.1103/PhysRevD.27.2848"},
+    {id:"giddings-strominger-third-1989",title:"Baby Universes, Third Quantization and the Cosmological Constant",authors:"Steven B. Giddings, Andrew Strominger",year:1989,type:"primary source",url:"https://doi.org/10.1016/0550-3213(89)90353-2"},
+    {id:"brandenberger-vafa-1989",title:"Superstrings in the early universe",authors:"Robert H. Brandenberger, Cumrun Vafa",year:1989,type:"primary source",url:"https://doi.org/10.1016/0550-3213(89)90037-0"}
   ];
 
   const sourceLinks = {
+    "loop-quantum-cosmology":["bojowald-lqc-2001"],
+    "string-landscape":["susskind-landscape-2003"],
+    "inflationary-fluctuations":["guth-pi-1982"],
+    "eternal-inflation":["vilenkin-eternal-1983"],
+    "third-quantization":["giddings-strominger-third-1989"],
+    "string-gas-cosmology":["brandenberger-vafa-1989"],
     "wheeler-dewitt":["dewitt-canonical-gravity-1967"],
     "supergravity":["freedman-supergravity-1976"],
     "semiclassical-gravity":["hu-verdaguer-stochastic-2008"],
