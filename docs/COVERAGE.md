@@ -11,7 +11,7 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 - **12** curated thought trees
 - **11** top-level categories
 - **245** bibliography/source records
-- **229** source-linked formula entries across **23** formula categories
+- **266** source-linked formula entries across **26** formula categories
 - **252 / 252 (100.0%)** entries currently have dedicated source provenance
 - **0 / 252** shipped entries remain catalogued-only
 - **181 / 252** are marked `primary-sourced`; the remaining **71 / 252** are review/authoritative-source backed
@@ -209,7 +209,7 @@ The current sweep adds two explicit domains that were underrepresented in the or
 
 ## Formula coverage
 
-Formula coverage is audited separately from theory coverage. The Formula Atlas now contains 229 source-linked entries. Every shipped formula references at least one existing theory ID and at least one source ID, and CI rejects duplicate formula IDs or dangling theory/source references.
+Formula coverage is audited separately from theory coverage. The Formula Atlas now contains 266 source-linked entries. Every shipped formula references at least one existing theory ID and at least one source ID, and CI rejects duplicate formula IDs or dangling theory/source references.
 
 The current formula corpus emphasizes canonical equations and identities across core quantum mechanics, wave mechanics, relativistic quantum theory, QFT, quantum information, open systems, quantum optics, many-body physics, topological quantum theory, and quantum gravity/cosmology. Literal completeness is not yet claimed; see `docs/FORMULA_COVERAGE.md`.
 
