@@ -6,14 +6,14 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 
 ## Current corpus
 
-- **191** catalogued entities
-- **228** typed relationships
+- **201** catalogued entities
+- **244** typed relationships
 - **9** curated thought trees
 - **9** top-level categories
-- **187** bibliography/source records
-- **191 / 191 (100.0%)** entries currently have dedicated source provenance
-- **0 / 191** shipped entries remain catalogued-only
-- **137 / 191** are marked `primary-sourced`; the remaining **54 / 191** are review/authoritative-source backed
+- **197** bibliography/source records
+- **201 / 201 (100.0%)** entries currently have dedicated source provenance
+- **0 / 201** shipped entries remain catalogued-only
+- **146 / 201** are marked `primary-sourced`; the remaining **55 / 201** are review/authoritative-source backed
 
 ### Category coverage
 
@@ -23,9 +23,9 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 | Formulations | 15 |
 | Foundations & interpretations | 34 |
 | Quantum field theory | 26 |
-| Quantum information & open systems | 27 |
-| Quantum gravity & spacetime | 46 |
-| Quantum cosmology | 12 |
+| Quantum information & open systems | 31 |
+| Quantum gravity & spacetime | 49 |
+| Quantum cosmology | 15 |
 | Mathematical structures | 7 |
 | Beyond standard quantum theory | 19 |
 
@@ -37,9 +37,9 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 | 1925–1939 | 16 |
 | 1940–1959 | 8 |
 | 1960–1979 | 35 |
-| 1980–1999 | 55 |
-| 2000–2014 | 43 |
-| 2015–present | 29 |
+| 1980–1999 | 57 |
+| 2000–2014 | 49 |
+| 2015–present | 31 |
 
 ## What "all quantum theories" means operationally
 
@@ -108,6 +108,8 @@ The final seed-provenance pass sourced the ensemble interpretation, Nelson stoch
 **Source coverage remains complete for the current 191-entity shipped corpus. This is not a claim that the corpus itself is complete.** Unsourced or unresolved candidates stay in `research/CANDIDATES.md` until they have sufficient provenance to enter the application.
 
 The next gap sweep promoted 19 additional source-backed frameworks: the background-field method; chiral perturbation theory; HQET; SMEFT; SCET; noncommutative QFT; supersymmetric localization; PEPS; continuous quantum measurement; device-independent quantum information; quantum filtering; gravity as EFT; twistor-string theory; κ-Poincaré/κ-Minkowski; ekpyrotic and cyclic cosmology; parastatistics; generalized exclusion statistics; and the Doebner–Goldin nonlinear family.
+
+A second gap sweep added quantum collision models, quantum supermaps, causal boxes, the pseudo-density-matrix framework, Euclidean dynamical triangulations, twisted geometries, the LQG Master Constraint Programme, group-field cosmology, spin-foam cosmology and pre-big-bang string cosmology.
 
 ## Known coverage gaps / next research passes
 

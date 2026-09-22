@@ -46,29 +46,22 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 ## Quantum-information / open-system candidates
 
 - Davies generators
-- collision models
 - generalized contextuality resource theories
 - quantum causal inference variants
-- causal boxes
 - process-tensor variants
-- pseudo-density-matrix formalism
-- supermaps / higher-order quantum maps
 
 ## Quantum-gravity / spacetime candidates
 
 - canonical quantum gravity umbrella
 - covariant perturbative quantum gravity
 - Stelle gravity primary branch
-- Euclidean dynamical triangulations
 - causal dynamical triangulation submodels
 - nonlocal gravity
 - ghost-free infinite-derivative gravity
 - causal diamonds / holographic spacetime
 - quantum graphity variants
 - tensorial group field theories
-- spinor networks / twisted geometries
 - algebraic quantum gravity
-- master-constraint program
 - relative locality subfamilies
 - doubly-special-relativity variants
 - generalized-uncertainty variants
@@ -79,9 +72,6 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 - decoherent histories quantum cosmology
 - Lorentzian no-boundary approaches
 - Picard–Lefschetz quantum cosmology
-- group-field cosmology
-- spin-foam cosmology
-- pre-big-bang string cosmology
 - Wheeler–DeWitt minisuperspace variants
 - polymer cosmology outside standard LQC
 - third-quantized group-field approaches
@@ -107,3 +97,8 @@ The following candidates were promoted into the catalog with dedicated provenanc
 ## Integrated in the 2026-09-21 cross-domain gap sweep
 
 Promoted with dedicated provenance: background-field method; chiral perturbation theory; heavy-quark effective theory; Standard Model EFT; soft-collinear effective theory; noncommutative QFT; supersymmetric localization; PEPS; continuous quantum measurement; device-independent quantum information; quantum filtering; low-energy gravity as EFT; twistor-string theory; κ-Poincaré/κ-Minkowski; ekpyrotic cosmology; cyclic cosmology; parastatistics; generalized exclusion statistics; and the Doebner–Goldin nonlinear family.
+
+
+## Integrated in the 2026-09-21 second gap sweep
+
+Promoted with dedicated provenance: quantum collision models/repeated interactions; quantum supermaps; causal boxes; pseudo-density matrices; Euclidean dynamical triangulations; twisted geometries; the LQG Master Constraint Programme; group-field cosmology; spin-foam cosmology; and pre-big-bang string cosmology.
