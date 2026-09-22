@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Quantum Index — map the history, branches, overlaps and progression of quantum theory." />
+  <title>Quantum Index</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">Q</div>
+      <div>
+        <h1>Quantum Index</h1>
+        <p>Map the evolution of quantum thought.</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button id="resetView" class="ghost">Reset view</button>
+      <a class="ghost link-button" href="https://github.com/JeremyHennessy/Quantum-index" target="_blank" rel="noreferrer">Repository</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">THEORY ATLAS</p>
+        <h2>From Planck's quanta to quantum spacetime.</h2>
+        <p class="hero-copy">Explore theories as a connected intellectual history: what came first, what split, what merged, what survives, and where current research is still unresolved.</p>
+      </div>
+      <div id="stats" class="stats"></div>
+    </section>
+
+    <section class="controls card">
+      <div class="search-wrap">
+        <label for="search">Search</label>
+        <input id="search" type="search" placeholder="Theory, physicist, concept, tag…" autocomplete="off" />
+      </div>
+      <div>
+        <label for="categoryFilter">Category</label>
+        <select id="categoryFilter"><option value="">All categories</option></select>
+      </div>
+      <div>
+        <label for="statusFilter">Status</label>
+        <select id="statusFilter"><option value="">All statuses</option></select>
+      </div>
+      <div>
+        <label for="eraFilter">Era</label>
+        <select id="eraFilter"><option value="">All eras</option></select>
+      </div>
+      <div class="coverage-filter">
+        <label for="sourcedOnly">Provenance</label>
+        <label class="switch-row"><input id="sourcedOnly" type="checkbox" /> sourced entries only</label>
+      </div>
+    </section>
+
+    <nav class="tabs" aria-label="Views">
+      <button class="tab active" data-view="map">Network map</button>
+      <button class="tab" data-view="timeline">Timeline</button>
+      <button class="tab" data-view="lineage">Thought trees</button>
+      <button class="tab" data-view="catalog">Catalog</button>
+    </nav>
+
+    <section id="mapView" class="view active">
+      <div class="map-layout">
+        <div class="card graph-card">
+          <div class="view-head">
+            <div>
+              <p class="eyebrow">RELATIONSHIP GRAPH</p>
+              <h3>Ideas as a connected system</h3>
+            </div>
+            <div class="legend" id="legend"></div>
+          </div>
+          <svg id="network" role="img" aria-label="Interactive network of quantum theories"></svg>
+          <p class="hint">Drag nodes. Scroll to zoom. Select a node for lineage, status, overlaps and related ideas.</p>
+        </div>
+        <aside id="detailPanel" class="card detail-panel"></aside>
+      </div>
+    </section>
+
+    <section id="timelineView" class="view">
+      <div class="card">
+        <div class="view-head">
+          <div>
+            <p class="eyebrow">PROGRESSION</p>
+            <h3>Timeline of major quantum ideas</h3>
+          </div>
+        </div>
+        <div id="timeline" class="timeline"></div>
+      </div>
+    </section>
+
+    <section id="lineageView" class="view">
+      <div class="lineage-grid">
+        <div class="card">
+          <p class="eyebrow">THOUGHT TREES</p>
+          <h3>Major intellectual branches</h3>
+          <p class="muted">These trees are curated views over the same relation graph. Cross-links remain visible in theory details.</p>
+          <div id="thoughtTrees"></div>
+        </div>
+        <div class="card">
+          <p class="eyebrow">SELECTED LINEAGE</p>
+          <h3 id="lineageTitle">Choose a theory</h3>
+          <div id="lineageDetail" class="lineage-detail empty">Select any theory in a tree, the map, timeline, or catalog.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalogView" class="view">
+      <div class="card">
+        <div class="view-head">
+          <div>
+            <p class="eyebrow">INDEX</p>
+            <h3>All catalogued theories</h3>
+          </div>
+          <span id="resultCount" class="pill"></span>
+        </div>
+        <div id="catalog" class="catalog-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <template id="emptyDetail">
+    <div class="detail-empty">
+      <p class="eyebrow">SELECT A NODE</p>
+      <h3>Inspect a theory</h3>
+      <p>Open any node to see its core claim, historical position, status, provenance and relationship graph.</p>
+    </div>
+  </template>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <script src="./theories.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
