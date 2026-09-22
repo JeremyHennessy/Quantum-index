@@ -35,29 +35,18 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 
 - Osterwalder–Schrader axiomatics as a distinct entry if separated from Euclidean QFT
 - Schwinger–Dyson framework
-- background-field method
 - exact/integrable 1+1D QFT
 - constructive P(φ)₂
 - constructive φ⁴₃
 - conformal bootstrap subfamilies
 - functional methods / Dyson–Schwinger equations
-- Standard Model EFT
-- chiral perturbation theory
 - NRQED / NRQCD
-- heavy-quark effective theory
-- soft-collinear effective theory
-- noncommutative QFT
-- supersymmetric localization
 - topological strings
 
 ## Quantum-information / open-system candidates
 
 - Davies generators
 - collision models
-- continuous quantum measurement
-- quantum filtering
-- PEPS
-- device-independent quantum information
 - generalized contextuality resource theories
 - quantum causal inference variants
 - causal boxes
@@ -69,11 +58,9 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 
 - canonical quantum gravity umbrella
 - covariant perturbative quantum gravity
-- EFT of general relativity
 - Stelle gravity primary branch
 - Euclidean dynamical triangulations
 - causal dynamical triangulation submodels
-- twistor string
 - nonlocal gravity
 - ghost-free infinite-derivative gravity
 - causal diamonds / holographic spacetime
@@ -83,7 +70,6 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 - algebraic quantum gravity
 - master-constraint program
 - relative locality subfamilies
-- κ-Poincaré / κ-Minkowski approaches
 - doubly-special-relativity variants
 - generalized-uncertainty variants
 - causal-set path-integral programs
@@ -96,18 +82,13 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 - group-field cosmology
 - spin-foam cosmology
 - pre-big-bang string cosmology
-- ekpyrotic quantum cosmology
-- cyclic quantum cosmology
 - Wheeler–DeWitt minisuperspace variants
 - polymer cosmology outside standard LQC
 - third-quantized group-field approaches
 
 ## Beyond-standard candidates
 
-- parastatistics
-- generalized exclusion statistics
 - nonlinear Schrödinger families
-- Doebner–Goldin equations
 - energy-driven stochastic collapse
 - QMUPL
 - Diosi stochastic model as distinct from DP umbrella
@@ -121,3 +102,8 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 ## Integrated in the 2026-09-21 formal/emergent sweep
 
 The following candidates were promoted into the catalog with dedicated provenance in this pass: Jordan-algebraic quantum mechanics; light-front quantization; Epstein–Glaser causal perturbation theory; quantum stochastic calculus; p-adic and q-deformed quantum mechanics; tensor-network/MPS frameworks; quantum measure theory; topos quantum theory; causal-set sequential growth; adiabatic, measurement-based and topological quantum computation; higher-spin gravity; MERA; sheaf-theoretic contextuality; ZX calculus; causal fermion systems; many-interacting-worlds; string field theory; BFSS Matrix theory; IKKT/IIB matrix model; and modal quantum theory.
+
+
+## Integrated in the 2026-09-21 cross-domain gap sweep
+
+Promoted with dedicated provenance: background-field method; chiral perturbation theory; heavy-quark effective theory; Standard Model EFT; soft-collinear effective theory; noncommutative QFT; supersymmetric localization; PEPS; continuous quantum measurement; device-independent quantum information; quantum filtering; low-energy gravity as EFT; twistor-string theory; κ-Poincaré/κ-Minkowski; ekpyrotic cosmology; cyclic cosmology; parastatistics; generalized exclusion statistics; and the Doebner–Goldin nonlinear family.
