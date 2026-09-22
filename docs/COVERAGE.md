@@ -6,15 +6,15 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 
 ## Current corpus
 
-- **262** catalogued entities
-- **359** typed relationships
+- **265** catalogued entities
+- **363** typed relationships
 - **13** curated thought trees
 - **12** top-level categories
-- **253** bibliography/source records
-- **320** source-linked formula entries across **28** formula categories
-- **262 / 262 (100.0%)** entries currently have dedicated source provenance
-- **0 / 262** shipped entries remain catalogued-only
-- **186 / 262** are marked `primary-sourced`; the remaining **76 / 262** are review/authoritative-source backed
+- **257** bibliography/source records
+- **323** source-linked formula entries across **28** formula categories
+- **265 / 265 (100.0%)** entries currently have dedicated source provenance
+- **0 / 265** shipped entries remain catalogued-only
+- **188 / 265** are marked `primary-sourced`; the remaining **77 / 265** are review/authoritative-source backed
 
 ### Category coverage
 
@@ -22,12 +22,12 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 |---|---:|
 | Historical foundations | 5 |
 | Formulations | 18 |
-| Foundations & interpretations | 42 |
+| Foundations & interpretations | 43 |
 | Quantum field theory | 30 |
 | Quantum information & open systems | 40 |
 | Quantum gravity & spacetime | 56 |
-| Quantum cosmology | 17 |
-| Mathematical structures | 10 |
+| Quantum cosmology | 18 |
+| Mathematical structures | 11 |
 | Quantum optics & AMO | 3 |
 | Quantum many-body & condensed matter | 14 |
 | Quantum chemistry & electronic structure | 7 |
@@ -41,9 +41,9 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 | 1925–1939 | 21 |
 | 1940–1959 | 15 |
 | 1960–1979 | 46 |
-| 1980–1999 | 77 |
-| 2000–2014 | 64 |
-| 2015–present | 34 |
+| 1980–1999 | 78 |
+| 2000–2014 | 65 |
+| 2015–present | 35 |
 
 ## What "all quantum theories" means operationally
 
@@ -230,9 +230,9 @@ The latest sweep adds a dedicated **Quantum chemistry & electronic structure** c
 Formula coverage is audited independently of theory/source coverage.
 
 Current v4 formula audit:
-- **320** source-linked equations
-- **175 / 262** theories currently have at least one linked formula entry
-- **62** entries are documented formula-bearing gaps
+- **323** source-linked equations
+- **179 / 265** theories currently have at least one linked formula entry
+- **61** entries are documented formula-bearing gaps
 - **11** are classified as interpretations without a unique defining equation
 - **11** are primarily conceptual/structural in the current ontology
 - **2** are theorem-first entries
@@ -247,9 +247,20 @@ The current formula sweep added the requested high-priority equations for Hartre
 
 All **359** typed relationship edges now have explicit evidence metadata. The first relation-provenance pass has:
 
-- **54** source-backed relations
-- **45** high-confidence source-backed relations
-- **9** medium-confidence source-backed relations
-- **305** edges explicitly marked `editorial` pending relationship-specific evidence review
+- **57** source-backed relations
+- **46** high-confidence source-backed relations
+- **11** medium-confidence source-backed relations
+- **306** edges explicitly marked `editorial` pending relationship-specific evidence review
 
 An editorial edge remains visible because it is useful for navigation and conceptual mapping, but it is not represented as documented historical influence or a formally proved mathematical relation. Source coverage for nodes and source coverage for edges are reported separately.
+
+
+## Audited candidate promotions — 2026-09-22
+
+Three candidates that passed the add/alias/subtype audit were promoted as first-class, source-backed entries:
+
+- **Hidden-measurements approach** — sourced to Aerts' 1986 measurement-interaction model; includes a schematic measure-ratio probability formula.
+- **Operational quantum logic** — sourced to Coecke–Moore–Wilce and Barnum; linked formally to the existing quantum-logic branch and given an operational state–effect probability relation.
+- **Polymer quantum cosmology** — sourced to Ben Achour–Livine; linked to polymer quantum mechanics and LQC with an explicit polymerization map.
+
+All three enter the shipped corpus with source provenance, formula coverage, and relation-evidence metadata.
