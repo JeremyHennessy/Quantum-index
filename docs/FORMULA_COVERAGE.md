@@ -4,8 +4,8 @@ _Last audited: 2026-09-21_
 
 ## Current formula corpus
 
-- **229** formula entries
-- **23** formula categories
+- **266** formula entries
+- **26** formula categories
 - **0** duplicate formula IDs
 - **0** dangling theory references
 - **0** dangling source references
@@ -17,7 +17,7 @@ _Last audited: 2026-09-21_
 | Formula category | Entries |
 |---|---:|
 | Core quantum mechanics | 25 |
-| Wave mechanics | 15 |
+| Wave mechanics | 17 |
 | Formulations | 2 |
 | Phase-space quantum mechanics | 3 |
 | Mathematical structures | 1 |
@@ -29,9 +29,9 @@ _Last audited: 2026-09-21_
 | Quantum information | 27 |
 | Open quantum systems | 3 |
 | Quantum thermodynamics | 3 |
-| Quantum optics & AMO | 19 |
+| Quantum optics & AMO | 21 |
 | Quantum many-body & condensed matter | 27 |
-| Quantum gravity & cosmology | 26 |
+| Quantum gravity & cosmology | 36 |
 | Topological quantum theory | 2 |
 | Perturbation theory | 5 |
 | Scattering theory | 7 |
@@ -39,6 +39,9 @@ _Last audited: 2026-09-21_
 | Atomic and AMO physics | 3 |
 | Many-body Green functions | 4 |
 | Many-body response | 2 |
+| Quantum error correction | 10 |
+| Continuous-variable quantum information | 6 |
+| Quantum metrology | 7 |
 
 ## What “all known formulas” means operationally
 
@@ -105,3 +108,8 @@ A formula may enter the shipped atlas only if:
 ## Formula sweep 2 additions
 
 The second sweep added 60 source-linked formulas covering stationary and time-dependent perturbation theory, scattering theory, angular-momentum coupling, atomic shifts and transition rates, LSZ/Ward/Callan–Symanzik/OPE/anomaly/gauge-fixing identities, lattice observables, many-body Green functions and response, advanced entanglement/channel measures, squeezed-state and cavity-QED relations, ADM/Regge/inflationary equations, and explicit collapse-model stochastic equations.
+
+
+## Formula sweep 3 additions
+
+The third sweep adds dedicated quantum-error-correction formulas (stabilizers, surface-code checks and GKP operators), continuous-variable covariance/symplectic relations, quantum-metrology and spin-squeezing formulas, additional AMO relations, and deeper canonical-gravity/cosmology expressions including Ashtekar brackets, LQG constraints, spin-foam/GFT schematic amplitudes, no-boundary/tunneling wavefunctions, causal-set sprinkling and CDT partition sums.
