@@ -6,7 +6,8 @@
   const categoryColors = new Map([
     ["Historical foundations","#f59e0b"],["Formulations","#60a5fa"],["Foundations & interpretations","#c084fc"],
     ["Quantum field theory","#34d399"],["Quantum information & open systems","#22d3ee"],["Quantum gravity & spacetime","#f472b6"],
-    ["Quantum cosmology","#fb7185"],["Beyond standard quantum theory","#facc15"],["Mathematical structures","#a3e635"]
+    ["Quantum cosmology","#fb7185"],["Beyond standard quantum theory","#facc15"],["Mathematical structures","#a3e635"],
+    ["Quantum optics & AMO","#f0abfc"],["Quantum many-body & condensed matter","#2dd4bf"]
   ]);
   const relationLabels = {
     precursor:"precursor of",reformulates:"reformulates",extends:"extends","challenged by":"challenges / challenged by",
