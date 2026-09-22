@@ -1,6 +1,6 @@
 window.QI_FORMULAS = {
-  "version": "v2",
-  "scope": "Canonical equations and identities across the indexed quantum-theory landscape; expanded with perturbation, scattering, response, advanced QFT, information, AMO, gravity and collapse equations. Not a claim of every algebraic rearrangement or derivable identity.",
+  "version": "v3",
+  "scope": "Canonical equations and identities across the indexed quantum-theory landscape, now including dedicated QEC, continuous-variable, metrology and deeper quantum-gravity coverage. Not a claim of every derivable algebraic identity.",
   "formulas": [
     {
       "id": "planck-relation",
@@ -4067,6 +4067,673 @@ window.QI_FORMULAS = {
       ],
       "tags": [
         "energy collapse"
+      ]
+    },
+    {
+      "id": "stabilizer-condition",
+      "name": "Stabilizer-state condition",
+      "category": "Quantum error correction",
+      "latex": "g_i|\\psi\\rangle=|\\psi\\rangle\\quad\\forall g_i\\in\\mathcal S",
+      "plain": "g_i |psi> = |psi>",
+      "description": "A stabilizer state or code lies in the simultaneous +1 eigenspace of its stabilizer generators.",
+      "theoryIds": [
+        "stabilizer-formalism",
+        "quantum-error-correction"
+      ],
+      "sourceIds": [
+        "gottesman-stabilizer-1997"
+      ],
+      "tags": [
+        "stabilizer"
+      ]
+    },
+    {
+      "id": "stabilizer-commute",
+      "name": "Stabilizer-generator commutation",
+      "category": "Quantum error correction",
+      "latex": "[g_i,g_j]=0",
+      "plain": "[g_i,g_j]=0",
+      "description": "Independent stabilizer generators must mutually commute so they can define a common eigenspace.",
+      "theoryIds": [
+        "stabilizer-formalism"
+      ],
+      "sourceIds": [
+        "gottesman-stabilizer-1997"
+      ],
+      "tags": [
+        "stabilizer"
+      ]
+    },
+    {
+      "id": "stabilizer-projector",
+      "name": "Stabilizer-code projector",
+      "category": "Quantum error correction",
+      "latex": "P=\\prod_{i=1}^{r}\\frac{I+g_i}{2}",
+      "plain": "P = product_i (I+g_i)/2",
+      "description": "Projector onto the common +1 eigenspace of r independent commuting stabilizer generators.",
+      "theoryIds": [
+        "stabilizer-formalism",
+        "quantum-error-correction"
+      ],
+      "sourceIds": [
+        "gottesman-stabilizer-1997"
+      ],
+      "tags": [
+        "projector"
+      ]
+    },
+    {
+      "id": "stabilizer-dimension",
+      "name": "Stabilizer-code dimension",
+      "category": "Quantum error correction",
+      "latex": "k=n-r",
+      "plain": "k = n-r",
+      "description": "An n-qubit stabilizer code with r independent stabilizer generators encodes k logical qubits.",
+      "theoryIds": [
+        "stabilizer-formalism",
+        "quantum-error-correction"
+      ],
+      "sourceIds": [
+        "gottesman-stabilizer-1997"
+      ],
+      "tags": [
+        "logical qubits"
+      ]
+    },
+    {
+      "id": "surface-star",
+      "name": "Surface-code star operator",
+      "category": "Quantum error correction",
+      "latex": "A_s=\\prod_{e\\ni s}X_e",
+      "plain": "A_s = product X_e around vertex s",
+      "description": "X-type stabilizer associated with a vertex in the surface/toric-code construction.",
+      "theoryIds": [
+        "surface-code",
+        "toric-code"
+      ],
+      "sourceIds": [
+        "dennis-surface-2002",
+        "kitaev-anyons-2003"
+      ],
+      "tags": [
+        "surface code"
+      ]
+    },
+    {
+      "id": "surface-plaquette",
+      "name": "Surface-code plaquette operator",
+      "category": "Quantum error correction",
+      "latex": "B_p=\\prod_{e\\in\\partial p}Z_e",
+      "plain": "B_p = product Z_e around plaquette p",
+      "description": "Z-type stabilizer associated with a plaquette.",
+      "theoryIds": [
+        "surface-code",
+        "toric-code"
+      ],
+      "sourceIds": [
+        "dennis-surface-2002",
+        "kitaev-anyons-2003"
+      ],
+      "tags": [
+        "surface code"
+      ]
+    },
+    {
+      "id": "logical-anticommute",
+      "name": "Logical Pauli anticommutation",
+      "category": "Quantum error correction",
+      "latex": "X_LZ_L=-Z_LX_L",
+      "plain": "X_L Z_L = - Z_L X_L",
+      "description": "Logical X and Z operators intersecting once obey Pauli anticommutation.",
+      "theoryIds": [
+        "surface-code",
+        "toric-code",
+        "stabilizer-formalism"
+      ],
+      "sourceIds": [
+        "dennis-surface-2002",
+        "gottesman-stabilizer-1997"
+      ],
+      "tags": [
+        "logical operators"
+      ]
+    },
+    {
+      "id": "gkp-stabilizers",
+      "name": "Ideal square-GKP stabilizers",
+      "category": "Quantum error correction",
+      "latex": "S_q=e^{i2\\sqrt\\pi\\hat q},\\qquad S_p=e^{-i2\\sqrt\\pi\\hat p}",
+      "plain": "S_q=exp(i2sqrt(pi) q), S_p=exp(-i2sqrt(pi) p)",
+      "description": "Canonical stabilizers of the ideal square-lattice GKP code in units with [q,p]=i.",
+      "theoryIds": [
+        "gkp-code",
+        "continuous-variable-qi"
+      ],
+      "sourceIds": [
+        "gkp-2001"
+      ],
+      "tags": [
+        "GKP"
+      ]
+    },
+    {
+      "id": "gkp-logicals",
+      "name": "Ideal square-GKP logical Paulis",
+      "category": "Quantum error correction",
+      "latex": "Z_L=e^{i\\sqrt\\pi\\hat q},\\qquad X_L=e^{-i\\sqrt\\pi\\hat p}",
+      "plain": "Z_L=exp(i sqrt(pi) q), X_L=exp(-i sqrt(pi) p)",
+      "description": "Displacement operators implementing logical Pauli operations in the ideal square GKP code.",
+      "theoryIds": [
+        "gkp-code"
+      ],
+      "sourceIds": [
+        "gkp-2001"
+      ],
+      "tags": [
+        "GKP"
+      ]
+    },
+    {
+      "id": "gkp-comb",
+      "name": "Ideal GKP logical-zero comb",
+      "category": "Quantum error correction",
+      "latex": "|0_L\\rangle\\propto\\sum_{s\\in\\mathbb Z}|q=2s\\sqrt\\pi\\rangle",
+      "plain": "|0_L> proportional sum_s |q=2s sqrt(pi)>",
+      "description": "Idealized infinite-energy position-space comb representation of a GKP logical codeword.",
+      "theoryIds": [
+        "gkp-code"
+      ],
+      "sourceIds": [
+        "gkp-2001"
+      ],
+      "tags": [
+        "GKP"
+      ]
+    },
+    {
+      "id": "cv-covariance",
+      "name": "Continuous-variable covariance matrix",
+      "category": "Continuous-variable quantum information",
+      "latex": "V_{ij}=\\frac12\\langle\\{R_i-\\langle R_i\\rangle,R_j-\\langle R_j\\rangle\\}\\rangle",
+      "plain": "V_ij = 1/2 <{Delta R_i, Delta R_j}>",
+      "description": "Second-moment matrix of canonical quadratures for a bosonic state.",
+      "theoryIds": [
+        "continuous-variable-qi"
+      ],
+      "sourceIds": [
+        "weedbrook-cv-2012"
+      ],
+      "tags": [
+        "Gaussian states"
+      ]
+    },
+    {
+      "id": "cv-uncertainty",
+      "name": "Robertson–Schrödinger matrix uncertainty",
+      "category": "Continuous-variable quantum information",
+      "latex": "V+\\frac{i\\hbar}{2}\\Omega\\ge0",
+      "plain": "V + i hbar Omega/2 >= 0",
+      "description": "Physical covariance matrices satisfy a matrix uncertainty condition set by the symplectic form.",
+      "theoryIds": [
+        "continuous-variable-qi"
+      ],
+      "sourceIds": [
+        "weedbrook-cv-2012"
+      ],
+      "tags": [
+        "symplectic"
+      ]
+    },
+    {
+      "id": "cv-symplectic",
+      "name": "Canonical symplectic transformation",
+      "category": "Continuous-variable quantum information",
+      "latex": "S\\Omega S^T=\\Omega",
+      "plain": "S Omega S^T = Omega",
+      "description": "Defines a real symplectic transformation preserving canonical commutators.",
+      "theoryIds": [
+        "continuous-variable-qi"
+      ],
+      "sourceIds": [
+        "weedbrook-cv-2012"
+      ],
+      "tags": [
+        "symplectic"
+      ]
+    },
+    {
+      "id": "cv-symplectic-eigen",
+      "name": "Symplectic eigenvalues",
+      "category": "Continuous-variable quantum information",
+      "latex": "\\operatorname{spec}|i\\Omega V|=\\{\\nu_1,\\nu_1,\\ldots,\\nu_n,\\nu_n\\}",
+      "plain": "eigenvalues of |i Omega V| occur in pairs nu_i",
+      "description": "Symplectic spectrum used to characterize Gaussian states.",
+      "theoryIds": [
+        "continuous-variable-qi"
+      ],
+      "sourceIds": [
+        "weedbrook-cv-2012"
+      ],
+      "tags": [
+        "Gaussian states"
+      ]
+    },
+    {
+      "id": "gaussian-wigner",
+      "name": "Gaussian-state Wigner function",
+      "category": "Continuous-variable quantum information",
+      "latex": "W(R)=\\frac{\\exp[-\\frac12(R-d)^TV^{-1}(R-d)]}{(2\\pi)^n\\sqrt{\\det V}}",
+      "plain": "W(R)=normal Gaussian with covariance V",
+      "description": "Phase-space form of an n-mode Gaussian state, up to quadrature convention.",
+      "theoryIds": [
+        "continuous-variable-qi",
+        "phase-space-qm"
+      ],
+      "sourceIds": [
+        "weedbrook-cv-2012",
+        "wigner-1932"
+      ],
+      "tags": [
+        "Gaussian states"
+      ]
+    },
+    {
+      "id": "rotated-quadrature",
+      "name": "Rotated field quadrature",
+      "category": "Continuous-variable quantum information",
+      "latex": "X_\\theta=\\frac{ae^{-i\\theta}+a^{\\dagger}e^{i\\theta}}{\\sqrt2}",
+      "plain": "X_theta=(a e^-itheta+a† e^itheta)/sqrt2",
+      "description": "Quadrature measured in phase-sensitive homodyne detection.",
+      "theoryIds": [
+        "continuous-variable-qi",
+        "quantum-optical-coherence"
+      ],
+      "sourceIds": [
+        "weedbrook-cv-2012",
+        "glauber-coherence-1963"
+      ],
+      "tags": [
+        "homodyne"
+      ]
+    },
+    {
+      "id": "wineland-squeezing",
+      "name": "Wineland spin-squeezing parameter",
+      "category": "Quantum metrology",
+      "latex": "\\xi_R^2=\\frac{N(\\Delta J_\\perp)^2}{|\\langle\\mathbf J\\rangle|^2}",
+      "plain": "xi_R^2 = N (Delta J_perp)^2 / |<J>|^2",
+      "description": "Metrological spin-squeezing parameter; values below one indicate sub-standard-quantum-limit sensitivity under the usual conditions.",
+      "theoryIds": [
+        "spin-squeezing",
+        "quantum-metrology"
+      ],
+      "sourceIds": [
+        "wineland-squeezing-1992"
+      ],
+      "tags": [
+        "spin squeezing"
+      ]
+    },
+    {
+      "id": "sql-phase",
+      "name": "Standard quantum limit scaling",
+      "category": "Quantum metrology",
+      "latex": "\\Delta\\phi_{\\rm SQL}\\sim\\frac{1}{\\sqrt N}",
+      "plain": "Delta phi_SQL ~ 1/sqrt(N)",
+      "description": "Shot-noise scaling for N independent probes.",
+      "theoryIds": [
+        "quantum-metrology"
+      ],
+      "sourceIds": [
+        "giovannetti-metrology-2011"
+      ],
+      "tags": [
+        "SQL"
+      ]
+    },
+    {
+      "id": "heisenberg-phase",
+      "name": "Heisenberg-limit scaling",
+      "category": "Quantum metrology",
+      "latex": "\\Delta\\phi_{\\rm HL}\\sim\\frac{1}{N}",
+      "plain": "Delta phi_HL ~ 1/N",
+      "description": "Ideal entanglement-enhanced phase-sensitivity scaling for suitable resource counting.",
+      "theoryIds": [
+        "quantum-metrology"
+      ],
+      "sourceIds": [
+        "giovannetti-metrology-2011"
+      ],
+      "tags": [
+        "Heisenberg limit"
+      ]
+    },
+    {
+      "id": "error-propagation",
+      "name": "Metrological error propagation",
+      "category": "Quantum metrology",
+      "latex": "\\Delta\\theta=\\frac{\\Delta A}{|\\partial_\\theta\\langle A\\rangle|}",
+      "plain": "Delta theta = Delta A / |d <A>/d theta|",
+      "description": "Estimator sensitivity from an observable's fluctuations and parameter response.",
+      "theoryIds": [
+        "quantum-metrology"
+      ],
+      "sourceIds": [
+        "giovannetti-metrology-2011"
+      ],
+      "tags": [
+        "sensitivity"
+      ]
+    },
+    {
+      "id": "classical-fisher",
+      "name": "Classical Fisher information",
+      "category": "Quantum metrology",
+      "latex": "F(\\theta)=\\sum_x\\frac{[\\partial_\\theta p(x|\\theta)]^2}{p(x|\\theta)}",
+      "plain": "F=sum (d_theta p)^2/p",
+      "description": "Information carried by outcome statistics about a parameter.",
+      "theoryIds": [
+        "quantum-metrology"
+      ],
+      "sourceIds": [
+        "giovannetti-metrology-2011"
+      ],
+      "tags": [
+        "Fisher information"
+      ]
+    },
+    {
+      "id": "mixed-qfi",
+      "name": "Quantum Fisher information for a mixed state",
+      "category": "Quantum metrology",
+      "latex": "F_Q=2\\sum_{ij}\\frac{|\\langle i|\\partial_\\theta\\rho|j\\rangle|^2}{\\lambda_i+\\lambda_j}",
+      "plain": "F_Q=2 sum_ij |<i|d rho|j>|^2/(lambda_i+lambda_j)",
+      "description": "Spectral formula for quantum Fisher information, summing terms with nonzero denominators.",
+      "theoryIds": [
+        "quantum-metrology"
+      ],
+      "sourceIds": [
+        "giovannetti-metrology-2011"
+      ],
+      "tags": [
+        "QFI"
+      ]
+    },
+    {
+      "id": "ramsey-fringe",
+      "name": "Ideal Ramsey fringe",
+      "category": "Quantum metrology",
+      "latex": "P_e(\\phi)=\\frac{1+\\cos\\phi}{2}",
+      "plain": "P_e=(1+cos phi)/2",
+      "description": "Ideal two-pulse Ramsey interference probability for a suitable phase convention.",
+      "theoryIds": [
+        "quantum-metrology",
+        "spin-squeezing"
+      ],
+      "sourceIds": [
+        "giovannetti-metrology-2011"
+      ],
+      "tags": [
+        "Ramsey"
+      ]
+    },
+    {
+      "id": "hellmann-feynman",
+      "name": "Hellmann–Feynman theorem",
+      "category": "Wave mechanics",
+      "latex": "\\frac{dE_n}{d\\lambda}=\\left\\langle n(\\lambda)\\left|\\frac{\\partial H}{\\partial\\lambda}\\right|n(\\lambda)\\right\\rangle",
+      "plain": "dE/dlambda=<dH/dlambda>",
+      "description": "Relates a parametric energy derivative to the expectation value of the Hamiltonian derivative for an exact eigenstate.",
+      "theoryIds": [
+        "wave-mechanics",
+        "density-functional-theory"
+      ],
+      "sourceIds": [
+        "sep-math-rigor",
+        "hohenberg-kohn-1964"
+      ],
+      "tags": [
+        "Hellmann-Feynman"
+      ]
+    },
+    {
+      "id": "quantum-virial",
+      "name": "Quantum virial theorem",
+      "category": "Wave mechanics",
+      "latex": "2\\langle T\\rangle=\\langle\\mathbf r\\cdot\\nabla V\\rangle",
+      "plain": "2<T>=<r dot grad V>",
+      "description": "Virial relation for stationary bound states under suitable regularity assumptions.",
+      "theoryIds": [
+        "wave-mechanics"
+      ],
+      "sourceIds": [
+        "sep-math-rigor"
+      ],
+      "tags": [
+        "virial theorem"
+      ]
+    },
+    {
+      "id": "rabi-transition",
+      "name": "Resonant Rabi oscillation probability",
+      "category": "Quantum optics & AMO",
+      "latex": "P_e(t)=\\sin^2\\!\\left(\\frac{\\Omega_R t}{2}\\right)",
+      "plain": "P_e=sin^2(Omega_R t/2)",
+      "description": "Excited-state probability for an ideal resonantly driven two-level system initially in the ground state.",
+      "theoryIds": [
+        "quantum-rabi-model",
+        "jaynes-cummings"
+      ],
+      "sourceIds": [
+        "rabi-model-review-2016",
+        "jaynes-cummings-1963"
+      ],
+      "tags": [
+        "Rabi oscillation"
+      ]
+    },
+    {
+      "id": "spontaneous-decay",
+      "name": "Exponential spontaneous decay",
+      "category": "Quantum optics & AMO",
+      "latex": "P_e(t)=e^{-\\Gamma t}",
+      "plain": "P_e(t)=exp(-Gamma t)",
+      "description": "Markovian excited-state survival probability for constant decay rate Gamma.",
+      "theoryIds": [
+        "quantum-optical-coherence",
+        "open-quantum-systems"
+      ],
+      "sourceIds": [
+        "glauber-coherence-1963",
+        "breuer-petruccione-2007"
+      ],
+      "tags": [
+        "decay"
+      ]
+    },
+    {
+      "id": "ashtekar-poisson",
+      "name": "Ashtekar–Barbero Poisson bracket",
+      "category": "Quantum gravity & cosmology",
+      "latex": "\\{A_a^i(x),E^b_j(y)\\}=8\\pi G\\gamma\\,\\delta_a^b\\delta_j^i\\delta^{(3)}(x-y)",
+      "plain": "{A,E}=8 pi G gamma delta",
+      "description": "Canonical Poisson bracket of connection and densitized triad variables, convention without explicit c factors.",
+      "theoryIds": [
+        "loop-quantum-gravity",
+        "canonical-quantum-gravity"
+      ],
+      "sourceIds": [
+        "rovelli-lqg",
+        "ashtekar-1986"
+      ],
+      "tags": [
+        "Ashtekar variables"
+      ]
+    },
+    {
+      "id": "lqg-gauss",
+      "name": "LQG Gauss constraint",
+      "category": "Quantum gravity & cosmology",
+      "latex": "G_i=D_aE^a_i\\approx0",
+      "plain": "G_i = D_a E^a_i approx 0",
+      "description": "Internal SU(2) gauge constraint of canonical loop gravity.",
+      "theoryIds": [
+        "loop-quantum-gravity",
+        "canonical-quantum-gravity"
+      ],
+      "sourceIds": [
+        "rovelli-lqg"
+      ],
+      "tags": [
+        "constraint"
+      ]
+    },
+    {
+      "id": "regge-deficit",
+      "name": "Regge deficit angle",
+      "category": "Quantum gravity & cosmology",
+      "latex": "\\delta_h=2\\pi-\\sum_{\\sigma\\supset h}\\theta_h^{\\sigma}",
+      "plain": "delta_h=2pi-sum dihedral angles",
+      "description": "Discrete curvature concentrated on codimension-two hinges in Regge calculus.",
+      "theoryIds": [
+        "quantum-regge",
+        "euclidean-dynamical-triangulations",
+        "cdt"
+      ],
+      "sourceIds": [
+        "cdt-review"
+      ],
+      "tags": [
+        "Regge"
+      ]
+    },
+    {
+      "id": "spin-foam-sum",
+      "name": "Spin-foam state sum (schematic)",
+      "category": "Quantum gravity & cosmology",
+      "latex": "Z=\\sum_{\\{j_f,i_e\\}}\\prod_fA_f(j_f)\\prod_eA_e(j_f,i_e)\\prod_vA_v(j_f,i_e)",
+      "plain": "Z=sum labels product face edge vertex amplitudes",
+      "description": "Generic factorized spin-foam state-sum structure.",
+      "theoryIds": [
+        "spin-foams"
+      ],
+      "sourceIds": [
+        "spin-foam-review"
+      ],
+      "tags": [
+        "spin foam"
+      ]
+    },
+    {
+      "id": "gft-action",
+      "name": "Group-field-theory action (schematic)",
+      "category": "Quantum gravity & cosmology",
+      "latex": "S[\\varphi]=\\frac12\\int\\bar\\varphi K\\varphi+\\frac{\\lambda}{n!}\\int V\\,\\varphi^n+\\text{c.c.}",
+      "plain": "S_GFT = quadratic kinetic + interaction vertex",
+      "description": "Generic field-theoretic action for group-field degrees of freedom.",
+      "theoryIds": [
+        "group-field-theory",
+        "tensorial-group-field-theory"
+      ],
+      "sourceIds": [
+        "gft-review",
+        "carrozza-oriti-rivasseau-tgft-2014"
+      ],
+      "tags": [
+        "GFT"
+      ]
+    },
+    {
+      "id": "no-boundary",
+      "name": "No-boundary wavefunction (schematic)",
+      "category": "Quantum gravity & cosmology",
+      "latex": "\\Psi[h,\\phi]\\sim\\int_{\\partial g=h}\\mathcal Dg\\,\\mathcal D\\Phi\\,e^{-S_E[g,\\Phi]/\\hbar}",
+      "plain": "Psi ~ Euclidean path integral over compact geometries",
+      "description": "Semiclassical Euclidean representation of the Hartle–Hawking no-boundary proposal.",
+      "theoryIds": [
+        "hartle-hawking",
+        "quantum-cosmology"
+      ],
+      "sourceIds": [
+        "quantum-cosmology-review"
+      ],
+      "tags": [
+        "no-boundary"
+      ]
+    },
+    {
+      "id": "tunneling-wavefunction",
+      "name": "Tunneling wavefunction boundary condition (schematic)",
+      "category": "Quantum gravity & cosmology",
+      "latex": "\\Psi\\sim e^{+iS}\\quad\\text{for outgoing expanding branches}",
+      "plain": "Psi ~ outgoing WKB branch",
+      "description": "Schematic outgoing-wave condition used in Vilenkin's tunneling proposal.",
+      "theoryIds": [
+        "vilenkin",
+        "quantum-cosmology"
+      ],
+      "sourceIds": [
+        "vilenkin-qc",
+        "quantum-cosmology-review"
+      ],
+      "tags": [
+        "tunneling"
+      ]
+    },
+    {
+      "id": "causal-sprinkling",
+      "name": "Poisson sprinkling probability",
+      "category": "Quantum gravity & cosmology",
+      "latex": "P(n;V)=\\frac{(\\rho V)^n}{n!}e^{-\\rho V}",
+      "plain": "P(n;V)=(rho V)^n exp(-rho V)/n!",
+      "description": "Lorentz-invariant Poisson process used to generate causal-set elements in a continuum region.",
+      "theoryIds": [
+        "causal-sets",
+        "causal-set-quantum-dynamics"
+      ],
+      "sourceIds": [
+        "surya-causal-set-review-2019"
+      ],
+      "tags": [
+        "causal set"
+      ]
+    },
+    {
+      "id": "cdt-partition",
+      "name": "CDT/triangulation partition sum (schematic)",
+      "category": "Quantum gravity & cosmology",
+      "latex": "Z=\\sum_T\\frac{1}{C_T}e^{-S_E[T]}",
+      "plain": "Z=sum triangulations 1/C_T exp(-S_E[T])",
+      "description": "Euclideanized statistical sum over causal triangulations after Wick rotation in CDT.",
+      "theoryIds": [
+        "cdt"
+      ],
+      "sourceIds": [
+        "cdt-review",
+        "cdt-2000"
+      ],
+      "tags": [
+        "CDT"
+      ]
+    },
+    {
+      "id": "holographic-bound",
+      "name": "Holographic entropy bound (schematic)",
+      "category": "Quantum gravity & cosmology",
+      "latex": "S\\lesssim\\frac{k_B A}{4\\ell_P^2}",
+      "plain": "S <= k_B A/(4 l_P^2)",
+      "description": "Area-scaling entropy bound motivated by black-hole thermodynamics and holography.",
+      "theoryIds": [
+        "holographic-principle",
+        "hawking-radiation"
+      ],
+      "sourceIds": [
+        "thooft-holography-1993",
+        "susskind-hologram-1994",
+        "hawking-1975"
+      ],
+      "tags": [
+        "holography"
       ]
     }
   ]

@@ -52,9 +52,6 @@ This backlog is deliberately broader than the shipped formula atlas. Candidates 
 - entanglement of formation
 - concurrence
 - channel-capacity formulas
-- stabilizer check equations
-- surface/toric code logical operators
-- quantum error-correction Knill–Laflamme conditions
 
 ## AMO and quantum optics
 
@@ -68,15 +65,9 @@ This backlog is deliberately broader than the shipped formula atlas. Candidates 
 ## Quantum gravity and cosmology
 
 - Ashtekar Poisson brackets
-- LQG volume operator spectrum
-- spin-network Gauss/diffeomorphism constraints
-- EPRL/FK spin-foam amplitudes
 - causal-set d'Alembertian and action
 - CDT/EDT discrete actions
-- GFT action and condensate Gross–Pitaevskii-type equation
 - tensor-model large-N scaling
-- no-boundary saddle weights
-- tunneling-wavefunction boundary condition
 - tensor power spectrum
 - Page curve/generalized entropy variants
 
@@ -92,3 +83,8 @@ This backlog is deliberately broader than the shipped formula atlas. Candidates 
 ## Integrated in formula sweep 2
 
 Promoted with source links: stationary perturbation corrections; Dyson series; Fermi golden rule; Lippmann–Schwinger/T matrix/Born scattering/optical theorem/partial waves; angular-momentum ladder and coupling formulas; Zeeman/Stark/spin–orbit/dipole relations; LSZ, Ward–Takahashi, Callan–Symanzik, OPE, anomaly and gauge-fixing formulas; Wilson action and Polyakov loop; Green-function/Dyson/Lehmann/Matsubara/Kubo/FDT relations; BdG; Choi, Holevo, coherent information, negativity, SSA, data processing and diamond norm; squeezing/Husimi/P-representation/input–output/Purcell/cooperativity; ADM, Regge and inflationary perturbation formulas; CSL, QMUPL, Diósi and energy-driven collapse equations.
+
+
+## Integrated in formula sweep 3
+
+Promoted with source links: stabilizer conditions/projectors/dimension; surface-code star/plaquette/logical relations; GKP stabilizers, logical operators and ideal comb states; continuous-variable covariance, symplectic and Gaussian-state formulas; spin-squeezing, SQL/Heisenberg scaling, Fisher information and Ramsey metrology relations; Hellmann–Feynman and virial formulas; Rabi/spontaneous-decay relations; Ashtekar brackets and Gauss constraint; Regge deficit angles; spin-foam and group-field state-sum/action structures; no-boundary/tunneling wavefunctions; causal-set Poisson sprinkling; CDT partition sum; holographic entropy bound.
