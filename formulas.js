@@ -1,6 +1,6 @@
 window.QI_FORMULAS = {
-  "version": "v3",
-  "scope": "Canonical equations and identities across the indexed quantum-theory landscape, now including dedicated QEC, continuous-variable, metrology and deeper quantum-gravity coverage. Not a claim of every derivable algebraic identity.",
+  "version": "v4",
+  "scope": "Canonical equations and identities across the indexed quantum-theory landscape, now including quantum chemistry, electronic-structure and correlated many-body numerical formulas. Not a claim of every derivable algebraic identity.",
   "formulas": [
     {
       "id": "planck-relation",
@@ -4734,6 +4734,620 @@ window.QI_FORMULAS = {
       ],
       "tags": [
         "holography"
+      ]
+    },
+    {
+      "id": "slater-determinant",
+      "name": "Slater determinant",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "\\Psi(x_1,\\ldots,x_N)=\\frac{1}{\\sqrt{N!}}\\det[\\chi_i(x_j)]",
+      "plain": "Psi = det[chi_i(x_j)]/sqrt(N!)",
+      "description": "Antisymmetrized independent-particle wavefunction used as the Hartree–Fock reference.",
+      "theoryIds": [
+        "hartree-fock",
+        "configuration-interaction",
+        "coupled-cluster"
+      ],
+      "sourceIds": [
+        "bartlett-musial-2007"
+      ],
+      "tags": [
+        "Slater determinant"
+      ]
+    },
+    {
+      "id": "hf-equation",
+      "name": "Hartree–Fock orbital equation",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "\\hat f\\,\\chi_i=\\varepsilon_i\\chi_i",
+      "plain": "f chi_i = epsilon_i chi_i",
+      "description": "Self-consistent one-electron eigenvalue equation defining Hartree–Fock spin orbitals.",
+      "theoryIds": [
+        "hartree-fock"
+      ],
+      "sourceIds": [
+        "bartlett-musial-2007"
+      ],
+      "tags": [
+        "Hartree-Fock"
+      ]
+    },
+    {
+      "id": "fock-operator",
+      "name": "Fock operator",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "\\hat f(1)=\\hat h(1)+\\sum_{j\\in\\mathrm{occ}}[\\hat J_j(1)-\\hat K_j(1)]",
+      "plain": "f = h + sum(J_j-K_j)",
+      "description": "One-electron Hartree–Fock operator containing Coulomb and exchange terms.",
+      "theoryIds": [
+        "hartree-fock"
+      ],
+      "sourceIds": [
+        "bartlett-musial-2007"
+      ],
+      "tags": [
+        "Fock operator"
+      ]
+    },
+    {
+      "id": "hf-energy",
+      "name": "Hartree–Fock electronic energy",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "E_{\\rm HF}=\\sum_i\\langle i|h|i\\rangle+\\frac12\\sum_{ij}\\big[(ii|jj)-(ij|ji)\\big]",
+      "plain": "E_HF = one-electron energy + Coulomb - exchange",
+      "description": "Hartree–Fock total electronic energy in an orthonormal occupied-orbital basis.",
+      "theoryIds": [
+        "hartree-fock"
+      ],
+      "sourceIds": [
+        "bartlett-musial-2007"
+      ],
+      "tags": [
+        "Hartree-Fock"
+      ]
+    },
+    {
+      "id": "roothaan-hall",
+      "name": "Roothaan–Hall equation",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "FC=SC\\varepsilon",
+      "plain": "F C = S C epsilon",
+      "description": "Matrix form of Hartree–Fock/Kohn–Sham orbital equations in a nonorthogonal atomic-orbital basis.",
+      "theoryIds": [
+        "hartree-fock",
+        "density-functional-theory"
+      ],
+      "sourceIds": [
+        "bartlett-musial-2007",
+        "kohn-sham-1965"
+      ],
+      "tags": [
+        "Roothaan-Hall"
+      ]
+    },
+    {
+      "id": "density-matrix-ao",
+      "name": "Closed-shell AO density matrix",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "P_{\\mu\\nu}=2\\sum_{i\\in\\mathrm{occ}}C_{\\mu i}C_{\\nu i}^{*}",
+      "plain": "P_mu nu = 2 sum_occ C_mu i C*_nu i",
+      "description": "One-particle density matrix in an atomic-orbital basis for a closed-shell determinant.",
+      "theoryIds": [
+        "hartree-fock",
+        "density-functional-theory"
+      ],
+      "sourceIds": [
+        "bartlett-musial-2007"
+      ],
+      "tags": [
+        "density matrix"
+      ]
+    },
+    {
+      "id": "ci-expansion",
+      "name": "Configuration-interaction expansion",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "|\\Psi_{\\rm CI}\\rangle=\\sum_I c_I|\\Phi_I\\rangle",
+      "plain": "Psi_CI = sum_I c_I Phi_I",
+      "description": "Expansion of a correlated wavefunction over determinants or configuration state functions.",
+      "theoryIds": [
+        "configuration-interaction"
+      ],
+      "sourceIds": [
+        "bartlett-musial-2007"
+      ],
+      "tags": [
+        "CI"
+      ]
+    },
+    {
+      "id": "ci-secular",
+      "name": "CI secular equation",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "\\sum_J H_{IJ}c_J=Ec_I",
+      "plain": "H c = E c",
+      "description": "Matrix eigenvalue problem determining configuration-interaction coefficients.",
+      "theoryIds": [
+        "configuration-interaction"
+      ],
+      "sourceIds": [
+        "bartlett-musial-2007"
+      ],
+      "tags": [
+        "CI"
+      ]
+    },
+    {
+      "id": "full-ci-limit",
+      "name": "Full-CI finite-basis limit",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "|\\Psi_{\\rm FCI}\\rangle=c_0|\\Phi_0\\rangle+\\sum_{ia}c_i^a|\\Phi_i^a\\rangle+\\sum_{ijab}c_{ij}^{ab}|\\Phi_{ij}^{ab}\\rangle+\\cdots",
+      "plain": "FCI = reference + singles + doubles + ...",
+      "description": "Complete determinant expansion within a fixed one-particle basis.",
+      "theoryIds": [
+        "configuration-interaction"
+      ],
+      "sourceIds": [
+        "bartlett-musial-2007"
+      ],
+      "tags": [
+        "FCI"
+      ]
+    },
+    {
+      "id": "mp-partition",
+      "name": "Møller–Plesset partition",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "H(\\lambda)=F+\\lambda(H-F)",
+      "plain": "H(lambda)=F+lambda(H-F)",
+      "description": "Perturbative partition of the electronic Hamiltonian around the Hartree–Fock Fock operator.",
+      "theoryIds": [
+        "moller-plesset"
+      ],
+      "sourceIds": [
+        "moller-plesset-1934"
+      ],
+      "tags": [
+        "Moller-Plesset"
+      ]
+    },
+    {
+      "id": "mp2-energy",
+      "name": "MP2 correlation energy",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "E_{\\rm MP2}=\\frac14\\sum_{ijab}\\frac{|\\langle ij\\|ab\\rangle|^2}{\\varepsilon_i+\\varepsilon_j-\\varepsilon_a-\\varepsilon_b}",
+      "plain": "E_MP2 = 1/4 sum |<ij||ab>|^2 / orbital-energy denominator",
+      "description": "Second-order Møller–Plesset correlation energy in spin-orbital notation.",
+      "theoryIds": [
+        "moller-plesset"
+      ],
+      "sourceIds": [
+        "moller-plesset-1934",
+        "bartlett-musial-2007"
+      ],
+      "tags": [
+        "MP2"
+      ]
+    },
+    {
+      "id": "cc-ansatz",
+      "name": "Coupled-cluster exponential ansatz",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "|\\Psi_{\\rm CC}\\rangle=e^{T}|\\Phi_0\\rangle",
+      "plain": "Psi_CC = exp(T) Phi0",
+      "description": "Exponential correlated-wavefunction parametrization defining coupled-cluster theory.",
+      "theoryIds": [
+        "coupled-cluster"
+      ],
+      "sourceIds": [
+        "bartlett-musial-2007"
+      ],
+      "tags": [
+        "coupled cluster"
+      ]
+    },
+    {
+      "id": "cc-cluster",
+      "name": "Cluster-operator expansion",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "T=T_1+T_2+T_3+\\cdots",
+      "plain": "T = T1 + T2 + T3 + ...",
+      "description": "Expansion of the coupled-cluster excitation operator by excitation rank.",
+      "theoryIds": [
+        "coupled-cluster"
+      ],
+      "sourceIds": [
+        "bartlett-musial-2007"
+      ],
+      "tags": [
+        "cluster operator"
+      ]
+    },
+    {
+      "id": "cc-similarity",
+      "name": "Similarity-transformed Hamiltonian",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "\\bar H=e^{-T}He^{T}",
+      "plain": "Hbar = exp(-T) H exp(T)",
+      "description": "Non-Hermitian similarity-transformed Hamiltonian used in coupled-cluster equations.",
+      "theoryIds": [
+        "coupled-cluster"
+      ],
+      "sourceIds": [
+        "bartlett-musial-2007"
+      ],
+      "tags": [
+        "coupled cluster"
+      ]
+    },
+    {
+      "id": "cc-energy",
+      "name": "Coupled-cluster energy",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "E_{\\rm CC}=\\langle\\Phi_0|\\bar H|\\Phi_0\\rangle",
+      "plain": "E_CC = <Phi0|Hbar|Phi0>",
+      "description": "Projected reference-state energy equation of coupled-cluster theory.",
+      "theoryIds": [
+        "coupled-cluster"
+      ],
+      "sourceIds": [
+        "bartlett-musial-2007"
+      ],
+      "tags": [
+        "coupled cluster"
+      ]
+    },
+    {
+      "id": "cc-amplitudes",
+      "name": "Coupled-cluster amplitude equations",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "0=\\langle\\Phi_\\mu|\\bar H|\\Phi_0\\rangle\\quad(\\mu\\ne0)",
+      "plain": "0 = <Phi_mu|Hbar|Phi0>",
+      "description": "Projected nonlinear equations determining cluster amplitudes.",
+      "theoryIds": [
+        "coupled-cluster"
+      ],
+      "sourceIds": [
+        "bartlett-musial-2007"
+      ],
+      "tags": [
+        "coupled cluster"
+      ]
+    },
+    {
+      "id": "tdks",
+      "name": "Time-dependent Kohn–Sham equation",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "i\\hbar\\frac{\\partial}{\\partial t}\\phi_i(\\mathbf r,t)=\\left[-\\frac{\\hbar^2\\nabla^2}{2m}+v_s[n](\\mathbf r,t)\\right]\\phi_i(\\mathbf r,t)",
+      "plain": "i hbar d phi_i/dt = h_s[n](t) phi_i",
+      "description": "Effective one-particle time-dependent equations used in TDDFT.",
+      "theoryIds": [
+        "time-dependent-dft",
+        "density-functional-theory"
+      ],
+      "sourceIds": [
+        "runge-gross-1984",
+        "kohn-sham-1965"
+      ],
+      "tags": [
+        "TDDFT"
+      ]
+    },
+    {
+      "id": "tddft-density",
+      "name": "TDDFT density",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "n(\\mathbf r,t)=\\sum_{i\\in\\mathrm{occ}}|\\phi_i(\\mathbf r,t)|^2",
+      "plain": "n(r,t)=sum_occ |phi_i(r,t)|^2",
+      "description": "Density reconstructed from occupied time-dependent Kohn–Sham orbitals.",
+      "theoryIds": [
+        "time-dependent-dft"
+      ],
+      "sourceIds": [
+        "runge-gross-1984"
+      ],
+      "tags": [
+        "TDDFT"
+      ]
+    },
+    {
+      "id": "tddft-response",
+      "name": "TDDFT response Dyson equation",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "\\chi=\\chi_s+\\chi_s\\,(v_C+f_{xc})\\,\\chi",
+      "plain": "chi = chi_s + chi_s (v_C+f_xc) chi",
+      "description": "Linear-response TDDFT relation connecting interacting and Kohn–Sham density response.",
+      "theoryIds": [
+        "time-dependent-dft"
+      ],
+      "sourceIds": [
+        "runge-gross-1984"
+      ],
+      "tags": [
+        "TDDFT",
+        "linear response"
+      ]
+    },
+    {
+      "id": "gw-self-energy",
+      "name": "GW self-energy",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "\\Sigma(1,2)\\approx i\\,G(1,2)W(1^+,2)",
+      "plain": "Sigma ~ i G W",
+      "description": "GW approximation to the electron self-energy using the Green function and screened Coulomb interaction.",
+      "theoryIds": [
+        "gw-approximation"
+      ],
+      "sourceIds": [
+        "hedin-gw-1965"
+      ],
+      "tags": [
+        "GW"
+      ]
+    },
+    {
+      "id": "screened-interaction",
+      "name": "Screened Coulomb interaction",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "W=v+vPW",
+      "plain": "W = v + v P W",
+      "description": "Dyson-like equation defining the dynamically screened interaction in Hedin's framework.",
+      "theoryIds": [
+        "gw-approximation"
+      ],
+      "sourceIds": [
+        "hedin-gw-1965"
+      ],
+      "tags": [
+        "GW",
+        "screening"
+      ]
+    },
+    {
+      "id": "rpa-polarization",
+      "name": "Independent-particle polarization",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "P(1,2)\\approx-i\\,G(1,2)G(2,1^+)",
+      "plain": "P ~ -i G G",
+      "description": "Lowest-order polarization used in the GW/RPA construction.",
+      "theoryIds": [
+        "gw-approximation"
+      ],
+      "sourceIds": [
+        "hedin-gw-1965"
+      ],
+      "tags": [
+        "polarization"
+      ]
+    },
+    {
+      "id": "gw-quasiparticle",
+      "name": "GW quasiparticle equation",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "\\left[H_0+\\Sigma(E_n)-V_{xc}\\right]|\\psi_n\\rangle=E_n|\\psi_n\\rangle",
+      "plain": "[H0 + Sigma(E_n)-V_xc] psi_n = E_n psi_n",
+      "description": "Schematic quasiparticle equation used to correct mean-field electronic energies in GW calculations.",
+      "theoryIds": [
+        "gw-approximation",
+        "density-functional-theory"
+      ],
+      "sourceIds": [
+        "hedin-gw-1965"
+      ],
+      "tags": [
+        "quasiparticle"
+      ]
+    },
+    {
+      "id": "bse-eigenproblem",
+      "name": "Bethe–Salpeter excitation eigenproblem",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "\\begin{pmatrix}A&B\\\\-B^*&-A^*\\end{pmatrix}\\binom{X}{Y}=\\Omega\\binom{X}{Y}",
+      "plain": "BSE matrix (A,B) acting on (X,Y) gives excitation Omega",
+      "description": "Common matrix form of the electron–hole Bethe–Salpeter equation for neutral excitations.",
+      "theoryIds": [
+        "bethe-salpeter",
+        "gw-approximation"
+      ],
+      "sourceIds": [
+        "bethe-salpeter-1951",
+        "hedin-gw-1965"
+      ],
+      "tags": [
+        "BSE"
+      ]
+    },
+    {
+      "id": "schmidt-truncation",
+      "name": "DMRG Schmidt truncation",
+      "category": "Many-body numerical methods",
+      "latex": "|\\psi\\rangle=\\sum_{\\alpha}\\lambda_\\alpha|\\alpha_L\\rangle|\\alpha_R\\rangle\\;\\longrightarrow\\;\\sum_{\\alpha=1}^{\\chi}\\lambda_\\alpha|\\alpha_L\\rangle|\\alpha_R\\rangle",
+      "plain": "keep largest chi Schmidt values",
+      "description": "Core DMRG/MPS truncation step retaining the largest Schmidt coefficients.",
+      "theoryIds": [
+        "dmrg",
+        "tensor-network-states"
+      ],
+      "sourceIds": [
+        "white-dmrg-1992",
+        "fannes-mps-1992"
+      ],
+      "tags": [
+        "DMRG"
+      ]
+    },
+    {
+      "id": "dmrg-trunc-error",
+      "name": "DMRG discarded weight",
+      "category": "Many-body numerical methods",
+      "latex": "\\epsilon_{\\rm disc}=\\sum_{\\alpha>\\chi}\\lambda_\\alpha^2",
+      "plain": "epsilon_disc = sum discarded lambda_alpha^2",
+      "description": "Norm weight discarded when truncating a Schmidt spectrum to bond dimension χ.",
+      "theoryIds": [
+        "dmrg"
+      ],
+      "sourceIds": [
+        "white-dmrg-1992"
+      ],
+      "tags": [
+        "DMRG"
+      ]
+    },
+    {
+      "id": "reduced-density-spectrum",
+      "name": "Reduced density matrix from Schmidt values",
+      "category": "Many-body numerical methods",
+      "latex": "\\rho_L=\\sum_\\alpha\\lambda_\\alpha^2|\\alpha_L\\rangle\\langle\\alpha_L|",
+      "plain": "rho_L = sum lambda_alpha^2 |alpha_L><alpha_L|",
+      "description": "DMRG retains eigenvectors of the reduced density matrix with largest eigenvalues.",
+      "theoryIds": [
+        "dmrg",
+        "tensor-network-states"
+      ],
+      "sourceIds": [
+        "white-dmrg-1992"
+      ],
+      "tags": [
+        "DMRG"
+      ]
+    },
+    {
+      "id": "dmft-local-green",
+      "name": "DMFT local Green function",
+      "category": "Many-body numerical methods",
+      "latex": "G_{\\rm loc}(i\\omega_n)=\\int d\\epsilon\\,\\frac{\\rho_0(\\epsilon)}{i\\omega_n+\\mu-\\Sigma(i\\omega_n)-\\epsilon}",
+      "plain": "G_loc = integral rho0(epsilon)/(i omega + mu - Sigma - epsilon)",
+      "description": "Momentum-integrated Green function under the local self-energy approximation of DMFT.",
+      "theoryIds": [
+        "dmft",
+        "hubbard-model"
+      ],
+      "sourceIds": [
+        "georges-dmft-1996"
+      ],
+      "tags": [
+        "DMFT"
+      ]
+    },
+    {
+      "id": "dmft-weiss",
+      "name": "DMFT Weiss-field relation",
+      "category": "Many-body numerical methods",
+      "latex": "\\mathcal G_0^{-1}(i\\omega_n)=G_{\\rm loc}^{-1}(i\\omega_n)+\\Sigma(i\\omega_n)",
+      "plain": "G0^-1 = G_loc^-1 + Sigma",
+      "description": "Defines the effective impurity bath/Weiss Green function in DMFT.",
+      "theoryIds": [
+        "dmft"
+      ],
+      "sourceIds": [
+        "georges-dmft-1996"
+      ],
+      "tags": [
+        "DMFT"
+      ]
+    },
+    {
+      "id": "dmft-impurity-dyson",
+      "name": "DMFT impurity Dyson equation",
+      "category": "Many-body numerical methods",
+      "latex": "G_{\\rm imp}^{-1}=\\mathcal G_0^{-1}-\\Sigma",
+      "plain": "G_imp^-1 = G0^-1 - Sigma",
+      "description": "Impurity Green-function relation used in the DMFT self-consistency loop.",
+      "theoryIds": [
+        "dmft"
+      ],
+      "sourceIds": [
+        "georges-dmft-1996"
+      ],
+      "tags": [
+        "DMFT"
+      ]
+    },
+    {
+      "id": "dmft-bethe",
+      "name": "Bethe-lattice DMFT self-consistency",
+      "category": "Many-body numerical methods",
+      "latex": "\\Delta(i\\omega_n)=t^2G_{\\rm loc}(i\\omega_n)",
+      "plain": "Delta = t^2 G_loc",
+      "description": "Simple self-consistency relation for the infinite-coordination Bethe lattice under conventional scaling.",
+      "theoryIds": [
+        "dmft"
+      ],
+      "sourceIds": [
+        "georges-dmft-1996"
+      ],
+      "tags": [
+        "DMFT"
+      ]
+    },
+    {
+      "id": "imaginary-time-projection",
+      "name": "Imaginary-time ground-state projection",
+      "category": "Many-body numerical methods",
+      "latex": "|\\psi_0\\rangle\\propto\\lim_{\\tau\\to\\infty}e^{-\\tau H}|\\psi_T\\rangle",
+      "plain": "psi0 proportional exp(-tau H) psi_T as tau->infty",
+      "description": "Projector idea underlying diffusion and auxiliary-field Quantum Monte Carlo methods.",
+      "theoryIds": [
+        "quantum-monte-carlo"
+      ],
+      "sourceIds": [
+        "ceperley-qmc-1995"
+      ],
+      "tags": [
+        "QMC"
+      ]
+    },
+    {
+      "id": "qmc-local-energy",
+      "name": "Variational Monte Carlo local energy",
+      "category": "Many-body numerical methods",
+      "latex": "E_L(R)=\\frac{H\\Psi_T(R)}{\\Psi_T(R)}",
+      "plain": "E_L = H Psi_T / Psi_T",
+      "description": "Configuration-dependent local energy sampled in variational Monte Carlo.",
+      "theoryIds": [
+        "quantum-monte-carlo"
+      ],
+      "sourceIds": [
+        "ceperley-qmc-1995"
+      ],
+      "tags": [
+        "VMC"
+      ]
+    },
+    {
+      "id": "qmc-energy-estimator",
+      "name": "Variational Monte Carlo energy estimator",
+      "category": "Many-body numerical methods",
+      "latex": "E=\\frac{\\int dR\\,|\\Psi_T(R)|^2E_L(R)}{\\int dR\\,|\\Psi_T(R)|^2}",
+      "plain": "E = average of local energy under |Psi_T|^2",
+      "description": "Monte Carlo expectation-value form for a variational trial wavefunction.",
+      "theoryIds": [
+        "quantum-monte-carlo"
+      ],
+      "sourceIds": [
+        "ceperley-qmc-1995"
+      ],
+      "tags": [
+        "VMC"
+      ]
+    },
+    {
+      "id": "trotter",
+      "name": "Trotter product formula",
+      "category": "Many-body numerical methods",
+      "latex": "e^{-\\beta(A+B)}=\\lim_{M\\to\\infty}\\left(e^{-\\beta A/M}e^{-\\beta B/M}\\right)^M",
+      "plain": "exp[-beta(A+B)] = limit (exp[-beta A/M] exp[-beta B/M])^M",
+      "description": "Operator factorization central to path-integral Quantum Monte Carlo.",
+      "theoryIds": [
+        "quantum-monte-carlo",
+        "path-integral"
+      ],
+      "sourceIds": [
+        "ceperley-qmc-1995",
+        "feynman-path-1948"
+      ],
+      "tags": [
+        "Trotter"
       ]
     }
   ]
