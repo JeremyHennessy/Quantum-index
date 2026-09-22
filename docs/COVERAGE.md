@@ -11,7 +11,7 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 - **13** curated thought trees
 - **12** top-level categories
 - **253** bibliography/source records
-- **266** source-linked formula entries across **26** formula categories
+- **320** source-linked formula entries across **27** formula categories
 - **262 / 262 (100.0%)** entries currently have dedicated source provenance
 - **0 / 262** shipped entries remain catalogued-only
 - **186 / 262** are marked `primary-sourced`; the remaining **76 / 262** are review/authoritative-source backed
@@ -223,3 +223,21 @@ The latest theory sweep adds quantum error-correction theory, the stabilizer for
 ## Quantum chemistry and correlated-electron expansion
 
 The latest sweep adds a dedicated **Quantum chemistry & electronic structure** category and source-backed entries for Hartree–Fock, configuration interaction, Møller–Plesset perturbation theory, coupled-cluster theory, time-dependent DFT, GW and Bethe–Salpeter methods. It also adds DMRG, DMFT and Quantum Monte Carlo to the many-body catalog, plus a dedicated thought tree linking reference-state, correlated-wavefunction, Green-function and density-based methods.
+
+
+## Formula-bearing audit
+
+Formula coverage is audited independently of theory/source coverage.
+
+Current v4 formula audit:
+- **320** source-linked equations
+- **175 / 262** theories currently have at least one linked formula entry
+- **62** entries are documented formula-bearing gaps
+- **11** are classified as interpretations without a unique defining equation
+- **11** are primarily conceptual/structural in the current ontology
+- **2** are theorem-first entries
+- **1** is a thought experiment
+
+Every shipped formula now carries a formula-role field plus assumptions, variables, regime, units notes, theory relationship, and metadata-review state. Legacy formulas use a conservative baseline classification where detailed per-equation review has not yet been completed; newly added priority formulas have explicit metadata.
+
+The current formula sweep added the requested high-priority equations for Hartree–Fock, configuration interaction, MP2, coupled cluster, Kohn–Sham density, TDDFT, GW, Bethe–Salpeter, DMRG, DMFT, quantum Monte Carlo, the Master Constraint Programme, process tensors, pseudo-density matrices, Lorentzian quantum cosmology, GRWm, AQFT, supersymmetry, causal perturbation theory, chiral perturbation theory, HQET, supersymmetric localization, integrable QFT, GPTs, process matrices, quantum trajectories, collision models, measurement-based computation, decoherence, quantum Darwinism, string theory, asymptotic safety, matrix models, induced gravity, string field theory, IKKT, infinite-derivative gravity, minisuperspace, pre-big-bang duality, PT symmetry, nonlinear QM, generalized exclusion statistics, and q-deformed oscillators.
