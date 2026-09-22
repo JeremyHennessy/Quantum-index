@@ -5709,6 +5709,61 @@ window.QI_FORMULAS = {
       "theoryRelationship": "defining deformed algebra",
       "metadataReview": "explicit"
     }
+,
+    {
+      "id": "hidden-measurement-probability",
+      "name": "Hidden-measurement outcome probability",
+      "category": "Foundations & interpretations",
+      "latex": "P(i|\\psi)=\\frac{\\mu(\\Lambda_i(\\psi))}{\\mu(\\Lambda(\\psi))}",
+      "plain": "P(i|psi) = mu(Lambda_i(psi)) / mu(Lambda(psi))",
+      "description": "Schematic measure-ratio form expressing an outcome probability as the relative measure of measurement interactions producing outcome i.",
+      "theoryIds": ["hidden-measurements"],
+      "sourceIds": ["aerts-hidden-1986"],
+      "tags": ["hidden measurements","measurement interactions","probability"],
+      "formulaType": "schematic",
+      "assumptions": ["A set of possible measurement interactions is equipped with a measure mu", "Lambda_i denotes the subset yielding outcome i", "Exact interaction spaces and measures are model dependent"],
+      "variables": ["psi: prepared system state", "Lambda: set of possible measurement interactions", "Lambda_i: interactions producing outcome i", "mu: measure over interactions"],
+      "regime": "Hidden-measurements models of quantum probabilities.",
+      "units": "Dimensionless probability.",
+      "theoryRelationship": "schematic defining probability mechanism",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "operational-state-effect",
+      "name": "Operational state–effect probability pairing",
+      "category": "Mathematical structures",
+      "latex": "p(e|\\omega)=\\omega(e)\\in[0,1]",
+      "plain": "p(e|omega) = omega(e) in [0,1]",
+      "description": "Abstract operational probability pairing between a state and an effect/test outcome.",
+      "theoryIds": ["operational-quantum-logic","generalized-probabilistic"],
+      "sourceIds": ["coecke-operational-logic-2000","barnum-operational-2003","barrett-gpt-2007"],
+      "tags": ["operational quantum logic","effect algebra","state space"],
+      "formulaType": "defining",
+      "assumptions": ["States are normalized positive functionals or equivalent operational state objects", "Effects represent admissible yes/no outcomes or affine probability functionals"],
+      "variables": ["omega: operational state", "e: effect/test outcome", "p: outcome probability"],
+      "regime": "Operational quantum logic, convex operational theories, and related generalized probabilistic frameworks.",
+      "units": "Dimensionless probability.",
+      "theoryRelationship": "defining operational probability rule",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "polymer-cosmology-substitution",
+      "name": "Polymerized cosmological momentum substitution",
+      "category": "Quantum gravity & cosmology",
+      "latex": "b\\;\\longrightarrow\\;\\frac{\\sin(\\lambda b)}{\\lambda}",
+      "plain": "b -> sin(lambda b)/lambda",
+      "description": "Canonical effective polymerization replacing a connection/momentum-like cosmological variable by a bounded holonomy function.",
+      "theoryIds": ["polymer-quantum-cosmology","polymer-quantum-mechanics","loop-quantum-cosmology"],
+      "sourceIds": ["achour-livine-polymer-cosmology-2019"],
+      "tags": ["polymer cosmology","holonomy","polymerization"],
+      "formulaType": "defining",
+      "assumptions": ["Effective polymer representation with polymer scale lambda", "Choice of canonical variable b and polymerization map is model/convention dependent"],
+      "variables": ["b: connection- or momentum-like cosmological canonical variable", "lambda: polymer scale"],
+      "regime": "Effective polymer quantization of homogeneous cosmological phase space.",
+      "units": "lambda b is dimensionless; dimensions of lambda depend on the canonical convention.",
+      "theoryRelationship": "defining effective polymerization map",
+      "metadataReview": "explicit"
+    }
 
   ]
 };
