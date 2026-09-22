@@ -19,8 +19,6 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 
 ## Formal / mathematical candidates
 
-- Sorkin coevent interpretation
-- histories projection operator formalism
 - consistent quantum measure / generalized measure theories
 - operational quantum logic
 - convex-operational reconstructions
@@ -39,7 +37,6 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 
 ## Quantum-gravity / spacetime candidates
 
-- canonical quantum gravity umbrella
 - covariant perturbative quantum gravity
 - Stelle gravity primary branch
 - causal dynamical triangulation submodels
@@ -54,7 +51,6 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 
 ## Quantum-cosmology candidates
 
-- decoherent histories quantum cosmology
 - Wheeler–DeWitt minisuperspace variants
 - polymer cosmology outside standard LQC
 - third-quantized group-field approaches
@@ -62,8 +58,6 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 ## Beyond-standard candidates
 
 - nonlinear Schrödinger families
-- energy-driven stochastic collapse
-- Diosi stochastic model as distinct from DP umbrella
 - real quantum theory subvariants
 - quaternionic tests / formulations
 - nonassociative/octonionic models
@@ -94,3 +88,8 @@ Promoted with dedicated provenance: Weyl quantization; rigged Hilbert space / Ge
 ## Integrated in the 2026-09-21 quantum-gravity/collapse depth sweep
 
 Promoted with dedicated provenance: Algebraic Quantum Gravity (AQG); tensorial group field theory; Lorentzian/Picard–Lefschetz quantum cosmology; the primitive-ontology program; GRW matter-density theory (GRWm); GRW flash theory (GRWf); and QMUPL.
+
+
+## Integrated in the 2026-09-21 histories/canonical/collapse sweep
+
+Promoted with dedicated provenance: History Projection Operator (HPO) formalism; coevent/anhomomorphic-logic interpretation; decoherent-histories quantum cosmology; Diósi gravitational collapse as a distinct model from the broader Diósi–Penrose umbrella; energy-driven stochastic collapse; and canonical quantum gravity as an umbrella framework.
