@@ -1,20 +1,20 @@
 # Quantum Index coverage report
 
-_Last audited: 2026-09-21_
+_Last audited: 2026-09-22_
 
-Quantum Index is intentionally broader than a list of interpretations. It indexes theories, formulations, interpretations, research programs, formal frameworks, theorem-level constraints, and historically important thought structures when they materially connect the development of quantum theory.
+Quantum Index is intentionally broader than a list of interpretations or even quantum mechanics alone. It indexes quantum theories, formulations, interpretations, research programs, formal frameworks, theorem-level constraints, and historically important connected frameworks in relativity, cosmology and astrophysics when they materially connect to the development or application of quantum physics.
 
 ## Current corpus
 
-- **265** catalogued entities
-- **363** typed relationships
-- **13** curated thought trees
-- **12** top-level categories
-- **257** bibliography/source records
-- **345** source-linked formula entries across **28** formula categories
-- **265 / 265 (100.0%)** entries currently have dedicated source provenance
-- **0 / 265** shipped entries remain catalogued-only
-- **188 / 265** are marked `primary-sourced`; the remaining **77 / 265** are review/authoritative-source backed
+- **302** catalogued entities
+- **408** typed relationships
+- **15** curated thought trees
+- **14** top-level categories
+- **292** scientific bibliography/source records
+- **389** source-linked formula entries across **36** formula categories
+- **302 / 302 (100.0%)** entries currently have dedicated scientific source provenance
+- **0 / 302** shipped entries remain catalogued-only
+- **210 / 302** are marked `primary-sourced`; the remaining **92 / 302** are review/authoritative-source backed
 
 ### Category coverage
 
@@ -22,7 +22,7 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 |---|---:|
 | Historical foundations | 5 |
 | Formulations | 18 |
-| Foundations & interpretations | 43 |
+| Foundations & interpretations | 44 |
 | Quantum field theory | 30 |
 | Quantum information & open systems | 40 |
 | Quantum gravity & spacetime | 56 |
@@ -31,19 +31,22 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 | Quantum optics & AMO | 3 |
 | Quantum many-body & condensed matter | 14 |
 | Quantum chemistry & electronic structure | 7 |
+| Relativity & astrophysics | 22 |
+| Cosmology & dark sector | 14 |
 | Beyond standard quantum theory | 20 |
 
 ### Era coverage
 
 | Era | Entries |
 |---|---:|
-| 1900–1924 | 5 |
-| 1925–1939 | 21 |
-| 1940–1959 | 15 |
-| 1960–1979 | 46 |
-| 1980–1999 | 78 |
-| 2000–2014 | 65 |
-| 2015–present | 35 |
+| pre-1900 | 1 |
+| 1900–1924 | 12 |
+| 1925–1939 | 27 |
+| 1940–1959 | 18 |
+| 1960–1979 | 55 |
+| 1980–1999 | 86 |
+| 2000–2014 | 67 |
+| 2015–present | 36 |
 
 ## What "all quantum theories" means operationally
 
@@ -87,7 +90,9 @@ The strongest current branches are:
 2. major QFT lineages;
 3. quantum-gravity research programs;
 4. quantum information, open systems, and causal-process frameworks;
-5. quantum cosmology boundary-condition and early-universe branches.
+5. quantum cosmology and early-universe branches;
+6. quantum matter, quantum chemistry and electronic-structure methods;
+7. relativity, compact-object astrophysics, cosmic structure and dark-sector models.
 
 The September 21 expansion added explicit treatment of quantum logic, ontological-model frameworks, ψ-ontology, objective collapse as a family, Wightman/constructive/Euclidean QFT, BRST/BV, open-system GKSL dynamics, quantum combs/switches/process tensors, perturbative/Euclidean/discrete gravity, and several Planck-scale phenomenology programs.
 
@@ -279,3 +284,10 @@ Newly covered branches include:
 - PR-box correlations.
 
 Remaining formula gaps stay explicit in `docs/FORMULA_AUDIT.md`; no branch is marked covered merely because a nearby theory has an equation.
+
+
+## 2026-09-22 astrophysics and PBS Space Time expansion
+
+The current expansion adds a source-backed relativity/astrophysics and dark-sector layer rather than treating astrophysical applications as disconnected tags. New first-class entries include Newtonian and Einstein gravity, Schwarzschild/Kerr/de Sitter/anti-de Sitter and Alcubierre spacetimes, stellar-structure and compact-object frameworks, accretion/jet/plasma/radiation models, FLRW/LTB/ΛCDM structure formation, MOND/TeVeS, dark-matter candidate families, quintessence, cosmic strings, the CPT-symmetric universe, cosmological natural selection, and the block-universe/eternalist interpretation.
+
+PBS Space Time transcripts are stored separately in `pbs-spacetime.js`. The current curated set contains **15 official PBS transcript mentions** linked to indexed theories. These records are media/discovery evidence only and never change a theory's scientific provenance state.
