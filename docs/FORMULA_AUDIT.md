@@ -12,12 +12,12 @@ The runtime audit is in `formula-audit.js`; formula records are in `formulas.js`
 
 ## Current result
 
-- 265 shipped theory/framework entities audited
-- 345 source-linked formula entries
-- 202 entities classified **formula-bearing**
+- 302 shipped theory/framework entities audited
+- 389 source-linked formula entries
+- 237 entities classified **formula-bearing**
 - 38 classified **formula-bearing-gap**
-- 11 **interpretations**
-- 11 **primarily conceptual/structural**
+- 12 **interpretations**
+- 12 **primarily conceptual/structural**
 - 2 **theorem-first**
 - 1 **thought experiment**
 
@@ -190,3 +190,10 @@ These formulas moved the three promoted candidate theories directly into the for
 ## Second priority gap pass completed
 
 Added source-linked equations for old quantum theory; constructive/Euclidean QFT; Schwinger–Keldysh; geometric, stochastic, light-front, background-field, Weyl and polymer quantization; quantum-reference-frame transformations; quantum stochastic calculus; ZX calculus; twistor incidence; entropic gravity; Hořava–Lifshitz gravity; tensor models; celestial holography; causal fermion systems; BFSS Matrix theory; topological strings; and PR-box correlations. Device-independent QI now also links directly to the Tsirelson bound.
+
+
+## Astrophysics / relativity formula pass completed
+
+The 2026-09-22 expansion added explicit source-linked equations for Newtonian gravity; Lorentz kinematics; Einstein gravity; Schwarzschild, Kerr, de Sitter, anti-de Sitter and Alcubierre geometries; stellar structure; Lane–Emden polytropes; Jeans instability; Chandrasekhar/TOV compact objects; Eddington/Bondi/thin-disk accretion; Blandford–Znajek jets; ideal MHD; synchrotron and shock acceleration; FLRW/ΛCDM/LTB cosmology; Press–Schechter and NFW structure; MOND/TeVeS; PBH/WIMP/axion dark matter; quintessence; cosmic strings; the CPT-symmetric-universe constraint; and the schematic cosmological-natural-selection fitness condition.
+
+Cosmic censorship is explicitly classified as **primarily conceptual/conjectural** rather than being left as a misleading formula gap.
