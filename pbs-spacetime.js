@@ -169,6 +169,72 @@ window.QI_SPACETIME = {
       theoryIds: ["cosmological-natural-selection"],
       terms: ["cosmological natural selection","baby universe","black-hole reproduction"],
       evidence: "official PBS transcript"
+    },
+    {
+      id: "pbs-constructor-theory-2021",
+      episodeTitle: "Will Constructor Theory Rewrite Physics?",
+      seasonEpisode: "S7 Ep33",
+      date: "2021-10-20",
+      pbsUrl: "https://www.pbs.org/video/will-constructor-theory-rewrite-physics-rwl2w7/",
+      searchUrl: "https://search.pbsspacetime.com/?q=constructor+theory",
+      theoryIds: ["constructor-theory"],
+      terms: ["Constructor Theory","possible and impossible transformations","laws of physics"],
+      evidence: "official PBS transcript"
+    },
+    {
+      id: "pbs-cosmic-inflation-2019",
+      episodeTitle: "What Caused the Big Bang?",
+      seasonEpisode: "S5 Ep28",
+      date: "2019-08-06",
+      pbsUrl: "https://www.pbs.org/video/what-caused-the-big-bang-et0chm/",
+      searchUrl: "https://search.pbsspacetime.com/?q=cosmic+inflation",
+      theoryIds: ["cosmic-inflation","inflationary-fluctuations","eternal-inflation"],
+      terms: ["cosmic inflation","inflaton field","false vacuum","eternal inflation"],
+      evidence: "official PBS transcript"
+    },
+    {
+      id: "pbs-bbn-2019",
+      episodeTitle: "Did Time Start at the Big Bang?",
+      seasonEpisode: "S5 Ep27",
+      date: "2019-07-18",
+      pbsUrl: "https://www.pbs.org/video/did-time-start-at-the-big-bang-weogo5/",
+      searchUrl: "https://search.pbsspacetime.com/?q=nucleosynthesis",
+      theoryIds: ["big-bang-nucleosynthesis","flrw-cosmology"],
+      terms: ["hydrogen and helium abundance","hot dense early universe","Big Bang nucleosynthesis"],
+      evidence: "official PBS transcript"
+    },
+    {
+      id: "pbs-ccc-2019",
+      episodeTitle: "Did Time Start at the Big Bang?",
+      seasonEpisode: "S5 Ep27",
+      date: "2019-07-18",
+      pbsUrl: "https://www.pbs.org/video/did-time-start-at-the-big-bang-weogo5/",
+      searchUrl: "https://search.pbsspacetime.com/?q=conformal+cyclic+cosmology",
+      theoryIds: ["conformal-cyclic-cosmology","cyclic-cosmology"],
+      terms: ["Penrose conformal cyclic cosmology","cyclic universe","future boundary"],
+      evidence: "official PBS transcript"
+    },
+    {
+      id: "pbs-gravitational-waves-2016",
+      episodeTitle: "The Future of Gravitational Waves",
+      seasonEpisode: "S2 Ep36",
+      date: "2016-07-20",
+      pbsUrl: "https://www.pbs.org/video/pbs-space-time-future-gravitational-waves/",
+      searchUrl: "https://search.pbsspacetime.com/?q=gravitational+waves",
+      theoryIds: ["gravitational-wave-theory","general-relativity"],
+      terms: ["gravitational waves","LIGO","binary black holes"],
+      evidence: "official PBS transcript"
+    },
+    {
+      id: "pbs-gravitational-lensing-2016",
+      episodeTitle: "The Strange Universe of Gravitational Lensing",
+      seasonEpisode: "S2 Ep33",
+      date: "2016-06-16",
+      pbsUrl: "https://www.pbs.org/video/pbs-space-time-lensing/",
+      searchUrl: "https://search.pbsspacetime.com/?q=gravitational+lensing",
+      theoryIds: ["gravitational-lensing","general-relativity"],
+      terms: ["gravitational lensing","deflection of light","magnification"],
+      evidence: "official PBS transcript"
     }
 
   ]
