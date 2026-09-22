@@ -78,3 +78,10 @@ main{width:min(1540px,94vw);margin:auto;padding:34px 0 80px}.hero{display:grid;g
 .formula-source{display:inline-block;text-decoration:none;border:1px solid #334333;background:#101d18;color:#b9d8c2;border-radius:999px;padding:4px 7px;font-size:8px}
 .formula-source:hover{border-color:#56745e;color:#eaf5ed}
 @media(max-width:850px){.formula-controls{grid-template-columns:1fr}.formula-grid{grid-template-columns:1fr}.formula-equation{min-height:64px}}
+
+.formula-role-row{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:7px 0 2px;color:var(--muted);font-size:10px}
+.formula-role{display:inline-flex;border:1px solid #506a79;border-radius:999px;padding:4px 7px;color:#d7edf5;background:#10222d;text-transform:uppercase;letter-spacing:.05em;font-weight:700}
+.formula-detail{margin:12px 0;display:grid;gap:7px}
+.formula-detail>div{display:grid;grid-template-columns:82px 1fr;gap:8px;padding-top:7px;border-top:1px solid #1d313d}
+.formula-detail dt{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.formula-detail dd{margin:0;font-size:10px;line-height:1.45;color:#b8cbd4}
