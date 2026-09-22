@@ -690,11 +690,13 @@ window.QI_FORMULAS = {
       "description": "Maximum CHSH value allowed by quantum theory.",
       "theoryIds": [
         "bell",
-        "quantum-information"
+        "quantum-information",
+        "device-independent-qi"
       ],
       "sourceIds": [
         "sep-bell",
-        "barrett-gpt-2007"
+        "barrett-gpt-2007",
+        "brunner-bell-2014"
       ],
       "tags": [
         "CHSH",
