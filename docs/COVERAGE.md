@@ -6,39 +6,39 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 
 ## Current corpus
 
-- **149** catalogued entities
-- **165** typed relationships
-- **7** curated thought trees
+- **172** catalogued entities
+- **195** typed relationships
+- **9** curated thought trees
 - **9** top-level categories
-- **71** bibliography/source records
-- **75 / 149 (50.3%)** entries currently have dedicated source provenance
-- **74 / 149** entries remain catalogued seeds pending a dedicated source pass
-- **37 / 149** are now marked `primary-sourced` after direct verification of original or program-defining papers
+- **94** bibliography/source records
+- **98 / 172 (57.0%)** entries currently have dedicated source provenance
+- **74 / 172** entries remain catalogued seeds pending a dedicated source pass
+- **58 / 172** are now marked `primary-sourced` after direct verification of original or program-defining papers
 
 ### Category coverage
 
 | Category | Entries |
 |---|---:|
 | Historical foundations | 5 |
-| Formulations | 13 |
-| Foundations & interpretations | 33 |
-| Quantum field theory | 19 |
-| Quantum information & open systems | 16 |
-| Quantum gravity & spacetime | 37 |
+| Formulations | 14 |
+| Foundations & interpretations | 34 |
+| Quantum field theory | 20 |
+| Quantum information & open systems | 23 |
+| Quantum gravity & spacetime | 43 |
 | Quantum cosmology | 10 |
-| Mathematical structures | 4 |
-| Beyond standard quantum theory | 12 |
+| Mathematical structures | 7 |
+| Beyond standard quantum theory | 16 |
 
 ### Era coverage
 
 | Era | Entries |
 |---|---:|
 | 1900–1924 | 5 |
-| 1925–1939 | 15 |
-| 1940–1959 | 6 |
-| 1960–1979 | 33 |
-| 1980–1999 | 37 |
-| 2000–2014 | 24 |
+| 1925–1939 | 16 |
+| 1940–1959 | 7 |
+| 1960–1979 | 34 |
+| 1980–1999 | 47 |
+| 2000–2014 | 34 |
 | 2015–present | 29 |
 
 ## What "all quantum theories" means operationally
@@ -91,10 +91,11 @@ A follow-on primary-source pass directly verified foundational papers for matrix
 
 The next pass verified program-defining primary sources across QFT and quantum gravity: Feynman's path integral and QED, Yang–Mills gauge theory, electroweak theory, asymptotic freedom/QCD, Wilson RG, effective-field-theory methodology, Haag–Kastler AQFT, Osterwalder–Schrader Euclidean QFT, GKSL/Lindblad dynamics, Hawking and Unruh effects, higher-derivative gravity, Ashtekar variables/LQG, causal sets, spin foams, CDT, holography, AdS/CFT, Hořava–Lifshitz gravity and entropic gravity.
 
+The formal/emergent sweep then added 23 source-backed entities spanning Jordan-algebraic QM, light-front and causal perturbative quantization, quantum stochastic calculus, p-adic and q-deformed QM, tensor networks/MPS, quantum measure theory, topos and sheaf contextuality, causal-set growth, adiabatic/measurement-based/topological quantum computation, higher-spin gravity, MERA, ZX calculus, causal fermion systems, many-interacting-worlds, string field theory, BFSS/IKKT matrix models and modal quantum theory.
+
 ## Known coverage gaps / next research passes
 
 ### Historical and formal foundations
-- Jordan-algebra formulations
 - Weyl quantization and Weyl systems as distinct entities
 - rigged Hilbert-space / Gel'fand-triplet formulation
 - quantum probability / noncommutative probability
@@ -115,7 +116,6 @@ The next pass verified program-defining primary sources across QFT and quantum g
 - constructive model families (P(φ)₂, φ⁴₃, etc.)
 - Schwinger–Dyson hierarchy as a formal framework
 - exact / integrable QFT
-- light-front quantization
 - light-cone and canonical gauge quantization families
 - background-field method
 - functional methods beyond FRG
@@ -126,7 +126,6 @@ The next pass verified program-defining primary sources across QFT and quantum g
 ### Quantum information / open systems
 - Davies weak-coupling theory
 - collision models / repeated interactions
-- quantum stochastic calculus
 - continuous-measurement theory
 - device-independent and semi-device-independent frameworks
 - generalized probabilistic reconstruction programs
@@ -137,11 +136,8 @@ The next pass verified program-defining primary sources across QFT and quantum g
 - canonical quantum gravity as umbrella distinct from Wheeler–DeWitt
 - covariant perturbative gravity and EFT gravity as separate branches
 - Euclidean dynamical triangulations
-- causal fermion systems
 - twistor-string theory
-- string field theory
 - nonlocal gravity
-- higher-spin gravity
 - dynamical triangulations / Regge subfamilies
 - quantum graph / pregeometry families
 - causal-diamond / holographic spacetime programs
@@ -159,7 +155,6 @@ The next pass verified program-defining primary sources across QFT and quantum g
 
 ### Beyond-standard quantum theory
 - real, quaternionic, p-adic and finite-field quantum theories
-- q-deformed quantum mechanics
 - parastatistics / generalized statistics
 - nonlinear families beyond Weinberg
 - energy-driven collapse families
