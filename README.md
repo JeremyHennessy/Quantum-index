@@ -15,13 +15,14 @@ Quantum Index is a source-aware map of quantum theory: historical foundations, f
 
 The current corpus is a broad research seed rather than a claim of literal completeness. The schema is designed to grow without changing the UI.
 
-Current audited branch metrics: **262 theory/framework entities**, **359 typed relationships**, **13 thought trees**, **253 bibliography/source records**, and a separate **266-entry formula atlas** spanning **26 formula categories**. All 262 shipped theory entries carry dedicated provenance: **186 primary-sourced** and **76 review/authoritative-source backed**. Catalog coverage and source coverage are intentionally reported separately.
+Current audited branch metrics: **262 theory/framework entities**, **359 typed relationships**, **13 thought trees**, **253 bibliography/source records**, and a separate **320-entry formula atlas** spanning **27 formula categories**. All 262 shipped theory entries carry dedicated provenance: **186 primary-sourced** and **76 review/authoritative-source backed**. Catalog coverage and source coverage are intentionally reported separately.
 
 Static app:
 - `index.html`
 - `styles.css`
 - `theories.js` — theory + relation catalog
-- `formulas.js` — source-linked quantum formula atlas
+- `formulas.js` — source-linked quantum formula atlas with equation-role metadata
+- `formula-audit.js` — theory-by-theory formula-bearing coverage audit
 - `app.js` — search, filters, graph, timeline, lineage, formula and detail UI
 
 ## Data model
@@ -74,3 +75,17 @@ The formula atlas is a separate evidence layer linked to the theory graph. It cu
 See:
 - `docs/FORMULA_COVERAGE.md` for scope and current coverage.
 - `research/FORMULA_CANDIDATES.md` for the next equation/formula sweeps.
+
+
+## Formula governance
+
+The formula atlas is deliberately scoped to **canonical/source-linked equations**, not every algebraic expression ever published. Each formula records:
+- role: `exact`, `defining`, `canonical`, `schematic`, `approximation`, `limit`, or `derived identity`;
+- assumptions;
+- variables;
+- applicable regime;
+- units/dimensional notes;
+- theory-to-formula relationship;
+- source IDs and metadata review state.
+
+`formula-audit.js` classifies every theory as formula-bearing, a documented formula gap, primarily conceptual, theorem, interpretation, or thought experiment. A documented gap means a canonical equation has not yet been curated; it does **not** mean the theory lacks mathematics.
