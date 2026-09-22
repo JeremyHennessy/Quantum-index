@@ -795,7 +795,13 @@ window.QI_DATA = (() => {
     theory.lastReviewed = linked.length ? "2026-09-21" : null;
   }
 
-  const R = (from,to,type,note="") => ({from,to,type,note});
+  const R = (from,to,type,note="",evidence={}) => ({
+    from,to,type,note,
+    sourceIds:Array.isArray(evidence.sourceIds)?evidence.sourceIds:[],
+    evidenceType:evidence.evidenceType||"editorial relation",
+    confidence:evidence.confidence||"editorial",
+    evidenceNote:evidence.evidenceNote||""
+  });
   const relations = [
     R("planck-quanta","old-quantum","precursor"),R("light-quantum","old-quantum","precursor"),R("bohr-model","old-quantum","supports"),
     R("old-quantum","matrix-mechanics","precursor"),R("de-broglie","wave-mechanics","precursor"),R("matrix-mechanics","dirac-transformation","reformulates"),R("wave-mechanics","dirac-transformation","reformulates"),
@@ -942,6 +948,70 @@ window.QI_DATA = (() => {
     R("tensor-network-states","dmrg","supports"),R("dmrg","mera","overlaps"),R("hubbard-model","dmft","extends"),R("hubbard-model","quantum-monte-carlo","overlaps"),R("path-integral","quantum-monte-carlo","supports")
 
   ].filter(r => theories.some(t=>t.id===r.from) && theories.some(t=>t.id===r.to));
+
+  const relationEvidence = new Map(Object.entries({
+    "planck-quanta|old-quantum|precursor": {sourceIds:["planck-1901","old-quantum-review-2026"],evidenceType:"documented historical influence",confidence:"high"},
+    "bohr-model|old-quantum|supports": {sourceIds:["bohr-1913","old-quantum-review-2026"],evidenceType:"documented historical influence",confidence:"high"},
+    "old-quantum|matrix-mechanics|precursor": {sourceIds:["old-quantum-review-2026","heisenberg-1925"],evidenceType:"documented historical influence",confidence:"high"},
+    "de-broglie|wave-mechanics|precursor": {sourceIds:["debroglie-1925","schrodinger-1926"],evidenceType:"documented historical influence",confidence:"high"},
+    "matrix-mechanics|dirac-transformation|reformulates": {sourceIds:["heisenberg-1925","dirac-transformation-1927"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "wave-mechanics|dirac-transformation|reformulates": {sourceIds:["schrodinger-1926","dirac-transformation-1927"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "wave-mechanics|born-rule|supports": {sourceIds:["schrodinger-1926","born-probability-1926"],evidenceType:"documented historical influence",confidence:"high"},
+    "matrix-mechanics|uncertainty|supports": {sourceIds:["heisenberg-1925","heisenberg-uncertainty-1927"],evidenceType:"documented historical influence",confidence:"high"},
+    "epr|bell|extends": {sourceIds:["epr-1935","bell-1964"],evidenceType:"documented historical influence",confidence:"high"},
+    "path-integral|qed|reformulates": {sourceIds:["feynman-path-1948","feynman-qed-1949"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "qed|yang-mills|generalizes": {sourceIds:["yang-mills-1954"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "yang-mills|electroweak|extends": {sourceIds:["yang-mills-1954","weinberg-leptons-1967"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "yang-mills|qcd|extends": {sourceIds:["yang-mills-1954","gross-wilczek-1973","politzer-1973"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "electroweak|standard-model|unifies": {sourceIds:["weinberg-leptons-1967","pdg-standard-model-2024"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "qcd|standard-model|unifies": {sourceIds:["gross-wilczek-1973","politzer-1973","pdg-standard-model-2024"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "renormalization-group|effective-field-theory|supports": {sourceIds:["wilson-rg-1971","weinberg-eft-1979"],evidenceType:"formal mathematical relation",confidence:"medium"},
+    "lattice-gauge|qcd|supports": {sourceIds:["wilson-lattice-1974"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "grw|csl|extends": {sourceIds:["sep-collapse"],evidenceType:"documented historical influence",confidence:"medium"},
+    "grw|objective-collapse|supports": {sourceIds:["grw-1986","sep-collapse"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "csl|objective-collapse|supports": {sourceIds:["sep-collapse"],evidenceType:"formal mathematical relation",confidence:"medium"},
+    "grw|grwm|extends": {sourceIds:["grw-1986","allori-primitive-2014"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "grw|grwf|extends": {sourceIds:["grw-1986","allori-primitive-2014"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "primitive-ontology|grwm|supports": {sourceIds:["allori-primitive-2014"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "primitive-ontology|grwf|supports": {sourceIds:["allori-primitive-2014"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "loop-quantum-gravity|spin-foams|extends": {sourceIds:["rovelli-lqg","spin-foam-review"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "spin-foams|group-field-theory|overlaps": {sourceIds:["spin-foam-review","gft-review"],evidenceType:"formal mathematical relation",confidence:"medium"},
+    "loop-quantum-gravity|loop-quantum-cosmology|extends": {sourceIds:["rovelli-lqg","bojowald-lqc-2001"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "string-theory|m-theory|extends": {sourceIds:["witten-mtheory-1995"],evidenceType:"documented historical influence",confidence:"high"},
+    "holographic-principle|ads-cft|formalizes": {sourceIds:["thooft-holography-1993","susskind-hologram-1994","maldacena-1997"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "ads-cft|quantum-error-correction-gravity|supports": {sourceIds:["maldacena-1997","almheiri-qec-2015"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "hawking-radiation|island-formula|motivates": {sourceIds:["hawking-1975","almheiri-islands-2020"],evidenceType:"documented historical influence",confidence:"high"},
+    "epr|er-epr|precursor": {sourceIds:["epr-1935","maldacena-susskind-2013"],evidenceType:"documented historical influence",confidence:"medium"},
+    "open-quantum-systems|gksl|formalizes": {sourceIds:["gks-1976","lindblad-1976","breuer-petruccione-2007"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "gksl|quantum-trajectories|supports": {sourceIds:["gks-1976","lindblad-1976","dalibard-castin-molmer-1992"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "quantum-information|quantum-combs|extends": {sourceIds:["schumacher-1995","chiribella-combs-2009"],evidenceType:"formal mathematical relation",confidence:"medium"},
+    "quantum-combs|quantum-switch|generalizes": {sourceIds:["chiribella-combs-2009","chiribella-switch-2013"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "quantum-switch|indefinite-causal-order|supports": {sourceIds:["chiribella-switch-2013","process-matrix-ocb"],evidenceType:"formal mathematical relation",confidence:"medium"},
+    "process-matrices|indefinite-causal-order|formalizes": {sourceIds:["process-matrix-ocb"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "open-quantum-systems|process-tensor|extends": {sourceIds:["pollock-process-2018","breuer-petruccione-2007"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "quantum-information|resource-theories|extends": {sourceIds:["schumacher-1995","resource-rmp-2019"],evidenceType:"formal mathematical relation",confidence:"medium"},
+    "generalized-contextuality|contextuality-resource-theory|extends": {sourceIds:["sep-qm-issues","duarte-amaral-contextuality-2017"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "resource-theories|contextuality-resource-theory|extends": {sourceIds:["resource-rmp-2019","duarte-amaral-contextuality-2017"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "density-functional-theory|time-dependent-dft|extends": {sourceIds:["hohenberg-kohn-1964","kohn-sham-1965","runge-gross-1984"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "tensor-network-states|dmrg|overlaps": {sourceIds:["fannes-mps-1992","white-dmrg-1992"],evidenceType:"formal mathematical relation",confidence:"medium"},
+    "effective-field-theory|standard-model-eft|supports": {sourceIds:["weinberg-eft-1979","warsaw-smeft-2010"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "effective-field-theory|chiral-perturbation-theory|extends": {sourceIds:["weinberg-eft-1979","gasser-leutwyler-1984"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "effective-field-theory|heavy-quark-effective-theory|extends": {sourceIds:["weinberg-eft-1979","isgur-wise-1989"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "effective-field-theory|soft-collinear-effective-theory|extends": {sourceIds:["weinberg-eft-1979","bauer-scet-2001"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "loop-quantum-gravity|master-constraint-program|extends": {sourceIds:["rovelli-lqg","master-constraint-2006"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "master-constraint-program|algebraic-quantum-gravity|supports": {sourceIds:["master-constraint-2006","giesel-thiemann-aqg-2007"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "group-field-theory|tensorial-group-field-theory|extends": {sourceIds:["gft-review","carrozza-oriti-rivasseau-tgft-2014"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "group-field-theory|group-field-cosmology|extends": {sourceIds:["gft-review","group-field-cosmology-2013"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "spin-foams|spin-foam-cosmology|extends": {sourceIds:["spin-foam-review","spin-foam-cosmology-2010"],evidenceType:"formal mathematical relation",confidence:"high"},
+    "path-integral|lorentzian-quantum-cosmology|extends": {sourceIds:["feynman-path-1948","feldbrugge-lehners-turok-2017"],evidenceType:"formal mathematical relation",confidence:"medium"},
+    "quantum-cosmology|lorentzian-quantum-cosmology|extends": {sourceIds:["quantum-cosmology-review","feldbrugge-lehners-turok-2017"],evidenceType:"documented historical influence",confidence:"high"}
+  }));
+
+  for (const relation of relations) {
+    const key = relation.from+"|"+relation.to+"|"+relation.type;
+    const evidence = relationEvidence.get(key);
+    if (evidence) Object.assign(relation,evidence,{evidenceNote:"Evidence curated in relation-provenance v1."});
+  }
 
   const trees = [
     {name:"Birth of quantum mechanics",nodes:["planck-quanta","light-quantum","bohr-model","old-quantum","de-broglie","matrix-mechanics","wave-mechanics","dirac-transformation","von-neumann"]},
