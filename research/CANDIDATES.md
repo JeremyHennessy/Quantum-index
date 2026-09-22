@@ -102,3 +102,8 @@ Added dedicated quantum-matter and AMO coverage: Dirac relativistic electron the
 ## Integrated in the 2026-09-21 quantum-error-correction/metrology sweep
 
 Promoted with dedicated provenance: quantum error-correction theory; stabilizer formalism; surface-code quantum error correction; continuous-variable quantum information; GKP bosonic codes; quantum metrology; and spin squeezing.
+
+
+## Integrated in the 2026-09-21 quantum-chemistry/correlated-electron sweep
+
+Promoted with dedicated provenance: Hartree–Fock; configuration interaction; Møller–Plesset perturbation theory; coupled-cluster theory; time-dependent density-functional theory; GW; Bethe–Salpeter electronic-excitation methods; density-matrix renormalization group; dynamical mean-field theory; and Quantum Monte Carlo.
