@@ -9,7 +9,7 @@
   }
 
   const conceptualKinds = new Set([
-    "interpretation","thought experiment","classification framework","foundational framework"
+    "interpretation","thought experiment","classification framework","foundational framework","conjecture","hypothesis"
   ]);
 
   function classify(theory, formulaIds) {
