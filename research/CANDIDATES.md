@@ -22,9 +22,6 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 
 ## Formal / mathematical candidates
 
-- Weyl quantization
-- rigged Hilbert space
-- noncommutative probability
 - Sorkin coevent interpretation
 - histories projection operator formalism
 - consistent quantum measure / generalized measure theories
@@ -34,19 +31,12 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 ## QFT candidates
 
 - Osterwalder–Schrader axiomatics as a distinct entry if separated from Euclidean QFT
-- Schwinger–Dyson framework
-- exact/integrable 1+1D QFT
 - constructive P(φ)₂
 - constructive φ⁴₃
 - conformal bootstrap subfamilies
-- functional methods / Dyson–Schwinger equations
-- NRQED / NRQCD
-- topological strings
 
 ## Quantum-information / open-system candidates
 
-- Davies generators
-- generalized contextuality resource theories
 - quantum causal inference variants
 - process-tensor variants
 
@@ -102,3 +92,8 @@ Promoted with dedicated provenance: background-field method; chiral perturbation
 ## Integrated in the 2026-09-21 second gap sweep
 
 Promoted with dedicated provenance: quantum collision models/repeated interactions; quantum supermaps; causal boxes; pseudo-density matrices; Euclidean dynamical triangulations; twisted geometries; the LQG Master Constraint Programme; group-field cosmology; spin-foam cosmology; and pre-big-bang string cosmology.
+
+
+## Integrated in the 2026-09-21 formal/QFT depth sweep
+
+Promoted with dedicated provenance: Weyl quantization; rigged Hilbert space / Gel'fand triplets; noncommutative/quantum probability; Schwinger–Dyson equations; integrable quantum field theory; NRQED; NRQCD; topological string theory; Davies weak-coupling generators; and the resource theory of contextuality.
