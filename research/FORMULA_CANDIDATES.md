@@ -17,16 +17,8 @@ This backlog is deliberately broader than the shipped formula atlas. Candidates 
 
 ## Quantum chemistry and electronic structure
 
-- Hartree–Fock equations
-- Slater determinant
-- Roothaan–Hall equations
-- configuration-interaction expansion
-- coupled-cluster exponential ansatz
-- CCSD working structure
-- Møller–Plesset perturbation energies
 - Hellmann–Feynman theorem
 - virial theorem
-- Kohn–Sham total-energy functional variants
 
 ## Many-body Green functions and response
 
@@ -88,3 +80,8 @@ Promoted with source links: stationary perturbation corrections; Dyson series; F
 ## Integrated in formula sweep 3
 
 Promoted with source links: stabilizer conditions/projectors/dimension; surface-code star/plaquette/logical relations; GKP stabilizers, logical operators and ideal comb states; continuous-variable covariance, symplectic and Gaussian-state formulas; spin-squeezing, SQL/Heisenberg scaling, Fisher information and Ramsey metrology relations; Hellmann–Feynman and virial formulas; Rabi/spontaneous-decay relations; Ashtekar brackets and Gauss constraint; Regge deficit angles; spin-foam and group-field state-sum/action structures; no-boundary/tunneling wavefunctions; causal-set Poisson sprinkling; CDT partition sum; holographic entropy bound.
+
+
+## Integrated in formula sweep 4
+
+Promoted with source links: Slater determinant; Hartree–Fock orbital/Fock/energy/density equations; Roothaan–Hall; CI and full-CI expansions; Møller–Plesset partition and MP2 energy; coupled-cluster exponential, cluster, similarity-transformed Hamiltonian, energy and amplitude equations; TD Kohn–Sham density/response equations; GW self-energy, screening, polarization and quasiparticle equations; Bethe–Salpeter eigenproblem; DMRG Schmidt truncation/discarded weight/reduced-density spectrum; DMFT local/Weiss/impurity/Bethe-lattice self-consistency; imaginary-time projection, local-energy and VMC estimators; Trotter factorization.
