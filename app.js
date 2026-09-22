@@ -2,7 +2,7 @@
   const { theories, relations, trees, sources } = window.QI_DATA;
   const byId = new Map(theories.map(t => [t.id,t]));
   const sourceById = new Map(sources.map(s => [s.id,s]));
-  const state = { search:"", category:"", kind:"", status:"", era:"", sourcedOnly:false, selected:null, view:"map" };
+  const state = { search:"", category:"", kind:"", status:"", era:"", sourcedOnly:false, selected:null, selectedTree:0, view:"map" };
   const categoryColors = new Map([
     ["Historical foundations","#f59e0b"],["Formulations","#60a5fa"],["Foundations & interpretations","#c084fc"],
     ["Quantum field theory","#34d399"],["Quantum information & open systems","#22d3ee"],["Quantum gravity & spacetime","#f472b6"],
@@ -65,6 +65,7 @@
     renderDetail();
     renderLineage();
     d3.selectAll(".node").classed("selected",d=>d.id===id);
+    d3.selectAll(".tree-graph-node").classed("selected",d=>d.id===id);
     if(switchLineage){ switchView("lineage"); }
   }
 
@@ -143,11 +144,93 @@
   }
 
   function renderTrees(){
-    $("#thoughtTrees").innerHTML=trees.map(tree=>`
-      <div class="tree"><h4>${esc(tree.name)}</h4><div class="tree-rail">
-        ${tree.nodes.filter(id=>byId.has(id)).map((id,i)=>`${i?'<span class="tree-arrow">→</span>':""}<button class="tree-node" data-id="${id}">${esc(byId.get(id).name)}</button>`).join("")}
-      </div></div>`).join("");
-    $("#thoughtTrees").querySelectorAll("[data-id]").forEach(el=>el.addEventListener("click",()=>selectTheory(el.dataset.id)));
+    const selectedIndex=Math.min(state.selectedTree,Math.max(0,trees.length-1));
+    state.selectedTree=selectedIndex;
+    $("#thoughtTrees").innerHTML=trees.map((tree,i)=>`
+      <button class="tree-choice ${i===selectedIndex?"active":""}" data-tree-index="${i}">
+        <span>${esc(tree.name)}</span>
+        <small>${tree.nodes.filter(id=>byId.has(id)).length} indexed ideas</small>
+      </button>`).join("");
+    $("#thoughtTrees").querySelectorAll("[data-tree-index]").forEach(el=>el.addEventListener("click",()=>{
+      state.selectedTree=Number(el.dataset.treeIndex);
+      renderTrees();
+    }));
+    renderThoughtTreeGraph();
+  }
+
+  function renderThoughtTreeGraph(){
+    const tree=trees[state.selectedTree]||trees[0];
+    const svg=d3.select("#thoughtTreeGraph");
+    if(!tree || svg.empty()) return;
+    $("#treeGraphTitle").textContent=tree.name;
+
+    const nodes=tree.nodes.map(id=>byId.get(id)).filter(Boolean).map(t=>({...t}));
+    const ids=new Set(nodes.map(n=>n.id));
+    const links=relations.filter(r=>ids.has(r.from)&&ids.has(r.to)).map(r=>({...r,source:r.from,target:r.to}));
+    const width=Math.max(920,Math.min(1500,nodes.length*68));
+    const categories=[...new Set(nodes.map(n=>n.category))];
+    const height=Math.max(430,categories.length*82+120);
+    const years=nodes.map(n=>Number(n.year)).filter(Number.isFinite);
+    const minYear=d3.min(years)??1900, maxYear=d3.max(years)??2026;
+    const x=d3.scaleLinear().domain([minYear-2,maxYear+2]).range([115,width-70]);
+    const y=d3.scalePoint().domain(categories).range([75,height-85]).padding(.35);
+
+    nodes.forEach(n=>{n.x=x(Number(n.year)||minYear);n.y=y(n.category)??height/2;});
+    const sim=d3.forceSimulation(nodes)
+      .force("x",d3.forceX(n=>x(Number(n.year)||minYear)).strength(.95))
+      .force("y",d3.forceY(n=>y(n.category)??height/2).strength(.75))
+      .force("collide",d3.forceCollide(34))
+      .force("charge",d3.forceManyBody().strength(-12))
+      .stop();
+    for(let i=0;i<180;i++) sim.tick();
+    nodes.forEach(n=>{
+      n.x=Math.max(105,Math.min(width-65,n.x));
+      n.y=Math.max(55,Math.min(height-75,n.y));
+    });
+    const nodeById=new Map(nodes.map(n=>[n.id,n]));
+    const resolvedLinks=links.map(l=>({...l,source:nodeById.get(l.from),target:nodeById.get(l.to)})).filter(l=>l.source&&l.target);
+
+    svg.selectAll("*").remove();
+    svg.attr("viewBox",`0 0 ${width} ${height}`).attr("preserveAspectRatio","xMinYMin meet");
+    const defs=svg.append("defs");
+    defs.append("marker").attr("id","tree-arrowhead").attr("viewBox","0 -5 10 10").attr("refX",13).attr("refY",0)
+      .attr("markerWidth",5).attr("markerHeight",5).attr("orient","auto")
+      .append("path").attr("d","M0,-5L10,0L0,5").attr("fill","#587386");
+
+    const grid=svg.append("g").attr("class","tree-grid");
+    categories.forEach(cat=>{
+      const yy=y(cat);
+      grid.append("line").attr("x1",105).attr("x2",width-45).attr("y1",yy).attr("y2",yy);
+      grid.append("text").attr("x",12).attr("y",yy+3).text(cat.length>20?cat.slice(0,18)+"…":cat);
+    });
+    const tickYears=d3.ticks(minYear,maxYear,Math.min(8,Math.max(3,Math.round((maxYear-minYear)/15))));
+    const axis=svg.append("g").attr("class","tree-year-axis").attr("transform",`translate(0,${height-42})`);
+    tickYears.forEach(year=>{
+      const xx=x(year);
+      axis.append("line").attr("x1",xx).attr("x2",xx).attr("y1",-height+95).attr("y2",0);
+      axis.append("text").attr("x",xx).attr("y",20).text(Math.round(year));
+    });
+
+    const linkLayer=svg.append("g").attr("class","tree-links");
+    linkLayer.selectAll("path").data(resolvedLinks).join("path")
+      .attr("d",l=>{
+        const sx=l.source.x,sy=l.source.y,tx=l.target.x,ty=l.target.y,mx=(sx+tx)/2;
+        return `M${sx},${sy} C${mx},${sy} ${mx},${ty} ${tx},${ty}`;
+      })
+      .attr("marker-end","url(#tree-arrowhead)")
+      .append("title").text(l=>relationLabels[l.type]||l.type);
+
+    const nodeLayer=svg.append("g");
+    const node=nodeLayer.selectAll("g").data(nodes,d=>d.id).join("g")
+      .attr("class",d=>"tree-graph-node"+(d.id===state.selected?" selected":""))
+      .attr("transform",d=>`translate(${d.x},${d.y})`)
+      .on("click",(e,d)=>{e.stopPropagation();selectTheory(d.id);});
+    node.append("circle").attr("r",d=>d.status.includes("established")?8:6.5).attr("fill",d=>categoryColors.get(d.category)||"#94a3b8");
+    node.append("text").attr("class","tree-graph-label").attr("y",-12).text(d=>d.name.length>24?d.name.slice(0,22)+"…":d.name);
+    node.append("text").attr("class","tree-graph-year").attr("y",19).text(d=>d.year);
+    node.append("title").text(d=>`${d.name} · ${d.year}\n${d.summary}`);
+
+    $("#treeGraphMeta").textContent=`${nodes.length} ideas · ${resolvedLinks.length} typed links · ${minYear}–${maxYear}`;
   }
 
   function ancestors(id, seen=new Set(), depth=0){
@@ -166,6 +249,7 @@
   }
   function renderLineage(){
     const t=byId.get(state.selected);
+    d3.selectAll(".tree-graph-node").classed("selected",d=>t&&d.id===t.id);
     if(!t){$("#lineageTitle").textContent="Choose a theory";$("#lineageDetail").className="lineage-detail empty";$("#lineageDetail").textContent="Select any theory in a tree, the map, timeline, or catalog.";return;}
     $("#lineageTitle").textContent=t.name; $("#lineageDetail").className="lineage-detail";
     const a=ancestors(t.id).sort((x,y)=>x.year-y.year), d=descendants(t.id).sort((x,y)=>x.year-y.year);
@@ -200,6 +284,7 @@
     $$(".view").forEach(v=>v.classList.remove("active"));
     $("#"+view+"View").classList.add("active");
     if(view==="map") setTimeout(renderGraph,0);
+    if(view==="lineage") setTimeout(renderThoughtTreeGraph,0);
   }
   $$(".tab").forEach(b=>b.addEventListener("click",()=>switchView(b.dataset.view)));
   $("#search").addEventListener("input",e=>{state.search=e.target.value;renderGraph();renderTimeline();renderCatalog();});

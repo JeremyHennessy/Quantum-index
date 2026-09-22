@@ -33,3 +33,28 @@ main{width:min(1540px,94vw);margin:auto;padding:34px 0 80px}.hero{display:grid;g
 .source-link strong{display:block;font-size:11px;line-height:1.35}
 .source-link span{display:block;color:var(--muted);font-size:9px;line-height:1.35;margin-top:4px}
 .reviewed{font-size:9px!important;color:var(--muted)!important;margin:8px 0 0!important}
+
+.tree-selector-card{align-self:start}
+.tree-choice-list{display:grid;gap:7px;margin-top:18px}
+.tree-choice{width:100%;text-align:left;border:1px solid #223845;background:#0b1720;border-radius:12px;padding:11px 12px;color:var(--text);cursor:pointer}
+.tree-choice:hover{border-color:#45657a}
+.tree-choice.active{border-color:#5f8ca5;background:#132633;box-shadow:inset 3px 0 0 var(--accent)}
+.tree-choice span{display:block;font-size:12px;font-weight:650;line-height:1.35}
+.tree-choice small{display:block;margin-top:4px;color:var(--muted);font-size:9px}
+.thought-tree-card{min-width:0;overflow:hidden}
+.thought-tree-head{padding-bottom:8px}
+.thought-tree-scroll{width:100%;overflow-x:auto;border:1px solid #1f3441;border-radius:14px;background:#08131c}
+#thoughtTreeGraph{display:block;width:100%;min-width:900px;height:auto;min-height:430px}
+.tree-grid line{stroke:#243845;stroke-width:1;stroke-dasharray:3 5}
+.tree-grid text{fill:#718995;font-size:9px;text-transform:uppercase;letter-spacing:.04em}
+.tree-year-axis line{stroke:#1d303c;stroke-width:1}
+.tree-year-axis text{fill:#718995;font-size:9px;text-anchor:middle}
+.tree-links path{fill:none;stroke:#587386;stroke-width:1.25;stroke-opacity:.62}
+.tree-graph-node{cursor:pointer}
+.tree-graph-node circle{stroke:#071018;stroke-width:2.5}
+.tree-graph-node:hover circle{stroke:#bde9fa;stroke-width:3}
+.tree-graph-node.selected circle{stroke:#fff;stroke-width:3.5}
+.tree-graph-label{fill:#e4eef2;font-size:9px;text-anchor:middle;pointer-events:none}
+.tree-graph-year{fill:#71909f;font-size:8px;text-anchor:middle;pointer-events:none}
+.selected-lineage-panel{border-top:1px solid var(--line);margin-top:12px;padding-top:18px}
+@media(max-width:1050px){.thought-tree-card{min-height:unset}.tree-selector-card{position:static}}
