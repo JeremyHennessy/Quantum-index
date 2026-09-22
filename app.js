@@ -1,10 +1,12 @@
 (() => {
   const { theories, relations, trees, sources } = window.QI_DATA;
   const formulas = window.QI_FORMULAS?.formulas || [];
+  const formulaAudit = window.QI_FORMULA_AUDIT?.entries || [];
+  const formulaAuditByTheory = new Map(formulaAudit.map(x => [x.theoryId,x]));
   const byId = new Map(theories.map(t => [t.id,t]));
   const sourceById = new Map(sources.map(s => [s.id,s]));
   const state = { search:"", category:"", kind:"", status:"", era:"", sourcedOnly:false, selected:null, selectedTree:0, view:"map" };
-  const formulaState = { search:"", category:"", theory:"" };
+  const formulaState = { search:"", category:"", theory:"", type:"" };
   const categoryColors = new Map([
     ["Historical foundations","#f59e0b"],["Formulations","#60a5fa"],["Foundations & interpretations","#c084fc"],
     ["Quantum field theory","#34d399"],["Quantum information & open systems","#22d3ee"],["Quantum gravity & spacetime","#f472b6"],
@@ -40,6 +42,7 @@
   setOptions("#statusFilter",[...new Set(theories.map(t=>t.status))].sort());
   setOptions("#eraFilter",[...new Set(theories.map(t=>t.era))]);
   setOptions("#formulaCategory",[...new Set(formulas.map(f=>f.category))].sort());
+  setOptions("#formulaType",[...new Set(formulas.map(f=>f.formulaType))].sort());
   const formulaTheoryIds=[...new Set(formulas.flatMap(f=>f.theoryIds))].filter(id=>byId.has(id)).sort((a,b)=>byId.get(a).name.localeCompare(byId.get(b).name));
   const formulaTheorySelect=$("#formulaTheory");
   formulaTheorySelect.innerHTML=formulaTheorySelect.firstElementChild.outerHTML+formulaTheoryIds.map(id=>`<option value="${id}">${esc(byId.get(id).name)}</option>`).join("");
@@ -95,6 +98,20 @@
         <span class="badge">${esc(provenance)}</span>
       </div>
       <div class="detail-section"><h4>What it is</h4><p>${esc(t.summary)}</p></div>
+      ${(()=>{
+        const audit=formulaAuditByTheory.get(t.id);
+        if(!audit) return "";
+        const linked=audit.formulaIds.map(fid=>formulas.find(f=>f.id===fid)).filter(Boolean);
+        return `<div class="detail-section">
+          <h4>Formula audit</h4>
+          <div class="badge-row">
+            <span class="badge">${esc(audit.classification)}</span>
+            <span class="badge">${esc(audit.coverageStatus)}</span>
+            ${audit.priority!=="not-applicable"?`<span class="badge">${esc(audit.priority)} priority</span>`:""}
+          </div>
+          ${linked.length?`<p>${linked.length} source-linked formula${linked.length===1?"":"s"} in the atlas.</p>`:`<p>${esc(audit.gapReason||"No formula audit reason recorded.")}</p>`}
+        </div>`;
+      })()}
       <div class="detail-section"><h4>Core idea</h4><p>${esc(t.core)}</p></div>
       <div class="detail-section"><h4>Concepts</h4><div class="tag-list">${t.tags.map(x=>`<span class="tag">${esc(x)}</span>`).join("")}</div></div>
       <div class="detail-section"><h4>Sources · ${linkedSources.length}</h4>
@@ -290,6 +307,7 @@
       const theoryText=f.theoryIds.map(id=>byId.get(id)?.name||id).join(" ");
       return (!q || [f.name,f.category,f.plain,f.description,...(f.tags||[]),theoryText].join(" ").toLowerCase().includes(q)) &&
         (!formulaState.category || f.category===formulaState.category) &&
+        (!formulaState.type || f.formulaType===formulaState.type) &&
         (!formulaState.theory || f.theoryIds.includes(formulaState.theory));
     });
   }
@@ -322,10 +340,17 @@
       return `
         <article class="formula-card">
           <div class="formula-meta"><span>${esc(f.category)}</span><span>${f.sourceIds.length} source${f.sourceIds.length===1?"":"s"}</span></div>
+          <div class="formula-role-row"><span class="formula-role">${esc(f.formulaType)}</span><span>${esc(f.theoryRelationship)}</span></div>
           <h4>${esc(f.name)}</h4>
           <div class="formula-equation">\\[${esc(f.latex)}\\]</div>
           <div class="formula-plain">${esc(f.plain)}</div>
           <p>${esc(f.description)}</p>
+          <dl class="formula-detail">
+            <div><dt>Regime</dt><dd>${esc(f.regime)}</dd></div>
+            <div><dt>Assumptions</dt><dd>${f.assumptions.length?f.assumptions.map(esc).join("; "):"No additional assumptions recorded in the baseline audit."}</dd></div>
+            <div><dt>Variables</dt><dd>${f.variables.length?f.variables.map(esc).join("; "):"See equation and linked source."}</dd></div>
+            <div><dt>Units</dt><dd>${esc(f.units)}</dd></div>
+          </dl>
           <div class="formula-theories">${theoriesHtml}</div>
           <div class="formula-sources">${sourcesHtml}</div>
         </article>`;
@@ -358,6 +383,7 @@
   $("#sourcedOnly").addEventListener("change",e=>{state.sourcedOnly=e.target.checked;renderGraph();renderTimeline();renderCatalog();});
   $("#formulaSearch").addEventListener("input",e=>{formulaState.search=e.target.value;renderFormulas();});
   $("#formulaCategory").addEventListener("change",e=>{formulaState.category=e.target.value;renderFormulas();});
+  $("#formulaType").addEventListener("change",e=>{formulaState.type=e.target.value;renderFormulas();});
   $("#formulaTheory").addEventListener("change",e=>{formulaState.theory=e.target.value;renderFormulas();});
   $("#resetView").addEventListener("click",()=>{
     Object.assign(state,{search:"",category:"",kind:"",status:"",era:"",sourcedOnly:false});

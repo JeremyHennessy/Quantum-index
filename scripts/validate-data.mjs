@@ -10,11 +10,15 @@ const data = sandbox.window.QI_DATA;
 const formulaCode = fs.readFileSync("formulas.js","utf8");
 vm.runInContext(formulaCode, sandbox);
 const formulaData = sandbox.window.QI_FORMULAS;
+const formulaAuditCode = fs.readFileSync("formula-audit.js","utf8");
+vm.runInContext(formulaAuditCode, sandbox);
+const formulaAudit = sandbox.window.QI_FORMULA_AUDIT;
 
 if (!data || !Array.isArray(data.theories) || !Array.isArray(data.relations) || !Array.isArray(data.trees) || !Array.isArray(data.sources)) {
   throw new Error("QI_DATA schema missing");
 }
 if (!formulaData || !Array.isArray(formulaData.formulas)) throw new Error("QI_FORMULAS schema missing");
+if (!formulaAudit || !Array.isArray(formulaAudit.entries)) throw new Error("QI_FORMULA_AUDIT schema missing");
 
 const ids = data.theories.map(t=>t.id);
 const unique = new Set(ids);
@@ -65,17 +69,35 @@ for (const tree of data.trees) {
 const formulaIds = formulaData.formulas.map(f=>f.id);
 const uniqueFormulaIds = new Set(formulaIds);
 if (uniqueFormulaIds.size !== formulaIds.length) throw new Error("Duplicate formula IDs");
-if (formulaData.formulas.length < 260) throw new Error(`Expected formula atlas >= 260 entries; found ${formulaData.formulas.length}`);
+if (formulaData.formulas.length < 320) throw new Error(`Expected formula atlas >= 320 entries; found ${formulaData.formulas.length}`);
 
+const allowedFormulaTypes = new Set(["exact","defining","canonical","schematic","approximation","limit","derived identity"]);
 for (const f of formulaData.formulas) {
-  for (const key of ["id","name","category","latex","plain","description"]) {
+  for (const key of ["id","name","category","latex","plain","description","formulaType","regime","units","theoryRelationship","metadataReview"]) {
     if (f[key] === undefined || f[key] === null || f[key] === "") throw new Error(`Formula ${f.id || "?"} missing ${key}`);
   }
+  if (!allowedFormulaTypes.has(f.formulaType)) throw new Error(`Formula ${f.id} has invalid formulaType ${f.formulaType}`);
+  if (!Array.isArray(f.assumptions)) throw new Error(`Formula ${f.id} assumptions must be an array`);
+  if (!Array.isArray(f.variables)) throw new Error(`Formula ${f.id} variables must be an array`);
   if (!Array.isArray(f.theoryIds) || !f.theoryIds.length) throw new Error(`Formula ${f.id} has no linked theory`);
   if (!Array.isArray(f.sourceIds) || !f.sourceIds.length) throw new Error(`Formula ${f.id} has no source`);
   for (const id of f.theoryIds) if (!unique.has(id)) throw new Error(`Formula ${f.id} references missing theory ${id}`);
   for (const id of f.sourceIds) if (!uniqueSources.has(id)) throw new Error(`Formula ${f.id} references missing source ${id}`);
 }
+
+const auditTheoryIds = formulaAudit.entries.map(e=>e.theoryId);
+if (new Set(auditTheoryIds).size !== auditTheoryIds.length) throw new Error("Duplicate theory IDs in formula audit");
+if (auditTheoryIds.length !== ids.length) throw new Error(`Formula audit count ${auditTheoryIds.length} does not match theory count ${ids.length}`);
+const allowedAuditClasses = new Set(["formula-bearing","formula-bearing-gap","primarily conceptual","theorem","interpretation","thought experiment"]);
+for (const e of formulaAudit.entries) {
+  if (!unique.has(e.theoryId)) throw new Error(`Formula audit references missing theory ${e.theoryId}`);
+  if (!allowedAuditClasses.has(e.classification)) throw new Error(`Formula audit ${e.theoryId} has invalid classification ${e.classification}`);
+  if (!Array.isArray(e.formulaIds)) throw new Error(`Formula audit ${e.theoryId} formulaIds must be an array`);
+  for (const id of e.formulaIds) if (!uniqueFormulaIds.has(id)) throw new Error(`Formula audit ${e.theoryId} references missing formula ${id}`);
+  if (e.classification === "formula-bearing" && !e.formulaIds.length) throw new Error(`Formula-bearing theory ${e.theoryId} has no formula`);
+  if (e.classification === "formula-bearing-gap" && !e.gapReason) throw new Error(`Formula gap ${e.theoryId} lacks a documented reason`);
+}
+
 
 const cataloguedOnly = data.theories.filter(t=>t.provenance === "catalogued");
 if (cataloguedOnly.length) {
@@ -93,5 +115,8 @@ console.log(JSON.stringify({
   sourceBacked,
   sourceCoveragePct:Number((sourceBacked / data.theories.length * 100).toFixed(1)),
   formulas:formulaData.formulas.length,
-  formulaCategories:[...new Set(formulaData.formulas.map(f=>f.category))].length
+  formulaCategories:[...new Set(formulaData.formulas.map(f=>f.category))].length,
+  formulaTypes:[...new Set(formulaData.formulas.map(f=>f.formulaType))].length,
+  formulaAuditCovered:formulaAudit.entries.filter(e=>e.classification==="formula-bearing").length,
+  formulaAuditGaps:formulaAudit.entries.filter(e=>e.classification==="formula-bearing-gap").length
 },null,2));
