@@ -13,17 +13,21 @@ const formulaData = sandbox.window.QI_FORMULAS;
 const formulaAuditCode = fs.readFileSync("formula-audit.js","utf8");
 vm.runInContext(formulaAuditCode, sandbox);
 const formulaAudit = sandbox.window.QI_FORMULA_AUDIT;
+const pbsCode = fs.readFileSync("pbs-spacetime.js","utf8");
+vm.runInContext(pbsCode, sandbox);
+const pbsData = sandbox.window.QI_SPACETIME;
 
 if (!data || !Array.isArray(data.theories) || !Array.isArray(data.relations) || !Array.isArray(data.trees) || !Array.isArray(data.sources)) {
   throw new Error("QI_DATA schema missing");
 }
 if (!formulaData || !Array.isArray(formulaData.formulas)) throw new Error("QI_FORMULAS schema missing");
 if (!formulaAudit || !Array.isArray(formulaAudit.entries)) throw new Error("QI_FORMULA_AUDIT schema missing");
+if (!pbsData || !Array.isArray(pbsData.mentions)) throw new Error("QI_SPACETIME schema missing");
 
 const ids = data.theories.map(t=>t.id);
 const unique = new Set(ids);
 if (unique.size !== ids.length) throw new Error("Duplicate theory IDs");
-if (data.theories.length < 265) throw new Error(`Expected expanded seed corpus; found only ${data.theories.length}`);
+if (data.theories.length < 300) throw new Error(`Expected expanded corpus; found only ${data.theories.length}`);
 
 const sourceIds = data.sources.map(s=>s.id);
 const uniqueSources = new Set(sourceIds);
@@ -60,7 +64,7 @@ for (const r of data.relations) {
   if (r.confidence !== "editorial" && r.sourceIds.length === 0) throw new Error(`Non-editorial relation ${r.from}->${r.to} lacks evidence sources`);
 }
 const sourcedRelations = data.relations.filter(r=>r.sourceIds.length);
-if (sourcedRelations.length < 57) throw new Error(`Expected at least 57 source-backed relations; found ${sourcedRelations.length}`);
+if (sourcedRelations.length < 100) throw new Error(`Expected at least 100 source-backed relations; found ${sourcedRelations.length}`);
 for (const tree of data.trees) {
   for (const id of tree.nodes) if (!unique.has(id)) throw new Error(`Tree ${tree.name} references missing ${id}`);
   const nodeSet = new Set(tree.nodes);
@@ -78,7 +82,7 @@ for (const tree of data.trees) {
 const formulaIds = formulaData.formulas.map(f=>f.id);
 const uniqueFormulaIds = new Set(formulaIds);
 if (uniqueFormulaIds.size !== formulaIds.length) throw new Error("Duplicate formula IDs");
-if (formulaData.formulas.length < 345) throw new Error(`Expected formula atlas >= 345 entries; found ${formulaData.formulas.length}`);
+if (formulaData.formulas.length < 385) throw new Error(`Expected formula atlas >= 385 entries; found ${formulaData.formulas.length}`);
 
 const allowedFormulaTypes = new Set(["exact","defining","canonical","schematic","approximation","limit","derived identity"]);
 for (const f of formulaData.formulas) {
@@ -108,6 +112,26 @@ for (const e of formulaAudit.entries) {
 }
 
 
+
+const mentionIds = pbsData.mentions.map(m=>m.id);
+if (new Set(mentionIds).size !== mentionIds.length) throw new Error("Duplicate PBS Space Time mention IDs");
+if (pbsData.mentions.length < 15) throw new Error(`Expected at least 15 curated PBS Space Time mentions; found ${pbsData.mentions.length}`);
+const allowedPbsEvidence = new Set(["official PBS transcript","search-index transcript hit"]);
+for (const m of pbsData.mentions) {
+  for (const key of ["id","episodeTitle","date","pbsUrl","searchUrl","evidence"]) {
+    if (m[key] === undefined || m[key] === null || m[key] === "") throw new Error(`PBS mention ${m.id || "?"} missing ${key}`);
+  }
+  if (!Array.isArray(m.theoryIds) || !m.theoryIds.length) throw new Error(`PBS mention ${m.id} has no linked theory`);
+  if (!Array.isArray(m.terms) || !m.terms.length) throw new Error(`PBS mention ${m.id} has no matched terms`);
+  if (!allowedPbsEvidence.has(m.evidence)) throw new Error(`PBS mention ${m.id} has invalid evidence class ${m.evidence}`);
+  if (!String(m.pbsUrl).startsWith("https://")) throw new Error(`PBS mention ${m.id} PBS URL is not HTTPS`);
+  if (!String(m.searchUrl).startsWith("https://")) throw new Error(`PBS mention ${m.id} search URL is not HTTPS`);
+  if (m.evidence === "official PBS transcript" && !String(m.pbsUrl).startsWith("https://www.pbs.org/")) {
+    throw new Error(`Official PBS transcript mention ${m.id} does not use an official pbs.org URL`);
+  }
+  for (const id of m.theoryIds) if (!unique.has(id)) throw new Error(`PBS mention ${m.id} references missing theory ${id}`);
+}
+
 const cataloguedOnly = data.theories.filter(t=>t.provenance === "catalogued");
 if (cataloguedOnly.length) {
   throw new Error(`Shipped theory remains catalogued-only: ${cataloguedOnly.map(t=>t.id).join(", ")}`);
@@ -129,5 +153,6 @@ console.log(JSON.stringify({
   formulaCategories:[...new Set(formulaData.formulas.map(f=>f.category))].length,
   formulaTypes:[...new Set(formulaData.formulas.map(f=>f.formulaType))].length,
   formulaAuditCovered:formulaAudit.entries.filter(e=>e.classification==="formula-bearing").length,
-  formulaAuditGaps:formulaAudit.entries.filter(e=>e.classification==="formula-bearing-gap").length
+  formulaAuditGaps:formulaAudit.entries.filter(e=>e.classification==="formula-bearing-gap").length,
+  pbsTranscriptMentions:pbsData.mentions.length
 },null,2));
