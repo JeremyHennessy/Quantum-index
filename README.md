@@ -15,7 +15,7 @@ Quantum Index is a source-aware map of quantum theory: historical foundations, f
 
 The current corpus is a broad research seed rather than a claim of literal completeness. The schema is designed to grow without changing the UI.
 
-Current audited branch metrics: **172 entities**, **195 typed relationships**, **9 thought trees**, **155 bibliography/source records**, with **159 entries carrying dedicated source provenance**, including **110 primary-sourced entries**. Catalog coverage and source coverage are intentionally reported separately.
+Current audited branch metrics: **172 entities**, **195 typed relationships**, **9 thought trees**, **168 bibliography/source records**, with **172/172 entries carrying dedicated source provenance**: **120 primary-sourced** and **52 review/authoritative-source backed**. Catalog coverage and source coverage are intentionally reported separately.
 
 Static app:
 - `index.html`
@@ -61,4 +61,4 @@ See:
 - `docs/TAXONOMY.md` for category, kind, status and relation semantics.
 - `research/CANDIDATES.md` for the unresolved candidate backlog.
 
-The application must not describe the catalog as literally complete until the documented completeness acceptance criteria are satisfied.
+The application must not describe the catalog as literally complete until the documented completeness acceptance criteria are satisfied. Unsourced candidates remain in the research backlog rather than entering the shipped catalog.
