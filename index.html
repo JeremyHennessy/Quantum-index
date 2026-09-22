@@ -98,16 +98,27 @@
 
     <section id="lineageView" class="view">
       <div class="lineage-grid">
-        <div class="card">
+        <div class="card tree-selector-card">
           <p class="eyebrow">THOUGHT TREES</p>
           <h3>Major intellectual branches</h3>
-          <p class="muted">These trees are curated views over the same relation graph. Cross-links remain visible in theory details.</p>
-          <div id="thoughtTrees"></div>
+          <p class="muted">Choose a branch. The map uses the catalog's actual typed relationships; it does not invent arrows between adjacent items.</p>
+          <div id="thoughtTrees" class="tree-choice-list"></div>
         </div>
-        <div class="card">
-          <p class="eyebrow">SELECTED LINEAGE</p>
-          <h3 id="lineageTitle">Choose a theory</h3>
-          <div id="lineageDetail" class="lineage-detail empty">Select any theory in a tree, the map, timeline, or catalog.</div>
+        <div class="card thought-tree-card">
+          <div class="thought-tree-head">
+            <div>
+              <p class="eyebrow">PROGRESSION MAP</p>
+              <h3 id="treeGraphTitle">Thought tree</h3>
+              <p id="treeGraphMeta" class="muted"></p>
+            </div>
+          </div>
+          <div class="thought-tree-scroll"><svg id="thoughtTreeGraph" role="img" aria-label="Chronological thought-tree relationship graph"></svg></div>
+          <p class="hint">Horizontal position is chronological. Rows show primary catalog category. Arrows appear only for relationships explicitly stored in the index.</p>
+          <div class="selected-lineage-panel">
+            <p class="eyebrow">SELECTED LINEAGE</p>
+            <h3 id="lineageTitle">Choose a theory</h3>
+            <div id="lineageDetail" class="lineage-detail empty">Select a node to inspect its upstream ideas, downstream progression and overlaps.</div>
+          </div>
         </div>
       </div>
     </section>
