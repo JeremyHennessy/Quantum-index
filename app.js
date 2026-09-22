@@ -3,6 +3,8 @@
   const formulas = window.QI_FORMULAS?.formulas || [];
   const formulaAudit = window.QI_FORMULA_AUDIT?.entries || [];
   const formulaAuditByTheory = new Map(formulaAudit.map(x => [x.theoryId,x]));
+  const spacetimeMentions = window.QI_SPACETIME?.mentions || [];
+  const spacetimeByTheory = new Map(theories.map(t => [t.id, spacetimeMentions.filter(m => (m.theoryIds||[]).includes(t.id))]));
   const byId = new Map(theories.map(t => [t.id,t]));
   const sourceById = new Map(sources.map(s => [s.id,s]));
   const state = { search:"", category:"", kind:"", status:"", era:"", sourcedOnly:false, selected:null, selectedTree:0, view:"map" };
@@ -11,7 +13,8 @@
     ["Historical foundations","#f59e0b"],["Formulations","#60a5fa"],["Foundations & interpretations","#c084fc"],
     ["Quantum field theory","#34d399"],["Quantum information & open systems","#22d3ee"],["Quantum gravity & spacetime","#f472b6"],
     ["Quantum cosmology","#fb7185"],["Beyond standard quantum theory","#facc15"],["Mathematical structures","#a3e635"],
-    ["Quantum optics & AMO","#f0abfc"],["Quantum many-body & condensed matter","#2dd4bf"],["Quantum chemistry & electronic structure","#a7f3d0"]
+    ["Quantum optics & AMO","#f0abfc"],["Quantum many-body & condensed matter","#2dd4bf"],["Quantum chemistry & electronic structure","#a7f3d0"],
+    ["Relativity & astrophysics","#fdba74"],["Cosmology & dark sector","#93c5fd"]
   ]);
   const relationLabels = {
     precursor:"precursor of",reformulates:"reformulates",extends:"extends","challenged by":"challenges / challenged by",
@@ -87,6 +90,8 @@
     const rel=related(t.id);
     const provenance=t.provenance==="primary-sourced"?"Primary sourced":t.provenance==="review-sourced"?"Review sourced":"Catalog seed · source pass pending";
     const linkedSources=(t.sources||[]).map(id=>sourceById.get(id)).filter(Boolean);
+    const mediaMentions=spacetimeByTheory.get(t.id)||[];
+    const mediaSearch="https://search.pbsspacetime.com/?q="+encodeURIComponent(t.name);
     panel.innerHTML=`
       <p class="eyebrow">${esc(t.category)}</p>
       <h3 class="detail-title">${esc(t.name)}</h3>
@@ -117,6 +122,11 @@
       <div class="detail-section"><h4>Sources · ${linkedSources.length}</h4>
         ${linkedSources.length ? `<div class="source-list">${linkedSources.map(s=>`<a class="source-link" href="${esc(s.url)}" target="_blank" rel="noreferrer"><strong>${esc(s.title)}</strong><span>${esc(s.authors)} · ${esc(s.year)} · ${esc(s.type)}</span></a>`).join("")}</div>` : '<p>Dedicated source pass not completed for this entry yet.</p>'}
         ${t.lastReviewed?`<p class="reviewed">Last source review: ${esc(t.lastReviewed)}</p>`:""}
+      </div>
+      <div class="detail-section"><h4>PBS Space Time transcript mentions · ${mediaMentions.length}</h4>
+        ${mediaMentions.length ? `<div class="source-list">${mediaMentions.map(m=>`<a class="source-link media-link" href="${esc(m.pbsUrl)}" target="_blank" rel="noreferrer"><strong>${esc(m.episodeTitle)}</strong><span>${esc(m.date)} · ${esc(m.seasonEpisode)} · ${esc(m.evidence)}</span><span>Matched: ${(m.terms||[]).map(esc).join(", ")}</span></a>`).join("")}</div>` : '<p>No curated transcript mention has been verified for this theory yet.</p>'}
+        <a class="media-search" href="${esc(mediaSearch)}" target="_blank" rel="noreferrer">Search the PBS Space Time transcript index for this theory</a>
+        <p class="media-note">Transcript/media discovery only — these mentions do not count as scientific provenance.</p>
       </div>
       <div class="detail-section"><h4>Connections · ${rel.length}</h4><div class="relation-list">
         ${rel.slice().sort((a,b)=>a.other.year-b.other.year).map(({r,other,outbound})=>`
