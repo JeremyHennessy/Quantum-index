@@ -20,6 +20,7 @@ jobs:
           node --check theories.js
           node --check formulas.js
           node --check formula-audit.js
+          node --check pbs-spacetime.js
       - name: Validate theory graph
         run: node scripts/validate-data.mjs
       - name: Verify static entry point
@@ -30,6 +31,7 @@ jobs:
           grep -q './app.js' index.html
           grep -q './formulas.js' index.html
           grep -q './formula-audit.js' index.html
+          grep -q './pbs-spacetime.js' index.html
           grep -q 'id="formulaView"' index.html
           grep -q 'id="formulaGrid"' index.html
           grep -q 'id="thoughtTreeGraph"' index.html
