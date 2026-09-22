@@ -23,7 +23,7 @@ if (!formulaAudit || !Array.isArray(formulaAudit.entries)) throw new Error("QI_F
 const ids = data.theories.map(t=>t.id);
 const unique = new Set(ids);
 if (unique.size !== ids.length) throw new Error("Duplicate theory IDs");
-if (data.theories.length < 260) throw new Error(`Expected expanded seed corpus; found only ${data.theories.length}`);
+if (data.theories.length < 265) throw new Error(`Expected expanded seed corpus; found only ${data.theories.length}`);
 
 const sourceIds = data.sources.map(s=>s.id);
 const uniqueSources = new Set(sourceIds);
@@ -60,7 +60,7 @@ for (const r of data.relations) {
   if (r.confidence !== "editorial" && r.sourceIds.length === 0) throw new Error(`Non-editorial relation ${r.from}->${r.to} lacks evidence sources`);
 }
 const sourcedRelations = data.relations.filter(r=>r.sourceIds.length);
-if (sourcedRelations.length < 50) throw new Error(`Expected at least 50 source-backed relations; found ${sourcedRelations.length}`);
+if (sourcedRelations.length < 57) throw new Error(`Expected at least 57 source-backed relations; found ${sourcedRelations.length}`);
 for (const tree of data.trees) {
   for (const id of tree.nodes) if (!unique.has(id)) throw new Error(`Tree ${tree.name} references missing ${id}`);
   const nodeSet = new Set(tree.nodes);
@@ -78,7 +78,7 @@ for (const tree of data.trees) {
 const formulaIds = formulaData.formulas.map(f=>f.id);
 const uniqueFormulaIds = new Set(formulaIds);
 if (uniqueFormulaIds.size !== formulaIds.length) throw new Error("Duplicate formula IDs");
-if (formulaData.formulas.length < 320) throw new Error(`Expected formula atlas >= 320 entries; found ${formulaData.formulas.length}`);
+if (formulaData.formulas.length < 323) throw new Error(`Expected formula atlas >= 323 entries; found ${formulaData.formulas.length}`);
 
 const allowedFormulaTypes = new Set(["exact","defining","canonical","schematic","approximation","limit","derived identity"]);
 for (const f of formulaData.formulas) {
