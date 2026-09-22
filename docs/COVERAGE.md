@@ -10,10 +10,10 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 - **195** typed relationships
 - **9** curated thought trees
 - **9** top-level categories
-- **105** bibliography/source records
-- **110 / 172 (64.0%)** entries currently have dedicated source provenance
-- **62 / 172** entries remain catalogued seeds pending a dedicated source pass
-- **69 / 172** are now marked `primary-sourced` after direct verification of original or program-defining papers
+- **126** bibliography/source records
+- **129 / 172 (75.0%)** entries currently have dedicated source provenance
+- **43 / 172** entries remain catalogued seeds pending a dedicated source pass
+- **86 / 172** are now marked `primary-sourced` after direct verification of original or program-defining papers
 
 ### Category coverage
 
@@ -94,6 +94,8 @@ The next pass verified program-defining primary sources across QFT and quantum g
 The formal/emergent sweep then added 23 source-backed entities spanning Jordan-algebraic QM, light-front and causal perturbative quantization, quantum stochastic calculus, p-adic and q-deformed QM, tensor networks/MPS, quantum measure theory, topos and sheaf contextuality, causal-set growth, adiabatic/measurement-based/topological quantum computation, higher-spin gravity, MERA, ZX calculus, causal fermion systems, many-interacting-worlds, string field theory, BFSS/IKKT matrix models and modal quantum theory.
 
 The early-foundations source pass then verified Planck's quantization paper, Einstein's light-quantum paper, Bohr's 1913 atomic model, de Broglie's matter-wave thesis, Heisenberg's uncertainty paper, Dirac's transformation theory, von Neumann's probabilistic/density-operator formalism, EPR, Schrödinger's 1935 cat paper and the Leggett–Garg theorem. The old quantum theory umbrella is separately review-sourced rather than incorrectly assigned to a single primary paper.
+
+The information/formalism pass added dedicated provenance for quantum information, GPTs, resource theories, quantum causal modelling, open-system theory, quantum trajectories, quantum combs, the quantum switch, process tensors, categorical QM, the amplituhedron, deformation and geometric quantum mechanics, Wigner–Moyal phase-space QM, Schwinger–Keldysh, geometric and stochastic quantization, BV and BRST.
 
 ## Known coverage gaps / next research passes
 
