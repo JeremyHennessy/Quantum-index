@@ -18,6 +18,7 @@ jobs:
         run: |
           node --check app.js
           node --check theories.js
+          node --check formulas.js
       - name: Validate theory graph
         run: node scripts/validate-data.mjs
       - name: Verify static entry point
@@ -26,6 +27,9 @@ jobs:
           test -f styles.css
           grep -q './theories.js' index.html
           grep -q './app.js' index.html
+          grep -q './formulas.js' index.html
+          grep -q 'id="formulaView"' index.html
+          grep -q 'id="formulaGrid"' index.html
           grep -q 'id="thoughtTreeGraph"' index.html
           grep -q 'id="treeGraphTitle"' index.html
           grep -q 'function renderThoughtTreeGraph' app.js
