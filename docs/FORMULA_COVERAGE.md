@@ -1,11 +1,11 @@
 # Quantum Index formula coverage
 
-_Last audited: 2026-09-21_
+_Last audited: 2026-09-22_
 
 ## Current formula corpus
 
-- **266** formula entries
-- **26** formula categories
+- **389** formula entries
+- **36** formula categories
 - **0** duplicate formula IDs
 - **0** dangling theory references
 - **0** dangling source references
@@ -16,22 +16,22 @@ _Last audited: 2026-09-21_
 
 | Formula category | Entries |
 |---|---:|
-| Core quantum mechanics | 25 |
+| Core quantum mechanics | 26 |
 | Wave mechanics | 17 |
-| Formulations | 2 |
+| Formulations | 9 |
 | Phase-space quantum mechanics | 3 |
-| Mathematical structures | 1 |
-| Foundations & interpretations | 7 |
-| Collapse theories | 5 |
+| Mathematical structures | 3 |
+| Foundations & interpretations | 9 |
+| Collapse theories | 6 |
 | Quantum spacetime | 1 |
 | Relativistic quantum theory | 4 |
-| Quantum field theory | 35 |
-| Quantum information | 27 |
-| Open quantum systems | 3 |
+| Quantum field theory | 45 |
+| Quantum information | 35 |
+| Open quantum systems | 7 |
 | Quantum thermodynamics | 3 |
 | Quantum optics & AMO | 21 |
-| Quantum many-body & condensed matter | 27 |
-| Quantum gravity & cosmology | 36 |
+| Quantum many-body & condensed matter | 34 |
+| Quantum gravity & cosmology | 56 |
 | Topological quantum theory | 2 |
 | Perturbation theory | 5 |
 | Scattering theory | 7 |
@@ -42,6 +42,16 @@ _Last audited: 2026-09-21_
 | Quantum error correction | 10 |
 | Continuous-variable quantum information | 6 |
 | Quantum metrology | 7 |
+| Quantum chemistry & electronic structure | 15 |
+| Beyond standard quantum theory | 2 |
+| Relativity & astrophysics | 10 |
+| Astrophysical structure | 7 |
+| Compact objects | 2 |
+| Accretion astrophysics | 4 |
+| Plasma astrophysics | 2 |
+| Radiative astrophysics | 1 |
+| High-energy astrophysics | 1 |
+| Cosmology & dark sector | 17 |
 
 ## What “all known formulas” means operationally
 
@@ -113,3 +123,8 @@ The second sweep added 60 source-linked formulas covering stationary and time-de
 ## Formula sweep 3 additions
 
 The third sweep adds dedicated quantum-error-correction formulas (stabilizers, surface-code checks and GKP operators), continuous-variable covariance/symplectic relations, quantum-metrology and spin-squeezing formulas, additional AMO relations, and deeper canonical-gravity/cosmology expressions including Ashtekar brackets, LQG constraints, spin-foam/GFT schematic amplitudes, no-boundary/tunneling wavefunctions, causal-set sprinkling and CDT partition sums.
+
+
+## Formula sweep: relativity, astrophysics and dark sector
+
+Added canonical/source-linked equations for Einstein/Newton gravity, exact and representative spacetime geometries, stellar and compact-object structure, accretion and jet physics, MHD and nonthermal radiation, expanding/inhomogeneous cosmology, cosmic structure, modified gravity, dark-matter abundance models, dynamical dark energy, topological defects and PBS-discovered cosmological proposals. The atlas remains selective: derivationally trivial rearrangements and model-specific variants are not first-class formulas unless their assumptions or physical meaning differ materially.
