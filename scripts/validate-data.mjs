@@ -45,6 +45,16 @@ for (const r of data.relations) {
 }
 for (const tree of data.trees) {
   for (const id of tree.nodes) if (!unique.has(id)) throw new Error(`Tree ${tree.name} references missing ${id}`);
+  const nodeSet = new Set(tree.nodes);
+  const connected = new Set();
+  for (const r of data.relations) {
+    if (nodeSet.has(r.from) && nodeSet.has(r.to)) {
+      connected.add(r.from);
+      connected.add(r.to);
+    }
+  }
+  const isolated = tree.nodes.filter(id => !connected.has(id));
+  if (isolated.length) throw new Error(`Tree ${tree.name} has isolated nodes: ${isolated.join(", ")}`);
 }
 
 const sourceBacked = data.theories.filter(t=>t.provenance !== "catalogued").length;
