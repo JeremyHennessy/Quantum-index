@@ -1,7 +1,8 @@
 (() => {
-  const { theories, relations, trees } = window.QI_DATA;
+  const { theories, relations, trees, sources } = window.QI_DATA;
   const byId = new Map(theories.map(t => [t.id,t]));
-  const state = { search:"", category:"", status:"", era:"", sourcedOnly:false, selected:null, view:"map" };
+  const sourceById = new Map(sources.map(s => [s.id,s]));
+  const state = { search:"", category:"", kind:"", status:"", era:"", sourcedOnly:false, selected:null, view:"map" };
   const categoryColors = new Map([
     ["Historical foundations","#f59e0b"],["Formulations","#60a5fa"],["Foundations & interpretations","#c084fc"],
     ["Quantum field theory","#34d399"],["Quantum information & open systems","#22d3ee"],["Quantum gravity & spacetime","#f472b6"],
@@ -9,7 +10,7 @@
   ]);
   const relationLabels = {
     precursor:"precursor of",reformulates:"reformulates",extends:"extends","challenged by":"challenges / challenged by",
-    interprets:"interprets",unifies:"feeds into / unifies",supports:"supports",generalizes:"generalizes",overlaps:"overlaps",motivates:"motivates",formalizes:"formalizes"
+    interprets:"interprets",unifies:"feeds into / unifies",supports:"supports",generalizes:"generalizes",overlaps:"overlaps",motivates:"motivates",formalizes:"formalizes",challenges:"challenges"
   };
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
@@ -20,6 +21,7 @@
     return theories.filter(t =>
       (!q || [t.name,t.summary,t.core,...t.tags,...t.aliases].join(" ").toLowerCase().includes(q)) &&
       (!state.category || t.category===state.category) &&
+      (!state.kind || t.kind===state.kind) &&
       (!state.status || t.status===state.status) &&
       (!state.era || t.era===state.era) &&
       (!state.sourcedOnly || t.provenance==="sourced")
@@ -31,17 +33,18 @@
     el.innerHTML=first+values.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join("");
   }
   setOptions("#categoryFilter",[...new Set(theories.map(t=>t.category))].sort());
+  setOptions("#kindFilter",[...new Set(theories.map(t=>t.kind))].sort());
   setOptions("#statusFilter",[...new Set(theories.map(t=>t.status))].sort());
   setOptions("#eraFilter",[...new Set(theories.map(t=>t.era))]);
 
   function renderStats(){
     const cat=new Set(theories.map(t=>t.category)).size;
-    const sourced=theories.filter(t=>t.provenance==="sourced").length;
+    const sourced=theories.filter(t=>t.provenance!=="catalogued").length;
     $("#stats").innerHTML=[
       [theories.length,"catalogued theories & frameworks"],
       [cat,"major categories"],
       [relations.length,"typed connections"],
-      [`${sourced}/${theories.length}`,"dedicated source pass complete"]
+      [`${sourced}/${theories.length}`,"entries with review/source provenance"]
     ].map(([n,l])=>`<div class="stat"><strong>${n}</strong><span>${l}</span></div>`).join("");
   }
 
@@ -70,19 +73,25 @@
     const t=byId.get(state.selected);
     if(!t){panel.innerHTML=$("#emptyDetail").innerHTML;return;}
     const rel=related(t.id);
-    const provenance=t.provenance==="sourced"?"Sourced":"Catalog seed · source pass pending";
+    const provenance=t.provenance==="primary-sourced"?"Primary sourced":t.provenance==="review-sourced"?"Review sourced":"Catalog seed · source pass pending";
+    const linkedSources=(t.sources||[]).map(id=>sourceById.get(id)).filter(Boolean);
     panel.innerHTML=`
       <p class="eyebrow">${esc(t.category)}</p>
       <h3 class="detail-title">${esc(t.name)}</h3>
       ${t.aliases.length?`<div class="aliases">Also: ${t.aliases.map(esc).join(", ")}</div>`:""}
       <div class="badge-row">
         <span class="badge">${esc(t.year)}</span>
+        <span class="badge">${esc(t.kind)}</span>
         <span class="badge status-${t.status.includes("established")?"established":t.status.includes("interpretation")?"interpretation":t.status.includes("speculative")?"speculative":""}">${esc(t.status)}</span>
         <span class="badge">${esc(provenance)}</span>
       </div>
       <div class="detail-section"><h4>What it is</h4><p>${esc(t.summary)}</p></div>
       <div class="detail-section"><h4>Core idea</h4><p>${esc(t.core)}</p></div>
       <div class="detail-section"><h4>Concepts</h4><div class="tag-list">${t.tags.map(x=>`<span class="tag">${esc(x)}</span>`).join("")}</div></div>
+      <div class="detail-section"><h4>Sources · ${linkedSources.length}</h4>
+        ${linkedSources.length ? `<div class="source-list">${linkedSources.map(s=>`<a class="source-link" href="${esc(s.url)}" target="_blank" rel="noreferrer"><strong>${esc(s.title)}</strong><span>${esc(s.authors)} · ${esc(s.year)} · ${esc(s.type)}</span></a>`).join("")}</div>` : '<p>Dedicated source pass not completed for this entry yet.</p>'}
+        ${t.lastReviewed?`<p class="reviewed">Last source review: ${esc(t.lastReviewed)}</p>`:""}
+      </div>
       <div class="detail-section"><h4>Connections · ${rel.length}</h4><div class="relation-list">
         ${rel.slice().sort((a,b)=>a.other.year-b.other.year).map(({r,other,outbound})=>`
           <div class="relation" data-id="${other.id}">
@@ -175,7 +184,7 @@
     $("#resultCount").textContent=`${list.length} results`;
     $("#catalog").innerHTML=list.map(t=>`
       <article class="catalog-card" data-id="${t.id}">
-        <div class="meta"><span>${esc(t.year)} · ${esc(t.era)}</span><span>${esc(t.status)}</span></div>
+        <div class="meta"><span>${esc(t.year)} · ${esc(t.era)}</span><span>${esc(t.kind)}</span></div>
         <h4>${esc(t.name)}</h4><p>${esc(t.summary)}</p>
         <div class="badges"><span class="tag">${esc(t.category)}</span></div>
       </article>`).join("") || '<div class="empty-state">No theories match the current filters.</div>';
@@ -195,12 +204,13 @@
   $$(".tab").forEach(b=>b.addEventListener("click",()=>switchView(b.dataset.view)));
   $("#search").addEventListener("input",e=>{state.search=e.target.value;renderGraph();renderTimeline();renderCatalog();});
   $("#categoryFilter").addEventListener("change",e=>{state.category=e.target.value;renderGraph();renderTimeline();renderCatalog();});
+  $("#kindFilter").addEventListener("change",e=>{state.kind=e.target.value;renderGraph();renderTimeline();renderCatalog();});
   $("#statusFilter").addEventListener("change",e=>{state.status=e.target.value;renderGraph();renderTimeline();renderCatalog();});
   $("#eraFilter").addEventListener("change",e=>{state.era=e.target.value;renderGraph();renderTimeline();renderCatalog();});
   $("#sourcedOnly").addEventListener("change",e=>{state.sourcedOnly=e.target.checked;renderGraph();renderTimeline();renderCatalog();});
   $("#resetView").addEventListener("click",()=>{
-    Object.assign(state,{search:"",category:"",status:"",era:"",sourcedOnly:false});
-    $("#search").value="";$("#categoryFilter").value="";$("#statusFilter").value="";$("#eraFilter").value="";$("#sourcedOnly").checked=false;renderAll();
+    Object.assign(state,{search:"",category:"",kind:"",status:"",era:"",sourcedOnly:false});
+    $("#search").value="";$("#categoryFilter").value="";$("#kindFilter").value="";$("#statusFilter").value="";$("#eraFilter").value="";$("#sourcedOnly").checked=false;renderAll();
   });
   window.addEventListener("resize",()=>{if(state.view==="map")renderGraph();});
   renderTrees();renderAll();

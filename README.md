@@ -13,7 +13,9 @@ Quantum Index is a source-aware map of quantum theory: historical foundations, f
 
 ## Current build
 
-This first build is a broad seed corpus rather than a claim of literal completeness. The schema is designed to grow without changing the UI.
+The current corpus is a broad research seed rather than a claim of literal completeness. The schema is designed to grow without changing the UI.
+
+Current audited branch metrics: **149 entities**, **165 typed relationships**, **7 thought trees**, **28 bibliography/source records**, with **50 entries carrying dedicated review/source provenance**. Catalog coverage and source coverage are intentionally reported separately.
 
 Static app:
 - `index.html`
@@ -50,3 +52,13 @@ A catalogued theory is not automatically "fully sourced." The UI displays a prov
 ## Development
 
 No build step is required. Open `index.html` or serve the repository as static files. GitHub Pages deployment is included under `.github/workflows/pages.yml`.
+
+
+## Research controls
+
+See:
+- `docs/COVERAGE.md` for current coverage, provenance metrics, gaps and completion criteria.
+- `docs/TAXONOMY.md` for category, kind, status and relation semantics.
+- `research/CANDIDATES.md` for the unresolved candidate backlog.
+
+The application must not describe the catalog as literally complete until the documented completeness acceptance criteria are satisfied.
