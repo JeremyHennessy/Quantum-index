@@ -6,27 +6,29 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 
 ## Current corpus
 
-- **230** catalogued entities
-- **312** typed relationships
-- **9** curated thought trees
-- **9** top-level categories
-- **224** bibliography/source records
-- **230 / 230 (100.0%)** entries currently have dedicated source provenance
-- **0 / 230** shipped entries remain catalogued-only
-- **164 / 230** are marked `primary-sourced`; the remaining **66 / 230** are review/authoritative-source backed
+- **245** catalogued entities
+- **334** typed relationships
+- **11** curated thought trees
+- **11** top-level categories
+- **238** bibliography/source records
+- **245 / 245 (100.0%)** entries currently have dedicated source provenance
+- **0 / 245** shipped entries remain catalogued-only
+- **176 / 245** are marked `primary-sourced`; the remaining **69 / 245** are review/authoritative-source backed
 
 ### Category coverage
 
 | Category | Entries |
 |---|---:|
 | Historical foundations | 5 |
-| Formulations | 17 |
+| Formulations | 18 |
 | Foundations & interpretations | 42 |
 | Quantum field theory | 30 |
 | Quantum information & open systems | 33 |
 | Quantum gravity & spacetime | 56 |
 | Quantum cosmology | 17 |
 | Mathematical structures | 10 |
+| Quantum optics & AMO | 3 |
+| Quantum many-body & condensed matter | 11 |
 | Beyond standard quantum theory | 20 |
 
 ### Era coverage
@@ -34,10 +36,10 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 | Era | Entries |
 |---|---:|
 | 1900–1924 | 5 |
-| 1925–1939 | 17 |
-| 1940–1959 | 9 |
-| 1960–1979 | 39 |
-| 1980–1999 | 65 |
+| 1925–1939 | 19 |
+| 1940–1959 | 12 |
+| 1960–1979 | 45 |
+| 1980–1999 | 69 |
 | 2000–2014 | 61 |
 | 2015–present | 34 |
 
@@ -197,3 +199,8 @@ The application must never present the current catalog size as proof of literal 
 4. explicit unresolved classification disputes;
 5. zero dangling theory, tree, relation, or source references;
 6. reproducible coverage metrics.
+
+
+## Many-body and quantum-optics expansion
+
+The current sweep adds two explicit domains that were underrepresented in the original ontology: **Quantum many-body & condensed matter** and **Quantum optics & AMO**. Added entries include Dirac relativistic electron theory, Glauber coherence theory, the quantum Rabi and Jaynes–Cummings models, BCS superconductivity, density-functional theory, the Hubbard model, Anderson localization, integer and fractional quantum Hall theories, Bogoliubov and Gross–Pitaevskii Bose-gas frameworks, the Kondo model, the Haldane Chern-insulator model and the toric code.
