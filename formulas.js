@@ -2530,8 +2530,8 @@ window.QI_FORMULAS = {
       "plain": "l_P = sqrt(hbar G/c^3)",
       "description": "Natural length scale built from quantum mechanics, gravity and relativity.",
       "theoryIds": [
-        "quantum-gravity",
-        "canonical-quantum-gravity"
+        "canonical-quantum-gravity",
+        "perturbative-qg"
       ],
       "sourceIds": [
         "rovelli-qg-survey"
