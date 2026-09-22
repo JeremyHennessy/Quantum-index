@@ -767,14 +767,13 @@ window.QI_DATA = (() => {
     R("qcd","nrqcd","extends"),R("effective-field-theory","nrqcd","supports"),R("heavy-quark-effective-theory","nrqcd","overlaps"),
     R("string-theory","topological-string","extends"),R("topological-qft","topological-string","overlaps"),
     R("open-quantum-systems","davies-generators","extends"),R("davies-generators","gksl","supports"),
-    R("generalized-contextuality","contextuality-resource-theory","extends"),R("resource-theories","contextuality-resource-theory","extends")
-
+    R("generalized-contextuality","contextuality-resource-theory","extends"),R("resource-theories","contextuality-resource-theory","extends"),
     R("loop-quantum-gravity","algebraic-quantum-gravity","extends"),R("master-constraint-program","algebraic-quantum-gravity","supports"),
     R("group-field-theory","tensorial-group-field-theory","extends"),R("tensor-models","tensorial-group-field-theory","overlaps"),R("functional-rg","tensorial-group-field-theory","supports"),
     R("path-integral","lorentzian-quantum-cosmology","extends"),R("quantum-cosmology","lorentzian-quantum-cosmology","extends"),R("hartle-hawking","lorentzian-quantum-cosmology","challenged by"),
     R("bohmian","primitive-ontology","overlaps"),R("objective-collapse","primitive-ontology","overlaps"),
     R("grw","grwm","extends"),R("grw","grwf","extends"),R("primitive-ontology","grwm","supports"),R("primitive-ontology","grwf","supports"),
-    R("grw","qmupl","overlaps"),R("csl","qmupl","overlaps"),R("objective-collapse","qmupl","extends")
+    R("grw","qmupl","overlaps"),R("csl","qmupl","overlaps"),R("objective-collapse","qmupl","extends"),
 
   ].filter(r => theories.some(t=>t.id===r.from) && theories.some(t=>t.id===r.to));
 
