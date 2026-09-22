@@ -11,7 +11,7 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 - **13** curated thought trees
 - **12** top-level categories
 - **257** bibliography/source records
-- **323** source-linked formula entries across **28** formula categories
+- **345** source-linked formula entries across **28** formula categories
 - **265 / 265 (100.0%)** entries currently have dedicated source provenance
 - **0 / 265** shipped entries remain catalogued-only
 - **188 / 265** are marked `primary-sourced`; the remaining **77 / 265** are review/authoritative-source backed
@@ -230,9 +230,9 @@ The latest sweep adds a dedicated **Quantum chemistry & electronic structure** c
 Formula coverage is audited independently of theory/source coverage.
 
 Current v4 formula audit:
-- **323** source-linked equations
-- **179 / 265** theories currently have at least one linked formula entry
-- **61** entries are documented formula-bearing gaps
+- **345** source-linked equations
+- **202 / 265** theories currently have at least one linked formula entry
+- **38** entries are documented formula-bearing gaps
 - **11** are classified as interpretations without a unique defining equation
 - **11** are primarily conceptual/structural in the current ontology
 - **2** are theorem-first entries
@@ -264,3 +264,18 @@ Three candidates that passed the add/alias/subtype audit were promoted as first-
 - **Polymer quantum cosmology** — sourced to Ben Achour–Livine; linked to polymer quantum mechanics and LQC with an explicit polymerization map.
 
 All three enter the shipped corpus with source provenance, formula coverage, and relation-evidence metadata.
+
+
+## Second formula-gap closure — 2026-09-22
+
+The second prioritized formula pass added **22 new canonical/source-linked entries** and linked the existing Tsirelson/CHSH bound to device-independent quantum information. Formula-bearing coverage increased from **179** to **202** theories, while documented formula-bearing gaps fell from **61** to **38**.
+
+Newly covered branches include:
+- old quantum theory / Bohr–Sommerfeld quantization;
+- constructive and Euclidean QFT;
+- Schwinger–Keldysh, geometric, stochastic, light-front, background-field, Weyl and polymer quantization;
+- quantum reference frames, quantum stochastic calculus, ZX calculus and device-independent QI;
+- twistor theory, entropic gravity, Hořava–Lifshitz gravity, tensor models, celestial holography, causal fermion systems, BFSS Matrix theory and topological strings;
+- PR-box correlations.
+
+Remaining formula gaps stay explicit in `docs/FORMULA_AUDIT.md`; no branch is marked covered merely because a nearby theory has an equation.

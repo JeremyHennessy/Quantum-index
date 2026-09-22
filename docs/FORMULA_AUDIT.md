@@ -13,9 +13,9 @@ The runtime audit is in `formula-audit.js`; formula records are in `formulas.js`
 ## Current result
 
 - 265 shipped theory/framework entities audited
-- 323 source-linked formula entries
-- 179 entities classified **formula-bearing**
-- 61 classified **formula-bearing-gap**
+- 345 source-linked formula entries
+- 202 entities classified **formula-bearing**
+- 38 classified **formula-bearing-gap**
 - 11 **interpretations**
 - 11 **primarily conceptual/structural**
 - 2 **theorem-first**
@@ -116,50 +116,57 @@ Added:
 
 ## Remaining formula-bearing gaps
 
-### Highest-priority QFT / formalism gaps
+The remaining **38** gaps are concentrated in narrower, model-dependent, or structurally specialized areas. These are explicit curation gaps, not claims that the entries lack mathematical content.
 
-- constructive quantum field theory
-- Euclidean QFT / Osterwalder–Schrader framework
-- Schwinger–Keldysh / closed-time-path formalism
-- geometric quantization
-- stochastic quantization
-- light-front quantization
-- background-field method
-- Weyl quantization
-- polymer quantum mechanics
+### Beyond-standard quantum theory
+- Nelson stochastic mechanics
+- Trace dynamics
+- Nonassociative quantum mechanics
+- Cellular automaton interpretation
+- Superdeterministic approaches
+- Quaternionic quantum mechanics
+- Spekkens toy theory
+- Real-Hilbert-space quantum theory
+- p-adic quantum mechanics
+- Many interacting worlds
+- Modal quantum theory
+- Parastatistics
+- Doebner–Goldin nonlinear quantum mechanics
+- Bell-type quantum field theories
 
-### Highest-priority quantum-information gaps
-
-- quantum reference frames
-- quantum causal models
-- quantum stochastic calculus
-- ZX calculus
-- device-independent quantum information
-- causal boxes
-
-### Highest-priority quantum-gravity gaps
-
-- twistor theory
+### Quantum gravity and spacetime
 - M-theory
-- entropic gravity
-- Hořava–Lifshitz gravity
-- shape dynamics
-- tensor models
-- ER=EPR
-- celestial holography
-- doubly special relativity
-- quantum graphity
-- relative locality
-- causal-set sequential growth dynamics
-- higher-spin gravity
-- causal fermion systems
-- BFSS Matrix theory
-- twistor-string theory
-- twisted geometries
-- topological string theory
+- Shape dynamics
+- ER = EPR
+- Doubly special relativity
+- Quantum graphity
+- Relative locality
+- Causal-set sequential growth dynamics
+- Higher-spin gravity
+- Twisted geometries
 - Holographic Space-Time
 
-These remain explicit gaps until a compact, source-supported equation can be selected without presenting a convention-dependent or merely illustrative expression as uniquely canonical.
+### Quantum information and open systems
+- Quantum causal models
+- Causal boxes
+
+### Mathematical structures
+- Positive-geometry / amplituhedron programs
+- Geometric quantum mechanics
+- Topos approaches to quantum theory
+- Sheaf-theoretic contextuality
+- Noncommutative / quantum probability
+- History Projection Operator formalism
+
+### Quantum cosmology
+- Third quantization
+- String gas cosmology
+- Ekpyrotic cosmology
+- Cyclic cosmology
+- Group-field cosmology
+- Spin-foam cosmology
+
+The next equation pass should prioritize entries above that have a compact defining relation with low convention risk. Conceptual conjectures such as ER=EPR should instead be reclassified as primarily conceptual if no unique defining equation is appropriate.
 
 ## Acceptance rules
 
@@ -178,3 +185,8 @@ These remain explicit gaps until a compact, source-supported equation can be sel
 - Polymerized cosmological momentum substitution — defining effective polymerization map.
 
 These formulas moved the three promoted candidate theories directly into the formula-bearing class rather than creating new unsatisfied formula gaps.
+
+
+## Second priority gap pass completed
+
+Added source-linked equations for old quantum theory; constructive/Euclidean QFT; Schwinger–Keldysh; geometric, stochastic, light-front, background-field, Weyl and polymer quantization; quantum-reference-frame transformations; quantum stochastic calculus; ZX calculus; twistor incidence; entropic gravity; Hořava–Lifshitz gravity; tensor models; celestial holography; causal fermion systems; BFSS Matrix theory; topological strings; and PR-box correlations. Device-independent QI now also links directly to the Tsirelson bound.
