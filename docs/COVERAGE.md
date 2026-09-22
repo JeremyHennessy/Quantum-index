@@ -10,10 +10,10 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 - **165** typed relationships
 - **7** curated thought trees
 - **9** top-level categories
-- **28** bibliography/source records
-- **50 / 149 (33.6%)** entries currently have dedicated review/source provenance
-- **99 / 149** entries remain catalogued seeds pending a dedicated source pass
-- **0 / 149** are currently marked `primary-sourced`; original-paper verification is deliberately a separate pass
+- **46** bibliography/source records
+- **59 / 149 (39.6%)** entries currently have dedicated source provenance
+- **90 / 149** entries remain catalogued seeds pending a dedicated source pass
+- **16 / 149** are now marked `primary-sourced` after direct verification of original or program-defining papers
 
 ### Category coverage
 
@@ -86,6 +86,8 @@ The strongest current branches are:
 5. quantum cosmology boundary-condition and early-universe branches.
 
 The September 21 expansion added explicit treatment of quantum logic, ontological-model frameworks, ψ-ontology, objective collapse as a family, Wightman/constructive/Euclidean QFT, BRST/BV, open-system GKSL dynamics, quantum combs/switches/process tensors, perturbative/Euclidean/discrete gravity, and several Planck-scale phenomenology programs.
+
+A follow-on primary-source pass directly verified foundational papers for matrix mechanics, wave mechanics, Born's probability interpretation, canonical quantization, Bohmian mechanics, Everett, Bell, time-symmetric two-state work, consistent histories, transactional interpretation, GRW collapse, relational QM, the Ithaca interpretation, PBR and quantum logic.
 
 ## Known coverage gaps / next research passes
 
