@@ -92,3 +92,8 @@ Promoted with dedicated provenance: History Projection Operator (HPO) formalism;
 ## Integrated in the 2026-09-21 reconstruction/holography sweep
 
 Promoted with dedicated provenance: operational/informational reconstructions of quantum theory; Bell-type quantum field theories; Holographic Space-Time; ghost-free infinite-derivative/nonlocal gravity; polymer quantum mechanics; and causal-set quantum path-sum dynamics.
+
+
+## Domain expansion added 2026-09-21
+
+Added dedicated quantum-matter and AMO coverage: Dirac relativistic electron theory; Glauber optical coherence; quantum Rabi and Jaynes–Cummings models; BCS; DFT; Hubbard; Anderson localization; integer/fractional quantum Hall theories; Bogoliubov weakly interacting Bose gases; Gross–Pitaevskii mean field; Kondo; Haldane Chern insulator; and the toric code.
