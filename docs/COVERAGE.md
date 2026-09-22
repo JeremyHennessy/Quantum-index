@@ -245,7 +245,7 @@ The current formula sweep added the requested high-priority equations for Hartre
 
 ## Relationship evidence coverage
 
-All **359** typed relationship edges now have explicit evidence metadata. The first relation-provenance pass has:
+All **363** typed relationship edges now have explicit evidence metadata. The current relation-provenance pass has:
 
 - **57** source-backed relations
 - **46** high-confidence source-backed relations
