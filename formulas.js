@@ -1,5 +1,5 @@
 window.QI_FORMULAS = {
-  "version": "v4",
+  "version": "v5",
   "scope": "Canonical, defining, exact, schematic, approximate, limiting and derived equations across the indexed quantum-theory landscape. Formula-bearing coverage is audited separately from theory coverage; this is not a claim of every formula ever derived.",
   "formulas": [
     {
@@ -2569,7 +2569,8 @@ window.QI_FORMULAS = {
       "description": "Entropy proportional to black-hole horizon area.",
       "theoryIds": [
         "hawking-radiation",
-        "holographic-principle"
+        "holographic-principle",
+        "fuzzball-model"
       ],
       "sourceIds": [
         "hawking-1975",
@@ -2763,7 +2764,10 @@ window.QI_FORMULAS = {
       "description": "Background cosmological expansion equation used throughout quantum cosmology.",
       "theoryIds": [
         "quantum-cosmology",
-        "inflationary-fluctuations"
+        "inflationary-fluctuations",
+        "flrw-cosmology",
+        "lambda-cdm",
+        "quintessence"
       ],
       "sourceIds": [
         "quantum-cosmology-review"
@@ -6161,6 +6165,1267 @@ window.QI_FORMULAS = {
       "regime": "Post-quantum nonsignalling correlation model.",
       "units": "Dimensionless probability.",
       "theoryRelationship": "defining behavior",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "newton-gravity-force",
+      "name": "Newtonian gravitational force",
+      "category": "Relativity & astrophysics",
+      "latex": "\\mathbf F=-\\frac{Gm_1m_2}{r^2}\\,\\hat{\\mathbf r}",
+      "plain": "F = -G m1 m2/r^2 rhat",
+      "description": "Inverse-square gravitational force between point masses in Newtonian gravity.",
+      "theoryIds": [
+        "newtonian-gravity"
+      ],
+      "sourceIds": [
+        "newton-principia-1687"
+      ],
+      "tags": [
+        "gravity",
+        "inverse square"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Point masses or spherically symmetric bodies",
+        "Weak-field nonrelativistic regime"
+      ],
+      "variables": [
+        "G: gravitational constant",
+        "m1,m2: masses",
+        "r: separation"
+      ],
+      "regime": "Newtonian gravity; weak fields and speeds much smaller than c.",
+      "units": "Force in newtons in SI.",
+      "theoryRelationship": "defining force law",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "poisson-gravity",
+      "name": "Poisson equation for Newtonian gravity",
+      "category": "Relativity & astrophysics",
+      "latex": "\\nabla^2\\Phi=4\\pi G\\rho",
+      "plain": "nabla^2 Phi = 4 pi G rho",
+      "description": "Relates Newtonian gravitational potential to mass density.",
+      "theoryIds": [
+        "newtonian-gravity",
+        "stellar-structure",
+        "jeans-instability"
+      ],
+      "sourceIds": [
+        "newton-principia-1687",
+        "kippenhahn-stellar-2012"
+      ],
+      "tags": [
+        "Poisson equation",
+        "potential",
+        "density"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Newtonian gravitational field"
+      ],
+      "variables": [
+        "Phi: gravitational potential",
+        "rho: mass density"
+      ],
+      "regime": "Nonrelativistic self-gravitating systems.",
+      "units": "Phi has units of specific energy; both sides have inverse-time-squared dimensions.",
+      "theoryRelationship": "field equation",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "lorentz-factor",
+      "name": "Lorentz factor",
+      "category": "Relativity & astrophysics",
+      "latex": "\\gamma=\\frac{1}{\\sqrt{1-v^2/c^2}}",
+      "plain": "gamma = 1/sqrt(1-v^2/c^2)",
+      "description": "Relativistic boost factor for speed v.",
+      "theoryIds": [
+        "special-relativity"
+      ],
+      "sourceIds": [
+        "einstein-sr-1905"
+      ],
+      "tags": [
+        "Lorentz",
+        "relativity"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Inertial frames",
+        "Flat spacetime"
+      ],
+      "variables": [
+        "v: relative speed",
+        "c: speed of light"
+      ],
+      "regime": "Special relativity.",
+      "units": "Dimensionless.",
+      "theoryRelationship": "defining kinematic factor",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "minkowski-interval",
+      "name": "Minkowski spacetime interval",
+      "category": "Relativity & astrophysics",
+      "latex": "ds^2=-c^2dt^2+dx^2+dy^2+dz^2",
+      "plain": "ds^2 = -c^2 dt^2 + dx^2 + dy^2 + dz^2",
+      "description": "Invariant interval in flat spacetime for the stated metric signature.",
+      "theoryIds": [
+        "special-relativity"
+      ],
+      "sourceIds": [
+        "einstein-sr-1905"
+      ],
+      "tags": [
+        "Minkowski",
+        "interval"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Flat spacetime",
+        "Metric signature (-,+,+,+)"
+      ],
+      "variables": [
+        "t: time coordinate",
+        "x,y,z: spatial coordinates"
+      ],
+      "regime": "Special relativity in Cartesian inertial coordinates.",
+      "units": "All terms have length-squared units when ct is used.",
+      "theoryRelationship": "defining invariant geometry",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "einstein-field-equation",
+      "name": "Einstein field equation",
+      "category": "Relativity & astrophysics",
+      "latex": "G_{\\mu\\nu}+\\Lambda g_{\\mu\\nu}=\\frac{8\\pi G}{c^4}T_{\\mu\\nu}",
+      "plain": "G_mn + Lambda g_mn = (8 pi G/c^4) T_mn",
+      "description": "Relates spacetime curvature to stress-energy, including a cosmological constant.",
+      "theoryIds": [
+        "general-relativity",
+        "flrw-cosmology",
+        "lambda-cdm"
+      ],
+      "sourceIds": [
+        "einstein-gr-1916",
+        "planck-cosmology-2018"
+      ],
+      "tags": [
+        "Einstein equation",
+        "curvature",
+        "stress energy"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Classical general relativity"
+      ],
+      "variables": [
+        "G_mn: Einstein tensor",
+        "g_mn: metric",
+        "T_mn: stress-energy tensor",
+        "Lambda: cosmological constant"
+      ],
+      "regime": "Classical spacetime gravity.",
+      "units": "Curvature terms and the stress-energy coupling both have inverse-length-squared dimensions.",
+      "theoryRelationship": "defining field equation",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "geodesic-equation",
+      "name": "Geodesic equation",
+      "category": "Relativity & astrophysics",
+      "latex": "\\frac{d^2x^\\mu}{d\\tau^2}+\\Gamma^\\mu_{\\alpha\\beta}\\frac{dx^\\alpha}{d\\tau}\\frac{dx^\\beta}{d\\tau}=0",
+      "plain": "d2 x^mu/dtau2 + Gamma^mu_ab dx^a/dtau dx^b/dtau = 0",
+      "description": "Equation of freely falling motion in a curved spacetime.",
+      "theoryIds": [
+        "general-relativity",
+        "schwarzschild-spacetime",
+        "kerr-spacetime"
+      ],
+      "sourceIds": [
+        "einstein-gr-1916"
+      ],
+      "tags": [
+        "geodesic",
+        "free fall"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Test-particle motion",
+        "No nongravitational force"
+      ],
+      "variables": [
+        "tau: affine parameter/proper time",
+        "Gamma: Christoffel symbols"
+      ],
+      "regime": "Classical general relativity.",
+      "units": "Coordinate dependent; covariant equation is dimensionally consistent.",
+      "theoryRelationship": "defining equation of motion",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "schwarzschild-metric",
+      "name": "Schwarzschild metric",
+      "category": "Relativity & astrophysics",
+      "latex": "ds^2=-\\left(1-\\frac{2GM}{rc^2}\\right)c^2dt^2+\\left(1-\\frac{2GM}{rc^2}\\right)^{-1}dr^2+r^2d\\Omega^2",
+      "plain": "ds^2 = -(1-2GM/rc^2)c^2dt^2 + (1-2GM/rc^2)^-1 dr^2 + r^2 dOmega^2",
+      "description": "Standard Schwarzschild-coordinate form of the static spherical vacuum metric.",
+      "theoryIds": [
+        "schwarzschild-spacetime"
+      ],
+      "sourceIds": [
+        "schwarzschild-1916"
+      ],
+      "tags": [
+        "Schwarzschild",
+        "black hole",
+        "metric"
+      ],
+      "formulaType": "exact",
+      "assumptions": [
+        "Vacuum exterior",
+        "Spherical symmetry",
+        "Static geometry"
+      ],
+      "variables": [
+        "M: gravitating mass",
+        "r: areal radius",
+        "dOmega^2: unit-sphere metric"
+      ],
+      "regime": "Exterior Schwarzschild spacetime in standard coordinates.",
+      "units": "ds^2 has length-squared units.",
+      "theoryRelationship": "exact solution metric",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "kerr-horizons",
+      "name": "Kerr horizon radii",
+      "category": "Relativity & astrophysics",
+      "latex": "r_{\\pm}=\\frac{GM}{c^2}\\pm\\sqrt{\\left(\\frac{GM}{c^2}\\right)^2-a^2}",
+      "plain": "r_pm = GM/c^2 +/- sqrt[(GM/c^2)^2-a^2]",
+      "description": "Outer and inner horizon radii of the Kerr geometry in Boyer–Lindquist coordinates.",
+      "theoryIds": [
+        "kerr-spacetime"
+      ],
+      "sourceIds": [
+        "kerr-1963"
+      ],
+      "tags": [
+        "Kerr",
+        "horizon",
+        "spin"
+      ],
+      "formulaType": "exact",
+      "assumptions": [
+        "Uncharged Kerr solution",
+        "a=J/(Mc) expressed as a length"
+      ],
+      "variables": [
+        "M: mass",
+        "J: angular momentum",
+        "a: spin length parameter"
+      ],
+      "regime": "Subextremal or extremal Kerr spacetime.",
+      "units": "r and a have length units.",
+      "theoryRelationship": "exact horizon relation",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "stellar-hydrostatic",
+      "name": "Stellar hydrostatic equilibrium",
+      "category": "Astrophysical structure",
+      "latex": "\\frac{dP}{dr}=-\\frac{Gm(r)\\rho(r)}{r^2}",
+      "plain": "dP/dr = -G m(r) rho(r)/r^2",
+      "description": "Newtonian radial force balance in a spherical star.",
+      "theoryIds": [
+        "stellar-structure",
+        "lane-emden"
+      ],
+      "sourceIds": [
+        "kippenhahn-stellar-2012"
+      ],
+      "tags": [
+        "hydrostatic equilibrium",
+        "star"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Spherical symmetry",
+        "Quasistatic Newtonian star"
+      ],
+      "variables": [
+        "P: pressure",
+        "m(r): enclosed mass",
+        "rho: density"
+      ],
+      "regime": "Ordinary stellar structure away from strong relativistic gravity.",
+      "units": "Pressure gradient in Pa/m in SI.",
+      "theoryRelationship": "core stellar-structure equation",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "stellar-mass-continuity",
+      "name": "Stellar mass-continuity equation",
+      "category": "Astrophysical structure",
+      "latex": "\\frac{dm}{dr}=4\\pi r^2\\rho",
+      "plain": "dm/dr = 4 pi r^2 rho",
+      "description": "Enclosed stellar mass accumulated over spherical shells.",
+      "theoryIds": [
+        "stellar-structure",
+        "lane-emden",
+        "tov-stellar-structure"
+      ],
+      "sourceIds": [
+        "kippenhahn-stellar-2012",
+        "oppenheimer-volkoff-1939"
+      ],
+      "tags": [
+        "stellar structure",
+        "mass conservation"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Spherical symmetry"
+      ],
+      "variables": [
+        "m(r): enclosed mass",
+        "rho: density"
+      ],
+      "regime": "Spherical stellar/compact-object structure.",
+      "units": "Mass per length on both sides.",
+      "theoryRelationship": "core structure equation",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "stellar-luminosity",
+      "name": "Stellar luminosity-generation equation",
+      "category": "Astrophysical structure",
+      "latex": "\\frac{dL}{dr}=4\\pi r^2\\rho\\,\\epsilon",
+      "plain": "dL/dr = 4 pi r^2 rho epsilon",
+      "description": "Local energy generation accumulated into stellar luminosity.",
+      "theoryIds": [
+        "stellar-structure"
+      ],
+      "sourceIds": [
+        "kippenhahn-stellar-2012"
+      ],
+      "tags": [
+        "stellar structure",
+        "energy generation"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Spherical stellar model",
+        "epsilon is net specific energy-generation rate"
+      ],
+      "variables": [
+        "L: luminosity",
+        "epsilon: energy generation per unit mass"
+      ],
+      "regime": "Standard one-dimensional stellar structure.",
+      "units": "W/m on both sides in SI.",
+      "theoryRelationship": "core stellar-structure equation",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "radiative-gradient",
+      "name": "Radiative stellar temperature gradient",
+      "category": "Astrophysical structure",
+      "latex": "\\frac{dT}{dr}=-\\frac{3\\kappa\\rho L}{16\\pi a c\\,T^3 r^2}",
+      "plain": "dT/dr = -3 kappa rho L /(16 pi a c T^3 r^2)",
+      "description": "Temperature gradient for radiative diffusion in an optically thick spherical star.",
+      "theoryIds": [
+        "stellar-structure"
+      ],
+      "sourceIds": [
+        "kippenhahn-stellar-2012"
+      ],
+      "tags": [
+        "radiative diffusion",
+        "stellar structure"
+      ],
+      "formulaType": "approximation",
+      "assumptions": [
+        "Diffusion approximation",
+        "Spherical symmetry",
+        "Optically thick medium"
+      ],
+      "variables": [
+        "kappa: opacity",
+        "a: radiation constant",
+        "L: luminosity"
+      ],
+      "regime": "Radiative zones in stellar interiors.",
+      "units": "Temperature gradient in K/m.",
+      "theoryRelationship": "standard transport approximation",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "lane-emden-equation",
+      "name": "Lane–Emden equation",
+      "category": "Astrophysical structure",
+      "latex": "\\frac{1}{\\xi^2}\\frac{d}{d\\xi}\\left(\\xi^2\\frac{d\\theta}{d\\xi}\\right)=-\\theta^n",
+      "plain": "(1/xi^2) d/dxi (xi^2 dtheta/dxi) = -theta^n",
+      "description": "Dimensionless equation for a spherical self-gravitating polytrope.",
+      "theoryIds": [
+        "lane-emden"
+      ],
+      "sourceIds": [
+        "kippenhahn-stellar-2012"
+      ],
+      "tags": [
+        "polytrope",
+        "Lane-Emden"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Polytropic equation of state P=K rho^(1+1/n)",
+        "Spherical Newtonian hydrostatic equilibrium"
+      ],
+      "variables": [
+        "xi: dimensionless radius",
+        "theta: dimensionless density variable",
+        "n: polytropic index"
+      ],
+      "regime": "Newtonian polytropic spheres.",
+      "units": "Dimensionless.",
+      "theoryRelationship": "defining dimensionless equation",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "jeans-wavenumber",
+      "name": "Jeans wavenumber",
+      "category": "Astrophysical structure",
+      "latex": "k_J^2=\\frac{4\\pi G\\rho_0}{c_s^2}",
+      "plain": "k_J^2 = 4 pi G rho0/cs^2",
+      "description": "Critical wavenumber separating pressure-supported and gravitationally unstable modes in the idealized Jeans analysis.",
+      "theoryIds": [
+        "jeans-instability"
+      ],
+      "sourceIds": [
+        "bonnor-jeans-1957"
+      ],
+      "tags": [
+        "Jeans",
+        "instability",
+        "collapse"
+      ],
+      "formulaType": "canonical",
+      "assumptions": [
+        "Uniform background",
+        "Linear perturbations",
+        "Barotropic sound speed c_s"
+      ],
+      "variables": [
+        "rho0: background density",
+        "c_s: sound speed"
+      ],
+      "regime": "Linear gravitational instability in a self-gravitating fluid.",
+      "units": "k_J has inverse-length units.",
+      "theoryRelationship": "canonical instability scale",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "chandrasekhar-mass",
+      "name": "Chandrasekhar mass estimate",
+      "category": "Compact objects",
+      "latex": "M_{\\rm Ch}\\simeq\\frac{5.83}{\\mu_e^2}M_\\odot",
+      "plain": "M_Ch ~= 5.83/mu_e^2 solar masses",
+      "description": "Composition-dependent limiting mass for an ideal cold relativistically degenerate white dwarf.",
+      "theoryIds": [
+        "chandrasekhar-limit"
+      ],
+      "sourceIds": [
+        "chandrasekhar-milne-1931",
+        "kippenhahn-stellar-2012"
+      ],
+      "tags": [
+        "white dwarf",
+        "Chandrasekhar"
+      ],
+      "formulaType": "approximation",
+      "assumptions": [
+        "Cold ideal fully degenerate electron gas",
+        "Newtonian gravity with relativistic electron equation of state"
+      ],
+      "variables": [
+        "mu_e: mean molecular weight per electron",
+        "M_sun: solar mass"
+      ],
+      "regime": "Idealized white-dwarf limiting configuration.",
+      "units": "Mass.",
+      "theoryRelationship": "canonical limiting estimate",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "tov-equation",
+      "name": "Tolman–Oppenheimer–Volkoff equation",
+      "category": "Compact objects",
+      "latex": "\\frac{dP}{dr}=-\\frac{G\\left(\\rho+P/c^2\\right)\\left(m+4\\pi r^3P/c^2\\right)}{r^2\\left(1-2Gm/(rc^2)\\right)}",
+      "plain": "dP/dr = -G(rho+P/c^2)(m+4 pi r^3 P/c^2)/[r^2(1-2Gm/rc^2)]",
+      "description": "Relativistic hydrostatic-equilibrium equation for a spherical perfect-fluid star.",
+      "theoryIds": [
+        "tov-stellar-structure"
+      ],
+      "sourceIds": [
+        "oppenheimer-volkoff-1939"
+      ],
+      "tags": [
+        "TOV",
+        "neutron star",
+        "GR"
+      ],
+      "formulaType": "exact",
+      "assumptions": [
+        "Static spherical spacetime",
+        "Perfect fluid",
+        "rho is mass density under the displayed convention"
+      ],
+      "variables": [
+        "P: pressure",
+        "rho: mass density",
+        "m(r): enclosed gravitational mass"
+      ],
+      "regime": "Relativistic stellar structure.",
+      "units": "Pressure gradient in Pa/m under SI convention.",
+      "theoryRelationship": "defining equilibrium equation",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "eddington-luminosity",
+      "name": "Eddington luminosity",
+      "category": "Astrophysical structure",
+      "latex": "L_{\\rm Edd}=\\frac{4\\pi GMc}{\\kappa}",
+      "plain": "L_Edd = 4 pi G M c / kappa",
+      "description": "Luminosity at which radiative acceleration balances gravity for opacity κ.",
+      "theoryIds": [
+        "eddington-limit",
+        "stellar-structure"
+      ],
+      "sourceIds": [
+        "kippenhahn-stellar-2012"
+      ],
+      "tags": [
+        "Eddington",
+        "radiation pressure"
+      ],
+      "formulaType": "canonical",
+      "assumptions": [
+        "Spherical steady radiation field",
+        "Opacity represented by flux-mean kappa"
+      ],
+      "variables": [
+        "M: gravitating mass",
+        "kappa: opacity"
+      ],
+      "regime": "Radiatively supported ionized astrophysical gas.",
+      "units": "Luminosity in watts in SI.",
+      "theoryRelationship": "canonical limiting luminosity",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "bondi-rate",
+      "name": "Bondi accretion rate",
+      "category": "Accretion astrophysics",
+      "latex": "\\dot M_B=4\\pi\\lambda\\frac{(GM)^2\\rho_\\infty}{c_{s,\\infty}^3}",
+      "plain": "Mdot_B = 4 pi lambda (GM)^2 rho_inf / cs_inf^3",
+      "description": "Canonical steady spherical accretion rate for a polytropic gas.",
+      "theoryIds": [
+        "bondi-accretion"
+      ],
+      "sourceIds": [
+        "bondi-1952"
+      ],
+      "tags": [
+        "Bondi",
+        "accretion"
+      ],
+      "formulaType": "canonical",
+      "assumptions": [
+        "Steady spherical flow",
+        "Gas at rest at infinity",
+        "Polytropic equation of state"
+      ],
+      "variables": [
+        "lambda: equation-of-state factor",
+        "rho_inf: ambient density",
+        "c_s,inf: ambient sound speed"
+      ],
+      "regime": "Bondi spherical accretion.",
+      "units": "Mass per time.",
+      "theoryRelationship": "canonical accretion-rate scaling",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "alpha-viscosity",
+      "name": "Shakura–Sunyaev α viscosity",
+      "category": "Accretion astrophysics",
+      "latex": "\\nu=\\alpha c_s H",
+      "plain": "nu = alpha c_s H",
+      "description": "Phenomenological turbulent kinematic-viscosity prescription for a thin disk.",
+      "theoryIds": [
+        "shakura-sunyaev-disk"
+      ],
+      "sourceIds": [
+        "shakura-sunyaev-1973"
+      ],
+      "tags": [
+        "alpha disk",
+        "viscosity"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Thin-disk phenomenology",
+        "Subsonic turbulent stress parameterized by alpha"
+      ],
+      "variables": [
+        "nu: kinematic viscosity",
+        "alpha: dimensionless stress parameter",
+        "H: disk scale height"
+      ],
+      "regime": "Shakura–Sunyaev thin-disk model.",
+      "units": "nu has area-per-time units.",
+      "theoryRelationship": "defining closure prescription",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "thin-disk-flux",
+      "name": "Newtonian thin-disk radiative flux",
+      "category": "Accretion astrophysics",
+      "latex": "F(r)=\\frac{3GM\\dot M}{8\\pi r^3}\\left[1-\\left(\\frac{r_{\\rm in}}{r}\\right)^{1/2}\\right]",
+      "plain": "F(r)=3 G M Mdot/(8 pi r^3) [1-sqrt(r_in/r)]",
+      "description": "Standard steady thin-disk surface flux with a zero-torque inner-boundary approximation.",
+      "theoryIds": [
+        "shakura-sunyaev-disk"
+      ],
+      "sourceIds": [
+        "shakura-sunyaev-1973"
+      ],
+      "tags": [
+        "thin disk",
+        "radiative flux"
+      ],
+      "formulaType": "approximation",
+      "assumptions": [
+        "Newtonian Keplerian thin disk",
+        "Steady accretion",
+        "Zero torque at inner radius"
+      ],
+      "variables": [
+        "Mdot: mass accretion rate",
+        "r_in: inner disk radius"
+      ],
+      "regime": "Outer/nonrelativistic Shakura–Sunyaev disk.",
+      "units": "Energy flux per unit area.",
+      "theoryRelationship": "canonical thin-disk limit",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "bz-power",
+      "name": "Blandford–Znajek power scaling",
+      "category": "Accretion astrophysics",
+      "latex": "P_{\\rm BZ}\\sim\\frac{\\kappa}{4\\pi c}\\Phi_{\\rm BH}^2\\Omega_H^2",
+      "plain": "P_BZ ~ kappa Phi_BH^2 Omega_H^2/(4 pi c)",
+      "description": "Leading scaling of electromagnetic power extracted from a spinning magnetized black hole.",
+      "theoryIds": [
+        "blandford-znajek",
+        "kerr-spacetime"
+      ],
+      "sourceIds": [
+        "blandford-znajek-1977"
+      ],
+      "tags": [
+        "BZ",
+        "jet",
+        "black hole"
+      ],
+      "formulaType": "schematic",
+      "assumptions": [
+        "Stationary axisymmetric magnetosphere",
+        "Coefficient kappa depends on magnetic geometry and convention"
+      ],
+      "variables": [
+        "Phi_BH: horizon magnetic flux",
+        "Omega_H: horizon angular frequency"
+      ],
+      "regime": "Force-free/relativistic black-hole magnetosphere.",
+      "units": "Power.",
+      "theoryRelationship": "schematic power scaling",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "ideal-mhd-ohm",
+      "name": "Ideal-MHD Ohm law",
+      "category": "Plasma astrophysics",
+      "latex": "\\mathbf E+\\mathbf v\\times\\mathbf B=0",
+      "plain": "E + v x B = 0",
+      "description": "Infinite-conductivity condition in ideal magnetohydrodynamics.",
+      "theoryIds": [
+        "ideal-mhd"
+      ],
+      "sourceIds": [
+        "goedbloed-poedts-mhd-2004"
+      ],
+      "tags": [
+        "MHD",
+        "flux freezing"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Infinite electrical conductivity",
+        "Single-fluid ideal MHD"
+      ],
+      "variables": [
+        "E: electric field",
+        "v: fluid velocity",
+        "B: magnetic field"
+      ],
+      "regime": "Ideal magnetohydrodynamics.",
+      "units": "SI electric-field units on both terms.",
+      "theoryRelationship": "defining ideal-MHD condition",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "mhd-induction",
+      "name": "Ideal-MHD induction equation",
+      "category": "Plasma astrophysics",
+      "latex": "\\frac{\\partial\\mathbf B}{\\partial t}=\\nabla\\times(\\mathbf v\\times\\mathbf B)",
+      "plain": "dB/dt = curl(v x B)",
+      "description": "Magnetic-field evolution implied by Faraday's law and ideal conductivity.",
+      "theoryIds": [
+        "ideal-mhd"
+      ],
+      "sourceIds": [
+        "goedbloed-poedts-mhd-2004"
+      ],
+      "tags": [
+        "MHD",
+        "induction",
+        "magnetic field"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Ideal Ohm law",
+        "div B = 0"
+      ],
+      "variables": [
+        "B: magnetic field",
+        "v: fluid velocity"
+      ],
+      "regime": "Ideal magnetohydrodynamics.",
+      "units": "Magnetic field per time.",
+      "theoryRelationship": "core evolution equation",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "synchrotron-critical-frequency",
+      "name": "Synchrotron critical frequency",
+      "category": "Radiative astrophysics",
+      "latex": "\\nu_c=\\frac{3}{4\\pi}\\gamma^2\\frac{eB}{m_e}\\sin\\alpha",
+      "plain": "nu_c = (3/4pi) gamma^2 (eB/m_e) sin alpha",
+      "description": "Characteristic synchrotron radiation frequency in SI-like angular-frequency conventions without an extra c in the gyrofrequency.",
+      "theoryIds": [
+        "synchrotron-radiation"
+      ],
+      "sourceIds": [
+        "rybicki-lightman-1985"
+      ],
+      "tags": [
+        "synchrotron",
+        "critical frequency"
+      ],
+      "formulaType": "canonical",
+      "assumptions": [
+        "Ultrarelativistic electron",
+        "Uniform local magnetic field"
+      ],
+      "variables": [
+        "gamma: electron Lorentz factor",
+        "alpha: pitch angle"
+      ],
+      "regime": "Relativistic synchrotron radiation.",
+      "units": "Frequency in s^-1 under the displayed SI convention.",
+      "theoryRelationship": "canonical characteristic frequency",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "shock-power-law-index",
+      "name": "Strong-shock diffusive-acceleration index",
+      "category": "High-energy astrophysics",
+      "latex": "p=\\frac{r+2}{r-1}\\;\\xrightarrow{r=4}\\;2",
+      "plain": "p = (r+2)/(r-1), strong shock r=4 gives p=2",
+      "description": "Test-particle energy-spectrum index for nonrelativistic diffusive shock acceleration.",
+      "theoryIds": [
+        "diffusive-shock-acceleration"
+      ],
+      "sourceIds": [
+        "drury-shock-1983"
+      ],
+      "tags": [
+        "shock acceleration",
+        "cosmic rays"
+      ],
+      "formulaType": "approximation",
+      "assumptions": [
+        "Test-particle limit",
+        "Steady planar nonrelativistic shock",
+        "Isotropic diffusion"
+      ],
+      "variables": [
+        "r: compression ratio",
+        "p: energy-spectrum index"
+      ],
+      "regime": "First-order Fermi acceleration at strong nonrelativistic shocks.",
+      "units": "Dimensionless.",
+      "theoryRelationship": "canonical test-particle result",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "flrw-metric",
+      "name": "FLRW metric",
+      "category": "Cosmology & dark sector",
+      "latex": "ds^2=-c^2dt^2+a^2(t)\\left[\\frac{dr^2}{1-kr^2}+r^2d\\Omega^2\\right]",
+      "plain": "ds^2 = -c^2 dt^2 + a(t)^2 [dr^2/(1-k r^2)+r^2 dOmega^2]",
+      "description": "Homogeneous and isotropic cosmological spacetime metric.",
+      "theoryIds": [
+        "flrw-cosmology",
+        "lambda-cdm"
+      ],
+      "sourceIds": [
+        "lemaitre-1931"
+      ],
+      "tags": [
+        "FLRW",
+        "metric",
+        "cosmology"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Homogeneity",
+        "Isotropy"
+      ],
+      "variables": [
+        "a(t): scale factor",
+        "k: spatial-curvature parameter"
+      ],
+      "regime": "FLRW cosmology.",
+      "units": "ds^2 has length-squared units.",
+      "theoryRelationship": "defining spacetime metric",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "lcdm-hubble",
+      "name": "Flat ΛCDM Hubble relation",
+      "category": "Cosmology & dark sector",
+      "latex": "H^2(z)=H_0^2\\left[\\Omega_r(1+z)^4+\\Omega_m(1+z)^3+\\Omega_\\Lambda\\right]",
+      "plain": "H(z)^2 = H0^2 [Omega_r(1+z)^4 + Omega_m(1+z)^3 + Omega_Lambda]",
+      "description": "Background expansion rate for spatially flat radiation+matter+cosmological-constant ΛCDM, neglecting additional components.",
+      "theoryIds": [
+        "lambda-cdm",
+        "flrw-cosmology"
+      ],
+      "sourceIds": [
+        "planck-cosmology-2018"
+      ],
+      "tags": [
+        "Lambda CDM",
+        "Hubble",
+        "dark energy"
+      ],
+      "formulaType": "canonical",
+      "assumptions": [
+        "Spatial flatness",
+        "Standard radiation, nonrelativistic matter and cosmological constant"
+      ],
+      "variables": [
+        "z: redshift",
+        "Omega_i: present density fractions"
+      ],
+      "regime": "Base flat ΛCDM background.",
+      "units": "H has inverse-time units.",
+      "theoryRelationship": "canonical background relation",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "ltb-evolution",
+      "name": "LTB areal-radius evolution equation",
+      "category": "Cosmology & dark sector",
+      "latex": "\\dot R^2(t,r)=\\frac{2GM(r)}{R(t,r)}+2E(r)+\\frac{\\Lambda c^2}{3}R^2(t,r)",
+      "plain": "Rdot^2 = 2 G M(r)/R + 2 E(r) + Lambda c^2 R^2/3",
+      "description": "Standard LTB radial evolution equation including an optional cosmological constant.",
+      "theoryIds": [
+        "ltb-cosmology"
+      ],
+      "sourceIds": [
+        "tolman-inhomogeneity-1934"
+      ],
+      "tags": [
+        "LTB",
+        "inhomogeneous cosmology"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Spherical dust spacetime",
+        "Conventional LTB radial functions"
+      ],
+      "variables": [
+        "R(t,r): areal radius",
+        "M(r): mass function",
+        "E(r): energy/curvature function"
+      ],
+      "regime": "Lemaître–Tolman–Bondi cosmology.",
+      "units": "Terms have velocity-squared units.",
+      "theoryRelationship": "defining evolution equation",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "press-schechter-fraction",
+      "name": "Press–Schechter collapsed fraction",
+      "category": "Cosmology & dark sector",
+      "latex": "F(>M)=\\operatorname{erfc}\\!\\left[\\frac{\\delta_c}{\\sqrt{2}\\,\\sigma(M)}\\right]",
+      "plain": "F(>M) = erfc[delta_c/(sqrt(2) sigma(M))]",
+      "description": "Canonical Press–Schechter fraction of matter assigned to collapsed halos above mass M.",
+      "theoryIds": [
+        "press-schechter"
+      ],
+      "sourceIds": [
+        "press-schechter-1974"
+      ],
+      "tags": [
+        "Press-Schechter",
+        "halo mass function"
+      ],
+      "formulaType": "canonical",
+      "assumptions": [
+        "Gaussian linear density field",
+        "Spherical-collapse threshold",
+        "Traditional factor-of-two prescription"
+      ],
+      "variables": [
+        "delta_c: collapse threshold",
+        "sigma(M): smoothed rms density contrast"
+      ],
+      "regime": "Analytic hierarchical structure-formation estimate.",
+      "units": "Dimensionless fraction.",
+      "theoryRelationship": "canonical abundance relation",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "nfw-density",
+      "name": "NFW halo density profile",
+      "category": "Cosmology & dark sector",
+      "latex": "\\rho(r)=\\frac{\\rho_s}{(r/r_s)(1+r/r_s)^2}",
+      "plain": "rho(r) = rho_s / [(r/r_s)(1+r/r_s)^2]",
+      "description": "Navarro–Frenk–White collisionless dark-matter halo density profile.",
+      "theoryIds": [
+        "nfw-halo"
+      ],
+      "sourceIds": [
+        "nfw-1997"
+      ],
+      "tags": [
+        "NFW",
+        "halo",
+        "dark matter"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Spherically averaged halo profile"
+      ],
+      "variables": [
+        "rho_s: scale density",
+        "r_s: scale radius"
+      ],
+      "regime": "Empirical/simulation-motivated halo modeling.",
+      "units": "Density.",
+      "theoryRelationship": "defining profile",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "mond-interpolation",
+      "name": "MOND acceleration relation",
+      "category": "Cosmology & dark sector",
+      "latex": "\\mu\\!\\left(\\frac{a}{a_0}\\right)\\,a=a_N",
+      "plain": "mu(a/a0) a = a_N",
+      "description": "Generic MOND interpolation between Newtonian and low-acceleration regimes.",
+      "theoryIds": [
+        "mond"
+      ],
+      "sourceIds": [
+        "milgrom-mond-1983"
+      ],
+      "tags": [
+        "MOND",
+        "modified gravity"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Phenomenological interpolation function mu(x) with Newtonian and deep-MOND limits"
+      ],
+      "variables": [
+        "a: physical acceleration",
+        "a_N: Newtonian acceleration",
+        "a0: MOND acceleration scale"
+      ],
+      "regime": "Nonrelativistic MOND phenomenology.",
+      "units": "Acceleration.",
+      "theoryRelationship": "defining phenomenological relation",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "mond-deep",
+      "name": "Deep-MOND acceleration",
+      "category": "Cosmology & dark sector",
+      "latex": "a\\simeq\\sqrt{a_0a_N}",
+      "plain": "a ~= sqrt(a0 a_N)",
+      "description": "Low-acceleration MOND limit for isolated systems.",
+      "theoryIds": [
+        "mond"
+      ],
+      "sourceIds": [
+        "milgrom-mond-1983"
+      ],
+      "tags": [
+        "MOND",
+        "deep MOND"
+      ],
+      "formulaType": "limit",
+      "assumptions": [
+        "a << a0",
+        "Standard deep-MOND interpolation limit"
+      ],
+      "variables": [
+        "a0: MOND acceleration constant",
+        "a_N: Newtonian acceleration"
+      ],
+      "regime": "Deep-MOND low-acceleration regime.",
+      "units": "Acceleration.",
+      "theoryRelationship": "defining low-acceleration limit",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "teves-physical-metric",
+      "name": "TeVeS physical metric relation",
+      "category": "Cosmology & dark sector",
+      "latex": "\\tilde g_{\\mu\\nu}=e^{-2\\phi}g_{\\mu\\nu}-2\\,U_\\mu U_\\nu\\sinh(2\\phi)",
+      "plain": "gtilde_mn = exp(-2 phi) g_mn - 2 U_m U_n sinh(2 phi)",
+      "description": "Relation between Einstein-frame metric, scalar field, vector field and the physical metric in TeVeS.",
+      "theoryIds": [
+        "teves"
+      ],
+      "sourceIds": [
+        "bekenstein-teves-2004"
+      ],
+      "tags": [
+        "TeVeS",
+        "physical metric",
+        "MOND"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Bekenstein TeVeS conventions",
+        "Unit timelike vector U"
+      ],
+      "variables": [
+        "phi: scalar field",
+        "U_mu: TeVeS vector field",
+        "g_mn: Einstein metric"
+      ],
+      "regime": "Tensor–vector–scalar gravity.",
+      "units": "Metric components dimensionless in standard coordinate convention.",
+      "theoryRelationship": "defining metric relation",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "pbh-dark-fraction",
+      "name": "Primordial-black-hole dark-matter fraction",
+      "category": "Cosmology & dark sector",
+      "latex": "f_{\\rm PBH}(M)=\\frac{1}{\\Omega_{\\rm DM}}\\frac{d\\Omega_{\\rm PBH}}{d\\ln M}",
+      "plain": "f_PBH(M) = (1/Omega_DM) dOmega_PBH/d ln M",
+      "description": "Common definition of the differential PBH dark-matter fraction per logarithmic mass interval.",
+      "theoryIds": [
+        "pbh-dark-matter"
+      ],
+      "sourceIds": [
+        "green-kavanagh-pbh-2021"
+      ],
+      "tags": [
+        "PBH",
+        "dark matter",
+        "mass function"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Mass-distributed PBH population"
+      ],
+      "variables": [
+        "Omega_PBH: PBH density fraction",
+        "Omega_DM: total dark-matter density fraction"
+      ],
+      "regime": "Primordial-black-hole dark-matter phenomenology.",
+      "units": "Dimensionless per logarithmic mass interval.",
+      "theoryRelationship": "defining abundance measure",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "wimp-boltzmann",
+      "name": "Thermal WIMP number-density equation",
+      "category": "Cosmology & dark sector",
+      "latex": "\\dot n+3Hn=-\\langle\\sigma v\\rangle\\left(n^2-n_{\\rm eq}^2\\right)",
+      "plain": "ndot + 3 H n = -<sigma v>(n^2 - n_eq^2)",
+      "description": "Boltzmann equation governing thermal relic freeze-out for a stable annihilating species.",
+      "theoryIds": [
+        "wimp-dark-matter"
+      ],
+      "sourceIds": [
+        "jungman-wimp-1996"
+      ],
+      "tags": [
+        "WIMP",
+        "freezeout",
+        "Boltzmann"
+      ],
+      "formulaType": "canonical",
+      "assumptions": [
+        "Homogeneous expanding universe",
+        "Thermally averaged annihilation rate",
+        "Stable relic after freeze-out"
+      ],
+      "variables": [
+        "n: WIMP number density",
+        "H: Hubble rate",
+        "<sigma v>: annihilation rate coefficient"
+      ],
+      "regime": "Thermal WIMP freeze-out.",
+      "units": "Number density per time on both sides.",
+      "theoryRelationship": "canonical relic-abundance equation",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "axion-field-eom",
+      "name": "Homogeneous axion misalignment equation",
+      "category": "Cosmology & dark sector",
+      "latex": "\\ddot a+3H\\dot a+m_a^2(T)a\\simeq0",
+      "plain": "addot + 3 H adot + m_a(T)^2 a ~= 0",
+      "description": "Small-angle homogeneous axion-field equation used in the misalignment mechanism.",
+      "theoryIds": [
+        "axion-dark-matter"
+      ],
+      "sourceIds": [
+        "preskill-axion-1983"
+      ],
+      "tags": [
+        "axion",
+        "misalignment",
+        "dark matter"
+      ],
+      "formulaType": "approximation",
+      "assumptions": [
+        "Homogeneous field",
+        "Small-angle harmonic approximation near the axion-potential minimum"
+      ],
+      "variables": [
+        "a: axion field amplitude",
+        "m_a(T): temperature-dependent axion mass"
+      ],
+      "regime": "Early-universe axion misalignment dynamics.",
+      "units": "Natural units are normally used.",
+      "theoryRelationship": "canonical misalignment approximation",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "quintessence-eom",
+      "name": "Quintessence field equation",
+      "category": "Cosmology & dark sector",
+      "latex": "\\ddot\\phi+3H\\dot\\phi+\\frac{dV}{d\\phi}=0",
+      "plain": "phiddot + 3 H phidot + dV/dphi = 0",
+      "description": "Homogeneous Klein–Gordon equation for a minimally coupled quintessence field in FLRW spacetime.",
+      "theoryIds": [
+        "quintessence"
+      ],
+      "sourceIds": [
+        "caldwell-quintessence-1998"
+      ],
+      "tags": [
+        "quintessence",
+        "dark energy",
+        "scalar field"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Canonical minimally coupled scalar field",
+        "Homogeneous FLRW background"
+      ],
+      "variables": [
+        "phi: scalar field",
+        "V(phi): potential",
+        "H: Hubble rate"
+      ],
+      "regime": "Canonical quintessence cosmology.",
+      "units": "Usually expressed in natural units.",
+      "theoryRelationship": "defining background equation",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "quintessence-rho-p",
+      "name": "Quintessence energy density and pressure",
+      "category": "Cosmology & dark sector",
+      "latex": "\\rho_\\phi=\\frac12\\dot\\phi^2+V(\\phi),\\qquad p_\\phi=\\frac12\\dot\\phi^2-V(\\phi)",
+      "plain": "rho_phi = 1/2 phidot^2 + V; p_phi = 1/2 phidot^2 - V",
+      "description": "Effective perfect-fluid density and pressure of a homogeneous canonical scalar field.",
+      "theoryIds": [
+        "quintessence"
+      ],
+      "sourceIds": [
+        "caldwell-quintessence-1998"
+      ],
+      "tags": [
+        "quintessence",
+        "equation of state"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Canonical scalar kinetic term",
+        "Homogeneous field"
+      ],
+      "variables": [
+        "rho_phi: field energy density",
+        "p_phi: field pressure"
+      ],
+      "regime": "Canonical quintessence.",
+      "units": "Energy density/pressure.",
+      "theoryRelationship": "defining effective-fluid relation",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "cosmic-string-deficit",
+      "name": "Cosmic-string conical deficit angle",
+      "category": "Cosmology & dark sector",
+      "latex": "\\Delta=\\frac{8\\pi G\\mu}{c^2}",
+      "plain": "Delta = 8 pi G mu / c^2",
+      "description": "Conical deficit angle outside an ideal straight thin cosmic string.",
+      "theoryIds": [
+        "cosmic-strings"
+      ],
+      "sourceIds": [
+        "kibble-cosmic-strings-1976"
+      ],
+      "tags": [
+        "cosmic string",
+        "deficit angle"
+      ],
+      "formulaType": "canonical",
+      "assumptions": [
+        "Ideal thin straight string",
+        "Locally flat exterior in the simplest string solution"
+      ],
+      "variables": [
+        "mu: string mass per unit length/tension"
+      ],
+      "regime": "Classical gravitational field of an ideal cosmic string.",
+      "units": "Dimensionless angle in radians.",
+      "theoryRelationship": "canonical gravitational signature",
       "metadataReview": "explicit"
     }
 
