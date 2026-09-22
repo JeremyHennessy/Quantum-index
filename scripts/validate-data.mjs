@@ -7,9 +7,14 @@ vm.createContext(sandbox);
 vm.runInContext(code, sandbox);
 const data = sandbox.window.QI_DATA;
 
+const formulaCode = fs.readFileSync("formulas.js","utf8");
+vm.runInContext(formulaCode, sandbox);
+const formulaData = sandbox.window.QI_FORMULAS;
+
 if (!data || !Array.isArray(data.theories) || !Array.isArray(data.relations) || !Array.isArray(data.trees) || !Array.isArray(data.sources)) {
   throw new Error("QI_DATA schema missing");
 }
+if (!formulaData || !Array.isArray(formulaData.formulas)) throw new Error("QI_FORMULAS schema missing");
 
 const ids = data.theories.map(t=>t.id);
 const unique = new Set(ids);
@@ -57,6 +62,21 @@ for (const tree of data.trees) {
   if (isolated.length) throw new Error(`Tree ${tree.name} has isolated nodes: ${isolated.join(", ")}`);
 }
 
+const formulaIds = formulaData.formulas.map(f=>f.id);
+const uniqueFormulaIds = new Set(formulaIds);
+if (uniqueFormulaIds.size !== formulaIds.length) throw new Error("Duplicate formula IDs");
+if (formulaData.formulas.length < 160) throw new Error(`Expected formula atlas >= 160 entries; found ${formulaData.formulas.length}`);
+
+for (const f of formulaData.formulas) {
+  for (const key of ["id","name","category","latex","plain","description"]) {
+    if (f[key] === undefined || f[key] === null || f[key] === "") throw new Error(`Formula ${f.id || "?"} missing ${key}`);
+  }
+  if (!Array.isArray(f.theoryIds) || !f.theoryIds.length) throw new Error(`Formula ${f.id} has no linked theory`);
+  if (!Array.isArray(f.sourceIds) || !f.sourceIds.length) throw new Error(`Formula ${f.id} has no source`);
+  for (const id of f.theoryIds) if (!unique.has(id)) throw new Error(`Formula ${f.id} references missing theory ${id}`);
+  for (const id of f.sourceIds) if (!uniqueSources.has(id)) throw new Error(`Formula ${f.id} references missing source ${id}`);
+}
+
 const cataloguedOnly = data.theories.filter(t=>t.provenance === "catalogued");
 if (cataloguedOnly.length) {
   throw new Error(`Shipped theory remains catalogued-only: ${cataloguedOnly.map(t=>t.id).join(", ")}`);
@@ -71,5 +91,7 @@ console.log(JSON.stringify({
   kinds:[...new Set(data.theories.map(t=>t.kind))].length,
   sources:data.sources.length,
   sourceBacked,
-  sourceCoveragePct:Number((sourceBacked / data.theories.length * 100).toFixed(1))
+  sourceCoveragePct:Number((sourceBacked / data.theories.length * 100).toFixed(1)),
+  formulas:formulaData.formulas.length,
+  formulaCategories:[...new Set(formulaData.formulas.map(f=>f.category))].length
 },null,2));
