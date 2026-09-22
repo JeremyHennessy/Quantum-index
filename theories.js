@@ -265,7 +265,7 @@ window.QI_DATA = (() => {
     R("quaternionic-qm","generalized-probabilistic","overlaps"),R("nonassociative-qm","categorical-qm","overlaps"),R("deformation-quantization","phase-space-qm","overlaps"),
     R("phase-space-qm","geometric-qm","overlaps"),R("hartle-hawking","quantum-cosmology","interprets"),R("vilenkin","quantum-cosmology","interprets"),
     R("quantum-cosmology","inflationary-fluctuations","overlaps"),R("inflationary-fluctuations","eternal-inflation","extends"),R("string-landscape","eternal-inflation","overlaps"),
-    R("string-theory","string-landscape","extends")
+    R("string-theory","string-landscape","extends"),
     R("de-broglie","double-solution","extends"),R("double-solution","bohmian","precursor"),
     R("von-neumann","density-operator","supports"),R("matrix-mechanics","canonical-quantization","supports"),R("wave-mechanics","canonical-quantization","supports"),
     R("von-neumann","quantum-logic","supports"),R("quantum-logic","consistent-histories","overlaps"),R("everett","wigner-friend","motivates"),
@@ -282,7 +282,7 @@ window.QI_DATA = (() => {
     R("semiclassical-gravity","induced-gravity","overlaps"),R("effective-field-theory","perturbative-qg","supports"),R("perturbative-qg","higher-derivative-qg","motivates"),
     R("path-integral","euclidean-qg","extends"),R("euclidean-qg","quantum-regge","overlaps"),R("quantum-regge","cdt","precursor"),
     R("loop-quantum-gravity","relative-locality","overlaps"),R("loop-quantum-gravity","doubly-special-relativity","overlaps"),R("loop-quantum-gravity","generalized-uncertainty","overlaps"),
-    R("quantum-gravity","quantum-graphity","overlaps"),R("wheeler-dewitt","minisuperspace","supports"),R("quantum-cosmology","third-quantization","extends"),
+    R("emergent-spacetime","quantum-graphity","overlaps"),R("wheeler-dewitt","minisuperspace","supports"),R("quantum-cosmology","third-quantization","extends"),
     R("string-theory","string-gas-cosmology","extends"),R("generalized-probabilistic","pr-box","supports"),
     R("phase-space-qm","geometric-quantization","overlaps"),R("path-integral","stochastic-quantization","overlaps")
 
@@ -290,11 +290,11 @@ window.QI_DATA = (() => {
 
   const trees = [
     {name:"Birth of quantum mechanics",nodes:["planck-quanta","light-quantum","bohr-model","old-quantum","de-broglie","matrix-mechanics","wave-mechanics","dirac-transformation","von-neumann"]},
-    {name:"Measurement and interpretation",nodes:["born-rule","copenhagen","epr","bell","bohmian","everett","decoherence","grw","consistent-histories","relational-qm","qbism","quantum-darwinism"]},
-    {name:"Quantum fields to the Standard Model",nodes:["qed","yang-mills","electroweak","qcd","standard-model","renormalization-group","effective-field-theory"]},
-    {name:"Quantum gravity branches",nodes:["wheeler-dewitt","string-theory","loop-quantum-gravity","causal-sets","asymptotic-safety","cdt","spin-foams","group-field-theory","holographic-principle","ads-cft","emergent-spacetime"]},
-    {name:"Quantum information and causality",nodes:["decoherence","quantum-information","resource-theories","generalized-probabilistic","quantum-reference-frames","process-matrices","indefinite-causal-order","quantum-causal-models","categorical-qm","quantum-mereology"]},
-    {name:"Quantum cosmology",nodes:["wheeler-dewitt","quantum-cosmology","hartle-hawking","vilenkin","inflationary-fluctuations","eternal-inflation","loop-quantum-cosmology","string-landscape"]},
+    {name:"Measurement and interpretation",nodes:["born-rule","copenhagen","epr","bell","quantum-logic","bohmian","everett","wigner-friend","decoherence","objective-collapse","consistent-histories","relational-qm","qbism","quantum-darwinism"]},
+    {name:"Quantum fields to the Standard Model",nodes:["qed","wightman-qft","constructive-qft","yang-mills","brst","electroweak","qcd","standard-model","renormalization-group","functional-rg","effective-field-theory"]},
+    {name:"Quantum gravity branches",nodes:["perturbative-qg","euclidean-qg","quantum-regge","wheeler-dewitt","string-theory","loop-quantum-gravity","causal-sets","asymptotic-safety","cdt","spin-foams","group-field-theory","holographic-principle","ads-cft","emergent-spacetime"]},
+    {name:"Quantum information and causality",nodes:["decoherence","gksl","quantum-information","resource-theories","generalized-probabilistic","quantum-combs","quantum-switch","quantum-reference-frames","process-matrices","indefinite-causal-order","process-tensor","quantum-causal-models","categorical-qm","quantum-mereology"]},
+    {name:"Quantum cosmology",nodes:["wheeler-dewitt","minisuperspace","quantum-cosmology","hartle-hawking","vilenkin","third-quantization","inflationary-fluctuations","eternal-inflation","loop-quantum-cosmology","string-landscape","string-gas-cosmology"]},
     {name:"Beyond standard quantum mechanics",nodes:["bohmian","nelson","grw","csl","diosi-penrose","nonlinear-qm","trace-dynamics","cellular-automaton","superdeterminism","retrocausal","quaternionic-qm","nonassociative-qm"]}
   ];
 
