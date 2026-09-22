@@ -20,7 +20,7 @@ Decision labels:
 | Decoherent-histories quantum cosmology | REJECT-DUPLICATE | Already shipped as a first-class quantum-cosmology/foundations entity. |
 | Epistemically restricted theories beyond Spekkens | SUBTYPE | Promote only specific named operational theories, not an open-ended family label. |
 | Quantum Bayesian/personalist variants beyond QBism | SUBTYPE | Existing QBism is the umbrella; variants require specific formal differences. |
-| Hidden-measurements approach | **ADD** | Distinct foundational research program with its own probability/measurement construction. |
+| Hidden-measurements approach | **PROMOTED** | Added as a source-backed first-class entity with a hidden-interaction probability formula. |
 | Retrocausal Lagrangian-schema models | SUBTYPE | Existing retrocausal program is the umbrella until a specific formal model is selected. |
 | Transactional variants | SUBTYPE | Existing Transactional interpretation is the umbrella. |
 | Stochastic mechanics beyond Nelson | SUBTYPE | Add only named, source-distinct models. |
@@ -30,7 +30,7 @@ Decision labels:
 | Candidate | Decision | Reason |
 |---|---|---|
 | Consistent quantum measure / generalized measure theories | SUBTYPE | Existing Quantum measure theory is the umbrella. |
-| Operational quantum logic | **ADD** | Distinct operational/axiomatic program beyond the existing lattice-based Birkhoff–von Neumann entry. |
+| Operational quantum logic | **PROMOTED** | Added as a source-backed formal framework extending the quantum-logic branch. |
 
 ## Quantum field theory
 
@@ -66,7 +66,7 @@ Decision labels:
 | Candidate | Decision | Reason |
 |---|---|---|
 | Wheeler–DeWitt minisuperspace variants | SUBTYPE | Existing Minisuperspace quantum cosmology is the umbrella. |
-| Polymer cosmology outside standard LQC | **ADD** | Distinct application of polymer quantization to cosmology beyond the standard LQC entity; warrants a separate node if sourced carefully. |
+| Polymer cosmology outside standard LQC | **PROMOTED** | Added as Polymer quantum cosmology with a dedicated 2019 primary source and polymerization formula. |
 | Third-quantized group-field approaches | SUBTYPE | Existing Third quantization plus Group-field cosmology cover the current conceptual space. |
 
 ## Beyond-standard quantum theory
@@ -84,9 +84,7 @@ Decision labels:
 
 The next first-class additions should be:
 
-1. Hidden-measurements approach.
-2. Operational quantum logic.
-3. Polymer cosmology outside standard LQC, if a sufficiently distinct primary source is selected.
-4. A specific superselection-based modified quantum theory, only after the candidate is narrowed to a named formalism.
+1. A specific superselection-based modified quantum theory, only after the candidate is narrowed to a named formalism.
+2. Continue model-level promotion only where granularity is applied systematically across a domain.
 
 All other audited backlog items remain aliases or subtypes until the index adopts systematic model-level granularity.

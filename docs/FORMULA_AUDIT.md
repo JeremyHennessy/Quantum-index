@@ -12,10 +12,10 @@ The runtime audit is in `formula-audit.js`; formula records are in `formulas.js`
 
 ## Current result
 
-- 262 shipped theory/framework entities audited
-- 320 source-linked formula entries
-- 175 entities classified **formula-bearing**
-- 62 classified **formula-bearing-gap**
+- 265 shipped theory/framework entities audited
+- 323 source-linked formula entries
+- 179 entities classified **formula-bearing**
+- 61 classified **formula-bearing-gap**
 - 11 **interpretations**
 - 11 **primarily conceptual/structural**
 - 2 **theorem-first**
@@ -169,3 +169,12 @@ These remain explicit gaps until a compact, source-supported equation can be sel
 4. Every formula must link at least one theory and one catalogued source.
 5. Schematic or approximate expressions must be labeled as such.
 6. Formula coverage and theory coverage are reported separately.
+
+
+## Candidate-promotion formulas added
+
+- Hidden-measurement outcome probability — schematic measure-ratio form.
+- Operational state–effect probability pairing — defining operational rule.
+- Polymerized cosmological momentum substitution — defining effective polymerization map.
+
+These formulas moved the three promoted candidate theories directly into the formula-bearing class rather than creating new unsatisfied formula gaps.
