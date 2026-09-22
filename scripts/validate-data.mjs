@@ -57,6 +57,11 @@ for (const tree of data.trees) {
   if (isolated.length) throw new Error(`Tree ${tree.name} has isolated nodes: ${isolated.join(", ")}`);
 }
 
+const cataloguedOnly = data.theories.filter(t=>t.provenance === "catalogued");
+if (cataloguedOnly.length) {
+  throw new Error(`Shipped theory remains catalogued-only: ${cataloguedOnly.map(t=>t.id).join(", ")}`);
+}
+
 const sourceBacked = data.theories.filter(t=>t.provenance !== "catalogued").length;
 console.log(JSON.stringify({
   theories:data.theories.length,
