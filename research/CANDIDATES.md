@@ -16,7 +16,6 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 - quantum Bayesian / personalist variants beyond core QBism
 - information-invariant / reconstruction interpretations
 - hidden-measurements approach
-- many-interacting-worlds
 - retrocausal Lagrangian-schema models
 - transactional variants
 - stochastic mechanics families beyond Nelson
@@ -25,24 +24,17 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 
 - Weyl quantization
 - rigged Hilbert space
-- Jordan-algebraic quantum mechanics
 - noncommutative probability
-- quantum measure theory
 - Sorkin coevent interpretation
 - histories projection operator formalism
 - consistent quantum measure / generalized measure theories
-- topos approaches to quantum theory
-- sheaf-theoretic contextuality
 - operational quantum logic
 - convex-operational reconstructions
-- dagger-compact / ZX-calculus subframeworks
 
 ## QFT candidates
 
 - Osterwalder–Schrader axiomatics as a distinct entry if separated from Euclidean QFT
 - Schwinger–Dyson framework
-- light-front quantization
-- causal perturbation theory / Epstein–Glaser renormalization
 - background-field method
 - exact/integrable 1+1D QFT
 - constructive P(φ)₂
@@ -61,17 +53,10 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 ## Quantum-information / open-system candidates
 
 - Davies generators
-- quantum stochastic calculus
-- Hudson–Parthasarathy framework
 - collision models
 - continuous quantum measurement
 - quantum filtering
-- measurement-based quantum computation
-- adiabatic quantum computation
-- topological quantum computation
-- tensor networks / MPS
 - PEPS
-- MERA
 - device-independent quantum information
 - generalized contextuality resource theories
 - quantum causal inference variants
@@ -87,13 +72,8 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 - EFT of general relativity
 - Stelle gravity primary branch
 - Euclidean dynamical triangulations
-- causal fermion systems
 - causal dynamical triangulation submodels
 - twistor string
-- string field theory
-- matrix theory / BFSS
-- IKKT matrix model
-- higher-spin gravity
 - nonlocal gravity
 - ghost-free infinite-derivative gravity
 - causal diamonds / holographic spacetime
@@ -106,7 +86,6 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 - κ-Poincaré / κ-Minkowski approaches
 - doubly-special-relativity variants
 - generalized-uncertainty variants
-- causal-set quantum dynamics / sequential growth
 - causal-set path-integral programs
 
 ## Quantum-cosmology candidates
@@ -125,9 +104,6 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 
 ## Beyond-standard candidates
 
-- p-adic quantum mechanics
-- q-deformed quantum mechanics
-- finite-field / modal quantum theory
 - parastatistics
 - generalized exclusion statistics
 - nonlinear Schrödinger families
@@ -140,3 +116,8 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 - nonassociative/octonionic models
 - superselection-modified theories
 - nonlinear density-matrix models
+
+
+## Integrated in the 2026-09-21 formal/emergent sweep
+
+The following candidates were promoted into the catalog with dedicated provenance in this pass: Jordan-algebraic quantum mechanics; light-front quantization; Epstein–Glaser causal perturbation theory; quantum stochastic calculus; p-adic and q-deformed quantum mechanics; tensor-network/MPS frameworks; quantum measure theory; topos quantum theory; causal-set sequential growth; adiabatic, measurement-based and topological quantum computation; higher-spin gravity; MERA; sheaf-theoretic contextuality; ZX calculus; causal fermion systems; many-interacting-worlds; string field theory; BFSS Matrix theory; IKKT/IIB matrix model; and modal quantum theory.
