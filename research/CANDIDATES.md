@@ -10,7 +10,6 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 - decoherent-histories cosmology
 - epistemically restricted theories beyond Spekkens
 - quantum Bayesian / personalist variants beyond core QBism
-- hidden-measurements approach
 - retrocausal Lagrangian-schema models
 - transactional variants
 - stochastic mechanics families beyond Nelson
@@ -18,7 +17,6 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 ## Formal / mathematical candidates
 
 - consistent quantum measure / generalized measure theories
-- operational quantum logic
 
 ## QFT candidates
 
@@ -46,7 +44,6 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 ## Quantum-cosmology candidates
 
 - Wheeler–DeWitt minisuperspace variants
-- polymer cosmology outside standard LQC
 - third-quantized group-field approaches
 
 ## Beyond-standard candidates
@@ -107,3 +104,8 @@ Promoted with dedicated provenance: quantum error-correction theory; stabilizer 
 ## Integrated in the 2026-09-21 quantum-chemistry/correlated-electron sweep
 
 Promoted with dedicated provenance: Hartree–Fock; configuration interaction; Møller–Plesset perturbation theory; coupled-cluster theory; time-dependent density-functional theory; GW; Bethe–Salpeter electronic-excitation methods; density-matrix renormalization group; dynamical mean-field theory; and Quantum Monte Carlo.
+
+
+## Integrated in the 2026-09-22 audited-candidate promotion sweep
+
+Promoted after explicit add/alias/subtype review: Hidden-measurements approach; Operational quantum logic; Polymer quantum cosmology.
