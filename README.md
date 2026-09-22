@@ -15,7 +15,7 @@ Quantum Index is a source-aware map of quantum theory: historical foundations, f
 
 The current corpus is a broad research seed rather than a claim of literal completeness. The schema is designed to grow without changing the UI.
 
-Current audited branch metrics: **172 entities**, **195 typed relationships**, **9 thought trees**, **126 bibliography/source records**, with **129 entries carrying dedicated source provenance**, including **86 primary-sourced entries**. Catalog coverage and source coverage are intentionally reported separately.
+Current audited branch metrics: **172 entities**, **195 typed relationships**, **9 thought trees**, **135 bibliography/source records**, with **138 entries carrying dedicated source provenance**, including **92 primary-sourced entries**. Catalog coverage and source coverage are intentionally reported separately.
 
 Static app:
 - `index.html`

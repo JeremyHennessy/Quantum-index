@@ -325,10 +325,28 @@ window.QI_DATA = (() => {
     {id:"kostant-1970",title:"Quantization and unitary representations",authors:"Bertram Kostant",year:1970,type:"primary source",url:"https://doi.org/10.1007/BFb0079068"},
     {id:"parisi-wu-1981",title:"Perturbation theory without gauge fixing",authors:"Giorgio Parisi, Yong-Shi Wu",year:1981,type:"primary source",url:"https://doi.org/10.1360/YA1981-24-4-483"},
     {id:"batalin-vilkovisky-1981",title:"Gauge algebra and quantization",authors:"I. A. Batalin, G. A. Vilkovisky",year:1981,type:"primary source",url:"https://doi.org/10.1016/0370-2693(81)90205-7"},
-    {id:"becchi-rouet-stora-1976",title:"Renormalization of gauge theories",authors:"Carlo Becchi, Alain Rouet, Raymond Stora",year:1976,type:"primary source",url:"https://doi.org/10.1016/0003-4916(76)90156-1"}
+    {id:"becchi-rouet-stora-1976",title:"Renormalization of gauge theories",authors:"Carlo Becchi, Alain Rouet, Raymond Stora",year:1976,type:"primary source",url:"https://doi.org/10.1016/0003-4916(76)90156-1"},
+    {id:"pdg-standard-model-2024",title:"Review of Particle Physics",authors:"S. Navas et al. (Particle Data Group)",year:2024,type:"authoritative review",url:"https://doi.org/10.1103/PhysRevD.110.030001"},
+    {id:"wess-zumino-1974",title:"Supergauge transformations in four dimensions",authors:"Julius Wess, Bruno Zumino",year:1974,type:"primary source",url:"https://doi.org/10.1016/0550-3213(74)90355-1"},
+    {id:"wilson-lattice-1974",title:"Confinement of quarks",authors:"Kenneth G. Wilson",year:1974,type:"primary source",url:"https://doi.org/10.1103/PhysRevD.10.2445"},
+    {id:"bpz-1984",title:"Infinite conformal symmetry in two-dimensional quantum field theory",authors:"A. A. Belavin, A. M. Polyakov, A. B. Zamolodchikov",year:1984,type:"primary source",url:"https://doi.org/10.1016/0550-3213(84)90052-X"},
+    {id:"witten-tqft-1988",title:"Topological quantum field theory",authors:"Edward Witten",year:1988,type:"primary source",url:"https://doi.org/10.1007/BF01223371"},
+    {id:"elvang-huang-amplitudes-2015",title:"Scattering Amplitudes in Gauge Theory and Gravity",authors:"Henriette Elvang, Yu-tin Huang",year:2015,type:"authoritative monograph",url:"https://doi.org/10.1017/CBO9781107706620"},
+    {id:"simmons-duffin-bootstrap-2016",title:"TASI Lectures on the Conformal Bootstrap",authors:"David Simmons-Duffin",year:2016,type:"review / lecture notes",url:"https://arxiv.org/abs/1602.07982"},
+    {id:"wetterich-1993",title:"Exact evolution equation for the effective potential",authors:"Christof Wetterich",year:1993,type:"primary source",url:"https://doi.org/10.1016/0370-2693(93)90726-X"},
+    {id:"brunetti-fredenhagen-1999",title:"Microlocal Analysis and Interacting Quantum Field Theories: Renormalization on Physical Backgrounds",authors:"Romeo Brunetti, Klaus Fredenhagen",year:1999,type:"primary source",url:"https://arxiv.org/abs/math-ph/9903028"}
   ];
 
   const sourceLinks = {
+    "standard-model":["pdg-standard-model-2024"],
+    "supersymmetry":["wess-zumino-1974"],
+    "lattice-gauge":["wilson-lattice-1974"],
+    "conformal-field-theory":["bpz-1984"],
+    "topological-qft":["witten-tqft-1988"],
+    "amplitudes-bootstrap":["elvang-huang-amplitudes-2015"],
+    "conformal-bootstrap":["simmons-duffin-bootstrap-2016"],
+    "functional-rg":["wetterich-1993"],
+    "perturbative-aqft":["brunetti-fredenhagen-1999"],
     "quantum-information":["schumacher-1995"],
     "generalized-probabilistic":["barrett-gpt-2007"],
     "resource-theories":["resource-rmp-2019"],
