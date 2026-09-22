@@ -5,9 +5,6 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 ## Foundations / interpretation candidates
 
 - Bell-type quantum field theories
-- flash ontology (GRWf)
-- mass-density ontology (GRWm)
-- primitive ontology program
 - perspectival modal interpretations
 - Ithaca variants / correlation-only programs
 - consistent-histories variants
@@ -50,8 +47,6 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 - ghost-free infinite-derivative gravity
 - causal diamonds / holographic spacetime
 - quantum graphity variants
-- tensorial group field theories
-- algebraic quantum gravity
 - relative locality subfamilies
 - doubly-special-relativity variants
 - generalized-uncertainty variants
@@ -60,8 +55,6 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 ## Quantum-cosmology candidates
 
 - decoherent histories quantum cosmology
-- Lorentzian no-boundary approaches
-- Picard–Lefschetz quantum cosmology
 - Wheeler–DeWitt minisuperspace variants
 - polymer cosmology outside standard LQC
 - third-quantized group-field approaches
@@ -70,7 +63,6 @@ This is a research queue, not a list of accepted entities. Candidates must be ch
 
 - nonlinear Schrödinger families
 - energy-driven stochastic collapse
-- QMUPL
 - Diosi stochastic model as distinct from DP umbrella
 - real quantum theory subvariants
 - quaternionic tests / formulations
@@ -97,3 +89,8 @@ Promoted with dedicated provenance: quantum collision models/repeated interactio
 ## Integrated in the 2026-09-21 formal/QFT depth sweep
 
 Promoted with dedicated provenance: Weyl quantization; rigged Hilbert space / Gel'fand triplets; noncommutative/quantum probability; Schwinger–Dyson equations; integrable quantum field theory; NRQED; NRQCD; topological string theory; Davies weak-coupling generators; and the resource theory of contextuality.
+
+
+## Integrated in the 2026-09-21 quantum-gravity/collapse depth sweep
+
+Promoted with dedicated provenance: Algebraic Quantum Gravity (AQG); tensorial group field theory; Lorentzian/Picard–Lefschetz quantum cosmology; the primitive-ontology program; GRW matter-density theory (GRWm); GRW flash theory (GRWf); and QMUPL.
