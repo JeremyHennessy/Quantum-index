@@ -1,0 +1,28 @@
+name: Validate catalog
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Check JavaScript syntax
+        run: |
+          node --check app.js
+          node --check theories.js
+      - name: Validate theory graph
+        run: node scripts/validate-data.mjs
+      - name: Verify static entry point
+        run: |
+          test -f index.html
+          test -f styles.css
+          grep -q './theories.js' index.html
+          grep -q './app.js' index.html
