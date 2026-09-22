@@ -427,8 +427,7 @@ window.QI_DATA = (() => {
     R("loop-quantum-gravity","relative-locality","overlaps"),R("loop-quantum-gravity","doubly-special-relativity","overlaps"),R("loop-quantum-gravity","generalized-uncertainty","overlaps"),
     R("emergent-spacetime","quantum-graphity","overlaps"),R("wheeler-dewitt","minisuperspace","supports"),R("quantum-cosmology","third-quantization","extends"),
     R("string-theory","string-gas-cosmology","extends"),R("generalized-probabilistic","pr-box","supports"),
-    R("phase-space-qm","geometric-quantization","overlaps"),R("path-integral","stochastic-quantization","overlaps")
-
+    R("phase-space-qm","geometric-quantization","overlaps"),R("path-integral","stochastic-quantization","overlaps"),
     R("quantum-logic","jordan-algebra-qm","overlaps"),R("canonical-quantization","light-front-quantization","extends"),
     R("qed","causal-perturbation","motivates"),R("causal-perturbation","perturbative-aqft","supports"),
     R("gksl","quantum-stochastic-calculus","extends"),R("quantum-information","tensor-network-states","supports"),R("tensor-network-states","mera","extends"),
@@ -436,7 +435,7 @@ window.QI_DATA = (() => {
     R("kochen-specker","topos-quantum","motivates"),R("quantum-logic","topos-quantum","extends"),
     R("causal-sets","causal-set-growth","extends"),R("quantum-information","adiabatic-qc","extends"),
     R("quantum-information","measurement-based-qc","extends"),R("topological-qft","topological-qc","supports"),R("quantum-information","topological-qc","extends"),
-    R("ads-cft","higher-spin-gravity","overlaps"),R("tensor-network-states","mera","precursor"),
+    R("ads-cft","higher-spin-gravity","overlaps"),
     R("kochen-specker","topos-contextuality-sheaf","motivates"),R("generalized-contextuality","topos-contextuality-sheaf","formalizes"),
     R("categorical-qm","zx-calculus","extends"),R("emergent-spacetime","causal-fermion-systems","overlaps"),
     R("everett","many-interacting-worlds","overlaps"),R("string-theory","string-field-theory","extends"),
