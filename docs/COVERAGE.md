@@ -10,10 +10,10 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 - **195** typed relationships
 - **9** curated thought trees
 - **9** top-level categories
-- **155** bibliography/source records
-- **159 / 172 (92.4%)** entries currently have dedicated source provenance
-- **13 / 172** entries remain catalogued seeds pending a dedicated source pass
-- **110 / 172** are now marked `primary-sourced` after direct verification of original or program-defining papers
+- **168** bibliography/source records
+- **172 / 172 (100.0%)** entries currently have dedicated source provenance
+- **0 / 172** shipped entries remain catalogued-only
+- **120 / 172** are marked `primary-sourced`; the remaining **52 / 172** are review/authoritative-source backed
 
 ### Category coverage
 
@@ -102,6 +102,10 @@ The remaining-QFT pass then sourced the Standard Model, supersymmetry, lattice g
 The remaining quantum-gravity/spacetime pass sourced Wheeler–DeWitt canonical gravity, supergravity, semiclassical and stochastic gravity, M-theory, shape dynamics, matrix and tensor models, ER=EPR, entanglement/emergent spacetime, holographic quantum error correction, islands/Page-curve work, celestial holography, Sakharov induced gravity and quantum graphity. Semiclassical/stochastic gravity and broad matrix-model programs remain review-sourced where a single-origin paper would be misleading.
 
 The remaining quantum-cosmology pass sourced loop quantum cosmology, the string landscape, inflationary quantum fluctuations, eternal inflation, third quantization and string-gas cosmology using program-defining primary papers.
+
+The final seed-provenance pass sourced the ensemble interpretation, Nelson stochastic mechanics, nonlinear quantum mechanics, trace dynamics, nonassociative quantum mechanics, quantum mereology, the cellular-automaton interpretation, superdeterministic and retrocausal programs, quaternionic and real-Hilbert-space quantum theory, Wigner's-friend history, and PR-box/superquantum correlations.
+
+**Source coverage is now complete for the current 172-entity shipped corpus. This is not a claim that the corpus itself is complete.** Unsourced or unresolved candidates stay in `research/CANDIDATES.md` until they have sufficient provenance to enter the application.
 
 ## Known coverage gaps / next research passes
 
