@@ -97,3 +97,8 @@ Promoted with dedicated provenance: operational/informational reconstructions of
 ## Domain expansion added 2026-09-21
 
 Added dedicated quantum-matter and AMO coverage: Dirac relativistic electron theory; Glauber optical coherence; quantum Rabi and Jaynes–Cummings models; BCS; DFT; Hubbard; Anderson localization; integer/fractional quantum Hall theories; Bogoliubov weakly interacting Bose gases; Gross–Pitaevskii mean field; Kondo; Haldane Chern insulator; and the toric code.
+
+
+## Integrated in the 2026-09-21 quantum-error-correction/metrology sweep
+
+Promoted with dedicated provenance: quantum error-correction theory; stabilizer formalism; surface-code quantum error correction; continuous-variable quantum information; GKP bosonic codes; quantum metrology; and spin squeezing.
