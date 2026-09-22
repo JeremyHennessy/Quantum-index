@@ -6,15 +6,15 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 
 ## Current corpus
 
-- **245** catalogued entities
-- **334** typed relationships
-- **11** curated thought trees
+- **252** catalogued entities
+- **345** typed relationships
+- **12** curated thought trees
 - **11** top-level categories
-- **238** bibliography/source records
+- **245** bibliography/source records
 - **229** source-linked formula entries across **23** formula categories
-- **245 / 245 (100.0%)** entries currently have dedicated source provenance
-- **0 / 245** shipped entries remain catalogued-only
-- **176 / 245** are marked `primary-sourced`; the remaining **69 / 245** are review/authoritative-source backed
+- **252 / 252 (100.0%)** entries currently have dedicated source provenance
+- **0 / 252** shipped entries remain catalogued-only
+- **181 / 252** are marked `primary-sourced`; the remaining **71 / 252** are review/authoritative-source backed
 
 ### Category coverage
 
@@ -24,7 +24,7 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 | Formulations | 18 |
 | Foundations & interpretations | 42 |
 | Quantum field theory | 30 |
-| Quantum information & open systems | 33 |
+| Quantum information & open systems | 40 |
 | Quantum gravity & spacetime | 56 |
 | Quantum cosmology | 17 |
 | Mathematical structures | 10 |
@@ -40,8 +40,8 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 | 1925–1939 | 19 |
 | 1940–1959 | 12 |
 | 1960–1979 | 45 |
-| 1980–1999 | 69 |
-| 2000–2014 | 61 |
+| 1980–1999 | 73 |
+| 2000–2014 | 64 |
 | 2015–present | 34 |
 
 ## What "all quantum theories" means operationally
@@ -212,3 +212,8 @@ The current sweep adds two explicit domains that were underrepresented in the or
 Formula coverage is audited separately from theory coverage. The Formula Atlas now contains 229 source-linked entries. Every shipped formula references at least one existing theory ID and at least one source ID, and CI rejects duplicate formula IDs or dangling theory/source references.
 
 The current formula corpus emphasizes canonical equations and identities across core quantum mechanics, wave mechanics, relativistic quantum theory, QFT, quantum information, open systems, quantum optics, many-body physics, topological quantum theory, and quantum gravity/cosmology. Literal completeness is not yet claimed; see `docs/FORMULA_COVERAGE.md`.
+
+
+## Quantum error correction and metrology expansion
+
+The latest theory sweep adds quantum error-correction theory, the stabilizer formalism, surface codes, continuous-variable quantum information, the GKP bosonic code, quantum metrology and spin squeezing. A dedicated thought tree now traces quantum-error-correction and sensing lineages through the existing information-theory graph.
