@@ -901,12 +901,11 @@ window.QI_DATA = (() => {
     R("wave-mechanics","anderson-localization","extends"),R("anderson-localization","integer-quantum-hall","overlaps"),
     R("integer-quantum-hall","fractional-quantum-hall","precursor"),R("fractional-quantum-hall","topological-qc","supports"),
     R("integer-quantum-hall","haldane-model","overlaps"),R("haldane-model","topological-qc","supports"),
-    R("topological-qft","toric-code","supports"),R("toric-code","topological-qc","supports"),R("toric-code","quantum-error-correction-gravity","overlaps")
-
+    R("topological-qft","toric-code","supports"),R("toric-code","topological-qc","supports"),R("toric-code","quantum-error-correction-gravity","overlaps"),
     R("quantum-information","quantum-error-correction","extends"),R("quantum-error-correction","stabilizer-formalism","formalizes"),
     R("stabilizer-formalism","surface-code","extends"),R("toric-code","surface-code","precursor"),R("topological-qc","surface-code","overlaps"),
     R("quantum-information","continuous-variable-qi","extends"),R("continuous-variable-qi","gkp-code","supports"),R("quantum-error-correction","gkp-code","extends"),
-    R("quantum-information","quantum-metrology","extends"),R("resource-theories","quantum-metrology","overlaps"),R("quantum-metrology","spin-squeezing","supports")
+    R("quantum-information","quantum-metrology","extends"),R("resource-theories","quantum-metrology","overlaps"),R("quantum-metrology","spin-squeezing","supports"),
 
   ].filter(r => theories.some(t=>t.id===r.from) && theories.some(t=>t.id===r.to));
 
