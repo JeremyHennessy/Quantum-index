@@ -6,28 +6,28 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 
 ## Current corpus
 
-- **224** catalogued entities
-- **297** typed relationships
+- **230** catalogued entities
+- **312** typed relationships
 - **9** curated thought trees
 - **9** top-level categories
-- **217** bibliography/source records
-- **224 / 224 (100.0%)** entries currently have dedicated source provenance
-- **0 / 224** shipped entries remain catalogued-only
-- **161 / 224** are marked `primary-sourced`; the remaining **63 / 224** are review/authoritative-source backed
+- **224** bibliography/source records
+- **230 / 230 (100.0%)** entries currently have dedicated source provenance
+- **0 / 230** shipped entries remain catalogued-only
+- **164 / 230** are marked `primary-sourced`; the remaining **66 / 230** are review/authoritative-source backed
 
 ### Category coverage
 
 | Category | Entries |
 |---|---:|
 | Historical foundations | 5 |
-| Formulations | 16 |
-| Foundations & interpretations | 41 |
+| Formulations | 17 |
+| Foundations & interpretations | 42 |
 | Quantum field theory | 30 |
 | Quantum information & open systems | 33 |
-| Quantum gravity & spacetime | 53 |
+| Quantum gravity & spacetime | 56 |
 | Quantum cosmology | 17 |
 | Mathematical structures | 10 |
-| Beyond standard quantum theory | 19 |
+| Beyond standard quantum theory | 20 |
 
 ### Era coverage
 
@@ -38,8 +38,8 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 | 1940–1959 | 9 |
 | 1960–1979 | 39 |
 | 1980–1999 | 65 |
-| 2000–2014 | 56 |
-| 2015–present | 33 |
+| 2000–2014 | 61 |
+| 2015–present | 34 |
 
 ## What "all quantum theories" means operationally
 
@@ -116,6 +116,8 @@ The formal/QFT depth sweep added Weyl quantization, rigged Hilbert spaces, nonco
 The quantum-gravity/collapse depth sweep added Algebraic Quantum Gravity, tensorial group field theory, Lorentzian/Picard–Lefschetz quantum cosmology, the primitive-ontology program, GRW matter-density and flash ontologies, and QMUPL.
 
 The histories/canonical/collapse sweep added the History Projection Operator formalism, the coevent interpretation, decoherent-histories quantum cosmology, the distinct Diósi gravitational-collapse model, energy-driven stochastic collapse, and canonical quantum gravity as an umbrella framework.
+
+The reconstruction/holography sweep added operational/informational reconstructions of quantum theory, Bell-type quantum field theories, Holographic Space-Time, ghost-free infinite-derivative gravity, polymer quantum mechanics, and causal-set quantum path-sum dynamics.
 
 ## Known coverage gaps / next research passes
 
