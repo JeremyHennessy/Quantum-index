@@ -11,7 +11,7 @@ Quantum Index is intentionally broader than a list of interpretations. It indexe
 - **13** curated thought trees
 - **12** top-level categories
 - **253** bibliography/source records
-- **320** source-linked formula entries across **27** formula categories
+- **320** source-linked formula entries across **28** formula categories
 - **262 / 262 (100.0%)** entries currently have dedicated source provenance
 - **0 / 262** shipped entries remain catalogued-only
 - **186 / 262** are marked `primary-sourced`; the remaining **76 / 262** are review/authoritative-source backed
