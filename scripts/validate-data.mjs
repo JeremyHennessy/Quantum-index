@@ -78,7 +78,7 @@ for (const tree of data.trees) {
 const formulaIds = formulaData.formulas.map(f=>f.id);
 const uniqueFormulaIds = new Set(formulaIds);
 if (uniqueFormulaIds.size !== formulaIds.length) throw new Error("Duplicate formula IDs");
-if (formulaData.formulas.length < 323) throw new Error(`Expected formula atlas >= 323 entries; found ${formulaData.formulas.length}`);
+if (formulaData.formulas.length < 345) throw new Error(`Expected formula atlas >= 345 entries; found ${formulaData.formulas.length}`);
 
 const allowedFormulaTypes = new Set(["exact","defining","canonical","schematic","approximation","limit","derived identity"]);
 for (const f of formulaData.formulas) {
