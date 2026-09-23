@@ -6,11 +6,11 @@ Quantum Index indexes source-backed theories, formulations, interpretations, res
 
 ## Current branch snapshot
 
-- **417** theory/framework entities
-- **523** typed relationships
-- **25** curated thought trees
+- **433** theory/framework entities
+- **545** typed relationships
+- **30** curated thought trees
 - **14** top-level categories
-- **402** bibliography/source records
+- **418** bibliography/source records
 - **345** source-linked formula entries across **28** formula categories
 - **417 / 417 (100.0%)** entries have dedicated source provenance
 - **0 / 417** are catalogued-only
@@ -18,7 +18,7 @@ Quantum Index indexes source-backed theories, formulations, interpretations, res
 - **113 / 417** are `review-sourced`
 - **57 / 523** relation edges currently have relationship-specific source evidence
 - **466 / 523** relation edges are explicitly editorial
-- formula audit: **202 formula-bearing**, **183 documented formula-bearing gaps**, **11 interpretations**, **14 primarily conceptual**, **6 theorem-first**, **1 thought experiment**
+- formula audit: **202 formula-bearing**, **199 documented formula-bearing gaps**, **11 interpretations**, **14 primarily conceptual**, **6 theorem-first**, **1 thought experiment**
 
 ## Census status: OPEN
 
@@ -64,3 +64,8 @@ The 2026-09-23 third wave adds 50 first-class entities spanning:
 - **Continuous discovery:** literature/review/transcript sweeps continue; candidate generation is not frozen.
 
 See `research/EXHAUSTIVENESS_AUDIT.md`, `research/CANDIDATE_AUDIT.md`, `docs/FORMULA_AUDIT.md`, and `docs/RELATION_PROVENANCE.md`.
+
+
+## Fourth-wave additions
+
+Added KMS equilibrium states, Kadanoff–Baym nonequilibrium Green functions, Ginzburg–Landau/BdG/BCS–BEC frameworks, entanglement theory, quantum simulation, black-hole final-state/remnant/replica-wormhole programs, Starobinsky/hybrid/warm/k-essence cosmologies, and symmetric-teleparallel/f(Q) gravity.
