@@ -1,6 +1,6 @@
 # Quantum Index
 
-Quantum Index is a source-aware map of quantum theory: historical foundations, formulations, interpretations, quantum field theories, information-theoretic frameworks, quantum gravity, quantum cosmology, and alternatives beyond standard quantum mechanics.
+Quantum Index is a source-aware map of quantum theory and adjacent fundamental physics: historical foundations, formulations, interpretations, quantum field theories, information-theoretic frameworks, quantum gravity, quantum cosmology, astroparticle/cosmological models, quantum matter, quantum chemistry, AMO, and alternatives beyond standard quantum mechanics.
 
 ## Product goals
 
@@ -13,9 +13,9 @@ Quantum Index is a source-aware map of quantum theory: historical foundations, f
 
 ## Current build
 
-The current corpus is a broad research seed rather than a claim of literal completeness. The schema is designed to grow without changing the UI.
+The current corpus has completed the 2026-09-22 first-class family sweep, but it is **not** presented as a mathematically provable finite list of every model ever proposed. Exhaustiveness is governed by an explicit candidate-disposition audit and granularity rules.
 
-Current audited branch metrics: **265 theory/framework entities**, **363 typed relationships**, **13 thought trees**, **257 bibliography/source records**, and a separate **345-entry formula atlas** spanning **28 formula categories**. All 265 shipped theory entries carry dedicated provenance: **188 primary-sourced** and **77 review/authoritative-source backed**. Catalog coverage and source coverage are intentionally reported separately.
+Current audited branch metrics: **367 theory/framework entities**, **470 typed relationships**, **20 thought trees**, **358 bibliography/source records**, and a separate **345-entry formula atlas** spanning **28 formula categories**. All 367 shipped theory entries carry dedicated provenance: **278 primary-sourced** and **89 review/authoritative-source backed**. Catalog coverage, relation-evidence coverage, and formula coverage are intentionally reported separately.
 
 Static app:
 - `index.html`
@@ -65,13 +65,14 @@ See:
 - `docs/RELATION_PROVENANCE.md` for edge-evidence semantics and the relation-source audit.
 - `research/CANDIDATES.md` for the unresolved candidate backlog.
 - `research/CANDIDATE_AUDIT.md` for add/alias/subtype/formula-only/duplicate decisions on remaining candidates.
+- `research/EXHAUSTIVENESS_AUDIT.md` for the 2026-09-22 breadth census, acceptance criteria, and remaining lower-granularity queues.
 
 The application must not describe the catalog as literally complete until the documented completeness acceptance criteria are satisfied. Unsourced candidates remain in the research backlog rather than entering the shipped catalog.
 
 
 ## Formula atlas
 
-The formula atlas is a separate evidence layer linked to the theory graph. It currently contains **266 canonical equations, identities, inequalities, Hamiltonians, spectra and topological relations** across 26 categories. Every formula must link to at least one indexed theory and at least one existing source record.
+The formula atlas is a separate evidence layer linked to the theory graph. It currently contains **345 canonical equations, identities, inequalities, Hamiltonians, spectra and topological relations** across **28 categories**. Every formula must link to at least one indexed theory and at least one existing source record.
 
 "All formulas" is treated operationally rather than literally: quantum physics admits arbitrarily many derived equations, equivalent rearrangements, special cases and model-specific identities. The completeness target is therefore **all materially distinct, named or canonical formulas used to define, derive, test, or operationalize indexed quantum theories**, with variants tracked explicitly when they carry different physical content.
 

@@ -1,11 +1,11 @@
 # Quantum Index formula coverage
 
-_Last audited: 2026-09-21_
+_Last audited: 2026-09-22_
 
 ## Current formula corpus
 
-- **266** formula entries
-- **26** formula categories
+- **345** formula entries
+- **28** formula categories
 - **0** duplicate formula IDs
 - **0** dangling theory references
 - **0** dangling source references
@@ -16,100 +16,56 @@ _Last audited: 2026-09-21_
 
 | Formula category | Entries |
 |---|---:|
-| Core quantum mechanics | 25 |
-| Wave mechanics | 17 |
-| Formulations | 2 |
-| Phase-space quantum mechanics | 3 |
-| Mathematical structures | 1 |
-| Foundations & interpretations | 7 |
-| Collapse theories | 5 |
-| Quantum spacetime | 1 |
-| Relativistic quantum theory | 4 |
-| Quantum field theory | 35 |
-| Quantum information | 27 |
-| Open quantum systems | 3 |
-| Quantum thermodynamics | 3 |
-| Quantum optics & AMO | 21 |
-| Quantum many-body & condensed matter | 27 |
-| Quantum gravity & cosmology | 36 |
-| Topological quantum theory | 2 |
-| Perturbation theory | 5 |
-| Scattering theory | 7 |
 | Angular momentum | 3 |
 | Atomic and AMO physics | 3 |
+| Beyond standard quantum theory | 2 |
+| Collapse theories | 6 |
+| Continuous-variable quantum information | 6 |
+| Core quantum mechanics | 26 |
+| Formulations | 9 |
+| Foundations & interpretations | 9 |
 | Many-body Green functions | 4 |
 | Many-body response | 2 |
+| Mathematical structures | 3 |
+| Open quantum systems | 7 |
+| Perturbation theory | 5 |
+| Phase-space quantum mechanics | 3 |
+| Quantum chemistry & electronic structure | 15 |
 | Quantum error correction | 10 |
-| Continuous-variable quantum information | 6 |
+| Quantum field theory | 45 |
+| Quantum gravity & cosmology | 56 |
+| Quantum information | 35 |
+| Quantum many-body & condensed matter | 34 |
 | Quantum metrology | 7 |
+| Quantum optics & AMO | 21 |
+| Quantum spacetime | 1 |
+| Quantum thermodynamics | 3 |
+| Relativistic quantum theory | 4 |
+| Scattering theory | 7 |
+| Topological quantum theory | 2 |
+| Wave mechanics | 17 |
 
-## What “all known formulas” means operationally
+## Operational completeness target
 
-A literal list of every quantum formula is not finite in a useful sense. Any theory generates arbitrarily many algebraically equivalent rearrangements, perturbative coefficients, special-case solutions, basis expansions, Green functions, matrix elements and model-specific identities.
+A literal list of every quantum formula is not finite in a useful sense. Quantum Index targets **materially distinct named or canonical equations used to define, derive, test or operationalize indexed theories**.
 
-Quantum Index therefore treats formula completeness as a controlled research target:
+Included classes:
 
-1. include defining equations of indexed theories;
-2. include canonical Hamiltonians, Lagrangians and evolution equations;
-3. include named spectra, inequalities, conservation laws and uncertainty relations;
-4. include standard measurement, information and entropy formulas;
-5. include canonical correlation functions, propagators and RG equations;
-6. include topological invariants and quantum-geometry relations;
-7. include standard many-body, AMO and condensed-matter equations when they define a distinct indexed framework;
-8. keep derivationally trivial rearrangements out of the first-class formula catalog.
+1. defining Hamiltonians, Lagrangians, actions and evolution equations;
+2. canonical spectra, inequalities, conservation laws and uncertainty relations;
+3. standard measurement, information and entropy formulas;
+4. canonical correlation functions, propagators and RG equations;
+5. topological invariants and quantum-geometry relations;
+6. many-body, AMO, condensed-matter and electronic-structure equations when they define a distinct indexed framework.
 
-Variants are separate entries when their physical assumptions or domain differ materially.
+Trivial algebraic rearrangements stay out unless the variant carries different physical assumptions or regime.
 
-## Current strengths
+## Current control state
 
-The first two formula sweeps are strongest in:
+Theory breadth is now ahead of equation curation: `formula-audit.js` reports **134 formula-bearing gaps** after the 367-node census expansion. Those gaps are deliberate, visible work items rather than silently invented equations.
 
-- nonrelativistic quantum mechanics and operator formalism;
-- QED/Yang–Mills/QCD and EFT;
-- quantum information and channel/open-system equations;
-- canonical quantum optics formulas;
-- condensed-matter/topological formulas linked to the new many-body catalog;
-- black-hole, holographic and cosmological quantum relations.
-
-## Next formula sweeps
-
-Priority areas:
-
-- time-independent perturbation theory through higher orders;
-- time-dependent perturbation theory, transition amplitudes and response theory;
-- scattering theory: Lippmann–Schwinger, T matrix, optical theorem, partial waves and cross sections;
-- angular-momentum addition: Clebsch–Gordan, Wigner 3j/6j/9j and Wigner–Eckart;
-- atomic structure: fine/hyperfine structure, Zeeman/Stark shifts and selection rules;
-- quantum chemistry: Hartree–Fock, Roothaan–Hall, coupled cluster and configuration interaction;
-- many-body Green functions, Dyson equation, Kubo response and Matsubara formalism;
-- BCS/BdG and superfluid/superconducting response formulas;
-- advanced QFT: LSZ, Ward–Takahashi, Slavnov–Taylor, Callan–Symanzik, OPE and anomaly equations;
-- lattice gauge theory and lattice-QCD observables;
-- conformal bootstrap crossing equations and conformal blocks;
-- quantum information: Choi/Jamiołkowski, diamond norm, Holevo information, coherent information and channel capacities;
-- quantum metrology and sensing beyond the pure-state Fisher formulas;
-- quantum stochastic calculus and process-tensor formula families;
-- quantum gravity: spin-network volume, spin-foam amplitudes, causal-set actions and GFT condensate equations;
-- quantum cosmology: minisuperspace Wheeler–DeWitt variants, no-boundary/tunneling saddle formulas and perturbation spectra;
-- collapse-model SDEs for CSL, QMUPL, Diósi and energy-driven families.
+See `docs/FORMULA_AUDIT.md` for closure priorities.
 
 ## Acceptance rules
 
-A formula may enter the shipped atlas only if:
-
-- it has a unique stable ID;
-- its notation is documented well enough to distinguish materially different variants;
-- it links to at least one indexed theory/framework;
-- it links to at least one source record;
-- its equation string parses as valid static data;
-- the formula is not merely a trivial rearrangement of an existing entry unless the variant has independent physical meaning.
-
-
-## Formula sweep 2 additions
-
-The second sweep added 60 source-linked formulas covering stationary and time-dependent perturbation theory, scattering theory, angular-momentum coupling, atomic shifts and transition rates, LSZ/Ward/Callan–Symanzik/OPE/anomaly/gauge-fixing identities, lattice observables, many-body Green functions and response, advanced entanglement/channel measures, squeezed-state and cavity-QED relations, ADM/Regge/inflationary equations, and explicit collapse-model stochastic equations.
-
-
-## Formula sweep 3 additions
-
-The third sweep adds dedicated quantum-error-correction formulas (stabilizers, surface-code checks and GKP operators), continuous-variable covariance/symplectic relations, quantum-metrology and spin-squeezing formulas, additional AMO relations, and deeper canonical-gravity/cosmology expressions including Ashtekar brackets, LQG constraints, spin-foam/GFT schematic amplitudes, no-boundary/tunneling wavefunctions, causal-set sprinkling and CDT partition sums.
+A formula may enter the shipped atlas only if it has a stable ID, documented notation/regime, at least one linked theory, at least one linked source, a valid formula type, and no merely cosmetic duplication of an existing entry.

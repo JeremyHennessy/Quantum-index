@@ -40,11 +40,11 @@ Used for useful navigation/overlap edges that have not yet completed a relations
 
 ## Current coverage
 
-- 363 total relationship edges
-- 57 source-backed in the current relation-provenance pass
-- 46 high confidence
-- 11 medium confidence
-- 306 explicitly editorial
+- **470** total relationship edges
+- **57** source-backed in the current relation-provenance pass
+- **46** high confidence
+- **11** medium confidence
+- **413** explicitly editorial
 
 The editorial count is intentionally visible. Node-level source provenance does not automatically prove an edge between two nodes.
 
@@ -102,3 +102,10 @@ New relation evidence includes:
 - polymer quantum mechanics → polymer quantum cosmology — high-confidence formal mathematical relation;
 - loop quantum cosmology ↔ polymer quantum cosmology — medium-confidence formal overlap;
 - ontological models ↔ hidden measurements remains explicitly editorial until a relationship-specific historical/formal source pass supports stronger wording.
+
+
+## 2026-09-22 breadth-expansion edge state
+
+The two exhaustiveness sweeps added 107 new navigation edges. They are intentionally **editorial by default** unless the source itself directly supports the relationship claim. Node-level provenance is not reused as edge provenance.
+
+Next relation-evidence work should prioritize the new modified-gravity hierarchy, QFT model-to-framework relations, dark-sector production mechanisms, many-body model reductions, and electronic-structure method lineage.
