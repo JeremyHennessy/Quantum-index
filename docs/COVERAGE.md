@@ -6,11 +6,11 @@ Quantum Index indexes source-backed theories, formulations, interpretations, res
 
 ## Current branch snapshot
 
-- **454** theory/framework entities
-- **572** typed relationships
-- **35** curated thought trees
+- **464** theory/framework entities
+- **588** typed relationships
+- **38** curated thought trees
 - **14** top-level categories
-- **440** bibliography/source records
+- **450** bibliography/source records
 - **345** source-linked formula entries across **28** formula categories
 - **417 / 417 (100.0%)** entries have dedicated source provenance
 - **0 / 417** are catalogued-only
@@ -18,7 +18,7 @@ Quantum Index indexes source-backed theories, formulations, interpretations, res
 - **113 / 417** are `review-sourced`
 - **57 / 523** relation edges currently have relationship-specific source evidence
 - **466 / 523** relation edges are explicitly editorial
-- formula audit: **202 formula-bearing**, **210 documented formula-bearing gaps**, **11 interpretations**, **16 primarily conceptual**, **14 theorem-first**, **1 thought experiment**
+- formula audit: **202 formula-bearing**, **215 documented formula-bearing gaps**, **11 interpretations**, **17 primarily conceptual**, **18 theorem-first**, **1 thought experiment**
 
 ## Census status: OPEN
 
@@ -74,5 +74,12 @@ Added KMS equilibrium states, Kadanoff–Baym nonequilibrium Green functions, Gi
 ## Fifth-wave additions
 
 The 2026-09-23 fifth sweep adds source-backed coverage for non-Markovian open-system dynamics, Nakajima–Zwanzig, Bloch–Redfield and HEOM; weak measurement, no-cloning and no-broadcasting; CPT, spin–statistics, Haag, Coleman–Mandula, Weinberg–Witten and Goldstone theorem constraints; Fermi/V–A weak-interaction theory; unimodular, conformal/Weyl and mimetic gravity; and phantom, Chaplygin-gas and matter-bounce cosmologies.
+
+The exhaustiveness audit remains open.
+
+
+## Sixth-wave additions
+
+Added Mackey imprimitivity, Ludwig operational QM, Stone–von Neumann, Wigner symmetry and Reeh–Schlieder; the quantum sine-Gordon and nonlinear sigma models; F-theory, dS/CFT and Liouville quantum gravity. These additions close older formal-foundation gaps and extend the canonical QFT/holography branches.
 
 The exhaustiveness audit remains open.

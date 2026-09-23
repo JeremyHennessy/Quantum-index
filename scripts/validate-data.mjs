@@ -23,14 +23,14 @@ if (!formulaAudit || !Array.isArray(formulaAudit.entries)) throw new Error("QI_F
 const ids = data.theories.map(t=>t.id);
 const unique = new Set(ids);
 if (unique.size !== ids.length) throw new Error("Duplicate theory IDs");
-if (data.theories.length < 454) throw new Error(`Expected exhaustive-breadth baseline >= 454 theories; found only ${data.theories.length}`);
+if (data.theories.length < 464) throw new Error(`Expected exhaustive-breadth baseline >= 464 theories; found only ${data.theories.length}`);
 
 if (new Set(data.theories.map(t=>t.category)).size < 14) throw new Error("Expected at least 14 top-level categories");
 
 const sourceIds = data.sources.map(s=>s.id);
 const uniqueSources = new Set(sourceIds);
 if (uniqueSources.size !== sourceIds.length) throw new Error("Duplicate source IDs");
-if (data.sources.length < 440) throw new Error(`Expected breadth-baseline bibliography >= 440 sources; found only ${data.sources.length}`);
+if (data.sources.length < 450) throw new Error(`Expected breadth-baseline bibliography >= 450 sources; found only ${data.sources.length}`);
 
 for (const s of data.sources) {
   for (const key of ["id","title","authors","year","type","url"]) {

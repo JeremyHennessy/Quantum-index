@@ -137,3 +137,10 @@ Promoted KMS equilibrium; Kadanoff–Baym; Ginzburg–Landau, BdG and BCS–BEC 
 Promoted 21 source-backed entities: non-Markovian open-system dynamics; Nakajima–Zwanzig; Bloch–Redfield; HEOM; weak measurement; no-cloning and no-broadcasting; CPT, spin–statistics, Haag, Coleman–Mandula, Weinberg–Witten and Goldstone theorem nodes; Fermi and V–A weak-interaction theory; unimodular, conformal/Weyl and mimetic gravity; phantom dark energy, Chaplygin-gas cosmology and matter-bounce cosmology.
 
 The search queue remains open.
+
+
+## Integrated in the 2026-09-23 sixth breadth sweep
+
+Promoted Mackey imprimitivity; Ludwig operational quantum mechanics; Stone–von Neumann and Wigner symmetry theorems; Reeh–Schlieder; sine-Gordon and nonlinear sigma models; F-theory; dS/CFT; and Liouville quantum gravity.
+
+The earlier superselection-modification candidate is now considered satisfied at first-class granularity by the source-backed DHR superselection-sector framework. More specialized superselection variants remain subtypes unless a systematic subfamily sweep is adopted.
