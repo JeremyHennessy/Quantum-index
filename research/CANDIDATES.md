@@ -125,3 +125,8 @@ As of this audit there are **no unresolved first-class `ADD` decisions in the en
 Promoted with dedicated provenance: quantum chaos; ETH; many-body localization; generalized Gibbs ensembles; quantum fluctuation relations; spin-boson and Caldeira–Leggett models; Anderson impurity; Lieb–Liniger and Tonks–Girardeau gases; Rokhsar–Kivelson dimers; SYK; Gutzwiller and Eliashberg frameworks; nuclear shell/collective/DFT/HFB/NCSM/IMSRG and chiral/pionless/halo EFT branches; parton, DGLAP, BFKL, CGC, QCD sum rules, ABJ anomaly, instantons, GIM/CKM and OPE; Einstein–Cartan, teleparallel/f(T), Lovelock, metric-affine, bimetric, DFT and ExFT gravity/string frameworks; and circuit/QTM/walk/QCA/quantum-Shannon/magic-state/relativistic-QI/boson-sampling formalisms.
 
 The breadth queue remains open. Further searches are specifically targeting quantum statistical mechanics, nuclear/hadronic methods, gravity subfamilies, quantum-information subframeworks, and major cosmology model families not yet dispositioned.
+
+
+## Integrated in the 2026-09-23 fourth breadth sweep
+
+Promoted KMS equilibrium; Kadanoff–Baym; Ginzburg–Landau, BdG and BCS–BEC crossover; entanglement theory; quantum simulation; black-hole final-state, remnant and replica-wormhole frameworks; Starobinsky, hybrid, warm and k-essence cosmologies; symmetric teleparallel gravity and f(Q) gravity. Search remains open.
