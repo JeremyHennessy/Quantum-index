@@ -109,3 +109,8 @@ The earlier 367-node closure was reopened after a new domain audit found first-c
 ## Fourth-wave status
 
 Sixteen additional first-class entities were promoted with provenance. **Audit remains OPEN**; no final completeness claim is made.
+
+
+## Fifth-wave status
+
+Twenty-one additional first-class entities passed distinctness/provenance review. The census remains **OPEN**; lower-granularity protocols and special cases continue to be dispositioned without automatic promotion.
