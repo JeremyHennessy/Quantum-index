@@ -8,14 +8,14 @@ The previous 367-node first-class closure is superseded. A third systematic audi
 
 The current branch baseline is:
 
-- **454** source-backed theory/framework entities
+- **464** source-backed theory/framework entities
 - **14** top-level categories
-- **440** bibliography records
-- **572** graph relations
-- **35** thought trees
+- **450** bibliography records
+- **588** graph relations
+- **38** thought trees
 - **0** catalog-only theory nodes
 - **345** formula-atlas entries
-- **210** explicit formula-bearing gaps
+- **215** explicit formula-bearing gaps
 
 ## Why the census reopened
 
@@ -70,3 +70,8 @@ A subsequent follow-up promoted 16 more first-class frameworks in quantum statis
 ## Fifth-wave continuation
 
 A fifth sweep promoted 21 further first-class nodes covering open-system memory formalisms, structural QFT theorems, weak measurement/information no-go results, historical weak-interaction theory, additional gravity families and alternative cosmologies. This reinforces the control rule: each verified baseline is preserved, but the census reopens whenever a materially distinct sourced family is discovered.
+
+
+## Sixth-wave continuation
+
+A sixth sweep promoted ten first-class entries in representation-theoretic/operational foundations, structural AQFT, integrable/geometric QFT, string duality and holography. The legacy superselection ADD decision was also reconciled against the existing DHR framework. The census remains open.
