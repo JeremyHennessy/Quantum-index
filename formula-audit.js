@@ -32,7 +32,7 @@
 
   function priority(theory, classification) {
     if (classification !== "formula-bearing-gap") return "not-applicable";
-    if (["Quantum chemistry & electronic structure","Quantum many-body & condensed matter","Quantum field theory","Quantum gravity & spacetime","Quantum information & open systems","Formulations","Astroparticle physics & cosmology","Quantum optics & AMO"].includes(theory.category)) return "high";
+    if (["Quantum chemistry & electronic structure","Quantum many-body & condensed matter","Quantum field theory","Quantum gravity & spacetime","Quantum information & open systems","Formulations","Astroparticle physics & cosmology","Quantum optics & AMO","Nuclear quantum theory"].includes(theory.category)) return "high";
     return "medium";
   }
 

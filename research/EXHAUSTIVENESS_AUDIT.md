@@ -1,88 +1,67 @@
 # Exhaustiveness audit
 
-_Last reviewed: 2026-09-22_
+_Last reviewed: 2026-09-23_
 
-## Decision
+## Decision: OPEN
 
-The 2026-09-22 **first-class theory-family census is closed for the currently audited candidate set**.
+The previous 367-node first-class closure is superseded. A third systematic audit found materially distinct, source-backed frameworks that were absent from the shipped graph.
 
-That statement is deliberately narrower than “every theory that can ever be named is present.” Physics has no authoritative finite registry of theories, and many papers introduce submodels, parameterizations, approximations or equivalent reformulations at different granularities.
+The current branch baseline is:
 
-## Baseline produced by this audit
+- **433** source-backed theory/framework entities
+- **14** top-level categories
+- **418** bibliography records
+- **546** graph relations
+- **30** thought trees
+- **0** catalog-only theory nodes
+- **345** formula-atlas entries
+- **198** explicit formula-bearing gaps
 
-- 367 source-backed theory/framework entities
-- 13 top-level categories
-- 358 bibliography records
-- 470 graph relations
-- 20 thought trees
-- 0 shipped catalog-only theory nodes
-- 0 unresolved first-class ADD decisions in the enumerated breadth queue
-- validation workflow green after both expansion waves
+## Why the census reopened
 
-## Breadth domains explicitly swept
+Searches across authoritative reviews and primary literature found missing first-class families in five areas:
 
-1. historical quantum foundations and formulations;
-2. measurement, interpretations, no-go theorems and operational reconstructions;
-3. relativistic QM, QFT, EFT, particle theory and canonical QFT model laboratories;
-4. quantum information, open systems, computation, metrology and causal-process frameworks;
-5. quantum gravity, black-hole information, modified gravity and quantum spacetime;
-6. quantum cosmology, inflation, dark energy, dark matter and baryogenesis;
-7. quantum optics and AMO;
-8. quantum many-body, condensed matter and topological matter;
-9. quantum chemistry and correlated electronic-structure methods;
-10. mathematical structures and beyond-standard quantum frameworks.
+1. quantum chaos, thermalization and nonequilibrium many-body theory;
+2. nuclear structure and nuclear effective field theory;
+3. perturbative/small-x and nonperturbative QCD;
+4. geometric/duality-covariant gravity frameworks;
+5. quantum computation and quantum-information formalisms.
 
-## Candidate generators used
+Those findings demonstrate why a fixed count cannot be treated as proof of completeness.
 
-The census combines primary/program-defining literature, authoritative reviews/reference works, the existing repository bibliography, prior candidate audits, and broad transcript/topic sweeps including PBS Space Time as a **discovery source**. A transcript mention is never sufficient by itself for promotion: the entity must resolve to scholarly primary or authoritative-review provenance.
+## Third-wave promotions
+
+Fifty source-backed entities were added. The new dedicated **Nuclear quantum theory** category prevents nuclear many-body frameworks from being hidden inside generic condensed-matter or QFT buckets.
+
+## Active follow-up search queue
+
+The census remains open while searching and dispositioning:
+
+- KMS/nonequilibrium Green-function and quantum-kinetic frameworks;
+- additional canonical impurity/lattice/superconductivity models;
+- nuclear ab-initio and hadronic/QCD effective descriptions not already represented;
+- teleparallel, metric-affine and higher-curvature subfamilies that may justify first-class treatment;
+- quantum-channel, entanglement, computation and simulation frameworks;
+- major named inflation/dark-sector/cosmology model families versus subtype status;
+- black-hole-information subprograms versus the existing complementarity/firewall/island/fuzzball umbrellas.
 
 ## Granularity rule
 
-A node is first-class when it has a distinct physical or mathematical framework, research program, theorem-level constraint, named formalism or systematically indexed model/method family.
+A candidate is first-class only when it is a distinct theory family, named formalism, research program, theorem-level constraint, or systematically indexed model/method family with scholarly provenance. Parameter choices, simple special cases, equivalent reformulations and isolated phenomenological ansätze remain subtypes unless their surrounding domain is promoted at the same granularity.
 
-The following normally remain below first-class granularity unless their whole domain is being expanded consistently:
+## Release controls
 
-- parameter choices and benchmark points;
-- one-off phenomenological ansätze;
-- straightforward special cases of an indexed umbrella;
-- algebraically equivalent reformulations;
-- unnamed variants;
-- individual perturbative orders or basis choices;
-- single materials/experimental implementations.
+A census update may merge only when:
 
-This is why constructive P(phi)_2 / phi^4_3, interpretation subvariants, CDT submodels, GUP variants and similar items can remain in the candidate queue without contradicting first-class closure.
-
-## Two expansion waves
-
-### Wave 1 — 65 entities
-
-Closed major omissions in foundations, QFT/particle theory, black-hole information, astroparticle cosmology, canonical quantum matter, electronic structure and AMO.
-
-### Wave 2 — 37 entities
-
-Closed the remaining family-level omissions found in the follow-up review sweep: modified-gravity families; dark-sector production/candidate frameworks; canonical low-dimensional/topological QFT models; additional topological/critical condensed-matter frameworks; advanced multireference/Green-function chemistry; and modern AMO control/simulation platforms.
-
-## What is still incomplete
-
-### Formula layer
-134 theories are explicitly classified `formula-bearing-gap`. Breadth completion did not fabricate equations merely to keep the metric low.
-
-### Relation-evidence layer
-413 relation edges are editorial navigation edges. They are visible as such and require a separate relationship-specific provenance pass.
-
-### Model-depth layer
-The lower-granularity backlog remains open. It is not counted as an unresolved first-class family queue.
-
-### Continuous discovery
-A newly found distinct theory family, sourced historical program or genuinely separate modern framework reopens this audit. The baseline is protected, not frozen against new evidence.
-
-## Release acceptance
-
-A breadth-expansion release is acceptable only when:
-
-- all shipped nodes are sourced;
-- no duplicate IDs or dangling source/relation/tree references exist;
-- all audited breadth candidates have a disposition;
-- formula gaps remain explicitly documented;
-- the validator passes on the proposed merge commit;
+- every added node is source-backed;
+- IDs, sources, relations and thought trees have no dangling references;
+- formula absence is explicit rather than hidden;
+- CI passes on the exact PR head;
 - documentation metrics match runtime metrics.
+
+Closure is not being asserted in this revision.
+
+
+## Fourth-wave continuation
+
+A subsequent follow-up promoted 16 more first-class frameworks in quantum statistical mechanics, superconductivity, quantum information, black-hole information, inflation/dark-energy cosmology, and nonmetricity-based gravity. The census remains open for additional domain searches.

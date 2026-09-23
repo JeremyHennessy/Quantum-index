@@ -40,11 +40,11 @@ Used for useful navigation/overlap edges that have not yet completed a relations
 
 ## Current coverage
 
-- **470** total relationship edges
+- **546** total relationship edges
 - **57** source-backed in the current relation-provenance pass
 - **46** high confidence
 - **11** medium confidence
-- **413** explicitly editorial
+- **489** explicitly editorial
 
 The editorial count is intentionally visible. Node-level source provenance does not automatically prove an edge between two nodes.
 
@@ -109,3 +109,8 @@ New relation evidence includes:
 The two exhaustiveness sweeps added 107 new navigation edges. They are intentionally **editorial by default** unless the source itself directly supports the relationship claim. Node-level provenance is not reused as edge provenance.
 
 Next relation-evidence work should prioritize the new modified-gravity hierarchy, QFT model-to-framework relations, dark-sector production mechanisms, many-body model reductions, and electronic-structure method lineage.
+
+
+## 2026-09-23 third-wave edge state
+
+The third-wave census added 53 navigation edges. They remain editorial unless relationship-specific literature has been reviewed; node provenance is never treated as automatic edge provenance.
