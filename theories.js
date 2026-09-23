@@ -1571,7 +1571,7 @@ window.QI_DATA = (() => {
     R("trapped-ion-qc","quantum-information","supports"),
     R("optical-lattice-quantum-simulation","bose-hubbard","supports"),
     R("quantum-chaos","eigenstate-thermalization","supports"),
-    R("eigenstate-thermalization","many-body-localization","challenges"),
+    R("eigenstate-thermalization","many-body-localization","challenges"),R("anderson-localization","many-body-localization","precursor"),
     R("integrable-qft","generalized-gibbs-ensemble","supports"),
     R("eigenstate-thermalization","generalized-gibbs-ensemble","challenges"),
     R("quantum-thermodynamics","quantum-fluctuation-relations","extends"),
