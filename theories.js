@@ -491,7 +491,9 @@ window.QI_DATA = (() => {
     T("mimetic-gravity","Mimetic gravity",2013,"2000–2014","Quantum gravity & spacetime","active research","Mimetic gravity rewrites the physical metric in terms of an auxiliary metric and constrained scalar degree of freedom, making a conformal mode dynamical and allowing effective dark-sector behavior.","A noninvertible metric parametrization introduces a constrained scalar mode that can mimic cold dark matter and has spawned broader modified-gravity extensions.",["mimetic gravity","dark matter","conformal mode","modified gravity"],[],"theory family"),
     T("phantom-dark-energy","Phantom dark-energy models",2002,"2000–2014","Astroparticle physics & cosmology","speculative framework","Phantom dark-energy models have an effective equation-of-state parameter below minus one and can drive super-accelerated expansion, often at the cost of unusual kinetic structure or stability concerns.","An effective component with pressure more negative than its energy density evolves differently from a cosmological constant and can lead to future singular behavior in simple realizations.",["phantom energy","dark energy","w<-1","cosmology"],[],"cosmological framework"),
     T("chaplygin-gas","Chaplygin-gas cosmology",2001,"2000–2014","Astroparticle physics & cosmology","active phenomenological framework","Chaplygin-gas models use an exotic fluid with negative pressure inversely related to energy density to interpolate between matter-like and dark-energy-like behavior.","The fluid equation of state produces dust-like evolution at high density and accelerated expansion at low density in generalized variants.",["Chaplygin gas","dark energy","unified dark sector","cosmology"],[],"cosmological framework"),
-    T("matter-bounce","Matter-bounce cosmology",1999,"1980–1999","Astroparticle physics & cosmology","active research","Matter-bounce scenarios replace an inflationary beginning with a contracting matter-dominated phase followed by a nonsingular bounce, generating nearly scale-invariant perturbations in canonical implementations.","Cosmological modes exit the shrinking Hubble radius during matter contraction and are transferred through a bounce into the expanding universe.",["matter bounce","bouncing cosmology","early universe","alternative to inflation"],[],"cosmological framework")
+    T("matter-bounce","Matter-bounce cosmology",1999,"1980–1999","Astroparticle physics & cosmology","active research","Matter-bounce scenarios replace an inflationary beginning with a contracting matter-dominated phase followed by a nonsingular bounce, generating nearly scale-invariant perturbations in canonical implementations.","Cosmological modes exit the shrinking Hubble radius during matter contraction and are transferred through a bounce into the expanding universe.",["matter bounce","bouncing cosmology","early universe","alternative to inflation"],[],"cosmological framework"),
+
+    T("no-cloning","No-cloning theorem",1982,"1980–1999","Foundations & interpretations","established theorem","The no-cloning theorem proves that an arbitrary unknown quantum state cannot be perfectly copied by a universal physical operation.","Linearity and unitarity prevent one state-independent transformation from producing two identical copies of every possible input state.",["no cloning","quantum information","linearity","no-go theorem"],[],"theorem")
 
   ];
 
@@ -934,10 +936,12 @@ window.QI_DATA = (() => {
     {"id":"wave5-mimetic-2013","title":"Mimetic dark matter","authors":"Ali H. Chamseddine, Viatcheslav Mukhanov","year":2013,"type":"primary source","url":"https://doi.org/10.1007/JHEP11(2013)135"},
     {"id":"wave5-phantom-2002","title":"A phantom menace? Cosmological consequences of a dark energy component with super-negative equation of state","authors":"Robert R. Caldwell","year":2002,"type":"primary source","url":"https://doi.org/10.1016/S0370-2693(02)02589-3"},
     {"id":"wave5-chaplygin-2003","title":"Can the Chaplygin gas be a plausible model for dark energy?","authors":"Vittorio Gorini, Alexander Kamenshchik, Ugo Moschella","year":2003,"type":"primary source","url":"https://doi.org/10.1103/PhysRevD.67.063509"},
-    {"id":"wave5-matter-bounce-review-2012","title":"The Matter Bounce Alternative to Inflationary Cosmology","authors":"Robert H. Brandenberger","year":2012,"type":"authoritative review","url":"https://arxiv.org/abs/1206.4196"}
+    {"id":"wave5-matter-bounce-review-2012","title":"The Matter Bounce Alternative to Inflationary Cosmology","authors":"Robert H. Brandenberger","year":2012,"type":"authoritative review","url":"https://arxiv.org/abs/1206.4196"},
+    {"id":"wave5-no-cloning-1982","title":"A single quantum cannot be cloned","authors":"W. K. Wootters, W. H. Zurek","year":1982,"type":"primary source","url":"https://doi.org/10.1038/299802a0"}
   ];
 
   const sourceLinks = {
+    "no-cloning":["wave5-no-cloning-1982"],
     "nonmarkovian-open-systems":["wave5-nonmarkov-rmp-2016"],
     "nakajima-zwanzig":["wave5-nakajima-1958","wave5-zwanzig-1960"],
     "bloch-redfield":["wave5-redfield-1957"],
@@ -1719,11 +1723,11 @@ window.QI_DATA = (() => {
     R("wightman-qft","cpt-theorem","supports"),
     R("wightman-qft","spin-statistics-theorem","supports"),
     R("aqft","haag-theorem","supports"),
-    R("qft","cpt-theorem","supports"),
+    
     R("yang-mills","coleman-mandula","overlaps"),
     R("coleman-mandula","supersymmetry","challenges"),
-    R("qft","weinberg-witten","supports"),
-    R("spontaneous-symmetry-breaking","goldstone-theorem","supports"),
+    
+    
     R("fermi-four-fermion","va-weak-theory","extends"),
     R("va-weak-theory","electroweak","precursor"),
     R("effective-field-theory","fermi-four-fermion","supports"),
@@ -1732,7 +1736,10 @@ window.QI_DATA = (() => {
     R("conformal-gravity","mimetic-gravity","overlaps"),
     R("lambda-cdm","phantom-dark-energy","challenges"),
     R("lambda-cdm","chaplygin-gas","challenges"),
-    R("inflationary-cosmology","matter-bounce","challenges")
+    R("inflationary-cosmology","matter-bounce","challenges"),
+    R("wightman-qft","weinberg-witten","supports"),
+    R("goldstone-theorem","higgs-mechanism","supports"),
+    R("quantum-information","no-cloning","supports")
 
   ].filter(r => theories.some(t=>t.id===r.from) && theories.some(t=>t.id===r.to));
 
