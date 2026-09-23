@@ -13,9 +13,7 @@ Quantum Index is a source-aware map of quantum theory and adjacent fundamental p
 
 ## Current build
 
-The current corpus has completed the 2026-09-22 first-class family sweep, but it is **not** presented as a mathematically provable finite list of every model ever proposed. Exhaustiveness is governed by an explicit candidate-disposition audit and granularity rules.
-
-Current audited branch metrics: **367 theory/framework entities**, **470 typed relationships**, **20 thought trees**, **358 bibliography/source records**, and a separate **345-entry formula atlas** spanning **28 formula categories**. All 367 shipped theory entries carry dedicated provenance: **278 primary-sourced** and **89 review/authoritative-source backed**. Catalog coverage, relation-evidence coverage, and formula coverage are intentionally reported separately.
+The first-class family census remains **open**: each completed sweep is preserved as a validated baseline, then reopened when a distinct sourced framework is found. The current branch expands the verified 367-node main baseline to **417 theory/framework entities**, **523 typed relationships**, **25 thought trees**, and **402 bibliography/source records** across **14 top-level categories**. All 417 shipped candidates on this branch have dedicated provenance: **304 primary-sourced** and **113 review/authoritative-source backed**. The separate formula atlas remains at **345 entries** across **28 categories**. Catalog coverage, relation-evidence coverage, and formula coverage are intentionally reported separately.
 
 Static app:
 - `index.html`
