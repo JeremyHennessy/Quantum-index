@@ -77,17 +77,12 @@ Decision labels:
 | Real quantum theory subvariants | SUBTYPE | Existing Real-Hilbert-space quantum theory is the umbrella. |
 | Quaternionic tests / formulations | SUBTYPE | Existing Quaternionic quantum mechanics is the umbrella. |
 | Nonassociative/octonionic models | SUBTYPE | Existing Nonassociative quantum mechanics is the umbrella. |
-| Superselection-modified theories | **ADD** | Distinct structural modification class if scoped to a specific formal superselection framework. |
+| Superselection-modified theories | **PROMOTED / SATISFIED** | DHR superselection-sector theory now supplies the specific source-backed formal superselection framework required by this candidate; broader unnamed variants remain subtypes. |
 | Nonlinear density-matrix models | SUBTYPE | Treat under nonlinear-QM unless a historically distinct named model is selected. |
 
 ## Immediate promotion queue
 
-The next first-class additions should be:
-
-1. A specific superselection-based modified quantum theory, only after the candidate is narrowed to a named formalism.
-2. Continue model-level promotion only where granularity is applied systematically across a domain.
-
-All other audited backlog items remain aliases or subtypes until the index adopts systematic model-level granularity.
+There are currently no unresolved first-class **ADD** decisions in the legacy candidate audit. New discoveries continue through the open exhaustiveness sweep; lower-granularity aliases/subtypes remain queued until systematic domain depth justifies promotion.
 
 
 ## 2026-09-22 first-class breadth closure
@@ -114,3 +109,8 @@ Sixteen additional first-class entities were promoted with provenance. **Audit r
 ## Fifth-wave status
 
 Twenty-one additional first-class entities passed distinctness/provenance review. The census remains **OPEN**; lower-granularity protocols and special cases continue to be dispositioned without automatic promotion.
+
+
+## Sixth-wave status
+
+Ten additional first-class entities passed distinctness/provenance review. The census remains **OPEN**.
