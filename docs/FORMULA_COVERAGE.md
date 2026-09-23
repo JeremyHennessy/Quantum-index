@@ -62,7 +62,7 @@ Trivial algebraic rearrangements stay out unless the variant carries different p
 
 ## Current control state
 
-Theory breadth is now ahead of equation curation: `formula-audit.js` reports **183 formula-bearing gaps** after the 367-node census expansion. Those gaps are deliberate, visible work items rather than silently invented equations.
+Theory breadth is now ahead of equation curation: `formula-audit.js` reports **199 formula-bearing gaps** after the 367-node census expansion. Those gaps are deliberate, visible work items rather than silently invented equations.
 
 See `docs/FORMULA_AUDIT.md` for closure priorities.
 
