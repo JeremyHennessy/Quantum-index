@@ -13,9 +13,9 @@ The runtime audit is `formula-audit.js`; formula records are in `formulas.js`.
 - **433** shipped theory/framework entities audited
 - **345** source-linked formula entries
 - **202** entities classified **formula-bearing**
-- **199** classified **formula-bearing-gap**
+- **198** classified **formula-bearing-gap**
 - **11** interpretations
-- **14** primarily conceptual/structural
+- **15** primarily conceptual/structural
 - **6** theorem-first
 - **1** thought experiment
 
