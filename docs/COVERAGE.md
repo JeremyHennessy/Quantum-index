@@ -7,7 +7,7 @@ Quantum Index indexes source-backed theories, formulations, interpretations, res
 ## Current branch snapshot
 
 - **433** theory/framework entities
-- **545** typed relationships
+- **546** typed relationships
 - **30** curated thought trees
 - **14** top-level categories
 - **418** bibliography/source records
@@ -18,7 +18,7 @@ Quantum Index indexes source-backed theories, formulations, interpretations, res
 - **113 / 417** are `review-sourced`
 - **57 / 523** relation edges currently have relationship-specific source evidence
 - **466 / 523** relation edges are explicitly editorial
-- formula audit: **202 formula-bearing**, **199 documented formula-bearing gaps**, **11 interpretations**, **14 primarily conceptual**, **6 theorem-first**, **1 thought experiment**
+- formula audit: **202 formula-bearing**, **198 documented formula-bearing gaps**, **11 interpretations**, **15 primarily conceptual**, **6 theorem-first**, **1 thought experiment**
 
 ## Census status: OPEN
 
