@@ -20,6 +20,7 @@ Current top-level categories:
 - Quantum many-body & condensed matter
 - Quantum chemistry & electronic structure
 - Astroparticle physics & cosmology
+- Nuclear quantum theory
 - Beyond standard quantum theory
 
 Cross-category overlap is represented by typed graph edges rather than duplicating entities. The astroparticle/cosmology category intentionally includes observationally motivated fundamental-physics model families that are not themselves quantum theories when they are necessary to map the quantum/particle/gravity theory landscape; their `kind` and `status` must make that distinction explicit.
