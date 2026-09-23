@@ -11,11 +11,11 @@ The current branch baseline is:
 - **433** source-backed theory/framework entities
 - **14** top-level categories
 - **418** bibliography records
-- **545** graph relations
+- **546** graph relations
 - **30** thought trees
 - **0** catalog-only theory nodes
 - **345** formula-atlas entries
-- **199** explicit formula-bearing gaps
+- **198** explicit formula-bearing gaps
 
 ## Why the census reopened
 
