@@ -40,11 +40,11 @@ Used for useful navigation/overlap edges that have not yet completed a relations
 
 ## Current coverage
 
-- **545** total relationship edges
+- **546** total relationship edges
 - **57** source-backed in the current relation-provenance pass
 - **46** high confidence
 - **11** medium confidence
-- **488** explicitly editorial
+- **489** explicitly editorial
 
 The editorial count is intentionally visible. Node-level source provenance does not automatically prove an edge between two nodes.
 
