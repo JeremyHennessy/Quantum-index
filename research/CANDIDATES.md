@@ -130,3 +130,10 @@ The breadth queue remains open. Further searches are specifically targeting quan
 ## Integrated in the 2026-09-23 fourth breadth sweep
 
 Promoted KMS equilibrium; Kadanoff–Baym; Ginzburg–Landau, BdG and BCS–BEC crossover; entanglement theory; quantum simulation; black-hole final-state, remnant and replica-wormhole frameworks; Starobinsky, hybrid, warm and k-essence cosmologies; symmetric teleparallel gravity and f(Q) gravity. Search remains open.
+
+
+## Integrated in the 2026-09-23 fifth breadth sweep
+
+Promoted 21 source-backed entities: non-Markovian open-system dynamics; Nakajima–Zwanzig; Bloch–Redfield; HEOM; weak measurement; no-cloning and no-broadcasting; CPT, spin–statistics, Haag, Coleman–Mandula, Weinberg–Witten and Goldstone theorem nodes; Fermi and V–A weak-interaction theory; unimodular, conformal/Weyl and mimetic gravity; phantom dark energy, Chaplygin-gas cosmology and matter-bounce cosmology.
+
+The search queue remains open.

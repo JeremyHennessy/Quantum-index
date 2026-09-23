@@ -8,14 +8,14 @@ The previous 367-node first-class closure is superseded. A third systematic audi
 
 The current branch baseline is:
 
-- **433** source-backed theory/framework entities
+- **454** source-backed theory/framework entities
 - **14** top-level categories
-- **418** bibliography records
-- **546** graph relations
-- **30** thought trees
+- **440** bibliography records
+- **572** graph relations
+- **35** thought trees
 - **0** catalog-only theory nodes
 - **345** formula-atlas entries
-- **198** explicit formula-bearing gaps
+- **210** explicit formula-bearing gaps
 
 ## Why the census reopened
 
@@ -65,3 +65,8 @@ Closure is not being asserted in this revision.
 ## Fourth-wave continuation
 
 A subsequent follow-up promoted 16 more first-class frameworks in quantum statistical mechanics, superconductivity, quantum information, black-hole information, inflation/dark-energy cosmology, and nonmetricity-based gravity. The census remains open for additional domain searches.
+
+
+## Fifth-wave continuation
+
+A fifth sweep promoted 21 further first-class nodes covering open-system memory formalisms, structural QFT theorems, weak measurement/information no-go results, historical weak-interaction theory, additional gravity families and alternative cosmologies. This reinforces the control rule: each verified baseline is preserved, but the census reopens whenever a materially distinct sourced family is discovered.

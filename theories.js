@@ -470,7 +470,30 @@ window.QI_DATA = (() => {
     T("warm-inflation","Warm inflation",1995,"1980–1999","Astroparticle physics & cosmology","active inflationary framework","Warm inflation incorporates dissipative interactions during inflation so radiation can be continuously produced rather than appearing only after a separate reheating stage.","The inflaton equation includes a friction-like dissipation term and thermal fluctuations can contribute to primordial perturbations when the radiation bath is significant.",["warm inflation","dissipation","thermal fluctuations","inflation"],[],"cosmological framework"),
     T("k-essence","k-essence scalar-field cosmology",2000,"2000–2014","Astroparticle physics & cosmology","active framework","k-essence models use scalar fields with noncanonical kinetic terms to drive accelerated expansion or other cosmological dynamics.","A nonlinear function of the scalar kinetic invariant and field value produces an effective pressure and sound speed not obtainable from a canonical scalar field alone.",["k-essence","dark energy","noncanonical scalar","cosmology"],[],"cosmological framework"),
     T("symmetric-teleparallel-gravity","Symmetric teleparallel gravity",2018,"2015–present","Quantum gravity & spacetime","active research","Symmetric teleparallel gravity describes gravitation using nonmetricity in a geometry with vanishing curvature and torsion, providing a third geometric formulation alongside curvature and torsion descriptions.","A flat torsion-free affine connection carries nonmetricity, and the equivalent GR action is built from a specific quadratic nonmetricity scalar plus a boundary relation.",["symmetric teleparallel","nonmetricity","gravity","coincident gauge"],[],"formulation"),
-    T("f-q-gravity","f(Q) gravity",2018,"2015–present","Quantum gravity & spacetime","active theory family","f(Q) gravity generalizes symmetric teleparallel gravity by replacing the nonmetricity scalar Q in the action with a nonlinear function.","Nonlinear nonmetricity dynamics modify the gravitational field equations and provide cosmological and astrophysical alternatives distinct from f(R) and f(T) families.",["f(Q)","nonmetricity","modified gravity","symmetric teleparallel"],[],"theory family")
+    T("f-q-gravity","f(Q) gravity",2018,"2015–present","Quantum gravity & spacetime","active theory family","f(Q) gravity generalizes symmetric teleparallel gravity by replacing the nonmetricity scalar Q in the action with a nonlinear function.","Nonlinear nonmetricity dynamics modify the gravitational field equations and provide cosmological and astrophysical alternatives distinct from f(R) and f(T) families.",["f(Q)","nonmetricity","modified gravity","symmetric teleparallel"],[],"theory family"),
+
+    T("nonmarkovian-open-systems","Non-Markovian open quantum dynamics",1960,"1960–1979","Quantum information & open systems","established framework","Non-Markovian open-system theory describes reduced quantum dynamics with memory, information backflow or other departures from dynamical-semigroup behavior.","System evolution depends on environmental correlations and prior history, requiring structures beyond a time-independent GKSL generator.",["non-Markovian","memory","open systems","information backflow"],[],"dynamical framework"),
+    T("nakajima-zwanzig","Nakajima–Zwanzig projection-operator formalism",1958,"1940–1959","Quantum information & open systems","established framework","The Nakajima–Zwanzig formalism projects full Liouville dynamics onto chosen relevant degrees of freedom and yields exact generalized master equations with memory kernels.","Projection superoperators separate relevant and irrelevant sectors, producing an integro-differential reduced equation whose memory kernel encodes eliminated dynamics.",["Nakajima Zwanzig","projection operator","memory kernel","open systems"],[],"formal framework"),
+    T("bloch-redfield","Bloch–Redfield master-equation theory",1957,"1940–1959","Quantum information & open systems","established approximation","Bloch–Redfield theory derives weak-coupling reduced dynamics from system–bath correlation functions without imposing the full secular approximation required for GKSL form.","A perturbative relaxation tensor governs density-matrix evolution and can retain coherences and frequency couplings that are discarded by stronger Markovian approximations.",["Redfield","master equation","relaxation","open systems"],["Redfield equation"],"dynamical framework"),
+    T("heom","Hierarchical equations of motion",1989,"1980–1999","Quantum information & open systems","established computational framework","HEOM represents non-Markovian reduced dynamics through a hierarchy of coupled auxiliary density operators, enabling numerically exact treatment for important classes of Gaussian environments.","A decomposed bath correlation function generates tiered auxiliary operators whose coupled equations retain environmental memory and strong system–bath effects.",["HEOM","non-Markovian","open systems","numerically exact"],[],"computational framework"),
+    T("weak-measurement","Weak measurement and weak-value formalism",1988,"1980–1999","Foundations & interpretations","established measurement framework","Weak-measurement theory describes minimally disturbing measurements on pre- and postselected ensembles and introduces weak values that can lie outside an observable's eigenvalue range.","A weak system–pointer coupling followed by postselection yields a pointer shift governed, to leading order, by a complex transition-amplitude ratio called the weak value.",["weak measurement","weak value","postselection","Aharonov"],[],"measurement framework"),
+    T("no-broadcasting","No-broadcasting theorem",1996,"1980–1999","Foundations & interpretations","established theorem","The no-broadcasting theorem extends no-cloning to mixed states by showing that a set of quantum states can be broadcast exactly only when the relevant states commute.","Generic noncommuting density operators cannot be copied into two subsystems while reproducing the original state in both marginals.",["no broadcasting","no cloning","mixed states","quantum information"],[],"theorem"),
+    T("cpt-theorem","CPT theorem",1954,"1940–1959","Quantum field theory","established theorem","The CPT theorem states that local Lorentz-invariant quantum field theories satisfying standard assumptions are invariant under the combined action of charge conjugation, parity and time reversal.","The structural assumptions of relativistic local QFT enforce an exact combined CPT symmetry even when C, P or T are separately violated.",["CPT","Lorentz invariance","locality","QFT"],[],"theorem"),
+    T("spin-statistics-theorem","Spin–statistics theorem",1940,"1940–1959","Quantum field theory","established theorem","The spin–statistics theorem links integer-spin fields with Bose statistics and half-integer-spin fields with Fermi statistics under relativistic locality and positivity assumptions.","Relativistic quantum theory cannot consistently assign ordinary bosonic statistics to half-integer spin or fermionic statistics to integer spin while retaining the theorem's assumptions.",["spin statistics","bosons","fermions","QFT"],[],"theorem"),
+    T("haag-theorem","Haag's theorem",1955,"1940–1959","Quantum field theory","established no-go theorem","Haag's theorem shows that under the axioms of relativistic QFT an interacting field cannot be related to a free field by the unitary interaction-picture transformation assumed in naive canonical perturbation theory.","The free and interacting representations are generally unitarily inequivalent in the continuum theory, exposing why renormalized QFT cannot literally realize the textbook interaction picture.",["Haag theorem","interaction picture","axiomatic QFT","no-go"],[],"theorem"),
+    T("coleman-mandula","Coleman–Mandula theorem",1967,"1960–1979","Quantum field theory","established theorem","The Coleman–Mandula theorem strongly restricts nontrivial combinations of spacetime and internal symmetries for an interacting relativistic S-matrix under stated assumptions.","Ordinary Lie symmetries of a nontrivial relativistic S-matrix factor into Poincaré and internal parts, with supersymmetry later providing a graded-symmetry evasion.",["Coleman Mandula","symmetry","S matrix","supersymmetry"],[],"theorem"),
+    T("weinberg-witten","Weinberg–Witten theorem",1980,"1980–1999","Quantum field theory","established theorem","The Weinberg–Witten theorem constrains massless particles of sufficiently high spin in theories possessing Lorentz-covariant conserved currents or stress tensors.","Under its assumptions, certain composite or emergent massless charged particles and massless spin-two states cannot carry the relevant Lorentz-covariant conserved quantities.",["Weinberg Witten","massless particles","emergent gravity","no-go"],[],"theorem"),
+    T("goldstone-theorem","Goldstone theorem",1961,"1960–1979","Quantum field theory","established theorem","Goldstone's theorem relates spontaneous breaking of continuous global symmetries to massless excitation modes in relativistic field theory under the theorem's assumptions.","A vacuum that breaks a continuous global symmetry supports gapless Nambu–Goldstone modes associated with the broken generators.",["Goldstone","spontaneous symmetry breaking","Nambu Goldstone","QFT"],[],"theorem"),
+    T("fermi-four-fermion","Fermi four-fermion theory of beta decay",1934,"1925–1939","Quantum field theory","historical effective theory","Fermi's beta-decay theory models the weak interaction as a local four-fermion contact interaction and is the historical prototype of a low-energy effective field theory.","Nuclear beta decay is described by a pointlike interaction among hadronic and leptonic currents, valid at energies far below the weak-boson mass scale.",["Fermi theory","beta decay","weak interaction","EFT"],[],"effective field theory"),
+    T("va-weak-theory","V–A theory of weak interactions",1958,"1940–1959","Quantum field theory","historical framework","The vector-minus-axial-vector theory identified the chiral current structure of charged weak interactions prior to the electroweak gauge theory.","Weak charged currents couple left-handed fermionic components through a universal V–A four-fermion interaction at low energy.",["V-A","weak interaction","parity violation","Feynman Gell-Mann"],[],"theory / framework"),
+    T("unimodular-gravity","Unimodular gravity",1919,"1900–1924","Quantum gravity & spacetime","active alternative gravity framework","Unimodular gravity restricts the metric determinant or equivalent volume element, yielding trace-free gravitational field equations with the cosmological constant arising as an integration constant in classical formulations.","Volume-preserving diffeomorphism structure changes how the cosmological constant enters the equations while classical local dynamics can coincide with general relativity under standard conservation assumptions.",["unimodular gravity","cosmological constant","volume preserving","gravity"],[],"alternative theory"),
+    T("conformal-gravity","Weyl / conformal gravity",1918,"1900–1924","Quantum gravity & spacetime","active alternative gravity framework","Conformal gravity uses a Weyl-tensor-squared action invariant under local metric rescalings and yields fourth-order Bach equations rather than Einstein's second-order equations.","Local conformal symmetry replaces the Einstein–Hilbert scale with a dimensionless higher-curvature gravitational action.",["conformal gravity","Weyl gravity","scale invariance","higher derivative"],["Weyl gravity"],"alternative theory"),
+    T("mimetic-gravity","Mimetic gravity",2013,"2000–2014","Quantum gravity & spacetime","active research","Mimetic gravity rewrites the physical metric in terms of an auxiliary metric and constrained scalar degree of freedom, making a conformal mode dynamical and allowing effective dark-sector behavior.","A noninvertible metric parametrization introduces a constrained scalar mode that can mimic cold dark matter and has spawned broader modified-gravity extensions.",["mimetic gravity","dark matter","conformal mode","modified gravity"],[],"theory family"),
+    T("phantom-dark-energy","Phantom dark-energy models",2002,"2000–2014","Astroparticle physics & cosmology","speculative framework","Phantom dark-energy models have an effective equation-of-state parameter below minus one and can drive super-accelerated expansion, often at the cost of unusual kinetic structure or stability concerns.","An effective component with pressure more negative than its energy density evolves differently from a cosmological constant and can lead to future singular behavior in simple realizations.",["phantom energy","dark energy","w<-1","cosmology"],[],"cosmological framework"),
+    T("chaplygin-gas","Chaplygin-gas cosmology",2001,"2000–2014","Astroparticle physics & cosmology","active phenomenological framework","Chaplygin-gas models use an exotic fluid with negative pressure inversely related to energy density to interpolate between matter-like and dark-energy-like behavior.","The fluid equation of state produces dust-like evolution at high density and accelerated expansion at low density in generalized variants.",["Chaplygin gas","dark energy","unified dark sector","cosmology"],[],"cosmological framework"),
+    T("matter-bounce","Matter-bounce cosmology",1999,"1980–1999","Astroparticle physics & cosmology","active research","Matter-bounce scenarios replace an inflationary beginning with a contracting matter-dominated phase followed by a nonsingular bounce, generating nearly scale-invariant perturbations in canonical implementations.","Cosmological modes exit the shrinking Hubble radius during matter contraction and are transferred through a bounce into the expanding universe.",["matter bounce","bouncing cosmology","early universe","alternative to inflation"],[],"cosmological framework"),
+
+    T("no-cloning","No-cloning theorem",1982,"1980–1999","Foundations & interpretations","established theorem","The no-cloning theorem proves that an arbitrary unknown quantum state cannot be perfectly copied by a universal physical operation.","Linearity and unitarity prevent one state-independent transformation from producing two identical copies of every possible input state.",["no cloning","quantum information","linearity","no-go theorem"],[],"theorem")
 
   ];
 
@@ -892,10 +915,53 @@ window.QI_DATA = (() => {
     {"id":"wave4-warm-berera-1995","title":"Warm Inflation","authors":"Arjun Berera","year":1995,"type":"primary source","url":"https://doi.org/10.1103/PhysRevLett.75.3218"},
     {"id":"wave4-kessence-2000","title":"Essentials of k-essence","authors":"C. Armendáriz-Picón, V. Mukhanov, Paul J. Steinhardt","year":2001,"type":"primary source","url":"https://doi.org/10.1103/PhysRevD.63.103510"},
     {"id":"wave4-symmetric-teleparallel-2018","title":"The spectrum of symmetric teleparallel gravity","authors":"Aindriú Conroy, Tomi Koivisto","year":2018,"type":"primary source","url":"https://doi.org/10.1140/epjc/s10052-018-6410-z"},
-    {"id":"wave4-fq-2022","title":"Covariant formulation of f(Q) theory","authors":"Dehao Zhao","year":2022,"type":"primary source","url":"https://doi.org/10.1140/epjc/s10052-022-10266-4"}
+    {"id":"wave4-fq-2022","title":"Covariant formulation of f(Q) theory","authors":"Dehao Zhao","year":2022,"type":"primary source","url":"https://doi.org/10.1140/epjc/s10052-022-10266-4"},
+    {"id":"wave5-nonmarkov-rmp-2016","title":"Colloquium: Non-Markovian dynamics in open quantum systems","authors":"Heinz-Peter Breuer, Elsi-Mari Laine, Jyrki Piilo, Bassano Vacchini","year":2016,"type":"authoritative review","url":"https://doi.org/10.1103/RevModPhys.88.021002"},
+    {"id":"wave5-nakajima-1958","title":"On Quantum Theory of Transport Phenomena: Steady Diffusion","authors":"Sadao Nakajima","year":1958,"type":"primary source","url":"https://doi.org/10.1143/PTP.20.948"},
+    {"id":"wave5-zwanzig-1960","title":"Ensemble Method in the Theory of Irreversibility","authors":"Robert Zwanzig","year":1960,"type":"primary source","url":"https://doi.org/10.1063/1.1731409"},
+    {"id":"wave5-redfield-1957","title":"On the Theory of Relaxation Processes","authors":"Alfred G. Redfield","year":1957,"type":"primary source","url":"https://doi.org/10.1147/rd.11.0019"},
+    {"id":"wave5-heom-1989","title":"Time-Dependent Spectrum of a Two-Level System Coupled to a Heat Bath Driven by Pulsed Laser","authors":"Yoshitaka Tanimura, Ryogo Kubo","year":1989,"type":"primary source","url":"https://doi.org/10.1143/JPSJ.58.3001"},
+    {"id":"wave5-weak-1988","title":"How the result of a measurement of a component of the spin of a spin-1/2 particle can turn out to be 100","authors":"Yakir Aharonov, David Z. Albert, Lev Vaidman","year":1988,"type":"primary source","url":"https://doi.org/10.1103/PhysRevLett.60.1351"},
+    {"id":"wave5-no-broadcast-1996","title":"Noncommuting Mixed States Cannot Be Broadcast","authors":"Howard Barnum, Carlton M. Caves, Christopher A. Fuchs, Richard Jozsa, Benjamin Schumacher","year":1996,"type":"primary source","url":"https://doi.org/10.1103/PhysRevLett.76.2818"},
+    {"id":"wave5-cpt-review-2022","title":"The genesis of the CPT theorem","authors":"Alexander S. Blum, Andrés Martínez de Velasco","year":2022,"type":"authoritative review","url":"https://doi.org/10.1140/epjh/s13129-022-00037-w"},
+    {"id":"wave5-pauli-spin-statistics-1940","title":"The Connection Between Spin and Statistics","authors":"Wolfgang Pauli","year":1940,"type":"primary source","url":"https://doi.org/10.1103/PhysRev.58.716"},
+    {"id":"wave5-haag-review-2016","title":"Haag's theorem in renormalised quantum field theories","authors":"Lutz Klaczynski","year":2016,"type":"authoritative review","url":"https://arxiv.org/abs/1602.00662"},
+    {"id":"wave5-coleman-mandula-1967","title":"All Possible Symmetries of the S Matrix","authors":"Sidney Coleman, Jeffrey Mandula","year":1967,"type":"primary source","url":"https://doi.org/10.1103/PhysRev.159.1251"},
+    {"id":"wave5-weinberg-witten-1980","title":"Limits on massless particles","authors":"Steven Weinberg, Edward Witten","year":1980,"type":"primary source","url":"https://doi.org/10.1016/0370-2693(80)90212-9"},
+    {"id":"wave5-goldstone-1962","title":"Broken Symmetries","authors":"Jeffrey Goldstone, Abdus Salam, Steven Weinberg","year":1962,"type":"primary source","url":"https://doi.org/10.1103/PhysRev.127.965"},
+    {"id":"wave5-fermi-review-1955","title":"Fermi's Theory of Beta-Decay","authors":"E. J. Konopinski","year":1955,"type":"authoritative review","url":"https://doi.org/10.1103/RevModPhys.27.254"},
+    {"id":"wave5-va-1958","title":"Theory of the Fermi Interaction","authors":"R. P. Feynman, M. Gell-Mann","year":1958,"type":"primary source","url":"https://doi.org/10.1103/PhysRev.109.193"},
+    {"id":"wave5-unimodular-2015","title":"A note on classical and quantum unimodular gravity","authors":"Antonio Padilla, Ippocratis D. Saltas","year":2015,"type":"authoritative review","url":"https://doi.org/10.1140/epjc/s10052-015-3767-0"},
+    {"id":"wave5-conformal-review-2025","title":"Quantum gravity from Weyl conformal geometry","authors":"D. M. Ghilencea","year":2025,"type":"authoritative review","url":"https://doi.org/10.1140/epjc/s10052-025-14489-z"},
+    {"id":"wave5-mimetic-2013","title":"Mimetic dark matter","authors":"Ali H. Chamseddine, Viatcheslav Mukhanov","year":2013,"type":"primary source","url":"https://doi.org/10.1007/JHEP11(2013)135"},
+    {"id":"wave5-phantom-2002","title":"A phantom menace? Cosmological consequences of a dark energy component with super-negative equation of state","authors":"Robert R. Caldwell","year":2002,"type":"primary source","url":"https://doi.org/10.1016/S0370-2693(02)02589-3"},
+    {"id":"wave5-chaplygin-2003","title":"Can the Chaplygin gas be a plausible model for dark energy?","authors":"Vittorio Gorini, Alexander Kamenshchik, Ugo Moschella","year":2003,"type":"primary source","url":"https://doi.org/10.1103/PhysRevD.67.063509"},
+    {"id":"wave5-matter-bounce-review-2012","title":"The Matter Bounce Alternative to Inflationary Cosmology","authors":"Robert H. Brandenberger","year":2012,"type":"authoritative review","url":"https://arxiv.org/abs/1206.4196"},
+    {"id":"wave5-no-cloning-1982","title":"A single quantum cannot be cloned","authors":"W. K. Wootters, W. H. Zurek","year":1982,"type":"primary source","url":"https://doi.org/10.1038/299802a0"}
   ];
 
   const sourceLinks = {
+    "no-cloning":["wave5-no-cloning-1982"],
+    "nonmarkovian-open-systems":["wave5-nonmarkov-rmp-2016"],
+    "nakajima-zwanzig":["wave5-nakajima-1958","wave5-zwanzig-1960"],
+    "bloch-redfield":["wave5-redfield-1957"],
+    "heom":["wave5-heom-1989"],
+    "weak-measurement":["wave5-weak-1988"],
+    "no-broadcasting":["wave5-no-broadcast-1996"],
+    "cpt-theorem":["wave5-cpt-review-2022"],
+    "spin-statistics-theorem":["wave5-pauli-spin-statistics-1940"],
+    "haag-theorem":["wave5-haag-review-2016"],
+    "coleman-mandula":["wave5-coleman-mandula-1967"],
+    "weinberg-witten":["wave5-weinberg-witten-1980"],
+    "goldstone-theorem":["wave5-goldstone-1962"],
+    "fermi-four-fermion":["wave5-fermi-review-1955"],
+    "va-weak-theory":["wave5-va-1958"],
+    "unimodular-gravity":["wave5-unimodular-2015"],
+    "conformal-gravity":["wave5-conformal-review-2025"],
+    "mimetic-gravity":["wave5-mimetic-2013"],
+    "phantom-dark-energy":["wave5-phantom-2002"],
+    "chaplygin-gas":["wave5-chaplygin-2003"],
+    "matter-bounce":["wave5-matter-bounce-review-2012"],
     "kms-equilibrium":["wave4-kms-book"],
     "kadanoff-baym":["wave4-kadanoff-review-2010"],
     "ginzburg-landau-superconductivity":["wave4-gl-review-2010"],
@@ -1644,7 +1710,36 @@ window.QI_DATA = (() => {
     R("quintessence","k-essence","extends"),
     R("metric-affine-gravity","symmetric-teleparallel-gravity","overlaps"),
     R("symmetric-teleparallel-gravity","f-q-gravity","extends"),
-    R("teleparallel-gravity","symmetric-teleparallel-gravity","overlaps")
+    R("teleparallel-gravity","symmetric-teleparallel-gravity","overlaps"),
+    R("open-quantum-systems","nonmarkovian-open-systems","extends"),
+    R("nonmarkovian-open-systems","nakajima-zwanzig","supports"),
+    R("nakajima-zwanzig","bloch-redfield","supports"),
+    R("nonmarkovian-open-systems","heom","supports"),
+    R("gksl","nonmarkovian-open-systems","challenges"),
+    R("two-state-vector","weak-measurement","supports"),
+    R("quantum-instruments","weak-measurement","extends"),
+    R("quantum-information","no-broadcasting","supports"),
+    R("no-cloning","no-broadcasting","generalizes"),
+    R("wightman-qft","cpt-theorem","supports"),
+    R("wightman-qft","spin-statistics-theorem","supports"),
+    R("aqft","haag-theorem","supports"),
+    
+    R("yang-mills","coleman-mandula","overlaps"),
+    R("coleman-mandula","supersymmetry","challenges"),
+    
+    
+    R("fermi-four-fermion","va-weak-theory","extends"),
+    R("va-weak-theory","electroweak","precursor"),
+    R("effective-field-theory","fermi-four-fermion","supports"),
+    R("higher-derivative-qg","conformal-gravity","overlaps"),
+    R("metric-affine-gravity","unimodular-gravity","overlaps"),
+    R("conformal-gravity","mimetic-gravity","overlaps"),
+    R("lambda-cdm","phantom-dark-energy","challenges"),
+    R("lambda-cdm","chaplygin-gas","challenges"),
+    R("inflationary-cosmology","matter-bounce","challenges"),
+    R("wightman-qft","weinberg-witten","supports"),
+    R("goldstone-theorem","higgs-mechanism","supports"),
+    R("quantum-information","no-cloning","supports")
 
   ].filter(r => theories.some(t=>t.id===r.from) && theories.some(t=>t.id===r.to));
 
@@ -1742,7 +1837,12 @@ window.QI_DATA = (() => {
     {"name":"Superconductivity formalisms","nodes":["ginzburg-landau-superconductivity","bcs-theory","bogoliubov-de-gennes","eliashberg-theory","bcs-bec-crossover","topological-superconductor"]},
     {"name":"Black-hole information mechanisms","nodes":["hawking-radiation","black-hole-complementarity","black-hole-final-state","black-hole-remnants","jt-gravity","replica-wormholes","island-formula"]},
     {"name":"Inflationary model families","nodes":["inflationary-cosmology","starobinsky-inflation","hybrid-inflation","warm-inflation","quintessence","k-essence"]},
-    {"name":"Curvature torsion and nonmetricity gravity","nodes":["metric-affine-gravity","einstein-cartan","teleparallel-gravity","f-t-gravity","symmetric-teleparallel-gravity","f-q-gravity"]}
+    {"name":"Curvature torsion and nonmetricity gravity","nodes":["metric-affine-gravity","einstein-cartan","teleparallel-gravity","f-t-gravity","symmetric-teleparallel-gravity","f-q-gravity"]},
+    {"name":"Open-system memory formalisms","nodes":["open-quantum-systems","gksl","nonmarkovian-open-systems","nakajima-zwanzig","bloch-redfield","heom"]},
+    {"name":"Relativistic QFT structural constraints","nodes":["wightman-qft","cpt-theorem","spin-statistics-theorem","aqft","haag-theorem","coleman-mandula","supersymmetry","weinberg-witten"]},
+    {"name":"Weak-interaction lineage","nodes":["fermi-four-fermion","va-weak-theory","electroweak","standard-model"]},
+    {"name":"Measurement limits and weak values","nodes":["two-state-vector","quantum-instruments","weak-measurement","quantum-information","no-cloning","no-broadcasting"]},
+    {"name":"Alternative gravity and cosmology families","nodes":["higher-derivative-qg","conformal-gravity","metric-affine-gravity","unimodular-gravity","mimetic-gravity","lambda-cdm","phantom-dark-energy","chaplygin-gas","inflationary-cosmology","matter-bounce"]}
   ];
 
   return { theories, relations, trees, sources };
