@@ -97,3 +97,10 @@ Two source-backed sweeps promoted **102 additional entities** after domain-by-do
 Closure rule for this audit: every candidate surfaced in the active breadth sweep must end in one of `PROMOTED`, `ALIAS`, `SUBTYPE`, `FORMULA-ONLY`, or `REJECT-DUPLICATE`. There are currently **zero unresolved first-class ADD decisions in the audited candidate set**.
 
 This is a closure statement about the audited queue, not a claim that the scientific literature contains a final finite list. New review/transcript/literature discoveries are appended to the queue and can reopen the sweep.
+
+
+## 2026-09-23 third-wave audit
+
+The earlier 367-node closure was reopened after a new domain audit found first-class omissions. Fifty additional entities passed distinctness + provenance review and were promoted.
+
+**Current decision state: OPEN.** No claim of first-class closure is made while the follow-up search queue is still active. Candidate closure will be restated only after the active quantum-statistical, nuclear/hadronic, gravity, information and cosmology sweeps have explicit dispositions.
