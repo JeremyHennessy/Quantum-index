@@ -6,11 +6,11 @@ Quantum Index indexes source-backed theories, formulations, interpretations, res
 
 ## Current branch snapshot
 
-- **433** theory/framework entities
-- **546** typed relationships
-- **30** curated thought trees
+- **454** theory/framework entities
+- **572** typed relationships
+- **35** curated thought trees
 - **14** top-level categories
-- **418** bibliography/source records
+- **440** bibliography/source records
 - **345** source-linked formula entries across **28** formula categories
 - **417 / 417 (100.0%)** entries have dedicated source provenance
 - **0 / 417** are catalogued-only
@@ -18,7 +18,7 @@ Quantum Index indexes source-backed theories, formulations, interpretations, res
 - **113 / 417** are `review-sourced`
 - **57 / 523** relation edges currently have relationship-specific source evidence
 - **466 / 523** relation edges are explicitly editorial
-- formula audit: **202 formula-bearing**, **198 documented formula-bearing gaps**, **11 interpretations**, **15 primarily conceptual**, **6 theorem-first**, **1 thought experiment**
+- formula audit: **202 formula-bearing**, **210 documented formula-bearing gaps**, **11 interpretations**, **16 primarily conceptual**, **14 theorem-first**, **1 thought experiment**
 
 ## Census status: OPEN
 
@@ -69,3 +69,10 @@ See `research/EXHAUSTIVENESS_AUDIT.md`, `research/CANDIDATE_AUDIT.md`, `docs/FOR
 ## Fourth-wave additions
 
 Added KMS equilibrium states, Kadanoff–Baym nonequilibrium Green functions, Ginzburg–Landau/BdG/BCS–BEC frameworks, entanglement theory, quantum simulation, black-hole final-state/remnant/replica-wormhole programs, Starobinsky/hybrid/warm/k-essence cosmologies, and symmetric-teleparallel/f(Q) gravity.
+
+
+## Fifth-wave additions
+
+The 2026-09-23 fifth sweep adds source-backed coverage for non-Markovian open-system dynamics, Nakajima–Zwanzig, Bloch–Redfield and HEOM; weak measurement, no-cloning and no-broadcasting; CPT, spin–statistics, Haag, Coleman–Mandula, Weinberg–Witten and Goldstone theorem constraints; Fermi/V–A weak-interaction theory; unimodular, conformal/Weyl and mimetic gravity; and phantom, Chaplygin-gas and matter-bounce cosmologies.
+
+The exhaustiveness audit remains open.
