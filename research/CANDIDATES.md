@@ -109,3 +109,12 @@ Promoted with dedicated provenance: Hartree–Fock; configuration interaction; M
 ## Integrated in the 2026-09-22 audited-candidate promotion sweep
 
 Promoted after explicit add/alias/subtype review: Hidden-measurements approach; Operational quantum logic; Polymer quantum cosmology.
+
+
+## Integrated in the 2026-09-22 exhaustive breadth sweeps
+
+The first sweep promoted 65 source-backed entities across generalized measurement/foundations, particle/QFT, black-hole information, quantum gravity, astroparticle cosmology, quantum matter, quantum chemistry and AMO.
+
+The second sweep promoted 37 additional first-class families covering scalar–tensor/f(R)/Horndeski/DHOST/DGP/dRGT/Einstein–Æther/Galileon gravity; sterile-neutrino, dark-photon, freeze-in and asymmetric dark-sector frameworks; Affleck–Dine baryogenesis; Schwinger/Thirring/Gross–Neveu/NJL/Chern–Simons/BF/WZW field theories; BKT/Haldane/composite-fermion/SPT/U(1)-spin-liquid frameworks; CASPT2/NEVPT2/EOM-CC/ADC/GF2/DMRG-SCF; and optomechanics/EIT/STIRAP/trapped-ion/optical-lattice platforms.
+
+As of this audit there are **no unresolved first-class `ADD` decisions in the enumerated candidate set**. The items above this section that remain open are intentionally lower-granularity subtypes, variants, aliases or model-level depth queues. Discovery of a genuinely distinct sourced family reopens the first-class census.
