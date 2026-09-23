@@ -104,3 +104,8 @@ This is a closure statement about the audited queue, not a claim that the scient
 The earlier 367-node closure was reopened after a new domain audit found first-class omissions. Fifty additional entities passed distinctness + provenance review and were promoted.
 
 **Current decision state: OPEN.** No claim of first-class closure is made while the follow-up search queue is still active. Candidate closure will be restated only after the active quantum-statistical, nuclear/hadronic, gravity, information and cosmology sweeps have explicit dispositions.
+
+
+## Fourth-wave status
+
+Sixteen additional first-class entities were promoted with provenance. **Audit remains OPEN**; no final completeness claim is made.
