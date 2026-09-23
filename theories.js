@@ -453,7 +453,24 @@ window.QI_DATA = (() => {
     T("quantum-shannon-theory","Quantum Shannon theory",1995,"1980–1999","Quantum information & open systems","established framework","Quantum Shannon theory studies asymptotic rates for transmitting classical and quantum information and entanglement through noisy quantum channels.","Coding theorems define channel capacities, entanglement-assisted rates and trade-offs using entropic quantities and regularized resource rates.",["quantum Shannon theory","channel capacity","coding theorem","quantum communication"],[],"information-theoretic framework"),
     T("magic-state-theory","Magic-state resource theory",2005,"2000–2014","Quantum information & open systems","established framework","Magic-state theory quantifies nonstabilizer resources that enable universal fault-tolerant quantum computation beyond Clifford operations.","Special nonstabilizer states can be distilled and consumed to implement otherwise unavailable non-Clifford gates, with magic monotones quantifying the resource.",["magic states","stabilizer","fault tolerance","resource theory"],[],"resource framework"),
     T("relativistic-quantum-information","Relativistic quantum information",2003,"2000–2014","Quantum information & open systems","active research","Relativistic quantum information studies entanglement, communication and quantum protocols when observers, fields and reference frames are relativistic or live in curved spacetime.","Mode definitions, acceleration, horizons and spacetime structure alter operational access to quantum information and correlations.",["relativistic quantum information","entanglement","Unruh","curved spacetime"],[],"research framework"),
-    T("boson-sampling","Boson sampling",2011,"2000–2014","Quantum information & open systems","established restricted model","Boson sampling is a restricted photonic computational model in which indistinguishable bosons propagate through a linear optical network and are sampled at the output.","Output probabilities are governed by matrix permanents, providing a route to quantum computational advantage without a universal gate model under standard complexity assumptions.",["boson sampling","linear optics","quantum advantage","permanent"],[],"computation framework")
+    T("boson-sampling","Boson sampling",2011,"2000–2014","Quantum information & open systems","established restricted model","Boson sampling is a restricted photonic computational model in which indistinguishable bosons propagate through a linear optical network and are sampled at the output.","Output probabilities are governed by matrix permanents, providing a route to quantum computational advantage without a universal gate model under standard complexity assumptions.",["boson sampling","linear optics","quantum advantage","permanent"],[],"computation framework"),
+
+    T("kms-equilibrium","KMS equilibrium-state framework",1957,"1940–1959","Mathematical structures","established framework","The Kubo–Martin–Schwinger framework gives an operator-algebraic characterization of thermal equilibrium states for quantum systems, especially in the thermodynamic limit.","A state is thermal at inverse temperature β when correlation functions satisfy the KMS analyticity and imaginary-time boundary condition with respect to the dynamics.",["KMS","thermal equilibrium","operator algebra","statistical mechanics"],[],"mathematical framework"),
+    T("kadanoff-baym","Kadanoff–Baym nonequilibrium Green-function theory",1962,"1960–1979","Quantum many-body & condensed matter","established framework","Kadanoff–Baym theory describes nonequilibrium interacting quantum systems through two-time Green functions and self-consistent collision integrals derived from many-body field theory.","Contour-ordered Dyson equations yield coupled evolution equations for correlation and spectral functions, bridging microscopic dynamics and quantum kinetic descriptions.",["Kadanoff Baym","nonequilibrium Green functions","quantum kinetics","many body"],[],"dynamical framework"),
+    T("ginzburg-landau-superconductivity","Ginzburg–Landau superconductivity",1950,"1940–1959","Quantum many-body & condensed matter","established effective framework","Ginzburg–Landau theory describes superconductivity near a continuous transition using a complex order parameter coupled to the electromagnetic field.","A symmetry-constrained free-energy functional of the superconducting order parameter yields coherence, penetration and vortex physics at long wavelengths.",["Ginzburg Landau","superconductivity","order parameter","vortices"],[],"effective framework"),
+    T("bogoliubov-de-gennes","Bogoliubov–de Gennes superconducting formalism",1958,"1940–1959","Quantum many-body & condensed matter","established framework","The Bogoliubov–de Gennes formalism describes quasiparticle excitations of spatially nonuniform superconductors in a particle–hole doubled mean-field representation.","A self-consistent pairing field enters a matrix eigenproblem coupling particle and hole amplitudes, resolving interfaces, vortices and inhomogeneous pairing.",["BdG","superconductivity","quasiparticles","pairing"],["Bogoliubov-de Gennes equations"],"many-body framework"),
+    T("bcs-bec-crossover","BCS–BEC crossover framework",1980,"1980–1999","Quantum many-body & condensed matter","established framework","BCS–BEC crossover theory connects weakly bound Cooper-pair superconductivity or superfluidity continuously to Bose condensation of tightly bound pairs.","Changing interaction strength and chemical potential evolves fermionic pairing from large overlapping pairs to composite bosons without requiring a symmetry-changing phase transition in the simplest crossover.",["BCS BEC crossover","superfluidity","pairing","strong coupling"],[],"theory / framework"),
+    T("entanglement-theory","Quantum entanglement theory",1996,"1980–1999","Quantum information & open systems","established framework","Entanglement theory classifies, detects, quantifies and manipulates nonseparable quantum correlations under specified classes of local operations and communication.","States are organized by convertibility under LOCC or related free operations, with entanglement measures and distillation/cost tasks characterizing the resource.",["entanglement","LOCC","resource theory","quantum information"],[],"resource framework"),
+    T("quantum-simulation","Quantum simulation",1982,"1980–1999","Quantum information & open systems","established framework","Quantum simulation uses controllable quantum systems or quantum computers to emulate the dynamics and properties of other quantum systems that are difficult to calculate classically.","Analog or digital simulators encode a target Hamiltonian or evolution in an experimentally controllable quantum platform and extract observables from the simulator.",["quantum simulation","Feynman","analog quantum simulation","digital quantum simulation"],[],"computation framework"),
+    T("black-hole-final-state","Black-hole final-state proposal",2004,"2000–2014","Quantum gravity & spacetime","speculative","The Horowitz–Maldacena proposal imposes a special final-state boundary condition at a black-hole singularity to reconcile Hawking evaporation with unitary quantum mechanics.","A maximally entangled final condition correlates infalling matter with interior Hawking partners so the outgoing radiation can encode the input state under idealized assumptions.",["black hole information","final state","Horowitz Maldacena","unitarity"],[],"research proposal"),
+    T("black-hole-remnants","Black-hole remnant scenarios",1992,"1980–1999","Quantum gravity & spacetime","speculative","Black-hole remnant scenarios propose that evaporation halts near the Planck scale, leaving long-lived or stable objects that retain information otherwise lost in Hawking radiation.","A small final object is assumed to possess enough internal states or structure to encode the information of the original black hole, raising consistency questions about production and entropy.",["black hole information","remnant","evaporation","Planck scale"],[],"research program"),
+    T("replica-wormholes","Replica-wormhole framework",2019,"2015–present","Quantum gravity & spacetime","active research","Replica-wormhole calculations include gravitational saddles connecting replica copies in entropy path integrals and reproduce Page-curve behavior in tractable semiclassical models.","New replica-connected geometries modify the semiclassical entropy calculation and lead to the island rule after analytic continuation in replica number.",["replica wormholes","Page curve","islands","black hole information"],[],"quantum-gravity framework"),
+    T("starobinsky-inflation","Starobinsky R² inflation",1980,"1980–1999","Astroparticle physics & cosmology","established inflationary model","Starobinsky inflation uses higher-curvature R² dynamics to generate a quasi-de Sitter early universe and a predictive slow-roll inflationary regime.","The R+R² gravitational action is dynamically equivalent to Einstein gravity plus a scalaron with a plateau-like potential in the Einstein-frame description.",["Starobinsky","R2 inflation","scalaron","inflation"],[],"cosmological framework"),
+    T("hybrid-inflation","Hybrid inflation",1991,"1980–1999","Astroparticle physics & cosmology","active inflationary model","Hybrid inflation uses at least two fields so inflation can proceed along a slowly varying direction and end through an instability of a second waterfall field.","The vacuum energy is maintained while the inflaton evolves until a critical value destabilizes the auxiliary field and terminates inflation rapidly.",["hybrid inflation","waterfall field","inflation","early universe"],[],"cosmological framework"),
+    T("warm-inflation","Warm inflation",1995,"1980–1999","Astroparticle physics & cosmology","active inflationary framework","Warm inflation incorporates dissipative interactions during inflation so radiation can be continuously produced rather than appearing only after a separate reheating stage.","The inflaton equation includes a friction-like dissipation term and thermal fluctuations can contribute to primordial perturbations when the radiation bath is significant.",["warm inflation","dissipation","thermal fluctuations","inflation"],[],"cosmological framework"),
+    T("k-essence","k-essence scalar-field cosmology",2000,"2000–2014","Astroparticle physics & cosmology","active framework","k-essence models use scalar fields with noncanonical kinetic terms to drive accelerated expansion or other cosmological dynamics.","A nonlinear function of the scalar kinetic invariant and field value produces an effective pressure and sound speed not obtainable from a canonical scalar field alone.",["k-essence","dark energy","noncanonical scalar","cosmology"],[],"cosmological framework"),
+    T("symmetric-teleparallel-gravity","Symmetric teleparallel gravity",2018,"2015–present","Quantum gravity & spacetime","active research","Symmetric teleparallel gravity describes gravitation using nonmetricity in a geometry with vanishing curvature and torsion, providing a third geometric formulation alongside curvature and torsion descriptions.","A flat torsion-free affine connection carries nonmetricity, and the equivalent GR action is built from a specific quadratic nonmetricity scalar plus a boundary relation.",["symmetric teleparallel","nonmetricity","gravity","coincident gauge"],[],"formulation"),
+    T("f-q-gravity","f(Q) gravity",2018,"2015–present","Quantum gravity & spacetime","active theory family","f(Q) gravity generalizes symmetric teleparallel gravity by replacing the nonmetricity scalar Q in the action with a nonlinear function.","Nonlinear nonmetricity dynamics modify the gravitational field equations and provide cosmological and astrophysical alternatives distinct from f(R) and f(T) families.",["f(Q)","nonmetricity","modified gravity","symmetric teleparallel"],[],"theory family")
 
   ];
 
@@ -859,10 +876,42 @@ window.QI_DATA = (() => {
     {"id":"wave3-wilde-shannon-2017","title":"Quantum Information Theory","authors":"Mark M. Wilde","year":2017,"type":"authoritative review","url":"https://doi.org/10.1017/9781316809976"},
     {"id":"wave3-bravyi-kitaev-magic-2005","title":"Universal quantum computation with ideal Clifford gates and noisy ancillas","authors":"Sergey Bravyi, Alexei Kitaev","year":2005,"type":"primary source","url":"https://doi.org/10.1103/PhysRevA.71.022316"},
     {"id":"wave3-relativistic-qi-review-2012","title":"Observer-dependent entanglement in relativistic quantum information","authors":"Paul M. Alsing, Ivette Fuentes","year":2012,"type":"authoritative review","url":"https://doi.org/10.1088/0264-9381/29/22/224001"},
-    {"id":"wave3-boson-sampling-2011","title":"The Computational Complexity of Linear Optics","authors":"Scott Aaronson, Alex Arkhipov","year":2011,"type":"primary source","url":"https://doi.org/10.1145/1993636.1993682"}
+    {"id":"wave3-boson-sampling-2011","title":"The Computational Complexity of Linear Optics","authors":"Scott Aaronson, Alex Arkhipov","year":2011,"type":"primary source","url":"https://doi.org/10.1145/1993636.1993682"},
+    {"id":"wave4-kms-book","title":"Operator Algebras and Quantum Statistical Mechanics 2: Equilibrium States, Models in Quantum Statistical Mechanics","authors":"Ola Bratteli, Derek W. Robinson","year":1997,"type":"authoritative review","url":"https://doi.org/10.1007/978-3-662-03444-6"},
+    {"id":"wave4-kadanoff-review-2010","title":"Introduction to Nonequilibrium Statistical Mechanics with Quantum Field","authors":"Takafumi Kita","year":2010,"type":"authoritative review","url":"https://arxiv.org/abs/1005.0393"},
+    {"id":"wave4-gl-review-2010","title":"Ginzburg-Landau theory of type II superconductors in magnetic field","authors":"Baruch Rosenstein, Dingping Li","year":2010,"type":"authoritative review","url":"https://doi.org/10.1103/RevModPhys.82.109"},
+    {"id":"wave4-bdg-2024","title":"Density functional Bogoliubov-de Gennes theory for superconductors implemented in the SIESTA code","authors":"Jorge Quintanilla et al.","year":2024,"type":"review/authoritative source","url":"https://doi.org/10.1103/PhysRevB.110.134505"},
+    {"id":"wave4-bcs-bec-review-2024","title":"When superconductivity crosses over: From BCS to BEC","authors":"Qijin Chen, Zhiqiang Wang, Rufus Boyack, Shuolong Yang, K. Levin","year":2024,"type":"authoritative review","url":"https://doi.org/10.1103/RevModPhys.96.025002"},
+    {"id":"wave4-entanglement-review-2009","title":"Quantum entanglement","authors":"Ryszard Horodecki, Paweł Horodecki, Michał Horodecki, Karol Horodecki","year":2009,"type":"authoritative review","url":"https://doi.org/10.1103/RevModPhys.81.865"},
+    {"id":"wave4-quantum-simulation-review-2014","title":"Quantum simulation","authors":"I. M. Georgescu, S. Ashhab, Franco Nori","year":2014,"type":"authoritative review","url":"https://doi.org/10.1103/RevModPhys.86.153"},
+    {"id":"wave4-hm-final-state-2004","title":"The black hole final state","authors":"Gary T. Horowitz, Juan Maldacena","year":2004,"type":"primary source","url":"https://doi.org/10.1088/1126-6708/2004/02/008"},
+    {"id":"wave4-remnants-1994","title":"Comments on information loss and remnants","authors":"Steven B. Giddings","year":1994,"type":"primary source","url":"https://doi.org/10.1103/PhysRevD.49.4078"},
+    {"id":"wave4-replica-wormholes-2019","title":"Replica Wormholes and the Entropy of Hawking Radiation","authors":"Ahmed Almheiri, Thomas Hartman, Juan Maldacena, Edgar Shaghoulian, Amirhossein Tajdini","year":2019,"type":"primary source","url":"https://arxiv.org/abs/1911.12333"},
+    {"id":"wave4-starobinsky-1980","title":"A new type of isotropic cosmological models without singularity","authors":"A. A. Starobinsky","year":1980,"type":"primary source","url":"https://doi.org/10.1016/0370-2693(80)90670-X"},
+    {"id":"wave4-hybrid-linde-1991","title":"Axions in inflationary cosmology","authors":"Andrei Linde","year":1991,"type":"primary source","url":"https://doi.org/10.1016/0370-2693(91)90130-I"},
+    {"id":"wave4-warm-berera-1995","title":"Warm Inflation","authors":"Arjun Berera","year":1995,"type":"primary source","url":"https://doi.org/10.1103/PhysRevLett.75.3218"},
+    {"id":"wave4-kessence-2000","title":"Essentials of k-essence","authors":"C. Armendáriz-Picón, V. Mukhanov, Paul J. Steinhardt","year":2001,"type":"primary source","url":"https://doi.org/10.1103/PhysRevD.63.103510"},
+    {"id":"wave4-symmetric-teleparallel-2018","title":"The spectrum of symmetric teleparallel gravity","authors":"Aindriú Conroy, Tomi Koivisto","year":2018,"type":"primary source","url":"https://doi.org/10.1140/epjc/s10052-018-6410-z"},
+    {"id":"wave4-fq-2022","title":"Covariant formulation of f(Q) theory","authors":"Dehao Zhao","year":2022,"type":"primary source","url":"https://doi.org/10.1140/epjc/s10052-022-10266-4"}
   ];
 
   const sourceLinks = {
+    "kms-equilibrium":["wave4-kms-book"],
+    "kadanoff-baym":["wave4-kadanoff-review-2010"],
+    "ginzburg-landau-superconductivity":["wave4-gl-review-2010"],
+    "bogoliubov-de-gennes":["wave4-bdg-2024"],
+    "bcs-bec-crossover":["wave4-bcs-bec-review-2024"],
+    "entanglement-theory":["wave4-entanglement-review-2009"],
+    "quantum-simulation":["wave4-quantum-simulation-review-2014"],
+    "black-hole-final-state":["wave4-hm-final-state-2004"],
+    "black-hole-remnants":["wave4-remnants-1994"],
+    "replica-wormholes":["wave4-replica-wormholes-2019"],
+    "starobinsky-inflation":["wave4-starobinsky-1980"],
+    "hybrid-inflation":["wave4-hybrid-linde-1991"],
+    "warm-inflation":["wave4-warm-berera-1995"],
+    "k-essence":["wave4-kessence-2000"],
+    "symmetric-teleparallel-gravity":["wave4-symmetric-teleparallel-2018"],
+    "f-q-gravity":["wave4-fq-2022"],
     "quantum-chaos":["wave3-bgs-1984","wave3-eth-review-2016"],
     "eigenstate-thermalization":["wave3-eth-review-2016"],
     "many-body-localization":["wave3-mbl-review-2015"],
@@ -1573,7 +1622,29 @@ window.QI_DATA = (() => {
     R("stabilizer-formalism","magic-state-theory","extends"),
     R("quantum-information","relativistic-quantum-information","extends"),
     R("qft-curved-spacetime","relativistic-quantum-information","supports"),
-    R("circuit-model-qc","boson-sampling","overlaps")
+    R("circuit-model-qc","boson-sampling","overlaps"),
+    R("noncommutative-probability","kms-equilibrium","supports"),
+    R("schwinger-keldysh","kadanoff-baym","extends"),
+    R("kadanoff-baym","quantum-fluctuation-relations","overlaps"),
+    R("ginzburg-landau-superconductivity","bcs-theory","precursor"),
+    R("bcs-theory","bogoliubov-de-gennes","extends"),
+    R("bcs-theory","bcs-bec-crossover","extends"),
+    R("eliashberg-theory","bcs-bec-crossover","overlaps"),
+    R("quantum-information","entanglement-theory","extends"),
+    R("quantum-information","quantum-simulation","extends"),
+    R("optical-lattice-quantum-simulation","quantum-simulation","supports"),
+    R("circuit-model-qc","quantum-simulation","supports"),
+    R("black-hole-complementarity","black-hole-final-state","overlaps"),
+    R("hawking-radiation","black-hole-remnants","challenges"),
+    R("replica-wormholes","island-formula","supports"),
+    R("jt-gravity","replica-wormholes","supports"),
+    R("inflationary-cosmology","starobinsky-inflation","extends"),
+    R("inflationary-cosmology","hybrid-inflation","extends"),
+    R("inflationary-cosmology","warm-inflation","extends"),
+    R("quintessence","k-essence","extends"),
+    R("metric-affine-gravity","symmetric-teleparallel-gravity","overlaps"),
+    R("symmetric-teleparallel-gravity","f-q-gravity","extends"),
+    R("teleparallel-gravity","symmetric-teleparallel-gravity","overlaps")
 
   ].filter(r => theories.some(t=>t.id===r.from) && theories.some(t=>t.id===r.to));
 
@@ -1666,7 +1737,12 @@ window.QI_DATA = (() => {
     {"name":"Nuclear quantum theory","nodes":["qcd","chiral-nuclear-eft","pionless-nuclear-eft","halo-eft","nuclear-shell-model","no-core-shell-model","in-medium-srg","nuclear-collective-model","nuclear-dft","nuclear-hfb","relativistic-mean-field-nuclear"]},
     {"name":"QCD structure and nonperturbative methods","nodes":["parton-model","qcd","dglap-evolution","bfkl-evolution","color-glass-condensate","operator-product-expansion","qcd-sum-rules","yang-mills","yang-mills-instantons","abj-anomaly","gim-mechanism","ckm-mixing","standard-model"]},
     {"name":"Geometric gravity frameworks","nodes":["einstein-cartan","metric-affine-gravity","teleparallel-gravity","f-t-gravity","higher-derivative-qg","lovelock-gravity","massive-gravity-drgt","bimetric-gravity","string-theory","double-field-theory","supergravity","exceptional-field-theory"]},
-    {"name":"Quantum computation models","nodes":["quantum-turing-machine","circuit-model-qc","quantum-information","quantum-shannon-theory","quantum-walks","quantum-cellular-automata","stabilizer-formalism","magic-state-theory","relativistic-quantum-information","qft-curved-spacetime","boson-sampling"]}
+    {"name":"Quantum computation models","nodes":["quantum-turing-machine","circuit-model-qc","quantum-information","quantum-shannon-theory","quantum-walks","quantum-cellular-automata","stabilizer-formalism","magic-state-theory","relativistic-quantum-information","qft-curved-spacetime","boson-sampling"]},
+    {"name":"Equilibrium and nonequilibrium quantum statistics","nodes":["noncommutative-probability","kms-equilibrium","schwinger-keldysh","kadanoff-baym","quantum-fluctuation-relations","eigenstate-thermalization","generalized-gibbs-ensemble"]},
+    {"name":"Superconductivity formalisms","nodes":["ginzburg-landau-superconductivity","bcs-theory","bogoliubov-de-gennes","eliashberg-theory","bcs-bec-crossover","topological-superconductor"]},
+    {"name":"Black-hole information mechanisms","nodes":["hawking-radiation","black-hole-complementarity","black-hole-final-state","black-hole-remnants","jt-gravity","replica-wormholes","island-formula"]},
+    {"name":"Inflationary model families","nodes":["inflationary-cosmology","starobinsky-inflation","hybrid-inflation","warm-inflation","quintessence","k-essence"]},
+    {"name":"Curvature torsion and nonmetricity gravity","nodes":["metric-affine-gravity","einstein-cartan","teleparallel-gravity","f-t-gravity","symmetric-teleparallel-gravity","f-q-gravity"]}
   ];
 
   return { theories, relations, trees, sources };
