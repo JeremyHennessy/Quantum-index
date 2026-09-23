@@ -10,22 +10,20 @@ The runtime audit is `formula-audit.js`; formula records are in `formulas.js`.
 
 ## Current result
 
-- **367** shipped theory/framework entities audited
+- **417** shipped theory/framework entities audited
 - **345** source-linked formula entries
 - **202** entities classified **formula-bearing**
-- **134** classified **formula-bearing-gap**
+- **183** classified **formula-bearing-gap**
 - **11** interpretations
 - **14** primarily conceptual/structural
-- **5** theorem-first
+- **6** theorem-first
 - **1** thought experiment
 
 A `formula-bearing-gap` is an explicit curation gap. It does not claim that the theory lacks mathematics.
 
 ## Why the gap count increased
 
-The 2026-09-22 work deliberately expanded theory breadth first: black-hole information, particle/astroparticle theory, modified gravity, canonical many-body models, post-CASSCF electronic structure and AMO frameworks were promoted with provenance before equations were invented or copied without review.
-
-That is the intended control behavior. New formula-bearing theories enter as visible gaps until a canonical equation is selected and source-linked.
+Theory breadth was expanded before formula curation. The third wave adds 50 source-backed frameworks without fabricating equations merely to keep the formula metric low. Of those additions, 49 enter as explicit formula-bearing gaps and the ABJ anomaly enters as theorem-first.
 
 ## Highest-priority formula closure domains
 
