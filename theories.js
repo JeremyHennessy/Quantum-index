@@ -493,7 +493,18 @@ window.QI_DATA = (() => {
     T("chaplygin-gas","Chaplygin-gas cosmology",2001,"2000–2014","Astroparticle physics & cosmology","active phenomenological framework","Chaplygin-gas models use an exotic fluid with negative pressure inversely related to energy density to interpolate between matter-like and dark-energy-like behavior.","The fluid equation of state produces dust-like evolution at high density and accelerated expansion at low density in generalized variants.",["Chaplygin gas","dark energy","unified dark sector","cosmology"],[],"cosmological framework"),
     T("matter-bounce","Matter-bounce cosmology",1999,"1980–1999","Astroparticle physics & cosmology","active research","Matter-bounce scenarios replace an inflationary beginning with a contracting matter-dominated phase followed by a nonsingular bounce, generating nearly scale-invariant perturbations in canonical implementations.","Cosmological modes exit the shrinking Hubble radius during matter contraction and are transferred through a bounce into the expanding universe.",["matter bounce","bouncing cosmology","early universe","alternative to inflation"],[],"cosmological framework"),
 
-    T("no-cloning","No-cloning theorem",1982,"1980–1999","Foundations & interpretations","established theorem","The no-cloning theorem proves that an arbitrary unknown quantum state cannot be perfectly copied by a universal physical operation.","Linearity and unitarity prevent one state-independent transformation from producing two identical copies of every possible input state.",["no cloning","quantum information","linearity","no-go theorem"],[],"theorem")
+    T("no-cloning","No-cloning theorem",1982,"1980–1999","Foundations & interpretations","established theorem","The no-cloning theorem proves that an arbitrary unknown quantum state cannot be perfectly copied by a universal physical operation.","Linearity and unitarity prevent one state-independent transformation from producing two identical copies of every possible input state.",["no cloning","quantum information","linearity","no-go theorem"],[],"theorem"),
+
+    T("mackey-imprimitivity","Mackey imprimitivity framework",1949,"1940–1959","Mathematical structures","established theorem/framework","Mackey's imprimitivity theory links unitary group representations, covariance and projection-valued measures, providing a systematic representation-theoretic foundation for quantum observables with symmetry.","Systems of imprimitivity encode a group action together with covariant spectral measures and are classified through induced representations under the theorem's assumptions.",["Mackey","imprimitivity","induced representations","symmetry"],["Mackey imprimitivity theorem"],"theorem"),
+    T("ludwig-operational-qm","Ludwig operational quantum mechanics",1964,"1960–1979","Foundations & interpretations","established axiomatic framework","Ludwig's operational program reconstructs quantum theory from preparations, registration procedures, ensembles, effects and empirically motivated axioms.","Operationally defined preparations and effects are organized into convex structures from which Hilbert-space quantum mechanics and measurement rules can be derived under additional assumptions.",["Ludwig","operational quantum theory","preparations","effects"],[],"axiomatic framework"),
+    T("stone-von-neumann","Stone–von Neumann uniqueness theorem",1930,"1925–1939","Mathematical structures","established theorem","The Stone–von Neumann theorem establishes uniqueness, up to unitary equivalence, of irreducible regular representations of the canonical commutation relations for finitely many degrees of freedom.","Under continuity and irreducibility assumptions, the Weyl form of the canonical commutation relations has the Schrödinger representation as its unique representation class.",["Stone von Neumann","canonical commutation relations","representation theory","quantization"],[],"theorem"),
+    T("wigner-symmetry-theorem","Wigner symmetry theorem",1931,"1925–1939","Mathematical structures","established theorem","Wigner's theorem shows that transformations of pure quantum states preserving transition probabilities are represented on Hilbert space by unitary or antiunitary operators.","A ray-space symmetry that preserves transition probabilities lifts to a linear unitary or antilinear antiunitary transformation of state vectors.",["Wigner theorem","symmetry","unitary","antiunitary"],[],"theorem"),
+    T("reeh-schlieder","Reeh–Schlieder theorem",1961,"1960–1979","Quantum field theory","established theorem","The Reeh–Schlieder theorem states that the vacuum is cyclic for the algebra of observables associated with any nonempty open region in relativistic QFT under standard axiomatic assumptions.","Local field operations acting on the vacuum generate a dense set of states, revealing the deeply nonlocal entanglement structure of the QFT vacuum without enabling superluminal signalling.",["Reeh Schlieder","AQFT","vacuum entanglement","locality"],[],"theorem"),
+    T("sine-gordon","Quantum sine-Gordon model",1975,"1960–1979","Quantum field theory","established integrable model","The quantum sine-Gordon model is a two-dimensional interacting scalar field theory with a periodic cosine potential, solitons and exact integrable structure.","Its soliton sector is nonperturbatively related to the massive Thirring model, making bosonization and particle–soliton duality explicit.",["sine-Gordon","integrable QFT","soliton","bosonization"],[],"model"),
+    T("nonlinear-sigma-model","Nonlinear sigma model",1961,"1960–1979","Quantum field theory","established theory family","Nonlinear sigma models describe fields valued in a curved target manifold or constrained order-parameter space and form a central class of QFT and statistical-field models.","Derivative interactions determined by target-space geometry generate renormalization, topology and in two dimensions asymptotically free behavior for important O(N) cases.",["nonlinear sigma model","O(N)","asymptotic freedom","topology"],[],"theory family"),
+    T("f-theory","F-theory",1996,"1980–1999","Quantum gravity & spacetime","active research","F-theory geometrizes the varying axio-dilaton of type-IIB string theory using elliptically fibered geometry and provides a nonperturbative framework for string compactifications.","An auxiliary elliptic fiber encodes SL(2,Z) duality data of type-IIB backgrounds, enabling compactifications with seven-branes and links to M-theory.",["F-theory","type IIB","elliptic fibration","string duality"],[],"research program"),
+    T("ds-cft","dS/CFT correspondence",2001,"2000–2014","Quantum gravity & spacetime","active research","The dS/CFT proposal seeks a holographic relation between quantum gravity in de Sitter space and a conformal field theory associated with its asymptotic boundary.","Bulk de Sitter observables or wavefunction data are mapped to boundary conformal quantities, with important differences from the better-established AdS/CFT dictionary.",["dS/CFT","de Sitter","holography","CFT"],[],"research program"),
+    T("liouville-quantum-gravity","Liouville quantum gravity",1981,"1980–1999","Quantum gravity & spacetime","established two-dimensional framework","Liouville quantum gravity describes fluctuating two-dimensional geometry through Liouville field theory and is central to noncritical string theory and rigorous random geometry.","The conformal factor of a two-dimensional metric becomes a quantum Liouville field whose coupling to matter encodes the path integral over random geometries.",["Liouville","2D quantum gravity","random geometry","noncritical string"],[],"quantum-gravity framework")
 
   ];
 
@@ -937,10 +948,30 @@ window.QI_DATA = (() => {
     {"id":"wave5-phantom-2002","title":"A phantom menace? Cosmological consequences of a dark energy component with super-negative equation of state","authors":"Robert R. Caldwell","year":2002,"type":"primary source","url":"https://doi.org/10.1016/S0370-2693(02)02589-3"},
     {"id":"wave5-chaplygin-2003","title":"Can the Chaplygin gas be a plausible model for dark energy?","authors":"Vittorio Gorini, Alexander Kamenshchik, Ugo Moschella","year":2003,"type":"primary source","url":"https://doi.org/10.1103/PhysRevD.67.063509"},
     {"id":"wave5-matter-bounce-review-2012","title":"The Matter Bounce Alternative to Inflationary Cosmology","authors":"Robert H. Brandenberger","year":2012,"type":"authoritative review","url":"https://arxiv.org/abs/1206.4196"},
-    {"id":"wave5-no-cloning-1982","title":"A single quantum cannot be cloned","authors":"W. K. Wootters, W. H. Zurek","year":1982,"type":"primary source","url":"https://doi.org/10.1038/299802a0"}
+    {"id":"wave5-no-cloning-1982","title":"A single quantum cannot be cloned","authors":"W. K. Wootters, W. H. Zurek","year":1982,"type":"primary source","url":"https://doi.org/10.1038/299802a0"},
+    {"id":"wave6-mackey-1949","title":"Imprimitivity for Representations of Locally Compact Groups I","authors":"George W. Mackey","year":1949,"type":"primary source","url":"https://doi.org/10.1073/pnas.35.9.537"},
+    {"id":"wave6-ludwig-1983","title":"Foundations of Quantum Mechanics I","authors":"Günther Ludwig","year":1983,"type":"primary source","url":"https://doi.org/10.1007/978-3-642-86751-4"},
+    {"id":"wave6-stone-vn-1949","title":"A theorem of Stone and von Neumann","authors":"George W. Mackey","year":1949,"type":"primary source","url":"https://doi.org/10.1215/S0012-7094-49-01631-2"},
+    {"id":"wave6-wigner-proof-2008","title":"Two elementary proofs of the Wigner theorem on symmetry in quantum mechanics","authors":"György P. Gehér","year":2008,"type":"authoritative review","url":"https://doi.org/10.1016/j.physleta.2008.09.052"},
+    {"id":"wave6-reeh-schlieder-1961","title":"Bemerkungen zur Unitäräquivalenz von Lorentzinvarianten Feldern","authors":"Helmut Reeh, Siegfried Schlieder","year":1961,"type":"primary source","url":"https://doi.org/10.1007/BF02787889"},
+    {"id":"wave6-sine-gordon-1975","title":"Quantum sine-Gordon equation as the massive Thirring model","authors":"Sidney Coleman","year":1975,"type":"primary source","url":"https://doi.org/10.1103/PhysRevD.11.2088"},
+    {"id":"wave6-sigma-polyakov-1975","title":"Interaction of Goldstone Particles in Two Dimensions. Applications to Ferromagnets and Massive Yang-Mills Fields","authors":"Alexander M. Polyakov","year":1975,"type":"primary source","url":"https://doi.org/10.1016/0370-2693(75)90161-6"},
+    {"id":"wave6-f-theory-1996","title":"Evidence for F-theory","authors":"Cumrun Vafa","year":1996,"type":"primary source","url":"https://doi.org/10.1016/0550-3213(96)00172-1"},
+    {"id":"wave6-ds-cft-2001","title":"The dS/CFT correspondence","authors":"Andrew Strominger","year":2001,"type":"primary source","url":"https://doi.org/10.1088/1126-6708/2001/10/034"},
+    {"id":"wave6-liouville-review-2025","title":"Liouville theory: an introduction to rigorous approaches","authors":"Sourav Chatterjee, Edward Witten","year":2025,"type":"authoritative review","url":"https://doi.org/10.1007/JHEP02(2025)153"}
   ];
 
   const sourceLinks = {
+    "mackey-imprimitivity":["wave6-mackey-1949"],
+    "ludwig-operational-qm":["wave6-ludwig-1983"],
+    "stone-von-neumann":["wave6-stone-vn-1949"],
+    "wigner-symmetry-theorem":["wave6-wigner-proof-2008"],
+    "reeh-schlieder":["wave6-reeh-schlieder-1961"],
+    "sine-gordon":["wave6-sine-gordon-1975"],
+    "nonlinear-sigma-model":["wave6-sigma-polyakov-1975"],
+    "f-theory":["wave6-f-theory-1996"],
+    "ds-cft":["wave6-ds-cft-2001"],
+    "liouville-quantum-gravity":["wave6-liouville-review-2025"],
     "no-cloning":["wave5-no-cloning-1982"],
     "nonmarkovian-open-systems":["wave5-nonmarkov-rmp-2016"],
     "nakajima-zwanzig":["wave5-nakajima-1958","wave5-zwanzig-1960"],
@@ -1739,7 +1770,23 @@ window.QI_DATA = (() => {
     R("inflationary-cosmology","matter-bounce","challenges"),
     R("wightman-qft","weinberg-witten","supports"),
     R("goldstone-theorem","higgs-mechanism","supports"),
-    R("quantum-information","no-cloning","supports")
+    R("quantum-information","no-cloning","supports"),
+    R("canonical-quantization","stone-von-neumann","supports"),
+    R("stone-von-neumann","mackey-imprimitivity","supports"),
+    R("wigner-symmetry-theorem","mackey-imprimitivity","supports"),
+    R("quantum-instruments","ludwig-operational-qm","overlaps"),
+    R("operational-quantum-logic","ludwig-operational-qm","overlaps"),
+    R("mackey-imprimitivity","quantum-reference-frames","supports"),
+    R("aqft","reeh-schlieder","supports"),
+    R("integrable-qft","sine-gordon","supports"),
+    R("thirring-model","sine-gordon","overlaps"),
+    R("renormalization-group","nonlinear-sigma-model","supports"),
+    R("string-theory","f-theory","extends"),
+    R("m-theory","f-theory","overlaps"),
+    R("holographic-principle","ds-cft","extends"),
+    R("ads-cft","ds-cft","overlaps"),
+    R("conformal-field-theory","liouville-quantum-gravity","supports"),
+    R("string-theory","liouville-quantum-gravity","overlaps")
 
   ].filter(r => theories.some(t=>t.id===r.from) && theories.some(t=>t.id===r.to));
 
@@ -1842,7 +1889,10 @@ window.QI_DATA = (() => {
     {"name":"Relativistic QFT structural constraints","nodes":["wightman-qft","cpt-theorem","spin-statistics-theorem","aqft","haag-theorem","coleman-mandula","supersymmetry","weinberg-witten"]},
     {"name":"Weak-interaction lineage","nodes":["fermi-four-fermion","va-weak-theory","electroweak","standard-model"]},
     {"name":"Measurement limits and weak values","nodes":["two-state-vector","quantum-instruments","weak-measurement","quantum-information","no-cloning","no-broadcasting"]},
-    {"name":"Alternative gravity and cosmology families","nodes":["higher-derivative-qg","conformal-gravity","metric-affine-gravity","unimodular-gravity","mimetic-gravity","lambda-cdm","phantom-dark-energy","chaplygin-gas","inflationary-cosmology","matter-bounce"]}
+    {"name":"Alternative gravity and cosmology families","nodes":["higher-derivative-qg","conformal-gravity","metric-affine-gravity","unimodular-gravity","mimetic-gravity","lambda-cdm","phantom-dark-energy","chaplygin-gas","inflationary-cosmology","matter-bounce"]},
+    {"name":"Representation-theoretic quantum foundations","nodes":["canonical-quantization","stone-von-neumann","wigner-symmetry-theorem","mackey-imprimitivity","quantum-instruments","ludwig-operational-qm","operational-quantum-logic","quantum-reference-frames"]},
+    {"name":"Integrable and geometric field models","nodes":["integrable-qft","thirring-model","sine-gordon","renormalization-group","nonlinear-sigma-model"]},
+    {"name":"Extended string and holography programs","nodes":["string-theory","m-theory","f-theory","holographic-principle","ads-cft","ds-cft","conformal-field-theory","liouville-quantum-gravity"]}
   ];
 
   return { theories, relations, trees, sources };
