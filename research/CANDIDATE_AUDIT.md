@@ -88,3 +88,12 @@ The next first-class additions should be:
 2. Continue model-level promotion only where granularity is applied systematically across a domain.
 
 All other audited backlog items remain aliases or subtypes until the index adopts systematic model-level granularity.
+
+
+## 2026-09-22 first-class breadth closure
+
+Two source-backed sweeps promoted **102 additional entities** after domain-by-domain duplicate/granularity review. The shipped census is now 367.
+
+Closure rule for this audit: every candidate surfaced in the active breadth sweep must end in one of `PROMOTED`, `ALIAS`, `SUBTYPE`, `FORMULA-ONLY`, or `REJECT-DUPLICATE`. There are currently **zero unresolved first-class ADD decisions in the audited candidate set**.
+
+This is a closure statement about the audited queue, not a claim that the scientific literature contains a final finite list. New review/transcript/literature discoveries are appended to the queue and can reopen the sweep.
