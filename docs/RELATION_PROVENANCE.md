@@ -41,9 +41,9 @@ Used for useful navigation/overlap edges that have not yet completed a relations
 ## Current coverage
 
 <!-- coverage:start -->
-- **588** total relationship edges
-- **75** source-backed
-- **64** high confidence
+- **605** total relationship edges
+- **92** source-backed
+- **81** high confidence
 - **11** medium confidence
 - **513** explicitly editorial
 <!-- coverage:end -->

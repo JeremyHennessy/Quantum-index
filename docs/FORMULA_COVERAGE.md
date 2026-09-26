@@ -6,8 +6,8 @@ _Last audited: 2026-09-22_
 
 <!-- coverage:start -->
 - **372** formula entries across **28** categories
-- **243** theory entries with linked formulas
-- **176** documented formula gaps
+- **244** theory entries with linked formulas
+- **191** documented formula gaps
 - **107** formulas with explicit metadata review; **265** with baseline metadata
 
 | Formula category | Entries |

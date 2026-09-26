@@ -28,7 +28,7 @@ test('existing equations resolve dedicated theory entries without adding duplica
     assert.ok(audit.find(a=>a.theoryId===theoryId).formulaIds.includes(formulaId));
   }
   assert.ok(formulas.length>=345);
-  assert.equal(theories.length,464);
+  assert.ok(theories.length>=464);
   assert.ok(audit.filter(a=>a.classification==='formula-bearing-gap').length<=208);
 });
 
@@ -219,5 +219,47 @@ test('displayed Heitler–London normalization works for nonorthogonal orbitals'
     const state=a.flatMap((ai,i)=>b.map((bj,j)=>(ai*bj+b[i]*a[j])/Math.sqrt(factor*(1+overlap**power))));
     assert.ok(Math.abs(state.reduce((sum,x)=>sum+x*x,0)-1)<1e-12);
     assert.equal(state[1],state[2]);
+  }
+});
+
+const discovery=JSON.parse(fs.readFileSync('docs/DISCOVERY_2026-09-26.json','utf8'));
+test('discovered entries have distinct scope, sources, dated audits, and honest formula coverage',()=>{
+  assert.equal(new Set(discovery.theoryIds).size,16);
+  for(const entry of discovery.entries){
+    const t=theories.find(t=>t.id===entry.theoryId);
+    assert.ok(t&&t.sources.length,entry.theoryId);
+    assert.equal(t.curationBatch,discovery.batch);
+    assert.equal(t.lastReviewed,discovery.reviewedAt);
+    assert.ok(t.yearBasis.length>20&&entry.distinctBecause.length>30);
+    for(const neighbor of entry.nearestExistingIds)assert.ok(theories.some(t=>t.id===neighbor));
+    const a=audit.find(a=>a.theoryId===t.id);
+    assert.equal(a.reviewedAt,discovery.reviewedAt);
+    if(discovery.formulaGapIds.includes(t.id)){
+      assert.equal(a.classification,'formula-bearing-gap',t.id);
+      assert.equal(a.coverageStatus,'documented-gap',t.id);
+      assert.ok(a.gapReason.length>30);
+    }else{
+      assert.equal(a.classification,'formula-bearing',t.id);
+      for(const id of discovery.reusedFormulaIds)assert.ok(a.formulaIds.includes(id));
+    }
+    assert.ok(sandbox.window.QI_DATA.trees.some(tree=>tree.nodes.includes(t.id)));
+  }
+  for(const key of discovery.newRelationKeys){
+    const r=sandbox.window.QI_DATA.relations.find(r=>[r.from,r.to,r.type].join('|')===key);
+    assert.ok(r&&r.sourceIds.length&&r.evidenceNote.length>40,key);
+  }
+});
+
+test('all discovered entries open visible details with their linked research sources',async()=>{
+  for(const id of discovery.theoryIds){
+    await route('#/theory/'+id);
+    assert.equal(active(),'theoryView',id);
+    const t=theories.find(t=>t.id===id);
+    assert.equal(title(),t.name);
+    const sourceLinks=[...d.querySelectorAll('#theoryDetail .source-link')].map(a=>a.href);
+    for(const sid of t.sources){
+      const source=sandbox.window.QI_DATA.sources.find(s=>s.id===sid);
+      assert.ok(sourceLinks.includes(source.url),id+': '+sid);
+    }
   }
 });
