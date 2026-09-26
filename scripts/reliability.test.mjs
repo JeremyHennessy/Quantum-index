@@ -322,3 +322,19 @@ test('fresh comparison and detail loads restore shareable selections',()=>{
     } finally {fw.close();}
   }
 });
+
+test('learning paths support ordered steps, deep links and return navigation',async()=>{
+  await route('#/learn');
+  assert.equal(d.querySelectorAll('.learning-path').length,3);
+  await route('#/learn?path=gravity-time');
+  assert.equal(d.querySelectorAll('.learning-path').length,1);
+  await change(()=>d.querySelector('.learning-steps a').click());
+  assert.equal(d.querySelector('#backToView').hash,'#/learn?path=gravity-time');
+  assert.match(d.querySelector('[aria-label="Learning path navigation"]').textContent,/Step 1 of 5/);
+  await change(()=>[...d.querySelectorAll('[aria-label="Learning path navigation"] a')].find(a=>a.textContent==='Next step').click());
+  assert.equal(w.location.hash,'#/theory/unruh?from=learn&path=gravity-time');
+  await change(()=>d.querySelector('#backToView').click());
+  assert.equal(d.querySelectorAll('.learning-steps li').length,5);
+  await route('#/learn?path=does-not-exist');
+  assert.equal(d.querySelectorAll('.learning-path').length,3);
+});

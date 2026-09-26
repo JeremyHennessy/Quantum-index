@@ -9,3 +9,9 @@ The existing 480 catalog records, 605 relations and 372 formulas are preserved. 
 Validation includes profile citations and identifiers, presets, navigation, selection limits, uncurated-entry fallback, all profile rendering, and fresh comparison/detail loads. Browser checks complement DOM tests; a real narrow viewport must be checked separately before claiming mobile verification.
 
 Source basis: the linked original papers and reviews, including their abstracts and selected accessible text. These concise profiles are reading aids, not exhaustive literature reviews. Older papers are identified by their citation dates and do not establish present-day experimental status.
+
+## Guided learning paths
+
+The Learning paths tab provides three editorial routes: Gravity and time, The black-hole information problem, and Approaches to quantum gravity. Each route lists background knowledge, ordered reading prompts, previous/next steps and a concluding comparison. Route URLs and their theory-step URLs retain path context on reload. Unknown path IDs show the complete path list. These routes reuse existing catalog entries and sources; they do not add scientific claims or historical graph relationships.
+
+`docs/responsive-check.html` is a manual QA page that embeds the actual application at 320, 390 or 430 CSS pixels. It exercises responsive rendering without claiming device or Safari emulation.

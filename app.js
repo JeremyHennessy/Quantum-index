@@ -7,6 +7,8 @@
   const sourceById = new Map(sources.map(s => [s.id,s]));
   const profiles = window.QI_PROFILES?.profiles || {};
   let compareIds = [];
+  let learningPathId = "";
+  const learningPaths = window.QI_PROFILES?.learningPaths || [];
   const profileFields = [["problem","Problem addressed"],["scope","Scope and mathematical approach"],["assumptions","Assumptions"],["predictions","Results and predictions"],["evidence","Evidence in the cited work"],["limitations","Limitations"],["questions","Questions to investigate"]];
   const state = { search:"", category:"", kind:"", status:"", era:"", sourcedOnly:false, selected:null, selectedTree:0, view:"map", returnView:"map" };
   const formulaState = { search:"", category:"", theory:"", type:"" };
@@ -121,7 +123,7 @@
         </div>`;
       })()}
       <div class="detail-section"><h4>Core idea</h4><p>${esc(t.core)}</p></div>
-      ${panel.id==="theoryDetail" ? renderResearchProfile(t.id) : ""}
+      ${panel.id==="theoryDetail" ? renderLearningNavigation(t.id)+renderResearchProfile(t.id) : ""}
       <div class="detail-section"><h4>Concepts</h4><div class="tag-list">${t.tags.map(x=>`<span class="tag">${esc(x)}</span>`).join("")}</div></div>
       <div class="detail-section"><h4>Sources · ${linkedSources.length}</h4>
         ${linkedSources.length ? `<div class="source-list">${linkedSources.map(s=>`<a class="source-link" href="${esc(s.url)}" target="_blank" rel="noreferrer"><strong>${esc(s.title)}</strong><span>${esc(s.authors)} · ${esc(s.year)} · ${esc(s.type)}</span></a>`).join("")}</div>` : '<p>Dedicated source pass not completed for this entry yet.</p>'}
@@ -137,6 +139,19 @@
       <div class="detail-section detail-actions"><a class="ghost link-button" href="#/lineage?theory=${encodeURIComponent(t.id)}">Trace thought tree</a><a class="ghost link-button" href="#/theory/${encodeURIComponent(t.id)}">Permanent link</a>${panel.id==="theoryDetail"?comparisonAction(t.id):""}</div>`;
   }
 
+  function learningHash(id){return id ? `#/learn?path=${encodeURIComponent(id)}` : "#/learn";}
+  function learningStepLink(id,path){return `#/theory/${encodeURIComponent(id)}?from=learn&path=${encodeURIComponent(path)}`;}
+  function renderLearningPaths(){
+    const selected=learningPaths.find(p=>p.id===learningPathId);
+    const shown=selected?[selected]:learningPaths;
+    $("#learningPaths").innerHTML=`<div class="card comparison-panel"><div class="eyebrow">GUIDED READING</div><h3>Choose a question to explore</h3><p>Follow a suggested reading order, inspect the cited sources, then compare the approaches. These are editorial learning routes, not historical chains or claims of experimental confirmation.</p><div class="detail-actions">${learningPaths.map(p=>`<a class="ghost link-button" href="${learningHash(p.id)}"${p===selected?' aria-current="page"':""}>${esc(p.title)}</a>`).join("")}${selected?'<a class="ghost link-button" href="#/learn">All paths</a>':""}</div></div>${shown.map(p=>`<article class="card comparison-panel learning-path"><h3>${esc(p.title)}</h3><p>${esc(p.goal)}</p><p><strong>Before you start:</strong> ${esc(p.prerequisites)}</p><ol class="learning-steps">${p.steps.map(step=>`<li><a href="${learningStepLink(step.theoryId,p.id)}">${esc(byId.get(step.theoryId).name)}</a><p>${esc(step.why)}</p></li>`).join("")}</ol><div class="detail-actions"><a class="ghost link-button" href="${learningStepLink(p.steps[0].theoryId,p.id)}">Start this path</a><a class="ghost link-button" href="${comparisonHash(p.comparison)}">Compare key entries</a><a class="ghost link-button" href="${learningHash(p.id)}">Permanent path link</a></div></article>`).join("")}`;
+  }
+  function renderLearningNavigation(id){
+    const p=learningPaths.find(p=>p.id===learningPathId);
+    const n=p?.steps.findIndex(step=>step.theoryId===id)??-1;
+    if(state.returnView!=="learn" || n<0)return "";
+    return `<nav class="detail-section" aria-label="Learning path navigation"><h4>${esc(p.title)} · Step ${n+1} of ${p.steps.length}</h4><p>${esc(p.steps[n].why)}</p><div class="detail-actions">${n>0?`<a class="ghost link-button" href="${learningStepLink(p.steps[n-1].theoryId,p.id)}">Previous step</a>`:""}<a class="ghost link-button" href="${learningHash(p.id)}">Path overview</a>${n<p.steps.length-1?`<a class="ghost link-button" href="${learningStepLink(p.steps[n+1].theoryId,p.id)}">Next step</a>`:`<a class="ghost link-button" href="${comparisonHash(p.comparison)}">Finish with a comparison</a>`}</div></nav>`;
+  }
   function comparisonHash(ids){return ids.length ? `#/compare?ids=${ids.map(encodeURIComponent).join(",")}` : "#/compare";}
   function comparisonAction(id){
     const full=compareIds.length===4&&!compareIds.includes(id);
@@ -421,11 +436,12 @@
     $$(".view").forEach(v=>v.classList.remove("active"));
     $("#"+view+"View").classList.add("active");
     if(view==="compare") renderComparison();
+    if(view==="learn") renderLearningPaths();
     if(view==="map") setTimeout(renderGraph,0);
     if(view==="lineage") setTimeout(renderThoughtTreeGraph,0);
     if(view==="formula") setTimeout(()=>{renderFormulas();typesetFormulaGrid();},0);
   }
-  const views=new Set(["map","timeline","lineage","catalog","formula","compare"]);
+  const views=new Set(["map","timeline","lineage","catalog","formula","compare","learn"]);
   function navigate(hash){
     if(location.hash===hash) applyRoute();
     else location.hash=hash;
@@ -439,10 +455,11 @@
     if(isTheory){
       state.returnView=views.has(params.get("from"))?params.get("from"):"map";
       if(state.returnView==="compare" && params.has("compare")) compareIds=[...new Set(params.get("compare").split(",").filter(id=>byId.has(id)))].slice(0,4);
+      learningPathId=learningPaths.some(p=>p.id===params.get("path"))?params.get("path"):"";
       state.selected=byId.has(id)?id:null;
       renderDetail();renderLineage();
       const back=$("#backToView");
-      back.href=state.returnView==="compare" ? comparisonHash(compareIds) : state.returnView==="formula" && formulaState.theory ? `#/formula?theory=${encodeURIComponent(formulaState.theory)}` : `#/${state.returnView}`;
+      back.href=state.returnView==="learn" ? learningHash(learningPathId) : state.returnView==="compare" ? comparisonHash(compareIds) : state.returnView==="formula" && formulaState.theory ? `#/formula?theory=${encodeURIComponent(formulaState.theory)}` : `#/${state.returnView}`;
       back.textContent=`← Back to ${state.returnView==="map"?"network map":state.returnView==="lineage"?"thought trees":state.returnView==="formula"?"formula atlas":state.returnView}`;
       if(!state.selected) $("#theoryDetail").innerHTML='<h3 class="detail-title">Theory not found</h3><p>This link does not match an entry in the current catalog.</p><a class="ghost link-button" href="#/catalog">Browse the catalog</a>';
       switchView("theory");
@@ -454,6 +471,7 @@
     const view=views.has(path)?path:"map";
     if(byId.has(id)) state.selected=id;
     if(view==="compare") compareIds=[...new Set((params.get("ids")||"").split(",").filter(id=>byId.has(id)))].slice(0,4);
+    if(view==="learn") learningPathId=learningPaths.some(p=>p.id===params.get("path"))?params.get("path"):"";
     if(view==="formula"){
       formulaState.theory=byId.has(id)?id:"";
       $("#formulaTheory").value=formulaState.theory;
