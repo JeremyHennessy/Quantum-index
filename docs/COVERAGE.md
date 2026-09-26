@@ -1,24 +1,24 @@
 # Quantum Index coverage report
 
-_Last audited: 2026-09-23_
+_Structural metrics generated from runtime data. Historical research sweeps are recorded below._
 
 Quantum Index indexes source-backed theories, formulations, interpretations, research programs, formal frameworks, theorem-level constraints, major computational theories, and adjacent fundamental-physics frameworks when they materially connect the development or application of quantum theory.
 
 ## Current branch snapshot
 
-- **464** theory/framework entities
-- **588** typed relationships
-- **38** curated thought trees
-- **14** top-level categories
-- **450** bibliography/source records
-- **345** source-linked formula entries across **28** formula categories
-- **417 / 417 (100.0%)** entries have dedicated source provenance
-- **0 / 417** are catalogued-only
-- **304 / 417** are `primary-sourced`
-- **113 / 417** are `review-sourced`
-- **57 / 523** relation edges currently have relationship-specific source evidence
-- **466 / 523** relation edges are explicitly editorial
-- formula audit: **202 formula-bearing**, **215 documented formula-bearing gaps**, **11 interpretations**, **17 primarily conceptual**, **18 theorem-first**, **1 thought experiment**
+<!-- coverage:start -->
+- **464** theory/framework entities across **14** categories
+- **450** bibliography records
+- **335** primary-sourced; **129** review-sourced; **0** catalogued-only entries
+- **588** relationships: **57** source-backed; **531** editorial
+- **38** thought trees
+- **345** formulas across **28** categories
+- **211** entries with linked formulas; **208** documented formula gaps
+- Other audit classes: **11** interpretations, **16** conceptual, **17** theorem-first, **1** thought experiment
+- Formula metadata: **79** explicitly reviewed; **266** baseline records
+
+Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.
+<!-- coverage:end -->
 
 ## Census status: OPEN
 
@@ -58,8 +58,8 @@ The 2026-09-23 third wave adds 50 first-class entities spanning:
 
 ## Still-open evidence layers
 
-- **Formula closure:** 183 formula-bearing nodes currently lack a curated canonical equation.
-- **Relation provenance:** 466 useful graph edges remain explicitly editorial.
+- **Formula closure:** See the generated snapshot above for the current formula-gap count.
+- **Relation provenance:** See the generated snapshot above for the current editorial-edge count.
 - **Lower-granularity depth:** named submodels remain separate from the first-class census unless a domain adopts systematic model-level granularity.
 - **Continuous discovery:** literature/review/transcript sweeps continue; candidate generation is not frozen.
 

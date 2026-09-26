@@ -13,7 +13,9 @@ Quantum Index is a source-aware map of quantum theory and adjacent fundamental p
 
 ## Current build
 
-The first-class family census remains **open**: each completed sweep is preserved as a validated baseline, then reopened when a distinct sourced framework is found. The current branch expands the verified 367-node main baseline to **464 theory/framework entities**, **588 typed relationships**, **38 thought trees**, and **450 bibliography/source records** across **14 top-level categories**. All 464 shipped candidates on this branch have dedicated provenance: **335 primary-sourced** and **129 review/authoritative-source backed**. The separate formula atlas remains at **345 entries** across **28 categories**. Catalog coverage, relation-evidence coverage, and formula coverage are intentionally reported separately.
+<!-- coverage:start -->
+The census remains **open**. The current catalog contains **464 entries**, **588 typed relationships**, **38 thought trees**, and **450 bibliography records** across **14 categories**. Provenance is attached to all entries: **335 primary-sourced** and **129 review-sourced**. The formula atlas contains **345 entries** across **28 categories**; **208** theory entries remain documented formula gaps. Counts are generated from runtime data, separately from scientific review.
+<!-- coverage:end -->
 
 Static app:
 - `index.html`
@@ -51,7 +53,11 @@ A catalogued theory is not automatically "fully sourced." The UI displays a prov
 
 ## Development
 
-No application build step is required. Open `index.html` or serve the repository as static files. GitHub Pages is deployed through the repository's native Pages configuration; catalog/formula integrity is enforced separately by `.github/workflows/validate.yml`.
+No application build step is required. For development checks, run `npm ci`, `npm test`, and `npm run validate`. Run `npm run coverage` after catalog changes to regenerate coverage reports. Test dependencies are development-only.
+
+Theory links use `#/theory/<id>` and work on GitHub Pages without server routing.
+
+ Open `index.html` or serve the repository as static files. GitHub Pages is deployed through the repository's native Pages configuration; catalog/formula integrity is enforced separately by `.github/workflows/validate.yml`.
 
 
 ## Research controls

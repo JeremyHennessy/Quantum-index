@@ -10,14 +10,19 @@ The runtime audit is `formula-audit.js`; formula records are in `formulas.js`.
 
 ## Current result
 
-- **464** shipped theory/framework entities audited
-- **345** source-linked formula entries
-- **202** entities classified **formula-bearing**
-- **215** classified **formula-bearing-gap**
-- **11** interpretations
-- **17** primarily conceptual/structural
-- **18** theorem-first
-- **1** thought experiment
+<!-- coverage:start -->
+- **464** theory/framework entities across **14** categories
+- **450** bibliography records
+- **335** primary-sourced; **129** review-sourced; **0** catalogued-only entries
+- **588** relationships: **57** source-backed; **531** editorial
+- **38** thought trees
+- **345** formulas across **28** categories
+- **211** entries with linked formulas; **208** documented formula gaps
+- Other audit classes: **11** interpretations, **16** conceptual, **17** theorem-first, **1** thought experiment
+- Formula metadata: **79** explicitly reviewed; **266** baseline records
+
+Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.
+<!-- coverage:end -->
 
 A `formula-bearing-gap` is an explicit curation gap. It does not claim that the theory lacks mathematics.
 
