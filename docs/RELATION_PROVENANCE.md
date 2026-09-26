@@ -42,10 +42,10 @@ Used for useful navigation/overlap edges that have not yet completed a relations
 
 <!-- coverage:start -->
 - **605** total relationship edges
-- **92** source-backed
-- **81** high confidence
-- **11** medium confidence
-- **513** explicitly editorial
+- **107** source-backed
+- **91** high confidence
+- **16** medium confidence
+- **498** explicitly editorial
 <!-- coverage:end -->
 
 The editorial count is intentionally visible. Node-level source provenance does not automatically prove an edge between two nodes.

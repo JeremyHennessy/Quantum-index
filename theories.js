@@ -2089,3 +2089,393 @@ window.QI_DATA = (() => {
   sources.push({id:"profile-jt-review-2023",title:"Solvable models of quantum black holes: a review on Jackiw–Teitelboim gravity",authors:"Thomas G. Mertens and Gustavo J. Turiaci",year:2023,type:"review",url:"https://arxiv.org/abs/2210.10846"});
   return { theories, relations, trees, sources };
 })();
+// Additional references used by the reading profiles and path primer.
+window.QI_DATA.sources.push(...[
+  {
+    "id": "profile-kiefer-geometrodynamics-2009",
+    "title": "Quantum geometrodynamics: whence, whither?",
+    "authors": "Claus Kiefer",
+    "year": 2009,
+    "type": "review",
+    "url": "https://arxiv.org/abs/0812.0295"
+  },
+  {
+    "id": "profile-kiefer-cosmology-2008",
+    "title": "Quantum Cosmology",
+    "authors": "Claus Kiefer and Barbara Sandhöfer",
+    "year": 2008,
+    "type": "review",
+    "url": "https://arxiv.org/abs/0804.0672"
+  },
+  {
+    "id": "profile-mit-wave-2013",
+    "title": "Quantum Physics II: Wave Mechanics",
+    "authors": "Barton Zwiebach",
+    "year": 2013,
+    "type": "lecture notes",
+    "url": "https://ocw.mit.edu/courses/8-05-quantum-physics-ii-fall-2013/61bc31b8d8bf0680c322733910a71aa0_MIT8_05F13_Chap_01.pdf"
+  },
+  {
+    "id": "profile-mit-uncertainty-2013",
+    "title": "Quantum Physics II: Uncertainty Principle and Compatible Observables",
+    "authors": "Barton Zwiebach",
+    "year": 2013,
+    "type": "lecture notes",
+    "url": "https://ocw.mit.edu/courses/8-05-quantum-physics-ii-fall-2013/005979fa741c3ea2e0430456b70caf93_MIT8_05F13_Chap_05.pdf"
+  },
+  {
+    "id": "profile-harrow-states-2018",
+    "title": "Quantum Information Science II, Lecture 1: Quantum states and operations",
+    "authors": "Aram Harrow",
+    "year": 2018,
+    "type": "lecture notes",
+    "url": "https://web.mit.edu/8.371/www/lectures/lect01.pdf"
+  },
+  {
+    "id": "profile-kochen-specker-1967",
+    "title": "The Problem of Hidden Variables in Quantum Mechanics",
+    "authors": "Simon Kochen and Ernst P. Specker",
+    "year": 1967,
+    "type": "primary source",
+    "url": "https://doi.org/10.1512/iumj.1968.17.17004"
+  },
+  {
+    "id": "profile-breuer-memory-2016",
+    "title": "Colloquium: Non-Markovian dynamics in open quantum systems",
+    "authors": "Heinz-Peter Breuer, Elsi-Mari Laine, Jyrki Piilo and Bassano Vacchini",
+    "year": 2016,
+    "type": "review",
+    "url": "https://arxiv.org/abs/1505.01385"
+  },
+  {
+    "id": "carroll-gr-notes-1997",
+    "title": "Lecture Notes on General Relativity",
+    "authors": "Sean M. Carroll",
+    "year": 1997,
+    "type": "lecture notes",
+    "url": "https://arxiv.org/abs/gr-qc/9712019"
+  }
+]);
+
+// Review decisions and locators are mirrored in docs/RELATION_REVIEW_2026-09-26.json.
+for (const review of [
+  {
+    "fromId": "semiclassical-gravity",
+    "toId": "stochastic-gravity",
+    "type": "extends",
+    "sourceIds": [
+      "hu-verdaguer-stochastic-2008"
+    ],
+    "sourceLocator": "Abstract; Sections 2–3, semiclassical and stochastic gravity",
+    "evidenceNote": "The Einstein–Langevin description extends mean stress-energy sourcing by a stress-tensor noise kernel. The extension is an effective treatment of fluctuations, not full quantum geometry.",
+    "confidence": "high",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "qft-curved-spacetime",
+    "toId": "semiclassical-gravity",
+    "type": "supports",
+    "sourceIds": [
+      "hu-verdaguer-stochastic-2008"
+    ],
+    "sourceLocator": "Section 2, semiclassical gravity",
+    "evidenceNote": "Renormalized quantum stress-energy on curved spacetime supplies the matter expectation value in the semiclassical Einstein equation. Backreaction adds dynamics to the background-field setting.",
+    "confidence": "high",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "qft-curved-spacetime",
+    "toId": "hawking-radiation",
+    "type": "supports",
+    "sourceIds": [
+      "hollands-wald-qftcs-2015"
+    ],
+    "sourceLocator": "Review discussion of particle creation and the Hawking effect",
+    "evidenceNote": "The Hawking effect is an application of quantum field theory on a classical curved background; this link does not assert a full quantum-gravity calculation.",
+    "confidence": "high",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "black-hole-thermodynamics",
+    "toId": "hawking-radiation",
+    "type": "supports",
+    "sourceIds": [
+      "hawking-1975"
+    ],
+    "sourceLocator": "Abstract and black-hole temperature discussion",
+    "evidenceNote": "Hawking radiation supplies a physical temperature proportional to surface gravity, connecting horizon mechanics with thermodynamics. The edge records that connection, not historical priority.",
+    "confidence": "high",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "amps-firewall",
+    "toId": "black-hole-complementarity",
+    "type": "challenges",
+    "sourceIds": [
+      "amps-2012"
+    ],
+    "sourceLocator": "Abstract; Section 2, Complementarity is not enough",
+    "evidenceNote": "AMPS challenge the simultaneous assumptions of pure radiation, semiclassical exterior physics and smooth infall. The challenge is conditional and does not establish an observed firewall.",
+    "confidence": "high",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "jt-gravity",
+    "toId": "island-formula",
+    "type": "supports",
+    "sourceIds": [
+      "profile-jt-review-2023"
+    ],
+    "sourceLocator": "Review discussion of the information paradox and islands",
+    "evidenceNote": "JT gravity supplies tractable settings for island calculations. Support is restricted to the model and its specified matter and boundary conditions.",
+    "confidence": "medium",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "replica-wormholes",
+    "toId": "island-formula",
+    "type": "supports",
+    "sourceIds": [
+      "wave4-replica-wormholes-2019"
+    ],
+    "sourceLocator": "Introduction, replica limit n → 1",
+    "evidenceNote": "Replica-connected saddles lead to an island contribution after analytic continuation in replica number in the models studied.",
+    "confidence": "high",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "jt-gravity",
+    "toId": "replica-wormholes",
+    "type": "supports",
+    "sourceIds": [
+      "wave4-replica-wormholes-2019"
+    ],
+    "sourceLocator": "Abstract and Section 2, JT gravity setup",
+    "evidenceNote": "The paper demonstrates replica-wormhole contributions using JT gravity coupled to matter and a nongravitating bath.",
+    "confidence": "high",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "canonical-quantum-gravity",
+    "toId": "wheeler-dewitt",
+    "type": "supports",
+    "sourceIds": [
+      "dewitt-canonical-gravity-1967"
+    ],
+    "sourceLocator": "Abstract and canonical constraint construction",
+    "evidenceNote": "Canonical quantization of geometric variables leads to wavefunctional gravitational constraints, including the Wheeler–DeWitt equation.",
+    "confidence": "high",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "wheeler-dewitt",
+    "toId": "minisuperspace",
+    "type": "supports",
+    "sourceIds": [
+      "profile-kiefer-cosmology-2008"
+    ],
+    "sourceLocator": "Appendix A, derivation for a Friedmann universe",
+    "evidenceNote": "Restricting geometry to a homogeneous cosmological model reduces the Wheeler–DeWitt equation to minisuperspace variables. This is a symmetry reduction, not an exact replacement for all geometries.",
+    "confidence": "high",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "wheeler-dewitt",
+    "toId": "quantum-cosmology",
+    "type": "supports",
+    "sourceIds": [
+      "profile-kiefer-cosmology-2008"
+    ],
+    "sourceLocator": "Summary and Appendix A",
+    "evidenceNote": "The review develops quantum cosmology within geometrodynamics using Wheeler–DeWitt equations and boundary conditions. Other quantum-cosmology approaches need not use this formulation.",
+    "confidence": "high",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "ads-cft",
+    "toId": "er-epr",
+    "type": "supports",
+    "sourceIds": [
+      "maldacena-susskind-2013"
+    ],
+    "sourceLocator": "Discussion of two entangled AdS black holes",
+    "evidenceNote": "Entangled AdS black holes provide a concrete setting for relating entanglement to a nontraversable bridge. The extension to general entangled systems is conjectural.",
+    "confidence": "medium",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "er-epr",
+    "toId": "emergent-spacetime",
+    "type": "overlaps",
+    "sourceIds": [
+      "maldacena-susskind-2013"
+    ],
+    "sourceLocator": "Abstract and proposed generalization",
+    "evidenceNote": "The proposed entanglement–bridge relation links quantum correlations with geometry; its generalization is a conjecture rather than an established construction of arbitrary spacetime.",
+    "confidence": "medium",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "string-theory",
+    "toId": "supergravity",
+    "type": "overlaps",
+    "sourceIds": [
+      "maldacena-1997"
+    ],
+    "sourceLocator": "Abstract and large-N near-horizon limits",
+    "evidenceNote": "In the controlled low-energy regimes discussed, string constructions admit a supergravity description. This records a regime-dependent overlap, not equality of the complete theories.",
+    "confidence": "high",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "string-theory",
+    "toId": "holographic-principle",
+    "type": "supports",
+    "sourceIds": [
+      "maldacena-1997"
+    ],
+    "sourceLocator": "Abstract and AdS/CFT proposal",
+    "evidenceNote": "The proposed AdS dual pairs provide a string-theoretic realization of holographic ideas. They do not prove a holographic description for every spacetime.",
+    "confidence": "medium",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "ads-cft",
+    "toId": "quantum-error-correction-gravity",
+    "type": "supports",
+    "sourceIds": [
+      "maldacena-1997",
+      "almheiri-qec-2015"
+    ],
+    "sourceLocator": "Almheiri, Dong and Harlow: abstract and code-subspace construction",
+    "evidenceNote": "The bulk-reconstruction proposal relates subregion encoding in AdS/CFT to operator-algebra quantum error correction, with limits set by the code subspace.",
+    "confidence": "high",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "hawking-radiation",
+    "toId": "island-formula",
+    "type": "motivates",
+    "sourceIds": [
+      "hawking-1975",
+      "almheiri-islands-2020"
+    ],
+    "sourceLocator": "Almheiri et al.: abstract and radiation entropy prescription",
+    "evidenceNote": "The entropy problem of Hawking radiation motivates an island prescription yielding a Page curve in controlled holographic evaporation models. An entropy calculation is not a general decoding protocol.",
+    "confidence": "high",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "loop-quantum-gravity",
+    "toId": "spin-foams",
+    "type": "extends",
+    "sourceIds": [
+      "rovelli-lqg",
+      "spin-foam-review"
+    ],
+    "sourceLocator": "Spin-foam review: covariant dynamics and relation to canonical loop gravity",
+    "evidenceNote": "Spin-foam state sums provide a covariant route to dynamics related to loop-quantum-gravity boundary states; a complete equivalence of every formulation is not asserted.",
+    "confidence": "medium",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "semiclassical-gravity",
+    "toId": "unruh",
+    "type": "supports",
+    "sourceIds": [],
+    "sourceLocator": "No source attached to this edge; promotion requires a more specific claim and source.",
+    "evidenceNote": "Retained editorial: the ideal Unruh effect can be formulated on fixed Minkowski spacetime and does not require a backreacting semiclassical gravitational field.",
+    "confidence": "editorial",
+    "evidenceType": "editorial relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "black-hole-complementarity",
+    "toId": "black-hole-thermodynamics",
+    "type": "extends",
+    "sourceIds": [],
+    "sourceLocator": "No source attached to this edge; promotion requires a more specific claim and source.",
+    "evidenceNote": "Retained editorial: thermodynamic postulates enter complementarity, but that alone does not justify the existing directed “extends” relation as a formal derivation.",
+    "confidence": "editorial",
+    "evidenceType": "editorial relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "wheeler-dewitt",
+    "toId": "loop-quantum-gravity",
+    "type": "precursor",
+    "sourceIds": [],
+    "sourceLocator": "No source attached to this edge; promotion requires a more specific claim and source.",
+    "evidenceNote": "Retained editorial: both are canonical approaches, but the exact historical “precursor” direction needs a dedicated historical source review.",
+    "confidence": "editorial",
+    "evidenceType": "editorial relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "fuzzball",
+    "toId": "black-hole-complementarity",
+    "type": "challenges",
+    "sourceIds": [],
+    "sourceLocator": "No source attached to this edge; promotion requires a more specific claim and source.",
+    "evidenceNote": "Retained editorial: opposition depends on which complementarity proposal and microstate regime is meant; a blanket challenge label is too broad for promotion.",
+    "confidence": "editorial",
+    "evidenceType": "editorial relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "string-theory",
+    "toId": "celestial-holography",
+    "type": "overlaps",
+    "sourceIds": [],
+    "sourceLocator": "No source attached to this edge; promotion requires a more specific claim and source.",
+    "evidenceNote": "Retained editorial: shared topics and selected constructions do not establish the scope of this general overlap edge.",
+    "confidence": "editorial",
+    "evidenceType": "editorial relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "loop-quantum-gravity",
+    "toId": "relative-locality",
+    "type": "overlaps",
+    "sourceIds": [],
+    "sourceLocator": "No source attached to this edge; promotion requires a more specific claim and source.",
+    "evidenceNote": "Retained editorial: a broad quantum-gravity connection is insufficient evidence for a specific formal overlap.",
+    "confidence": "editorial",
+    "evidenceType": "editorial relation",
+    "reviewedAt": "2026-09-26"
+  },
+  {
+    "fromId": "loop-quantum-gravity",
+    "toId": "generalized-uncertainty",
+    "type": "overlaps",
+    "sourceIds": [],
+    "sourceLocator": "No source attached to this edge; promotion requires a more specific claim and source.",
+    "evidenceNote": "Retained editorial: motivated phenomenological similarities do not establish a universal generalized-uncertainty consequence of loop gravity.",
+    "confidence": "editorial",
+    "evidenceType": "editorial relation",
+    "reviewedAt": "2026-09-26"
+  }
+]) {
+  const relation=window.QI_DATA.relations.find(r=>r.from===review.fromId&&r.to===review.toId&&r.type===review.type);
+  if(!relation)throw new Error('Reviewed relationship is missing');
+  const {fromId,toId,type,...evidence}=review;
+  Object.assign(relation,evidence);
+}
