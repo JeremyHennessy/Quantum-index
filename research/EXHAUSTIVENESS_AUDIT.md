@@ -6,7 +6,7 @@ _Last reviewed: 2026-09-23_
 
 The previous 367-node first-class closure is superseded. A third systematic audit found materially distinct, source-backed frameworks that were absent from the shipped graph.
 
-The current branch baseline is:
+The sixth-wave baseline recorded on 2026-09-23 was (see `docs/COVERAGE.md` for generated current metrics):
 
 - **464** source-backed theory/framework entities
 - **14** top-level categories

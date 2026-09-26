@@ -20,6 +20,12 @@ jobs:
           node --check theories.js
           node --check formulas.js
           node --check formula-audit.js
+      - name: Install test dependencies
+        run: npm ci --ignore-scripts
+      - name: Test navigation and catalog regressions
+        run: npm test
+      - name: Verify generated coverage
+        run: node scripts/coverage-report.mjs --check
       - name: Validate theory graph
         run: node scripts/validate-data.mjs
       - name: Verify static entry point

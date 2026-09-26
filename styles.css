@@ -89,3 +89,13 @@ main{width:min(1540px,94vw);margin:auto;padding:34px 0 80px}.hero{display:grid;g
 .relation-main{display:grid;gap:3px;min-width:0}
 .relation-main strong{font-size:11px;font-weight:650;overflow:hidden;text-overflow:ellipsis}
 .relation-main em{font-size:8px;color:var(--muted);font-style:normal;text-transform:none;letter-spacing:.01em}
+
+/* Dedicated details preserve the existing atlas and card styling. */
+.theory-view{max-width:960px;margin:0 auto;scroll-margin-top:90px}
+.theory-view>.link-button{margin-bottom:12px}
+.theory-view .detail-panel{min-height:0}
+.theory-view .detail-title{font-size:clamp(28px,4vw,40px)}
+.detail-actions{display:flex;flex-wrap:wrap;gap:8px}
+a.catalog-card,a.timeline-card,a.relation{display:block;text-decoration:none;color:inherit}
+a.relation{display:flex}
+a.catalog-card:focus-visible,a.timeline-card:focus-visible,a.relation:focus-visible{outline:2px solid var(--accent);outline-offset:3px}

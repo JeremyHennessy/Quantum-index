@@ -1,6 +1,8 @@
 window.QI_DATA = (() => {
+  // Chronological eras follow the recorded first year, not a later resurgence.
+  const eraForYear = year => year < 1900 ? "Before 1900" : year < 1925 ? "1900–1924" : year < 1940 ? "1925–1939" : year < 1960 ? "1940–1959" : year < 1980 ? "1960–1979" : year < 2000 ? "1980–1999" : year < 2015 ? "2000–2014" : "2015–present";
   const T = (id,name,year,era,category,status,summary,core,tags=[],aliases=[],kind=null) => ({
-    id,name,year,era,category,status,summary,core,tags,aliases,
+    id,name,year,era:eraForYear(year),category,status,summary,core,tags,aliases,
     kind: kind || (
       status === "interpretation" ? "interpretation" :
       category === "Formulations" ? "formulation" :

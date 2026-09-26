@@ -5,7 +5,7 @@
   const formulaAuditByTheory = new Map(formulaAudit.map(x => [x.theoryId,x]));
   const byId = new Map(theories.map(t => [t.id,t]));
   const sourceById = new Map(sources.map(s => [s.id,s]));
-  const state = { search:"", category:"", kind:"", status:"", era:"", sourcedOnly:false, selected:null, selectedTree:0, view:"map" };
+  const state = { search:"", category:"", kind:"", status:"", era:"", sourcedOnly:false, selected:null, selectedTree:0, view:"map", returnView:"map" };
   const formulaState = { search:"", category:"", theory:"", type:"" };
   const categoryColors = new Map([
     ["Historical foundations","#f59e0b"],["Formulations","#60a5fa"],["Foundations & interpretations","#c084fc"],
@@ -77,11 +77,16 @@
     renderLineage();
     d3.selectAll(".node").classed("selected",d=>d.id===id);
     d3.selectAll(".tree-graph-node").classed("selected",d=>d.id===id);
-    if(switchLineage){ switchView("lineage"); }
+    const from=state.view==="theory"?state.returnView:state.view;
+    navigate(switchLineage ? `#/lineage?theory=${encodeURIComponent(id)}` : `#/theory/${encodeURIComponent(id)}?from=${from}`);
   }
 
   function renderDetail(){
-    const panel=$("#detailPanel");
+    renderDetailPanel($("#detailPanel"));
+    renderDetailPanel($("#theoryDetail"));
+  }
+
+  function renderDetailPanel(panel){
     const t=byId.get(state.selected);
     if(!t){panel.innerHTML=$("#emptyDetail").innerHTML;return;}
     const rel=related(t.id);
@@ -109,7 +114,7 @@
             <span class="badge">${esc(audit.coverageStatus)}</span>
             ${audit.priority!=="not-applicable"?`<span class="badge">${esc(audit.priority)} priority</span>`:""}
           </div>
-          ${linked.length?`<p>${linked.length} source-linked formula${linked.length===1?"":"s"} in the atlas.</p>`:`<p>${esc(audit.gapReason||"No formula audit reason recorded.")}</p>`}
+          ${linked.length?`<p>${linked.length} source-linked formula${linked.length===1?"":"s"} in the atlas.</p><a class="ghost link-button" href="#/formula?theory=${encodeURIComponent(t.id)}">View linked formulas</a>`:`<p>${esc(audit.gapReason||"No formula audit reason recorded.")}</p>`}
         </div>`;
       })()}
       <div class="detail-section"><h4>Core idea</h4><p>${esc(t.core)}</p></div>
@@ -120,18 +125,17 @@
       </div>
       <div class="detail-section"><h4>Connections · ${rel.length}</h4><div class="relation-list">
         ${rel.slice().sort((a,b)=>a.other.year-b.other.year).map(({r,other,outbound})=>`
-          <div class="relation" data-id="${other.id}">
+          <a class="relation" href="#/theory/${encodeURIComponent(other.id)}?from=${state.returnView}">
             <span class="relation-main"><strong>${esc(other.name)}</strong><em>${esc(r.evidenceType)} · ${esc(r.confidence)}${r.sourceIds.length?` · ${r.sourceIds.length} source${r.sourceIds.length===1?"":"s"}`:" · unsourced editorial"}</em></span>
             <small>${esc(relationLabels[r.type]||r.type)}${outbound?" →":" ←"}</small>
-          </div>`).join("")||'<p>No typed connections yet.</p>'}
+          </a>`).join("")||'<p>No typed connections yet.</p>'}
       </div></div>
-      <div class="detail-section"><button class="ghost" id="traceLineage">Trace thought tree</button></div>`;
-    panel.querySelectorAll(".relation").forEach(el=>el.addEventListener("click",()=>selectTheory(el.dataset.id)));
-    $("#traceLineage").addEventListener("click",()=>selectTheory(t.id,true));
+      <div class="detail-section detail-actions"><a class="ghost link-button" href="#/lineage?theory=${encodeURIComponent(t.id)}">Trace thought tree</a><a class="ghost link-button" href="#/theory/${encodeURIComponent(t.id)}">Permanent link</a></div>`;
   }
 
   let simulation=null;
   function renderGraph(){
+    simulation?.stop();
     const visible=filtered(), ids=new Set(visible.map(t=>t.id));
     const nodes=visible.map(t=>({...t}));
     const links=relations.filter(r=>ids.has(r.from)&&ids.has(r.to)).map(r=>({source:r.from,target:r.to,type:r.type,evidenceType:r.evidenceType,confidence:r.confidence,sourceIds:r.sourceIds}));
@@ -164,9 +168,8 @@
     const groups=d3.group(list,d=>d.era);
     $("#timeline").innerHTML=[...groups].map(([era,items])=>`
       <div class="timeline-era"><h4>${esc(era)}</h4><div class="timeline-items">
-      ${items.map(t=>`<div class="timeline-card" data-id="${t.id}"><span class="year">${t.year}</span><h5>${esc(t.name)}</h5><p>${esc(t.summary)}</p></div>`).join("")}
+      ${items.map(t=>`<a class="timeline-card" href="#/theory/${encodeURIComponent(t.id)}?from=timeline"><span class="year">${t.year}</span><h5>${esc(t.name)}</h5><p>${esc(t.summary)}</p></a>`).join("")}
       </div></div>`).join("") || '<div class="empty-state">No theories match the current filters.</div>';
-    $("#timeline").querySelectorAll("[data-id]").forEach(el=>el.addEventListener("click",()=>selectTheory(el.dataset.id)));
   }
 
   function renderTrees(){
@@ -279,7 +282,7 @@
     if(!t){$("#lineageTitle").textContent="Choose a theory";$("#lineageDetail").className="lineage-detail empty";$("#lineageDetail").textContent="Select any theory in a tree, the map, timeline, or catalog.";return;}
     $("#lineageTitle").textContent=t.name; $("#lineageDetail").className="lineage-detail";
     const a=ancestors(t.id).sort((x,y)=>x.year-y.year), d=descendants(t.id).sort((x,y)=>x.year-y.year);
-    const lateral=related(t.id).filter(x=>["overlaps","challenged by"].includes(x.r.type)).map(x=>x.other);
+    const lateral=related(t.id).filter(x=>["overlaps","challenged by","challenges"].includes(x.r.type)).map(x=>x.other);
     const chips=arr=>arr.length?arr.map(x=>`<span class="lineage-chip" data-id="${x.id}">${esc(x.year)} · ${esc(x.name)}</span>`).join(""):'<span class="muted">No typed entries yet.</span>';
     $("#lineageDetail").innerHTML=`
       <p class="muted">${esc(t.summary)}</p>
@@ -293,12 +296,11 @@
     const list=filtered().sort((a,b)=>a.year-b.year||a.name.localeCompare(b.name));
     $("#resultCount").textContent=`${list.length} results`;
     $("#catalog").innerHTML=list.map(t=>`
-      <article class="catalog-card" data-id="${t.id}">
+      <a class="catalog-card" href="#/theory/${encodeURIComponent(t.id)}?from=catalog">
         <div class="meta"><span>${esc(t.year)} · ${esc(t.era)}</span><span>${esc(t.kind)}</span></div>
         <h4>${esc(t.name)}</h4><p>${esc(t.summary)}</p>
         <div class="badges"><span class="tag">${esc(t.category)}</span></div>
-      </article>`).join("") || '<div class="empty-state">No theories match the current filters.</div>';
-    $("#catalog").querySelectorAll("[data-id]").forEach(el=>el.addEventListener("click",()=>selectTheory(el.dataset.id)));
+      </a>`).join("") || '<div class="empty-state">No theories match the current filters.</div>';
   }
 
 
@@ -358,7 +360,6 @@
     }).join("") || '<div class="empty-state">No formulas match these filters.</div>';
     $("#formulaGrid").querySelectorAll("[data-theory]").forEach(el=>el.addEventListener("click",()=>{
       selectTheory(el.dataset.theory);
-      switchView("map");
     }));
     typesetFormulaGrid();
   }
@@ -375,7 +376,46 @@
     if(view==="lineage") setTimeout(renderThoughtTreeGraph,0);
     if(view==="formula") setTimeout(()=>{renderFormulas();typesetFormulaGrid();},0);
   }
-  $$(".tab").forEach(b=>b.addEventListener("click",()=>switchView(b.dataset.view)));
+  const views=new Set(["map","timeline","lineage","catalog","formula"]);
+  function navigate(hash){
+    if(location.hash===hash) applyRoute();
+    else location.hash=hash;
+  }
+  function applyRoute(){
+    const [path,query=""]=location.hash.replace(/^#\/?/,"").split("?");
+    const params=new URLSearchParams(query);
+    const isTheory=path.startsWith("theory/");
+    let id=null;
+    try { id=isTheory?decodeURIComponent(path.slice(7)):params.get("theory"); } catch {}
+    if(isTheory){
+      state.returnView=views.has(params.get("from"))?params.get("from"):"map";
+      state.selected=byId.has(id)?id:null;
+      renderDetail();renderLineage();
+      const back=$("#backToView");
+      back.href=state.returnView==="formula" && formulaState.theory ? `#/formula?theory=${encodeURIComponent(formulaState.theory)}` : `#/${state.returnView}`;
+      back.textContent=`← Back to ${state.returnView==="map"?"network map":state.returnView==="lineage"?"thought trees":state.returnView==="formula"?"formula atlas":state.returnView}`;
+      if(!state.selected) $("#theoryDetail").innerHTML='<h3 class="detail-title">Theory not found</h3><p>This link does not match an entry in the current catalog.</p><a class="ghost link-button" href="#/catalog">Browse the catalog</a>';
+      switchView("theory");
+      document.title=state.selected?`${byId.get(id).name} · Quantum Index`:"Theory not found · Quantum Index";
+      $("#theoryDetail").focus({preventScroll:true});
+      $("#theoryView").scrollIntoView({block:"start"});
+      return;
+    }
+    const view=views.has(path)?path:"map";
+    if(byId.has(id)) state.selected=id;
+    if(view==="formula"){
+      formulaState.theory=byId.has(id)?id:"";
+      $("#formulaTheory").value=formulaState.theory;
+      if(id){
+        Object.assign(formulaState,{search:"",category:"",type:""});
+        $("#formulaSearch").value="";$("#formulaCategory").value="";$("#formulaType").value="";
+      }
+    }
+    renderDetail();renderLineage();switchView(view);
+    document.title="Quantum Index";
+  }
+  $$(".tab").forEach(b=>b.addEventListener("click",()=>navigate(`#/${b.dataset.view}`)));
+  window.addEventListener("hashchange",applyRoute);
   $("#search").addEventListener("input",e=>{state.search=e.target.value;renderGraph();renderTimeline();renderCatalog();});
   $("#categoryFilter").addEventListener("change",e=>{state.category=e.target.value;renderGraph();renderTimeline();renderCatalog();});
   $("#kindFilter").addEventListener("change",e=>{state.kind=e.target.value;renderGraph();renderTimeline();renderCatalog();});
@@ -391,5 +431,5 @@
     $("#search").value="";$("#categoryFilter").value="";$("#kindFilter").value="";$("#statusFilter").value="";$("#eraFilter").value="";$("#sourcedOnly").checked=false;renderAll();
   });
   window.addEventListener("resize",()=>{if(state.view==="map")renderGraph();});
-  renderTrees();renderAll();
+  renderTrees();renderAll();applyRoute();
 })();

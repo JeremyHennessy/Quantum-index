@@ -4,15 +4,11 @@ _Last audited: 2026-09-22_
 
 ## Current formula corpus
 
-- **345** formula entries
-- **28** formula categories
-- **0** duplicate formula IDs
-- **0** dangling theory references
-- **0** dangling source references
-- every formula links to at least one indexed theory
-- every formula links to at least one source record
-
-### Category coverage
+<!-- coverage:start -->
+- **345** formula entries across **28** categories
+- **211** theory entries with linked formulas
+- **208** documented formula gaps
+- **79** formulas with explicit metadata review; **266** with baseline metadata
 
 | Formula category | Entries |
 |---|---:|
@@ -44,6 +40,7 @@ _Last audited: 2026-09-22_
 | Scattering theory | 7 |
 | Topological quantum theory | 2 |
 | Wave mechanics | 17 |
+<!-- coverage:end -->
 
 ## Operational completeness target
 
@@ -62,7 +59,7 @@ Trivial algebraic rearrangements stay out unless the variant carries different p
 
 ## Current control state
 
-Theory breadth is now ahead of equation curation: `formula-audit.js` reports **215 formula-bearing gaps** after the 367-node census expansion. Those gaps are deliberate, visible work items rather than silently invented equations.
+Theory breadth is now ahead of equation curation: `formula-audit.js` reports the current formula-bearing gaps in the generated snapshot above. Those gaps are deliberate, visible work items rather than silently invented equations.
 
 See `docs/FORMULA_AUDIT.md` for closure priorities.
 

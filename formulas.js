@@ -601,9 +601,7 @@ window.QI_FORMULAS = {
       "latex": "A_w=\\frac{\\langle\\psi_f|\\hat A|\\psi_i\\rangle}{\\langle\\psi_f|\\psi_i\\rangle}",
       "plain": "Aw = <psif|A|psii>/<psif|psii>",
       "description": "Pre- and post-selected weak-measurement value.",
-      "theoryIds": [
-        "two-state-vector"
-      ],
+      "theoryIds": ["two-state-vector", "weak-measurement"],
       "sourceIds": [
         "abl-1964"
       ],
@@ -1590,9 +1588,7 @@ window.QI_FORMULAS = {
       "latex": "|\\psi\\rangle_{AB}=\\sum_i\\sqrt{\\lambda_i}\\,|i_A\\rangle|i_B\\rangle",
       "plain": "psi_AB = sum sqrt(lambda_i)|iA iB>",
       "description": "Canonical bipartite pure-state decomposition.",
-      "theoryIds": [
-        "quantum-information"
-      ],
+      "theoryIds": ["quantum-information", "entanglement-theory"],
       "sourceIds": [
         "schumacher-1995"
       ],
@@ -1661,10 +1657,7 @@ window.QI_FORMULAS = {
       "latex": "S_A=-\\operatorname{Tr}(\\rho_A\\log\\rho_A),\\quad \\rho_A=\\operatorname{Tr}_B|\\psi\\rangle\\langle\\psi|",
       "plain": "S_A=-Tr rho_A log rho_A",
       "description": "Entanglement measure for a bipartite pure state.",
-      "theoryIds": [
-        "quantum-information",
-        "emergent-spacetime"
-      ],
+      "theoryIds": ["quantum-information", "emergent-spacetime", "entanglement-theory"],
       "sourceIds": [
         "schumacher-1995",
         "van-raamsdonk-2010"
@@ -1786,9 +1779,7 @@ window.QI_FORMULAS = {
       "latex": "\\langle e^{-\\beta W}\\rangle=e^{-\\beta\\Delta F}",
       "plain": "<exp(-beta W)>=exp(-beta Delta F)",
       "description": "Nonequilibrium work identity that also has quantum formulations.",
-      "theoryIds": [
-        "quantum-thermodynamics"
-      ],
+      "theoryIds": ["quantum-thermodynamics", "quantum-fluctuation-relations"],
       "sourceIds": [
         "quantum-thermo-review"
       ],
@@ -1857,9 +1848,7 @@ window.QI_FORMULAS = {
       "latex": "F_Q=4\\left(\\langle\\dot\\psi|\\dot\\psi\\rangle-|\\langle\\psi|\\dot\\psi\\rangle|^2\\right)",
       "plain": "F_Q=4(<dot psi|dot psi>-|<psi|dot psi>|^2)",
       "description": "Pure-state quantum Fisher information for a parameterized state.",
-      "theoryIds": [
-        "quantum-information"
-      ],
+      "theoryIds": ["quantum-information", "quantum-metrology"],
       "sourceIds": [
         "schumacher-1995"
       ],
@@ -1874,9 +1863,7 @@ window.QI_FORMULAS = {
       "latex": "\\mathrm{Var}(\\hat\\theta)\\ge\\frac{1}{N F_Q}",
       "plain": "Var theta >= 1/(N F_Q)",
       "description": "Lower bound on unbiased parameter-estimation variance.",
-      "theoryIds": [
-        "quantum-information"
-      ],
+      "theoryIds": ["quantum-information", "quantum-metrology"],
       "sourceIds": [
         "schumacher-1995"
       ],
@@ -2567,10 +2554,7 @@ window.QI_FORMULAS = {
       "latex": "S_{BH}=\\frac{k_B c^3A}{4G\\hbar}",
       "plain": "S_BH = k_B c^3 A/(4 G hbar)",
       "description": "Entropy proportional to black-hole horizon area.",
-      "theoryIds": [
-        "hawking-radiation",
-        "holographic-principle"
-      ],
+      "theoryIds": ["hawking-radiation", "holographic-principle", "black-hole-thermodynamics"],
       "sourceIds": [
         "hawking-1975",
         "thooft-holography-1993"
@@ -2586,9 +2570,7 @@ window.QI_FORMULAS = {
       "latex": "T_H=\\frac{\\hbar\\kappa}{2\\pi c k_B}",
       "plain": "T_H = hbar kappa/(2 pi c k_B)",
       "description": "Black-hole temperature in terms of surface gravity κ.",
-      "theoryIds": [
-        "hawking-radiation"
-      ],
+      "theoryIds": ["hawking-radiation", "black-hole-thermodynamics"],
       "sourceIds": [
         "hawking-1975"
       ],
@@ -2603,9 +2585,7 @@ window.QI_FORMULAS = {
       "latex": "T_H=\\frac{\\hbar c^3}{8\\pi G M k_B}",
       "plain": "T_H = hbar c^3/(8 pi G M k_B)",
       "description": "Hawking temperature of a nonrotating uncharged black hole.",
-      "theoryIds": [
-        "hawking-radiation"
-      ],
+      "theoryIds": ["hawking-radiation", "black-hole-thermodynamics"],
       "sourceIds": [
         "hawking-1975"
       ],
@@ -3402,10 +3382,7 @@ window.QI_FORMULAS = {
       "latex": "\\mathcal O_i(x)\\mathcal O_j(0)\\sim\\sum_k C_{ij}^{\\ k}(x)\\mathcal O_k(0)",
       "plain": "O_i(x) O_j(0) ~ sum C_ij^k(x) O_k(0)",
       "description": "Short-distance expansion central to CFT and general QFT.",
-      "theoryIds": [
-        "conformal-field-theory",
-        "conformal-bootstrap"
-      ],
+      "theoryIds": ["conformal-field-theory", "conformal-bootstrap", "operator-product-expansion"],
       "sourceIds": [
         "bpz-1984",
         "simmons-duffin-bootstrap-2016"
@@ -3421,10 +3398,7 @@ window.QI_FORMULAS = {
       "latex": "\\partial_\\mu j_5^\\mu=\\frac{e^2}{16\\pi^2}\\epsilon^{\\mu\\nu\\rho\\sigma}F_{\\mu\\nu}F_{\\rho\\sigma}",
       "plain": "div j5 = e^2/(16pi^2) epsilon F F",
       "description": "Quantum violation of classical axial-current conservation in a gauge background.",
-      "theoryIds": [
-        "qed",
-        "qcd"
-      ],
+      "theoryIds": ["qed", "qcd", "abj-anomaly"],
       "sourceIds": [
         "sep-qft"
       ],
@@ -3564,10 +3538,7 @@ window.QI_FORMULAS = {
       "latex": "G(\\tau)=-\\langle\\mathcal T_\\tau\\psi(\\tau)\\psi^{\\dagger}(0)\\rangle",
       "plain": "G(tau)=-<T_tau psi(tau) psi†(0)>",
       "description": "Imaginary-time thermal Green function.",
-      "theoryIds": [
-        "quantum-thermodynamics",
-        "hubbard-model"
-      ],
+      "theoryIds": ["quantum-thermodynamics", "hubbard-model", "finite-temperature-qft"],
       "sourceIds": [
         "quantum-thermo-review"
       ],
@@ -3618,9 +3589,7 @@ window.QI_FORMULAS = {
       "latex": "\\begin{pmatrix}H_0-\\mu&\\Delta\\\\\\Delta^*&-(H_0-\\mu)^*\\end{pmatrix}\\binom{u_n}{v_n}=E_n\\binom{u_n}{v_n}",
       "plain": "BdG matrix acting on (u,v) equals E(u,v)",
       "description": "Quasiparticle eigenproblem for mean-field superconductors and superfluids.",
-      "theoryIds": [
-        "bcs-theory"
-      ],
+      "theoryIds": ["bcs-theory", "bogoliubov-de-gennes"],
       "sourceIds": [
         "bcs-1957"
       ],
@@ -3670,10 +3639,7 @@ window.QI_FORMULAS = {
       "latex": "P E_a^{\\dagger}E_b P=c_{ab}P",
       "plain": "P Ea† Eb P = c_ab P",
       "description": "Condition for a code subspace to exactly correct a set of errors.",
-      "theoryIds": [
-        "quantum-information",
-        "toric-code"
-      ],
+      "theoryIds": ["quantum-information", "toric-code", "quantum-error-correction"],
       "sourceIds": [
         "kitaev-anyons-2003",
         "schumacher-1995"
@@ -3689,9 +3655,7 @@ window.QI_FORMULAS = {
       "latex": "\\chi=S\\!\\left(\\sum_xp_x\\rho_x\\right)-\\sum_xp_xS(\\rho_x)",
       "plain": "chi=S(sum p rho)-sum p S(rho)",
       "description": "Upper bound on accessible classical information from a quantum ensemble.",
-      "theoryIds": [
-        "quantum-information"
-      ],
+      "theoryIds": ["quantum-information", "quantum-shannon-theory"],
       "sourceIds": [
         "schumacher-1995"
       ],
@@ -3706,9 +3670,7 @@ window.QI_FORMULAS = {
       "latex": "I_c(A\\rangle B)=S(\\rho_B)-S(\\rho_{AB})",
       "plain": "I_c = S(B)-S(AB)",
       "description": "Information quantity central to quantum channel capacities and entanglement transmission.",
-      "theoryIds": [
-        "quantum-information"
-      ],
+      "theoryIds": ["quantum-information", "quantum-shannon-theory"],
       "sourceIds": [
         "schumacher-1995"
       ],
@@ -3723,10 +3685,7 @@ window.QI_FORMULAS = {
       "latex": "\\mathcal N(\\rho)=\\frac{\\|\\rho^{T_B}\\|_1-1}{2}",
       "plain": "N=(||rho^TB||_1-1)/2",
       "description": "Entanglement measure based on partial transposition.",
-      "theoryIds": [
-        "quantum-information",
-        "resource-theories"
-      ],
+      "theoryIds": ["quantum-information", "resource-theories", "entanglement-theory"],
       "sourceIds": [
         "resource-rmp-2019"
       ],
@@ -3741,10 +3700,7 @@ window.QI_FORMULAS = {
       "latex": "E_{\\mathcal N}=\\log_2\\|\\rho^{T_B}\\|_1",
       "plain": "E_N=log2 ||rho^TB||_1",
       "description": "Computable entanglement monotone based on the trace norm of the partial transpose.",
-      "theoryIds": [
-        "quantum-information",
-        "resource-theories"
-      ],
+      "theoryIds": ["quantum-information", "resource-theories", "entanglement-theory"],
       "sourceIds": [
         "resource-rmp-2019"
       ],
