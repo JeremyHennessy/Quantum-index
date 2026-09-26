@@ -179,3 +179,45 @@ test('curated formula citation locators render as usable links without changing 
   assert.ok(link);assert.equal(link.rel,'noreferrer');
   assert.match(d.querySelector('#formulaGrid').textContent,/counterintuitive pulse sequence/);
 });
+
+const chemistry=JSON.parse(fs.readFileSync('docs/CURATION_CHEMISTRY_2026-09-26.json','utf8'));
+test('chemistry batch covers all selected theories and retains equation-level evidence',()=>{
+  assert.equal(new Set(chemistry.theoryIds).size,12);
+  assert.equal(new Set(chemistry.newFormulaIds).size,11);
+  for(const id of chemistry.theoryIds){
+    const entry=audit.find(e=>e.theoryId===id);
+    assert.equal(entry.classification,'formula-bearing',id);
+    assert.ok(entry.formulaIds.some(fid=>chemistry.newFormulaIds.includes(fid)),id);
+  }
+  for(const id of chemistry.newFormulaIds){
+    const f=formulas.find(f=>f.id===id);
+    assert.equal(f.curationBatch,chemistry.batch,id);
+    assert.equal(f.metadataReview,'explicit',id);
+    assert.equal(f.reviewedAt,chemistry.reviewedAt,id);
+    assert.ok(f.assumptions.length&&f.variables.length&&f.sourceLocations.length,id);
+    for(const location of f.sourceLocations){
+      assert.ok(f.sourceIds.includes(location.sourceId),id);
+      assert.ok(location.locator.length>8,id);
+      assert.equal(new URL(location.url).protocol,'https:',id);
+    }
+  }
+  for(const key of chemistry.reviewedRelationKeys){
+    const r=sandbox.window.QI_DATA.relations.find(r=>[r.from,r.to,r.type].join('|')===key);
+    assert.ok(r&&r.sourceIds.length&&r.evidenceNote.length>40,key);
+    assert.equal(r.confidence,'high',key);
+  }
+});
+
+test('displayed Heitler–London normalization works for nonorthogonal orbitals',()=>{
+  const f=formulas.find(f=>f.id==='heitler-london-singlet');
+  const denominator=f.latex.match(/\\sqrt\{(\d+)\(1\+S\^(\d+)\)\}/);
+  assert.ok(denominator,'Parse the normalization from the displayed formula');
+  const [factor,power]=denominator.slice(1).map(Number);
+  for(const overlap of [-0.8,0,0.3,0.9,1]){
+    // Independent two-component orbitals; build the symmetrized tensor product.
+    const a=[1,0],b=[overlap,Math.sqrt(1-overlap*overlap)];
+    const state=a.flatMap((ai,i)=>b.map((bj,j)=>(ai*bj+b[i]*a[j])/Math.sqrt(factor*(1+overlap**power))));
+    assert.ok(Math.abs(state.reduce((sum,x)=>sum+x*x,0)-1)<1e-12);
+    assert.equal(state[1],state[2]);
+  }
+});

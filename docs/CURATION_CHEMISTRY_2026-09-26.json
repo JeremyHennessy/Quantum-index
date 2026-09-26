@@ -1,0 +1,53 @@
+{
+  "batch": "chemistry-2026-09-26",
+  "baseline": "f0d94f8c46776dcae8a0c5b3d93e0aa26c4ed17e",
+  "reviewedAt": "2026-09-26",
+  "theoryIds": [
+    "adc",
+    "born-oppenheimer",
+    "caspt2",
+    "casscf",
+    "dmet",
+    "dmrg-scf",
+    "eom-cc",
+    "gf2",
+    "molecular-orbital",
+    "nevpt2",
+    "random-phase-approximation",
+    "valence-bond"
+  ],
+  "newFormulaIds": [
+    "born-oppenheimer-single-surface",
+    "heitler-london-singlet",
+    "lcao-molecular-orbitals",
+    "active-space-orbital-optimization",
+    "rpa-density-response",
+    "dmet-occupation-fitting",
+    "caspt2-projected-fock",
+    "nevpt2-strongly-contracted",
+    "ip-eom-cc-eigenproblem",
+    "adc-hermitian-secular",
+    "gf2-self-consistency"
+  ],
+  "updatedFormulaIds": [],
+  "sourceIds": [
+    "abedi-factorization-2010",
+    "sax-valence-bond-2015",
+    "roothaan-mo-1951",
+    "ghosh-dmrg-casscf-2008",
+    "ren-rpa-2012",
+    "shiozaki-multireference-2015",
+    "guo-dmrg-nevpt2-2016",
+    "lange-eom-gw-2018"
+  ],
+  "reviewedRelationKeys": [
+    "molecular-orbital|hartree-fock|supports",
+    "casscf|configuration-interaction|extends",
+    "dmrg-scf|dmrg|extends",
+    "dmrg-scf|casscf|overlaps",
+    "caspt2|casscf|extends",
+    "nevpt2|casscf|extends",
+    "eom-cc|coupled-cluster|extends",
+    "dmet|dmft|overlaps"
+  ]
+}

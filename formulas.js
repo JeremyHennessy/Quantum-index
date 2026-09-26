@@ -6781,6 +6781,435 @@ window.QI_FORMULAS = {
           "url": "https://arxiv.org/pdf/1605.00224#page=4"
         }
       ]
+    },
+    {
+      "id": "born-oppenheimer-single-surface",
+      "name": "Born–Oppenheimer single-surface approximation",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "\\hat H_{\\mathrm{BO}}(\\mathbf R)\\phi_n(\\mathbf r;\\mathbf R)=E_n(\\mathbf R)\\phi_n(\\mathbf r;\\mathbf R),\\qquad\\Psi(\\mathbf r,\\mathbf R)\\approx\\phi_n(\\mathbf r;\\mathbf R)\\chi_n(\\mathbf R)",
+      "plain": "Clamped-nuclei electronic eigenproblem; molecular state approximated by one adiabatic product",
+      "description": "Electronic energies define an adiabatic potential surface for nuclear motion.",
+      "theoryIds": [
+        "born-oppenheimer"
+      ],
+      "sourceIds": [
+        "abedi-factorization-2010"
+      ],
+      "tags": [
+        "born-oppenheimer"
+      ],
+      "formulaType": "approximation",
+      "assumptions": [
+        "One electronic adiabatic surface; neglected transitions require small nonadiabatic coupling",
+        "H_BO includes nuclear repulsion at fixed R"
+      ],
+      "variables": [
+        "r,R: electronic and nuclear coordinates",
+        "phi_n: normalized clamped-nuclei eigenstate; chi_n: nuclear amplitude; E_n: surface energy"
+      ],
+      "regime": "Breaks down near strongly coupled surfaces or degeneracies.",
+      "units": "Atomic units; H_BO and E_n are energies.",
+      "theoryRelationship": "single-surface approximation",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "chemistry-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "abedi-factorization-2010",
+          "locator": "Opening discussion and Eq. (2); single BO product, not the exact factorization of Eq. (4)",
+          "url": "https://arxiv.org/pdf/1006.2638#page=1"
+        }
+      ]
+    },
+    {
+      "id": "heitler-london-singlet",
+      "name": "Heitler–London spatial singlet",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "\\Psi_{\\mathrm{HL}}(1,2)=\\frac{a(1)b(2)+b(1)a(2)}{\\sqrt{2(1+S^2)}},\\qquad S=\\langle a|b\\rangle",
+      "plain": "Normalized symmetric covalent spatial state with orbital overlap S",
+      "description": "Multiply by the normalized antisymmetric spin singlet for a fermionic two-electron state.",
+      "theoryIds": [
+        "valence-bond"
+      ],
+      "sourceIds": [
+        "sax-valence-bond-2015"
+      ],
+      "tags": [
+        "valence-bond"
+      ],
+      "formulaType": "approximation",
+      "assumptions": [
+        "Real normalized hydrogen 1s orbitals on two fixed nuclei",
+        "Covalent two-orbital ansatz; ionic structures omitted"
+      ],
+      "variables": [
+        "a,b: atomic orbitals; 1,2: electron coordinates; S: real overlap"
+      ],
+      "regime": "Minimal H2 valence-bond description.",
+      "units": "S and normalization coefficient are dimensionless.",
+      "theoryRelationship": "representative covalent valence-bond ansatz",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "chemistry-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "sax-valence-bond-2015",
+          "locator": "Sec. 5.1, Eq. (1), p. 8914; spatial factor only",
+          "url": "https://www.mdpi.com/1422-0067/16/4/8896/pdf#page=19"
+        }
+      ]
+    },
+    {
+      "id": "lcao-molecular-orbitals",
+      "name": "LCAO molecular-orbital expansion",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "\\phi_i(\\mathbf r)=\\sum_{\\mu=1}^{K}C_{\\mu i}\\chi_\\mu(\\mathbf r),\\qquad C^\\dagger S C=I,\\quad S_{\\mu\\nu}=\\langle\\chi_\\mu|\\chi_\\nu\\rangle",
+      "plain": "Molecular orbitals expanded in an atomic-orbital basis, with overlap-metric orthonormality",
+      "description": "The expansion defines a representation; a Hamiltonian and variational method are still needed to determine C.",
+      "theoryIds": [
+        "molecular-orbital"
+      ],
+      "sourceIds": [
+        "roothaan-mo-1951"
+      ],
+      "tags": [
+        "molecular-orbital"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Linearly independent finite basis",
+        "Columns of C describe orthonormal molecular orbitals"
+      ],
+      "variables": [
+        "chi_mu: basis functions; C: coefficients; S: overlap matrix; K: basis size"
+      ],
+      "regime": "Finite-basis molecular-orbital representation.",
+      "units": "S and C are dimensionless for normalized basis functions.",
+      "theoryRelationship": "basis expansion underlying LCAO methods",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "chemistry-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "roothaan-mo-1951",
+          "locator": "Sec. III, Eqs. (45)–(50): LCAO and overlap matrix; matrix orthonormality written explicitly",
+          "url": "https://harvest.aps.org/v2/journals/articles/10.1103/RevModPhys.23.69/fulltext"
+        }
+      ]
+    },
+    {
+      "id": "active-space-orbital-optimization",
+      "name": "CASSCF and DMRG-SCF orbital optimization",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "E_{\\mathrm{var}}=\\min_{\\substack{\\kappa^\\dagger=-\\kappa,\\,\\theta\\\\\\langle\\Psi(\\theta)|\\Psi(\\theta)\\rangle=1}}\\langle\\Psi(\\theta)|e^{-\\kappa}He^{\\kappa}|\\Psi(\\theta)\\rangle",
+      "plain": "Optimize orbital rotations and a normalized active-space wavefunction together",
+      "description": "CASSCF uses all configurations in the chosen active space; DMRG-SCF uses a matrix product state with finite bond dimension.",
+      "theoryIds": [
+        "casscf",
+        "dmrg-scf"
+      ],
+      "sourceIds": [
+        "ghosh-dmrg-casscf-2008"
+      ],
+      "tags": [
+        "casscf",
+        "dmrg-scf"
+      ],
+      "formulaType": "approximation",
+      "assumptions": [
+        "Fixed electron number and chosen core/active/external partition",
+        "State-specific variational problem; optimization can converge to a local stationary point"
+      ],
+      "variables": [
+        "kappa: anti-Hermitian one-electron orbital-rotation generator",
+        "theta: CAS coefficients or MPS tensors; H: electronic Hamiltonian"
+      ],
+      "regime": "Finite basis and active space; DMRG convergence also depends on bond dimension.",
+      "units": "Atomic units; E_var is an energy.",
+      "theoryRelationship": "shared objective with distinct wavefunction manifolds",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "chemistry-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "ghosh-dmrg-casscf-2008",
+          "locator": "Sec. I and Sec. II.A, Eqs. (5)–(7); MPS ansatz Eq. (11); combined variational statement",
+          "url": "https://arxiv.org/pdf/0712.2475"
+        }
+      ]
+    },
+    {
+      "id": "rpa-density-response",
+      "name": "Direct RPA density response",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "\\chi_{\\mathrm{RPA}}(i\\omega)=\\chi_0(i\\omega)+\\chi_0(i\\omega)v\\chi_{\\mathrm{RPA}}(i\\omega)",
+      "plain": "Interacting density response equals independent-particle response plus Coulomb screening",
+      "description": "Operator products integrate over intermediate spatial coordinates.",
+      "theoryIds": [
+        "random-phase-approximation"
+      ],
+      "sourceIds": [
+        "ren-rpa-2012"
+      ],
+      "tags": [
+        "random-phase-approximation"
+      ],
+      "formulaType": "approximation",
+      "assumptions": [
+        "Independent-particle Kohn–Sham reference response",
+        "Direct RPA: exchange-correlation kernel omitted"
+      ],
+      "variables": [
+        "chi_0,chi_RPA: density responses; v: Coulomb kernel; i omega: imaginary frequency"
+      ],
+      "regime": "Linear density response and Coulomb screening; distinct from RPA with exchange.",
+      "units": "Atomic units; chi maps a potential perturbation to a density perturbation.",
+      "theoryRelationship": "direct-RPA response closure",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "chemistry-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "ren-rpa-2012",
+          "locator": "Sec. II.A, Eq. (19), at coupling lambda = 1",
+          "url": "https://arxiv.org/pdf/1203.5536"
+        }
+      ]
+    },
+    {
+      "id": "dmet-occupation-fitting",
+      "name": "Original single-site DMET fitting condition",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "u_\\star\\in\\operatorname*{arg\\,min}_{u}\\sum_{\\sigma,\\,c\\in\\{a,b\\}}\\left(\\langle c_\\sigma^\\dagger c_\\sigma\\rangle_{H_{\\mathrm{imp}}}-\\langle c_\\sigma^\\dagger c_\\sigma\\rangle_h\\right)^2",
+      "plain": "Fit the correlation potential to impurity and bath occupation differences",
+      "description": "This is the original one-site occupation-fitting choice; other DMET formulations use other density-matrix objectives.",
+      "theoryIds": [
+        "dmet"
+      ],
+      "sourceIds": [
+        "knizia-chan-dmet-2012"
+      ],
+      "tags": [
+        "dmet"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Single-site Hubbard embedding with one bath orbital",
+        "Ground-state expectations in the interacting impurity and mean-field lattice embedding"
+      ],
+      "variables": [
+        "u: correlation potential; a,b: impurity and bath annihilators",
+        "sigma: spin; H_imp: impurity Hamiltonian; h: mean-field Hamiltonian"
+      ],
+      "regime": "Self-consistent density matrix embedding in the original lattice construction.",
+      "units": "Occupations and objective are dimensionless; u has energy units.",
+      "theoryRelationship": "one documented self-consistency variant",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "chemistry-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "knizia-chan-dmet-2012",
+          "locator": "Eq. (5), impurity-plus-bath diagonal occupation fit",
+          "url": "https://arxiv.org/pdf/1204.5783#page=2"
+        }
+      ]
+    },
+    {
+      "id": "caspt2-projected-fock",
+      "name": "CASPT2 projected-Fock first-order equation",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "\\begin{aligned}H^{(0)}&=PfP+QfQ,\\qquad Q=1-P,\\\\\\langle\\Omega|(H^{(0)}-E^{(0)})|\\Psi^{(1)}\\rangle&=-\\langle\\Omega|H_{\\mathrm{NP}}|\\Phi_{\\mathrm{ref}}\\rangle\\end{aligned}",
+      "plain": "Projected Fock zeroth-order Hamiltonian and stationary first-order amplitudes",
+      "description": "Representative relativistic internally contracted CASPT2 formulation using a no-pair Hamiltonian.",
+      "theoryIds": [
+        "caspt2"
+      ],
+      "sourceIds": [
+        "shiozaki-multireference-2015"
+      ],
+      "tags": [
+        "caspt2"
+      ],
+      "formulaType": "approximation",
+      "assumptions": [
+        "Single reference state in the chosen active space; orthogonal contracted external test states Omega",
+        "Unshifted equations; near-zero denominators can require additional regularization"
+      ],
+      "variables": [
+        "P: reference projector; Q: orthogonal complement; f: generalized Fock operator",
+        "E^(0): reference expectation of H^(0); Psi^(1): first-order correction",
+        "H_NP: no-pair Dirac Hamiltonian"
+      ],
+      "regime": "Four-component relativistic variant; not a formula for every CASPT2 variant.",
+      "units": "Atomic units; Hamiltonians and E^(0) have energy units.",
+      "theoryRelationship": "projected-Fock multireference perturbation construction",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "chemistry-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "shiozaki-multireference-2015",
+          "locator": "Sec. II.B, Eqs. (16)–(17); residual set to zero",
+          "url": "https://arxiv.org/pdf/1508.01461#page=3"
+        }
+      ]
+    },
+    {
+      "id": "nevpt2-strongly-contracted",
+      "name": "Strongly contracted NEVPT2 perturber energies",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "\\begin{aligned}|\\Phi_\\omega\\rangle&=P_\\omega H|\\Psi_0\\rangle,\\quad N_\\omega=\\langle\\Phi_\\omega|\\Phi_\\omega\\rangle,\\\\E_\\omega&=\\frac{\\langle\\Phi_\\omega|H^{\\mathrm D}|\\Phi_\\omega\\rangle}{N_\\omega},\\qquad E^{(2)}=-\\sum_\\omega\\frac{N_\\omega}{E_\\omega-E_0}\\end{aligned}",
+      "plain": "Dyall-Hamiltonian perturber energies give the strongly contracted second-order correction",
+      "description": "One unnormalized perturber per external occupation class; the energy sum follows second-order perturbation theory.",
+      "theoryIds": [
+        "nevpt2"
+      ],
+      "sourceIds": [
+        "guo-dmrg-nevpt2-2016"
+      ],
+      "tags": [
+        "nevpt2"
+      ],
+      "formulaType": "approximation",
+      "assumptions": [
+        "Normalized CAS reference; mutually orthogonal external occupation classes",
+        "H^D is Dyall’s Hamiltonian, equal to H inside CAS; omit zero-norm perturbers"
+      ],
+      "variables": [
+        "P_omega: external-class projector; E_0: CAS reference energy",
+        "N_omega: squared norm; E_omega: Dyall expectation in that perturber"
+      ],
+      "regime": "Strong contraction; distinct from partially contracted and uncontracted NEVPT2.",
+      "units": "Atomic units; N_omega has energy-squared units and E^(2) has energy units.",
+      "theoryRelationship": "Dyall-based multireference perturbation construction",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "chemistry-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "guo-dmrg-nevpt2-2016",
+          "locator": "Sec. II, Eqs. (4)–(10), pp. 9–10; energy sum derived from normalized perturbers in Eq. (10)",
+          "url": "https://arxiv.org/pdf/1512.08137#page=9"
+        }
+      ]
+    },
+    {
+      "id": "ip-eom-cc-eigenproblem",
+      "name": "Ionization-potential EOM-CC eigenproblem",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "P_{\\mathrm{IP}}(\\bar H-E_{\\mathrm{CC}})R_k|\\Phi_0\\rangle=I_kR_k|\\Phi_0\\rangle,\\qquad\\bar H=e^{-T}He^T",
+      "plain": "Diagonalize the projected similarity-transformed Hamiltonian in an electron-removal space",
+      "description": "I_k is the ionization energy E_k(N−1)−E_CC(N); this reverses the Green-function pole sign used in the source.",
+      "theoryIds": [
+        "eom-cc"
+      ],
+      "sourceIds": [
+        "lange-eom-gw-2018"
+      ],
+      "tags": [
+        "eom-cc"
+      ],
+      "formulaType": "approximation",
+      "assumptions": [
+        "Converged ground-state coupled-cluster amplitudes; chosen IP excitation space",
+        "IP-EOM-CCSD keeps 1-hole and 2-hole–1-particle terms; the matrix is non-Hermitian"
+      ],
+      "variables": [
+        "T: cluster operator; Phi_0: reference determinant; R_k: electron-removal operator",
+        "P_IP: projector onto retained N−1 determinants; E_CC: ground-state CC energy"
+      ],
+      "regime": "Charged excitations in IP-EOM-CC; not the neutral excitation-energy convention.",
+      "units": "Atomic units; I_k is an energy.",
+      "theoryRelationship": "representative charged-excitation EOM construction",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "chemistry-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "lange-eom-gw-2018",
+          "locator": "Eqs. (11)–(16): Eq. (15) with I_k = −Omega_k and explicit finite-space projector",
+          "url": "https://arxiv.org/pdf/1805.00043#page=3"
+        }
+      ]
+    },
+    {
+      "id": "adc-hermitian-secular",
+      "name": "ADC polarization-propagator secular equation",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "[K+C^{(n)}]X=X\\Omega,\\qquad[K+C^{(n)}]^\\dagger=K+C^{(n)}",
+      "plain": "Excitation energies are eigenvalues of the Hermitian ADC effective matrix",
+      "description": "Here ADC refers to the neutral polarization propagator in the original construction.",
+      "theoryIds": [
+        "adc"
+      ],
+      "sourceIds": [
+        "adc-1982"
+      ],
+      "tags": [
+        "adc"
+      ],
+      "formulaType": "approximation",
+      "assumptions": [
+        "Consistent nth-order ADC construction and configuration space",
+        "Perturbative truncation determines accuracy; not an exact spectrum at finite order"
+      ],
+      "variables": [
+        "K: zeroth-order configuration energies; C^(n): interaction correction",
+        "X: eigenvectors; Omega: diagonal neutral excitation energies"
+      ],
+      "regime": "Neutral electronic response; ionization and electron-attachment ADC have different sectors.",
+      "units": "K, C^(n), and Omega have energy units.",
+      "theoryRelationship": "Hermitian secular representation of the propagator approximation",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "chemistry-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "adc-1982",
+          "locator": "Eqs. (29)–(31), p. 2401; interaction matrix labeled by perturbative order n",
+          "url": "https://harvest.aps.org/v2/journals/articles/10.1103/PhysRevA.26.2395/fulltext"
+        }
+      ]
+    },
+    {
+      "id": "gf2-self-consistency",
+      "name": "Self-consistent second-order Green’s function",
+      "category": "Quantum chemistry & electronic structure",
+      "latex": "\\begin{aligned}G(i\\omega_n)&=[(\\mu+i\\omega_n)S-F-\\Sigma^{(2)}(i\\omega_n)]^{-1},\\\\\\Sigma^{(2)}_{ij}(\\tau)&=-\\sum_{klmnpq}G_{kl}(\\tau)G_{mn}(\\tau)G_{pq}(-\\tau)\\\\&\\qquad\\times v_{imqk}(2v_{lpnj}-v_{nplj})\\end{aligned}",
+      "plain": "Dyson equation closed with the dressed second-order imaginary-time self-energy",
+      "description": "Both the self-energy and density-dependent Fock matrix are iterated with G; this is not a one-shot MP2 calculation.",
+      "theoryIds": [
+        "gf2"
+      ],
+      "sourceIds": [
+        "gf2-2014"
+      ],
+      "tags": [
+        "gf2"
+      ],
+      "formulaType": "approximation",
+      "assumptions": [
+        "Spin-restricted, real, nonorthogonal atomic-orbital basis",
+        "Hartree and exchange included in F; dynamic self-energy truncated at second order using dressed G"
+      ],
+      "variables": [
+        "S: overlap; F: Fock matrix; mu: chemical potential; omega_n: fermionic Matsubara frequency",
+        "tau: imaginary time; v_ijkl: two-electron integrals in the source convention; indices: AO functions"
+      ],
+      "regime": "Self-consistent GF2 equilibrium approximation.",
+      "units": "Atomic units; frequency-domain G has inverse-energy units; F and Sigma(i omega_n) have energy units.",
+      "theoryRelationship": "second-order skeleton self-energy closure",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "chemistry-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "gf2-2014",
+          "locator": "Sec. II, Eqs. (1)–(3), and self-consistency discussion; imaginary frequency written i omega_n",
+          "url": "https://arxiv.org/pdf/1405.3273#page=2"
+        }
+      ]
     }
   ]
 };
