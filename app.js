@@ -5,6 +5,9 @@
   const formulaAuditByTheory = new Map(formulaAudit.map(x => [x.theoryId,x]));
   const byId = new Map(theories.map(t => [t.id,t]));
   const sourceById = new Map(sources.map(s => [s.id,s]));
+  const profiles = window.QI_PROFILES?.profiles || {};
+  let compareIds = [];
+  const profileFields = [["problem","Problem addressed"],["scope","Scope and mathematical approach"],["assumptions","Assumptions"],["predictions","Results and predictions"],["evidence","Evidence in the cited work"],["limitations","Limitations"],["questions","Questions to investigate"]];
   const state = { search:"", category:"", kind:"", status:"", era:"", sourcedOnly:false, selected:null, selectedTree:0, view:"map", returnView:"map" };
   const formulaState = { search:"", category:"", theory:"", type:"" };
   const categoryColors = new Map([
@@ -118,6 +121,7 @@
         </div>`;
       })()}
       <div class="detail-section"><h4>Core idea</h4><p>${esc(t.core)}</p></div>
+      ${panel.id==="theoryDetail" ? renderResearchProfile(t.id) : ""}
       <div class="detail-section"><h4>Concepts</h4><div class="tag-list">${t.tags.map(x=>`<span class="tag">${esc(x)}</span>`).join("")}</div></div>
       <div class="detail-section"><h4>Sources · ${linkedSources.length}</h4>
         ${linkedSources.length ? `<div class="source-list">${linkedSources.map(s=>`<a class="source-link" href="${esc(s.url)}" target="_blank" rel="noreferrer"><strong>${esc(s.title)}</strong><span>${esc(s.authors)} · ${esc(s.year)} · ${esc(s.type)}</span></a>`).join("")}</div>` : '<p>Dedicated source pass not completed for this entry yet.</p>'}
@@ -130,7 +134,50 @@
             <small>${esc(relationLabels[r.type]||r.type)}${outbound?" →":" ←"}</small>
           </a>`).join("")||'<p>No typed connections yet.</p>'}
       </div></div>
-      <div class="detail-section detail-actions"><a class="ghost link-button" href="#/lineage?theory=${encodeURIComponent(t.id)}">Trace thought tree</a><a class="ghost link-button" href="#/theory/${encodeURIComponent(t.id)}">Permanent link</a></div>`;
+      <div class="detail-section detail-actions"><a class="ghost link-button" href="#/lineage?theory=${encodeURIComponent(t.id)}">Trace thought tree</a><a class="ghost link-button" href="#/theory/${encodeURIComponent(t.id)}">Permanent link</a>${panel.id==="theoryDetail"?comparisonAction(t.id):""}</div>`;
+  }
+
+  function comparisonHash(ids){return ids.length ? `#/compare?ids=${ids.map(encodeURIComponent).join(",")}` : "#/compare";}
+  function comparisonAction(id){
+    const full=compareIds.length===4&&!compareIds.includes(id);
+    const ids=full?compareIds:[...new Set([...compareIds,id])];
+    return `<a class="ghost link-button" href="${comparisonHash(ids)}">${full?"Comparison full — edit selection":"Compare this entry"}</a>`;
+  }
+  function profileCitations(ids){
+    return `<span class="profile-citations">${ids.map(id=>sourceById.get(id)).filter(Boolean).map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noreferrer">${esc(s.authors)} · ${esc(s.year)}</a>`).join(" · ")}</span>`;
+  }
+  function profileClaim(claim){return `<p>${esc(claim.text)}</p>${profileCitations(claim.sourceIds)}`;}
+  function renderResearchProfile(id){
+    const p=profiles[id];if(!p)return "";
+    return `<section class="research-profile" aria-label="Research profile">
+      <div class="detail-section"><h4>Research profile</h4><p class="reviewed">Content reviewed ${esc(p.reviewedAt)} · Evidence descriptions refer to the cited work, not an exhaustive experimental-status review.</p></div>
+      ${profileFields.map(([key,label])=>`<div class="detail-section"><h4>${key==="questions"?"Questions to investigate":label}</h4>${profileClaim(p[key])}</div>`).join("")}
+      <div class="detail-section"><h4>Suggested prerequisites</h4><div class="detail-actions">${p.prerequisites.map(id=>`<a class="ghost link-button" href="#/theory/${encodeURIComponent(id)}?from=${state.returnView}">${esc(byId.get(id)?.name)}</a>`).join("")}</div><p class="reviewed">Suggested reading order; not a claim of historical influence.</p></div>
+    </section>`;
+  }
+  function renderComparison(){
+    const sorted=theories.slice().sort((a,b)=>a.name.localeCompare(b.name));
+    $("#compareSelectors").innerHTML=Array.from({length:4},(_,i)=>`<div><label for="compareSlot${i}">Entry ${i+1}</label><select id="compareSlot${i}" data-compare-slot="${i}"><option value="">Choose an entry</option>${sorted.map(t=>`<option value="${t.id}"${compareIds[i]===t.id?" selected":""}>${esc(t.name)}</option>`).join("")}</select></div>`).join("");
+    $("#compareSelectors").querySelectorAll("select").forEach(el=>el.addEventListener("change",()=>{
+      const ids=[...$("#compareSelectors").querySelectorAll("select")].map(el=>el.value).filter(Boolean);
+      navigate(comparisonHash([...new Set(ids)]));
+    }));
+    $("#comparisonPermalink").href=comparisonHash(compareIds);
+    $("#comparisonNotice").textContent=compareIds.length<2?"Choose at least two entries for a side-by-side comparison.":`${compareIds.length} entries selected. The URL preserves this selection.`;
+    const presets=window.QI_PROFILES?.comparisons || [];
+    $("#comparisonPresets").innerHTML=presets.map(p=>`<a class="ghost link-button" href="${comparisonHash(p.theoryIds)}">${esc(p.name)}</a>`).join("");
+    $("#profileCollection").innerHTML=Object.keys(profiles).map(id=>`<a class="source-link" href="#/theory/${encodeURIComponent(id)}?from=compare&compare=${compareIds.map(encodeURIComponent).join(",")}"><strong>${esc(byId.get(id)?.name)}</strong><span>${esc(byId.get(id)?.kind)} · Research profile</span></a>`).join("");
+    if(compareIds.length<2){$("#comparisonResults").innerHTML="";return;}
+    const row=(label,fn)=>`<tr><th scope="row">${esc(label)}</th>${compareIds.map(id=>`<td>${fn(id)}</td>`).join("")}</tr>`;
+    const missing='<p class="muted">Detailed profile not yet curated. Use the catalog summary and linked bibliography.</p>';
+    $("#comparisonResults").innerHTML=`<div class="comparison-scroll" role="region" aria-label="Theory comparison table" tabindex="0"><table class="comparison-table"><caption>Side-by-side theory comparison</caption><thead><tr><th scope="col">Aspect</th>${compareIds.map(id=>`<th scope="col"><a href="#/theory/${encodeURIComponent(id)}?from=compare&compare=${compareIds.map(encodeURIComponent).join(",")}">${esc(byId.get(id).name)}</a></th>`).join("")}</tr></thead><tbody>
+      ${row("Catalog type",id=>`<p>${esc(byId.get(id).kind)}</p><p>${esc(byId.get(id).category)}</p>`)}
+      ${row("Overview",id=>`<p>${esc(byId.get(id).summary)}</p>`)}
+      ${profileFields.map(([key,label])=>row(label,id=>profiles[id]?profileClaim(profiles[id][key]):missing)).join("")}
+      ${row("Suggested prerequisites",id=>profiles[id]?profiles[id].prerequisites.map(pid=>`<p><a href="#/theory/${encodeURIComponent(pid)}?from=compare&compare=${compareIds.map(encodeURIComponent).join(",")}">${esc(byId.get(pid).name)}</a></p>`).join(""):missing)}
+      ${row("Formula coverage",id=>{const a=formulaAuditByTheory.get(id);return a?.formulaIds.length?`<a href="#/formula?theory=${encodeURIComponent(id)}">${a.formulaIds.length} linked formulas</a>`:`<p>${esc(a?.gapReason||"Not reviewed")}</p>`;})}
+      ${row("Bibliography",id=>profileCitations(byId.get(id).sources))}
+      </tbody></table></div><p class="reviewed">Scroll horizontally to compare columns on smaller screens. Existing catalog status labels are descriptive categories, not confidence scores.</p>`;
   }
 
   let simulation=null;
@@ -373,11 +420,12 @@
     $$(".tab").forEach(b=>b.classList.toggle("active",b.dataset.view===view));
     $$(".view").forEach(v=>v.classList.remove("active"));
     $("#"+view+"View").classList.add("active");
+    if(view==="compare") renderComparison();
     if(view==="map") setTimeout(renderGraph,0);
     if(view==="lineage") setTimeout(renderThoughtTreeGraph,0);
     if(view==="formula") setTimeout(()=>{renderFormulas();typesetFormulaGrid();},0);
   }
-  const views=new Set(["map","timeline","lineage","catalog","formula"]);
+  const views=new Set(["map","timeline","lineage","catalog","formula","compare"]);
   function navigate(hash){
     if(location.hash===hash) applyRoute();
     else location.hash=hash;
@@ -390,10 +438,11 @@
     try { id=isTheory?decodeURIComponent(path.slice(7)):params.get("theory"); } catch {}
     if(isTheory){
       state.returnView=views.has(params.get("from"))?params.get("from"):"map";
+      if(state.returnView==="compare" && params.has("compare")) compareIds=[...new Set(params.get("compare").split(",").filter(id=>byId.has(id)))].slice(0,4);
       state.selected=byId.has(id)?id:null;
       renderDetail();renderLineage();
       const back=$("#backToView");
-      back.href=state.returnView==="formula" && formulaState.theory ? `#/formula?theory=${encodeURIComponent(formulaState.theory)}` : `#/${state.returnView}`;
+      back.href=state.returnView==="compare" ? comparisonHash(compareIds) : state.returnView==="formula" && formulaState.theory ? `#/formula?theory=${encodeURIComponent(formulaState.theory)}` : `#/${state.returnView}`;
       back.textContent=`← Back to ${state.returnView==="map"?"network map":state.returnView==="lineage"?"thought trees":state.returnView==="formula"?"formula atlas":state.returnView}`;
       if(!state.selected) $("#theoryDetail").innerHTML='<h3 class="detail-title">Theory not found</h3><p>This link does not match an entry in the current catalog.</p><a class="ghost link-button" href="#/catalog">Browse the catalog</a>';
       switchView("theory");
@@ -404,6 +453,7 @@
     }
     const view=views.has(path)?path:"map";
     if(byId.has(id)) state.selected=id;
+    if(view==="compare") compareIds=[...new Set((params.get("ids")||"").split(",").filter(id=>byId.has(id)))].slice(0,4);
     if(view==="formula"){
       formulaState.theory=byId.has(id)?id:"";
       $("#formulaTheory").value=formulaState.theory;
@@ -415,7 +465,8 @@
     renderDetail();renderLineage();switchView(view);
     document.title="Quantum Index";
   }
-  $$(".tab").forEach(b=>b.addEventListener("click",()=>navigate(`#/${b.dataset.view}`)));
+  $$(".tab").forEach(b=>b.addEventListener("click",()=>navigate(b.dataset.view==="compare"?comparisonHash(compareIds):`#/${b.dataset.view}`)));
+  $("#clearComparison").addEventListener("click",()=>navigate("#/compare"));
   window.addEventListener("hashchange",applyRoute);
   $("#search").addEventListener("input",e=>{state.search=e.target.value;renderGraph();renderTimeline();renderCatalog();});
   $("#categoryFilter").addEventListener("change",e=>{state.category=e.target.value;renderGraph();renderTimeline();renderCatalog();});

@@ -142,3 +142,20 @@ console.log(JSON.stringify({
   formulaAuditCovered:formulaAudit.entries.filter(e=>e.classification==="formula-bearing").length,
   formulaAuditGaps:formulaAudit.entries.filter(e=>e.classification==="formula-bearing-gap").length
 },null,2));
+
+vm.runInContext(fs.readFileSync('profiles.js','utf8'), sandbox);
+const research = sandbox.window.QI_PROFILES;
+if (!research || Object.keys(research.profiles).length !== 20) throw new Error('Expected 20 curated research profiles');
+for (const [id, profile] of Object.entries(research.profiles)) {
+  if (!unique.has(id)) throw new Error(`Unknown profile entry: ${id}`);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(profile.reviewedAt)) throw new Error(`Missing review date: ${id}`);
+  for (const key of ['problem','scope','assumptions','predictions','evidence','limitations','questions']) {
+    const claim=profile[key];
+    if (!claim?.text?.trim() || !claim.sourceIds?.length || claim.sourceIds.some(s=>!uniqueSources.has(s))) throw new Error(`Invalid cited profile field: ${id}/${key}`);
+  }
+  if (!Array.isArray(profile.prerequisites) || profile.prerequisites.some(p=>!unique.has(p)||p===id)) throw new Error(`Invalid prerequisite: ${id}`);
+}
+for (const preset of research.comparisons) {
+  if (!preset.name || preset.theoryIds.length<2 || preset.theoryIds.length>4 || new Set(preset.theoryIds).size!==preset.theoryIds.length || preset.theoryIds.some(id=>!research.profiles[id])) throw new Error('Invalid comparison preset');
+}
+console.log('Validated 20 cited research profiles and comparison presets.');
