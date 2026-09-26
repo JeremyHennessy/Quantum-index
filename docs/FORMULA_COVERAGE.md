@@ -5,10 +5,10 @@ _Last audited: 2026-09-22_
 ## Current formula corpus
 
 <!-- coverage:start -->
-- **361** formula entries across **28** categories
-- **231** theory entries with linked formulas
-- **188** documented formula gaps
-- **96** formulas with explicit metadata review; **265** with baseline metadata
+- **372** formula entries across **28** categories
+- **243** theory entries with linked formulas
+- **176** documented formula gaps
+- **107** formulas with explicit metadata review; **265** with baseline metadata
 
 | Formula category | Entries |
 |---|---:|
@@ -26,7 +26,7 @@ _Last audited: 2026-09-22_
 | Open quantum systems | 7 |
 | Perturbation theory | 5 |
 | Phase-space quantum mechanics | 3 |
-| Quantum chemistry & electronic structure | 15 |
+| Quantum chemistry & electronic structure | 26 |
 | Quantum error correction | 10 |
 | Quantum field theory | 45 |
 | Quantum gravity & cosmology | 56 |
