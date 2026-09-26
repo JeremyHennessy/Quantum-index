@@ -511,6 +511,12 @@ window.QI_DATA = (() => {
   ];
 
   const sources = [
+    {"id": "stringari-heisenberg-1994", "title": "Spin excitations and sum rules in the Heisenberg antiferromagnet", "authors": "S. Stringari", "year": 1994, "type": "primary source", "url": "https://arxiv.org/abs/cond-mat/9311020"},
+    {"id": "girardeau-wright-2000", "title": "Many-body solitons in a one-dimensional condensate of hard core bosons", "authors": "M. D. Girardeau and E. M. Wright", "year": 2000, "type": "primary source", "url": "https://arxiv.org/abs/cond-mat/0002062"},
+    {"id": "kirton-dicke-2019", "title": "Introduction to the Dicke model: from equilibrium to nonequilibrium, and vice versa", "authors": "Peter Kirton, Mor M. Roses, Jonathan Keeling, Emanuele G. Dalla Torre", "year": 2019, "type": "authoritative review", "url": "https://arxiv.org/abs/1805.09828"},
+    {"id": "fleischhauer-eit-2005", "title": "Electromagnetically induced transparency: Optics in coherent media", "authors": "Michael Fleischhauer, Atac Imamoglu, Jonathan P. Marangos", "year": 2005, "type": "authoritative review", "url": "https://doi.org/10.1103/RevModPhys.77.633"},
+    {"id": "vitanov-stirap-2017", "title": "Stimulated Raman adiabatic passage in physics, chemistry, and beyond", "authors": "Nikolay V. Vitanov, Andon A. Rangelov, Bruce W. Shore, Klaas Bergmann", "year": 2017, "type": "authoritative review", "url": "https://arxiv.org/abs/1605.00224"},
+
     {id:"sep-qm-issues",title:"Philosophical Issues in Quantum Theory",authors:"Stanford Encyclopedia of Philosophy",year:"living entry",type:"authoritative review",url:"https://plato.stanford.edu/entries/qt-issues/"},
     {id:"sep-copenhagen",title:"Copenhagen Interpretation of Quantum Mechanics",authors:"Stanford Encyclopedia of Philosophy",year:"living entry",type:"authoritative review",url:"https://plato.stanford.edu/entries/qm-copenhagen/"},
     {id:"sep-everett",title:"Everettian Quantum Mechanics",authors:"Stanford Encyclopedia of Philosophy",year:"living entry",type:"authoritative review",url:"https://plato.stanford.edu/entries/qm-everett/"},
@@ -1678,7 +1684,7 @@ window.QI_DATA = (() => {
     R("open-quantum-systems","caldeira-leggett","supports"),
     R("anderson-impurity","kondo-model","supports"),
     R("bethe-ansatz","lieb-liniger","supports"),
-    R("lieb-liniger","tonks-girardeau","extends"),
+    R("lieb-liniger","tonks-girardeau","generalizes"),
     R("rvb-spin-liquid","rokhsar-kivelson","supports"),
     R("quantum-chaos","syk-model","supports"),
     R("hubbard-model","gutzwiller-variational","supports"),
@@ -1793,6 +1799,17 @@ window.QI_DATA = (() => {
   ].filter(r => theories.some(t=>t.id===r.from) && theories.some(t=>t.id===r.to));
 
   const relationEvidence = new Map(Object.entries({
+    "dicke-model|quantum-rabi-model|extends": {"sourceIds": ["kirton-dicke-2019"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "Eq. (2): N=1 gives a single spin coupled to one oscillator. This is a formal model reduction, not a claim of historical influence.", "reviewedAt": "2026-09-26"},
+    "tavis-cummings|jaynes-cummings|extends": {"sourceIds": ["kirton-dicke-2019"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "Eq. (54), Sec. VI.A: N=1 reduces the excitation-exchange interaction to Jaynes–Cummings.", "reviewedAt": "2026-09-26"},
+    "cavity-qed|jaynes-cummings|supports": {"sourceIds": ["blais-circuit-qed-2004"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "Sec. II, Eq. (1): the single-mode two-level rotating-wave Hamiltonian models cavity QED; bath terms describe losses.", "reviewedAt": "2026-09-26"},
+    "circuit-qed|cavity-qed|extends": {"sourceIds": ["blais-circuit-qed-2004"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "Secs. II–III: a superconducting qubit and microwave resonator realize cavity-QED coupling. This establishes an implementation relation, not equivalence in every regime.", "reviewedAt": "2026-09-26"},
+    "optical-lattice-quantum-simulation|bose-hubbard|supports": {"sourceIds": ["jaksch-optical-lattice-1998"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "Eq. (2), p. 2: lowest-band Wannier projection with on-site interactions and nearest-neighbor hopping yields the Bose–Hubbard model.", "reviewedAt": "2026-09-26"},
+    "aklt|heisenberg-spin-model|extends": {"sourceIds": ["aklt-1987"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "Eq. (1), p. 800: the spin-1 parent Hamiltonian contains bilinear Heisenberg exchange plus a particular biquadratic term and constant. It is not the pure Heisenberg Hamiltonian.", "reviewedAt": "2026-09-26"},
+    "kitaev-honeycomb|toric-code|overlaps": {"sourceIds": ["kitaev-honeycomb-2006"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "Sec. 5: the strongly anisotropic gapped phase has a low-energy effective description equivalent to the toric-code model. The full Hamiltonians are not identical.", "reviewedAt": "2026-09-26"},
+    "lieb-liniger|tonks-girardeau|generalizes": {"sourceIds": ["wave3-lieb-liniger-1963"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "Introduction and Eq. (2.1): finite repulsive contact coupling extends the impenetrable gas; infinite coupling gives the Tonks–Girardeau limit.", "reviewedAt": "2026-09-26"},
+    "bethe-ansatz|lieb-liniger|supports": {"sourceIds": ["wave3-lieb-liniger-1963"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "Sec. II constructs the piecewise plane-wave solution and contact matching equations for the repulsive one-dimensional Bose gas.", "reviewedAt": "2026-09-26"},
+    "open-quantum-systems|spin-boson|supports": {"sourceIds": ["wave3-leggett-spin-boson-1987"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "Sec. I, Eq. (1.4): the two-state system is coupled to a harmonic-oscillator environment. This is a system–bath example, not an assumed Markovian master equation.", "reviewedAt": "2026-09-26"},
+
     "planck-quanta|old-quantum|precursor": {sourceIds:["planck-1901","old-quantum-review-2026"],evidenceType:"documented historical influence",confidence:"high"},
     "bohr-model|old-quantum|supports": {sourceIds:["bohr-1913","old-quantum-review-2026"],evidenceType:"documented historical influence",confidence:"high"},
     "old-quantum|matrix-mechanics|precursor": {sourceIds:["old-quantum-review-2026","heisenberg-1925"],evidenceType:"documented historical influence",confidence:"high"},
@@ -1853,7 +1870,7 @@ window.QI_DATA = (() => {
   for (const relation of relations) {
     const key = relation.from+"|"+relation.to+"|"+relation.type;
     const evidence = relationEvidence.get(key);
-    if (evidence) Object.assign(relation,evidence,{evidenceNote:"Evidence curated in relation-provenance v1."});
+    if (evidence) Object.assign(relation,{evidenceNote:"Evidence curated in relation-provenance v1."},evidence);
   }
 
   const trees = [

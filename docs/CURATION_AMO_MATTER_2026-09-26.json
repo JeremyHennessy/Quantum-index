@@ -1,0 +1,67 @@
+{
+  "batch": "amo-matter-2026-09-26",
+  "baseline": "b6be5be41599a8e32e9cbda055983c17b5acb4a2",
+  "reviewedAt": "2026-09-26",
+  "theoryIds": [
+    "aklt",
+    "bose-hubbard",
+    "cavity-qed",
+    "circuit-qed",
+    "dicke-model",
+    "eit",
+    "floquet-quantum",
+    "generalized-gibbs-ensemble",
+    "heisenberg-spin-model",
+    "kitaev-honeycomb",
+    "lieb-liniger",
+    "optical-lattice-quantum-simulation",
+    "quantum-optomechanics",
+    "rydberg-blockade",
+    "spin-boson",
+    "stirap",
+    "tavis-cummings",
+    "tonks-girardeau",
+    "topological-superconductor",
+    "transverse-ising"
+  ],
+  "newFormulaIds": [
+    "bose-hubbard-lattice",
+    "heisenberg-exchange",
+    "transverse-ising-chain",
+    "kitaev-honeycomb-hamiltonian",
+    "aklt-projector",
+    "kitaev-majorana-chain",
+    "lieb-liniger-contact",
+    "tonks-bose-fermi-map",
+    "gge-density-operator",
+    "spin-boson-coordinate",
+    "dicke-collective",
+    "tavis-cummings-collective",
+    "floquet-quasienergy",
+    "rydberg-two-atom",
+    "optomechanical-radiation-pressure",
+    "lambda-dark-state"
+  ],
+  "updatedFormulaIds": [
+    "jc-hamiltonian"
+  ],
+  "sourceIds": [
+    "stringari-heisenberg-1994",
+    "girardeau-wright-2000",
+    "kirton-dicke-2019",
+    "fleischhauer-eit-2005",
+    "vitanov-stirap-2017"
+  ],
+  "reviewedRelationKeys": [
+    "dicke-model|quantum-rabi-model|extends",
+    "tavis-cummings|jaynes-cummings|extends",
+    "cavity-qed|jaynes-cummings|supports",
+    "circuit-qed|cavity-qed|extends",
+    "optical-lattice-quantum-simulation|bose-hubbard|supports",
+    "aklt|heisenberg-spin-model|extends",
+    "kitaev-honeycomb|toric-code|overlaps",
+    "lieb-liniger|tonks-girardeau|generalizes",
+    "bethe-ansatz|lieb-liniger|supports",
+    "open-quantum-systems|spin-boson|supports"
+  ]
+}

@@ -338,7 +338,8 @@
       }).join("");
       const sourcesHtml=f.sourceIds.map(id=>{
         const s=sourceById.get(id);
-        return s?`<a class="formula-source" href="${esc(s.url)}" target="_blank" rel="noreferrer">${esc(s.authors)} · ${esc(s.year)}</a>`:"";
+        const location=f.sourceLocations?.find(location=>location.sourceId===id);
+        return s?`<a class="formula-source" href="${esc(location?.url || s.url)}" target="_blank" rel="noreferrer">${esc(s.authors)} · ${esc(s.year)}${location?` · ${esc(location.locator)}`:""}</a>`:"";
       }).join("");
       return `
         <article class="formula-card">

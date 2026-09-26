@@ -1896,13 +1896,38 @@ window.QI_FORMULAS = {
       "plain": "H_JC = cavity + atom + rotating-wave coupling",
       "description": "Rotating-wave light–matter Hamiltonian.",
       "theoryIds": [
-        "jaynes-cummings"
+        "jaynes-cummings",
+        "cavity-qed",
+        "circuit-qed"
       ],
       "sourceIds": [
-        "jaynes-cummings-1963"
+        "jaynes-cummings-1963",
+        "blais-circuit-qed-2004"
       ],
       "tags": [
         "Jaynes-Cummings"
+      ],
+      "formulaType": "approximation",
+      "assumptions": [
+        "One cavity mode and one two-level emitter; rotating-wave approximation",
+        "No drive or damping; circuit realization requires a valid two-level truncation"
+      ],
+      "variables": [
+        "a: cavity annihilator; sigma_z and sigma_±: two-level operators",
+        "omega: cavity angular frequency; omega_0: emitter transition frequency; g: coupling rate"
+      ],
+      "regime": "Near-resonant weak-coupling-to-frequency limit; representative for cavity and circuit QED, not ultrastrong coupling.",
+      "units": "omega, omega_0 and g are inverse time; H is energy.",
+      "theoryRelationship": "rotating-wave model and representative cavity/circuit realization",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "amo-matter-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "blais-circuit-qed-2004",
+          "locator": "Eq. (1), Sec. II; constant zero-point energy and bath terms omitted",
+          "url": "https://arxiv.org/pdf/cond-mat/0402216#page=2"
+        }
       ]
     },
     {
@@ -6119,7 +6144,644 @@ window.QI_FORMULAS = {
       "theoryRelationship": "defining behavior",
       "metadataReview": "explicit"
     }
-
+,
+    {
+      "id": "bose-hubbard-lattice",
+      "name": "Bose–Hubbard lattice Hamiltonian",
+      "category": "Quantum many-body & condensed matter",
+      "latex": "H=-J\\sum_{\\langle i,j\\rangle}(b_i^\\dagger b_j+b_j^\\dagger b_i)+\\frac{U}{2}\\sum_i n_i(n_i-1)+\\sum_i\\epsilon_i n_i",
+      "plain": "H = hopping + on-site repulsion + site offsets",
+      "description": "Competition between hopping and local repulsion; the optical platform can realize other models too.",
+      "theoryIds": [
+        "bose-hubbard",
+        "optical-lattice-quantum-simulation"
+      ],
+      "sourceIds": [
+        "jaksch-optical-lattice-1998"
+      ],
+      "tags": [
+        "bose-hubbard",
+        "optical-lattice-quantum-simulation"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "One bosonic species; nearest-neighbor hopping and on-site interactions",
+        "Optical realization: lowest Wannier band; excitation and interaction energies below the band gap"
+      ],
+      "variables": [
+        "b_i: boson annihilator; n_i=b_i†b_i",
+        "J: hopping energy; U: interaction energy; epsilon_i: site energy",
+        "Each nearest-neighbor bond is counted once"
+      ],
+      "regime": "Single-band lattice bosons; one representative optical-lattice realization.",
+      "units": "J, U, epsilon_i and H have energy units; occupations are dimensionless.",
+      "theoryRelationship": "defining lattice model; effective optical-lattice realization",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "amo-matter-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "jaksch-optical-lattice-1998",
+          "locator": "Eq. (2); unordered bonds written with Hermitian conjugates",
+          "url": "https://arxiv.org/pdf/cond-mat/9805329#page=2"
+        }
+      ]
+    },
+    {
+      "id": "heisenberg-exchange",
+      "name": "Isotropic Heisenberg exchange Hamiltonian",
+      "category": "Quantum many-body & condensed matter",
+      "latex": "H=J\\sum_{\\langle i,j\\rangle}\\mathbf S_i\\cdot\\mathbf S_j",
+      "plain": "H = J sum of neighboring spin dot products",
+      "description": "The sign convention is explicit; the cited calculation studies J>0.",
+      "theoryIds": [
+        "heisenberg-spin-model"
+      ],
+      "sourceIds": [
+        "stringari-heisenberg-1994"
+      ],
+      "tags": [
+        "heisenberg-spin-model"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Localized spins; nearest-neighbor isotropic exchange; no applied field"
+      ],
+      "variables": [
+        "S_i: dimensionless spin operator",
+        "J: exchange energy; J>0 antiferromagnetic, J<0 ferromagnetic",
+        "Each bond counted once"
+      ],
+      "regime": "Isotropic localized-spin model.",
+      "units": "Physical angular momentum is hbar S; J and H are energies.",
+      "theoryRelationship": "defining Hamiltonian",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "amo-matter-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "stringari-heisenberg-1994",
+          "locator": "Eq. (1), isotropic limit lambda = 1",
+          "url": "https://arxiv.org/pdf/cond-mat/9311020#page=3"
+        }
+      ]
+    },
+    {
+      "id": "transverse-ising-chain",
+      "name": "Transverse-field Ising chain Hamiltonian",
+      "category": "Quantum many-body & condensed matter",
+      "latex": "H=-\\Gamma\\sum_i S_i^z-J\\sum_i S_i^xS_{i+1}^x",
+      "plain": "H = transverse field + nearest-neighbor Ising exchange",
+      "description": "Field and exchange terms act on noncommuting spin components.",
+      "theoryIds": [
+        "transverse-ising"
+      ],
+      "sourceIds": [
+        "pfeuty-ising-1970"
+      ],
+      "tags": [
+        "transverse-ising"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Spin-1/2 chain; uniform nearest-neighbor coupling; periodic or open ends"
+      ],
+      "variables": [
+        "S_i^alpha=sigma_i^alpha/2: dimensionless spin-1/2 operators",
+        "Gamma: transverse-field energy; J: exchange energy"
+      ],
+      "regime": "One-dimensional transverse Ising model.",
+      "units": "Gamma, J and H are energies; using Pauli matrices instead requires factors 1/2 and 1/4.",
+      "theoryRelationship": "defining Hamiltonian",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "amo-matter-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "pfeuty-ising-1970",
+          "locator": "Eq. (2.1), p. 80",
+          "url": "https://www.math.ucdavis.edu/~bxn/pfeuty1970.pdf#page=2"
+        }
+      ]
+    },
+    {
+      "id": "kitaev-honeycomb-hamiltonian",
+      "name": "Kitaev honeycomb Hamiltonian",
+      "category": "Quantum many-body & condensed matter",
+      "latex": "H=-\\sum_{\\alpha=x,y,z}J_\\alpha\\sum_{\\langle i,j\\rangle_\\alpha}\\sigma_i^\\alpha\\sigma_j^\\alpha",
+      "plain": "H = bond-dependent x, y and z spin couplings",
+      "description": "Bond direction selects the coupled spin component; non-Abelian phases need additional conditions.",
+      "theoryIds": [
+        "kitaev-honeycomb"
+      ],
+      "sourceIds": [
+        "kitaev-honeycomb-2006"
+      ],
+      "tags": [
+        "kitaev-honeycomb"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Spin-1/2 honeycomb lattice; bonds partitioned into x, y and z types",
+        "No magnetic-field perturbation included"
+      ],
+      "variables": [
+        "sigma_i^alpha: Pauli operator",
+        "J_alpha: energy coupling on alpha-type bonds"
+      ],
+      "regime": "Exactly solvable unperturbed honeycomb spin model.",
+      "units": "Pauli operators are dimensionless; J_alpha and H are energies.",
+      "theoryRelationship": "defining Hamiltonian",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "amo-matter-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "kitaev-honeycomb-2006",
+          "locator": "Eq. (4), Sec. 1",
+          "url": "https://arxiv.org/pdf/cond-mat/0506438"
+        }
+      ]
+    },
+    {
+      "id": "aklt-projector",
+      "name": "Spin-1 AKLT parent Hamiltonian",
+      "category": "Quantum many-body & condensed matter",
+      "latex": "H=J\\sum_i P^{(2)}_{i,i+1}=J\\sum_i\\left[\\frac12\\mathbf S_i\\cdot\\mathbf S_{i+1}+\\frac16(\\mathbf S_i\\cdot\\mathbf S_{i+1})^2+\\frac13\\right]",
+      "plain": "H = positive sum of neighboring total-spin-2 projectors",
+      "description": "The constant fixes the valence-bond ground-state energy to zero.",
+      "theoryIds": [
+        "aklt"
+      ],
+      "sourceIds": [
+        "aklt-1987"
+      ],
+      "tags": [
+        "aklt"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Spin-1 chain; J>0; sum over present nearest-neighbor bonds"
+      ],
+      "variables": [
+        "S_i: dimensionless spin-1 operator",
+        "P^(2): projector onto bond total spin 2",
+        "J: positive energy scale"
+      ],
+      "regime": "AKLT valence-bond ground state; open chains have edge-state degeneracy.",
+      "units": "Projectors and spins are dimensionless; J and H are energies.",
+      "theoryRelationship": "exact parent Hamiltonian",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "amo-matter-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "aklt-1987",
+          "locator": "Eq. (1), p. 800; positive energy scale J restored",
+          "url": "https://harvest.aps.org/v2/journals/articles/10.1103/PhysRevLett.59.799/fulltext#page=2"
+        }
+      ]
+    },
+    {
+      "id": "kitaev-majorana-chain",
+      "name": "Kitaev superconducting-chain Hamiltonian",
+      "category": "Quantum many-body & condensed matter",
+      "latex": "H=-w\\sum_{j=1}^{L-1}(c_j^\\dagger c_{j+1}+c_{j+1}^\\dagger c_j)-\\mu\\sum_{j=1}^{L}(n_j-\\tfrac12)+\\sum_{j=1}^{L-1}(\\Delta c_jc_{j+1}+\\Delta^*c_{j+1}^\\dagger c_j^\\dagger)",
+      "plain": "H = hopping − chemical potential + nearest-neighbor pairing",
+      "description": "Pair ordering and its Hermitian conjugate follow the source convention.",
+      "theoryIds": [
+        "topological-superconductor"
+      ],
+      "sourceIds": [
+        "kitaev-wire-2001"
+      ],
+      "tags": [
+        "topological-superconductor"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Spinless fermions on an open chain; quadratic mean-field pairing",
+        "This Hamiltonian includes trivial and topological parameter regimes"
+      ],
+      "variables": [
+        "c_j: fermion annihilator; n_j=c_j†c_j; L: site count",
+        "w: real hopping; mu: chemical potential; Delta: complex pairing amplitude"
+      ],
+      "regime": "Representative one-dimensional p-wave superconducting model.",
+      "units": "w, mu, Delta and H are energies.",
+      "theoryRelationship": "representative model, not all topological superconductors",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "amo-matter-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "kitaev-wire-2001",
+          "locator": "Eq. (4); open-chain bond limits made explicit",
+          "url": "https://arxiv.org/pdf/cond-mat/0010440"
+        }
+      ]
+    },
+    {
+      "id": "lieb-liniger-contact",
+      "name": "Lieb–Liniger contact-interaction Hamiltonian",
+      "category": "Quantum many-body & condensed matter",
+      "latex": "H=-\\frac{\\hbar^2}{2m}\\sum_{i=1}^{N}\\frac{\\partial^2}{\\partial x_i^2}+g_{\\rm 1D}\\sum_{i<j}\\delta(x_i-x_j)",
+      "plain": "H = one-dimensional kinetic energy + pairwise contact repulsion",
+      "description": "The repulsive coupling connects weak interactions to the impenetrable limit.",
+      "theoryIds": [
+        "lieb-liniger"
+      ],
+      "sourceIds": [
+        "wave3-lieb-liniger-1963"
+      ],
+      "tags": [
+        "lieb-liniger"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Identical spinless bosons; repulsive g_1D>0; no external potential",
+        "Periodic boundary conditions for the original Bethe solution"
+      ],
+      "variables": [
+        "x_i: particle coordinates; N: particle count; m: mass",
+        "g_1D: contact coupling; delta: Dirac delta; hbar: reduced Planck constant"
+      ],
+      "regime": "Continuum one-dimensional Bose gas.",
+      "units": "g_1D has energy × length units; H has energy units.",
+      "theoryRelationship": "defining Hamiltonian",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "amo-matter-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "wave3-lieb-liniger-1963",
+          "locator": "Eq. (2.1); hbar and m restored, g_1D = hbar² c/m",
+          "url": "https://harvest.aps.org/v2/journals/articles/10.1103/PhysRev.130.1605/fulltext#page=2"
+        }
+      ]
+    },
+    {
+      "id": "tonks-bose-fermi-map",
+      "name": "Tonks–Girardeau Bose–Fermi mapping",
+      "category": "Quantum many-body & condensed matter",
+      "latex": "\\Psi_B(\\mathbf x,t)=\\left[\\prod_{i<j}\\operatorname{sgn}(x_j-x_i)\\right]\\Psi_F(\\mathbf x,t)",
+      "plain": "Bosonic wavefunction = antisymmetric sign factor × fermionic wavefunction",
+      "description": "The sign product enforces bosonic exchange symmetry without removing contact nodes.",
+      "theoryIds": [
+        "tonks-girardeau"
+      ],
+      "sourceIds": [
+        "girardeau-wright-2000"
+      ],
+      "tags": [
+        "tonks-girardeau"
+      ],
+      "formulaType": "exact",
+      "assumptions": [
+        "Identical impenetrable point bosons in one dimension",
+        "Same external potential; compatible boundary conditions (ring parity requires care)"
+      ],
+      "variables": [
+        "Psi_B: symmetric bosonic wavefunction; Psi_F: antisymmetric free-fermion wavefunction",
+        "x: N coordinates; t: time; sgn: sign function"
+      ],
+      "regime": "Infinite contact-repulsion limit; density observables agree, momentum distributions need not.",
+      "units": "Sign factor is dimensionless; both wavefunctions have the same normalization units.",
+      "theoryRelationship": "exact mapping in the impenetrable limit",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "amo-matter-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "girardeau-wright-2000",
+          "locator": "Eqs. (3)–(4); point-hard-core limit",
+          "url": "https://arxiv.org/pdf/cond-mat/0002062#page=2"
+        }
+      ]
+    },
+    {
+      "id": "gge-density-operator",
+      "name": "Generalized Gibbs density operator",
+      "category": "Quantum many-body & condensed matter",
+      "latex": "\\rho_{\\rm GGE}=Z^{-1}e^{-\\sum_m\\lambda_m I_m},\\qquad Z=\\operatorname{Tr}e^{-\\sum_m\\lambda_m I_m}",
+      "plain": "rho_GGE = normalized exponential of constrained conserved charges",
+      "description": "Energy alone generally does not determine this ensemble.",
+      "theoryIds": [
+        "generalized-gibbs-ensemble"
+      ],
+      "sourceIds": [
+        "wave3-rigol-gge-2007"
+      ],
+      "tags": [
+        "generalized-gibbs-ensemble"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Maximum entropy with specified conserved-charge expectations",
+        "An adequate charge set is required; stationary-state applicability must be checked"
+      ],
+      "variables": [
+        "I_m: conserved charges; lambda_m: Lagrange multipliers fixed by initial expectations",
+        "Z: partition function; rho_GGE: density operator"
+      ],
+      "regime": "Integrable-system ensembles; not a universal thermalization theorem.",
+      "units": "lambda_m I_m is dimensionless; Tr rho_GGE = 1.",
+      "theoryRelationship": "defining constrained ensemble",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "amo-matter-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "wave3-rigol-gge-2007",
+          "locator": "Eqs. (1)–(2)",
+          "url": "https://arxiv.org/pdf/cond-mat/0604476#page=1"
+        }
+      ]
+    },
+    {
+      "id": "spin-boson-coordinate",
+      "name": "Spin–boson Hamiltonian",
+      "category": "Quantum many-body & condensed matter",
+      "latex": "H=-\\frac{\\hbar\\Delta}{2}\\sigma_x+\\frac{\\epsilon}{2}\\sigma_z+\\sum_k\\left(\\frac{p_k^2}{2m_k}+\\frac{m_k\\omega_k^2x_k^2}{2}\\right)+\\frac{q_0}{2}\\sigma_z\\sum_k C_kx_k",
+      "plain": "H = tunneling + bias + oscillator bath + longitudinal coupling",
+      "description": "A representative open-system model, not a master equation.",
+      "theoryIds": [
+        "spin-boson"
+      ],
+      "sourceIds": [
+        "wave3-leggett-spin-boson-1987"
+      ],
+      "tags": [
+        "spin-boson"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Two-state system; harmonic bath; linear longitudinal coordinate coupling",
+        "No Markov or weak-total-dissipation approximation imposed by this Hamiltonian"
+      ],
+      "variables": [
+        "sigma_x,z: Pauli matrices; Delta: tunneling angular frequency; epsilon: bias energy",
+        "x_k,p_k,m_k,omega_k: bath coordinates, momenta, masses, frequencies",
+        "q_0: separation scale; C_k: coordinate-coupling constants"
+      ],
+      "regime": "Dissipative two-state model; a bath spectral density is also needed for predictions.",
+      "units": "hbar Delta, epsilon and q_0 C_k x_k are energies.",
+      "theoryRelationship": "defining system–bath Hamiltonian",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "amo-matter-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "wave3-leggett-spin-boson-1987",
+          "locator": "Eq. (1.4), p. 5",
+          "url": "https://harvest.aps.org/v2/journals/articles/10.1103/RevModPhys.59.1/fulltext#page=5"
+        }
+      ]
+    },
+    {
+      "id": "dicke-collective",
+      "name": "Collective Dicke Hamiltonian",
+      "category": "Quantum optics & AMO",
+      "latex": "H=\\hbar\\omega_c a^\\dagger a+\\hbar\\omega_0 J_z+\\frac{2\\hbar\\lambda}{\\sqrt N}(a+a^\\dagger)J_x",
+      "plain": "H = cavity + collective atomic energy + full transverse coupling",
+      "description": "The 1/sqrt(N) normalization is explicit.",
+      "theoryIds": [
+        "dicke-model"
+      ],
+      "sourceIds": [
+        "kirton-dicke-2019"
+      ],
+      "tags": [
+        "dicke-model"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "N identical two-level emitters; uniform single-mode coupling",
+        "Includes counter-rotating terms; no drive, loss, or diamagnetic term shown"
+      ],
+      "variables": [
+        "a: photon annihilator; J_alpha=sum sigma_i^alpha/2",
+        "N: emitter count; omega_c,omega_0: angular frequencies; lambda: collective coupling parameter"
+      ],
+      "regime": "Ideal Dicke model; microscopic realizability and superradiance depend on omitted terms.",
+      "units": "Frequencies and lambda are inverse time; H is energy.",
+      "theoryRelationship": "defining ideal collective model",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "amo-matter-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "kirton-dicke-2019",
+          "locator": "Eq. (2); hbar restored; S renamed J",
+          "url": "https://arxiv.org/pdf/1805.09828"
+        }
+      ]
+    },
+    {
+      "id": "tavis-cummings-collective",
+      "name": "Collective Tavis–Cummings Hamiltonian",
+      "category": "Quantum optics & AMO",
+      "latex": "H=\\hbar\\omega_c a^\\dagger a+\\hbar\\omega_0J_z+\\frac{\\hbar\\lambda}{\\sqrt N}(aJ_++a^\\dagger J_-)",
+      "plain": "H = cavity + collective atomic energy + excitation-exchange coupling",
+      "description": "Unlike the full Dicke model, it conserves total excitation number.",
+      "theoryIds": [
+        "tavis-cummings"
+      ],
+      "sourceIds": [
+        "kirton-dicke-2019"
+      ],
+      "tags": [
+        "tavis-cummings"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Uniform single-mode coupling to N identical two-level emitters",
+        "Rotating-wave approximation; counter-rotating terms omitted"
+      ],
+      "variables": [
+        "a: cavity annihilator; J_±=sum sigma_i^±; J_z=sum sigma_i^z/2",
+        "omega_c,omega_0: angular frequencies; lambda: collective coupling; N: emitter count"
+      ],
+      "regime": "Excitation-conserving many-emitter model; N=1 is Jaynes–Cummings.",
+      "units": "Frequencies and lambda are inverse time; H is energy.",
+      "theoryRelationship": "rotating-wave collective Hamiltonian",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "amo-matter-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "kirton-dicke-2019",
+          "locator": "Eq. (54), Sec. VI.A; hbar restored",
+          "url": "https://arxiv.org/pdf/1805.09828"
+        }
+      ]
+    },
+    {
+      "id": "floquet-quasienergy",
+      "name": "Floquet state and quasienergy equation",
+      "category": "Quantum optics & AMO",
+      "latex": "\\psi_\\alpha(t)=e^{-i\\varepsilon_\\alpha t/\\hbar}u_\\alpha(t),\\quad u_\\alpha(t+T)=u_\\alpha(t),\\quad[H(t)-i\\hbar\\partial_t]u_\\alpha=\\varepsilon_\\alpha u_\\alpha",
+      "plain": "Periodic mode × quasienergy phase solves the periodic Schrödinger problem",
+      "description": "A representation of dynamics, not an effective high-frequency approximation.",
+      "theoryIds": [
+        "floquet-quantum"
+      ],
+      "sourceIds": [
+        "shirley-floquet-1965"
+      ],
+      "tags": [
+        "floquet-quantum"
+      ],
+      "formulaType": "exact",
+      "assumptions": [
+        "Closed system with H(t+T)=H(t); finite-dimensional or suitable discrete-spectrum Floquet problem",
+        "No high-frequency expansion assumed"
+      ],
+      "variables": [
+        "T: drive period; u_alpha: periodic mode; psi_alpha: physical solution",
+        "epsilon_alpha: quasienergy defined modulo 2 pi hbar/T"
+      ],
+      "regime": "Periodically driven unitary dynamics.",
+      "units": "Quasienergy is an energy; T is time.",
+      "theoryRelationship": "exact Floquet representation within stated conditions",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "amo-matter-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "shirley-floquet-1965",
+          "locator": "Sec. II, Eqs. (2)–(5); periodic-mode form with hbar restored",
+          "url": "https://harvest.aps.org/v2/journals/articles/10.1103/PhysRev.138.B979/fulltext"
+        }
+      ]
+    },
+    {
+      "id": "rydberg-two-atom",
+      "name": "Two-atom Rydberg-blockade Hamiltonian",
+      "category": "Quantum optics & AMO",
+      "latex": "H=Vn_1n_2+\\hbar\\sum_{j=1}^{2}\\left[\\delta_j n_j-\\frac{\\Omega_j}{2}(|g_j\\rangle\\langle r_j|+|r_j\\rangle\\langle g_j|)\\right]",
+      "plain": "H = double-excitation shift + laser detunings + coherent drives",
+      "description": "The interaction shifts simultaneous excitation; V is not assumed universally proportional to 1/r^6.",
+      "theoryIds": [
+        "rydberg-blockade"
+      ],
+      "sourceIds": [
+        "jaksch-rydberg-2000"
+      ],
+      "tags": [
+        "rydberg-blockade"
+      ],
+      "formulaType": "approximation",
+      "assumptions": [
+        "Two fixed atoms; one ground and one Rydberg level each; rotating-wave description",
+        "Real Rabi frequencies; decay and atomic motion omitted",
+        "Blockade on near resonance when |V| greatly exceeds hbar |Omega_j|"
+      ],
+      "variables": [
+        "n_j=|r_j><r_j|: Rydberg projector; V: interaction energy",
+        "delta_j: source-convention detuning; Omega_j: Rabi angular frequency"
+      ],
+      "regime": "Coherent two-atom blockade model, with a scalar interaction shift.",
+      "units": "V is energy; delta_j and Omega_j are inverse time.",
+      "theoryRelationship": "effective Hamiltonian underlying blockade gates",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "amo-matter-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "jaksch-rydberg-2000",
+          "locator": "Eq. (2), coherent fixed-position part; hbar restored, V = hbar u",
+          "url": "https://arxiv.org/pdf/quant-ph/0004038#page=2"
+        }
+      ]
+    },
+    {
+      "id": "optomechanical-radiation-pressure",
+      "name": "Single-mode optomechanical Hamiltonian",
+      "category": "Quantum optics & AMO",
+      "latex": "H=\\hbar\\omega_c a^\\dagger a+\\hbar\\Omega_m b^\\dagger b-\\hbar g_0a^\\dagger a(b+b^\\dagger)",
+      "plain": "H = optical mode + mechanical mode − radiation-pressure coupling",
+      "description": "Photon number couples to displacement; this is not the later linearized fluctuation Hamiltonian.",
+      "theoryIds": [
+        "quantum-optomechanics"
+      ],
+      "sourceIds": [
+        "optomechanics-rmp-2014"
+      ],
+      "tags": [
+        "quantum-optomechanics"
+      ],
+      "formulaType": "approximation",
+      "assumptions": [
+        "One optical and one harmonic mechanical mode",
+        "Cavity frequency expanded to first order in displacement; no drive or damping shown"
+      ],
+      "variables": [
+        "a,b: optical and mechanical annihilators",
+        "omega_c,Omega_m: mode angular frequencies; g_0: single-photon coupling",
+        "g_0=G x_ZPF with G=−d omega_c/dx"
+      ],
+      "regime": "Dispersive radiation-pressure coupling before strong-drive linearization.",
+      "units": "All frequencies and g_0 are inverse time; H is energy.",
+      "theoryRelationship": "effective single-mode Hamiltonian",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "amo-matter-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "optomechanics-rmp-2014",
+          "locator": "Sec. III.B, Eqs. (18)–(20); free terms included, lab frame",
+          "url": "https://arxiv.org/pdf/1303.0733"
+        }
+      ]
+    },
+    {
+      "id": "lambda-dark-state",
+      "name": "Lambda-system dark state for EIT and STIRAP",
+      "category": "Quantum optics & AMO",
+      "latex": "|D(t)\\rangle=\\frac{\\Omega_c(t)|g\\rangle-\\Omega_p(t)|s\\rangle}{\\sqrt{\\Omega_c(t)^2+\\Omega_p(t)^2}}",
+      "plain": "Dark state = normalized control-weighted ground state minus pump-weighted target state",
+      "description": "No excited-state amplitude; existence of this eigenstate alone does not guarantee transparent propagation or complete transfer.",
+      "theoryIds": [
+        "eit",
+        "stirap"
+      ],
+      "sourceIds": [
+        "fleischhauer-eit-2005",
+        "vitanov-stirap-2017"
+      ],
+      "tags": [
+        "eit",
+        "stirap"
+      ],
+      "formulaType": "exact",
+      "assumptions": [
+        "Ideal three-level Lambda system on two-photon resonance, within rotating-wave approximation",
+        "Real phase-fixed Rabi couplings; denominator nonzero; negligible lower-state decoherence"
+      ],
+      "variables": [
+        "g,s: lower states coupled to a common excited level",
+        "Omega_p: probe/pump coupling from g; Omega_c: control/Stokes coupling from s"
+      ],
+      "regime": "EIT: weak probe and strong control; STIRAP: adiabatic counterintuitive pulse sequence rotates this state.",
+      "units": "Rabi frequencies have inverse-time units; state amplitudes are dimensionless.",
+      "theoryRelationship": "shared dark eigenstate; distinct optical-response and transfer uses",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-09-26",
+      "curationBatch": "amo-matter-2026-09-26",
+      "sourceLocations": [
+        {
+          "sourceId": "fleischhauer-eit-2005",
+          "locator": "Eqs. (2), (5), pp. 637–638; lower levels renamed g,s",
+          "url": "https://harvest.aps.org/v2/journals/articles/10.1103/RevModPhys.77.633/fulltext#page=6"
+        },
+        {
+          "sourceId": "vitanov-stirap-2017",
+          "locator": "Eqs. (5)–(6), Sec. II.B–C; pump/Stokes renamed p/c",
+          "url": "https://arxiv.org/pdf/1605.00224#page=4"
+        }
+      ]
+    }
   ]
 };
 
