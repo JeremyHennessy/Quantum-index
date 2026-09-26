@@ -75,6 +75,15 @@
     }).filter(x=>x.other);
   }
 
+  function safeReturn(value){return typeof value==="string" && value.length<4096 && /^#\/(?:theory\/[a-z0-9-]+|map|timeline|catalog|lineage|formula|compare|learn|workspace)(?:\?|$)/.test(value)?value:"";}
+  function theoryLink(id,from=state.returnView){
+    const params=new URLSearchParams({from});
+    if(from==="learn"&&learningPathId)params.set("path",learningPathId);
+    if(from==="compare")params.set("compare",compareIds.join(","));
+    if(from==="formula")params.set("returnTo",location.hash.startsWith("#/theory/") ? safeReturn(new URLSearchParams(location.hash.split("?")[1]||"").get("returnTo")) || "#/formula" : location.hash);
+    return `#/theory/${encodeURIComponent(id)}?${params}`;
+  }
+  function formulaLink(id){return `#/formula?theory=${encodeURIComponent(id)}&returnTo=${encodeURIComponent(location.hash)}`;}
   function selectTheory(id, switchLineage=false){
     const t=byId.get(id); if(!t)return;
     state.selected=id;
@@ -83,12 +92,13 @@
     d3.selectAll(".node").classed("selected",d=>d.id===id);
     d3.selectAll(".tree-graph-node").classed("selected",d=>d.id===id);
     const from=state.view==="theory"?state.returnView:state.view;
-    navigate(switchLineage ? `#/lineage?theory=${encodeURIComponent(id)}` : `#/theory/${encodeURIComponent(id)}?from=${from}`);
+    navigate(switchLineage ? `#/lineage?theory=${encodeURIComponent(id)}` : theoryLink(id,from));
   }
 
   function renderDetail(){
     renderDetailPanel($("#detailPanel"));
     renderDetailPanel($("#theoryDetail"));
+    bindResearchControls();
   }
 
   function renderDetailPanel(panel){
@@ -119,11 +129,12 @@
             <span class="badge">${esc(audit.coverageStatus)}</span>
             ${audit.priority!=="not-applicable"?`<span class="badge">${esc(audit.priority)} priority</span>`:""}
           </div>
-          ${linked.length?`<p>${linked.length} source-linked formula${linked.length===1?"":"s"} in the atlas.</p><a class="ghost link-button" href="#/formula?theory=${encodeURIComponent(t.id)}">View linked formulas</a>`:`<p>${esc(audit.gapReason||"No formula audit reason recorded.")}</p>`}
+          ${audit.reviewEvidence?`<p>${esc(audit.reviewEvidence.locator)}</p>${profileCitations(audit.reviewEvidence.sourceIds)}`:""}
+          ${linked.length?`<p>${linked.length} source-linked formula${linked.length===1?"":"s"} in the atlas.</p><a class="ghost link-button" href="${formulaLink(t.id)}">View linked formulas</a>`:`<p>${esc(audit.gapReason||"No formula audit reason recorded.")}</p>`}
         </div>`;
       })()}
       <div class="detail-section"><h4>Core idea</h4><p>${esc(t.core)}</p></div>
-      ${panel.id==="theoryDetail" ? renderLearningNavigation(t.id)+renderResearchProfile(t.id) : ""}
+      ${panel.id==="theoryDetail" ? renderLearningNavigation(t.id)+renderResearchProfile(t.id)+researchControls(t.id) : ""}
       <div class="detail-section"><h4>Concepts</h4><div class="tag-list">${t.tags.map(x=>`<span class="tag">${esc(x)}</span>`).join("")}</div></div>
       <div class="detail-section"><h4>Sources · ${linkedSources.length}</h4>
         ${linkedSources.length ? `<div class="source-list">${linkedSources.map(s=>`<a class="source-link" href="${esc(s.url)}" target="_blank" rel="noreferrer"><strong>${esc(s.title)}</strong><span>${esc(s.authors)} · ${esc(s.year)} · ${esc(s.type)}</span></a>`).join("")}</div>` : '<p>Dedicated source pass not completed for this entry yet.</p>'}
@@ -131,20 +142,42 @@
       </div>
       <div class="detail-section"><h4>Connections · ${rel.length}</h4><div class="relation-list">
         ${rel.slice().sort((a,b)=>a.other.year-b.other.year).map(({r,other,outbound})=>`
-          <a class="relation" href="#/theory/${encodeURIComponent(other.id)}?from=${state.returnView}">
+          <a class="relation" href="${theoryLink(other.id)}">
             <span class="relation-main"><strong>${esc(other.name)}</strong><em>${esc(r.evidenceType)} · ${esc(r.confidence)}${r.sourceIds.length?` · ${r.sourceIds.length} source${r.sourceIds.length===1?"":"s"}`:" · unsourced editorial"}</em></span>
             <small>${esc(relationLabels[r.type]||r.type)}${outbound?" →":" ←"}</small>
-          </a>`).join("")||'<p>No typed connections yet.</p>'}
+          </a>${r.evidenceNote?`<details class="relation-evidence"><summary>Relationship evidence</summary><p>${esc(r.evidenceNote)}</p>${r.sourceLocator?`<p class="reviewed">${esc(r.sourceLocator)}</p>`:""}${profileCitations(r.sourceIds)}</details>`:""}` ).join("")||'<p>No typed connections yet.</p>'}
       </div></div>
       <div class="detail-section detail-actions"><a class="ghost link-button" href="#/lineage?theory=${encodeURIComponent(t.id)}">Trace thought tree</a><a class="ghost link-button" href="#/theory/${encodeURIComponent(t.id)}">Permanent link</a>${panel.id==="theoryDetail"?comparisonAction(t.id):""}</div>`;
   }
 
+  function researchControls(id){
+    const data=window.QI_WORKSPACE.data;
+    return `<section class="detail-section research-tools" aria-label="Personal research tools"><h4>My research</h4><div class="detail-actions"><button class="ghost" id="toggleBookmark" aria-pressed="${data.bookmarks.includes(id)}">${data.bookmarks.includes(id)?"Remove bookmark":"Bookmark entry"}</button><button class="ghost" id="toggleRead" aria-pressed="${data.read.includes(id)}">${data.read.includes(id)?"Mark unread":"Mark as read"}</button></div><label for="researchNote">Your notes (saved on this browser)</label><textarea id="researchNote" rows="5" maxlength="20000">${esc(data.notes[id]||"")}</textarea><button class="ghost" id="saveNote">Save note</button><p id="researchStatus" role="status">${esc(window.QI_WORKSPACE.error)}</p></section>`;
+  }
+  function bindResearchControls(){
+    if(!$("#saveNote"))return;
+    const id=state.selected;
+    for(const [button,key] of [["#toggleBookmark","bookmarks"],["#toggleRead","read"]])$(button).onclick=()=>{const next=window.QI_WORKSPACE.data;next[key]=next[key].includes(id)?next[key].filter(x=>x!==id):[...next[key],id];if(window.QI_WORKSPACE.save(next)){const pressed=next[key].includes(id);$(button).setAttribute("aria-pressed",String(pressed));$(button).textContent=key==="bookmarks"?(pressed?"Remove bookmark":"Bookmark entry"):(pressed?"Mark unread":"Mark as read");$("#researchStatus").textContent="Saved on this browser.";}else $("#researchStatus").textContent=window.QI_WORKSPACE.error;};
+    $("#saveNote").onclick=()=>{const next=window.QI_WORKSPACE.data;next.notes[id]=$("#researchNote").value;$("#researchStatus").textContent=window.QI_WORKSPACE.save(next)?"Note saved on this browser.":window.QI_WORKSPACE.error;};
+  }
+  function renderWorkspace(){
+    const data=window.QI_WORKSPACE.data;
+    const entries=list=>list.map(id=>`<a class="source-link" href="${theoryLink(id,"workspace")}"><strong>${esc(byId.get(id).name)}</strong>${data.notes[id]?`<span>${esc(data.notes[id].slice(0,180))}</span>`:""}</a>`).join("")||'<p class="muted">Nothing saved yet. Open an entry to bookmark it or write a note.</p>';
+    $("#workspaceContent").innerHTML=`<article class="card comparison-panel"><div class="eyebrow">PERSONAL WORKSPACE</div><h3>My research</h3><p>Bookmarks, notes and reading progress stay in this browser. They are not synced or backed up automatically. Export a backup before clearing browser data or changing devices.</p><div class="detail-actions"><button class="ghost" id="exportWorkspace">Export backup</button><label class="ghost">Choose backup to import <input id="importWorkspace" type="file" accept="application/json,.json"></label></div><p id="workspaceStatus" role="status">${esc(window.QI_WORKSPACE.error)}</p><div id="importPreview"></div><h4>Learning progress</h4>${learningPaths.map(p=>`<p><a href="${learningHash(p.id)}">${esc(p.title)}</a>: ${p.steps.filter(s=>data.read.includes(s.theoryId)).length} / ${p.steps.length} entries marked read</p>`).join("")}<h4>Bookmarks</h4><div class="profile-collection">${entries(data.bookmarks)}</div><h4>Notes</h4><div class="profile-collection">${entries(Object.keys(data.notes).filter(id=>data.notes[id]))}</div><h4>Saved comparisons</h4>${data.comparisons.map((c,i)=>`<div class="detail-actions"><a class="ghost link-button" href="${comparisonHash(c.theoryIds)}">${esc(c.name)}</a><button class="ghost" data-remove-comparison="${i}" aria-label="Remove saved comparison ${esc(c.name)}">Remove</button></div>`).join("")||'<p class="muted">Use Save comparison in the Compare tab.</p>'}</article>`;
+    $("#exportWorkspace").onclick=()=>{const blob=new Blob([window.QI_WORKSPACE.exportText()],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=window.QI_WORKSPACE.recoveryNeeded?"quantum-index-recovery.txt":"quantum-index-research.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);$("#workspaceStatus").textContent="Backup download requested. Keep the downloaded file somewhere safe.";};
+    $("#importWorkspace").onchange=async e=>{const file=e.target.files[0];$("#importPreview").innerHTML="";if(!file)return;try{if(file.size>window.QI_WORKSPACE.maxBytes)throw new Error("Backup is too large (maximum 1 MB).");const incoming=window.QI_WORKSPACE.validate(JSON.parse(await file.text()));$("#importPreview").innerHTML=`<p>Import ${incoming.bookmarks.length} bookmarks, ${Object.keys(incoming.notes).length} notes, ${incoming.read.length} read entries and ${incoming.comparisons.length} comparisons. Different notes for the same entry are appended; existing work is retained.</p><button class="ghost" id="confirmImport">Merge this backup</button>`;$("#confirmImport").onclick=()=>{try{if(window.QI_WORKSPACE.merge(incoming)){renderWorkspace();$("#workspaceStatus").textContent="Backup merged and saved on this browser.";}else $("#workspaceStatus").textContent=window.QI_WORKSPACE.error;}catch(e){$("#workspaceStatus").textContent=e.message;}};}catch(e){$("#workspaceStatus").textContent=e.message;}};
+    $("#workspaceContent").querySelectorAll("[data-remove-comparison]").forEach(b=>b.onclick=()=>{const next=window.QI_WORKSPACE.data;next.comparisons.splice(Number(b.dataset.removeComparison),1);if(window.QI_WORKSPACE.save(next))renderWorkspace();else $("#workspaceStatus").textContent=window.QI_WORKSPACE.error;});
+  }
   function learningHash(id){return id ? `#/learn?path=${encodeURIComponent(id)}` : "#/learn";}
   function learningStepLink(id,path){return `#/theory/${encodeURIComponent(id)}?from=learn&path=${encodeURIComponent(path)}`;}
+  function renderPrimer(primer){
+    if(!primer)return "";
+    return `<section class="learning-primer" aria-label="Gravity and time primer"><h4>${esc(primer.title)}</h4>${primer.paragraphs.map((claim,i)=>`${profileClaim(claim)}${i===1?`<p class="primer-equation">${esc(primer.equation)}</p>`:""}`).join("")}<p class="reviewed">${esc(primer.sourceLocator)}</p></section>`;
+  }
   function renderLearningPaths(){
     const selected=learningPaths.find(p=>p.id===learningPathId);
     const shown=selected?[selected]:learningPaths;
-    $("#learningPaths").innerHTML=`<div class="card comparison-panel"><div class="eyebrow">GUIDED READING</div><h3>Choose a question to explore</h3><p>Follow a suggested reading order, inspect the cited sources, then compare the approaches. These are editorial learning routes, not historical chains or claims of experimental confirmation.</p><div class="detail-actions">${learningPaths.map(p=>`<a class="ghost link-button" href="${learningHash(p.id)}"${p===selected?' aria-current="page"':""}>${esc(p.title)}</a>`).join("")}${selected?'<a class="ghost link-button" href="#/learn">All paths</a>':""}</div></div>${shown.map(p=>`<article class="card comparison-panel learning-path"><h3>${esc(p.title)}</h3><p>${esc(p.goal)}</p><p><strong>Before you start:</strong> ${esc(p.prerequisites)}</p><ol class="learning-steps">${p.steps.map(step=>`<li><a href="${learningStepLink(step.theoryId,p.id)}">${esc(byId.get(step.theoryId).name)}</a><p>${esc(step.why)}</p></li>`).join("")}</ol><div class="detail-actions"><a class="ghost link-button" href="${learningStepLink(p.steps[0].theoryId,p.id)}">Start this path</a><a class="ghost link-button" href="${comparisonHash(p.comparison)}">Compare key entries</a><a class="ghost link-button" href="${learningHash(p.id)}">Permanent path link</a></div></article>`).join("")}`;
+    $("#learningPaths").innerHTML=`<div class="card comparison-panel"><div class="eyebrow">GUIDED READING</div><h3>Choose a question to explore</h3><p>Follow a suggested reading order, inspect the cited sources, then compare the approaches. These are editorial learning routes, not historical chains or claims of experimental confirmation.</p><div class="detail-actions">${learningPaths.map(p=>`<a class="ghost link-button" href="${learningHash(p.id)}"${p===selected?' aria-current="page"':""}>${esc(p.title)}</a>`).join("")}${selected?'<a class="ghost link-button" href="#/learn">All paths</a>':""}</div></div>${shown.map(p=>`<article class="card comparison-panel learning-path"><h3>${esc(p.title)}</h3><p>${esc(p.goal)}</p><p><strong>Before you start:</strong> ${esc(p.prerequisites)}</p>${renderPrimer(p.primer)}<p>${p.steps.filter(s=>window.QI_WORKSPACE.data.read.includes(s.theoryId)).length} / ${p.steps.length} entries marked read</p><ol class="learning-steps">${p.steps.map(step=>`<li><a href="${learningStepLink(step.theoryId,p.id)}">${esc(byId.get(step.theoryId).name)}</a><p>${esc(step.why)}</p></li>`).join("")}</ol><div class="detail-actions"><a class="ghost link-button" href="${learningStepLink(p.steps[0].theoryId,p.id)}">Start this path</a><a class="ghost link-button" href="${comparisonHash(p.comparison)}">Compare key entries</a><a class="ghost link-button" href="${learningHash(p.id)}">Permanent path link</a></div></article>`).join("")}`;
   }
   function renderLearningNavigation(id){
     const p=learningPaths.find(p=>p.id===learningPathId);
@@ -167,12 +200,18 @@
     return `<section class="research-profile" aria-label="Research profile">
       <div class="detail-section"><h4>Research profile</h4><p class="reviewed">Content reviewed ${esc(p.reviewedAt)} · Evidence descriptions refer to the cited work, not an exhaustive experimental-status review.</p></div>
       ${profileFields.map(([key,label])=>`<div class="detail-section"><h4>${key==="questions"?"Questions to investigate":label}</h4>${profileClaim(p[key])}</div>`).join("")}
-      <div class="detail-section"><h4>Suggested prerequisites</h4><div class="detail-actions">${p.prerequisites.map(id=>`<a class="ghost link-button" href="#/theory/${encodeURIComponent(id)}?from=${state.returnView}">${esc(byId.get(id)?.name)}</a>`).join("")}</div><p class="reviewed">Suggested reading order; not a claim of historical influence.</p></div>
+      <div class="detail-section"><h4>Suggested prerequisites</h4><div class="detail-actions">${p.prerequisites.map(id=>`<a class="ghost link-button" href="${theoryLink(id)}">${esc(byId.get(id)?.name)}</a>`).join("")}</div><p class="reviewed">Suggested reading order; not a claim of historical influence.</p></div>
     </section>`;
   }
   function renderComparison(){
     const sorted=theories.slice().sort((a,b)=>a.name.localeCompare(b.name));
-    $("#compareSelectors").innerHTML=Array.from({length:4},(_,i)=>`<div><label for="compareSlot${i}">Entry ${i+1}</label><select id="compareSlot${i}" data-compare-slot="${i}"><option value="">Choose an entry</option>${sorted.map(t=>`<option value="${t.id}"${compareIds[i]===t.id?" selected":""}>${esc(t.name)}</option>`).join("")}</select></div>`).join("");
+    $("#compareSelectors").innerHTML=Array.from({length:4},(_,i)=>`<div><label for="compareSlot${i}">Entry ${i+1}</label><input type="search" id="compareSearch${i}" data-compare-search="${i}" aria-label="Search entry ${i+1}" placeholder="Search name or alias"><select id="compareSlot${i}" data-compare-slot="${i}"><option value="">Choose an entry</option>${sorted.map(t=>`<option value="${t.id}"${compareIds[i]===t.id?" selected":""}>${esc(t.name)}</option>`).join("")}</select></div>`).join("");
+    $("#compareSelectors").querySelectorAll("[data-compare-search]").forEach(input=>input.addEventListener("input",()=>{
+      const slot=Number(input.dataset.compareSearch),q=input.value.trim().toLowerCase(),selected=compareIds[slot]||"";
+      const matches=sorted.filter(t=>t.id===selected || [t.name,...t.aliases,...t.tags].join(" ").toLowerCase().includes(q));
+      $("#compareSlot"+slot).innerHTML='<option value="">Choose an entry</option>'+matches.map(t=>`<option value="${t.id}"${t.id===selected?' selected':""}>${esc(t.name)}</option>`).join("");
+      $("#comparisonNotice").textContent=`${matches.length} matching entries for slot ${slot+1}. Your current selection is retained.`;
+    }));
     $("#compareSelectors").querySelectorAll("select").forEach(el=>el.addEventListener("change",()=>{
       const ids=[...$("#compareSelectors").querySelectorAll("select")].map(el=>el.value).filter(Boolean);
       navigate(comparisonHash([...new Set(ids)]));
@@ -182,6 +221,8 @@
     const presets=window.QI_PROFILES?.comparisons || [];
     $("#comparisonPresets").innerHTML=presets.map(p=>`<a class="ghost link-button" href="${comparisonHash(p.theoryIds)}">${esc(p.name)}</a>`).join("");
     $("#profileCollection").innerHTML=Object.keys(profiles).map(id=>`<a class="source-link" href="#/theory/${encodeURIComponent(id)}?from=compare&compare=${compareIds.map(encodeURIComponent).join(",")}"><strong>${esc(byId.get(id)?.name)}</strong><span>${esc(byId.get(id)?.kind)} · Research profile</span></a>`).join("");
+    $("#saveComparison")?.remove();
+    if(compareIds.length>=2){const button=document.createElement("button");button.id="saveComparison";button.className="ghost";button.textContent="Save comparison";$("#comparisonPermalink").parentElement.append(button);button.onclick=()=>{const next=window.QI_WORKSPACE.data;const name=compareIds.map(id=>byId.get(id).name).join(" / ").slice(0,120);if(!next.comparisons.some(c=>JSON.stringify(c.theoryIds)===JSON.stringify(compareIds)))next.comparisons.push({name,theoryIds:compareIds.slice()});try{$("#comparisonNotice").textContent=window.QI_WORKSPACE.save(next)?"Comparison saved in My research.":window.QI_WORKSPACE.error;}catch(e){$("#comparisonNotice").textContent=e.message;}};}
     if(compareIds.length<2){$("#comparisonResults").innerHTML="";return;}
     const row=(label,fn)=>`<tr><th scope="row">${esc(label)}</th>${compareIds.map(id=>`<td>${fn(id)}</td>`).join("")}</tr>`;
     const missing='<p class="muted">Detailed profile not yet curated. Use the catalog summary and linked bibliography.</p>';
@@ -190,7 +231,7 @@
       ${row("Overview",id=>`<p>${esc(byId.get(id).summary)}</p>`)}
       ${profileFields.map(([key,label])=>row(label,id=>profiles[id]?profileClaim(profiles[id][key]):missing)).join("")}
       ${row("Suggested prerequisites",id=>profiles[id]?profiles[id].prerequisites.map(pid=>`<p><a href="#/theory/${encodeURIComponent(pid)}?from=compare&compare=${compareIds.map(encodeURIComponent).join(",")}">${esc(byId.get(pid).name)}</a></p>`).join(""):missing)}
-      ${row("Formula coverage",id=>{const a=formulaAuditByTheory.get(id);return a?.formulaIds.length?`<a href="#/formula?theory=${encodeURIComponent(id)}">${a.formulaIds.length} linked formulas</a>`:`<p>${esc(a?.gapReason||"Not reviewed")}</p>`;})}
+      ${row("Formula coverage",id=>{const a=formulaAuditByTheory.get(id);return a?.formulaIds.length?`<a href="${formulaLink(id)}">${a.formulaIds.length} linked formulas</a>`:`<p>${esc(a?.gapReason||"Not reviewed")}</p>`;})}
       ${row("Bibliography",id=>profileCitations(byId.get(id).sources))}
       </tbody></table></div><p class="reviewed">Scroll horizontally to compare columns on smaller screens. Existing catalog status labels are descriptive categories, not confidence scores.</p>`;
   }
@@ -207,7 +248,7 @@
     svg.call(d3.zoom().scaleExtent([.25,3]).on("zoom",e=>root.attr("transform",e.transform)));
     const link=root.append("g").selectAll("line").data(links).join("line").attr("class","link").attr("stroke-width",d=>d.type==="overlaps"?1:1.4).attr("stroke-opacity",d=>d.confidence==="high"?.7:d.confidence==="medium"?.52:.3);
     link.append("title").text(d=>`${relationLabels[d.type]||d.type} · ${d.evidenceType} · ${d.confidence}`);
-    const node=root.append("g").selectAll("g").data(nodes,d=>d.id).join("g").attr("class",d=>"node"+(d.id===state.selected?" selected":"")).on("click",(e,d)=>{e.stopPropagation();selectTheory(d.id);});
+    const node=root.append("g").selectAll("g").data(nodes,d=>d.id).join("g").attr("class",d=>"node"+(d.id===state.selected?" selected":"")).attr("tabindex",0).attr("role","button").attr("aria-label",d=>`Open ${d.name}`).on("keydown",(e,d)=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selectTheory(d.id);}}).on("click",(e,d)=>{e.stopPropagation();selectTheory(d.id);});
     node.append("circle").attr("r",d=>d.status.includes("established")?9:7).attr("fill",d=>categoryColors.get(d.category)||"#94a3b8");
     node.append("text").attr("class","node-label").attr("y",17).text(d=>d.name.length>26?d.name.slice(0,24)+"…":d.name);
     node.append("title").text(d=>`${d.name} · ${d.year}\n${d.summary}`);
@@ -315,7 +356,7 @@
     const node=nodeLayer.selectAll("g").data(nodes,d=>d.id).join("g")
       .attr("class",d=>"tree-graph-node"+(d.id===state.selected?" selected":""))
       .attr("transform",d=>`translate(${d.x},${d.y})`)
-      .on("click",(e,d)=>{e.stopPropagation();selectTheory(d.id);});
+      .attr("tabindex",0).attr("role","button").attr("aria-label",d=>`Open ${d.name}`).on("keydown",(e,d)=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selectTheory(d.id);}}).on("click",(e,d)=>{e.stopPropagation();selectTheory(d.id);});
     node.append("circle").attr("r",d=>d.status.includes("established")?8:6.5).attr("fill",d=>categoryColors.get(d.category)||"#94a3b8");
     node.append("text").attr("class","tree-graph-label").attr("y",-12).text(d=>d.name.length>24?d.name.slice(0,22)+"…":d.name);
     node.append("text").attr("class","tree-graph-year").attr("y",19).text(d=>d.year);
@@ -437,11 +478,15 @@
     $("#"+view+"View").classList.add("active");
     if(view==="compare") renderComparison();
     if(view==="learn") renderLearningPaths();
+    if(view==="workspace") renderWorkspace();
+    $(".controls").hidden=!["map","timeline","catalog"].includes(view);
+    $("#filterScope").hidden=$(".controls").hidden;
+    $("#formulaReturn").hidden=view!=="formula" || !safeReturn(new URLSearchParams(location.hash.split("?").slice(1).join("?")).get("returnTo"));
     if(view==="map") setTimeout(renderGraph,0);
     if(view==="lineage") setTimeout(renderThoughtTreeGraph,0);
     if(view==="formula") setTimeout(()=>{renderFormulas();typesetFormulaGrid();},0);
   }
-  const views=new Set(["map","timeline","lineage","catalog","formula","compare","learn"]);
+  const views=new Set(["map","timeline","lineage","catalog","formula","compare","learn","workspace"]);
   function navigate(hash){
     if(location.hash===hash) applyRoute();
     else location.hash=hash;
@@ -459,7 +504,7 @@
       state.selected=byId.has(id)?id:null;
       renderDetail();renderLineage();
       const back=$("#backToView");
-      back.href=state.returnView==="learn" ? learningHash(learningPathId) : state.returnView==="compare" ? comparisonHash(compareIds) : state.returnView==="formula" && formulaState.theory ? `#/formula?theory=${encodeURIComponent(formulaState.theory)}` : `#/${state.returnView}`;
+      back.href=safeReturn(params.get("returnTo")) || (state.returnView==="learn" ? learningHash(learningPathId) : state.returnView==="compare" ? comparisonHash(compareIds) : state.returnView==="formula" && formulaState.theory ? `#/formula?theory=${encodeURIComponent(formulaState.theory)}` : `#/${state.returnView}`);
       back.textContent=`← Back to ${state.returnView==="map"?"network map":state.returnView==="lineage"?"thought trees":state.returnView==="formula"?"formula atlas":state.returnView}`;
       if(!state.selected) $("#theoryDetail").innerHTML='<h3 class="detail-title">Theory not found</h3><p>This link does not match an entry in the current catalog.</p><a class="ghost link-button" href="#/catalog">Browse the catalog</a>';
       switchView("theory");
@@ -473,6 +518,8 @@
     if(view==="compare") compareIds=[...new Set((params.get("ids")||"").split(",").filter(id=>byId.has(id)))].slice(0,4);
     if(view==="learn") learningPathId=learningPaths.some(p=>p.id===params.get("path"))?params.get("path"):"";
     if(view==="formula"){
+      const returnTo=safeReturn(params.get("returnTo"));
+      $("#formulaReturn").innerHTML=returnTo?`<a class="ghost link-button" href="${esc(returnTo)}">Back to previous view</a>`:"";
       formulaState.theory=byId.has(id)?id:"";
       $("#formulaTheory").value=formulaState.theory;
       if(id){

@@ -14,7 +14,7 @@ Quantum Index is a source-aware map of quantum theory and adjacent fundamental p
 ## Current build
 
 <!-- coverage:start -->
-The census remains **open**. The current catalog contains **480 entries**, **605 typed relationships**, **41 thought trees**, and **482 bibliography records** across **14 categories**. Provenance is attached to all entries: **351 primary-sourced** and **129 review-sourced**. The formula atlas contains **372 entries** across **28 categories**; **191** theory entries remain documented formula gaps. Counts are generated from runtime data, separately from scientific review.
+The census remains **open**. The current catalog contains **480 entries**, **605 typed relationships**, **41 thought trees**, and **490 bibliography records** across **14 categories**. Provenance is attached to all entries: **351 primary-sourced** and **129 review-sourced**. The formula atlas contains **375 entries** across **28 categories**; **186** theory entries remain documented formula gaps. Counts are generated from runtime data, separately from scientific review.
 <!-- coverage:end -->
 
 Static app:
@@ -23,7 +23,9 @@ Static app:
 - `theories.js` — theory + relation catalog
 - `formulas.js` — source-linked quantum formula atlas with equation-role metadata
 - `formula-audit.js` — theory-by-theory formula-bearing coverage audit
-- `app.js` — search, filters, graph, timeline, lineage, formula and detail UI
+- `profiles.js` — cited reading profiles and guided learning paths
+- `workspace.js` — local research notes, bookmarks, progress and backup validation
+- `app.js` — search, filters, graph, timeline, lineage, formula, comparison and workspace UI
 
 ## Data model
 
@@ -53,7 +55,7 @@ A catalogued theory is not automatically "fully sourced." The UI displays a prov
 
 ## Development
 
-No application build step is required. For development checks, run `npm ci`, `npm test`, and `npm run validate`. Run `npm run coverage` after catalog changes to regenerate coverage reports. Test dependencies are development-only.
+No application build step is required. For development checks, run `npm ci`, `npm test`, and `npm run validate`. Run `npm run coverage` after catalog changes to regenerate coverage reports, then `npm run assets` after changes to shipped scripts or styles. CI verifies content-hashed asset URLs to prevent mixed cached releases. Test dependencies are development-only.
 
 Theory links use `#/theory/<id>` and work on GitHub Pages without server routing.
 
@@ -76,7 +78,7 @@ The application must not describe the catalog as literally complete until the do
 
 ## Formula atlas
 
-The formula atlas is a separate evidence layer linked to the theory graph. It currently contains **345 canonical equations, identities, inequalities, Hamiltonians, spectra and topological relations** across **28 categories**. Every formula must link to at least one indexed theory and at least one existing source record.
+The formula atlas is a separate evidence layer linked to the theory graph. It contains canonical equations, identities, inequalities, Hamiltonians, spectra and topological relations. Current counts are generated in the census above. Every formula must link to at least one indexed theory and at least one existing source record.
 
 "All formulas" is treated operationally rather than literally: quantum physics admits arbitrarily many derived equations, equivalent rearrangements, special cases and model-specific identities. The completeness target is therefore **all materially distinct, named or canonical formulas used to define, derive, test, or operationalize indexed quantum theories**, with variants tracked explicitly when they carry different physical content.
 
@@ -116,3 +118,13 @@ Current relation evidence states are:
 - `editorial relation`
 
 Confidence is `high`, `medium`, or `editorial`.
+
+## Learning and personal research
+
+The Learn tab offers three guided paths. Gravity and time starts with a cited proper-time primer, and every path step has a reading profile. The Compare tab searches all catalog entries by name, alias or tag and compares two to four selections. Fifty entries have expanded profiles; other entries retain their catalog summary and bibliography.
+
+My research stores bookmarks, notes, read markers and saved comparisons in this browser only. Save notes explicitly. Export a JSON backup before clearing browser data or moving devices. Imports show a preview and merge with existing work; conflicting notes are appended rather than replaced. Limits are 20,000 characters per note, 100 saved comparisons and 1 MB per backup. Corrupt stored data is preserved and can be exported for recovery; storage failures do not report success. There is no account or cross-device synchronization.
+
+Global filters apply to Network map, Timeline and Catalog. Comparisons and the formula atlas have their own controls. Graph and thought-tree nodes support Enter and Space.
+
+The September 26 workspace release also reviews 25 existing graph edges in `docs/RELATION_REVIEW_2026-09-26.json`. Relationship disclosures expose the explanation, locator and sources. Source-backed does not mean experimentally confirmed.

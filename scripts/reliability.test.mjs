@@ -6,7 +6,7 @@ import {JSDOM,VirtualConsole} from 'jsdom';
 
 const sandbox={window:{}};
 vm.createContext(sandbox);
-for(const file of ['theories.js','formulas.js','formula-audit.js','profiles.js']) vm.runInContext(fs.readFileSync(file,'utf8'),sandbox);
+for(const file of ['theories.js','formulas.js','formula-audit.js','profiles.js','workspace.js']) vm.runInContext(fs.readFileSync(file,'utf8'),sandbox);
 const {theories}=sandbox.window.QI_DATA;
 const {formulas}=sandbox.window.QI_FORMULAS;
 const audit=sandbox.window.QI_FORMULA_AUDIT.entries;
@@ -43,7 +43,7 @@ before(()=>{
   w.HTMLElement.prototype.scrollIntoView=function(){};
   w.MathJax={typesetPromise:()=>Promise.resolve(),typesetClear:()=>{}};
   w.eval(fs.readFileSync('node_modules/d3/dist/d3.min.js','utf8'));
-  for(const file of ['theories.js','formulas.js','formula-audit.js','profiles.js','app.js']) w.eval(fs.readFileSync(file,'utf8'));
+  for(const file of ['theories.js','formulas.js','formula-audit.js','profiles.js','workspace.js','app.js']) w.eval(fs.readFileSync(file,'utf8'));
 });
 after(()=>dom?.window.close());
 async function change(action){
@@ -115,7 +115,7 @@ test('permanent links load on a fresh page and malformed or missing IDs are hand
   const fw=fresh.window;fw.HTMLElement.prototype.scrollIntoView=function(){};
   fw.MathJax={typesetPromise:()=>Promise.resolve(),typesetClear:()=>{}};
   fw.eval(fs.readFileSync('node_modules/d3/dist/d3.min.js','utf8'));
-  for(const file of ['theories.js','formulas.js','formula-audit.js','profiles.js','app.js']) fw.eval(fs.readFileSync(file,'utf8'));
+  for(const file of ['theories.js','formulas.js','formula-audit.js','profiles.js','workspace.js','app.js']) fw.eval(fs.readFileSync(file,'utf8'));
   assert.equal(fw.document.querySelector('.view.active').id,'theoryView');
   assert.equal(fw.document.querySelector('#theoryDetail .detail-title').textContent,'Operator product expansion');
   fresh.window.close();
@@ -269,7 +269,7 @@ test('comparison renders four cited profiles and preserves selection through the
   await route('#/compare?ids='+ids);
   assert.equal(active(),'compareView');
   assert.equal(d.querySelectorAll('.comparison-table thead th').length,5);
-  assert.equal(d.querySelectorAll('#profileCollection a').length,20);
+  assert.equal(d.querySelectorAll('#profileCollection a').length,50);
   assert.ok(d.querySelectorAll('.comparison-table .profile-citations a').length>=28);
   const link=d.querySelector('.comparison-table thead a');
   assert.ok(link.hash.includes('compare='+ids));
@@ -283,11 +283,11 @@ test('comparison renders four cited profiles and preserves selection through the
 test('comparison sanitizes invalid and duplicate IDs, caps four and supports uncatalogued profiles',async()=>{
   await route('#/compare?ids=missing,unruh,unruh,hawking-radiation,jt-gravity,island-formula,string-theory');
   assert.deepEqual([...d.querySelectorAll('[data-compare-slot]')].map(s=>s.value),['unruh','hawking-radiation','jt-gravity','island-formula']);
-  await route('#/compare?ids=planck-quanta,unruh');
+  await route('#/compare?ids=aqft,unruh');
   assert.match(d.querySelector('#comparisonResults').textContent,/Detailed profile not yet curated/);
   const select=d.querySelector('#compareSlot1');
   await change(()=>{select.value='hawking-radiation';select.dispatchEvent(new w.Event('change'));});
-  assert.equal(w.location.hash,'#/compare?ids=planck-quanta,hawking-radiation');
+  assert.equal(w.location.hash,'#/compare?ids=aqft,hawking-radiation');
   await change(()=>d.querySelector('#clearComparison').click());
   assert.equal(d.querySelectorAll('.comparison-table').length,0);
   assert.match(d.querySelector('#comparisonNotice').textContent,/at least two/);
@@ -314,7 +314,7 @@ test('fresh comparison and detail loads restore shareable selections',()=>{
       fw.HTMLElement.prototype.scrollIntoView=function(){};
       fw.MathJax={typesetPromise:()=>Promise.resolve(),typesetClear:()=>{}};
       fw.eval(fs.readFileSync('node_modules/d3/dist/d3.min.js','utf8'));
-      for(const file of ['theories.js','formulas.js','formula-audit.js','profiles.js','app.js']) fw.eval(fs.readFileSync(file,'utf8'));
+      for(const file of ['theories.js','formulas.js','formula-audit.js','profiles.js','workspace.js','app.js']) fw.eval(fs.readFileSync(file,'utf8'));
       if(hash.startsWith('#/compare')) {
         assert.equal(fw.document.querySelector('#compareSlot0').value,'unruh');
         assert.equal(fw.document.querySelector('#compareSlot1').value,'hawking-radiation');
@@ -337,4 +337,99 @@ test('learning paths support ordered steps, deep links and return navigation',as
   assert.equal(d.querySelectorAll('.learning-steps li').length,5);
   await route('#/learn?path=does-not-exist');
   assert.equal(d.querySelectorAll('.learning-path').length,3);
+});
+
+test('prerequisites, connections and formula detours retain learning and comparison context',async()=>{
+  const comparison='#/compare?ids=unruh,hawking-radiation';
+  await route(comparison);
+  await change(()=>d.querySelector('.comparison-table thead a').click());
+  await change(()=>d.querySelector('#theoryDetail .research-profile a[href*="qft-curved-spacetime"]').click());
+  assert.equal(d.querySelector('#backToView').hash,comparison);
+  await change(()=>d.querySelector('#theoryDetail .relation[href*="hawking-radiation"]').click());
+  assert.equal(d.querySelector('#backToView').hash,comparison);
+  const detail=w.location.hash;
+  await change(()=>[...d.querySelectorAll('#theoryDetail a')].find(a=>a.textContent==='View linked formulas').click());
+  assert.equal(d.querySelector('#formulaReturn a').hash,detail);
+  await change(()=>d.querySelector('#formulaReturn a').click());
+  assert.equal(d.querySelector('#backToView').hash,comparison);
+  await route('#/theory/unruh?from=learn&path=gravity-time');
+  await change(()=>d.querySelector('#theoryDetail .research-profile a[href*="qft-curved-spacetime"]').click());
+  assert.equal(d.querySelector('#backToView').hash,'#/learn?path=gravity-time');
+  assert.match(d.querySelector('[aria-label="Learning path navigation"]').textContent,/Step 1 of 5/);
+  await route(comparison);
+  await change(()=>d.querySelector('.comparison-table a[href*="/formula?"]').click());
+  assert.equal(d.querySelector('#formulaReturn a').hash,comparison);
+  await change(()=>d.querySelector('#formulaGrid [data-theory]').click());
+  const formulaReturn=d.querySelector('#backToView').hash;
+  assert.ok(formulaReturn.startsWith('#/formula?theory=unruh&returnTo='));
+  await change(()=>d.querySelector('#theoryDetail .research-profile a[href*="qft-curved-spacetime"]').click());
+  assert.equal(d.querySelector('#backToView').hash,formulaReturn);
+});
+
+test('comparison search narrows options without losing selections and global filters have explicit scope',async()=>{
+  await route('#/compare?ids=unruh,hawking-radiation');
+  assert.equal(d.querySelector('.controls').hidden,true);
+  const input=d.querySelector('#compareSearch0');input.value='Wheeler';input.dispatchEvent(new w.Event('input'));
+  const options=[...d.querySelector('#compareSlot0').options];
+  assert.ok(options.length<15);assert.ok(options.some(o=>o.value==='wheeler-dewitt'));
+  assert.equal(d.querySelector('#compareSlot0').value,'unruh');
+  await change(()=>{const select=d.querySelector('#compareSlot0');select.value='wheeler-dewitt';select.dispatchEvent(new w.Event('change'));});
+  assert.equal(w.location.hash,'#/compare?ids=wheeler-dewitt,hawking-radiation');
+  await route('#/catalog');assert.equal(d.querySelector('.controls').hidden,false);assert.match(d.querySelector('#filterScope').textContent,/Catalog/);
+});
+
+test('workspace UI saves literal notes, progress, bookmarks and comparisons across routes',async()=>{
+  await route('#/theory/unruh');
+  d.querySelector('#toggleBookmark').click();d.querySelector('#toggleRead').click();
+  const note='<img src=x onerror="alert(1)"> Personal note';
+  d.querySelector('#researchNote').value=note;d.querySelector('#saveNote').click();
+  assert.match(d.querySelector('#researchStatus').textContent,/saved/);
+  await route('#/workspace');assert.match(d.querySelector('#workspaceContent').textContent,/1 \/ 5 entries marked read/);
+  assert.ok(d.querySelector('#workspaceContent').textContent.includes(note));assert.equal(d.querySelector('#workspaceContent img'),null);
+  await route('#/theory/unruh?from=workspace');assert.equal(d.querySelector('#researchNote').value,note);
+  assert.equal(d.querySelector('#toggleBookmark').getAttribute('aria-pressed'),'true');
+  await route('#/compare?ids=unruh,hawking-radiation');d.querySelector('#saveComparison').click();
+  await route('#/workspace');assert.ok(d.querySelector('a[href="#/compare?ids=unruh,hawking-radiation"]'));
+  d.querySelector('[data-remove-comparison]').click();assert.equal(w.QI_WORKSPACE.data.comparisons.length,0);
+});
+
+test('graph nodes and thought-tree nodes open details using Enter and Space',async()=>{
+  await route('#/map');d.querySelector('#resetView').click();
+  const node=d.querySelector('.node');assert.equal(node.getAttribute('tabindex'),'0');assert.equal(node.getAttribute('role'),'button');
+  await change(()=>node.dispatchEvent(new w.KeyboardEvent('keydown',{key:'Enter',bubbles:true})));assert.equal(active(),'theoryView');
+  await route('#/lineage');
+  const tree=d.querySelector('.tree-graph-node');assert.equal(tree.getAttribute('tabindex'),'0');
+  await change(()=>tree.dispatchEvent(new w.KeyboardEvent('keydown',{key:' ',bubbles:true})));assert.equal(active(),'theoryView');
+});
+
+test('all learning steps have profiles and the five reviewed math gaps have explicit outcomes',()=>{
+  for(const path of w.QI_PROFILES.learningPaths)for(const step of path.steps)assert.ok(w.QI_PROFILES.profiles[step.theoryId],step.theoryId);
+  for(const id of ['qft-curved-spacetime','jt-gravity','replica-wormholes'])assert.ok(audit.find(a=>a.theoryId===id).formulaIds.length);
+  for(const [id,classification] of [['amps-firewall','theorem'],['black-hole-complementarity','primarily conceptual']]){const a=audit.find(a=>a.theoryId===id);assert.equal(a.classification,classification);assert.ok(a.reviewEvidence.sourceIds.length);}
+  const review=JSON.parse(fs.readFileSync('docs/RELATION_REVIEW_2026-09-26.json','utf8'));
+  assert.equal(review.records.length,25);
+  for(const item of review.records){const r=w.QI_DATA.relations.find(r=>r.from===item.fromId&&r.to===item.toId&&r.type===item.type);assert.equal(r.evidenceNote,item.evidenceNote);assert.deepEqual([...r.sourceIds],item.sourceIds);if(item.decision==='retained editorial')assert.equal(r.confidence,'editorial');}
+});
+
+test('fresh formula and prerequisite detour URLs restore the original return destination',()=>{
+  const comparison='#/compare?ids=unruh,hawking-radiation';
+  const formula='#/formula?theory=unruh&returnTo='+encodeURIComponent(comparison);
+  const detail='#/theory/qft-curved-spacetime?from=formula&returnTo='+encodeURIComponent(formula);
+  for(const [hash,selector,expected] of [[formula,'#formulaReturn a',comparison],[detail,'#backToView',formula],['#/theory/qft-curved-spacetime?from=learn&path=gravity-time','#backToView','#/learn?path=gravity-time']]){
+    const fresh=new JSDOM(fs.readFileSync('index.html','utf8'),{url:'https://example.test/'+hash,runScripts:'outside-only',pretendToBeVisual:true});
+    try{const fw=fresh.window;fw.HTMLElement.prototype.scrollIntoView=function(){};fw.MathJax={typesetPromise:()=>Promise.resolve(),typesetClear:()=>{}};fw.eval(fs.readFileSync('node_modules/d3/dist/d3.min.js','utf8'));for(const f of ['theories.js','formulas.js','formula-audit.js','profiles.js','workspace.js','app.js'])fw.eval(fs.readFileSync(f,'utf8'));assert.equal(fw.document.querySelector(selector).hash,expected);}finally{fresh.window.close();}
+  }
+});
+
+test('import UI previews valid data, waits for merge and rejects invalid backups',async()=>{
+  await route('#/workspace');
+  let input=d.querySelector('#importWorkspace');
+  const before=w.QI_WORKSPACE.exportText(),incoming=JSON.parse(before);incoming.bookmarks.push('jt-gravity');incoming.notes['jt-gravity']='Imported review note';
+  Object.defineProperty(input,'files',{configurable:true,value:[{size:500,text:async()=>JSON.stringify(incoming)}]});
+  await input.onchange({target:input});
+  assert.equal(w.QI_WORKSPACE.exportText(),before);assert.match(d.querySelector('#importPreview').textContent,/existing work is retained/);
+  d.querySelector('#confirmImport').click();assert.equal(w.QI_WORKSPACE.data.notes['jt-gravity'],'Imported review note');
+  input=d.querySelector('#importWorkspace');const saved=w.QI_WORKSPACE.exportText();
+  Object.defineProperty(input,'files',{configurable:true,value:[{size:12,text:async()=>'{invalid'}]});await input.onchange({target:input});
+  assert.equal(d.querySelector('#confirmImport'),null);assert.equal(w.QI_WORKSPACE.exportText(),saved);
 });

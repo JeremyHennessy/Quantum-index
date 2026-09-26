@@ -7273,3 +7273,123 @@ window.QI_FORMULAS = {
     metadataReview: "Whether metadata is explicitly reviewed or inherited from the conservative baseline audit."
   };
 })();
+
+// Reviewed learning-path mathematics, September 2026.
+window.QI_FORMULAS.formulas.push(...[
+  {
+    "id": "curved-kg-free",
+    "name": "Free minimally coupled scalar field on curved spacetime",
+    "category": "Quantum gravity & cosmology",
+    "latex": "(\\Box_g-m^2)\\phi=0,\\qquad \\Box_g=g^{\\mu\\nu}\\nabla_\\mu\\nabla_\\nu",
+    "plain": "(Box_g - m²) phi = 0",
+    "description": "A free scalar starting point for QFT on a prescribed geometry; this is distinct from a flat-space equation and is not a quantum equation for the metric.",
+    "theoryIds": [
+      "qft-curved-spacetime"
+    ],
+    "sourceIds": [
+      "hollands-wald-qftcs-2015"
+    ],
+    "tags": [
+      "learning paths"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "Smooth globally hyperbolic classical spacetime",
+      "Free real scalar field; minimal curvature coupling",
+      "Mostly-plus metric signature"
+    ],
+    "variables": [
+      "phi: real scalar field",
+      "m: mass parameter",
+      "g: spacetime metric",
+      "nabla: metric-compatible covariant derivative"
+    ],
+    "regime": "Linear free-field dynamics on a fixed background",
+    "units": "Natural units c = hbar = 1; mass has inverse-length units.",
+    "theoryRelationship": "reviewed representative, not a complete definition of the framework",
+    "metadataReview": "explicit",
+    "sourceLocations": [
+      {
+        "sourceId": "hollands-wald-qftcs-2015",
+        "locator": "Section 2.1, Eq. (1)",
+        "url": "https://arxiv.org/pdf/1401.2026"
+      }
+    ]
+  },
+  {
+    "id": "jt-curvature-constraint",
+    "name": "JT dilaton curvature constraint",
+    "category": "Quantum gravity & cosmology",
+    "latex": "R=-\\frac{2}{L^2}",
+    "plain": "R = -2/L²",
+    "description": "Variation of the JT dilaton imposes constant negative curvature. The source sets the AdS radius to one; L is restored here. This alone does not specify boundary or dilaton dynamics.",
+    "theoryIds": [
+      "jt-gravity"
+    ],
+    "sourceIds": [
+      "profile-jt-review-2023"
+    ],
+    "tags": [
+      "learning paths"
+    ],
+    "formulaType": "exact",
+    "assumptions": [
+      "Two-dimensional AdS JT model",
+      "Matter couples to the metric, not directly to the dilaton"
+    ],
+    "variables": [
+      "R: two-dimensional Ricci scalar",
+      "L: AdS curvature radius"
+    ],
+    "regime": "Classical local constraint away from replica defects",
+    "units": "R has units of inverse length squared.",
+    "theoryRelationship": "reviewed representative, not a complete definition of the framework",
+    "metadataReview": "explicit",
+    "sourceLocations": [
+      {
+        "sourceId": "profile-jt-review-2023",
+        "locator": "Section 2.2.1, Eq. (2.28), with AdS radius restored",
+        "url": "https://arxiv.org/pdf/2210.10846"
+      }
+    ]
+  },
+  {
+    "id": "replica-entropy-limit",
+    "name": "Replica expression for radiation entropy",
+    "category": "Quantum gravity & cosmology",
+    "latex": "S(\\rho_R)=-\\left.\\partial_n\\log\\operatorname{Tr}(\\rho_R^n)\\right|_{n=1}",
+    "plain": "S = - derivative_n log Tr(rho_R^n) at n=1",
+    "description": "The normalized density-matrix identity used by replica entropy calculations. In gravity the trace requires a path integral; including replica-connected saddles is an additional physical calculation.",
+    "theoryIds": [
+      "replica-wormholes"
+    ],
+    "sourceIds": [
+      "wave4-replica-wormholes-2019"
+    ],
+    "tags": [
+      "learning paths"
+    ],
+    "formulaType": "derived identity",
+    "assumptions": [
+      "Normalized positive density matrix",
+      "Entropy and derivative exist",
+      "Replica saddle evaluation separately assumes suitable analytic continuation"
+    ],
+    "variables": [
+      "rho_R: radiation reduced density matrix",
+      "n: replica index continued near one",
+      "S: von Neumann entropy"
+    ],
+    "regime": "Density-matrix identity; gravitational saddle control is model-dependent",
+    "units": "Natural logarithms; dimensionless entropy with k_B = 1.",
+    "theoryRelationship": "reviewed representative, not a complete definition of the framework",
+    "metadataReview": "explicit",
+    "sourceLocations": [
+      {
+        "sourceId": "wave4-replica-wormholes-2019",
+        "locator": "Introduction, paragraph beginning “To summarize our approach briefly”, p. 4; equivalent logarithmic form since Tr rho_R = 1",
+        "url": "https://arxiv.org/pdf/1911.12333#page=4"
+      }
+    ]
+  }
+]);

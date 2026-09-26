@@ -12,7 +12,12 @@
     "interpretation","thought experiment","classification framework","foundational framework"
   ]);
 
+  const reviewedExceptions = {
+    "black-hole-complementarity": {classification:"primarily conceptual",reason:"Reviewed postulate-based consistency framework. The three postulates do not select a unique defining equation; related entropy and radiation equations are indexed separately.",sourceIds:["susskind-complementarity-1993"],locator:"Introduction, Postulates 1–3, pp. 2–4"},
+    "amps-firewall": {classification:"theorem",reason:"Reviewed conditional no-go argument. Purity of radiation, semiclassical exterior physics and smooth infall cannot all be retained under the argument’s assumptions; this is not a dynamical field equation.",sourceIds:["amps-2012"],locator:"Abstract and Section 2: Complementarity is not enough"}
+  };
   function classify(theory, formulaIds) {
+    if (reviewedExceptions[theory.id]) return reviewedExceptions[theory.id].classification;
     if (formulaIds.length) return "formula-bearing";
     if (theory.kind === "interpretation" || theory.status === "interpretation") return "interpretation";
     if (theory.kind === "theorem" || /theorem/i.test(theory.status || "")) return "theorem";
@@ -44,10 +49,11 @@
       classification,
       coverageStatus: formulaIds.length ? "covered" : (classification === "formula-bearing-gap" ? "documented-gap" : "not-applicable"),
       formulaIds,
-      gapReason: reason(theory, classification),
+      gapReason: reviewedExceptions[theory.id]?.reason || reason(theory, classification),
+      reviewEvidence: reviewedExceptions[theory.id] || null,
       priority: priority(theory, classification),
-      auditBasis: formulaIds.length ? "source-linked formula present" : "entity kind/category audit",
-      reviewedAt: theory.lastReviewed || "2026-09-22"
+      auditBasis: reviewedExceptions[theory.id] ? "source-reviewed classification exception" : formulaIds.length ? "source-linked formula present" : "entity kind/category audit",
+      reviewedAt: reviewedExceptions[theory.id] ? "2026-09-26" : theory.lastReviewed || "2026-09-22"
     };
   });
 
