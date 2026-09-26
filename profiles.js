@@ -992,3 +992,114 @@ window.QI_PROFILES = {
     }
   ]
 };
+
+// Editorial reading routes; these do not assert new historical relationships.
+window.QI_PROFILES.learningPaths = [
+  {
+    "id": "gravity-time",
+    "title": "Gravity and time",
+    "goal": "Follow the role of backgrounds, observers and quantum geometry.",
+    "prerequisites": "Basic quantum mechanics; special relativity; introductory spacetime geometry.",
+    "steps": [
+      {
+        "theoryId": "qft-curved-spacetime",
+        "why": "Start with the distinction between a classical spacetime and the quantum fields living on it."
+      },
+      {
+        "theoryId": "unruh",
+        "why": "Ask how an observer’s motion enters a detector’s response."
+      },
+      {
+        "theoryId": "hawking-radiation",
+        "why": "Compare the horizon setting with the accelerated-observer example."
+      },
+      {
+        "theoryId": "semiclassical-gravity",
+        "why": "Introduce the next question: how does quantum matter affect the geometry?"
+      },
+      {
+        "theoryId": "wheeler-dewitt",
+        "why": "Read the canonical approach and investigate what “time” means when geometry is quantized."
+      }
+    ],
+    "comparison": [
+      "unruh",
+      "hawking-radiation"
+    ]
+  },
+  {
+    "id": "black-hole-information",
+    "title": "The black-hole information problem",
+    "goal": "Trace the tension, then compare proposed resolutions and controlled models.",
+    "prerequisites": "Quantum states, entropy and entanglement; basic black-hole geometry.",
+    "steps": [
+      {
+        "theoryId": "black-hole-thermodynamics",
+        "why": "Begin with the entropy and temperature that motivate the information question."
+      },
+      {
+        "theoryId": "hawking-radiation",
+        "why": "Study the leading radiation calculation and its stated limitations."
+      },
+      {
+        "theoryId": "black-hole-complementarity",
+        "why": "Identify the postulates that the proposed description tries to retain."
+      },
+      {
+        "theoryId": "amps-firewall",
+        "why": "Check which assumptions enter the consistency argument."
+      },
+      {
+        "theoryId": "jt-gravity",
+        "why": "Introduce a tractable model before reading the entropy calculations."
+      },
+      {
+        "theoryId": "replica-wormholes",
+        "why": "Examine the role of replica saddles in the cited calculation."
+      },
+      {
+        "theoryId": "island-formula",
+        "why": "Compare the entropy prescription with a microscopic account of information recovery."
+      }
+    ],
+    "comparison": [
+      "black-hole-complementarity",
+      "amps-firewall",
+      "island-formula"
+    ]
+  },
+  {
+    "id": "quantum-gravity",
+    "title": "Approaches to quantum gravity",
+    "goal": "Compare what each approach assumes, calculates and still needs to explain.",
+    "prerequisites": "General relativity, quantum mechanics and introductory quantum field theory.",
+    "steps": [
+      {
+        "theoryId": "gravity-effective-field-theory",
+        "why": "Use low-energy predictivity as a reference point for the other approaches."
+      },
+      {
+        "theoryId": "loop-quantum-gravity",
+        "why": "Explore the background-independent canonical program."
+      },
+      {
+        "theoryId": "string-theory",
+        "why": "Read the extended-object approach and its construction-dependent scope."
+      },
+      {
+        "theoryId": "asymptotic-safety",
+        "why": "Examine the proposed high-energy fixed point and the evidence described in the review."
+      },
+      {
+        "theoryId": "ads-cft",
+        "why": "Finish with a concrete duality setting and its limits of applicability."
+      }
+    ],
+    "comparison": [
+      "gravity-effective-field-theory",
+      "loop-quantum-gravity",
+      "string-theory",
+      "asymptotic-safety"
+    ]
+  }
+];
