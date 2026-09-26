@@ -18,6 +18,22 @@ window.QI_DATA = (() => {
   });
 
   const theories = [
+    T("ssh-model","Su–Schrieffer–Heeger model",1979,"","Quantum many-body & condensed matter","established","An electron–lattice model of polyacetylene with alternating bonds and soliton domain walls; its fixed-dimerization limit is the SSH chain.","Bond-dependent hopping couples electronic motion to lattice distortion.",["SSH", "dimerization", "solitons", "electron-phonon"],["Su-Schrieffer-Heeger model", "SSH chain"],"model"),
+    T("aubry-andre","Aubry–André quasiperiodic localization model",1980,"","Quantum many-body & condensed matter","established","A one-dimensional lattice model with an incommensurate onsite modulation, used to study localization without a random potential.","Quasiperiodic modulation competes with hopping and supports a localization transition in the ideal model.",["Aubry-André", "quasiperiodic", "localization"],["Aubry-Andre model", "Aubry–André–Harper model"],"model"),
+    T("holstein-model","Holstein molecular-crystal / polaron model",1959,"","Quantum many-body & condensed matter","established","A tight-binding electron couples to local molecular vibrations, providing a model of electron–phonon dressing and polaron motion.","Local electronic occupancy shifts local vibrational coordinates.",["Holstein", "polaron", "electron-phonon"],["Holstein model", "molecular-crystal model"],"model"),
+    T("deconfined-criticality","Deconfined quantum criticality",2003,"","Quantum many-body & condensed matter","active research","A proposed description of certain quantum critical points using fractionalized degrees of freedom and emergent gauge fields instead of only conventional order parameters.","Fractionalized fields can become the effective critical variables between phases with conventional order.",["DQCP", "spinons", "emergent gauge fields"],["Deconfined quantum critical points"],"critical framework"),
+    T("fracton-phases","Fracton phases and restricted-mobility frameworks",2004,"","Quantum many-body & condensed matter","active research","Frameworks for excitations whose motion is constrained under local operations. The date marks Chamon’s early model; the broader fracton terminology developed later.","Individual excitations can be immobile or restricted to subdimensions even when composites can move.",["fracton", "restricted mobility", "tensor gauge theory"],["Fracton order", "Fracton matter"],"phase framework"),
+    T("quantum-many-body-scars","Quantum many-body scar framework",2017,"","Quantum many-body & condensed matter","active research","Atypical nonthermal eigenstates embedded in an otherwise thermalizing spectrum can produce long-lived revivals for selected initial states.","Weak ergodicity breaking can arise from special eigenstates without localizing the whole spectrum.",["quantum scars", "PXP", "weak ergodicity breaking"],["Many-body quantum scars", "Quantum many-body scars"],"dynamical framework"),
+    T("discrete-time-crystals","Discrete / Floquet time-crystal framework",2016,"","Quantum many-body & condensed matter","active research","Driven many-body phases can spontaneously break discrete time-translation symmetry, giving a robust response with a period longer than the drive.","Time-translation symmetry breaking distinguishes the phase from ordinary forced oscillations.",["time crystal", "Floquet", "subharmonic response"],["Discrete time crystals", "Floquet time crystals"],"nonequilibrium phase framework"),
+    T("measurement-induced-transition","Measurement-induced entanglement transitions",2018,"","Quantum many-body & condensed matter","active research","Hybrid circuits combining unitary gates and measurements can exhibit transitions between volume-law and area-law entanglement in conditioned trajectories.","Measurement and unitary evolution compete in the entanglement structure of individual quantum trajectories.",["hybrid circuits", "measurement-induced", "entanglement transition"],["Measurement-induced phase transition", "MIPT"],"dynamical phase-transition framework"),
+    T("quantum-discord","Quantum discord framework",2001,"","Quantum information & open systems","established","A measurement-dependent difference between quantum mutual-information expressions characterizes correlations beyond a purely classical description.","Local measurement generally changes the accessible correlation information.",["discord", "quantum correlations", "mutual information"],["Quantum discord"],"correlation framework"),
+    T("coherence-resource-theory","Resource theory of quantum coherence",2013,"","Quantum information & open systems","active research","A resource framework relative to a chosen reference basis, with incoherent states and specified free operations used to quantify coherence.","Coherence measures must respect the selected class of incoherent operations.",["coherence", "incoherent operations", "resource theory"],["Quantum coherence resource theory"],"resource framework"),
+    T("quantum-zeno","Quantum Zeno effect and dynamics",1977,"","Quantum information & open systems","established","Sufficiently frequent measurements can inhibit transitions or constrain evolution to a measurement subspace under appropriate conditions.","The measurement protocol and short-time quantum dynamics determine the Zeno limit.",["Zeno", "repeated measurement", "measurement dynamics"],["Quantum Zeno effect", "Quantum Zeno dynamics"],"measurement dynamics"),
+    T("berry-phase","Berry phase / adiabatic geometric phase",1984,"","Mathematical structures","established","An adiabatically transported eigenstate acquires a geometric phase associated with its path through Hamiltonian parameter space.","Connection and curvature describe geometry beyond the dynamical phase for an isolated eigenstate.",["Berry phase", "geometric phase", "adiabatic"],["Adiabatic geometric phase", "Berry-phase framework"],"geometric framework"),
+    T("aharonov-bohm","Aharonov–Bohm effect framework",1959,"","Quantum optics & AMO","established","Charged-particle interference can depend on enclosed magnetic flux even when the particle paths lie in a field-free region.","The observable phase difference is gauge invariant and depends on the closed-path electromagnetic holonomy.",["Aharonov-Bohm", "flux", "interference"],["Aharonov-Bohm effect", "AB effect"],"interference effect"),
+    T("fano-resonance","Fano discrete–continuum resonance theory",1961,"","Quantum optics & AMO","established","Interference involving a discrete state coupled to a continuum produces asymmetric resonance profiles in excitation and scattering.","The resonant and continuum excitation pathways interfere.",["Fano", "autoionization", "resonance"],["Fano resonance", "Fano interference"],"resonance framework"),
+    T("quantum-steering","Operational quantum steering framework",2006,"","Quantum information & open systems","established","A formalization of Schrödinger’s 1935 steering idea tests whether bipartite correlations admit a local hidden-state description for the trusted party.","Steerability occupies a distinct place between entanglement and Bell nonlocality under the stated measurement scenario.",["EPR steering", "local hidden state", "one-sided trust"],["Quantum steering", "EPR steering"],"correlation framework"),
+    T("quantum-kibble-zurek","Quantum Kibble–Zurek framework",2005,"","Quantum many-body & condensed matter","active research","Finite-rate sweeps across a quantum critical point produce nonadiabatic excitations whose scaling can be related to critical dynamics.","Critical slowing down limits adiabatic following during a quantum quench.",["Kibble-Zurek", "quantum quench", "defect scaling"],["Quantum Kibble-Zurek mechanism"],"nonequilibrium scaling framework"),
     T("planck-quanta","Planck energy quanta",1900,"1900–1924","Historical foundations","historical","Planck introduced discrete energy elements to account for black-body radiation.","Energy exchange can occur in discrete units proportional to frequency.",["quantization","black-body","Planck"]),
     T("light-quantum","Einstein light quantum",1905,"1900–1924","Historical foundations","historical","Einstein treated light itself as localized energy quanta to explain the photoelectric effect.","Radiation has particle-like quanta with energy E = hν.",["photon","photoelectric","Einstein"],["light quantum hypothesis"]),
     T("bohr-model","Bohr atomic model",1913,"1900–1924","Historical foundations","historical","Bohr combined quantized stationary orbits with classical atomic structure.","Atomic electrons occupy discrete stationary states and emit or absorb quanta during transitions.",["atoms","spectra","Bohr"]),
@@ -511,6 +527,24 @@ window.QI_DATA = (() => {
   ];
 
   const sources = [
+    {"id": "discovery-ssh-1979", "title": "Solitons in Polyacetylene", "authors": "W. P. Su, J. R. Schrieffer, A. J. Heeger", "year": 1979, "url": "https://doi.org/10.1103/PhysRevLett.42.1698", "type": "primary source"},
+    {"id": "discovery-roati-2008", "title": "Anderson localization of a non-interacting Bose-Einstein condensate", "authors": "G. Roati, C. D’Errico, L. Fallani, M. Fattori, C. Fort, M. Zaccanti, G. Modugno, M. Modugno, M. Inguscio", "year": 2008, "url": "https://arxiv.org/abs/0804.2609", "type": "primary source"},
+    {"id": "discovery-holstein-1959", "title": "Studies of polaron motion: Part I. The molecular-crystal model", "authors": "T. Holstein", "year": 1959, "url": "https://doi.org/10.1016/0003-4916(59)90002-8", "type": "primary source"},
+    {"id": "discovery-senthil-2003", "title": "Deconfined quantum critical points", "authors": "T. Senthil, Ashvin Vishwanath, Leon Balents, Subir Sachdev, M. P. A. Fisher", "year": 2003, "url": "https://arxiv.org/abs/cond-mat/0311326", "type": "primary source"},
+    {"id": "discovery-chamon-2004", "title": "Quantum Glassiness", "authors": "Claudio Chamon", "year": 2004, "url": "https://arxiv.org/abs/cond-mat/0404182", "type": "primary source"},
+    {"id": "discovery-fractons-2018", "title": "Fractons", "authors": "Rahul M. Nandkishore, Michael Hermele", "year": 2018, "url": "https://arxiv.org/abs/1803.11196", "type": "authoritative review"},
+    {"id": "discovery-scars-2017", "title": "Quantum many-body scars", "authors": "Christopher J. Turner, Alexios A. Michailidis, Dmitry A. Abanin, Maksym Serbyn, Zlatko Papić", "year": 2017, "url": "https://arxiv.org/abs/1711.03528", "type": "primary source"},
+    {"id": "discovery-time-crystals-2016", "title": "Floquet Time Crystals", "authors": "Dominic V. Else, Bela Bauer, Chetan Nayak", "year": 2016, "url": "https://arxiv.org/abs/1603.08001", "type": "primary source"},
+    {"id": "discovery-measurement-transition-2018", "title": "Quantum Zeno Effect and the Many-body Entanglement Transition", "authors": "Yaodong Li, Xiao Chen, Matthew P. A. Fisher", "year": 2018, "url": "https://arxiv.org/abs/1808.06134", "type": "primary source"},
+    {"id": "discovery-discord-2001", "title": "Introducing Quantum Discord", "authors": "Harold Ollivier, Wojciech H. Zurek", "year": 2001, "url": "https://arxiv.org/abs/quant-ph/0105072", "type": "primary source"},
+    {"id": "discovery-coherence-2013", "title": "Quantifying Coherence", "authors": "T. Baumgratz, M. Cramer, M. B. Plenio", "year": 2013, "url": "https://arxiv.org/abs/1311.0275", "type": "primary source"},
+    {"id": "discovery-zeno-1977", "title": "The Zeno’s paradox in quantum theory", "authors": "B. Misra, E. C. G. Sudarshan", "year": 1977, "url": "https://doi.org/10.1063/1.523304", "type": "primary source"},
+    {"id": "discovery-zeno-review-2012", "title": "The Quantum Zeno Effect — Watched Pots in the Quantum World", "authors": "Anu Venugopalan", "year": 2012, "url": "https://arxiv.org/abs/1211.3498", "type": "authoritative review"},
+    {"id": "discovery-berry-1984", "title": "Quantal phase factors accompanying adiabatic changes", "authors": "M. V. Berry", "year": 1984, "url": "https://doi.org/10.1098/rspa.1984.0023", "type": "primary source"},
+    {"id": "discovery-aharonov-bohm-1959", "title": "Significance of Electromagnetic Potentials in the Quantum Theory", "authors": "Y. Aharonov, D. Bohm", "year": 1959, "url": "https://doi.org/10.1103/PhysRev.115.485", "type": "primary source"},
+    {"id": "discovery-fano-1961", "title": "Effects of Configuration Interaction on Intensities and Phase Shifts", "authors": "U. Fano", "year": 1961, "url": "https://doi.org/10.1103/PhysRev.124.1866", "type": "primary source"},
+    {"id": "discovery-steering-2006", "title": "Steering, Entanglement, Nonlocality, and the EPR Paradox", "authors": "H. M. Wiseman, S. J. Jones, A. C. Doherty", "year": 2006, "url": "https://arxiv.org/abs/quant-ph/0612147", "type": "primary source"},
+    {"id": "discovery-quantum-kz-2005", "title": "Dynamics of a Quantum Phase Transition", "authors": "Wojciech H. Zurek, Uwe Dorner, Peter Zoller", "year": 2005, "url": "https://arxiv.org/abs/cond-mat/0503511", "type": "primary source"},
     {"id": "abedi-factorization-2010", "title": "Exact factorization of the time-dependent electron-nuclear wavefunction", "authors": "Ali Abedi, Neepa T. Maitra, E. K. U. Gross", "year": 2010, "type": "primary source", "url": "https://arxiv.org/abs/1006.2638"},
     {"id": "sax-valence-bond-2015", "title": "Chemical Bonding: The Orthogonal Valence-Bond View", "authors": "Alexander F. Sax", "year": 2015, "type": "primary source", "url": "https://doi.org/10.3390/ijms16048896"},
     {"id": "roothaan-mo-1951", "title": "New Developments in Molecular Orbital Theory", "authors": "C. C. J. Roothaan", "year": 1951, "type": "primary source", "url": "https://doi.org/10.1103/RevModPhys.23.69"},
@@ -978,6 +1012,22 @@ window.QI_DATA = (() => {
   ];
 
   const sourceLinks = {
+    "ssh-model":["discovery-ssh-1979"],
+    "aubry-andre":["discovery-roati-2008"],
+    "holstein-model":["discovery-holstein-1959"],
+    "deconfined-criticality":["discovery-senthil-2003"],
+    "fracton-phases":["discovery-chamon-2004", "discovery-fractons-2018"],
+    "quantum-many-body-scars":["discovery-scars-2017"],
+    "discrete-time-crystals":["discovery-time-crystals-2016"],
+    "measurement-induced-transition":["discovery-measurement-transition-2018"],
+    "quantum-discord":["discovery-discord-2001"],
+    "coherence-resource-theory":["discovery-coherence-2013"],
+    "quantum-zeno":["discovery-zeno-1977", "discovery-zeno-review-2012"],
+    "berry-phase":["discovery-berry-1984"],
+    "aharonov-bohm":["discovery-aharonov-bohm-1959"],
+    "fano-resonance":["discovery-fano-1961"],
+    "quantum-steering":["discovery-steering-2006"],
+    "quantum-kibble-zurek":["discovery-quantum-kz-2005"],
     "mackey-imprimitivity":["wave6-mackey-1949"],
     "ludwig-operational-qm":["wave6-ludwig-1983"],
     "stone-von-neumann":["wave6-stone-vn-1949"],
@@ -1420,6 +1470,92 @@ window.QI_DATA = (() => {
     theory.lastReviewed = linked.length ? "2026-09-22" : null;
   }
 
+  const discoveryMetadata = {
+  "ssh-model": {
+    "curationBatch": "discovery-2026-09-26",
+    "lastReviewed": "2026-09-26",
+    "yearBasis": "1979 original SSH publication."
+  },
+  "aubry-andre": {
+    "curationBatch": "discovery-2026-09-26",
+    "lastReviewed": "2026-09-26",
+    "yearBasis": "1980 Aubry–André formulation, cited as Ref. 19 in Roati et al. (2008); the experimental source is later."
+  },
+  "holstein-model": {
+    "curationBatch": "discovery-2026-09-26",
+    "lastReviewed": "2026-09-26",
+    "yearBasis": "1959 molecular-crystal model publication."
+  },
+  "deconfined-criticality": {
+    "curationBatch": "discovery-2026-09-26",
+    "lastReviewed": "2026-09-26",
+    "yearBasis": "2003 public preprint; Science publication followed in 2004."
+  },
+  "fracton-phases": {
+    "curationBatch": "discovery-2026-09-26",
+    "lastReviewed": "2026-09-26",
+    "yearBasis": "2004 Chamon preprint, published in 2005, used as an explicit precursor anchor rather than a date for the later term fracton."
+  },
+  "quantum-many-body-scars": {
+    "curationBatch": "discovery-2026-09-26",
+    "lastReviewed": "2026-09-26",
+    "yearBasis": "2017 public preprint; Nature Physics publication followed in 2018."
+  },
+  "discrete-time-crystals": {
+    "curationBatch": "discovery-2026-09-26",
+    "lastReviewed": "2026-09-26",
+    "yearBasis": "2016 Floquet time-crystal formulation; earlier equilibrium proposals are a different scope."
+  },
+  "measurement-induced-transition": {
+    "curationBatch": "discovery-2026-09-26",
+    "lastReviewed": "2026-09-26",
+    "yearBasis": "2018 Li–Chen–Fisher hybrid-circuit study; this is a representative early paper, not an exclusive priority claim."
+  },
+  "quantum-discord": {
+    "curationBatch": "discovery-2026-09-26",
+    "lastReviewed": "2026-09-26",
+    "yearBasis": "2001 preprint and online journal publication; the journal volume is dated 2002."
+  },
+  "coherence-resource-theory": {
+    "curationBatch": "discovery-2026-09-26",
+    "lastReviewed": "2026-09-26",
+    "yearBasis": "2013 public preprint of the Baumgratz–Cramer–Plenio formulation; journal publication followed in 2014."
+  },
+  "quantum-zeno": {
+    "curationBatch": "discovery-2026-09-26",
+    "lastReviewed": "2026-09-26",
+    "yearBasis": "1977 Misra–Sudarshan formulation; earlier short-time survival results are antecedents."
+  },
+  "berry-phase": {
+    "curationBatch": "discovery-2026-09-26",
+    "lastReviewed": "2026-09-26",
+    "yearBasis": "1984 Berry formulation; not a claim that all geometric-phase antecedents began in 1984."
+  },
+  "aharonov-bohm": {
+    "curationBatch": "discovery-2026-09-26",
+    "lastReviewed": "2026-09-26",
+    "yearBasis": "1959 Aharonov–Bohm paper; the entry does not assert the absence of earlier related work."
+  },
+  "fano-resonance": {
+    "curationBatch": "discovery-2026-09-26",
+    "lastReviewed": "2026-09-26",
+    "yearBasis": "1961 general formulation; Fano’s earlier qualitative work is an antecedent."
+  },
+  "quantum-steering": {
+    "curationBatch": "discovery-2026-09-26",
+    "lastReviewed": "2026-09-26",
+    "yearBasis": "2006 public preprint of the modern operational definition, published in 2007; the underlying steering idea dates to 1935."
+  },
+  "quantum-kibble-zurek": {
+    "curationBatch": "discovery-2026-09-26",
+    "lastReviewed": "2026-09-26",
+    "yearBasis": "2005 Zurek–Dorner–Zoller quantum Ising formulation; not the origin date of the broader Kibble–Zurek mechanism."
+  }
+};
+  for (const theory of theories) {
+    if (discoveryMetadata[theory.id]) Object.assign(theory, discoveryMetadata[theory.id]);
+  }
+
   const R = (from,to,type,note="",evidence={}) => ({
     from,to,type,note,
     sourceIds:Array.isArray(evidence.sourceIds)?evidence.sourceIds:[],
@@ -1428,6 +1564,23 @@ window.QI_DATA = (() => {
     evidenceNote:evidence.evidenceNote||""
   });
   const relations = [
+    R("ssh-model","holstein-model","overlaps","",{"sourceIds": ["discovery-ssh-1979", "discovery-holstein-1959"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "The model Hamiltonians couple electrons to lattice displacements through hopping in SSH and local site energies in Holstein. They are distinct electron–phonon models."}),
+    R("aubry-andre","anderson-localization","overlaps","",{"sourceIds": ["discovery-roati-2008"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "Roati et al. discuss localization in a quasiperiodic lattice and compare it with random-disorder localization; the deterministic potential is a distinct setting."}),
+    R("deconfined-criticality","quantum-phase-transitions","extends","",{"sourceIds": ["discovery-senthil-2003"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "The paper proposes fractionalized critical degrees of freedom and emergent gauge fields for certain transitions between conventionally ordered phases."}),
+    R("fracton-phases","toric-code","overlaps","",{"sourceIds": ["discovery-fractons-2018"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "The review compares gapped fracton models with conventional topological order, including toric-code constructions. Restricted mobility prevents identifying the classes."}),
+    R("quantum-many-body-scars","eigenstate-thermalization","overlaps","",{"sourceIds": ["discovery-scars-2017"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "The paper identifies special nonthermal many-body eigenstates embedded in an otherwise thermalizing spectrum, rather than claiming failure of all thermalization."}),
+    R("quantum-many-body-scars","rydberg-blockade","overlaps","",{"sourceIds": ["discovery-scars-2017"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "The constrained Fibonacci-chain model is motivated by the Rydberg-atom simulator; the scar framework is broader than that realization."}),
+    R("discrete-time-crystals","floquet-quantum","extends","",{"sourceIds": ["discovery-time-crystals-2016"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "The driven system has discrete time-translation symmetry that can break spontaneously; Floquet evolution alone does not establish time-crystalline order."}),
+    R("measurement-induced-transition","quantum-trajectories","overlaps","",{"sourceIds": ["discovery-measurement-transition-2018"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "The hybrid-circuit study analyzes entanglement in conditioned wavefunction trajectories generated by unitary gates and projective measurements."}),
+    R("quantum-discord","quantum-information","supports","",{"sourceIds": ["discovery-discord-2001"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "The paper compares mutual-information expressions using local measurements to define a measure of the quantumness of correlations."}),
+    R("coherence-resource-theory","resource-theories","extends","",{"sourceIds": ["discovery-coherence-2013"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "The paper specifies incoherent states and operations and imposes resource-monotonicity conditions on coherence measures."}),
+    R("quantum-zeno","continuous-quantum-measurement","overlaps","",{"sourceIds": ["discovery-zeno-review-2012"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "The review discusses inhibited evolution under repeated observation and measurement implementations; a Zeno limit requires additional dynamical and monitoring conditions."}),
+    R("berry-phase","aharonov-bohm","generalizes","",{"sourceIds": ["discovery-berry-1984"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "Berry Sec. 5 treats magnetic Aharonov–Bohm phase effects as a special geometric-phase construction. This does not identify every electromagnetic phase protocol with adiabatic transport."}),
+    R("aharonov-bohm","wave-mechanics","supports","",{"sourceIds": ["discovery-aharonov-bohm-1959"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "The 1959 paper obtains interference phase effects using wavefunction evolution with electromagnetic potentials; the effect is within standard quantum dynamics."}),
+    R("fano-resonance","configuration-interaction","extends","",{"sourceIds": ["discovery-fano-1961"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "The 1961 paper applies configuration interaction to discrete states and continua, deriving interference-dependent resonance intensities and phase shifts."}),
+    R("quantum-steering","entanglement-theory","overlaps","",{"sourceIds": ["discovery-steering-2006"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "The operational analysis distinguishes steerable states from the larger set of entangled states under its bipartite measurement scenario."}),
+    R("quantum-steering","bell","overlaps","",{"sourceIds": ["discovery-steering-2006"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "The paper distinguishes local hidden-state models from Bell-local models, placing Bell nonlocality within steerability in the specified scenario."}),
+    R("quantum-kibble-zurek","quantum-phase-transitions","supports","",{"sourceIds": ["discovery-quantum-kz-2005"], "evidenceType": "formal mathematical relation", "confidence": "high", "evidenceNote": "The 2005 study analyzes finite-rate quenches of the quantum Ising model and derives compatible defect-scaling results from critical dynamics and avoided crossings."}),
     R("planck-quanta","old-quantum","precursor"),R("light-quantum","old-quantum","precursor"),R("bohr-model","old-quantum","supports"),
     R("old-quantum","matrix-mechanics","precursor"),R("de-broglie","wave-mechanics","precursor"),R("matrix-mechanics","dirac-transformation","reformulates"),R("wave-mechanics","dirac-transformation","reformulates"),
     R("wave-mechanics","born-rule","supports"),R("matrix-mechanics","uncertainty","supports"),R("complementarity","copenhagen","supports"),R("dirac-transformation","von-neumann","extends"),
@@ -1890,6 +2043,9 @@ window.QI_DATA = (() => {
   }
 
   const trees = [
+    {"name": "Additional lattice models and critical dynamics", "nodes": ["holstein-model", "ssh-model", "aubry-andre", "anderson-localization", "quantum-phase-transitions", "deconfined-criticality", "quantum-kibble-zurek"]},
+    {"name": "Constrained and monitored quantum matter", "nodes": ["eigenstate-thermalization", "quantum-many-body-scars", "fracton-phases", "toric-code", "floquet-quantum", "discrete-time-crystals", "quantum-trajectories", "measurement-induced-transition"]},
+    {"name": "Interference and quantum correlation frameworks", "nodes": ["aharonov-bohm", "berry-phase", "fano-resonance", "configuration-interaction", "quantum-zeno", "continuous-quantum-measurement", "quantum-information", "entanglement-theory", "quantum-steering", "quantum-discord", "resource-theories", "coherence-resource-theory"]},
     {name:"Birth of quantum mechanics",nodes:["planck-quanta","light-quantum","bohr-model","old-quantum","de-broglie","matrix-mechanics","wave-mechanics","dirac-transformation","von-neumann"]},
     {name:"Measurement and interpretation",nodes:["born-rule","copenhagen","epr","bell","quantum-logic","bohmian","primitive-ontology","bell-type-qft","ontological-models","hidden-measurements","everett","wigner-friend","decoherence","grw","grwm","grwf","qmupl","objective-collapse","diosi-gravitational-collapse","energy-driven-collapse","consistent-histories","history-projection-operator","coevent-interpretation","relational-qm","qbism","quantum-darwinism","generalized-probabilistic","operational-reconstruction-qm"]},
     {name:"Quantum fields to the Standard Model",nodes:["canonical-quantization","qed","nrqed","light-front-quantization","wightman-qft","causal-perturbation","constructive-qft","schwinger-dyson","conformal-field-theory","integrable-qft","yang-mills","background-field-method","brst","electroweak","qcd","nrqcd","standard-model","renormalization-group","functional-rg","effective-field-theory","chiral-perturbation-theory","heavy-quark-effective-theory","soft-collinear-effective-theory","standard-model-eft","noncommutative-geometry","noncommutative-qft","supersymmetry","supersymmetric-localization"]},

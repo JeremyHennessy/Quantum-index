@@ -2318,10 +2318,12 @@ window.QI_FORMULAS = {
       "plain": "A_n=i<u_n|grad_k u_n>",
       "description": "Gauge-dependent Berry connection in parameter or momentum space.",
       "theoryIds": [
+        "berry-phase",
         "haldane-model",
         "integer-quantum-hall"
       ],
       "sourceIds": [
+        "discovery-berry-1984",
         "haldane-1988"
       ],
       "tags": [
@@ -2336,10 +2338,12 @@ window.QI_FORMULAS = {
       "plain": "Omega_n = curl_k A_n",
       "description": "Gauge-invariant curvature derived from the Berry connection.",
       "theoryIds": [
+        "berry-phase",
         "haldane-model",
         "integer-quantum-hall"
       ],
       "sourceIds": [
+        "discovery-berry-1984",
         "haldane-1988"
       ],
       "tags": [

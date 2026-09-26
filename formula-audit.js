@@ -47,7 +47,7 @@
       gapReason: reason(theory, classification),
       priority: priority(theory, classification),
       auditBasis: formulaIds.length ? "source-linked formula present" : "entity kind/category audit",
-      reviewedAt: "2026-09-22"
+      reviewedAt: theory.lastReviewed || "2026-09-22"
     };
   });
 
