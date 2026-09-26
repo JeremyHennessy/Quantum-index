@@ -2086,5 +2086,6 @@ window.QI_DATA = (() => {
     {"name":"Extended string and holography programs","nodes":["string-theory","m-theory","f-theory","holographic-principle","ads-cft","ds-cft","conformal-field-theory","liouville-quantum-gravity"]}
   ];
 
+  sources.push({id:"profile-jt-review-2023",title:"Solvable models of quantum black holes: a review on Jackiw–Teitelboim gravity",authors:"Thomas G. Mertens and Gustavo J. Turiaci",year:2023,type:"review",url:"https://arxiv.org/abs/2210.10846"});
   return { theories, relations, trees, sources };
 })();

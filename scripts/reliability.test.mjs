@@ -6,7 +6,7 @@ import {JSDOM,VirtualConsole} from 'jsdom';
 
 const sandbox={window:{}};
 vm.createContext(sandbox);
-for(const file of ['theories.js','formulas.js','formula-audit.js']) vm.runInContext(fs.readFileSync(file,'utf8'),sandbox);
+for(const file of ['theories.js','formulas.js','formula-audit.js','profiles.js']) vm.runInContext(fs.readFileSync(file,'utf8'),sandbox);
 const {theories}=sandbox.window.QI_DATA;
 const {formulas}=sandbox.window.QI_FORMULAS;
 const audit=sandbox.window.QI_FORMULA_AUDIT.entries;
@@ -43,7 +43,7 @@ before(()=>{
   w.HTMLElement.prototype.scrollIntoView=function(){};
   w.MathJax={typesetPromise:()=>Promise.resolve(),typesetClear:()=>{}};
   w.eval(fs.readFileSync('node_modules/d3/dist/d3.min.js','utf8'));
-  for(const file of ['theories.js','formulas.js','formula-audit.js','app.js']) w.eval(fs.readFileSync(file,'utf8'));
+  for(const file of ['theories.js','formulas.js','formula-audit.js','profiles.js','app.js']) w.eval(fs.readFileSync(file,'utf8'));
 });
 after(()=>dom?.window.close());
 async function change(action){
@@ -115,7 +115,7 @@ test('permanent links load on a fresh page and malformed or missing IDs are hand
   const fw=fresh.window;fw.HTMLElement.prototype.scrollIntoView=function(){};
   fw.MathJax={typesetPromise:()=>Promise.resolve(),typesetClear:()=>{}};
   fw.eval(fs.readFileSync('node_modules/d3/dist/d3.min.js','utf8'));
-  for(const file of ['theories.js','formulas.js','formula-audit.js','app.js']) fw.eval(fs.readFileSync(file,'utf8'));
+  for(const file of ['theories.js','formulas.js','formula-audit.js','profiles.js','app.js']) fw.eval(fs.readFileSync(file,'utf8'));
   assert.equal(fw.document.querySelector('.view.active').id,'theoryView');
   assert.equal(fw.document.querySelector('#theoryDetail .detail-title').textContent,'Operator product expansion');
   fresh.window.close();
@@ -261,5 +261,64 @@ test('all discovered entries open visible details with their linked research sou
       const source=sandbox.window.QI_DATA.sources.find(s=>s.id===sid);
       assert.ok(sourceLinks.includes(source.url),id+': '+sid);
     }
+  }
+});
+
+test('comparison renders four cited profiles and preserves selection through theory navigation',async()=>{
+  const ids='loop-quantum-gravity,string-theory,asymptotic-safety,gravity-effective-field-theory';
+  await route('#/compare?ids='+ids);
+  assert.equal(active(),'compareView');
+  assert.equal(d.querySelectorAll('.comparison-table thead th').length,5);
+  assert.equal(d.querySelectorAll('#profileCollection a').length,20);
+  assert.ok(d.querySelectorAll('.comparison-table .profile-citations a').length>=28);
+  const link=d.querySelector('.comparison-table thead a');
+  assert.ok(link.hash.includes('compare='+ids));
+  await change(()=>link.click());
+  assert.match(d.querySelector('#theoryDetail').textContent,/Problem addressed/);
+  assert.equal(d.querySelector('#backToView').hash,'#/compare?ids='+ids);
+  await change(()=>d.querySelector('#backToView').click());
+  assert.equal(d.querySelector('#compareSlot3').value,'gravity-effective-field-theory');
+});
+
+test('comparison sanitizes invalid and duplicate IDs, caps four and supports uncatalogued profiles',async()=>{
+  await route('#/compare?ids=missing,unruh,unruh,hawking-radiation,jt-gravity,island-formula,string-theory');
+  assert.deepEqual([...d.querySelectorAll('[data-compare-slot]')].map(s=>s.value),['unruh','hawking-radiation','jt-gravity','island-formula']);
+  await route('#/compare?ids=planck-quanta,unruh');
+  assert.match(d.querySelector('#comparisonResults').textContent,/Detailed profile not yet curated/);
+  const select=d.querySelector('#compareSlot1');
+  await change(()=>{select.value='hawking-radiation';select.dispatchEvent(new w.Event('change'));});
+  assert.equal(w.location.hash,'#/compare?ids=planck-quanta,hawking-radiation');
+  await change(()=>d.querySelector('#clearComparison').click());
+  assert.equal(d.querySelectorAll('.comparison-table').length,0);
+  assert.match(d.querySelector('#comparisonNotice').textContent,/at least two/);
+});
+
+test('all curated profiles render citations and detail URLs restore comparison return state',async()=>{
+  for(const id of Object.keys(w.QI_PROFILES.profiles)){
+    await route('#/theory/'+id);
+    assert.ok(d.querySelectorAll('#theoryDetail .profile-citations a').length>=7,id);
+  }
+  await route('#/compare');
+  await route('#/theory/unruh?from=compare&compare=unruh,hawking-radiation');
+  assert.equal(d.querySelector('#backToView').hash,'#/compare?ids=unruh,hawking-radiation');
+  await change(()=>d.querySelector('#backToView').click());
+  assert.equal(d.querySelectorAll('.comparison-table thead th').length,3);
+});
+
+
+test('fresh comparison and detail loads restore shareable selections',()=>{
+  for (const hash of ['#/compare?ids=unruh,hawking-radiation','#/theory/unruh?from=compare&compare=unruh,hawking-radiation']) {
+    const fresh=new JSDOM(fs.readFileSync('index.html','utf8'),{url:'https://example.test/Quantum-index/'+hash,runScripts:'outside-only',pretendToBeVisual:true});
+    const fw=fresh.window;
+    try {
+      fw.HTMLElement.prototype.scrollIntoView=function(){};
+      fw.MathJax={typesetPromise:()=>Promise.resolve(),typesetClear:()=>{}};
+      fw.eval(fs.readFileSync('node_modules/d3/dist/d3.min.js','utf8'));
+      for(const file of ['theories.js','formulas.js','formula-audit.js','profiles.js','app.js']) fw.eval(fs.readFileSync(file,'utf8'));
+      if(hash.startsWith('#/compare')) {
+        assert.equal(fw.document.querySelector('#compareSlot0').value,'unruh');
+        assert.equal(fw.document.querySelector('#compareSlot1').value,'hawking-radiation');
+      } else assert.equal(fw.document.querySelector('#backToView').hash,'#/compare?ids=unruh,hawking-radiation');
+    } finally {fw.close();}
   }
 });

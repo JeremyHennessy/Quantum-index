@@ -66,6 +66,7 @@
       <button class="tab" data-view="lineage">Thought trees</button>
       <button class="tab" data-view="catalog">Catalog</button>
       <button class="tab" data-view="formula">Formula atlas</button>
+      <button class="tab" data-view="compare">Compare</button>
     </nav>
 
     <section id="mapView" class="view active">
@@ -141,6 +142,25 @@
         <div id="catalog" class="catalog-grid"></div>
       </div>
     </section>
+    <section id="compareView" class="view" aria-label="Compare theories">
+      <div class="card comparison-panel">
+        <p class="eyebrow">COMPARE APPROACHES</p>
+        <h3>Explore the differences</h3>
+        <p class="muted">Choose two to four entries. Compare their scope, assumptions, results and limitations. A source citation is not a verdict of experimental confirmation.</p>
+        <div id="comparisonPresets" class="detail-actions"></div>
+        <div id="compareSelectors" class="comparison-selectors"></div>
+        <p id="comparisonNotice" role="status" aria-live="polite"></p>
+        <div class="detail-actions"><a id="comparisonPermalink" class="ghost link-button" href="#/compare">Permanent comparison link</a><button id="clearComparison" class="ghost" type="button">Clear selection</button></div>
+        <div id="comparisonResults"></div>
+      </div>
+      <div class="card comparison-panel">
+        <p class="eyebrow">CURATED COLLECTION</p>
+        <h3>Time, gravity and black holes</h3>
+        <p class="muted">Twenty research profiles with suggested prerequisites. These reading suggestions are not additional historical connections in the graph.</p>
+        <div id="profileCollection" class="profile-collection"></div>
+      </div>
+    </section>
+
     <section id="formulaView" class="view">
       <div class="card">
         <div class="view-head formula-head">
@@ -193,6 +213,7 @@
   <script src="./theories.js"></script>
   <script src="./formulas.js"></script>
   <script src="./formula-audit.js"></script>
+  <script src="./profiles.js"></script>
   <script src="./app.js"></script>
 </body>
 </html>
