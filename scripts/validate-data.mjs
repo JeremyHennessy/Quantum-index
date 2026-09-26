@@ -95,6 +95,14 @@ for (const f of formulaData.formulas) {
   if (!Array.isArray(f.sourceIds) || !f.sourceIds.length) throw new Error(`Formula ${f.id} has no source`);
   for (const id of f.theoryIds) if (!unique.has(id)) throw new Error(`Formula ${f.id} references missing theory ${id}`);
   for (const id of f.sourceIds) if (!uniqueSources.has(id)) throw new Error(`Formula ${f.id} references missing source ${id}`);
+  if (f.sourceLocations !== undefined) {
+    if (!Array.isArray(f.sourceLocations)) throw new Error(`Formula ${f.id} sourceLocations must be an array`);
+    for (const location of f.sourceLocations) {
+      if (!f.sourceIds.includes(location.sourceId) || !location.locator?.trim() || !/^https:\/\//.test(location.url || "")) {
+        throw new Error(`Formula ${f.id} has an invalid equation-level source location`);
+      }
+    }
+  }
 }
 
 const auditTheoryIds = formulaAudit.entries.map(e=>e.theoryId);
