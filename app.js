@@ -699,7 +699,7 @@
     renderDetail();renderLineage();switchView(view);
     document.title="Quantum Index";
   }
-  $(".tab").forEach(b=>b.addEventListener("click",()=>navigate(b.dataset.view==="compare"?comparisonHash(compareIds):b.dataset.view==="questions"?questionHash():["map","catalog","timeline","formula","lineage"].includes(b.dataset.view)?viewHash(b.dataset.view):`#/${b.dataset.view}`)));
+  document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>navigate(b.dataset.view==="compare"?comparisonHash(compareIds):b.dataset.view==="questions"?questionHash():["map","catalog","timeline","formula","lineage"].includes(b.dataset.view)?viewHash(b.dataset.view):`#/${b.dataset.view}`)));
   $("#clearComparison").addEventListener("click",()=>navigate("#/compare"));
   window.addEventListener("hashchange",applyRoute);
   $("#search").addEventListener("input",e=>{state.search=e.target.value;rememberFilters();renderGraph();renderTimeline();renderCatalog();});
