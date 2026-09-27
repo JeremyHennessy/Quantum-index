@@ -99,10 +99,25 @@
 
     <section id="timelineView" class="view">
       <div class="card">
-        <div class="view-head">
+        <div class="view-head timeline-head">
           <div>
-            <p class="eyebrow">PROGRESSION</p>
-            <h3>Timeline of major quantum ideas</h3>
+            <p class="eyebrow">ORIGINS + DEVELOPMENTS</p>
+            <h3>Timeline of fundamental physics</h3>
+            <p id="timelineScopeSummary" class="muted">Theory origins remain historical; later developments keep their own dates.</p>
+          </div>
+          <div class="timeline-controls" aria-label="Timeline layers">
+            <div>
+              <label for="timelineLayer">Show</label>
+              <select id="timelineLayer">
+                <option value="all">Origins + developments</option>
+                <option value="origins">Theory/framework origins</option>
+                <option value="developments">Major developments</option>
+              </select>
+            </div>
+            <div>
+              <label for="timelineEventType">Development type</label>
+              <select id="timelineEventType"><option value="">All development types</option></select>
+            </div>
           </div>
         </div>
         <div id="timeline" class="timeline"></div>
@@ -225,6 +240,7 @@
   <script src="./theories.js?v=26d0508c33ea2514"></script>
   <script src="./formulas.js?v=2dc72c49b194b814"></script>
   <script src="./formula-audit.js?v=fb958416812e0ba0"></script>
+  <script src="./developments.js"></script>
   <script src="./profiles.js?v=7ead242ba1709896"></script>
   <script src="./workspace.js?v=de553a16db91ad46"></script>
   <script src="./app.js?v=9c935f1004172eae"></script>
