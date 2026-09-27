@@ -20,7 +20,7 @@ The runtime audit is `formula-audit.js`; formula records are in `formulas.js`.
 - **384** formulas across **29** categories
 - **257** entries with linked formulas; **176** documented formula gaps
 - Other audit classes: **11** interpretations, **17** conceptual, **18** theorem-first, **1** thought experiment
-- Formula metadata: **119** explicitly reviewed; **265** baseline records
+- Formula metadata: **120** explicitly reviewed; **264** baseline records
 
 Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.
 <!-- coverage:end -->

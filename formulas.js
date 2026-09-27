@@ -7738,3 +7738,15 @@ window.QI_FORMULAS.formulas.push(...[
     ]
   }
 ]);
+
+// Equation-level review of an existing baseline record; expression and ID retained.
+Object.assign(window.QI_FORMULAS.formulas.find(f=>f.id==='hubbard-hamiltonian'), {
+  assumptions:['Single orbital per site; nearest-neighbor real hopping; local interaction'],
+  variables:['t: hopping energy','U: on-site interaction energy','c_i,sigma: fermion annihilator','n_i,sigma: occupation operator','<ij>: each undirected neighboring pair once'],
+  regime:'Single-band lattice model; material-specific reductions require additional justification.',
+  units:'t, U and H have energy units; lattice operators are dimensionless.',
+  theoryRelationship:'Defining Hamiltonian, specialized to uniform nearest-neighbor hopping.',
+  metadataReview:'explicit',reviewedAt:'2026-09-27',
+  sourceIds:['hubbard-1963','arovas-hubbard-2022'],
+  sourceLocations:[{sourceId:'arovas-hubbard-2022',locator:'Section 2, Eq. (1) and nearest-neighbor specialization immediately below it',url:'https://arxiv.org/pdf/2103.12097#page=3'}]
+});
