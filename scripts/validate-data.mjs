@@ -5,7 +5,10 @@ const code = fs.readFileSync("theories.js","utf8");
 const sandbox = { window: {} };
 vm.createContext(sandbox);
 vm.runInContext(code, sandbox);
+const developmentCode = fs.readFileSync("developments.js","utf8");
+vm.runInContext(developmentCode, sandbox);
 const data = sandbox.window.QI_DATA;
+const developmentData = sandbox.window.QI_DEVELOPMENTS;
 
 const formulaCode = fs.readFileSync("formulas.js","utf8");
 vm.runInContext(formulaCode, sandbox);
@@ -17,6 +20,7 @@ const formulaAudit = sandbox.window.QI_FORMULA_AUDIT;
 if (!data || !Array.isArray(data.theories) || !Array.isArray(data.relations) || !Array.isArray(data.trees) || !Array.isArray(data.sources)) {
   throw new Error("QI_DATA schema missing");
 }
+if (!developmentData || !Array.isArray(developmentData.events) || !Array.isArray(developmentData.eventTypes)) throw new Error("QI_DEVELOPMENTS schema missing");
 if (!formulaData || !Array.isArray(formulaData.formulas)) throw new Error("QI_FORMULAS schema missing");
 if (!formulaAudit || !Array.isArray(formulaAudit.entries)) throw new Error("QI_FORMULA_AUDIT schema missing");
 
@@ -119,6 +123,32 @@ for (const e of formulaAudit.entries) {
 }
 
 
+
+const developmentIds = developmentData.events.map(e=>e.id);
+if (new Set(developmentIds).size !== developmentIds.length) throw new Error("Duplicate DevelopmentEvent IDs");
+const allowedDevelopmentTypes = new Set(developmentData.eventTypes);
+for (const event of developmentData.events) {
+  for (const key of ["id","title","date","year","eventType","summary","significance","evidenceStatus","reviewedAt"]) {
+    if (event[key] === undefined || event[key] === null || event[key] === "") throw new Error(`DevelopmentEvent ${event.id || "?"} missing ${key}`);
+  }
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(event.date) || Number(event.date.slice(0,4)) !== event.year) throw new Error(`DevelopmentEvent ${event.id} has invalid date/year`);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(event.reviewedAt)) throw new Error(`DevelopmentEvent ${event.id} missing review date`);
+  if (!allowedDevelopmentTypes.has(event.eventType)) throw new Error(`DevelopmentEvent ${event.id} has invalid eventType ${event.eventType}`);
+  for (const key of ["relatedTheoryIds","relatedProblemIds","relatedFormulaIds","relatedEvidenceIds","sourceIds","sourceLocations"]) {
+    if (!Array.isArray(event[key])) throw new Error(`DevelopmentEvent ${event.id} ${key} must be an array`);
+  }
+  if (!event.relatedTheoryIds.length) throw new Error(`DevelopmentEvent ${event.id} has no related theory`);
+  if (!event.sourceIds.length || !event.sourceLocations.length) throw new Error(`DevelopmentEvent ${event.id} lacks source evidence`);
+  for (const id of event.relatedTheoryIds) if (!unique.has(id)) throw new Error(`DevelopmentEvent ${event.id} references missing theory ${id}`);
+  for (const id of event.relatedFormulaIds) if (!uniqueFormulaIds.has(id)) throw new Error(`DevelopmentEvent ${event.id} references missing formula ${id}`);
+  for (const id of event.sourceIds) if (!uniqueSources.has(id)) throw new Error(`DevelopmentEvent ${event.id} references missing source ${id}`);
+  for (const location of event.sourceLocations) {
+    if (!event.sourceIds.includes(location.sourceId) || !location.locator?.trim() || !/^https:\/\//.test(location.url || "")) {
+      throw new Error(`DevelopmentEvent ${event.id} has invalid source location`);
+    }
+  }
+}
+
 const cataloguedOnly = data.theories.filter(t=>t.provenance === "catalogued");
 if (cataloguedOnly.length) {
   throw new Error(`Shipped theory remains catalogued-only: ${cataloguedOnly.map(t=>t.id).join(", ")}`);
@@ -140,7 +170,9 @@ console.log(JSON.stringify({
   formulaCategories:[...new Set(formulaData.formulas.map(f=>f.category))].length,
   formulaTypes:[...new Set(formulaData.formulas.map(f=>f.formulaType))].length,
   formulaAuditCovered:formulaAudit.entries.filter(e=>e.classification==="formula-bearing").length,
-  formulaAuditGaps:formulaAudit.entries.filter(e=>e.classification==="formula-bearing-gap").length
+  formulaAuditGaps:formulaAudit.entries.filter(e=>e.classification==="formula-bearing-gap").length,
+  developmentEvents:developmentData.events.length,
+  newestDevelopmentYear:Math.max(...developmentData.events.map(e=>e.year))
 },null,2));
 
 vm.runInContext(fs.readFileSync('profiles.js','utf8'), sandbox);
