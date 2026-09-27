@@ -624,7 +624,7 @@
   }
   function switchView(view){
     state.view=view;
-    $$document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.view===view));
+    document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.view===view));
     $$(".view").forEach(v=>v.classList.remove("active"));
     $("#"+view+"View").classList.add("active");
     if(view==="compare") renderComparison();
