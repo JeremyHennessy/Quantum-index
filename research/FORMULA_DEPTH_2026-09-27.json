@@ -1,0 +1,62 @@
+{
+  "reviewedAt": "2026-09-27",
+  "baselineMain": "495c7c481a304ad12b459cdc92a0d4f346a98299",
+  "scope": "Five high-confidence formula-bearing gaps with direct equation-level evidence. Representative coverage does not imply exhaustive mathematics.",
+  "decisions": [
+    {
+      "theoryId": "f-r-gravity",
+      "formulaId": "metric-fr-field-equation",
+      "decision": "add representative",
+      "sourceIds": [
+        "fr-review-2010"
+      ],
+      "locator": "Sec. 2.1 Eq. (2.4)",
+      "caveat": "metric torsion-free formalism only; Palatini and metric-affine differ"
+    },
+    {
+      "theoryId": "eigenstate-thermalization",
+      "formulaId": "eth-ansatz",
+      "decision": "add representative",
+      "sourceIds": [
+        "wave3-eth-review-2016"
+      ],
+      "locator": "Sec. 4.2 Eq. (62)",
+      "caveat": "ansatz for physical observables in ETH regime; not a universal theorem"
+    },
+    {
+      "theoryId": "coherence-resource-theory",
+      "formulaId": "coherence-resource-measures",
+      "decision": "add representative",
+      "sourceIds": [
+        "discovery-coherence-2013"
+      ],
+      "locator": "Eqs. (1)-(3), (8)-(9)",
+      "caveat": "fixed reference basis and original incoherent-operation framework"
+    },
+    {
+      "theoryId": "quantum-discord",
+      "formulaId": "projective-quantum-discord",
+      "decision": "add representative",
+      "sourceIds": [
+        "discovery-discord-2001"
+      ],
+      "locator": "Eqs. (8)-(14)",
+      "caveat": "one-sided rank-one projective definition; later POVM variants separate"
+    },
+    {
+      "theoryId": "aharonov-bohm",
+      "formulaId": "aharonov-bohm-magnetic-phase",
+      "decision": "add representative",
+      "sourceIds": [
+        "discovery-aharonov-bohm-1959"
+      ],
+      "locator": "Sec. 2 pp. 486-487",
+      "caveat": "magnetic representative in original Gaussian-unit convention"
+    },
+    {
+      "theoryId": "quantum-zeno",
+      "decision": "defer",
+      "reason": "Do not close until repeated-measurement/Zeno-time convention and exact source locator are reconciled in one card."
+    }
+  ]
+}
