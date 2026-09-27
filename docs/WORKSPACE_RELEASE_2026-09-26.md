@@ -40,4 +40,8 @@ Hosted Chrome checks verified:
 - A sample Unruh bookmark, note and read marker survive reload; My research shows 1/5 progress on Gravity and time.
 - Export produced a valid 219-byte JSON file containing those records. The browser download-event listener timed out, but the actual downloaded file was found and parsed successfully.
 
-The browser automation connection stalled during the file chooser step and then stopped responding. Interactive import was therefore not verified to completion. Automated import preview/merge/rejection and round-trip tests pass. Refreshed 320/390/430 CSS-pixel layout checks for this release remain outstanding; earlier-release responsive checks must not be represented as verification of these changes. The responsive harness is a Chrome layout check, not an iPhone/Safari or touch-device test. Physical iPhone/Safari verification remains a separate manual check.
+The browser-control session stalled during the file chooser step. Resetting that session recovered the completed import preview. The exported backup was merged successfully, and its note, bookmark and read marker survived reload without duplication. Saving a comparison also produced the expected workspace link.
+
+Responsive checks covered Learning paths, Compare, Theory, Equations and My research at 320, 390 and 430 CSS pixels. All views fit except My research at 320 pixels: the native file input's label extended beyond the frame. The follow-up constrains both label and input to the available width. Acceptance recheck after publication: workspace document scroll width must equal client width (305 pixels inside the 320-pixel frame, with its 15-pixel scrollbar). At 390 and 430 pixels all five views had matching document client/scroll widths of 375 and 415 pixels respectively.
+
+The responsive harness is a Chrome layout check, not an iPhone/Safari or touch-device test. Physical iPhone/Safari verification remains a separate manual check.
