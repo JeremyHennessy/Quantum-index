@@ -11,7 +11,7 @@ Quantum Index indexes source-backed theories, formulations, interpretations, res
 - **480** theory/framework entities across **14** categories
 - **499** bibliography records
 - **351** primary-sourced; **129** review-sourced; **0** catalogued-only entries
-- **605** relationships: **107** source-backed; **498** editorial
+- **605** relationships: **111** source-backed; **494** editorial
 - **41** thought trees
 - **389** formulas across **29** categories
 - **262** entries with linked formulas; **172** documented formula gaps
