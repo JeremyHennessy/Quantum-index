@@ -235,9 +235,23 @@ test('discovered entries have distinct scope, sources, dated audits, and honest 
     const a=audit.find(a=>a.theoryId===t.id);
     assert.equal(a.reviewedAt,discovery.reviewedAt);
     if(discovery.formulaGapIds.includes(t.id)){
-      assert.equal(a.classification,'formula-bearing-gap',t.id);
-      assert.equal(a.coverageStatus,'documented-gap',t.id);
-      assert.ok(a.gapReason.length>30);
+      // The discovery manifest records the state when the entry was added. Later
+      // source-reviewed formula curation may legitimately promote that historical
+      // gap to formula-bearing; if so, require explicit equation-level evidence.
+      if(a.classification==='formula-bearing-gap'){
+        assert.equal(a.coverageStatus,'documented-gap',t.id);
+        assert.ok(a.gapReason.length>30);
+      }else{
+        assert.equal(a.classification,'formula-bearing',t.id);
+        assert.equal(a.coverageStatus,'covered',t.id);
+        assert.ok(a.formulaIds.length>0,t.id);
+        for(const formulaId of a.formulaIds){
+          const formula=formulas.find(f=>f.id===formulaId);
+          assert.ok(formula,formulaId);
+          assert.equal(formula.metadataReview,'explicit',formulaId);
+          assert.ok(formula.sourceLocations?.length>0,formulaId);
+        }
+      }
     }else{
       assert.equal(a.classification,'formula-bearing',t.id);
       for(const id of discovery.reusedFormulaIds)assert.ok(a.formulaIds.includes(id));
