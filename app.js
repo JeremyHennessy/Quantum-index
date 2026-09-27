@@ -4,6 +4,8 @@
   const formulaAudit = window.QI_FORMULA_AUDIT?.entries || [];
   const developments = window.QI_DEVELOPMENTS?.events || [];
   const developmentTypes = window.QI_DEVELOPMENTS?.eventTypes || [];
+  const questions = window.QI_QUESTIONS?.questions || [];
+  const questionDispositions = window.QI_QUESTIONS?.dispositions || [];
   const formulaAuditByTheory = new Map(formulaAudit.map(x => [x.theoryId,x]));
   const byId = new Map(theories.map(t => [t.id,t]));
   const sourceById = new Map(sources.map(s => [s.id,s]));
@@ -21,6 +23,7 @@
   const state = { search:"", category:"", kind:"", status:"", era:"", sourcedOnly:false, evidence:"", selected:null, selectedTree:0, view:"map", returnView:"map" };
   const formulaState = { search:"", category:"", theory:"", type:"", review:"" };
   const timelineState = { layer:"all", eventType:"" };
+  const questionState = { search:"", disposition:"", category:"" };
   const categoryColors = new Map([
     ["Historical foundations","#f59e0b"],["Formulations","#60a5fa"],["Foundations & interpretations","#c084fc"],
     ["Quantum field theory","#34d399"],["Quantum information & open systems","#22d3ee"],["Quantum gravity & spacetime","#f472b6"],
@@ -61,6 +64,8 @@
   const formulaTheorySelect=$("#formulaTheory");
   formulaTheorySelect.innerHTML=formulaTheorySelect.firstElementChild.outerHTML+formulaTheoryIds.map(id=>`<option value="${id}">${esc(byId.get(id).name)}</option>`).join("");
   setOptions("#timelineEventType",[...new Set(developments.map(event=>event.eventType))].sort());
+  setOptions("#questionDisposition",questionDispositions);
+  setOptions("#questionCategory",[...new Set(questions.map(q=>q.category).filter(Boolean))].sort());
 
   function renderStats(){
     const cat=new Set(theories.map(t=>t.category)).size;
@@ -70,7 +75,7 @@
       [cat,"major categories"],
       [relations.length,"typed connections"],
       [formulas.length,"formula atlas entries"],
-      [developments.length,"reviewed development events"],
+      [developments.length,"reviewed development events"],\n      [questions.length,"structured research questions"],
       [`${sourced}/${theories.length}`,"entries with review/source provenance"]
     ].map(([n,l])=>`<div class="stat"><strong>${n}</strong><span>${l}</span></div>`).join("");
   }
@@ -577,8 +582,44 @@
     typesetFormulaGrid();
   }
 
+
+  function questionHash(){
+    const params=new URLSearchParams();
+    if(questionState.search)params.set("search",questionState.search);
+    if(questionState.disposition)params.set("disposition",questionState.disposition);
+    if(questionState.category)params.set("category",questionState.category);
+    return "#/questions"+(params.size?"?"+params:"");
+  }
+
+  function renderQuestions(){
+    const q=questionState.search.trim().toLowerCase();
+    const list=questions.filter(item=>
+      (!q||[item.title,item.question,item.shortAnswer,item.nextInvestigation,item.category,item.dispositionLabel].join(" ").toLowerCase().includes(q)) &&
+      (!questionState.disposition||item.disposition===questionState.disposition) &&
+      (!questionState.category||item.category===questionState.category)
+    ).sort((a,b)=>a.order-b.order);
+    $("#questionCount").textContent=`${list.length} of ${questions.length}`;
+    $("#questionGrid").innerHTML=list.map(item=>{
+      const theory=byId.get(item.relatedTheoryIds?.[0]);
+      const sources=(item.sourceIds||[]).map(id=>sourceById.get(id)).filter(Boolean);
+      const auditRefs=(item.auditReferences||[]).filter(ref=>!sources.some(source=>source.url===ref.url));
+      return `<article class="question-card disposition-${esc(item.disposition)}">
+        <div class="question-card-top"><span class="question-disposition">${esc(item.dispositionLabel)}</span><span class="question-domain">${esc(item.category)}</span></div>
+        <h4>${esc(item.question)}</h4>
+        <p class="question-answer">${esc(item.shortAnswer)}</p>
+        <details><summary>Uncertainty and next investigation</summary><p>${esc(item.uncertainty)}</p><p><strong>Next:</strong> ${esc(item.nextInvestigation)}</p></details>
+        <div class="question-links">
+          ${theory?`<a class="formula-theory" href="${theoryLink(theory.id,"questions")}">${esc(theory.name)}</a>`:""}
+          ${sources.map(source=>`<a class="formula-source" href="${esc(source.url)}" target="_blank" rel="noreferrer">${esc(source.title)}</a>`).join("")}
+          ${auditRefs.map(ref=>`<a class="formula-source audit-reference" href="${esc(ref.url)}" target="_blank" rel="noreferrer">${esc(ref.title)}</a>`).join("")}
+        </div>
+        <p class="reviewed">Reviewed ${esc(item.reviewedAt)} · ${esc(item.evidenceState)}</p>
+      </article>`;
+    }).join("") || '<div class="empty-state">No research questions match these filters.</div>';
+  }
+
   function renderAll(){
-    renderStats();renderLegend();renderGraph();renderTimeline();renderCatalog();renderLineage();renderDetail();renderFormulas();
+    renderStats();renderLegend();renderGraph();renderTimeline();renderCatalog();renderLineage();renderDetail();renderFormulas();renderQuestions();
   }
   function switchView(view){
     state.view=view;
@@ -587,7 +628,7 @@
     $("#"+view+"View").classList.add("active");
     if(view==="compare") renderComparison();
     if(view==="learn") renderLearningPaths();
-    if(view==="workspace") renderWorkspace();
+    if(view==="workspace") renderWorkspace();\n    if(view==="questions") renderQuestions();
     if(view==='coverage')renderCoverage();
     $('#evidenceControls').hidden=!['map','lineage','theory'].includes(view);
     $(".controls").hidden=!["map","timeline","catalog"].includes(view);
@@ -597,7 +638,7 @@
     if(view==="lineage") setTimeout(renderThoughtTreeGraph,0);
     if(view==="formula") setTimeout(()=>{renderFormulas();typesetFormulaGrid();},0);
   }
-  const views=new Set(["map","timeline","lineage","catalog","formula","compare","learn","workspace","coverage"]);
+  const views=new Set(["map","timeline","lineage","catalog","formula","compare","questions","learn","workspace","coverage"]);
   function navigate(hash){
     if(location.hash===hash) applyRoute();
     else location.hash=hash;
@@ -630,6 +671,13 @@
     if(byId.has(id)) state.selected=id;
     if(view==="compare") compareIds=[...new Set((params.get("ids")||"").split(",").filter(id=>byId.has(id)))].slice(0,4);
     if(view==="learn") learningPathId=learningPaths.some(p=>p.id===params.get("path"))?params.get("path"):"";
+    if(view==="questions"){
+      questionState.search=params.get("search")||"";
+      questionState.disposition=questionDispositions.includes(params.get("disposition"))?params.get("disposition"):"";
+      const category=params.get("category")||"";
+      questionState.category=[...$("#questionCategory").options].some(o=>o.value===category)?category:"";
+      $("#questionSearch").value=questionState.search;$("#questionDisposition").value=questionState.disposition;$("#questionCategory").value=questionState.category;
+    }
     if(['map','catalog','timeline'].includes(view)){
       for(const key of ['search','category','kind','status','era']){const el=$(key==='search'?'#search':'#'+key+'Filter'),value=params.get(key)||'';state[key]=key==='search'||[...el.options].some(o=>o.value===value)?value:'';el.value=state[key];}
       state.sourcedOnly=params.get('sourced')==='1';$('#sourcedOnly').checked=state.sourcedOnly;
@@ -649,7 +697,7 @@
     renderDetail();renderLineage();switchView(view);
     document.title="Quantum Index";
   }
-  $$(".tab").forEach(b=>b.addEventListener("click",()=>navigate(b.dataset.view==="compare"?comparisonHash(compareIds):["map","catalog","timeline","formula","lineage"].includes(b.dataset.view)?viewHash(b.dataset.view):`#/${b.dataset.view}`)));
+  $(".tab").forEach(b=>b.addEventListener("click",()=>navigate(b.dataset.view==="compare"?comparisonHash(compareIds):b.dataset.view==="questions"?questionHash():["map","catalog","timeline","formula","lineage"].includes(b.dataset.view)?viewHash(b.dataset.view):`#/${b.dataset.view}`)));
   $("#clearComparison").addEventListener("click",()=>navigate("#/compare"));
   window.addEventListener("hashchange",applyRoute);
   $("#search").addEventListener("input",e=>{state.search=e.target.value;rememberFilters();renderGraph();renderTimeline();renderCatalog();});
@@ -665,11 +713,14 @@
   $('#formulaReview').onchange=e=>{formulaState.review=e.target.value;rememberFilters();renderFormulas();};
   $('#timelineLayer').onchange=e=>{timelineState.layer=e.target.value;rememberFilters();renderTimeline();};
   $('#timelineEventType').onchange=e=>{timelineState.eventType=e.target.value;rememberFilters();renderTimeline();};
+  $('#questionSearch').oninput=e=>{questionState.search=e.target.value;history.replaceState(null,'',questionHash());renderQuestions();};
+  $('#questionDisposition').onchange=e=>{questionState.disposition=e.target.value;history.replaceState(null,'',questionHash());renderQuestions();};
+  $('#questionCategory').onchange=e=>{questionState.category=e.target.value;history.replaceState(null,'',questionHash());renderQuestions();};
   $('#relationEvidence').onchange=e=>{state.evidence=e.target.value;if(state.view==='theory'){const params=new URLSearchParams(location.hash.split('?').slice(1).join('?'));if(state.evidence)params.set('evidence',state.evidence);else params.delete('evidence');history.replaceState(null,'',location.hash.split('?')[0]+'?'+params);}else rememberFilters();renderGraph();renderThoughtTreeGraph();renderLineage();renderDetail();};
   $("#resetView").addEventListener("click",()=>{
     Object.assign(state,{search:"",category:"",kind:"",status:"",era:"",sourcedOnly:false});
-    Object.assign(timelineState,{layer:"all",eventType:""});
-    $("#search").value="";$("#categoryFilter").value="";$("#kindFilter").value="";$("#statusFilter").value="";$("#eraFilter").value="";$("#sourcedOnly").checked=false;$("#timelineLayer").value="all";$("#timelineEventType").value="";if(["map","catalog","timeline"].includes(state.view))rememberFilters();renderAll();
+    Object.assign(timelineState,{layer:"all",eventType:""});Object.assign(questionState,{search:"",disposition:"",category:""});
+    $("#search").value="";$("#categoryFilter").value="";$("#kindFilter").value="";$("#statusFilter").value="";$("#eraFilter").value="";$("#sourcedOnly").checked=false;$("#timelineLayer").value="all";$("#timelineEventType").value="";$("#questionSearch").value="";$("#questionDisposition").value="";$("#questionCategory").value="";if(["map","catalog","timeline"].includes(state.view))rememberFilters();renderAll();
   });
   window.addEventListener("resize",()=>{if(state.view==="map")renderGraph();});
   renderTrees();renderAll();applyRoute();
