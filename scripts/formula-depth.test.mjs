@@ -10,7 +10,7 @@ function load(){
   return sandbox.window;
 }
 
-test('formula-depth pilot closes only the five reviewed gaps',()=>{
+test('formula-depth pilot adds five reviewed representatives with four documented-gap closures',()=>{
   const w=load(), byId=new Map(w.QI_FORMULAS.formulas.map(f=>[f.id,f]));
   const expected=[
     ['metric-fr-field-equation','f-r-gravity'],
@@ -31,7 +31,7 @@ test('formula-depth pilot closes only the five reviewed gaps',()=>{
     assert.equal(audit.classification,'formula-bearing',theoryId);
     assert.ok(audit.formulaIds.includes(formulaId),theoryId);
   }
-  assert.equal(w.QI_FORMULA_AUDIT.entries.filter(e=>e.classification==='formula-bearing-gap').length,171);
+  assert.equal(w.QI_FORMULA_AUDIT.entries.filter(e=>e.classification==='formula-bearing-gap').length,172);
   assert.equal(w.QI_FORMULAS.formulas.filter(f=>f.metadataReview==='explicit').length,130);
 });
 
