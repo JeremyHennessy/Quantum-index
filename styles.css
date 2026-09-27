@@ -145,3 +145,291 @@ a.catalog-card:focus-visible,a.timeline-card:focus-visible,a.relation:focus-visi
 #workspaceSearch:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
 .evidence-controls{padding:16px;margin:12px 0}.evidence-controls label{display:block;margin-bottom:8px}.evidence-controls select{max-width:100%;padding:10px;background:#07121a;color:var(--text);border:1px solid var(--line);border-radius:10px}.lineage-chip{display:inline-block}#coverageContent .comparison-table{min-width:620px}
+
+
+/* Bright scientific editorial theme — 2026-09-27.
+   Visual-only overrides: preserve the existing layout, routes and interaction model. */
+:root{
+  --bg:#f5f8fa;
+  --surface:#ffffff;
+  --surface2:#eef6f8;
+  --line:#d8e3e8;
+  --text:#17313f;
+  --muted:#607684;
+  --accent:#0e8fa3;
+  --accent2:#7569d8;
+  --good:#217a52;
+  --warn:#9a6510;
+  --danger:#b83a47;
+  --shadow:0 14px 38px rgba(43,78,97,.09);
+  --shadow-soft:0 6px 20px rgba(43,78,97,.07);
+  --focus:0 0 0 3px rgba(14,143,163,.16)
+}
+html{
+  color-scheme:light;
+  background:var(--bg);
+  color:var(--text);
+}
+body{
+  background:
+    radial-gradient(circle at 10% -8%,rgba(14,143,163,.11),transparent 32rem),
+    radial-gradient(circle at 90% 2%,rgba(117,105,216,.09),transparent 28rem),
+    linear-gradient(180deg,#fbfdfe 0,#f5f8fa 24rem,#f5f8fa 100%);
+}
+::selection{background:rgba(14,143,163,.18);color:#0e2937}
+a{color:#087d91;text-underline-offset:3px}
+.topbar{
+  background:rgba(255,255,255,.91);
+  border-bottom:1px solid rgba(113,141,157,.18);
+  box-shadow:0 5px 24px rgba(52,79,94,.06);
+  backdrop-filter:blur(20px) saturate(1.15);
+}
+.brand-mark{
+  color:#fff;
+  background:linear-gradient(135deg,#0e9ab0 0%,#5c75d6 55%,#8a6ed4 100%);
+  box-shadow:0 10px 26px rgba(48,119,149,.2)
+}
+.brand h1{color:#16303e;font-weight:780}
+.brand p{color:#67808d}
+.header-actions .ghost{background:rgba(255,255,255,.82)}
+main{width:min(1540px,94vw);padding-top:28px}
+.hero{
+  align-items:center;
+  padding:38px 38px 34px;
+  margin:4px 0 20px;
+  border:1px solid #dce8ed;
+  border-radius:28px;
+  background:
+    radial-gradient(circle at 82% 5%,rgba(117,105,216,.12),transparent 21rem),
+    linear-gradient(135deg,#ecf9fb 0%,#f7f7ff 52%,#fff9f0 100%);
+  box-shadow:0 18px 48px rgba(62,91,107,.08)
+}
+.hero .eyebrow{color:#087f93}
+.hero h2{color:#142d3b;font-weight:760;letter-spacing:-.05em}
+.hero-copy{color:#526d7a;max-width:800px}
+.stats{gap:11px}
+.stat{
+  background:rgba(255,255,255,.83);
+  border:1px solid #dbe7ec;
+  box-shadow:0 8px 24px rgba(53,84,100,.07);
+  backdrop-filter:blur(8px)
+}
+.stat strong{color:#17313f;font-weight:760}
+.stat span{color:#617987}
+.card{
+  background:rgba(255,255,255,.97);
+  border-color:#d8e3e8;
+  box-shadow:var(--shadow)
+}
+.controls{padding:16px}
+.controls label,.formula-controls label{color:#607684}
+.controls input[type=search],.controls select,
+.formula-controls input,.formula-controls select,
+.comparison-selectors select,.comparison-selectors input,
+.research-tools textarea,#workspaceSearch,.evidence-controls select{
+  background:#fff;
+  color:#17313f;
+  border-color:#cbdbe2;
+  box-shadow:inset 0 1px 0 rgba(34,68,85,.02)
+}
+.controls input::placeholder,.formula-controls input::placeholder,
+.comparison-selectors input::placeholder,#workspaceSearch::placeholder{color:#8ca0aa}
+.controls input:focus,.controls select:focus,
+.formula-controls input:focus,.formula-controls select:focus,
+.comparison-selectors select:focus,.comparison-selectors input:focus,
+.research-tools textarea:focus,#workspaceSearch:focus,.evidence-controls select:focus{
+  border-color:#3aa9b9;
+  box-shadow:var(--focus);
+  outline:none
+}
+.switch-row{color:#34505f!important}
+.tabs{gap:8px;padding:16px 0 13px}
+.tab,.ghost{
+  border-color:#d1dee4;
+  background:#fff;
+  color:#5b7380;
+  box-shadow:0 2px 8px rgba(50,81,97,.03);
+  transition:border-color .16s ease,background .16s ease,color .16s ease,box-shadow .16s ease,transform .16s ease
+}
+.tab:hover,.ghost:hover{
+  color:#17313f;
+  border-color:#9fcbd4;
+  background:#f1fafb;
+  box-shadow:var(--shadow-soft)
+}
+.tab.active{
+  color:#0c6070;
+  border-color:#9ad2da;
+  background:linear-gradient(180deg,#e9f8fa,#eefbfc);
+  box-shadow:inset 0 -2px 0 #0e8fa3,0 4px 14px rgba(14,143,163,.08);
+  font-weight:720
+}
+.evidence-controls{background:#f8fbfc}
+.graph-card{background:linear-gradient(180deg,#fff,#fbfdfe)}
+#network{
+  background:
+    radial-gradient(circle at 50% 44%,rgba(14,143,163,.055),transparent 22rem),
+    linear-gradient(180deg,#fff,#fbfdff)
+}
+.view-head h3,.lineage-grid h3,.comparison-panel h3{color:#17313f}
+.legend-item{color:#607684;font-weight:550}
+.hint,.muted,.aliases,.reviewed{color:#687f8b!important}
+.detail-panel{background:#fff}
+.detail-empty{color:#738895}
+.detail-empty h3,.detail-title{color:#17313f}
+.badge,.pill{
+  border-color:#d1dee4;
+  background:#f8fbfc;
+  color:#4f6875
+}
+.badge.status-established{border-color:#b7dbc7;background:#eff9f3;color:#1f714b}
+.badge.status-speculative{border-color:#ead6a7;background:#fff9eb;color:#8a5d11}
+.badge.status-interpretation{border-color:#d6cff3;background:#f7f5ff;color:#6556b5}
+.detail-section{border-color:#e2e9ed}
+.detail-section h4{color:#687f8b}
+.detail-section p{color:#425f6d}
+.tag{background:#eef7f9;color:#3a6f7c;border:1px solid #d7e9ed}
+.relation,.timeline-card,.catalog-card,.tree-node,.lineage-chip,.tree-choice{
+  background:#fff;
+  border-color:#d9e4e9;
+  color:#17313f;
+  box-shadow:0 3px 12px rgba(45,76,92,.035);
+  transition:border-color .16s ease,box-shadow .16s ease,transform .16s ease,background .16s ease
+}
+.relation:hover,.timeline-card:hover,.catalog-card:hover,.tree-node:hover,.lineage-chip:hover,.tree-choice:hover{
+  border-color:#9bc9d2;
+  background:#fbfeff;
+  box-shadow:0 9px 24px rgba(40,91,109,.08);
+  transform:translateY(-1px)
+}
+.relation small,.relation-main em{color:#738895}
+.timeline-era{border-color:#e2e9ed}
+.timeline-era h4,.timeline-card .year,.catalog-card .meta{color:#0a8498}
+.timeline-card p,.catalog-card p{color:#607684}
+.node-label{
+  fill:#294858;
+  font-weight:600;
+  paint-order:stroke;
+  stroke:#fff;
+  stroke-width:3px;
+  stroke-linejoin:round
+}
+.node circle{stroke:#fff;stroke-width:3;filter:drop-shadow(0 2px 3px rgba(35,67,83,.18))}
+.node.selected circle{stroke:#17313f;stroke-width:3.5}
+.link{stroke:#9aafb9;stroke-opacity:.55}
+.source-link{
+  border-color:#d8e4e8;
+  background:#fbfefd;
+  color:#17313f
+}
+.source-link:hover{border-color:#9fc8b0;background:#f4fbf6}
+.source-link span{color:#667f8b}
+.tree-choice.active{
+  border-color:#89c7d1;
+  background:#edf9fb;
+  box-shadow:inset 3px 0 0 var(--accent),0 6px 18px rgba(14,143,163,.07)
+}
+.thought-tree-scroll{
+  border-color:#dce6ea;
+  background:linear-gradient(180deg,#fbfdff,#f5f9fb)
+}
+.tree-grid line,.tree-year-axis line{stroke:#dce6ea}
+.tree-grid text,.tree-year-axis text,.tree-graph-year{fill:#758b96}
+.tree-links path{stroke:#8aa6b4;stroke-opacity:.7}
+.tree-graph-node circle{stroke:#fff;stroke-width:3;filter:drop-shadow(0 2px 3px rgba(35,67,83,.16))}
+.tree-graph-node:hover circle{stroke:#0e8fa3}
+.tree-graph-node.selected circle{stroke:#17313f}
+.tree-graph-label{
+  fill:#294858;
+  font-weight:600;
+  paint-order:stroke;
+  stroke:#fff;
+  stroke-width:3px;
+  stroke-linejoin:round
+}
+.selected-lineage-panel,.formula-detail>div,.workspace-path{border-color:#e1e9ed}
+.formula-card{
+  border-color:#d9e4e9;
+  background:#fff;
+  box-shadow:0 5px 18px rgba(45,76,92,.05)
+}
+.formula-card h4{color:#17313f}
+.formula-card p{color:#506c79}
+.formula-meta{color:#0a8498;font-weight:650}
+.formula-equation{
+  background:linear-gradient(180deg,#f7fafc,#f3f8fa);
+  border-color:#dbe6eb
+}
+.formula-plain{color:#708692}
+.formula-role-row{color:#607684}
+.formula-role{
+  border-color:#b8d9df;
+  background:#edf9fb;
+  color:#166879
+}
+.formula-detail dt{color:#6f8590}
+.formula-detail dd{color:#425f6d}
+.formula-theory{
+  border-color:#bdd9e6;
+  background:#eef8fc;
+  color:#2c6b84
+}
+.formula-theory:hover{border-color:#76aec3;color:#174e65;background:#e7f5fa}
+.formula-source{
+  border-color:#c8dfcf;
+  background:#f2faf4;
+  color:#3f7251
+}
+.formula-source:hover{border-color:#91bea0;color:#285c3b;background:#eaf7ee}
+.profile-citations{color:#607684}
+.profile-citations a,.comparison-table a,#workspaceContent a{color:#087d91}
+.comparison-panel{background:#fff}
+.comparison-scroll{
+  border-color:#dce6ea;
+  background:#fff
+}
+.comparison-table{color:#2a4655}
+.comparison-table th,.comparison-table td{
+  border-bottom-color:#e1e9ed;
+  border-right-color:#e1e9ed
+}
+.comparison-table th:first-child{background:#f3f8fa;color:#365667}
+.comparison-table caption{color:#677f8b}
+.learning-steps p,.learning-step-status{color:#607684}
+.learning-primer{
+  border-color:#d9e4e9;
+  background:linear-gradient(135deg,#f5fbfc,#f8f7ff)
+}
+.primer-equation{color:#244a5d}
+.learning-progress progress{accent-color:#0e8fa3}
+.research-tools textarea{min-height:120px}
+.relation-evidence{color:#526d7a}
+#coverageContent{background:#fff}
+#filterScope{margin:0 0 10px 4px;color:#6b818c}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,
+a.catalog-card:focus-visible,a.timeline-card:focus-visible,a.relation:focus-visible{
+  outline:3px solid rgba(14,143,163,.33);
+  outline-offset:3px
+}
+.node:focus-visible circle,.tree-graph-node:focus-visible circle{stroke:#17313f;stroke-width:4px}
+html{scrollbar-color:#a8c4ce #edf3f6}
+
+@media(max-width:1050px){
+  .hero{padding:30px}
+}
+@media(max-width:650px){
+  body{background:linear-gradient(180deg,#fbfdfe,#f5f8fa 26rem)}
+  main{padding-top:14px}
+  .topbar{background:rgba(255,255,255,.96)}
+  .hero{padding:24px 20px 22px;border-radius:22px;margin-top:0}
+  .hero h2{font-size:40px;line-height:1.02}
+  .hero-copy{font-size:15px;margin-top:15px}
+  .stat{padding:14px}
+  .stat strong{font-size:24px}
+  .card{border-radius:16px}
+  .controls{padding:13px}
+  .tab,.ghost{padding:10px 12px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}

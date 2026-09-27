@@ -52,3 +52,36 @@ test('reviewed formulas render math and coverage fits narrow screens',async({pag
   expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
   expect(errors).toEqual([]);
 });
+
+
+test('bright professional theme remains readable on desktop and mobile',async({page},testInfo)=>{
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto('/#/map');
+  await expect(page.locator('.hero h2')).toHaveText('Explore the ideas shaping modern physics.');
+  const palette=await page.evaluate(()=>({
+    bg:getComputedStyle(document.documentElement).getPropertyValue('--bg').trim(),
+    text:getComputedStyle(document.documentElement).getPropertyValue('--text').trim(),
+    accent:getComputedStyle(document.documentElement).getPropertyValue('--accent').trim(),
+    body:getComputedStyle(document.body).backgroundImage,
+    card:getComputedStyle(document.querySelector('.card')).backgroundColor
+  }));
+  expect(palette.bg).toBe('#f5f8fa');
+  expect(palette.text).toBe('#17313f');
+  expect(palette.accent).toBe('#0e8fa3');
+  expect(palette.body).not.toBe('none');
+  expect(palette.card).toMatch(/rgba?\(255, 255, 255/);
+
+  const desktopPath=testInfo.outputPath('bright-theme-desktop.png');
+  await page.screenshot({path:desktopPath,fullPage:false});
+  await testInfo.attach('bright-theme-desktop',{path:desktopPath,contentType:'image/png'});
+
+  await page.setViewportSize({width:390,height:844});
+  await page.goto('/#/formula?review=explicit');
+  await expect(page.locator('#formulaGrid .formula-card').first()).toBeVisible();
+  expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
+  const mobilePath=testInfo.outputPath('bright-theme-mobile.png');
+  await page.screenshot({path:mobilePath,fullPage:false});
+  await testInfo.attach('bright-theme-mobile',{path:mobilePath,contentType:'image/png'});
+
+  expect(errors).toEqual([]);
+});
