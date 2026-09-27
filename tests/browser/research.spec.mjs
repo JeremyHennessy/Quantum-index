@@ -71,15 +71,17 @@ test('bright professional theme remains readable on desktop and mobile',async({p
   expect(palette.body).not.toBe('none');
   expect(palette.card).toMatch(/rgba?\(255, 255, 255/);
 
-  const desktop=await page.screenshot({fullPage:false});
-  await testInfo.attach('bright-theme-desktop',{body:desktop,contentType:'image/png'});
+  const desktopPath=testInfo.outputPath('bright-theme-desktop.png');
+  await page.screenshot({path:desktopPath,fullPage:false});
+  await testInfo.attach('bright-theme-desktop',{path:desktopPath,contentType:'image/png'});
 
   await page.setViewportSize({width:390,height:844});
   await page.goto('/#/formula?review=explicit');
   await expect(page.locator('#formulaGrid .formula-card').first()).toBeVisible();
   expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
-  const mobile=await page.screenshot({fullPage:false});
-  await testInfo.attach('bright-theme-mobile',{body:mobile,contentType:'image/png'});
+  const mobilePath=testInfo.outputPath('bright-theme-mobile.png');
+  await page.screenshot({path:mobilePath,fullPage:false});
+  await testInfo.attach('bright-theme-mobile',{path:mobilePath,contentType:'image/png'});
 
   expect(errors).toEqual([]);
 });
