@@ -2,7 +2,7 @@
 
 Baseline main: `495c7c481a304ad12b459cdc92a0d4f346a98299`.
 
-This batch closes five documented formula gaps only where the representative equation, convention and scope can be stated precisely from the cited literature:
+This batch adds five reviewed formula representatives. Four close documented formula gaps; ETH moves from the audit's previous primarily-conceptual classification to formula-bearing because a canonical sourced ansatz is now curated:
 
 - metric f(R) gravity — metric-formalism Eq. (2.4), not Palatini/metric-affine;
 - eigenstate thermalization — the Eq. (62) ETH ansatz, explicitly not a universal theorem;
