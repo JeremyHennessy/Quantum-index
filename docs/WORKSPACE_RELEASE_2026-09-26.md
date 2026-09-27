@@ -29,4 +29,19 @@ Source attachment, coverage counts and passing schema tests are structural check
 
 ## Release and browser verification
 
-The pull request and associated Actions runs provide the publication record. Hosted navigation, math rendering, workspace persistence and responsive checks are performed after Pages deployment. The responsive harness includes 320, 390 and 430 CSS-pixel frames; this is a Chrome layout check, not an iPhone/Safari or touch-device test. Physical iPhone/Safari verification remains a separate manual check.
+Implementation was merged in [PR #44](https://github.com/JeremyHennessy/Quantum-index/pull/44), head `6328b8d6d0513a319b22349b26547d0d25c1b1cf`, merge `8fcd23df38a73965005d663561b0c6c63b4e92d6`. Exact-head CI, main CI and Pages deployment succeeded.
+
+Hosted Chrome checks verified:
+
+- All 50 profile links are present; comparison search narrows options and retains selection.
+- Wheeler–DeWitt has the expanded profile; a prerequisite detour preserves the learning-path return link after reload.
+- Comparison selection survives a theory-to-prerequisite detour.
+- All three new equations render with one MathJax container each and no MathJax error elements.
+- A sample Unruh bookmark, note and read marker survive reload; My research shows 1/5 progress on Gravity and time.
+- Export produced a valid 219-byte JSON file containing those records. The browser download-event listener timed out, but the actual downloaded file was found and parsed successfully.
+
+The browser-control session stalled during the file chooser step. Resetting that session recovered the completed import preview. The exported backup was merged successfully, and its note, bookmark and read marker survived reload without duplication. Saving a comparison also produced the expected workspace link.
+
+Responsive checks covered Learning paths, Compare, Theory, Equations and My research at 320, 390 and 430 CSS pixels. All views fit except My research at 320 pixels: the native file input's label extended beyond the frame. The follow-up constrains both label and input to the available width. Acceptance recheck after publication: workspace document scroll width must equal client width (305 pixels inside the 320-pixel frame, with its 15-pixel scrollbar). At 390 and 430 pixels all five views had matching document client/scroll widths of 375 and 415 pixels respectively.
+
+The responsive harness is a Chrome layout check, not an iPhone/Safari or touch-device test. Physical iPhone/Safari verification remains a separate manual check.
