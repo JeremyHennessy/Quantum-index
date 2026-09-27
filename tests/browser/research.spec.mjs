@@ -49,12 +49,7 @@ test('reviewed formulas render math and coverage fits narrow screens',async({pag
   await page.goto('/#/coverage');
   await expect(page.locator('#coverageView')).toContainText('Nuclear quantum theory');
   await page.setViewportSize({width:320,height:800});
-  await page.goto('/#/timeline?layer=all');
-  await expect(page.locator('#timeline')).toContainText('LZ reports a 2.6σ global excess');
   expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
-  const mobilePath=testInfo.outputPath('timeline-mobile.png');
-  await page.screenshot({path:mobilePath,fullPage:false});
-  await testInfo.attach('timeline-mobile',{path:mobilePath,contentType:'image/png'});
   expect(errors).toEqual([]);
 });
 
@@ -114,6 +109,11 @@ test('timeline separates origins from reviewed developments and restores filters
   await expect(page.locator('#timelineScopeSummary')).toContainText('through 2026');
 
   await page.setViewportSize({width:320,height:800});
+  await page.goto('/#/timeline?layer=all');
+  await expect(page.locator('#timeline')).toContainText('LZ reports a 2.6σ global excess');
   expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
+  const mobilePath=testInfo.outputPath('timeline-mobile.png');
+  await page.screenshot({path:mobilePath,fullPage:false});
+  await testInfo.attach('timeline-mobile',{path:mobilePath,contentType:'image/png'});
   expect(errors).toEqual([]);
 });
