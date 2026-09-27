@@ -23,7 +23,7 @@ jobs:
           node --check theories.js
           node --check formulas.js
           node --check formula-audit.js
-          node --check developments.js
+          node --check developments.js\n          node --check questions.js
           node --check profiles.js
           node --check workspace.js
       - name: Install test dependencies
@@ -41,9 +41,9 @@ jobs:
         run: |
           test -f index.html
           test -f styles.css
-          test -f developments.js
+          test -f developments.js\n          test -f questions.js
           grep -q './theories.js' index.html
-          grep -q './developments.js' index.html
+          grep -q './developments.js' index.html\n          grep -q './questions.js' index.html
           grep -q './app.js' index.html
           grep -q './formulas.js' index.html
           grep -q './formula-audit.js' index.html
@@ -102,7 +102,7 @@ jobs:
       - name: Package the tested revision
         run: |
           mkdir _site
-          cp index.html styles.css theories.js formulas.js formula-audit.js developments.js profiles.js workspace.js app.js _site/
+          cp index.html styles.css theories.js formulas.js formula-audit.js developments.js questions.js profiles.js workspace.js app.js _site/
           cp -R docs _site/docs
           printf '%s\n' "$GITHUB_SHA" > _site/revision.txt
       - uses: actions/upload-pages-artifact@v3
