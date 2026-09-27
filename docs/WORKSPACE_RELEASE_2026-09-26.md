@@ -29,4 +29,15 @@ Source attachment, coverage counts and passing schema tests are structural check
 
 ## Release and browser verification
 
-The pull request and associated Actions runs provide the publication record. Hosted navigation, math rendering, workspace persistence and responsive checks are performed after Pages deployment. The responsive harness includes 320, 390 and 430 CSS-pixel frames; this is a Chrome layout check, not an iPhone/Safari or touch-device test. Physical iPhone/Safari verification remains a separate manual check.
+Implementation was merged in [PR #44](https://github.com/JeremyHennessy/Quantum-index/pull/44), head `6328b8d6d0513a319b22349b26547d0d25c1b1cf`, merge `8fcd23df38a73965005d663561b0c6c63b4e92d6`. Exact-head CI, main CI and Pages deployment succeeded.
+
+Hosted Chrome checks verified:
+
+- All 50 profile links are present; comparison search narrows options and retains selection.
+- Wheeler–DeWitt has the expanded profile; a prerequisite detour preserves the learning-path return link after reload.
+- Comparison selection survives a theory-to-prerequisite detour.
+- All three new equations render with one MathJax container each and no MathJax error elements.
+- A sample Unruh bookmark, note and read marker survive reload; My research shows 1/5 progress on Gravity and time.
+- Export produced a valid 219-byte JSON file containing those records. The browser download-event listener timed out, but the actual downloaded file was found and parsed successfully.
+
+The browser automation connection stalled during the file chooser step and then stopped responding. Interactive import was therefore not verified to completion. Automated import preview/merge/rejection and round-trip tests pass. Refreshed 320/390/430 CSS-pixel layout checks for this release remain outstanding; earlier-release responsive checks must not be represented as verification of these changes. The responsive harness is a Chrome layout check, not an iPhone/Safari or touch-device test. Physical iPhone/Safari verification remains a separate manual check.
