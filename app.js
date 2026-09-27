@@ -75,7 +75,8 @@
       [cat,"major categories"],
       [relations.length,"typed connections"],
       [formulas.length,"formula atlas entries"],
-      [developments.length,"reviewed development events"],\n      [questions.length,"structured research questions"],
+      [developments.length,"reviewed development events"],
+      [questions.length,"structured research questions"],
       [`${sourced}/${theories.length}`,"entries with review/source provenance"]
     ].map(([n,l])=>`<div class="stat"><strong>${n}</strong><span>${l}</span></div>`).join("");
   }
@@ -628,7 +629,8 @@
     $("#"+view+"View").classList.add("active");
     if(view==="compare") renderComparison();
     if(view==="learn") renderLearningPaths();
-    if(view==="workspace") renderWorkspace();\n    if(view==="questions") renderQuestions();
+    if(view==="workspace") renderWorkspace();
+    if(view==="questions") renderQuestions();
     if(view==='coverage')renderCoverage();
     $('#evidenceControls').hidden=!['map','lineage','theory'].includes(view);
     $(".controls").hidden=!["map","timeline","catalog"].includes(view);
