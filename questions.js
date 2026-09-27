@@ -19,7 +19,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "qft-curved-spacetime"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "quantum-gravity"
+      ],
       "category": "Quantum field theory",
       "disposition": "open",
       "dispositionLabel": "Open research question",
@@ -81,7 +83,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "hawking-radiation"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "black-hole-information"
+      ],
       "category": "Quantum gravity & spacetime",
       "disposition": "open",
       "dispositionLabel": "Open research question",
@@ -118,7 +122,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "black-hole-thermodynamics"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "black-hole-information"
+      ],
       "category": "Quantum gravity & spacetime",
       "disposition": "open",
       "dispositionLabel": "Open research question",
@@ -217,7 +223,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "gravity-effective-field-theory"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "quantum-gravity"
+      ],
       "category": "Quantum gravity & spacetime",
       "disposition": "model-specific-investigation",
       "dispositionLabel": "Model-specific investigation",
@@ -246,7 +254,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "loop-quantum-gravity"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "quantum-gravity"
+      ],
       "category": "Quantum gravity & spacetime",
       "disposition": "open",
       "dispositionLabel": "Open research question",
@@ -275,7 +285,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "string-theory"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "quantum-gravity"
+      ],
       "category": "Quantum gravity & spacetime",
       "disposition": "open",
       "dispositionLabel": "Open research question",
@@ -304,7 +316,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "asymptotic-safety"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "quantum-gravity"
+      ],
       "category": "Quantum gravity & spacetime",
       "disposition": "open",
       "dispositionLabel": "Open research question",
@@ -333,7 +347,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "ads-cft"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "quantum-gravity"
+      ],
       "category": "Quantum gravity & spacetime",
       "disposition": "open",
       "dispositionLabel": "Open research question",
@@ -370,7 +386,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "black-hole-complementarity"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "black-hole-information"
+      ],
       "category": "Quantum gravity & spacetime",
       "disposition": "open",
       "dispositionLabel": "Open research question",
@@ -399,7 +417,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "amps-firewall"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "black-hole-information"
+      ],
       "category": "Quantum gravity & spacetime",
       "disposition": "conditional-model-dependent",
       "dispositionLabel": "Conditional / framework-dependent",
@@ -436,7 +456,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "fuzzball"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "black-hole-information"
+      ],
       "category": "Quantum gravity & spacetime",
       "disposition": "open",
       "dispositionLabel": "Open research question",
@@ -465,7 +487,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "er-epr"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "quantum-gravity"
+      ],
       "category": "Quantum gravity & spacetime",
       "disposition": "open",
       "dispositionLabel": "Open research question",
@@ -494,7 +518,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "quantum-error-correction-gravity"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "black-hole-information"
+      ],
       "category": "Quantum gravity & spacetime",
       "disposition": "open",
       "dispositionLabel": "Open research question",
@@ -523,7 +549,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "jt-gravity"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "black-hole-information"
+      ],
       "category": "Quantum gravity & spacetime",
       "disposition": "model-specific-investigation",
       "dispositionLabel": "Model-specific investigation",
@@ -564,7 +592,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "replica-wormholes"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "black-hole-information"
+      ],
       "category": "Quantum gravity & spacetime",
       "disposition": "open",
       "dispositionLabel": "Open research question",
@@ -605,7 +635,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "island-formula"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "black-hole-information"
+      ],
       "category": "Quantum gravity & spacetime",
       "disposition": "open",
       "dispositionLabel": "Open research question",
@@ -679,7 +711,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "wheeler-dewitt"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "quantum-gravity"
+      ],
       "category": "Quantum gravity & spacetime",
       "disposition": "model-specific-investigation",
       "dispositionLabel": "Model-specific investigation",
@@ -708,7 +742,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "canonical-quantum-gravity"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "quantum-gravity"
+      ],
       "category": "Quantum gravity & spacetime",
       "disposition": "open",
       "dispositionLabel": "Open research question",
@@ -853,7 +889,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "born-rule"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "measurement-problem"
+      ],
       "category": "Foundations & interpretations",
       "disposition": "established-learning",
       "dispositionLabel": "Established learning question",
@@ -969,7 +1007,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "density-operator"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "measurement-problem"
+      ],
       "category": "Formulations",
       "disposition": "established-learning",
       "dispositionLabel": "Established learning question",
@@ -1027,7 +1067,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "kochen-specker"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "measurement-problem"
+      ],
       "category": "Foundations & interpretations",
       "disposition": "conditional-model-dependent",
       "dispositionLabel": "Conditional / framework-dependent",
@@ -1085,7 +1127,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "everett"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "measurement-problem"
+      ],
       "category": "Foundations & interpretations",
       "disposition": "open",
       "dispositionLabel": "Open research question",
@@ -1143,7 +1187,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "qbism"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "measurement-problem"
+      ],
       "category": "Foundations & interpretations",
       "disposition": "conditional-model-dependent",
       "dispositionLabel": "Conditional / framework-dependent",
@@ -1172,7 +1218,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "decoherence"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "measurement-problem"
+      ],
       "category": "Quantum information & open systems",
       "disposition": "model-specific-investigation",
       "dispositionLabel": "Model-specific investigation",
@@ -1201,7 +1249,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "consistent-histories"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "measurement-problem"
+      ],
       "category": "Foundations & interpretations",
       "disposition": "conditional-model-dependent",
       "dispositionLabel": "Conditional / framework-dependent",
@@ -1449,7 +1499,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "quantum-zeno"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "measurement-problem"
+      ],
       "category": "Quantum information & open systems",
       "disposition": "model-specific-investigation",
       "dispositionLabel": "Model-specific investigation",
@@ -1776,7 +1828,9 @@ window.QI_QUESTIONS = {
       "relatedTheoryIds": [
         "wimp-dark-matter"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "dark-matter"
+      ],
       "category": "Astroparticle physics & cosmology",
       "disposition": "model-specific-investigation",
       "dispositionLabel": "Model-specific investigation",
