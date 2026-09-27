@@ -2565,3 +2565,48 @@ Object.assign(window.QI_DATA.sources.find(s=>s.id==='wave3-hergert-imsrg-2016'),
     }
   ]) if (!existing.has(source.id)) window.QI_DATA.sources.push(source);
 })();
+
+
+// Relationship provenance review — 2026-09-27.
+// Promote only edges whose cited source directly supports the relationship itself.
+(() => {
+  const updates = [
+    {
+      from:"quantum-chaos", to:"eigenstate-thermalization", type:"supports",
+      sourceIds:["wave3-eth-review-2016"],
+      evidenceType:"documented historical influence", confidence:"medium",
+      evidenceNote:"D'Alessio et al. present ETH as a natural extension of ideas from quantum chaos and random-matrix theory and use that connection to explain thermalization in isolated chaotic systems.",
+      sourceLocator:"Abstract; Secs. 2–4, especially the transition from quantum chaos/RMT to ETH",
+      reviewedAt:"2026-09-27"
+    },
+    {
+      from:"decoherence", to:"quantum-darwinism", type:"extends",
+      sourceIds:["zurek-darwinism"],
+      evidenceType:"documented historical influence", confidence:"medium",
+      evidenceNote:"Zurek's Quantum Darwinism framework takes environment-induced selection/decoherence as the starting point and adds redundant environmental records to explain objective classical information.",
+      sourceLocator:"Quantum Darwinism (2009), abstract and discussion of environment as witness/einselection",
+      reviewedAt:"2026-09-27"
+    },
+    {
+      from:"causal-sets", to:"causal-set-growth", type:"extends",
+      sourceIds:["rideout-sorkin-1999"],
+      evidenceType:"formal mathematical relation", confidence:"high",
+      evidenceNote:"Rideout and Sorkin explicitly derive a general family of stochastic sequential-growth dynamics for causal sets from causality and discrete general-covariance conditions.",
+      sourceLocator:"Abstract and derivation of classical sequential-growth dynamics",
+      reviewedAt:"2026-09-27"
+    },
+    {
+      from:"effective-field-theory", to:"gravity-effective-field-theory", type:"extends",
+      sourceIds:["donoghue-gravity-eft-1994"],
+      evidenceType:"formal mathematical relation", confidence:"high",
+      evidenceNote:"Donoghue explicitly applies effective-field-theory methodology to general relativity, separating low-energy quantum-gravity effects from unknown high-energy contributions.",
+      sourceLocator:"Abstract and introductory EFT construction for general relativity",
+      reviewedAt:"2026-09-27"
+    }
+  ];
+  for (const update of updates) {
+    const relation = window.QI_DATA.relations.find(r=>r.from===update.from && r.to===update.to && r.type===update.type);
+    if (!relation) throw new Error("Missing relationship for provenance review: "+update.from+" -> "+update.to+" ("+update.type+")");
+    Object.assign(relation,update);
+  }
+})();
