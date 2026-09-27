@@ -1,0 +1,56 @@
+{
+  "reviewedAt": "2026-09-27",
+  "baselineMain": "43e7deccc86c0ac1ce1f32a0eae98ac82f090fdc",
+  "purpose": "Classify 2024–2026 freshness leads without confusing recent publications with new theory origin dates.",
+  "candidates": [
+    {
+      "id": "wavefunction-matching",
+      "title": "Wavefunction matching for quantum many-body problems",
+      "earliestOrigin": "2024-05-15",
+      "disposition": "candidate-new-entity",
+      "reason": "The Nature paper explicitly introduces a named computational approach, and Quantum Index already treats distinct many-body computational frameworks as first-class entities.",
+      "source": "https://doi.org/10.1038/s41586-024-07422-z",
+      "nextAction": "Add as a 2024 computational framework in a separate census PR after identity and relationship review."
+    },
+    {
+      "id": "noninvertible-symmetry",
+      "title": "Noninvertible symmetry frameworks",
+      "disposition": "older-origin-missing-entity",
+      "reason": "The 2024 quantum-operation connection is new, but noninvertible symmetry research predates 2024; do not assign a false 2024 origin year.",
+      "source": "https://doi.org/10.1103/PhysRevLett.133.191602",
+      "nextAction": "Run a separate origin/identity audit before deciding whether the broader framework is missing from the catalog."
+    },
+    {
+      "id": "desi-dark-energy-2024-2026",
+      "title": "DESI dark-energy constraints",
+      "disposition": "development-events",
+      "reason": "These are major observational updates affecting existing cosmological models, not newly invented theories.",
+      "source": "https://www.desi.lbl.gov/2026/07/30/new-desi-dr2-lyman-alpha-results-shed-light-on-dark-energy/",
+      "nextAction": "Represent as dated DevelopmentEvents and later Evidence records."
+    },
+    {
+      "id": "lz-2026",
+      "title": "LZ extended recoil candidate",
+      "disposition": "development-event-and-evidence",
+      "reason": "A 2.6-sigma global excess is a candidate event/constraint, not a new dark-matter framework or a discovery.",
+      "source": "https://arxiv.org/abs/2609.02823",
+      "nextAction": "Represent as DevelopmentEvent now and an Evidence object in the evidence pilot."
+    },
+    {
+      "id": "many-body-scars-2025",
+      "title": "Genuine quantum scars in many-body spin systems",
+      "disposition": "development-event",
+      "reason": "The 2025 result broadens an existing quantum-scar framework; the framework itself predates 2025.",
+      "source": "https://doi.org/10.1038/s41467-025-61765-3",
+      "nextAction": "Represent as a DevelopmentEvent linked to scars, ETH and quantum chaos."
+    },
+    {
+      "id": "emergent-bf-gravity-2026",
+      "title": "Recent emergent/topological gravity proposals",
+      "disposition": "defer",
+      "reason": "Recent individual proposals do not yet establish a distinct durable first-class framework without a stronger identity and literature lineage review.",
+      "sourceLead": "recent 2026 quantum-gravity literature",
+      "nextAction": "Revisit during the quantum-gravity candidate census; do not add solely to populate recent years."
+    }
+  ]
+}

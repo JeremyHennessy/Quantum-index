@@ -23,6 +23,7 @@ jobs:
           node --check theories.js
           node --check formulas.js
           node --check formula-audit.js
+          node --check developments.js
           node --check profiles.js
           node --check workspace.js
       - name: Install test dependencies
@@ -32,6 +33,7 @@ jobs:
       - name: Verify generated coverage
         run: |
           node scripts/coverage-report.mjs --check
+          node scripts/freshness-report.mjs --check
           node scripts/version-assets.mjs --check
       - name: Validate theory graph
         run: node scripts/validate-data.mjs
@@ -39,7 +41,9 @@ jobs:
         run: |
           test -f index.html
           test -f styles.css
+          test -f developments.js
           grep -q './theories.js' index.html
+          grep -q './developments.js' index.html
           grep -q './app.js' index.html
           grep -q './formulas.js' index.html
           grep -q './formula-audit.js' index.html
@@ -48,6 +52,8 @@ jobs:
           grep -q 'id="formulaGrid"' index.html
           grep -q 'id="thoughtTreeGraph"' index.html
           grep -q 'id="treeGraphTitle"' index.html
+          grep -q 'id="timelineLayer"' index.html
+          grep -q 'id="timelineEventType"' index.html
           grep -q 'function renderThoughtTreeGraph' app.js
 
   browser:
@@ -96,7 +102,7 @@ jobs:
       - name: Package the tested revision
         run: |
           mkdir _site
-          cp index.html styles.css theories.js formulas.js formula-audit.js profiles.js workspace.js app.js _site/
+          cp index.html styles.css theories.js formulas.js formula-audit.js developments.js profiles.js workspace.js app.js _site/
           cp -R docs _site/docs
           printf '%s\n' "$GITHUB_SHA" > _site/revision.txt
       - uses: actions/upload-pages-artifact@v3

@@ -85,3 +85,35 @@ test('bright professional theme remains readable on desktop and mobile',async({p
 
   expect(errors).toEqual([]);
 });
+
+
+test('timeline separates origins from reviewed developments and restores filters',async({page},testInfo)=>{
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto('/#/timeline?layer=developments&eventType=experimental+result');
+  await expect(page.locator('#timelineLayer')).toHaveValue('developments');
+  await expect(page.locator('#timelineEventType')).toHaveValue('experimental result');
+  await expect(page.locator('#timeline')).toContainText('LZ reports a 2.6σ global excess');
+  await expect(page.locator('#timeline')).toContainText('ATLAS observes entanglement in top-quark pairs');
+  await expect(page.locator('#timeline')).not.toContainText('DESI DR2 Lyman-alpha full-shape analysis');
+  const desktopPath=testInfo.outputPath('timeline-developments-desktop.png');
+  await page.screenshot({path:desktopPath,fullPage:false});
+  await testInfo.attach('timeline-developments-desktop',{path:desktopPath,contentType:'image/png'});
+  await page.reload();
+  await expect(page.locator('#timelineLayer')).toHaveValue('developments');
+  await expect(page.locator('#timelineEventType')).toHaveValue('experimental result');
+
+  await page.goto('/#/timeline?layer=origins');
+  await expect(page.locator('#timeline')).toContainText('Postquantum classical-gravity framework');
+  await expect(page.locator('#timeline .development-card')).toHaveCount(0);
+  await expect(page.locator('#timelineScopeSummary')).toContainText('origins currently run through 2023');
+  await expect(page.locator('#timelineScopeSummary')).toContainText('through 2026');
+
+  await page.setViewportSize({width:320,height:800});
+  await page.goto('/#/timeline?layer=all');
+  await expect(page.locator('#timeline')).toContainText('LZ reports a 2.6σ global excess');
+  expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
+  const mobilePath=testInfo.outputPath('timeline-mobile.png');
+  await page.screenshot({path:mobilePath,fullPage:false});
+  await testInfo.attach('timeline-mobile',{path:mobilePath,contentType:'image/png'});
+  expect(errors).toEqual([]);
+});

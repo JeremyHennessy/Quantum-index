@@ -2,6 +2,8 @@
   const { theories, relations, trees, sources } = window.QI_DATA;
   const formulas = window.QI_FORMULAS?.formulas || [];
   const formulaAudit = window.QI_FORMULA_AUDIT?.entries || [];
+  const developments = window.QI_DEVELOPMENTS?.events || [];
+  const developmentTypes = window.QI_DEVELOPMENTS?.eventTypes || [];
   const formulaAuditByTheory = new Map(formulaAudit.map(x => [x.theoryId,x]));
   const byId = new Map(theories.map(t => [t.id,t]));
   const sourceById = new Map(sources.map(s => [s.id,s]));
@@ -18,6 +20,7 @@
   const profileFields = [["problem","Problem addressed"],["scope","Scope and mathematical approach"],["assumptions","Assumptions"],["predictions","Results and predictions"],["evidence","Evidence in the cited work"],["limitations","Limitations"],["questions","Questions to investigate"]];
   const state = { search:"", category:"", kind:"", status:"", era:"", sourcedOnly:false, evidence:"", selected:null, selectedTree:0, view:"map", returnView:"map" };
   const formulaState = { search:"", category:"", theory:"", type:"", review:"" };
+  const timelineState = { layer:"all", eventType:"" };
   const categoryColors = new Map([
     ["Historical foundations","#f59e0b"],["Formulations","#60a5fa"],["Foundations & interpretations","#c084fc"],
     ["Quantum field theory","#34d399"],["Quantum information & open systems","#22d3ee"],["Quantum gravity & spacetime","#f472b6"],
@@ -57,6 +60,7 @@
   const formulaTheoryIds=[...new Set(formulas.flatMap(f=>f.theoryIds))].filter(id=>byId.has(id)).sort((a,b)=>byId.get(a).name.localeCompare(byId.get(b).name));
   const formulaTheorySelect=$("#formulaTheory");
   formulaTheorySelect.innerHTML=formulaTheorySelect.firstElementChild.outerHTML+formulaTheoryIds.map(id=>`<option value="${id}">${esc(byId.get(id).name)}</option>`).join("");
+  setOptions("#timelineEventType",[...new Set(developments.map(event=>event.eventType))].sort());
 
   function renderStats(){
     const cat=new Set(theories.map(t=>t.category)).size;
@@ -66,6 +70,7 @@
       [cat,"major categories"],
       [relations.length,"typed connections"],
       [formulas.length,"formula atlas entries"],
+      [developments.length,"reviewed development events"],
       [`${sourced}/${theories.length}`,"entries with review/source provenance"]
     ].map(([n,l])=>`<div class="stat"><strong>${n}</strong><span>${l}</span></div>`).join("");
   }
@@ -86,6 +91,10 @@
     const params=new URLSearchParams();
     if(['map','catalog','timeline'].includes(view))for(const key of ['search','category','kind','status','era'])if(state[key])params.set(key,state[key]);
     if(['map','catalog','timeline'].includes(view)&&state.sourcedOnly)params.set('sourced','1');
+    if(view==='timeline'){
+      if(timelineState.layer!=='all')params.set('layer',timelineState.layer);
+      if(timelineState.eventType)params.set('eventType',timelineState.eventType);
+    }
     if(['map','lineage'].includes(view)&&state.evidence)params.set('evidence',state.evidence);
     if(view==='lineage'){params.set('tree',trees[state.selectedTree].name);if(state.selected)params.set('theory',state.selected);}
     if(view==='formula'){for(const key of ['search','category','theory','type','review'])if(formulaState[key])params.set(key,formulaState[key]);const back=safeReturn(new URLSearchParams(location.hash.split('?').slice(1).join('?')).get('returnTo'));if(back)params.set('returnTo',back);}
@@ -96,7 +105,7 @@
     const count=fn=>theories.filter(fn).length;
     const gaps=new Set(formulaAudit.filter(a=>a.classification==='formula-bearing-gap').map(a=>a.theoryId));
     const rows=[...categoryColors.keys()].map(category=>`<tr><th scope="row">${esc(category)}</th><td>${count(t=>t.category===category)}</td><td>${count(t=>t.category===category&&gaps.has(t.id))}</td><td>${count(t=>t.category===category&&profiles[t.id])}</td></tr>`).join('');
-    $('#coverageContent').innerHTML=`<h3>Coverage and review status</h3><p>The census is open. Source attachment does not establish that every claim is verified or experimentally confirmed.</p><p>${theories.length} entries · ${sources.length} bibliography records · ${Object.keys(profiles).length} reading profiles · ${learningPaths.length} learning paths.</p><p>${relations.filter(r=>r.sourceIds.length).length} source-backed relationships; ${relations.filter(r=>!r.sourceIds.length).length} editorial relationships.</p><p>${formulas.length} formulas; ${formulas.filter(f=>f.metadataReview==='explicit').length} explicitly reviewed metadata records. Baseline records still need equation-level review.</p><div class="comparison-scroll" role="region" aria-label="Coverage by category" tabindex="0"><table class="comparison-table"><caption>Current runtime coverage by category</caption><thead><tr><th scope="col">Category</th><th scope="col">Entries</th><th scope="col">Formula gaps</th><th scope="col">Reading profiles</th></tr></thead><tbody>${rows}</tbody></table></div><p>Formula gaps mean no representative expression has yet been curated. They do not mean the framework lacks mathematics. A linked formula does not establish complete mathematical coverage.</p><p><a href="https://github.com/JeremyHennessy/Quantum-index/blob/main/docs/COVERAGE.md">Coverage methodology and research backlog</a></p>`;
+    $('#coverageContent').innerHTML=`<h3>Coverage and review status</h3><p>The census is open. Source attachment does not establish that every claim is verified or experimentally confirmed.</p><p>${theories.length} entries · ${sources.length} bibliography records · ${Object.keys(profiles).length} reading profiles · ${learningPaths.length} learning paths.</p><p>${relations.filter(r=>r.sourceIds.length).length} source-backed relationships; ${relations.filter(r=>!r.sourceIds.length).length} editorial relationships.</p><p>${formulas.length} formulas; ${formulas.filter(f=>f.metadataReview==='explicit').length} explicitly reviewed metadata records. Baseline records still need equation-level review.</p><p>${developments.length} reviewed DevelopmentEvents extend the historical timeline through ${developments.length?Math.max(...developments.map(event=>event.year)):"—"} without changing entity origin dates.</p><div class="comparison-scroll" role="region" aria-label="Coverage by category" tabindex="0"><table class="comparison-table"><caption>Current runtime coverage by category</caption><thead><tr><th scope="col">Category</th><th scope="col">Entries</th><th scope="col">Formula gaps</th><th scope="col">Reading profiles</th></tr></thead><tbody>${rows}</tbody></table></div><p>Formula gaps mean no representative expression has yet been curated. They do not mean the framework lacks mathematics. A linked formula does not establish complete mathematical coverage.</p><p><a href="https://github.com/JeremyHennessy/Quantum-index/blob/main/docs/COVERAGE.md">Coverage methodology and research backlog</a></p>`;
   }
   function safeReturn(value){return typeof value==="string" && value.length<4096 && /^#\/(?:theory\/[a-z0-9-]+|map|timeline|catalog|lineage|formula|compare|learn|workspace|coverage)(?:\?|$)/.test(value)?value:"";}
   function theoryLink(id,from=state.returnView){
@@ -326,12 +335,52 @@
   }
 
   function renderTimeline(){
-    const list=filtered().slice().sort((a,b)=>a.year-b.year||a.name.localeCompare(b.name));
-    const groups=d3.group(list,d=>d.era);
-    $("#timeline").innerHTML=[...groups].map(([era,items])=>`
+    const q=state.search.trim().toLowerCase();
+    const originItems=timelineState.layer==="developments" ? [] : filtered().map(theory=>({
+      itemType:"origin",year:theory.year,date:String(theory.year),era:theory.era,theory
+    }));
+    const eventMatches=event=>{
+      const related=(event.relatedTheoryIds||[]).map(id=>byId.get(id)).filter(Boolean);
+      const searchable=[event.title,event.summary,event.significance,event.eventType,...related.flatMap(t=>[t.name,t.summary,t.core,...t.tags,...t.aliases])].join(" ").toLowerCase();
+      return (!q||searchable.includes(q)) &&
+        (!state.category||related.some(t=>t.category===state.category)) &&
+        (!state.kind||related.some(t=>t.kind===state.kind)) &&
+        (!state.status||related.some(t=>t.status===state.status)) &&
+        (!state.era||related.some(t=>t.era===state.era)) &&
+        (!state.sourcedOnly||related.some(t=>t.provenance!=="catalogued")) &&
+        (!timelineState.eventType||event.eventType===timelineState.eventType);
+    };
+    const developmentItems=timelineState.layer==="origins" ? [] : developments.filter(eventMatches).map(event=>({
+      itemType:"development",year:event.year,date:event.date,era:event.year>=2015?"2015–present":event.year>=2000?"2000–2014":String(event.year),event
+    }));
+    const items=[...originItems,...developmentItems].sort((a,b)=>a.year-b.year||String(a.date).localeCompare(String(b.date))||
+      (a.itemType==="origin"?a.theory.name:a.event.title).localeCompare(b.itemType==="origin"?b.theory.name:b.event.title));
+    const groups=d3.group(items,item=>item.era);
+    const newestOrigin=theories.length?Math.max(...theories.map(t=>t.year)):"—";
+    const newestDevelopment=developments.length?Math.max(...developments.map(event=>event.year)):"—";
+    $("#timelineScopeSummary").textContent=`Entity origins currently run through ${newestOrigin}; ${developments.length} reviewed developments extend the record through ${newestDevelopment}. Recent events never rewrite historical origin years.`;
+    $("#timelineEventType").disabled=timelineState.layer==="origins";
+    $("#timeline").innerHTML=[...groups].map(([era,groupItems])=>`
       <div class="timeline-era"><h4>${esc(era)}</h4><div class="timeline-items">
-      ${items.map(t=>`<a class="timeline-card" href="${theoryLink(t.id,"timeline")}"><span class="year">${t.year}</span><h5>${esc(t.name)}</h5><p>${esc(t.summary)}</p></a>`).join("")}
-      </div></div>`).join("") || '<div class="empty-state">No theories match the current filters.</div>';
+      ${groupItems.map(item=>{
+        if(item.itemType==="origin"){
+          const t=item.theory;
+          return `<a class="timeline-card timeline-origin" href="${theoryLink(t.id,"timeline")}"><div class="timeline-card-top"><span class="year">${t.year}</span><span class="timeline-kind">Origin</span></div><h5>${esc(t.name)}</h5><p>${esc(t.summary)}</p></a>`;
+        }
+        const event=item.event;
+        const related=(event.relatedTheoryIds||[]).map(id=>byId.get(id)).filter(Boolean);
+        const sourceLinks=(event.sourceIds||[]).map(id=>sourceById.get(id)).filter(Boolean).map(source=>`<a href="${esc(source.url)}" target="_blank" rel="noreferrer">${esc(source.title)}</a>`).join("");
+        return `<article class="timeline-card development-card">
+          <div class="timeline-card-top"><span class="year">${esc(event.date)}</span><span class="development-badge">${esc(event.eventType)}</span></div>
+          <h5>${esc(event.title)}</h5>
+          <p>${esc(event.summary)}</p>
+          <p class="development-significance"><strong>Why it matters:</strong> ${esc(event.significance)}</p>
+          <div class="timeline-related">${related.map(t=>`<a class="timeline-theory-link" href="${theoryLink(t.id,"timeline")}">${esc(t.name)}</a>`).join("")}</div>
+          <div class="timeline-event-sources">${sourceLinks}</div>
+          <p class="reviewed">Evidence: ${esc(event.evidenceStatus)} · reviewed ${esc(event.reviewedAt)}</p>
+        </article>`;
+      }).join("")}
+      </div></div>`).join("") || '<div class="empty-state">No timeline items match the current filters.</div>';
   }
 
   function renderTrees(){
@@ -583,7 +632,14 @@
     if(view==="learn") learningPathId=learningPaths.some(p=>p.id===params.get("path"))?params.get("path"):"";
     if(['map','catalog','timeline'].includes(view)){
       for(const key of ['search','category','kind','status','era']){const el=$(key==='search'?'#search':'#'+key+'Filter'),value=params.get(key)||'';state[key]=key==='search'||[...el.options].some(o=>o.value===value)?value:'';el.value=state[key];}
-      state.sourcedOnly=params.get('sourced')==='1';$('#sourcedOnly').checked=state.sourcedOnly;renderGraph();renderCatalog();renderTimeline();
+      state.sourcedOnly=params.get('sourced')==='1';$('#sourcedOnly').checked=state.sourcedOnly;
+      if(view==='timeline'){
+        timelineState.layer=['all','origins','developments'].includes(params.get('layer'))?params.get('layer'):'all';
+        timelineState.eventType=developmentTypes.includes(params.get('eventType'))?params.get('eventType'):'';
+        $('#timelineLayer').value=timelineState.layer;
+        $('#timelineEventType').value=timelineState.eventType;
+      }
+      renderGraph();renderCatalog();renderTimeline();
     }
     if(view==='lineage'){const index=trees.findIndex(t=>t.name===params.get('tree'));state.selectedTree=index>=0?index:0;renderTrees();}
     if(view==='formula'){
@@ -607,10 +663,13 @@
   $("#formulaType").addEventListener("change",e=>{formulaState.type=e.target.value;rememberFilters();renderFormulas();});
   $("#formulaTheory").addEventListener("change",e=>{formulaState.theory=e.target.value;rememberFilters();renderFormulas();});
   $('#formulaReview').onchange=e=>{formulaState.review=e.target.value;rememberFilters();renderFormulas();};
+  $('#timelineLayer').onchange=e=>{timelineState.layer=e.target.value;rememberFilters();renderTimeline();};
+  $('#timelineEventType').onchange=e=>{timelineState.eventType=e.target.value;rememberFilters();renderTimeline();};
   $('#relationEvidence').onchange=e=>{state.evidence=e.target.value;if(state.view==='theory'){const params=new URLSearchParams(location.hash.split('?').slice(1).join('?'));if(state.evidence)params.set('evidence',state.evidence);else params.delete('evidence');history.replaceState(null,'',location.hash.split('?')[0]+'?'+params);}else rememberFilters();renderGraph();renderThoughtTreeGraph();renderLineage();renderDetail();};
   $("#resetView").addEventListener("click",()=>{
     Object.assign(state,{search:"",category:"",kind:"",status:"",era:"",sourcedOnly:false});
-    $("#search").value="";$("#categoryFilter").value="";$("#kindFilter").value="";$("#statusFilter").value="";$("#eraFilter").value="";$("#sourcedOnly").checked=false;if(["map","catalog","timeline"].includes(state.view))rememberFilters();renderAll();
+    Object.assign(timelineState,{layer:"all",eventType:""});
+    $("#search").value="";$("#categoryFilter").value="";$("#kindFilter").value="";$("#statusFilter").value="";$("#eraFilter").value="";$("#sourcedOnly").checked=false;$("#timelineLayer").value="all";$("#timelineEventType").value="";if(["map","catalog","timeline"].includes(state.view))rememberFilters();renderAll();
   });
   window.addEventListener("resize",()=>{if(state.view==="map")renderGraph();});
   renderTrees();renderAll();applyRoute();

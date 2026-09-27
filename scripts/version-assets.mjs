@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
-const assets=['styles.css','theories.js','formulas.js','formula-audit.js','profiles.js','workspace.js','app.js'];
+const assets=['styles.css','theories.js','formulas.js','formula-audit.js','developments.js','profiles.js','workspace.js','app.js'];
 const versions=Object.fromEntries(assets.map(file=>[file,createHash('sha256').update(fs.readFileSync(file)).digest('hex').slice(0,16)]));
 let html=fs.readFileSync('index.html','utf8');
 for(const [file,hash] of Object.entries(versions))html=html.replace(new RegExp('(\\./'+file.replaceAll('.','\\.')+')(?:\\?v=[^"\\s]*)?(?=")','g'),'$1?v='+hash);
