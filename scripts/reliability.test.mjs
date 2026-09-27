@@ -66,7 +66,7 @@ test('catalog opens visible details and return preserves the current search',asy
   const before=d.querySelector('#resultCount').textContent;
   await change(()=>d.querySelector('#catalog a[href*="planck-quanta"]').click());
   assert.equal(active(),'theoryView');assert.equal(title(),'Planck energy quanta');
-  assert.equal(d.querySelector('#backToView').getAttribute('href'),'#/catalog');
+  assert.equal(d.querySelector('#backToView').getAttribute('href'),'#/catalog?search=Planck');
   await change(()=>d.querySelector('#backToView').click());
   assert.equal(active(),'catalogView');assert.equal(d.querySelector('#search').value,'Planck');
   assert.equal(d.querySelector('#resultCount').textContent,before);
@@ -269,7 +269,7 @@ test('comparison renders four cited profiles and preserves selection through the
   await route('#/compare?ids='+ids);
   assert.equal(active(),'compareView');
   assert.equal(d.querySelectorAll('.comparison-table thead th').length,5);
-  assert.equal(d.querySelectorAll('#profileCollection a').length,50);
+  assert.equal(d.querySelectorAll('#profileCollection a').length,59);
   assert.ok(d.querySelectorAll('.comparison-table .profile-citations a').length>=28);
   const link=d.querySelector('.comparison-table thead a');
   assert.ok(link.hash.includes('compare='+ids));
@@ -382,7 +382,7 @@ test('workspace UI saves literal notes, progress, bookmarks and comparisons acro
   await route('#/theory/unruh');
   d.querySelector('#toggleBookmark').click();d.querySelector('#toggleRead').click();
   const note='<img src=x onerror="alert(1)"> Personal note';
-  d.querySelector('#researchNote').value=note;d.querySelector('#saveNote').click();
+  d.querySelector('#researchNote').value=note;await d.querySelector('#saveNote').onclick();
   assert.match(d.querySelector('#researchStatus').textContent,/saved/);
   await route('#/workspace');assert.match(d.querySelector('#workspaceContent').textContent,/1 \/ 5 entries marked read/);
   assert.ok(d.querySelector('#workspaceContent').textContent.includes(note));assert.equal(d.querySelector('#workspaceContent img'),null);
@@ -428,7 +428,7 @@ test('import UI previews valid data, waits for merge and rejects invalid backups
   Object.defineProperty(input,'files',{configurable:true,value:[{size:500,text:async()=>JSON.stringify(incoming)}]});
   await input.onchange({target:input});
   assert.equal(w.QI_WORKSPACE.exportText(),before);assert.match(d.querySelector('#importPreview').textContent,/existing work is retained/);
-  d.querySelector('#confirmImport').click();assert.equal(w.QI_WORKSPACE.data.notes['jt-gravity'],'Imported review note');
+  await d.querySelector('#confirmImport').onclick();assert.equal(w.QI_WORKSPACE.data.notes['jt-gravity'],'Imported review note');
   input=d.querySelector('#importWorkspace');const saved=w.QI_WORKSPACE.exportText();
   Object.defineProperty(input,'files',{configurable:true,value:[{size:12,text:async()=>'{invalid'}]});await input.onchange({target:input});
   assert.equal(d.querySelector('#confirmImport'),null);assert.equal(w.QI_WORKSPACE.exportText(),saved);
@@ -536,4 +536,17 @@ test('notebook download contains all saved research even when lists are filtered
     assert.ok(text.includes('Notebook export test'));assert.match(d.querySelector('#workspaceStatus').textContent,/download requested/);
     el.value='';el.dispatchEvent(new w.Event('input'));
   }finally{w.QI_WORKSPACE.save(original);w.URL.createObjectURL=create;w.URL.revokeObjectURL=revoke;w.HTMLAnchorElement.prototype.click=click;}
+});
+test('drafts survive route changes and saved-note conflicts retain both versions',async()=>{
+ const original=w.QI_WORKSPACE.data;await route('#/theory/bell');const input=d.querySelector('#researchNote');input.value='Unsaved draft test';input.dispatchEvent(new w.Event('input'));
+ await route('#/catalog');await route('#/theory/bell');assert.equal(d.querySelector('#researchNote').value,'Unsaved draft test');assert.ok(w.sessionStorage.getItem('quantum-index-drafts-v1').includes('Unsaved draft test'));
+ const external=w.QI_WORKSPACE.data;external.notes.bell='Other tab version';w.localStorage.setItem('quantum-index-workspace-v1',JSON.stringify(external));
+ await d.querySelector('#saveNote').onclick();assert.match(d.querySelector('#researchStatus').textContent,/another tab/);assert.equal(d.querySelector('#currentSavedNote').value,'Other tab version');
+ await d.querySelector('#combineNote').onclick();assert.match(w.QI_WORKSPACE.data.notes.bell,/Other tab version[\s\S]*Unsaved draft test/);w.QI_WORKSPACE.save(original);
+});
+test('URL filters restore catalog, formula review, evidence and selected tree state',async()=>{
+ await route('#/catalog?search=Bell');assert.equal(d.querySelector('#search').value,'Bell');assert.ok(d.querySelectorAll('#catalog .catalog-card').length<20);
+ await route('#/formula?search=entropy&review=explicit');assert.equal(d.querySelector('#formulaSearch').value,'entropy');assert.equal(d.querySelector('#formulaReview').value,'explicit');assert.ok([...d.querySelectorAll('.formula-card .reviewed')].every(x=>x.textContent==='Metadata explicitly reviewed'));
+ const tree=w.QI_DATA.trees[2];await route('#/lineage?tree='+encodeURIComponent(tree.name)+'&evidence=sourced');assert.equal(d.querySelector('#treeGraphTitle').textContent,tree.name);assert.ok([...d.querySelectorAll('.tree-links path')].every(x=>x.__data__.sourceIds.length));
+ await route('#/coverage');assert.equal(active(),'coverageView');assert.match(d.querySelector('#coverageContent').textContent,/The census is open/);
 });

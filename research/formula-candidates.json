@@ -1,0 +1,425 @@
+{
+  "reviewedAt": "2026-09-27",
+  "candidates": [
+    {
+      "candidate": "degenerate perturbation theory matrix problem",
+      "category": "Perturbation and scattering theory",
+      "status": "open",
+      "formulaIds": [],
+      "note": "Dedicated candidate still needs source and equation review."
+    },
+    {
+      "candidate": "interaction-picture evolution operator",
+      "category": "Perturbation and scattering theory",
+      "status": "represented",
+      "formulaIds": [
+        "dyson-series"
+      ],
+      "note": "A representative is shipped; metadata review may still be pending."
+    },
+    {
+      "candidate": "spin addition",
+      "category": "Angular momentum and atomic physics",
+      "status": "represented",
+      "formulaIds": [
+        "cg-expansion"
+      ],
+      "note": "A representative is shipped; metadata review may still be pending."
+    },
+    {
+      "candidate": "3j, 6j and 9j symbols",
+      "category": "Angular momentum and atomic physics",
+      "status": "open",
+      "formulaIds": [],
+      "note": "Dedicated candidate still needs source and equation review."
+    },
+    {
+      "candidate": "fine structure",
+      "category": "Angular momentum and atomic physics",
+      "status": "partial",
+      "formulaIds": [
+        "spin-orbit"
+      ],
+      "note": "Related content is shipped; this broader candidate remains open."
+    },
+    {
+      "candidate": "hyperfine Hamiltonian",
+      "category": "Angular momentum and atomic physics",
+      "status": "open",
+      "formulaIds": [],
+      "note": "Dedicated candidate still needs source and equation review."
+    },
+    {
+      "candidate": "atomic selection rules",
+      "category": "Angular momentum and atomic physics",
+      "status": "partial",
+      "formulaIds": [
+        "wigner-eckart",
+        "dipole-rate"
+      ],
+      "note": "Related content is shipped; this broader candidate remains open."
+    },
+    {
+      "candidate": "Hartree–Fock equations",
+      "category": "Quantum chemistry and electronic structure",
+      "status": "represented",
+      "formulaIds": [
+        "hf-fock-equation",
+        "hf-fock-operator",
+        "hf-energy"
+      ],
+      "note": "A representative is shipped; metadata review may still be pending."
+    },
+    {
+      "candidate": "Slater determinant",
+      "category": "Quantum chemistry and electronic structure",
+      "status": "open",
+      "formulaIds": [],
+      "note": "Dedicated candidate still needs source and equation review."
+    },
+    {
+      "candidate": "Roothaan–Hall equations",
+      "category": "Quantum chemistry and electronic structure",
+      "status": "open",
+      "formulaIds": [],
+      "note": "Dedicated candidate still needs source and equation review."
+    },
+    {
+      "candidate": "configuration-interaction expansion",
+      "category": "Quantum chemistry and electronic structure",
+      "status": "represented",
+      "formulaIds": [
+        "ci-expansion"
+      ],
+      "note": "A representative is shipped; metadata review may still be pending."
+    },
+    {
+      "candidate": "coupled-cluster exponential ansatz",
+      "category": "Quantum chemistry and electronic structure",
+      "status": "represented",
+      "formulaIds": [
+        "cc-ansatz"
+      ],
+      "note": "A representative is shipped; metadata review may still be pending."
+    },
+    {
+      "candidate": "CCSD working structure",
+      "category": "Quantum chemistry and electronic structure",
+      "status": "partial",
+      "formulaIds": [
+        "cc-amplitude"
+      ],
+      "note": "Related content is shipped; this broader candidate remains open."
+    },
+    {
+      "candidate": "Møller–Plesset perturbation energies",
+      "category": "Quantum chemistry and electronic structure",
+      "status": "partial",
+      "formulaIds": [
+        "mp2-energy"
+      ],
+      "note": "Related content is shipped; this broader candidate remains open."
+    },
+    {
+      "candidate": "Hellmann–Feynman theorem",
+      "category": "Quantum chemistry and electronic structure",
+      "status": "represented",
+      "formulaIds": [
+        "hellmann-feynman"
+      ],
+      "note": "A representative is shipped; metadata review may still be pending."
+    },
+    {
+      "candidate": "virial theorem",
+      "category": "Quantum chemistry and electronic structure",
+      "status": "represented",
+      "formulaIds": [
+        "quantum-virial"
+      ],
+      "note": "A representative is shipped; metadata review may still be pending."
+    },
+    {
+      "candidate": "Kohn–Sham total-energy functional variants",
+      "category": "Quantum chemistry and electronic structure",
+      "status": "partial",
+      "formulaIds": [
+        "ks-equation",
+        "hk-variational"
+      ],
+      "note": "Related content is shipped; this broader candidate remains open."
+    },
+    {
+      "candidate": "self-energy definition",
+      "category": "Many-body Green functions and response",
+      "status": "represented",
+      "formulaIds": [
+        "dyson-green",
+        "gw-self-energy"
+      ],
+      "note": "A representative is shipped; metadata review may still be pending."
+    },
+    {
+      "candidate": "Lehmann representation",
+      "category": "Many-body Green functions and response",
+      "status": "represented",
+      "formulaIds": [
+        "lehmann"
+      ],
+      "note": "A representative is shipped; metadata review may still be pending."
+    },
+    {
+      "candidate": "Bethe–Salpeter equation",
+      "category": "Many-body Green functions and response",
+      "status": "represented",
+      "formulaIds": [
+        "bse-equation"
+      ],
+      "note": "A representative is shipped; metadata review may still be pending."
+    },
+    {
+      "candidate": "random-phase approximation",
+      "category": "Many-body Green functions and response",
+      "status": "represented",
+      "formulaIds": [
+        "rpa-density-response"
+      ],
+      "note": "A representative is shipped; metadata review may still be pending."
+    },
+    {
+      "candidate": "superfluid stiffness and London relations",
+      "category": "Many-body Green functions and response",
+      "status": "partial",
+      "formulaIds": [
+        "london"
+      ],
+      "note": "Related content is shipped; this broader candidate remains open."
+    },
+    {
+      "candidate": "Josephson relations",
+      "category": "Many-body Green functions and response",
+      "status": "open",
+      "formulaIds": [],
+      "note": "Dedicated candidate still needs source and equation review."
+    },
+    {
+      "candidate": "Slavnov–Taylor identities",
+      "category": "QFT and gauge theory",
+      "status": "open",
+      "formulaIds": [],
+      "note": "Dedicated candidate still needs source and equation review."
+    },
+    {
+      "candidate": "trace anomaly",
+      "category": "QFT and gauge theory",
+      "status": "open",
+      "formulaIds": [],
+      "note": "Dedicated candidate still needs source and equation review."
+    },
+    {
+      "candidate": "gauge-fixed generating functionals",
+      "category": "QFT and gauge theory",
+      "status": "partial",
+      "formulaIds": [
+        "generating-functional",
+        "fp-determinant"
+      ],
+      "note": "Related content is shipped; this broader candidate remains open."
+    },
+    {
+      "candidate": "BRST transformations by field",
+      "category": "QFT and gauge theory",
+      "status": "open",
+      "formulaIds": [],
+      "note": "Dedicated candidate still needs source and equation review."
+    },
+    {
+      "candidate": "Schwinger parameterization",
+      "category": "QFT and gauge theory",
+      "status": "open",
+      "formulaIds": [],
+      "note": "Dedicated candidate still needs source and equation review."
+    },
+    {
+      "candidate": "dimensional-regularization master integrals",
+      "category": "QFT and gauge theory",
+      "status": "open",
+      "formulaIds": [],
+      "note": "Dedicated candidate still needs source and equation review."
+    },
+    {
+      "candidate": "Jamiołkowski isomorphism",
+      "category": "Quantum information",
+      "status": "represented",
+      "formulaIds": [
+        "choi"
+      ],
+      "note": "A representative is shipped; metadata review may still be pending."
+    },
+    {
+      "candidate": "entanglement of formation",
+      "category": "Quantum information",
+      "status": "open",
+      "formulaIds": [],
+      "note": "Dedicated candidate still needs source and equation review."
+    },
+    {
+      "candidate": "concurrence",
+      "category": "Quantum information",
+      "status": "open",
+      "formulaIds": [],
+      "note": "Dedicated candidate still needs source and equation review."
+    },
+    {
+      "candidate": "channel-capacity formulas",
+      "category": "Quantum information",
+      "status": "partial",
+      "formulaIds": [
+        "holevo",
+        "coherent-information"
+      ],
+      "note": "Related content is shipped; this broader candidate remains open."
+    },
+    {
+      "candidate": "optical Bloch equations",
+      "category": "AMO and quantum optics",
+      "status": "open",
+      "formulaIds": [],
+      "note": "Dedicated candidate still needs source and equation review."
+    },
+    {
+      "candidate": "Wigner–Weisskopf decay",
+      "category": "AMO and quantum optics",
+      "status": "partial",
+      "formulaIds": [
+        "spontaneous-decay"
+      ],
+      "note": "Related content is shipped; this broader candidate remains open."
+    },
+    {
+      "candidate": "squeezing operator",
+      "category": "AMO and quantum optics",
+      "status": "represented",
+      "formulaIds": [
+        "squeeze-operator"
+      ],
+      "note": "A representative is shipped; metadata review may still be pending."
+    },
+    {
+      "candidate": "master equations for driven cavities",
+      "category": "AMO and quantum optics",
+      "status": "partial",
+      "formulaIds": [
+        "lindblad",
+        "input-output"
+      ],
+      "note": "Related content is shipped; this broader candidate remains open."
+    },
+    {
+      "candidate": "AC Stark shift",
+      "category": "AMO and quantum optics",
+      "status": "open",
+      "formulaIds": [
+        "stark-first"
+      ],
+      "note": "Dedicated candidate still needs source and equation review."
+    },
+    {
+      "candidate": "Lamb shift",
+      "category": "AMO and quantum optics",
+      "status": "open",
+      "formulaIds": [],
+      "note": "Dedicated candidate still needs source and equation review."
+    },
+    {
+      "candidate": "Ashtekar Poisson brackets",
+      "category": "Quantum gravity and cosmology",
+      "status": "represented",
+      "formulaIds": [
+        "ashtekar-poisson"
+      ],
+      "note": "A representative is shipped; metadata review may still be pending."
+    },
+    {
+      "candidate": "causal-set d'Alembertian and action",
+      "category": "Quantum gravity and cosmology",
+      "status": "open",
+      "formulaIds": [],
+      "note": "Dedicated candidate still needs source and equation review."
+    },
+    {
+      "candidate": "CDT/EDT discrete actions",
+      "category": "Quantum gravity and cosmology",
+      "status": "partial",
+      "formulaIds": [
+        "cdt-partition",
+        "regge-action"
+      ],
+      "note": "Related content is shipped; this broader candidate remains open."
+    },
+    {
+      "candidate": "tensor-model large-N scaling",
+      "category": "Quantum gravity and cosmology",
+      "status": "open",
+      "formulaIds": [
+        "tensor-model-partition"
+      ],
+      "note": "Dedicated candidate still needs source and equation review."
+    },
+    {
+      "candidate": "tensor power spectrum",
+      "category": "Quantum gravity and cosmology",
+      "status": "open",
+      "formulaIds": [],
+      "note": "Dedicated candidate still needs source and equation review."
+    },
+    {
+      "candidate": "Page curve/generalized entropy variants",
+      "category": "Quantum gravity and cosmology",
+      "status": "partial",
+      "formulaIds": [
+        "island",
+        "replica-entropy-limit"
+      ],
+      "note": "Related content is shipped; this broader candidate remains open."
+    },
+    {
+      "candidate": "Weinberg nonlinear Schrödinger structure",
+      "category": "Beyond-standard / modified quantum dynamics",
+      "status": "represented",
+      "formulaIds": [
+        "weinberg-nonlinear-eom"
+      ],
+      "note": "A representative is shipped; metadata review may still be pending."
+    },
+    {
+      "candidate": "Doebner–Goldin equation family",
+      "category": "Beyond-standard / modified quantum dynamics",
+      "status": "open",
+      "formulaIds": [],
+      "note": "Dedicated candidate still needs source and equation review."
+    },
+    {
+      "candidate": "q-oscillator algebra variants",
+      "category": "Beyond-standard / modified quantum dynamics",
+      "status": "partial",
+      "formulaIds": [
+        "q-oscillator"
+      ],
+      "note": "Related content is shipped; this broader candidate remains open."
+    },
+    {
+      "candidate": "quaternionic Schrödinger equation variants",
+      "category": "Beyond-standard / modified quantum dynamics",
+      "status": "open",
+      "formulaIds": [],
+      "note": "Dedicated candidate still needs source and equation review."
+    },
+    {
+      "candidate": "p-adic propagators",
+      "category": "Beyond-standard / modified quantum dynamics",
+      "status": "open",
+      "formulaIds": [],
+      "note": "Dedicated candidate still needs source and equation review."
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # Candidate backlog audit
 
+> Historical candidate research. Current shipped entities and unresolved formula gaps are counted in [Coverage](../docs/COVERAGE.md); formula proposals are reconciled in [the disposition ledger](FORMULA_CANDIDATES.md). ADD/SUBTYPE decisions here are research decisions, not current delivery status.
+
 _Last reviewed: 2026-09-22_
 
 Decision labels:

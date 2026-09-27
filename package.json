@@ -5,9 +5,11 @@
     "test": "node --test scripts/*.test.mjs",
     "validate": "node scripts/validate-data.mjs && node scripts/coverage-report.mjs --check && node scripts/version-assets.mjs --check",
     "coverage": "node scripts/coverage-report.mjs",
-    "assets": "node scripts/version-assets.mjs"
+    "assets": "node scripts/version-assets.mjs",
+    "test:browser": "playwright test"
   },
   "devDependencies": {
+    "@playwright/test": "1.63.0",
     "d3": "7.9.0",
     "jsdom": "26.1.0"
   }

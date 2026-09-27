@@ -6,6 +6,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -46,3 +49,71 @@ jobs:
           grep -q 'id="thoughtTreeGraph"' index.html
           grep -q 'id="treeGraphTitle"' index.html
           grep -q 'function renderThoughtTreeGraph' app.js
+
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci --ignore-scripts
+      - run: npx playwright install --with-deps chromium webkit
+      - run: npm run test:browser
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-report
+          path: playwright-report/
+          retention-days: 14
+
+  package:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: [validate, browser]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    outputs:
+      workflow_pages: ${{ steps.pages.outputs.workflow_pages }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Pages publishing source
+        id: pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mode=$(gh api "repos/$GITHUB_REPOSITORY/pages" --jq .build_type)
+          if [ "$mode" = workflow ]; then
+            echo "workflow_pages=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "workflow_pages=false" >> "$GITHUB_OUTPUT"
+            echo "Pages still uses branch publishing. Select Settings > Pages > Source > GitHub Actions to activate the tested-artifact deployment gate." >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Package the tested revision
+        run: |
+          mkdir _site
+          cp index.html styles.css theories.js formulas.js formula-audit.js profiles.js workspace.js app.js _site/
+          cp -R docs _site/docs
+          printf '%s\n' "$GITHUB_SHA" > _site/revision.txt
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: package
+    if: needs.package.outputs.workflow_pages == 'true'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment

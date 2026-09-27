@@ -15,8 +15,49 @@ window.QI_WORKSPACE = (() => {
   const maxBytes=1024*1024;
   let data=empty(),error='',raw=null,recoveryNeeded=false;
   try{raw=localStorage.getItem(key);if(raw)data=validate(JSON.parse(raw));}catch(e){recoveryNeeded=true;error='Saved workspace could not be loaded. Existing browser data has not been overwritten. Changes will not be saved. Export the original data for recovery; use another browser profile for a fresh workspace.';}
-  function save(next){if(recoveryNeeded)return false;const checked=validate(next),serialized=JSON.stringify(checked,null,2);let bytes=0;for(const char of serialized){const code=char.codePointAt(0);bytes+=code<128?1:code<2048?2:code<65536?3:4;}if(bytes>maxBytes){error='Workspace exceeds the 1 MB backup limit. Your change was not saved.';return false;}try{localStorage.setItem(key,serialized);data=checked;error='';return true;}catch(e){error='Browser storage is unavailable or full. Your change was not saved; copy the note or export your workspace.';return false;}}
-  function merge(input){const incoming=validate(input),next=JSON.parse(JSON.stringify(data));next.bookmarks=[...new Set([...next.bookmarks,...incoming.bookmarks])];next.read=[...new Set([...next.read,...incoming.read])];for(const [id,note] of Object.entries(incoming.notes)){if(next.notes[id]&&next.notes[id]!==note){if(!next.notes[id].split('\n\n— Imported note —\n').includes(note))next.notes[id]+='\n\n— Imported note —\n'+note;}else next.notes[id]=note;}for(const c of incoming.comparisons)if(!next.comparisons.some(x=>x.name===c.name&&JSON.stringify(x.theoryIds)===JSON.stringify(c.theoryIds)))next.comparisons.push(c);return save(next);}
+  const snapshots=new WeakMap();
+  const clone=value=>JSON.parse(JSON.stringify(value));
+  function combine(base,local,remote){
+    const out=clone(remote);
+    for(const key of ['bookmarks','read','comparisons']){
+      const identity=value=>typeof value==='string'?value:JSON.stringify(value);
+      const before=new Set(base[key].map(identity)),wanted=new Set(local[key].map(identity));
+      out[key]=remote[key].filter(value=>!before.has(identity(value))||wanted.has(identity(value)));
+      const present=new Set(out[key].map(identity));
+      for(const value of local[key])if(!before.has(identity(value))&&!present.has(identity(value))){out[key].push(value);present.add(identity(value));}
+    }
+    for(const id of new Set([...Object.keys(base.notes),...Object.keys(local.notes)])){
+      const before=base.notes[id]||'',wanted=local.notes[id]||'',current=remote.notes[id]||'';
+      if(wanted===before)continue;
+      if(current!==before&&current!==wanted)throw new Error('This note changed in another tab. Your draft is retained. Review the current saved note before combining them.');
+      out.notes[id]=wanted;
+    }
+    return validate(out);
+  }
+  function refresh(){
+    try{const latest=localStorage.getItem(key);raw=latest;const checked=latest?validate(JSON.parse(latest)):empty();data=checked;raw=latest;error='';recoveryNeeded=false;return true;}
+    catch(e){error='Browser data changed but could not be read. Existing data has not been overwritten. Export the original backup for recovery.';recoveryNeeded=true;return false;}
+  }
+  function save(next){
+    if(recoveryNeeded)return false;
+    const local=validate(next),base=snapshots.get(next)||clone(data);
+    try{
+      const latest=localStorage.getItem(key),remote=latest?validate(JSON.parse(latest)):empty();
+      const checked=combine(base,local,remote),serialized=JSON.stringify(checked,null,2);
+      let bytes=0;for(const char of serialized){const code=char.codePointAt(0);bytes+=code<128?1:code<2048?2:code<65536?3:4;}
+      if(bytes>maxBytes){error='Workspace exceeds the 1 MB backup limit. Your change was not saved.';return false;}
+      localStorage.setItem(key,serialized);data=checked;raw=serialized;error='';return true;
+    }catch(e){error=/another tab/.test(e.message)?e.message:'Browser storage could not be updated. Your change was not saved; copy the note or export your workspace.';return false;}
+  }
+  function saveAsync(next){
+    // Web Locks serialize writes across tabs. Re-read and merge inside the lock.
+    if(window.navigator?.locks?.request)return window.navigator.locks.request(key,()=>save(next));
+    return Promise.resolve(save(next));
+  }
+  async function saveNote(id,note,baseNote){
+    const next=clone(data),base=clone(data);base.notes[id]=baseNote||'';next.notes[id]=note;snapshots.set(next,base);return saveAsync(next);
+  }
+  function merge(input,asyncWrite=false){const incoming=validate(input),next=JSON.parse(JSON.stringify(data));snapshots.set(next,clone(data));next.bookmarks=[...new Set([...next.bookmarks,...incoming.bookmarks])];next.read=[...new Set([...next.read,...incoming.read])];for(const [id,note] of Object.entries(incoming.notes)){if(next.notes[id]&&next.notes[id]!==note){if(!next.notes[id].split('\n\n— Imported note —\n').includes(note))next.notes[id]+='\n\n— Imported note —\n'+note;}else next.notes[id]=note;}for(const c of incoming.comparisons)if(!next.comparisons.some(x=>x.name===c.name&&JSON.stringify(x.theoryIds)===JSON.stringify(c.theoryIds)))next.comparisons.push(c);return asyncWrite?saveAsync(next):save(next);}
   function exportMarkdown(){
     if(recoveryNeeded)throw new Error('Export the original backup for recovery before creating a research notebook.');
     const byId=new Map(window.QI_DATA.theories.map(t=>[t.id,t]));
@@ -39,5 +80,5 @@ window.QI_WORKSPACE = (() => {
     for(const c of data.comparisons)lines.push(`### ${literal(c.name)}`,'',`[Open comparison](${base}#/compare?ids=${c.theoryIds.map(encodeURIComponent).join(',')})`,'',...c.theoryIds.map(id=>`- ${link(id)}`),'');
     return lines.join('\n')+'\n';
   }
-  return {get data(){return JSON.parse(JSON.stringify(data));},get error(){return error;},validate,save,merge,exportMarkdown,maxBytes,get recoveryNeeded(){return recoveryNeeded;},exportText:()=>recoveryNeeded?(raw||error):JSON.stringify(data,null,2)};
+  return {get data(){const next=clone(data);snapshots.set(next,clone(data));return next;},get error(){return error;},validate,save,saveAsync,saveNote,refresh,merge,mergeAsync:input=>merge(input,true),exportMarkdown,maxBytes,get recoveryNeeded(){return recoveryNeeded;},exportText:()=>recoveryNeeded?(raw||error):JSON.stringify(data,null,2)};
 })();

@@ -6,7 +6,7 @@
   <meta name="description" content="Quantum Index — map the history, branches, overlaps and progression of quantum theory." />
   <title>Quantum Index</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="./styles.css?v=4c8217c352724de8" />
+  <link rel="stylesheet" href="./styles.css?v=5e8aef2391636fe7" />
 </head>
 <body>
   <header class="topbar">
@@ -70,8 +70,11 @@
       <button class="tab" data-view="compare">Compare</button>
       <button class="tab" data-view="learn">Learning paths</button>
       <button class="tab" data-view="workspace">My research</button>
+      <button class="tab" data-view="coverage">Coverage</button>
     </nav>
 
+    <section id="evidenceControls" class="card evidence-controls"><label for="relationEvidence">Relationship evidence</label><select id="relationEvidence"><option value="">All relationships</option><option value="sourced">Source-backed relationships</option><option value="documented historical influence">Documented historical influence</option><option value="formal mathematical relation">Formal mathematical relations</option><option value="editorial relation">Editorial associations</option></select><p class="muted">Upstream and downstream show typed connections, not necessarily historical causation. The filter also applies to theory connections and thought trees.</p></section>
+    <section id="coverageView" class="view"><div id="coverageContent" class="card comparison-panel"></div></section>
     <section id="mapView" class="view active">
       <div class="map-layout">
         <div class="card graph-card">
@@ -197,6 +200,7 @@
             <select id="formulaTheory"><option value="">All linked theories</option></select>
           </div>
         </div>
+        <div class="formula-controls"><div><label for="formulaReview">Metadata review</label><select id="formulaReview"><option value="">All review states</option><option value="explicit">Explicitly reviewed</option><option value="baseline-audit-v1">Baseline metadata</option></select></div></div>
         <div id="formulaGrid" class="formula-grid"></div>
       </div>
     </section>
@@ -218,11 +222,11 @@
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
-  <script src="./theories.js?v=ef69991fa17f5d44"></script>
-  <script src="./formulas.js?v=d9db1c6a3714c706"></script>
+  <script src="./theories.js?v=be6119b3f731ee68"></script>
+  <script src="./formulas.js?v=a40598a9f8117c2c"></script>
   <script src="./formula-audit.js?v=fb958416812e0ba0"></script>
-  <script src="./profiles.js?v=8ad52f4a64f47a88"></script>
-  <script src="./workspace.js?v=50d639a318c500a7"></script>
-  <script src="./app.js?v=447e8b4251f32c67"></script>
+  <script src="./profiles.js?v=7ead242ba1709896"></script>
+  <script src="./workspace.js?v=de553a16db91ad46"></script>
+  <script src="./app.js?v=9c935f1004172eae"></script>
 </body>
 </html>

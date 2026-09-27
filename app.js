@@ -9,10 +9,15 @@
   let compareIds = [];
   let learningPathId = "";
   let workspaceSearch = "";
+  const noteDrafts=new Map();
+  try{for(const [id,draft] of Object.entries(JSON.parse(sessionStorage.getItem('quantum-index-drafts-v1')||'{}')))if(byId.has(id)&&typeof draft?.text==='string'&&typeof draft?.base==='string')noteDrafts.set(id,draft);}catch{}
+  function persistDrafts(){try{sessionStorage.setItem('quantum-index-drafts-v1',JSON.stringify(Object.fromEntries(noteDrafts)));return true;}catch{return false;}}
+  window.addEventListener('beforeunload',event=>{if(noteDrafts.size){event.preventDefault();event.returnValue='';}});
+  window.addEventListener('storage',event=>{if(event.key!=='quantum-index-workspace-v1')return;window.QI_WORKSPACE.refresh();if(state.view==='workspace')renderWorkspace();if(state.view==='learn')renderLearningPaths();if(state.view==='theory'&&$('#researchStatus')){$('#researchStatus').textContent=window.QI_WORKSPACE.error||'Saved research changed in another tab. Your draft is retained; saving checks for conflicts.';}});
   const learningPaths = window.QI_PROFILES?.learningPaths || [];
   const profileFields = [["problem","Problem addressed"],["scope","Scope and mathematical approach"],["assumptions","Assumptions"],["predictions","Results and predictions"],["evidence","Evidence in the cited work"],["limitations","Limitations"],["questions","Questions to investigate"]];
-  const state = { search:"", category:"", kind:"", status:"", era:"", sourcedOnly:false, selected:null, selectedTree:0, view:"map", returnView:"map" };
-  const formulaState = { search:"", category:"", theory:"", type:"" };
+  const state = { search:"", category:"", kind:"", status:"", era:"", sourcedOnly:false, evidence:"", selected:null, selectedTree:0, view:"map", returnView:"map" };
+  const formulaState = { search:"", category:"", theory:"", type:"", review:"" };
   const categoryColors = new Map([
     ["Historical foundations","#f59e0b"],["Formulations","#60a5fa"],["Foundations & interpretations","#c084fc"],
     ["Quantum field theory","#34d399"],["Quantum information & open systems","#22d3ee"],["Quantum gravity & spacetime","#f472b6"],
@@ -70,18 +75,37 @@
   }
 
   function related(id){
-    return relations.filter(r=>r.from===id||r.to===id).map(r=>{
+    return relations.filter(r=>evidenceMatches(r)&&(r.from===id||r.to===id)).map(r=>{
       const outbound=r.from===id, other=byId.get(outbound?r.to:r.from);
       return {r,other,outbound};
     }).filter(x=>x.other);
   }
 
-  function safeReturn(value){return typeof value==="string" && value.length<4096 && /^#\/(?:theory\/[a-z0-9-]+|map|timeline|catalog|lineage|formula|compare|learn|workspace)(?:\?|$)/.test(value)?value:"";}
+  function evidenceMatches(r){return !state.evidence || (state.evidence==='sourced'?r.sourceIds.length>0:r.evidenceType===state.evidence);}
+  function viewHash(view){
+    const params=new URLSearchParams();
+    if(['map','catalog','timeline'].includes(view))for(const key of ['search','category','kind','status','era'])if(state[key])params.set(key,state[key]);
+    if(['map','catalog','timeline'].includes(view)&&state.sourcedOnly)params.set('sourced','1');
+    if(['map','lineage'].includes(view)&&state.evidence)params.set('evidence',state.evidence);
+    if(view==='lineage'){params.set('tree',trees[state.selectedTree].name);if(state.selected)params.set('theory',state.selected);}
+    if(view==='formula'){for(const key of ['search','category','theory','type','review'])if(formulaState[key])params.set(key,formulaState[key]);const back=safeReturn(new URLSearchParams(location.hash.split('?').slice(1).join('?')).get('returnTo'));if(back)params.set('returnTo',back);}
+    return '#/'+view+(params.size?'?'+params:'');
+  }
+  function rememberFilters(){history.replaceState(null,'',viewHash(state.view));}
+  function renderCoverage(){
+    const count=fn=>theories.filter(fn).length;
+    const gaps=new Set(formulaAudit.filter(a=>a.classification==='formula-bearing-gap').map(a=>a.theoryId));
+    const rows=[...categoryColors.keys()].map(category=>`<tr><th scope="row">${esc(category)}</th><td>${count(t=>t.category===category)}</td><td>${count(t=>t.category===category&&gaps.has(t.id))}</td><td>${count(t=>t.category===category&&profiles[t.id])}</td></tr>`).join('');
+    $('#coverageContent').innerHTML=`<h3>Coverage and review status</h3><p>The census is open. Source attachment does not establish that every claim is verified or experimentally confirmed.</p><p>${theories.length} entries · ${sources.length} bibliography records · ${Object.keys(profiles).length} reading profiles · ${learningPaths.length} learning paths.</p><p>${relations.filter(r=>r.sourceIds.length).length} source-backed relationships; ${relations.filter(r=>!r.sourceIds.length).length} editorial relationships.</p><p>${formulas.length} formulas; ${formulas.filter(f=>f.metadataReview==='explicit').length} explicitly reviewed metadata records. Baseline records still need equation-level review.</p><div class="comparison-scroll" role="region" aria-label="Coverage by category" tabindex="0"><table class="comparison-table"><caption>Current runtime coverage by category</caption><thead><tr><th scope="col">Category</th><th scope="col">Entries</th><th scope="col">Formula gaps</th><th scope="col">Reading profiles</th></tr></thead><tbody>${rows}</tbody></table></div><p>Formula gaps mean no representative expression has yet been curated. They do not mean the framework lacks mathematics. A linked formula does not establish complete mathematical coverage.</p><p><a href="https://github.com/JeremyHennessy/Quantum-index/blob/main/docs/COVERAGE.md">Coverage methodology and research backlog</a></p>`;
+  }
+  function safeReturn(value){return typeof value==="string" && value.length<4096 && /^#\/(?:theory\/[a-z0-9-]+|map|timeline|catalog|lineage|formula|compare|learn|workspace|coverage)(?:\?|$)/.test(value)?value:"";}
   function theoryLink(id,from=state.returnView){
     const params=new URLSearchParams({from});
     if(from==="learn"&&learningPathId)params.set("path",learningPathId);
     if(from==="compare")params.set("compare",compareIds.join(","));
     if(from==="formula")params.set("returnTo",location.hash.startsWith("#/theory/") ? safeReturn(new URLSearchParams(location.hash.split("?")[1]||"").get("returnTo")) || "#/formula" : location.hash);
+    if(['catalog','timeline','map','lineage'].includes(from))params.set('returnTo',state.view==='theory'?safeReturn(new URLSearchParams(location.hash.split('?').slice(1).join('?')).get('returnTo'))||viewHash(from):viewHash(from));
+    if(state.evidence)params.set('evidence',state.evidence);
     return `#/theory/${encodeURIComponent(id)}?${params}`;
   }
   function formulaLink(id){return `#/formula?theory=${encodeURIComponent(id)}&returnTo=${encodeURIComponent(location.hash)}`;}
@@ -153,13 +177,26 @@
 
   function researchControls(id){
     const data=window.QI_WORKSPACE.data;
-    return `<section class="detail-section research-tools" aria-label="Personal research tools"><h4>My research</h4><div class="detail-actions"><button class="ghost" id="toggleBookmark" aria-pressed="${data.bookmarks.includes(id)}">${data.bookmarks.includes(id)?"Remove bookmark":"Bookmark entry"}</button><button class="ghost" id="toggleRead" aria-pressed="${data.read.includes(id)}">${data.read.includes(id)?"Mark unread":"Mark as read"}</button></div><label for="researchNote">Your notes (saved on this browser)</label><textarea id="researchNote" rows="5" maxlength="20000">${esc(data.notes[id]||"")}</textarea><button class="ghost" id="saveNote">Save note</button><p id="researchStatus" role="status">${esc(window.QI_WORKSPACE.error)}</p></section>`;
+    return `<section class="detail-section research-tools" aria-label="Personal research tools"><h4>My research</h4><div class="detail-actions"><button class="ghost" id="toggleBookmark" aria-pressed="${data.bookmarks.includes(id)}">${data.bookmarks.includes(id)?"Remove bookmark":"Bookmark entry"}</button><button class="ghost" id="toggleRead" aria-pressed="${data.read.includes(id)}">${data.read.includes(id)?"Mark unread":"Mark as read"}</button></div><label for="researchNote">Your notes (saved on this browser)</label><textarea id="researchNote" rows="5" maxlength="20000">${esc(noteDrafts.get(id)?.text??data.notes[id]??"")}</textarea><button class="ghost" id="saveNote">Save note</button><p id="researchStatus" role="status">${esc(window.QI_WORKSPACE.error||(noteDrafts.has(id)?"Unsaved draft restored on this tab.":""))}</p><div id="noteConflict"></div></section>`;
   }
   function bindResearchControls(){
     if(!$("#saveNote"))return;
     const id=state.selected;
-    for(const [button,key] of [["#toggleBookmark","bookmarks"],["#toggleRead","read"]])$(button).onclick=()=>{const next=window.QI_WORKSPACE.data;next[key]=next[key].includes(id)?next[key].filter(x=>x!==id):[...next[key],id];if(window.QI_WORKSPACE.save(next)){const pressed=next[key].includes(id);$(button).setAttribute("aria-pressed",String(pressed));$(button).textContent=key==="bookmarks"?(pressed?"Remove bookmark":"Bookmark entry"):(pressed?"Mark unread":"Mark as read");$("#researchStatus").textContent="Saved on this browser.";}else $("#researchStatus").textContent=window.QI_WORKSPACE.error;};
-    $("#saveNote").onclick=()=>{const next=window.QI_WORKSPACE.data;next.notes[id]=$("#researchNote").value;$("#researchStatus").textContent=window.QI_WORKSPACE.save(next)?"Note saved on this browser.":window.QI_WORKSPACE.error;};
+    const baseNote=noteDrafts.get(id)?.base??window.QI_WORKSPACE.data.notes[id]??'';
+    const settleDraft=(saved,submitted)=>{const latest=noteDrafts.get(id);if(!latest||latest.text===submitted)noteDrafts.delete(id);else noteDrafts.set(id,{text:latest.text,base:saved});persistDrafts();};
+    $('#researchNote').oninput=()=>{const text=$('#researchNote').value;if(text===baseNote)noteDrafts.delete(id);else noteDrafts.set(id,{text,base:baseNote});$('#researchStatus').textContent=persistDrafts()?'Unsaved draft retained on this tab. Save note to include it in backups.':'Draft could not be stored. Keep this tab open and copy your text.';};
+    for(const [button,key] of [["#toggleBookmark","bookmarks"],["#toggleRead","read"]])$(button).onclick=async()=>{const next=window.QI_WORKSPACE.data;next[key]=next[key].includes(id)?next[key].filter(x=>x!==id):[...next[key],id];const saved=await window.QI_WORKSPACE.saveAsync(next);if(state.selected!==id||state.view!=='theory')return;if(saved){const pressed=window.QI_WORKSPACE.data[key].includes(id);$(button).setAttribute("aria-pressed",String(pressed));$(button).textContent=key==="bookmarks"?(pressed?"Remove bookmark":"Bookmark entry"):(pressed?"Mark unread":"Mark as read");$("#researchStatus").textContent="Saved on this browser.";}else $("#researchStatus").textContent=window.QI_WORKSPACE.error;};
+    $("#saveNote").onclick=async()=>{
+      const text=$('#researchNote').value;noteDrafts.set(id,{text,base:noteDrafts.get(id)?.base??baseNote});persistDrafts();
+      if(await window.QI_WORKSPACE.saveNote(id,text,noteDrafts.get(id).base)){settleDraft(text,text);if(state.selected!==id||state.view!=='theory')return;bindResearchControls();$('#noteConflict').innerHTML='';$('#researchStatus').textContent=noteDrafts.has(id)?'Earlier text saved; your newer draft is still unsaved.':'Note saved on this browser.';}
+      else{if(state.selected!==id||state.view!=='theory')return;$('#researchStatus').textContent=window.QI_WORKSPACE.error;
+        if(window.QI_WORKSPACE.error.includes('another tab')){
+          window.QI_WORKSPACE.refresh();const current=window.QI_WORKSPACE.data.notes[id]||'';
+          $('#noteConflict').innerHTML=`<label for="currentSavedNote">Current saved note</label><textarea id="currentSavedNote" readonly rows="5">${esc(current)}</textarea><button class="ghost" id="combineNote">Keep both notes and save</button>`;
+          $('#combineNote').onclick=async()=>{const submitted=$('#researchNote').value,combined=current+'\n\n— Draft from this tab —\n'+submitted;if(combined.length>20000){$('#researchStatus').textContent='Combined note exceeds 20,000 characters. Copy both versions and shorten your draft.';return;}if(await window.QI_WORKSPACE.saveNote(id,combined,current)){settleDraft(combined,submitted);if(state.selected!==id||state.view!=='theory')return;renderDetail();$('#researchStatus').textContent=noteDrafts.has(id)?'Both earlier notes saved; your newer draft is still unsaved.':'Both notes saved.';}else if(state.selected===id&&state.view==='theory')$('#researchStatus').textContent=window.QI_WORKSPACE.error;};
+        }
+      }
+    };
   }
   function renderWorkspace(){
     const data=window.QI_WORKSPACE.data;
@@ -168,7 +205,7 @@
     renderWorkspaceCollections();
     $("#exportNotebook").onclick=()=>{try{const blob=new Blob([window.QI_WORKSPACE.exportMarkdown()],{type:"text/markdown;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="quantum-index-research.md";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);$("#workspaceStatus").textContent="Research notebook download requested. Use Export backup for a restorable JSON copy.";}catch(e){$("#workspaceStatus").textContent=e.message;}};
     $("#exportWorkspace").onclick=()=>{const blob=new Blob([window.QI_WORKSPACE.exportText()],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=window.QI_WORKSPACE.recoveryNeeded?"quantum-index-recovery.txt":"quantum-index-research.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);$("#workspaceStatus").textContent="Backup download requested. Keep the downloaded file somewhere safe.";};
-    $("#importWorkspace").onchange=async e=>{const file=e.target.files[0];$("#importPreview").innerHTML="";if(!file)return;try{if(file.size>window.QI_WORKSPACE.maxBytes)throw new Error("Backup is too large (maximum 1 MB).");const incoming=window.QI_WORKSPACE.validate(JSON.parse(await file.text()));$("#importPreview").innerHTML=`<p>Import ${incoming.bookmarks.length} bookmarks, ${Object.keys(incoming.notes).length} notes, ${incoming.read.length} read entries and ${incoming.comparisons.length} comparisons. Different notes for the same entry are appended; existing work is retained.</p><button class="ghost" id="confirmImport">Merge this backup</button>`;$("#confirmImport").onclick=()=>{try{if(window.QI_WORKSPACE.merge(incoming)){renderWorkspace();$("#workspaceStatus").textContent="Backup merged and saved on this browser.";}else $("#workspaceStatus").textContent=window.QI_WORKSPACE.error;}catch(e){$("#workspaceStatus").textContent=e.message;}};}catch(e){$("#workspaceStatus").textContent=e.message;}};
+    $("#importWorkspace").onchange=async e=>{const file=e.target.files[0];$("#importPreview").innerHTML="";if(!file)return;try{if(file.size>window.QI_WORKSPACE.maxBytes)throw new Error("Backup is too large (maximum 1 MB).");const incoming=window.QI_WORKSPACE.validate(JSON.parse(await file.text()));$("#importPreview").innerHTML=`<p>Import ${incoming.bookmarks.length} bookmarks, ${Object.keys(incoming.notes).length} notes, ${incoming.read.length} read entries and ${incoming.comparisons.length} comparisons. Different notes for the same entry are appended; existing work is retained.</p><button class="ghost" id="confirmImport">Merge this backup</button>`;$("#confirmImport").onclick=async()=>{try{if(await window.QI_WORKSPACE.mergeAsync(incoming)){renderWorkspace();$("#workspaceStatus").textContent="Backup merged and saved on this browser.";}else $("#workspaceStatus").textContent=window.QI_WORKSPACE.error;}catch(e){$("#workspaceStatus").textContent=e.message;}};}catch(e){$("#workspaceStatus").textContent=e.message;}};
   }
   function renderWorkspaceCollections(){
     const data=window.QI_WORKSPACE.data,q=workspaceSearch.trim().toLowerCase();
@@ -178,7 +215,7 @@
     $("#workspaceCollections").innerHTML=list("Bookmarks",data.bookmarks,"bookmarks")+list("Notes",Object.keys(data.notes).filter(id=>data.notes[id]),"notes")+list("Read entries",data.read,"read")+`<section data-saved-list="comparisons"><h4>Saved comparisons · ${comparisons.length} / ${data.comparisons.length}</h4>${comparisons.map(({c,i})=>`<div class="detail-actions"><a class="ghost link-button" href="${comparisonHash(c.theoryIds)}">${esc(c.name)}</a><button class="ghost" data-remove-comparison="${i}" aria-label="Remove saved comparison ${esc(c.name)}">Remove</button></div>`).join("")||`<p class="muted">${data.comparisons.length?"No matching comparisons.":"Use Save comparison in the Compare tab."}</p>`}</section>`;
     const savedIds=[...new Set([...data.bookmarks,...data.read,...Object.keys(data.notes).filter(id=>data.notes[id])])];
     $("#workspaceSearchStatus").textContent=`${savedIds.filter(matches).length} of ${savedIds.length} saved entries and ${comparisons.length} of ${data.comparisons.length} comparisons match.`;
-    $("#workspaceCollections").querySelectorAll("[data-remove-comparison]").forEach(b=>b.onclick=()=>{const next=window.QI_WORKSPACE.data;next.comparisons.splice(Number(b.dataset.removeComparison),1);if(window.QI_WORKSPACE.save(next))renderWorkspaceCollections();else $("#workspaceStatus").textContent=window.QI_WORKSPACE.error;});
+    $("#workspaceCollections").querySelectorAll("[data-remove-comparison]").forEach(b=>b.onclick=async()=>{const next=window.QI_WORKSPACE.data;next.comparisons.splice(Number(b.dataset.removeComparison),1);if(await window.QI_WORKSPACE.saveAsync(next))renderWorkspaceCollections();else $("#workspaceStatus").textContent=window.QI_WORKSPACE.error;});
   }
   function learningHash(id){return id ? `#/learn?path=${encodeURIComponent(id)}` : "#/learn";}
   function learningStepLink(id,path){return `#/theory/${encodeURIComponent(id)}?from=learn&path=${encodeURIComponent(path)}`;}
@@ -244,7 +281,7 @@
     $("#comparisonPresets").innerHTML=presets.map(p=>`<a class="ghost link-button" href="${comparisonHash(p.theoryIds)}">${esc(p.name)}</a>`).join("");
     $("#profileCollection").innerHTML=Object.keys(profiles).map(id=>`<a class="source-link" href="#/theory/${encodeURIComponent(id)}?from=compare&compare=${compareIds.map(encodeURIComponent).join(",")}"><strong>${esc(byId.get(id)?.name)}</strong><span>${esc(byId.get(id)?.kind)} · Research profile</span></a>`).join("");
     $("#saveComparison")?.remove();
-    if(compareIds.length>=2){const button=document.createElement("button");button.id="saveComparison";button.className="ghost";button.textContent="Save comparison";$("#comparisonPermalink").parentElement.append(button);button.onclick=()=>{const next=window.QI_WORKSPACE.data;const name=compareIds.map(id=>byId.get(id).name).join(" / ").slice(0,120);if(!next.comparisons.some(c=>JSON.stringify(c.theoryIds)===JSON.stringify(compareIds)))next.comparisons.push({name,theoryIds:compareIds.slice()});try{$("#comparisonNotice").textContent=window.QI_WORKSPACE.save(next)?"Comparison saved in My research.":window.QI_WORKSPACE.error;}catch(e){$("#comparisonNotice").textContent=e.message;}};}
+    if(compareIds.length>=2){const button=document.createElement("button");button.id="saveComparison";button.className="ghost";button.textContent="Save comparison";$("#comparisonPermalink").parentElement.append(button);button.onclick=async()=>{const next=window.QI_WORKSPACE.data;const name=compareIds.map(id=>byId.get(id).name).join(" / ").slice(0,120);if(!next.comparisons.some(c=>JSON.stringify(c.theoryIds)===JSON.stringify(compareIds)))next.comparisons.push({name,theoryIds:compareIds.slice()});try{$("#comparisonNotice").textContent=(await window.QI_WORKSPACE.saveAsync(next))?"Comparison saved in My research.":window.QI_WORKSPACE.error;}catch(e){$("#comparisonNotice").textContent=e.message;}};}
     if(compareIds.length<2){$("#comparisonResults").innerHTML="";return;}
     const row=(label,fn)=>`<tr><th scope="row">${esc(label)}</th>${compareIds.map(id=>`<td>${fn(id)}</td>`).join("")}</tr>`;
     const missing='<p class="muted">Detailed profile not yet curated. Use the catalog summary and linked bibliography.</p>';
@@ -263,7 +300,7 @@
     simulation?.stop();
     const visible=filtered(), ids=new Set(visible.map(t=>t.id));
     const nodes=visible.map(t=>({...t}));
-    const links=relations.filter(r=>ids.has(r.from)&&ids.has(r.to)).map(r=>({source:r.from,target:r.to,type:r.type,evidenceType:r.evidenceType,confidence:r.confidence,sourceIds:r.sourceIds}));
+    const links=relations.filter(r=>evidenceMatches(r)&&ids.has(r.from)&&ids.has(r.to)).map(r=>({source:r.from,target:r.to,type:r.type,evidenceType:r.evidenceType,confidence:r.confidence,sourceIds:r.sourceIds}));
     const svg=d3.select("#network"), el=$("#network"), width=el.clientWidth||900, height=el.clientHeight||590;
     svg.selectAll("*").remove(); svg.attr("viewBox",[0,0,width,height]);
     const root=svg.append("g");
@@ -293,7 +330,7 @@
     const groups=d3.group(list,d=>d.era);
     $("#timeline").innerHTML=[...groups].map(([era,items])=>`
       <div class="timeline-era"><h4>${esc(era)}</h4><div class="timeline-items">
-      ${items.map(t=>`<a class="timeline-card" href="#/theory/${encodeURIComponent(t.id)}?from=timeline"><span class="year">${t.year}</span><h5>${esc(t.name)}</h5><p>${esc(t.summary)}</p></a>`).join("")}
+      ${items.map(t=>`<a class="timeline-card" href="${theoryLink(t.id,"timeline")}"><span class="year">${t.year}</span><h5>${esc(t.name)}</h5><p>${esc(t.summary)}</p></a>`).join("")}
       </div></div>`).join("") || '<div class="empty-state">No theories match the current filters.</div>';
   }
 
@@ -307,7 +344,7 @@
       </button>`).join("");
     $("#thoughtTrees").querySelectorAll("[data-tree-index]").forEach(el=>el.addEventListener("click",()=>{
       state.selectedTree=Number(el.dataset.treeIndex);
-      renderTrees();
+      rememberFilters();renderTrees();
     }));
     renderThoughtTreeGraph();
   }
@@ -320,7 +357,7 @@
 
     const nodes=tree.nodes.map(id=>byId.get(id)).filter(Boolean).map(t=>({...t}));
     const ids=new Set(nodes.map(n=>n.id));
-    const links=relations.filter(r=>ids.has(r.from)&&ids.has(r.to)).map(r=>({...r,source:r.from,target:r.to}));
+    const links=relations.filter(r=>evidenceMatches(r)&&ids.has(r.from)&&ids.has(r.to)).map(r=>({...r,source:r.from,target:r.to}));
     const width=Math.max(920,Math.min(1500,nodes.length*68));
     const categories=[...new Set(nodes.map(n=>n.category))];
     const height=Math.max(430,categories.length*82+120);
@@ -389,14 +426,14 @@
 
   function ancestors(id, seen=new Set(), depth=0){
     if(depth>4)return[]; let out=[];
-    for(const r of relations.filter(r=>r.to===id && ["precursor","extends","supports","motivates","reformulates","formalizes","unifies","generalizes"].includes(r.type))){
+    for(const r of relations.filter(r=>evidenceMatches(r)&&r.to===id && ["precursor","extends","supports","motivates","reformulates","formalizes","unifies","generalizes"].includes(r.type))){
       if(seen.has(r.from))continue; seen.add(r.from); out.push(byId.get(r.from)); out.push(...ancestors(r.from,seen,depth+1));
     }
     return [...new Map(out.filter(Boolean).map(x=>[x.id,x])).values()];
   }
   function descendants(id, seen=new Set(), depth=0){
     if(depth>4)return[]; let out=[];
-    for(const r of relations.filter(r=>r.from===id && ["precursor","extends","supports","motivates","reformulates","formalizes","unifies","generalizes"].includes(r.type))){
+    for(const r of relations.filter(r=>evidenceMatches(r)&&r.from===id && ["precursor","extends","supports","motivates","reformulates","formalizes","unifies","generalizes"].includes(r.type))){
       if(seen.has(r.to))continue; seen.add(r.to); out.push(byId.get(r.to)); out.push(...descendants(r.to,seen,depth+1));
     }
     return [...new Map(out.filter(Boolean).map(x=>[x.id,x])).values()];
@@ -408,7 +445,7 @@
     $("#lineageTitle").textContent=t.name; $("#lineageDetail").className="lineage-detail";
     const a=ancestors(t.id).sort((x,y)=>x.year-y.year), d=descendants(t.id).sort((x,y)=>x.year-y.year);
     const lateral=related(t.id).filter(x=>["overlaps","challenged by","challenges"].includes(x.r.type)).map(x=>x.other);
-    const chips=arr=>arr.length?arr.map(x=>`<span class="lineage-chip" data-id="${x.id}">${esc(x.year)} · ${esc(x.name)}</span>`).join(""):'<span class="muted">No typed entries yet.</span>';
+    const chips=arr=>arr.length?arr.map(x=>`<a class="lineage-chip" href="${theoryLink(x.id,"lineage")}">${esc(x.year)} · ${esc(x.name)}</a>`).join(""):'<span class="muted">No typed entries yet.</span>';
     $("#lineageDetail").innerHTML=`
       <p class="muted">${esc(t.summary)}</p>
       <div class="lineage-block"><h4>Upstream ideas</h4>${chips(a)}</div>
@@ -421,7 +458,7 @@
     const list=filtered().sort((a,b)=>a.year-b.year||a.name.localeCompare(b.name));
     $("#resultCount").textContent=`${list.length} results`;
     $("#catalog").innerHTML=list.map(t=>`
-      <a class="catalog-card" href="#/theory/${encodeURIComponent(t.id)}?from=catalog">
+      <a class="catalog-card" href="${theoryLink(t.id,"catalog")}">
         <div class="meta"><span>${esc(t.year)} · ${esc(t.era)}</span><span>${esc(t.kind)}</span></div>
         <h4>${esc(t.name)}</h4><p>${esc(t.summary)}</p>
         <div class="badges"><span class="tag">${esc(t.category)}</span></div>
@@ -434,6 +471,7 @@
     return formulas.filter(f=>{
       const theoryText=f.theoryIds.map(id=>byId.get(id)?.name||id).join(" ");
       return (!q || [f.name,f.category,f.plain,f.description,...(f.tags||[]),theoryText].join(" ").toLowerCase().includes(q)) &&
+        (!formulaState.review || f.metadataReview===formulaState.review) &&
         (!formulaState.category || f.category===formulaState.category) &&
         (!formulaState.type || f.formulaType===formulaState.type) &&
         (!formulaState.theory || f.theoryIds.includes(formulaState.theory));
@@ -470,7 +508,7 @@
         <article class="formula-card">
           <div class="formula-meta"><span>${esc(f.category)}</span><span>${f.sourceIds.length} source${f.sourceIds.length===1?"":"s"}</span></div>
           <div class="formula-role-row"><span class="formula-role">${esc(f.formulaType)}</span><span>${esc(f.theoryRelationship)}</span></div>
-          <h4>${esc(f.name)}</h4>
+          <h4>${esc(f.name)}</h4><p class="reviewed">${f.metadataReview==="explicit"?"Metadata explicitly reviewed":"Baseline metadata · equation-level review pending"}</p>
           <div class="formula-equation">\\[${esc(f.latex)}\\]</div>
           <div class="formula-plain">${esc(f.plain)}</div>
           <p>${esc(f.description)}</p>
@@ -501,6 +539,8 @@
     if(view==="compare") renderComparison();
     if(view==="learn") renderLearningPaths();
     if(view==="workspace") renderWorkspace();
+    if(view==='coverage')renderCoverage();
+    $('#evidenceControls').hidden=!['map','lineage','theory'].includes(view);
     $(".controls").hidden=!["map","timeline","catalog"].includes(view);
     $("#filterScope").hidden=$(".controls").hidden;
     $("#formulaReturn").hidden=view!=="formula" || !safeReturn(new URLSearchParams(location.hash.split("?").slice(1).join("?")).get("returnTo"));
@@ -508,7 +548,7 @@
     if(view==="lineage") setTimeout(renderThoughtTreeGraph,0);
     if(view==="formula") setTimeout(()=>{renderFormulas();typesetFormulaGrid();},0);
   }
-  const views=new Set(["map","timeline","lineage","catalog","formula","compare","learn","workspace"]);
+  const views=new Set(["map","timeline","lineage","catalog","formula","compare","learn","workspace","coverage"]);
   function navigate(hash){
     if(location.hash===hash) applyRoute();
     else location.hash=hash;
@@ -519,6 +559,8 @@
     const isTheory=path.startsWith("theory/");
     let id=null;
     try { id=isTheory?decodeURIComponent(path.slice(7)):params.get("theory"); } catch {}
+    state.evidence=['sourced','documented historical influence','formal mathematical relation','editorial relation'].includes(params.get('evidence'))?params.get('evidence'):'';
+    $('#relationEvidence').value=state.evidence;
     if(isTheory){
       state.returnView=views.has(params.get("from"))?params.get("from"):"map";
       if(state.returnView==="compare" && params.has("compare")) compareIds=[...new Set(params.get("compare").split(",").filter(id=>byId.has(id)))].slice(0,4);
@@ -539,35 +581,36 @@
     if(byId.has(id)) state.selected=id;
     if(view==="compare") compareIds=[...new Set((params.get("ids")||"").split(",").filter(id=>byId.has(id)))].slice(0,4);
     if(view==="learn") learningPathId=learningPaths.some(p=>p.id===params.get("path"))?params.get("path"):"";
-    if(view==="formula"){
-      const returnTo=safeReturn(params.get("returnTo"));
-      $("#formulaReturn").innerHTML=returnTo?`<a class="ghost link-button" href="${esc(returnTo)}">Back to previous view</a>`:"";
-      formulaState.theory=byId.has(id)?id:"";
-      $("#formulaTheory").value=formulaState.theory;
-      if(id){
-        Object.assign(formulaState,{search:"",category:"",type:""});
-        $("#formulaSearch").value="";$("#formulaCategory").value="";$("#formulaType").value="";
-      }
+    if(['map','catalog','timeline'].includes(view)){
+      for(const key of ['search','category','kind','status','era']){const el=$(key==='search'?'#search':'#'+key+'Filter'),value=params.get(key)||'';state[key]=key==='search'||[...el.options].some(o=>o.value===value)?value:'';el.value=state[key];}
+      state.sourcedOnly=params.get('sourced')==='1';$('#sourcedOnly').checked=state.sourcedOnly;renderGraph();renderCatalog();renderTimeline();
+    }
+    if(view==='lineage'){const index=trees.findIndex(t=>t.name===params.get('tree'));state.selectedTree=index>=0?index:0;renderTrees();}
+    if(view==='formula'){
+      const returnTo=safeReturn(params.get('returnTo'));$('#formulaReturn').innerHTML=returnTo?`<a class="ghost link-button" href="${esc(returnTo)}">Back to previous view</a>`:'';
+      for(const key of ['search','category','type','theory','review']){const el=$('#formula'+key[0].toUpperCase()+key.slice(1)),value=params.get(key)||'';formulaState[key]=key==='search'||[...el.options].some(o=>o.value===value)?value:'';el.value=formulaState[key];}
     }
     renderDetail();renderLineage();switchView(view);
     document.title="Quantum Index";
   }
-  $$(".tab").forEach(b=>b.addEventListener("click",()=>navigate(b.dataset.view==="compare"?comparisonHash(compareIds):`#/${b.dataset.view}`)));
+  $$(".tab").forEach(b=>b.addEventListener("click",()=>navigate(b.dataset.view==="compare"?comparisonHash(compareIds):["map","catalog","timeline","formula","lineage"].includes(b.dataset.view)?viewHash(b.dataset.view):`#/${b.dataset.view}`)));
   $("#clearComparison").addEventListener("click",()=>navigate("#/compare"));
   window.addEventListener("hashchange",applyRoute);
-  $("#search").addEventListener("input",e=>{state.search=e.target.value;renderGraph();renderTimeline();renderCatalog();});
-  $("#categoryFilter").addEventListener("change",e=>{state.category=e.target.value;renderGraph();renderTimeline();renderCatalog();});
-  $("#kindFilter").addEventListener("change",e=>{state.kind=e.target.value;renderGraph();renderTimeline();renderCatalog();});
-  $("#statusFilter").addEventListener("change",e=>{state.status=e.target.value;renderGraph();renderTimeline();renderCatalog();});
-  $("#eraFilter").addEventListener("change",e=>{state.era=e.target.value;renderGraph();renderTimeline();renderCatalog();});
-  $("#sourcedOnly").addEventListener("change",e=>{state.sourcedOnly=e.target.checked;renderGraph();renderTimeline();renderCatalog();});
-  $("#formulaSearch").addEventListener("input",e=>{formulaState.search=e.target.value;renderFormulas();});
-  $("#formulaCategory").addEventListener("change",e=>{formulaState.category=e.target.value;renderFormulas();});
-  $("#formulaType").addEventListener("change",e=>{formulaState.type=e.target.value;renderFormulas();});
-  $("#formulaTheory").addEventListener("change",e=>{formulaState.theory=e.target.value;renderFormulas();});
+  $("#search").addEventListener("input",e=>{state.search=e.target.value;rememberFilters();renderGraph();renderTimeline();renderCatalog();});
+  $("#categoryFilter").addEventListener("change",e=>{state.category=e.target.value;rememberFilters();renderGraph();renderTimeline();renderCatalog();});
+  $("#kindFilter").addEventListener("change",e=>{state.kind=e.target.value;rememberFilters();renderGraph();renderTimeline();renderCatalog();});
+  $("#statusFilter").addEventListener("change",e=>{state.status=e.target.value;rememberFilters();renderGraph();renderTimeline();renderCatalog();});
+  $("#eraFilter").addEventListener("change",e=>{state.era=e.target.value;rememberFilters();renderGraph();renderTimeline();renderCatalog();});
+  $("#sourcedOnly").addEventListener("change",e=>{state.sourcedOnly=e.target.checked;rememberFilters();renderGraph();renderTimeline();renderCatalog();});
+  $("#formulaSearch").addEventListener("input",e=>{formulaState.search=e.target.value;rememberFilters();renderFormulas();});
+  $("#formulaCategory").addEventListener("change",e=>{formulaState.category=e.target.value;rememberFilters();renderFormulas();});
+  $("#formulaType").addEventListener("change",e=>{formulaState.type=e.target.value;rememberFilters();renderFormulas();});
+  $("#formulaTheory").addEventListener("change",e=>{formulaState.theory=e.target.value;rememberFilters();renderFormulas();});
+  $('#formulaReview').onchange=e=>{formulaState.review=e.target.value;rememberFilters();renderFormulas();};
+  $('#relationEvidence').onchange=e=>{state.evidence=e.target.value;if(state.view==='theory'){const params=new URLSearchParams(location.hash.split('?').slice(1).join('?'));if(state.evidence)params.set('evidence',state.evidence);else params.delete('evidence');history.replaceState(null,'',location.hash.split('?')[0]+'?'+params);}else rememberFilters();renderGraph();renderThoughtTreeGraph();renderLineage();renderDetail();};
   $("#resetView").addEventListener("click",()=>{
     Object.assign(state,{search:"",category:"",kind:"",status:"",era:"",sourcedOnly:false});
-    $("#search").value="";$("#categoryFilter").value="";$("#kindFilter").value="";$("#statusFilter").value="";$("#eraFilter").value="";$("#sourcedOnly").checked=false;renderAll();
+    $("#search").value="";$("#categoryFilter").value="";$("#kindFilter").value="";$("#statusFilter").value="";$("#eraFilter").value="";$("#sourcedOnly").checked=false;if(["map","catalog","timeline"].includes(state.view))rememberFilters();renderAll();
   });
   window.addEventListener("resize",()=>{if(state.view==="map")renderGraph();});
   renderTrees();renderAll();applyRoute();

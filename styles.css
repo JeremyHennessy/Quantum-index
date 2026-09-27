@@ -143,3 +143,5 @@ a.catalog-card:focus-visible,a.timeline-card:focus-visible,a.relation:focus-visi
 .workspace-collections label{display:block;margin:14px 0 7px}
 #workspaceSearch{display:block;width:100%;min-width:0;max-width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:#07121a;color:var(--text);font:inherit}
 #workspaceSearch:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.evidence-controls{padding:16px;margin:12px 0}.evidence-controls label{display:block;margin-bottom:8px}.evidence-controls select{max-width:100%;padding:10px;background:#07121a;color:var(--text);border:1px solid var(--line);border-radius:10px}.lineage-chip{display:inline-block}#coverageContent .comparison-table{min-width:620px}
