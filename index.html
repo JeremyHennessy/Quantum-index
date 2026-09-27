@@ -67,7 +67,7 @@
       <button class="tab" data-view="lineage">Thought trees</button>
       <button class="tab" data-view="catalog">Catalog</button>
       <button class="tab" data-view="formula">Formula atlas</button>
-      <button class="tab" data-view="compare">Compare</button>
+      <button class="tab" data-view="compare">Compare</button>\n      <button class="tab" data-view="questions">Research questions</button>
       <button class="tab" data-view="learn">Learning paths</button>
       <button class="tab" data-view="workspace">My research</button>
       <button class="tab" data-view="coverage">Coverage</button>
@@ -163,6 +163,25 @@
         <div id="catalog" class="catalog-grid"></div>
       </div>
     </section>
+    <section id="questionsView" class="view" aria-label="Research questions">
+      <div class="card question-panel">
+        <div class="view-head">
+          <div>
+            <p class="eyebrow">RESEARCH QUESTIONS</p>
+            <h3>What is established, conditional, model-specific or still open?</h3>
+            <p class="muted">These 59 records preserve the reviewed profile-question audit. They are research-orientation summaries, not declarations that every prompt is an unsolved problem.</p>
+          </div>
+          <span id="questionCount" class="pill"></span>
+        </div>
+        <div class="question-controls">
+          <div><label for="questionSearch">Search questions</label><input id="questionSearch" type="search" placeholder="black holes, decoherence, dark matter…" autocomplete="off"></div>
+          <div><label for="questionDisposition">Disposition</label><select id="questionDisposition"><option value="">All dispositions</option></select></div>
+          <div><label for="questionCategory">Domain</label><select id="questionCategory"><option value="">All domains</option></select></div>
+        </div>
+        <div id="questionGrid" class="question-grid"></div>
+      </div>
+    </section>
+
     <section id="workspaceView" class="view" aria-label="Personal research"><div id="workspaceContent"></div></section>
 
     <section id="learnView" class="view" aria-label="Guided learning paths"><div id="learningPaths"></div></section>
@@ -241,7 +260,7 @@
   <script src="./formulas.js?v=2dc72c49b194b814"></script>
   <script src="./formula-audit.js?v=fb958416812e0ba0"></script>
   <script src="./developments.js?v=13dd3ea5957fa259"></script>
-  <script src="./profiles.js?v=7ead242ba1709896"></script>
+  <script src="./questions.js?v=QUESTION_HASH"></script>\n  <script src="./profiles.js?v=7ead242ba1709896"></script>
   <script src="./workspace.js?v=de553a16db91ad46"></script>
   <script src="./app.js?v=b1323947dae15cff"></script>
 </body>
