@@ -3,7 +3,7 @@
   "researchProfiles": 59,
   "learningPaths": 5,
   "categories": 14,
-  "sources": 495,
+  "sources": 499,
   "primarySourced": 351,
   "reviewSourced": 129,
   "cataloguedOnly": 0,
@@ -21,6 +21,6 @@
   "conceptual": 17,
   "theorems": 18,
   "thoughtExperiments": 1,
-  "explicitFormulaMetadata": 120,
-  "baselineFormulaMetadata": 264
+  "explicitFormulaMetadata": 125,
+  "baselineFormulaMetadata": 259
 }
