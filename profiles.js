@@ -2575,3 +2575,44 @@ window.QI_PROFILES.learningPaths.find(p=>p.id==="gravity-time").primer = {
   "equation": "dτ/dt = √(1 − 2GM/(rc²))",
   "sourceLocator": "Carroll: Sections 1 (proper time), 4 (gravitational redshift), 7 (Schwarzschild geometry)."
 };
+
+// Editorial study routes through existing cited profiles, not new graph relations.
+window.QI_PROFILES.learningPaths.push(
+  {
+    id: "quantum-foundations",
+    title: "Quantum foundations",
+    goal: "Separate the mathematical predictions, the assumptions behind no-go results, and the choices made by interpretations.",
+    prerequisites: "Basic probability, complex numbers and introductory linear algebra. Use each profile’s prerequisite links when a topic is unfamiliar.",
+    steps: [
+      {theoryId:"wave-mechanics",why:"Begin with the wavefunction, its evolution and the role of boundary conditions."},
+      {theoryId:"born-rule",why:"Connect amplitudes to probabilities and distinguish an outcome distribution from an individual result."},
+      {theoryId:"uncertainty",why:"Read which state-dependent spreads the uncertainty relation constrains before interpreting it as a measurement limit."},
+      {theoryId:"density-operator",why:"Introduce pure states and mixtures before studying a subsystem coupled to its environment."},
+      {theoryId:"decoherence",why:"Identify what reduced interference explains and what remains to be explained about individual outcomes."},
+      {theoryId:"bell",why:"List the locality and independence assumptions entering the correlation argument."},
+      {theoryId:"kochen-specker",why:"Compare the noncontextual-value question with the locality question in Bell’s argument."},
+      {theoryId:"everett",why:"Ask how the relative-state account treats observers, records and probabilities."},
+      {theoryId:"bohmian",why:"Compare an account with definite particle configurations and its stated statistical assumptions."},
+      {theoryId:"qbism",why:"Finish by examining the role assigned to an agent’s probability judgments."}
+    ],
+    comparison: ["everett","bohmian","qbism"]
+  },
+  {
+    id: "quantum-information",
+    title: "Quantum information",
+    goal: "Follow quantum states into communication, noise, error correction and sensing, keeping the task and resource assumptions explicit.",
+    prerequisites: "Quantum states, the Born rule, basic probability and linear algebra. The Quantum foundations path is a useful starting point.",
+    steps: [
+      {theoryId:"density-operator",why:"Start with the representation of pure states and mixtures used throughout information processing."},
+      {theoryId:"quantum-information",why:"Use quantum source compression as a first example of an operational information task."},
+      {theoryId:"entanglement-theory",why:"Specify the partition and allowed operations before treating entanglement as a resource."},
+      {theoryId:"quantum-shannon-theory",why:"Distinguish communication tasks, channel assumptions and asymptotic capacity statements."},
+      {theoryId:"open-quantum-systems",why:"Introduce environmental interactions and check when memory effects matter."},
+      {theoryId:"gksl",why:"Examine the conditions under which a memoryless dynamical generator applies."},
+      {theoryId:"quantum-error-correction",why:"Identify the error model and recovery conditions required to protect encoded information."},
+      {theoryId:"stabilizer-formalism",why:"Study a concrete algebraic language for code spaces, syndromes and logical operations."},
+      {theoryId:"quantum-metrology",why:"Apply resource accounting to parameter estimation and inspect how noise changes precision claims."}
+    ],
+    comparison: ["quantum-information","quantum-shannon-theory","quantum-metrology"]
+  }
+);

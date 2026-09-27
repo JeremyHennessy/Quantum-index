@@ -162,10 +162,10 @@ console.log('Validated 50 cited research profiles and comparison presets.');
 for(const path of research.learningPaths){
   if(!path.id||!path.title||!path.goal||!path.prerequisites||path.steps.length<2)throw new Error('Invalid learning path');
   if(new Set(path.steps.map(s=>s.theoryId)).size!==path.steps.length)throw new Error('Duplicate path step');
-  for(const step of path.steps)if(!unique.has(step.theoryId)||!step.why)throw new Error('Invalid learning step');
+  for(const step of path.steps)if(!unique.has(step.theoryId)||!research.profiles[step.theoryId]||!step.why)throw new Error('Invalid learning step');
   if(path.comparison.length<2||path.comparison.length>4||path.comparison.some(id=>!unique.has(id)))throw new Error('Invalid path comparison');
 }
-if(research.learningPaths.length!==3 || new Set(research.learningPaths.map(p=>p.id)).size!==3)throw new Error('Expected three distinct learning paths');
+if(research.learningPaths.length!==5 || new Set(research.learningPaths.map(p=>p.id)).size!==5)throw new Error('Expected five distinct learning paths');
 
 const primer=research.learningPaths.find(p=>p.id==='gravity-time').primer;
 if(!primer?.equation || !primer.sourceLocator || primer.paragraphs.length!==3)throw new Error('Missing gravity and time primer');

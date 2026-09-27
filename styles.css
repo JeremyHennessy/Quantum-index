@@ -129,3 +129,12 @@ a.catalog-card:focus-visible,a.timeline-card:focus-visible,a.relation:focus-visi
 
 #workspaceContent .detail-actions label{width:100%;min-width:0;max-width:100%}
 #workspaceContent input[type=file]{display:block;width:100%;min-width:0;margin-top:8px}
+
+.learning-progress{margin:16px 0 22px;min-width:0;overflow-wrap:anywhere}
+.learning-progress progress{display:block;width:100%;height:8px;accent-color:var(--accent)}
+.learning-progress .link-button{min-height:44px}
+.learning-step-status{display:inline-block;margin-left:8px;font-size:.75rem;color:var(--muted)}
+.learning-step-status.is-read{color:var(--accent)}
+.workspace-path{border-bottom:1px solid var(--line);padding:12px 0;min-width:0;overflow-wrap:anywhere}
+.workspace-path h5{font-size:1rem;margin:0}
+.workspace-path .learning-progress{margin-bottom:8px}
