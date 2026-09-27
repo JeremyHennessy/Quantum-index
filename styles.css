@@ -138,3 +138,8 @@ a.catalog-card:focus-visible,a.timeline-card:focus-visible,a.relation:focus-visi
 .workspace-path{border-bottom:1px solid var(--line);padding:12px 0;min-width:0;overflow-wrap:anywhere}
 .workspace-path h5{font-size:1rem;margin:0}
 .workspace-path .learning-progress{margin-bottom:8px}
+
+.workspace-collections{min-width:0;overflow-wrap:anywhere}
+.workspace-collections label{display:block;margin:14px 0 7px}
+#workspaceSearch{display:block;width:100%;min-width:0;max-width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:#07121a;color:var(--text);font:inherit}
+#workspaceSearch:focus-visible{outline:2px solid var(--accent);outline-offset:2px}

@@ -497,3 +497,43 @@ test('shared read markers count in both new paths and survive a fresh page load'
     }finally{fresh.window.close();}
   }finally{w.QI_WORKSPACE.save(original);}
 });
+
+test('workspace search finds full notes, aliases and read entries and survives detail navigation',async()=>{
+  const original=w.QI_WORKSPACE.data;
+  try{
+    const data={version:1,bookmarks:['unruh'],read:['born-rule'],notes:{unruh:'x'.repeat(200)+' rare-search-marker <script>literal</script>'},comparisons:[]};
+    w.QI_WORKSPACE.save(data);await route('#/catalog');await route('#/workspace');
+    const search=q=>{const el=d.querySelector('#workspaceSearch');el.value=q;el.dispatchEvent(new w.Event('input',{bubbles:true}));};
+    search('RARE-search-marker');assert.equal(d.querySelectorAll('[data-saved-list="notes"] a').length,1);
+    assert.equal(d.querySelectorAll('[data-saved-list="read"] a').length,0);
+    assert.equal(d.querySelector('#workspaceCollections script'),null);
+    await change(()=>d.querySelector('[data-saved-list="notes"] a').click());await change(()=>d.querySelector('#backToView').click());
+    assert.equal(d.querySelector('#workspaceSearch').value,'RARE-search-marker');
+    const alias=theories.find(t=>t.id==='unruh').aliases[0];if(alias){search(alias);assert.equal(d.querySelectorAll('[data-saved-list="bookmarks"] a').length,1);}
+    search('no-such-saved-entry');assert.match(d.querySelector('#workspaceSearchStatus').textContent,/0 of 2 saved entries/);
+    search('');assert.equal(d.querySelector('[data-saved-list="read"] a').hash,'#/theory/born-rule?from=workspace');
+    assert.equal(w.QI_WORKSPACE.data.notes.unruh,data.notes.unruh);
+  }finally{w.QI_WORKSPACE.save(original);}
+});
+test('filtered comparison removal targets the correct saved comparison',async()=>{
+  const original=w.QI_WORKSPACE.data;
+  try{
+    const data=w.QI_WORKSPACE.data;data.comparisons=[{name:'Keep',theoryIds:['unruh','hawking-radiation']},{name:'Remove unique',theoryIds:['bell','qbism']}];w.QI_WORKSPACE.save(data);
+    await route('#/catalog');await route('#/workspace');const el=d.querySelector('#workspaceSearch');el.value='Remove unique';el.dispatchEvent(new w.Event('input'));
+    const remove=d.querySelector('[data-remove-comparison]');assert.equal(remove.dataset.removeComparison,'1');remove.click();
+    assert.equal(w.QI_WORKSPACE.data.comparisons.length,1);assert.equal(w.QI_WORKSPACE.data.comparisons[0].name,'Keep');
+    el.value='';el.dispatchEvent(new w.Event('input'));
+  }finally{w.QI_WORKSPACE.save(original);}
+});
+test('notebook download contains all saved research even when lists are filtered',async()=>{
+  const original=w.QI_WORKSPACE.data,create=w.URL.createObjectURL,revoke=w.URL.revokeObjectURL,click=w.HTMLAnchorElement.prototype.click;let blob,filename;
+  try{
+    const data=w.QI_WORKSPACE.data;data.notes.unruh='Notebook export test';w.QI_WORKSPACE.save(data);
+    await route('#/catalog');await route('#/workspace');const el=d.querySelector('#workspaceSearch');el.value='no results';el.dispatchEvent(new w.Event('input'));
+    w.URL.createObjectURL=b=>{blob=b;return 'blob:test';};w.URL.revokeObjectURL=()=>{};w.HTMLAnchorElement.prototype.click=function(){filename=this.download;};
+    d.querySelector('#exportNotebook').click();assert.equal(filename,'quantum-index-research.md');assert.equal(blob.type,'text/markdown;charset=utf-8');
+    const text=await new Promise((resolve,reject)=>{const r=new w.FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsText(blob);});
+    assert.ok(text.includes('Notebook export test'));assert.match(d.querySelector('#workspaceStatus').textContent,/download requested/);
+    el.value='';el.dispatchEvent(new w.Event('input'));
+  }finally{w.QI_WORKSPACE.save(original);w.URL.createObjectURL=create;w.URL.revokeObjectURL=revoke;w.HTMLAnchorElement.prototype.click=click;}
+});

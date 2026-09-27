@@ -128,3 +128,5 @@ My research stores bookmarks, notes, read markers and saved comparisons in this 
 Global filters apply to Network map, Timeline and Catalog. Comparisons and the formula atlas have their own controls. Graph and thought-tree nodes support Enter and Space.
 
 The September 26 workspace release also reviews 25 existing graph edges in `docs/RELATION_REVIEW_2026-09-26.json`. Relationship disclosures expose the explanation, locator and sources. Source-backed does not mean experimentally confirmed.
+
+My research also searches saved entries by name, alias, tag or full note text and saved comparisons by name or included entry. The Read entries list opens any marked entry, including entries outside learning paths. Search stays in place while visiting a detail and returning. Export research notebook downloads a Markdown reading copy with complete notes, entry links, catalog sources and comparison links; it always includes the whole workspace and does not replace the restorable JSON backup. Notes are exported as literal text.
