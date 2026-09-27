@@ -7915,3 +7915,185 @@ Object.assign(window.QI_FORMULAS.formulas.find(f=>f.id==='hubbard-hamiltonian'),
     ]
   });
 })();
+
+
+// Scientist-facing formula-depth pilot, 2026-09-27.
+// These representatives close audited formula gaps only where the equation,
+// convention and scope can be stated precisely from the linked literature.
+window.QI_FORMULAS.formulas.push(...[
+  {
+    id: "metric-fr-field-equation",
+    name: "Metric f(R) field equation",
+    category: "Quantum gravity & cosmology",
+    latex: "F(R)R_{\\mu\\nu}-\\frac12 f(R)g_{\\mu\\nu}-\\nabla_{\\mu}\\nabla_{\\nu}F(R)+g_{\\mu\\nu}\\Box F(R)=\\kappa^2T_{\\mu\\nu}^{(M)}",
+    plain: "F(R) R_mn - 1/2 f(R) g_mn - nabla_m nabla_n F + g_mn Box F = kappa^2 T_mn",
+    description: "Metric-formalism equation of motion for torsion-free f(R) gravity, with F(R)=df/dR.",
+    theoryIds: ["f-r-gravity"],
+    sourceIds: ["fr-review-2010"],
+    tags: ["f(R)", "modified gravity", "field equation"],
+    formulaType: "defining",
+    assumptions: [
+      "Four-dimensional torsion-free metric formalism; the connection is the Levi-Civita connection of g_mu_nu",
+      "Matter is minimally coupled through the matter Lagrangian used in the cited review",
+      "The displayed convention uses metric signature (-,+,+,+) and kappa^2=8 pi G"
+    ],
+    variables: [
+      "f(R): gravitational Lagrangian density as a function of Ricci scalar R",
+      "F(R)=df/dR",
+      "R_mu_nu: Ricci tensor; g_mu_nu: metric",
+      "Box=g^{alpha beta} nabla_alpha nabla_beta",
+      "T_mu_nu^(M): matter energy-momentum tensor",
+      "kappa^2=8 pi G in c=hbar=1 units"
+    ],
+    regime: "Metric f(R) gravity in the convention and matter-coupling assumptions of De Felice and Tsujikawa; Palatini and metric-affine formulations have different field equations.",
+    units: "Natural units c=hbar=k_B=1 in the cited review; kappa^2=8 pi G.",
+    theoryRelationship: "Defining metric-formalism field equation; not a representative of Palatini or metric-affine f(R) dynamics.",
+    metadataReview: "explicit",
+    reviewedAt: "2026-09-27",
+    curationBatch: "formula-depth-pilot-2026-09-27",
+    sourceLocations: [{
+      sourceId: "fr-review-2010",
+      locator: "Sec. 2.1, Eq. (2.4); definitions and conventions in Sec. 2 and Eqs. (2.1)–(2.6)",
+      url: "https://arxiv.org/html/1002.4928v2#S2.SS1"
+    }]
+  },
+  {
+    id: "eth-ansatz",
+    name: "Eigenstate thermalization hypothesis ansatz",
+    category: "Quantum many-body & condensed matter",
+    latex: "O_{mn}=O(\\bar E)\\delta_{mn}+e^{-S(\\bar E)/2}f_O(\\bar E,\\omega)R_{mn}",
+    plain: "O_mn = O(Ebar) delta_mn + exp[-S(Ebar)/2] f_O(Ebar,omega) R_mn",
+    description: "Standard ETH ansatz for observable matrix elements in the Hamiltonian eigenbasis.",
+    theoryIds: ["eigenstate-thermalization"],
+    sourceIds: ["wave3-eth-review-2016"],
+    tags: ["ETH", "thermalization", "many-body chaos"],
+    formulaType: "canonical",
+    assumptions: [
+      "The Hamiltonian is in a regime where ETH is expected rather than an integrable or many-body-localized regime",
+      "O is a physical/few-body observable in the sense discussed by the cited review; the ansatz is not asserted for arbitrary projectors",
+      "O(Ebar) and f_O(Ebar,omega) are smooth functions and R_mn has zero mean and unit variance"
+    ],
+    variables: [
+      "Ebar=(E_m+E_n)/2: mean eigenenergy",
+      "omega=E_n-E_m: eigenenergy difference",
+      "S(E): thermodynamic entropy",
+      "O(Ebar): microcanonical expectation value",
+      "f_O(Ebar,omega): smooth observable-dependent envelope",
+      "R_mn: zero-mean, unit-variance real or complex fluctuation variable"
+    ],
+    regime: "ETH ansatz for physical observables in quantum-chaotic/nonintegrable many-body systems; the review explicitly notes that no rigorous universal characterization of all ETH-satisfying observables is known.",
+    units: "O(Ebar) and f_O carry the units needed for O_mn; entropy is dimensionless in the convention used.",
+    theoryRelationship: "Canonical ETH ansatz, not a theorem valid for every Hamiltonian or observable.",
+    metadataReview: "explicit",
+    reviewedAt: "2026-09-27",
+    curationBatch: "formula-depth-pilot-2026-09-27",
+    sourceLocations: [{
+      sourceId: "wave3-eth-review-2016",
+      locator: "Sec. 4.2, Eq. (62), with scope and counterexamples discussed immediately after the equation",
+      url: "https://arxiv.org/html/1509.06411v3#S4.SS2"
+    }]
+  },
+  {
+    id: "coherence-resource-measures",
+    name: "Relative-entropy and l1 coherence measures",
+    category: "Quantum information",
+    latex: "C_{\\mathrm{rel.ent.}}(\\rho)=S(\\rho_{\\mathrm{diag}})-S(\\rho),\\qquad C_{l_1}(\\rho)=\\sum_{i\\ne j}|\\rho_{ij}|",
+    plain: "C_rel(rho)=S(rho_diag)-S(rho); C_l1(rho)=sum_(i!=j)|rho_ij|",
+    description: "Two canonical coherence monotones in the Baumgratz–Cramer–Plenio resource theory relative to a fixed reference basis.",
+    theoryIds: ["coherence-resource-theory"],
+    sourceIds: ["discovery-coherence-2013"],
+    tags: ["coherence", "resource theory", "relative entropy", "l1 norm"],
+    formulaType: "canonical",
+    assumptions: [
+      "A reference basis {|i>} is fixed; incoherent states are diagonal in that basis",
+      "The measures are interpreted under the incoherent-operation framework defined in the cited source",
+      "The formulas do not imply that every later resource theory of coherence uses the same free-operation class"
+    ],
+    variables: [
+      "rho: density operator",
+      "rho_diag: rho with all off-diagonal elements deleted in the chosen reference basis",
+      "S(rho)=-Tr(rho log rho): von Neumann entropy",
+      "rho_ij: density-matrix elements in the reference basis"
+    ],
+    regime: "Finite-dimensional density operators in the fixed-basis coherence resource theory of the cited paper.",
+    units: "Dimensionless; logarithm base fixes the entropy unit.",
+    theoryRelationship: "Canonical resource monotones within the original fixed-basis incoherent-operation framework.",
+    metadataReview: "explicit",
+    reviewedAt: "2026-09-27",
+    curationBatch: "formula-depth-pilot-2026-09-27",
+    sourceLocations: [{
+      sourceId: "discovery-coherence-2013",
+      locator: "Eqs. (1)–(3) introduce the two measures and fixed reference basis; closed forms are repeated as Eqs. (8)–(9)",
+      url: "https://arxiv.org/abs/1311.0275"
+    }]
+  },
+  {
+    id: "projective-quantum-discord",
+    name: "One-sided projective quantum discord",
+    category: "Quantum information",
+    latex: "D_A(\\rho_{SA})=\\min_{\\{\\Pi_j^A\\}}\\left[I(S{:}A)-J(S{:}A)_{\\{\\Pi_j^A\\}}\\right]",
+    plain: "D_A(rho_SA)=min_{projective measurements on A} [I(S:A)-J(S:A)]",
+    description: "Original one-sided discord construction: the minimized difference between two quantum generalizations of classical mutual information.",
+    theoryIds: ["quantum-discord"],
+    sourceIds: ["discovery-discord-2001"],
+    tags: ["quantum discord", "correlations", "projective measurement"],
+    formulaType: "defining",
+    assumptions: [
+      "The measurement is performed on subsystem A using a complete set of one-dimensional orthogonal projectors, matching the original definition",
+      "The displayed formula is one-sided and therefore generally asymmetric under S <-> A",
+      "Later POVM-based or otherwise generalized discord definitions are not represented by this card"
+    ],
+    variables: [
+      "I(S:A)=S(rho_S)+S(rho_A)-S(rho_SA): quantum mutual information",
+      "J(S:A)_{Pi}=S(rho_S)-sum_j p_j S(rho_{S|j}): measurement-conditioned information",
+      "Pi_j^A: one-dimensional projectors on subsystem A",
+      "p_j and rho_{S|j}: outcome probability and conditional state"
+    ],
+    regime: "Bipartite quantum states under the original one-sided rank-one projective-measurement definition.",
+    units: "Dimensionless; logarithm base fixes the information unit.",
+    theoryRelationship: "Defining original projective discord quantity; later discord variants may optimize over different measurement classes.",
+    metadataReview: "explicit",
+    reviewedAt: "2026-09-27",
+    curationBatch: "formula-depth-pilot-2026-09-27",
+    sourceLocations: [{
+      sourceId: "discovery-discord-2001",
+      locator: "Eqs. (8)–(13) define I, projective conditional entropy, J and discord; minimization over projectors is stated immediately after Eq. (14)",
+      url: "https://arxiv.org/abs/quant-ph/0105072"
+    }]
+  },
+  {
+    id: "aharonov-bohm-magnetic-phase",
+    name: "Magnetic Aharonov–Bohm phase",
+    category: "Quantum optics & AMO",
+    latex: "\\Delta\\phi=\\frac{q}{\\hbar c}\\oint\\mathbf A\\cdot d\\mathbf l=\\frac{q\\Phi_B}{\\hbar c}",
+    plain: "Delta phi = q/(hbar c) integral A.dl = q Phi_B/(hbar c) [Gaussian units]",
+    description: "Gauge-invariant relative phase for paths enclosing magnetic flux, written in the Gaussian-unit convention of the 1959 paper.",
+    theoryIds: ["aharonov-bohm"],
+    sourceIds: ["discovery-aharonov-bohm-1959"],
+    tags: ["Aharonov-Bohm", "phase", "vector potential", "magnetic flux"],
+    formulaType: "canonical",
+    assumptions: [
+      "The interfering charged-particle paths lie outside the region containing the magnetic field, as in the magnetic Aharonov–Bohm setup",
+      "The line integral is taken around the closed loop formed by the two paths with a fixed orientation",
+      "The displayed 1/c factor follows the Gaussian-unit convention of the original source; in SI conventions the corresponding expression is q Phi_B/hbar"
+    ],
+    variables: [
+      "q: signed particle charge",
+      "A: electromagnetic vector potential",
+      "Phi_B: magnetic flux enclosed by the loop",
+      "hbar: reduced Planck constant",
+      "c: speed of light in the Gaussian-unit convention"
+    ],
+    regime: "Magnetic Aharonov–Bohm interference for a multiply connected field-free path region surrounding confined flux; electric/time-dependent variants require separate formulas.",
+    units: "Dimensionless phase; formula shown in Gaussian units exactly to match the cited 1959 convention.",
+    theoryRelationship: "Canonical magnetic phase relation for the Aharonov–Bohm effect.",
+    metadataReview: "explicit",
+    reviewedAt: "2026-09-27",
+    curationBatch: "formula-depth-pilot-2026-09-27",
+    sourceLocations: [{
+      sourceId: "discovery-aharonov-bohm-1959",
+      locator: "Sec. 2, pp. 486–487: phase shift from the vector potential and phase difference proportional to enclosed magnetic flux",
+      url: "https://doi.org/10.1103/PhysRev.115.485"
+    }]
+  }
+]);
