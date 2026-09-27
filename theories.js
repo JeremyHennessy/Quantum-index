@@ -2525,3 +2525,43 @@ window.QI_DATA.sources.push(...[
 ]);
 Object.assign(window.QI_DATA.sources.find(s=>s.id==='wave3-nuclear-eft-review-2020'), {authors:'H.-W. Hammer, Sebastian König, U. van Kolck'});
 Object.assign(window.QI_DATA.sources.find(s=>s.id==='wave3-hergert-imsrg-2016'), {title:'The In-Medium Similarity Renormalization Group: A Novel Ab Initio Method for Nuclei',authors:'H. Hergert, S. K. Bogner, T. D. Morris, A. Schwenk, K. Tsukiyama'});
+
+
+// Scientific-trust source corrections, 2026-09-27.
+(() => {
+  const existing = new Set(window.QI_DATA.sources.map(source => source.id));
+  for (const source of [
+    {
+      "id": "robertson-uncertainty-1929",
+      "title": "The Uncertainty Principle",
+      "authors": "H. P. Robertson",
+      "year": 1929,
+      "type": "primary source",
+      "url": "https://doi.org/10.1103/PhysRev.34.163"
+    },
+    {
+      "id": "braunstein-caves-1994",
+      "title": "Statistical distance and the geometry of quantum states",
+      "authors": "Samuel L. Braunstein, Carlton M. Caves",
+      "year": 1994,
+      "type": "primary source",
+      "url": "https://doi.org/10.1103/PhysRevLett.72.3439"
+    },
+    {
+      "id": "steck-quantum-atom-optics-2026",
+      "title": "Quantum and Atom Optics",
+      "authors": "Daniel A. Steck",
+      "year": 2026,
+      "type": "authoritative lecture notes",
+      "url": "https://atomoptics.uoregon.edu/~dsteck/teaching/quantum-optics/quantum-optics-notes.pdf"
+    },
+    {
+      "id": "pezze-quantum-metrology-2018",
+      "title": "Quantum metrology with nonclassical states of atomic ensembles",
+      "authors": "Luca Pezzè, Augusto Smerzi, Markus K. Oberthaler, Roman Schmied, Philipp Treutlein",
+      "year": 2018,
+      "type": "authoritative review",
+      "url": "https://arxiv.org/abs/1609.01609"
+    }
+  ]) if (!existing.has(source.id)) window.QI_DATA.sources.push(source);
+})();

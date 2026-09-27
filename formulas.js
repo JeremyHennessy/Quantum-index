@@ -7750,3 +7750,168 @@ Object.assign(window.QI_FORMULAS.formulas.find(f=>f.id==='hubbard-hamiltonian'),
   sourceIds:['hubbard-1963','arovas-hubbard-2022'],
   sourceLocations:[{sourceId:'arovas-hubbard-2022',locator:'Section 2, Eq. (1) and nearest-neighbor specialization immediately below it',url:'https://arxiv.org/pdf/2103.12097#page=3'}]
 });
+
+
+// Scientific-trust formula corrections, 2026-09-27.
+// These records replace weak/broad citations with equation-relevant sources and
+// make convention/domain assumptions explicit without changing unrelated cards.
+(() => {
+  const byId = new Map(window.QI_FORMULAS.formulas.map(formula => [formula.id, formula]));
+  const patch = (id, values) => {
+    const formula = byId.get(id);
+    if (!formula) throw new Error("Missing formula for scientific-trust patch: " + id);
+    Object.assign(formula, values);
+  };
+  const common = { "metadataReview": "explicit", "reviewedAt": "2026-09-27", "curationBatch": "scientific-trust-foundation-2026-09-27" };
+
+  patch("heisenberg-uncertainty", {
+    ...common,
+    "name": "Robertson uncertainty relation",
+    "description": "Robertson's general commutator lower bound for the standard deviations of two observables; the position-momentum uncertainty relation is a canonical special case.",
+    "sourceIds": ["robertson-uncertainty-1929", "heisenberg-uncertainty-1927"],
+    "formulaType": "derived identity",
+    "assumptions": [
+      "The state is normalized and lies in the domains needed for A, B and their commutator/product expectations",
+      "A and B are observables represented by self-adjoint operators with finite variances"
+    ],
+    "variables": [
+      "Delta A, Delta B: standard deviations of observables A and B in the chosen state",
+      "[A,B]=AB-BA: operator commutator",
+      "<...>: expectation value in the chosen state"
+    ],
+    "regime": "General Hilbert-space uncertainty relation for two observables under the stated domain and finite-variance assumptions.",
+    "units": "Both sides have the product units of observables A and B.",
+    "theoryRelationship": "general uncertainty bound; Heisenberg position-momentum uncertainty is a historically prior special case",
+    "sourceLocations": [
+      {
+        "sourceId": "robertson-uncertainty-1929",
+        "locator": "Phys. Rev. 34, pp. 163–164; general uncertainty-product relation",
+        "url": "https://doi.org/10.1103/PhysRev.34.163"
+      }
+    ]
+  });
+
+  patch("wigner-eckart", {
+    ...common,
+    "latex": "\\langle jm|T_q^{(k)}|j'm'\\rangle=\\frac{\\langle j||T^{(k)}||j'\\rangle}{\\sqrt{2j+1}}\\,C^{jm}_{j'm',kq}",
+    "description": "Wigner–Eckart factorization in a stated Clebsch–Gordan normalization; the reduced matrix element carries the final j before the initial j′.",
+    "sourceIds": ["steck-quantum-atom-optics-2026"],
+    "formulaType": "derived identity",
+    "assumptions": [
+      "T_q^(k) is an irreducible spherical tensor operator of rank k",
+      "States use the angular-momentum basis and Clebsch–Gordan phase/normalization convention displayed in the equation"
+    ],
+    "variables": [
+      "j,m: final angular-momentum quantum numbers",
+      "j',m': initial angular-momentum quantum numbers",
+      "k,q: tensor rank and spherical component",
+      "C^(jm)_(j'm',kq): Clebsch–Gordan coefficient",
+      "<j||T^(k)||j'>: reduced matrix element in this convention"
+    ],
+    "regime": "Rotationally covariant angular-momentum matrix elements in the stated Clebsch–Gordan normalization.",
+    "units": "The reduced matrix element and T have the same physical units; the Clebsch–Gordan coefficient and normalization factor are dimensionless.",
+    "theoryRelationship": "angular-momentum theorem separating geometric dependence from a reduced matrix element",
+    "sourceLocations": [
+      {
+        "sourceId": "steck-quantum-atom-optics-2026",
+        "locator": "Eq. (7.239), Wigner–Eckart theorem in the displayed normalization",
+        "url": "https://atomoptics.uoregon.edu/~dsteck/teaching/quantum-optics/quantum-optics-notes.pdf"
+      }
+    ]
+  });
+
+  patch("quantum-fisher", {
+    ...common,
+    "sourceIds": ["braunstein-caves-1994", "pezze-quantum-metrology-2018"],
+    "formulaType": "canonical",
+    "assumptions": [
+      "|psi(theta)> is a differentiable normalized pure-state family",
+      "The dot denotes differentiation with respect to the estimated scalar parameter theta"
+    ],
+    "variables": [
+      "F_Q: single-parameter quantum Fisher information",
+      "|dot psi>: partial_theta |psi(theta)>",
+      "theta: estimated parameter"
+    ],
+    "regime": "Single-parameter local estimation for a differentiable pure quantum state.",
+    "units": "F_Q has inverse-square units of the estimated parameter.",
+    "theoryRelationship": "canonical pure-state expression for the quantum statistical information governing local parameter estimation",
+    "sourceLocations": [
+      {
+        "sourceId": "braunstein-caves-1994",
+        "locator": "Phys. Rev. Lett. 72, pp. 3439–3443; statistical-distance metric and optimal-measurement construction",
+        "url": "https://doi.org/10.1103/PhysRevLett.72.3439"
+      },
+      {
+        "sourceId": "pezze-quantum-metrology-2018",
+        "locator": "Sec. II, quantum Fisher information and pure-state reduction",
+        "url": "https://arxiv.org/abs/1609.01609"
+      }
+    ]
+  });
+
+  patch("cramer-rao", {
+    ...common,
+    "sourceIds": ["braunstein-caves-1994", "pezze-quantum-metrology-2018"],
+    "formulaType": "derived identity",
+    "assumptions": [
+      "The estimator is locally unbiased for the scalar parameter",
+      "N denotes independent identically prepared repetitions/probes so total quantum Fisher information is N F_Q",
+      "The inequality is a lower bound; attainability requires an appropriate measurement/estimator and is not automatic in every finite-sample setting"
+    ],
+    "variables": [
+      "Var(theta_hat): estimator variance",
+      "N: number of independent repetitions",
+      "F_Q: quantum Fisher information per repetition"
+    ],
+    "regime": "Single-parameter quantum estimation under local-unbiasedness and independent-repeat assumptions.",
+    "units": "The right side has the squared units of theta.",
+    "theoryRelationship": "quantum estimation lower bound obtained by optimizing measurement Fisher information",
+    "sourceLocations": [
+      {
+        "sourceId": "braunstein-caves-1994",
+        "locator": "Phys. Rev. Lett. 72, pp. 3439–3443; optimal statistical distinguishability and quantum estimation bound",
+        "url": "https://doi.org/10.1103/PhysRevLett.72.3439"
+      },
+      {
+        "sourceId": "pezze-quantum-metrology-2018",
+        "locator": "Sec. II, Eq. (9), quantum Cramér–Rao bound for independent measurements",
+        "url": "https://arxiv.org/abs/1609.01609"
+      }
+    ]
+  });
+
+  patch("mixed-qfi", {
+    ...common,
+    "latex": "F_Q=2\\sum_{i,j:\\,\\lambda_i+\\lambda_j>0}\\frac{|\\langle i|\\partial_\\theta\\rho|j\\rangle|^2}{\\lambda_i+\\lambda_j}",
+    "plain": "F_Q=2 sum_(i,j: lambda_i+lambda_j>0) |<i|d rho|j>|^2/(lambda_i+lambda_j)",
+    "description": "Spectral expression for single-parameter quantum Fisher information with zero-denominator terms explicitly excluded.",
+    "sourceIds": ["braunstein-caves-1994", "giovannetti-metrology-2011", "pezze-quantum-metrology-2018"],
+    "formulaType": "canonical",
+    "assumptions": [
+      "rho(theta) is a differentiable density operator with spectral decomposition rho=sum_i lambda_i |i><i|",
+      "Only pairs satisfying lambda_i+lambda_j>0 contribute; this avoids undefined zero-over-zero terms for rank-deficient states"
+    ],
+    "variables": [
+      "lambda_i: eigenvalues of rho",
+      "|i>: corresponding eigenvectors",
+      "partial_theta rho: derivative of the density operator with respect to the scalar parameter",
+      "F_Q: symmetric-logarithmic-derivative quantum Fisher information"
+    ],
+    "regime": "Finite- or countable-dimensional single-parameter estimation wherever the spectral expression and derivative are well defined.",
+    "units": "F_Q has inverse-square units of the estimated parameter.",
+    "theoryRelationship": "general spectral representation of single-parameter SLD quantum Fisher information",
+    "sourceLocations": [
+      {
+        "sourceId": "braunstein-caves-1994",
+        "locator": "Phys. Rev. Lett. 72, pp. 3439–3443; density-operator statistical metric",
+        "url": "https://doi.org/10.1103/PhysRevLett.72.3439"
+      },
+      {
+        "sourceId": "pezze-quantum-metrology-2018",
+        "locator": "Sec. II, Eq. (10) and surrounding discussion; explicit positive-denominator restriction in the spectral QFI expression",
+        "url": "https://arxiv.org/abs/1609.01609"
+      }
+    ]
+  });
+})();
