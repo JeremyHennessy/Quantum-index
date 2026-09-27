@@ -466,3 +466,25 @@ html{scrollbar-color:#a8c4ce #edf3f6}
   .timeline-controls{grid-template-columns:1fr}
   .development-card{padding:13px}
 }
+
+.question-panel{padding-bottom:20px}
+.question-controls{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;padding:18px 20px 4px}
+.question-controls label{display:block;font-size:10px;font-weight:750;color:var(--muted);margin:0 0 6px;text-transform:uppercase;letter-spacing:.06em}
+.question-controls input,.question-controls select{width:100%;height:42px;border:1px solid #cbdbe2;background:#fff;color:var(--text);border-radius:11px;padding:0 12px;outline:none}
+.question-controls input:focus,.question-controls select:focus{border-color:#3aa9b9;box-shadow:var(--focus)}
+.question-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px;padding:18px 20px 26px}
+.question-card{border:1px solid #d9e4e9;border-radius:16px;background:#fff;padding:16px;box-shadow:0 5px 18px rgba(45,76,92,.05)}
+.question-card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:10px}
+.question-disposition{display:inline-flex;border-radius:999px;padding:5px 8px;font-size:9px;text-transform:uppercase;letter-spacing:.05em;font-weight:750;background:#eef7f9;color:#286777;border:1px solid #d3e8ec}
+.question-domain{font-size:9px;color:var(--muted);text-align:right}
+.question-card h4{font-size:16px;line-height:1.35;margin:6px 0 10px;color:var(--text)}
+.question-answer{font-size:12px;line-height:1.6;color:#45616e}
+.question-card details{margin:12px 0;border-top:1px solid #e1e9ed;padding-top:10px}
+.question-card summary{cursor:pointer;color:#486775;font-size:11px;font-weight:650}
+.question-card details p{font-size:11px;line-height:1.55;color:#526d7a}
+.question-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.disposition-open .question-disposition{background:#fff5ed;border-color:#f1d2b8;color:#9b5625}
+.disposition-established-learning .question-disposition{background:#eff9f3;border-color:#c2e0cf;color:#26704d}
+.disposition-conditional-model-dependent .question-disposition{background:#f6f3ff;border-color:#d9d1f4;color:#6556b5}
+.disposition-model-specific-investigation .question-disposition{background:#f5f8fb;border-color:#d8e2ea;color:#526b7a}
+@media(max-width:850px){.question-controls,.question-grid{grid-template-columns:1fr}.question-grid{padding:14px}.question-card-top{display:block}.question-domain{display:block;text-align:left;margin-top:7px}}

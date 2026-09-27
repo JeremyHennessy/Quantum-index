@@ -117,3 +117,12 @@ test('timeline separates origins from reviewed developments and restores filters
   await testInfo.attach('timeline-mobile',{path:mobilePath,contentType:'image/png'});
   expect(errors).toEqual([]);
 });
+
+test('structured research questions preserve dispositions and fit mobile',async({page})=>{
+  await page.goto('/#/questions?disposition=open&search=black');
+  await expect(page.locator('#questionDisposition')).toHaveValue('open');
+  await expect(page.locator('#questionGrid')).toContainText(/black hole|black-hole/i);
+  await expect(page.locator('#questionGrid .question-card').first()).toBeVisible();
+  await page.setViewportSize({width:320,height:800});
+  expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
+});
