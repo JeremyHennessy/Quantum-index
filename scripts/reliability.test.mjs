@@ -325,7 +325,7 @@ test('fresh comparison and detail loads restore shareable selections',()=>{
 
 test('learning paths support ordered steps, deep links and return navigation',async()=>{
   await route('#/learn');
-  assert.equal(d.querySelectorAll('.learning-path').length,3);
+  assert.equal(d.querySelectorAll('.learning-path').length,5);
   await route('#/learn?path=gravity-time');
   assert.equal(d.querySelectorAll('.learning-path').length,1);
   await change(()=>d.querySelector('.learning-steps a').click());
@@ -336,7 +336,7 @@ test('learning paths support ordered steps, deep links and return navigation',as
   await change(()=>d.querySelector('#backToView').click());
   assert.equal(d.querySelectorAll('.learning-steps li').length,5);
   await route('#/learn?path=does-not-exist');
-  assert.equal(d.querySelectorAll('.learning-path').length,3);
+  assert.equal(d.querySelectorAll('.learning-path').length,5);
 });
 
 test('prerequisites, connections and formula detours retain learning and comparison context',async()=>{
@@ -432,4 +432,68 @@ test('import UI previews valid data, waits for merge and rejects invalid backups
   input=d.querySelector('#importWorkspace');const saved=w.QI_WORKSPACE.exportText();
   Object.defineProperty(input,'files',{configurable:true,value:[{size:12,text:async()=>'{invalid'}]});await input.onchange({target:input});
   assert.equal(d.querySelector('#confirmImport'),null);assert.equal(w.QI_WORKSPACE.exportText(),saved);
+});
+
+test('new reading routes open cited profiles and resume at the first unread step',async()=>{
+  const original=w.QI_WORKSPACE.data;
+  try{
+    const data=w.QI_WORKSPACE.data;data.read=[];w.QI_WORKSPACE.save(data);
+    await route('#/learn?path=quantum-foundations');
+    const card=()=>d.querySelector('[data-learning-path="quantum-foundations"]');
+    assert.equal(card().querySelectorAll('.learning-steps li').length,10);
+    assert.equal(card().querySelector('progress').value,0);
+    assert.equal(card().querySelector('[data-resume-path]').textContent,'Start this path');
+    await change(()=>card().querySelector('[data-resume-path]').click());
+    assert.equal(w.location.hash,'#/theory/wave-mechanics?from=learn&path=quantum-foundations');
+    assert.match(d.querySelector('[aria-label="Learning path navigation"]').textContent,/Step 1 of 10/);
+    d.querySelector('#toggleRead').click();
+    await change(()=>d.querySelector('#backToView').click());
+    assert.equal(card().querySelector('progress').value,1);
+    assert.equal(card().querySelector('[data-resume-path]').textContent,'Continue reading');
+    assert.equal(card().querySelector('[data-resume-path]').hash,'#/theory/born-rule?from=learn&path=quantum-foundations');
+    assert.equal(card().querySelector('.learning-step-status').textContent,'Read');
+    const skipped=w.QI_WORKSPACE.data;skipped.read.push('uncertainty','qbism');w.QI_WORKSPACE.save(skipped);
+    await route('#/workspace');
+    assert.equal(d.querySelector('[data-workspace-path="quantum-foundations"] [data-resume-path]').hash,'#/theory/born-rule?from=learn&path=quantum-foundations');
+    assert.equal(d.querySelector('[data-workspace-path="quantum-foundations"] progress').value,3);
+  }finally{w.QI_WORKSPACE.save(original);}
+});
+
+test('a fully read path offers review without resetting progress and responds to mark-unread',async()=>{
+  const original=w.QI_WORKSPACE.data;
+  try{
+    const path=w.QI_PROFILES.learningPaths.find(p=>p.id==='quantum-information'),data=w.QI_WORKSPACE.data;
+    data.read=path.steps.map(s=>s.theoryId);w.QI_WORKSPACE.save(data);
+    await route('#/learn?path=quantum-information');
+    const card=()=>d.querySelector('[data-learning-path="quantum-information"]');
+    assert.equal(card().querySelector('progress').value,9);assert.equal(card().querySelector('progress').max,9);
+    assert.equal(card().querySelector('[data-resume-path]').textContent,'Review from start');
+    await change(()=>card().querySelector('[data-resume-path]').click());
+    assert.equal(w.QI_WORKSPACE.data.read.length,9);
+    assert.equal(d.querySelector('#toggleRead').getAttribute('aria-pressed'),'true');
+    d.querySelector('#toggleRead').click();await change(()=>d.querySelector('#backToView').click());
+    assert.equal(card().querySelector('progress').value,8);
+    assert.equal(card().querySelector('[data-resume-path]').hash,'#/theory/density-operator?from=learn&path=quantum-information');
+    assert.equal(card().querySelector('[data-resume-path]').textContent,'Continue reading');
+  }finally{w.QI_WORKSPACE.save(original);}
+});
+
+test('shared read markers count in both new paths and survive a fresh page load',async()=>{
+  const original=w.QI_WORKSPACE.data;
+  try{
+    const data=w.QI_WORKSPACE.data;data.read=['density-operator'];w.QI_WORKSPACE.save(data);
+    await route('#/workspace');
+    for(const id of ['quantum-foundations','quantum-information'])assert.equal(d.querySelector(`[data-workspace-path="${id}"] progress`).value,1);
+    const fresh=new JSDOM(fs.readFileSync('index.html','utf8'),{url:'https://example.test/#/learn?path=quantum-information',runScripts:'outside-only',pretendToBeVisual:true});
+    try{
+      const fw=fresh.window;fw.HTMLElement.prototype.scrollIntoView=function(){};fw.MathJax={typesetPromise:()=>Promise.resolve(),typesetClear:()=>{}};
+      fw.localStorage.setItem('quantum-index-workspace-v1',w.QI_WORKSPACE.exportText());
+      fw.eval(fs.readFileSync('node_modules/d3/dist/d3.min.js','utf8'));
+      for(const f of ['theories.js','formulas.js','formula-audit.js','profiles.js','workspace.js','app.js'])fw.eval(fs.readFileSync(f,'utf8'));
+      const card=fw.document.querySelector('[data-learning-path="quantum-information"]');
+      assert.equal(card.querySelector('progress').value,1);
+      assert.equal(card.querySelector('[data-resume-path]').hash,'#/theory/quantum-information?from=learn&path=quantum-information');
+      assert.equal(card.querySelector('.learning-step-status').textContent,'Read');
+    }finally{fresh.window.close();}
+  }finally{w.QI_WORKSPACE.save(original);}
 });

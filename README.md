@@ -121,7 +121,7 @@ Confidence is `high`, `medium`, or `editorial`.
 
 ## Learning and personal research
 
-The Learn tab offers three guided paths. Gravity and time starts with a cited proper-time primer, and every path step has a reading profile. The Compare tab searches all catalog entries by name, alias or tag and compares two to four selections. Fifty entries have expanded profiles; other entries retain their catalog summary and bibliography.
+The Learn tab offers five guided paths, including Quantum foundations and Quantum information. Read markers show your progress, and Start/Continue/Review links in Learn and My research open the first unread step or return to the beginning when every entry is marked read. Gravity and time starts with a cited proper-time primer, and every path step has a reading profile. The Compare tab searches all catalog entries by name, alias or tag and compares two to four selections. Fifty entries have expanded profiles; other entries retain their catalog summary and bibliography.
 
 My research stores bookmarks, notes, read markers and saved comparisons in this browser only. Save notes explicitly. Export a JSON backup before clearing browser data or moving devices. Imports show a preview and merge with existing work; conflicting notes are appended rather than replaced. Limits are 20,000 characters per note, 100 saved comparisons and 1 MB per backup. Corrupt stored data is preserved and can be exported for recovery; storage failures do not report success. There is no account or cross-device synchronization.
 

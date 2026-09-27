@@ -7,7 +7,7 @@ Quantum Index indexes source-backed theories, formulations, interpretations, res
 ## Current branch snapshot
 
 <!-- coverage:start -->
-- **50** cited reading profiles and **3** learning paths
+- **50** cited reading profiles and **5** learning paths
 - **480** theory/framework entities across **14** categories
 - **490** bibliography records
 - **351** primary-sourced; **129** review-sourced; **0** catalogued-only entries
