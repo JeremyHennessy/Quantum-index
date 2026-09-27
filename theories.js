@@ -2479,3 +2479,49 @@ for (const review of [
   const {fromId,toId,type,...evidence}=review;
   Object.assign(relation,evidence);
 }
+
+// Nuclear and cross-domain reading review, 2026-09-27.
+window.QI_DATA.sources.push(...[
+  {
+    "id": "dobaczewski-nazarewicz-hfb-2012",
+    "title": "Hartree-Fock-Bogoliubov solution of the pairing Hamiltonian in finite nuclei",
+    "authors": "Jacek Dobaczewski, Witold Nazarewicz",
+    "year": 2012,
+    "type": "authoritative review",
+    "url": "https://arxiv.org/abs/1206.2600"
+  },
+  {
+    "id": "niksic-relativistic-edf-2011",
+    "title": "Relativistic Nuclear Energy Density Functionals: Mean-Field and Beyond",
+    "authors": "T. Nikšić, D. Vretenar, P. Ring",
+    "year": 2011,
+    "type": "authoritative review",
+    "url": "https://arxiv.org/abs/1102.4193"
+  },
+  {
+    "id": "arovas-hubbard-2022",
+    "title": "The Hubbard Model",
+    "authors": "Daniel P. Arovas, Erez Berg, Steven A. Kivelson, Srinivas Raghu",
+    "year": 2022,
+    "type": "authoritative review",
+    "url": "https://arxiv.org/abs/2103.12097"
+  },
+  {
+    "id": "he-jaynes-cummings-2012",
+    "title": "Jaynes-Cummings model: What emerges first beyond the rotating-wave approximation?",
+    "authors": "Shu He, Qing-Hu Chen, Xue-Zao Ren, Tao Liu, Ke-Lin Wang",
+    "year": 2012,
+    "type": "primary paper",
+    "url": "https://arxiv.org/abs/1203.2410"
+  },
+  {
+    "id": "rohrlich-popescu-nonlocality-1995",
+    "title": "Nonlocality as an axiom for quantum theory",
+    "authors": "D. Rohrlich, S. Popescu",
+    "year": 1995,
+    "type": "primary paper",
+    "url": "https://arxiv.org/abs/quant-ph/9508009"
+  }
+]);
+Object.assign(window.QI_DATA.sources.find(s=>s.id==='wave3-nuclear-eft-review-2020'), {authors:'H.-W. Hammer, Sebastian König, U. van Kolck'});
+Object.assign(window.QI_DATA.sources.find(s=>s.id==='wave3-hergert-imsrg-2016'), {title:'The In-Medium Similarity Renormalization Group: A Novel Ab Initio Method for Nuclei',authors:'H. Hergert, S. K. Bogner, T. D. Morris, A. Schwenk, K. Tsukiyama'});

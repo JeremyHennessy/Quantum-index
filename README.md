@@ -14,7 +14,7 @@ Quantum Index is a source-aware map of quantum theory and adjacent fundamental p
 ## Current build
 
 <!-- coverage:start -->
-The census remains **open**. The current catalog contains **480 entries**, **605 typed relationships**, **41 thought trees**, and **490 bibliography records** across **14 categories**. Provenance is attached to all entries: **351 primary-sourced** and **129 review-sourced**. The formula atlas contains **375 entries** across **28 categories**; **186** theory entries remain documented formula gaps. Counts are generated from runtime data, separately from scientific review.
+The census remains **open**. The current catalog contains **480 entries**, **605 typed relationships**, **41 thought trees**, and **495 bibliography records** across **14 categories**. Provenance is attached to all entries: **351 primary-sourced** and **129 review-sourced**. The formula atlas contains **384 entries** across **29 categories**; **176** theory entries remain documented formula gaps. Counts are generated from runtime data, separately from scientific review.
 <!-- coverage:end -->
 
 Static app:
@@ -121,7 +121,7 @@ Confidence is `high`, `medium`, or `editorial`.
 
 ## Learning and personal research
 
-The Learn tab offers five guided paths, including Quantum foundations and Quantum information. Read markers show your progress, and Start/Continue/Review links in Learn and My research open the first unread step or return to the beginning when every entry is marked read. Gravity and time starts with a cited proper-time primer, and every path step has a reading profile. The Compare tab searches all catalog entries by name, alias or tag and compares two to four selections. Fifty entries have expanded profiles; other entries retain their catalog summary and bibliography.
+The Learn tab offers five guided paths, including Quantum foundations and Quantum information. Read markers show your progress, and Start/Continue/Review links in Learn and My research open the first unread step or return to the beginning when every entry is marked read. Gravity and time starts with a cited proper-time primer, and every path step has a reading profile. The Compare tab searches all catalog entries by name, alias or tag and compares two to four selections. Fifty-nine entries have expanded profiles; other entries retain their catalog summary and bibliography.
 
 My research stores bookmarks, notes, read markers and saved comparisons in this browser only. Save notes explicitly. Export a JSON backup before clearing browser data or moving devices. Imports show a preview and merge with existing work; conflicting notes are appended rather than replaced. Limits are 20,000 characters per note, 100 saved comparisons and 1 MB per backup. Corrupt stored data is preserved and can be exported for recovery; storage failures do not report success. There is no account or cross-device synchronization.
 
@@ -130,3 +130,5 @@ Global filters apply to Network map, Timeline and Catalog. Comparisons and the f
 The September 26 workspace release also reviews 25 existing graph edges in `docs/RELATION_REVIEW_2026-09-26.json`. Relationship disclosures expose the explanation, locator and sources. Source-backed does not mean experimentally confirmed.
 
 My research also searches saved entries by name, alias, tag or full note text and saved comparisons by name or included entry. The Read entries list opens any marked entry, including entries outside learning paths. Search stays in place while visiting a detail and returning. Export research notebook downloads a Markdown reading copy with complete notes, entry links, catalog sources and comparison links; it always includes the whole workspace and does not replace the restorable JSON backup. Notes are exported as literal text.
+
+The Coverage tab reports profile, formula and relationship review gaps from current data. URL filters survive reloads; relationship evidence and formula metadata review can be filtered separately. Draft notes survive navigation and tab reloads; conflicting cross-tab saves require explicit combination. See [the reliability release notes](docs/RELEASE_RELIABILITY_2026-09-27.md) for storage limits, browser CI and the Pages gate activation requirement.

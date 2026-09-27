@@ -1,5 +1,7 @@
 # Corpus candidate backlog
 
+> Historical candidate research. Current shipped entities and unresolved formula gaps are counted in [Coverage](../docs/COVERAGE.md); formula proposals are reconciled in [the disposition ledger](FORMULA_CANDIDATES.md). ADD/SUBTYPE decisions here are research decisions, not current delivery status.
+
 This is a research queue, not a list of accepted entities. Candidates must be checked for aliasing, granularity, source quality, and whether they belong as a first-class entity or only as a tag/relation.
 
 ## Foundations / interpretation candidates

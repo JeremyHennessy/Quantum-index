@@ -2616,3 +2616,421 @@ window.QI_PROFILES.learningPaths.push(
     comparison: ["quantum-information","quantum-shannon-theory","quantum-metrology"]
   }
 );
+
+// Cross-domain reading profiles, 2026-09-27.
+Object.assign(window.QI_PROFILES.profiles,{
+  "nuclear-hfb": {
+    "reviewedAt": "2026-09-27",
+    "problem": {
+      "text": "How can a nucleus combine a mean field with pairing?",
+      "sourceIds": [
+        "dobaczewski-nazarewicz-hfb-2012"
+      ]
+    },
+    "scope": {
+      "text": "Finite-nucleus quasiparticle calculations.",
+      "sourceIds": [
+        "dobaczewski-nazarewicz-hfb-2012"
+      ]
+    },
+    "assumptions": {
+      "text": "A quasiparticle vacuum approximates the interacting state.",
+      "sourceIds": [
+        "dobaczewski-nazarewicz-hfb-2012"
+      ]
+    },
+    "predictions": {
+      "text": "Self-consistency determines densities, pairing fields and quasiparticle energies.",
+      "sourceIds": [
+        "dobaczewski-nazarewicz-hfb-2012"
+      ]
+    },
+    "evidence": {
+      "text": "The cited review develops the variational construction and computational methods.",
+      "sourceIds": [
+        "dobaczewski-nazarewicz-hfb-2012"
+      ]
+    },
+    "limitations": {
+      "text": "Broken particle-number symmetry and restricted correlations require care.",
+      "sourceIds": [
+        "dobaczewski-nazarewicz-hfb-2012"
+      ]
+    },
+    "questions": {
+      "text": "When are symmetry restoration and correlations beyond HFB necessary?",
+      "sourceIds": [
+        "dobaczewski-nazarewicz-hfb-2012"
+      ]
+    },
+    "prerequisites": []
+  },
+  "in-medium-srg": {
+    "reviewedAt": "2026-09-27",
+    "problem": {
+      "text": "How can a many-body Hamiltonian be decoupled without diagonalizing the entire space?",
+      "sourceIds": [
+        "wave3-hergert-imsrg-2016"
+      ]
+    },
+    "scope": {
+      "text": "Continuous transformations for nuclear ground states and effective interactions.",
+      "sourceIds": [
+        "wave3-hergert-imsrg-2016"
+      ]
+    },
+    "assumptions": {
+      "text": "A reference state and a truncation of induced operators are selected.",
+      "sourceIds": [
+        "wave3-hergert-imsrg-2016"
+      ]
+    },
+    "predictions": {
+      "text": "Decoupling yields energies and consistently transformed observables.",
+      "sourceIds": [
+        "wave3-hergert-imsrg-2016"
+      ]
+    },
+    "evidence": {
+      "text": "The review compares calculations and analyzes truncation effects.",
+      "sourceIds": [
+        "wave3-hergert-imsrg-2016"
+      ]
+    },
+    "limitations": {
+      "text": "Discarded higher-body operators and reference choices introduce errors.",
+      "sourceIds": [
+        "wave3-hergert-imsrg-2016"
+      ]
+    },
+    "questions": {
+      "text": "How can induced-operator truncation errors be quantified?",
+      "sourceIds": [
+        "wave3-hergert-imsrg-2016"
+      ]
+    },
+    "prerequisites": []
+  },
+  "density-functional-theory": {
+    "reviewedAt": "2026-09-27",
+    "problem": {
+      "text": "Can the ground-state density determine electronic ground-state properties?",
+      "sourceIds": [
+        "hohenberg-kohn-1964"
+      ]
+    },
+    "scope": {
+      "text": "Interacting electrons in an external scalar potential.",
+      "sourceIds": [
+        "hohenberg-kohn-1964"
+      ]
+    },
+    "assumptions": {
+      "text": "The original theorem treats a nondegenerate ground state.",
+      "sourceIds": [
+        "hohenberg-kohn-1964"
+      ]
+    },
+    "predictions": {
+      "text": "A universal density functional supports a variational ground-state principle.",
+      "sourceIds": [
+        "hohenberg-kohn-1964"
+      ]
+    },
+    "evidence": {
+      "text": "The source establishes a mathematical result, not a particular approximate functional.",
+      "sourceIds": [
+        "hohenberg-kohn-1964"
+      ]
+    },
+    "limitations": {
+      "text": "Knowing the exact functional exists does not provide its practical form.",
+      "sourceIds": [
+        "hohenberg-kohn-1964"
+      ]
+    },
+    "questions": {
+      "text": "Which density-functional approximations preserve the properties needed for a given system?",
+      "sourceIds": [
+        "hohenberg-kohn-1964"
+      ]
+    },
+    "prerequisites": []
+  },
+  "hubbard-model": {
+    "reviewedAt": "2026-09-27",
+    "problem": {
+      "text": "How do local repulsion and electron motion compete?",
+      "sourceIds": [
+        "arovas-hubbard-2022"
+      ]
+    },
+    "scope": {
+      "text": "A lattice model for correlated fermions.",
+      "sourceIds": [
+        "arovas-hubbard-2022"
+      ]
+    },
+    "assumptions": {
+      "text": "The chosen lattice, filling and interaction define the problem.",
+      "sourceIds": [
+        "arovas-hubbard-2022"
+      ]
+    },
+    "predictions": {
+      "text": "Different limits support distinct magnetic and conducting behavior.",
+      "sourceIds": [
+        "arovas-hubbard-2022"
+      ]
+    },
+    "evidence": {
+      "text": "The review separates exact results from controlled approximations.",
+      "sourceIds": [
+        "arovas-hubbard-2022"
+      ]
+    },
+    "limitations": {
+      "text": "Large regions of the phase diagram remain contested.",
+      "sourceIds": [
+        "arovas-hubbard-2022"
+      ]
+    },
+    "questions": {
+      "text": "Which conclusions survive outside a controlled limit?",
+      "sourceIds": [
+        "arovas-hubbard-2022"
+      ]
+    },
+    "prerequisites": []
+  },
+  "jaynes-cummings": {
+    "reviewedAt": "2026-09-27",
+    "problem": {
+      "text": "How does a two-level system exchange excitations with a field mode?",
+      "sourceIds": [
+        "he-jaynes-cummings-2012"
+      ]
+    },
+    "scope": {
+      "text": "Light–matter dynamics in a reduced model.",
+      "sourceIds": [
+        "he-jaynes-cummings-2012"
+      ]
+    },
+    "assumptions": {
+      "text": "The conventional model makes the rotating-wave approximation.",
+      "sourceIds": [
+        "he-jaynes-cummings-2012"
+      ]
+    },
+    "predictions": {
+      "text": "The model describes coupled level splittings and excitation exchange.",
+      "sourceIds": [
+        "he-jaynes-cummings-2012"
+      ]
+    },
+    "evidence": {
+      "text": "The cited calculation examines corrections beyond rotating-wave dynamics.",
+      "sourceIds": [
+        "he-jaynes-cummings-2012"
+      ]
+    },
+    "limitations": {
+      "text": "Counter-rotating terms matter when the approximation fails.",
+      "sourceIds": [
+        "he-jaynes-cummings-2012"
+      ]
+    },
+    "questions": {
+      "text": "At what coupling does the approximation cease to describe the desired observable?",
+      "sourceIds": [
+        "he-jaynes-cummings-2012"
+      ]
+    },
+    "prerequisites": []
+  },
+  "coupled-cluster": {
+    "reviewedAt": "2026-09-27",
+    "problem": {
+      "text": "How can molecular electron correlation be calculated accurately?",
+      "sourceIds": [
+        "bartlett-musial-2007"
+      ]
+    },
+    "scope": {
+      "text": "Electronic structure, excited states and molecular properties.",
+      "sourceIds": [
+        "bartlett-musial-2007"
+      ]
+    },
+    "assumptions": {
+      "text": "A reference and an excitation truncation must be specified.",
+      "sourceIds": [
+        "bartlett-musial-2007"
+      ]
+    },
+    "predictions": {
+      "text": "The method produces energies and response or spectroscopic properties.",
+      "sourceIds": [
+        "bartlett-musial-2007"
+      ]
+    },
+    "evidence": {
+      "text": "The review explains the construction and compares numerical applications.",
+      "sourceIds": [
+        "bartlett-musial-2007"
+      ]
+    },
+    "limitations": {
+      "text": "Accuracy and computational cost depend on the chosen approximation.",
+      "sourceIds": [
+        "bartlett-musial-2007"
+      ]
+    },
+    "questions": {
+      "text": "Which truncation is adequate for the molecule and observable of interest?",
+      "sourceIds": [
+        "bartlett-musial-2007"
+      ]
+    },
+    "prerequisites": []
+  },
+  "reheating-preheating": {
+    "reviewedAt": "2026-09-27",
+    "problem": {
+      "text": "How can energy in an inflaton become ordinary particles after inflation?",
+      "sourceIds": [
+        "kofman-reheating-1994"
+      ]
+    },
+    "scope": {
+      "text": "Particle production and subsequent relaxation after inflation.",
+      "sourceIds": [
+        "kofman-reheating-1994"
+      ]
+    },
+    "assumptions": {
+      "text": "Dynamics depend on the inflaton potential and couplings.",
+      "sourceIds": [
+        "kofman-reheating-1994"
+      ]
+    },
+    "predictions": {
+      "text": "Broad parametric resonance can produce bosons before decay and thermalization.",
+      "sourceIds": [
+        "kofman-reheating-1994"
+      ]
+    },
+    "evidence": {
+      "text": "The cited work provides a theoretical mechanism.",
+      "sourceIds": [
+        "kofman-reheating-1994"
+      ]
+    },
+    "limitations": {
+      "text": "This mechanism does not establish which inflationary model describes nature.",
+      "sourceIds": [
+        "kofman-reheating-1994"
+      ]
+    },
+    "questions": {
+      "text": "Which interactions control the transition from resonance to thermal equilibrium?",
+      "sourceIds": [
+        "kofman-reheating-1994"
+      ]
+    },
+    "prerequisites": []
+  },
+  "wimp-dark-matter": {
+    "reviewedAt": "2026-09-27",
+    "problem": {
+      "text": "Could a weakly interacting massive particle supply dark matter?",
+      "sourceIds": [
+        "jungman-wimp-1996"
+      ]
+    },
+    "scope": {
+      "text": "Particle candidates, relic abundance and detection calculations.",
+      "sourceIds": [
+        "jungman-wimp-1996"
+      ]
+    },
+    "assumptions": {
+      "text": "Predictions require particle parameters and astrophysical distributions.",
+      "sourceIds": [
+        "jungman-wimp-1996"
+      ]
+    },
+    "predictions": {
+      "text": "A specified model predicts abundance and direct or indirect detection rates.",
+      "sourceIds": [
+        "jungman-wimp-1996"
+      ]
+    },
+    "evidence": {
+      "text": "The review compares models with the constraints available at publication.",
+      "sourceIds": [
+        "jungman-wimp-1996"
+      ]
+    },
+    "limitations": {
+      "text": "The 1996 review is not a source of current exclusion limits or a detection claim.",
+      "sourceIds": [
+        "jungman-wimp-1996"
+      ]
+    },
+    "questions": {
+      "text": "How do nuclear and halo uncertainties alter an inferred constraint?",
+      "sourceIds": [
+        "jungman-wimp-1996"
+      ]
+    },
+    "prerequisites": []
+  },
+  "pr-box": {
+    "reviewedAt": "2026-09-27",
+    "problem": {
+      "text": "Do nonlocality and no signalling uniquely determine quantum correlations?",
+      "sourceIds": [
+        "rohrlich-popescu-nonlocality-1995"
+      ]
+    },
+    "scope": {
+      "text": "Hypothetical correlations beyond the quantum set.",
+      "sourceIds": [
+        "rohrlich-popescu-nonlocality-1995"
+      ]
+    },
+    "assumptions": {
+      "text": "Operational correlations obey the no-signalling constraint.",
+      "sourceIds": [
+        "rohrlich-popescu-nonlocality-1995"
+      ]
+    },
+    "predictions": {
+      "text": "Such correlations can exceed quantum CHSH bounds.",
+      "sourceIds": [
+        "rohrlich-popescu-nonlocality-1995"
+      ]
+    },
+    "evidence": {
+      "text": "The source gives a theoretical counterexample to the proposed implication.",
+      "sourceIds": [
+        "rohrlich-popescu-nonlocality-1995"
+      ]
+    },
+    "limitations": {
+      "text": "A mathematical correlation model is not an experimentally demonstrated resource.",
+      "sourceIds": [
+        "rohrlich-popescu-nonlocality-1995"
+      ]
+    },
+    "questions": {
+      "text": "What additional principles distinguish quantum from general no-signalling correlations?",
+      "sourceIds": [
+        "rohrlich-popescu-nonlocality-1995"
+      ]
+    },
+    "prerequisites": []
+  }
+});

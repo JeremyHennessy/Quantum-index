@@ -145,7 +145,7 @@ console.log(JSON.stringify({
 
 vm.runInContext(fs.readFileSync('profiles.js','utf8'), sandbox);
 const research = sandbox.window.QI_PROFILES;
-if (!research || Object.keys(research.profiles).length !== 50) throw new Error('Expected 50 curated research profiles');
+if (!research || Object.keys(research.profiles).length !== 59) throw new Error('Expected 59 curated research profiles');
 for (const [id, profile] of Object.entries(research.profiles)) {
   if (!unique.has(id)) throw new Error(`Unknown profile entry: ${id}`);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(profile.reviewedAt)) throw new Error(`Missing review date: ${id}`);
@@ -158,7 +158,7 @@ for (const [id, profile] of Object.entries(research.profiles)) {
 for (const preset of research.comparisons) {
   if (!preset.name || preset.theoryIds.length<2 || preset.theoryIds.length>4 || new Set(preset.theoryIds).size!==preset.theoryIds.length || preset.theoryIds.some(id=>!research.profiles[id])) throw new Error('Invalid comparison preset');
 }
-console.log('Validated 50 cited research profiles and comparison presets.');
+console.log('Validated 59 cited research profiles and comparison presets.');
 for(const path of research.learningPaths){
   if(!path.id||!path.title||!path.goal||!path.prerequisites||path.steps.length<2)throw new Error('Invalid learning path');
   if(new Set(path.steps.map(s=>s.theoryId)).size!==path.steps.length)throw new Error('Duplicate path step');

@@ -7393,3 +7393,360 @@ window.QI_FORMULAS.formulas.push(...[
     ]
   }
 ]);
+
+// Reviewed nuclear representatives, 2026-09-27.
+window.QI_FORMULAS.formulas.push(...[
+  {
+    "id": "nuclear-model-space-eigenproblem",
+    "name": "Nuclear model-space eigenproblem",
+    "category": "Nuclear quantum theory",
+    "latex": "P H_{\\mathrm{eff}}P|\\Psi_n\\rangle=E_nP|\\Psi_n\\rangle",
+    "plain": "P H_eff P |Psi_n> = E_n P |Psi_n>",
+    "description": "Projected effective-Hamiltonian eigenproblem.",
+    "theoryIds": [
+      "nuclear-shell-model",
+      "no-core-shell-model"
+    ],
+    "sourceIds": [
+      "wave3-shell-review-2019"
+    ],
+    "tags": [
+      "nuclear review"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "Chosen model space; consistent effective interaction"
+    ],
+    "variables": [
+      "P: model-space projector",
+      "H_eff: effective Hamiltonian",
+      "E_n: energy",
+      "Psi_n: state"
+    ],
+    "regime": "Valence-space or no-core truncation; convergence must be checked.",
+    "units": "H_eff and E_n have energy units.",
+    "theoryRelationship": "Representative equation; not the complete framework.",
+    "metadataReview": "explicit",
+    "sourceLocations": [
+      {
+        "sourceId": "wave3-shell-review-2019",
+        "locator": "Section 2.1, Eq. (3); Section 2.2 for no-core oscillator truncation",
+        "url": "https://arxiv.org/pdf/1902.06154#page=8"
+      }
+    ]
+  },
+  {
+    "id": "imsrg-flow-equation",
+    "name": "In-medium similarity flow",
+    "category": "Nuclear quantum theory",
+    "latex": "\\frac{dH(s)}{ds}=[\\eta(s),H(s)],\\qquad\\eta^\\dagger=-\\eta",
+    "plain": "dH/ds = [eta,H]; eta† = -eta",
+    "description": "Continuous unitary evolution of the Hamiltonian.",
+    "theoryIds": [
+      "in-medium-srg"
+    ],
+    "sourceIds": [
+      "wave3-shell-review-2019"
+    ],
+    "tags": [
+      "nuclear review"
+    ],
+    "formulaType": "exact",
+    "assumptions": [
+      "Anti-Hermitian generator; operator-rank truncation adds error"
+    ],
+    "variables": [
+      "s: flow parameter",
+      "eta: generator",
+      "H: flowing Hamiltonian"
+    ],
+    "regime": "Exact untruncated flow; practical IM-SRG retains selected normal-ordered operators.",
+    "units": "eta has inverse-flow-parameter units.",
+    "theoryRelationship": "Representative equation; not the complete framework.",
+    "metadataReview": "explicit",
+    "sourceLocations": [
+      {
+        "sourceId": "wave3-shell-review-2019",
+        "locator": "Section 2.3, Eqs. (10)–(12)",
+        "url": "https://arxiv.org/pdf/1902.06154#page=11"
+      }
+    ]
+  },
+  {
+    "id": "nuclear-collective-rotation",
+    "name": "Collective rotational kinetic energy",
+    "category": "Nuclear quantum theory",
+    "latex": "T_{\\mathrm{rot}}=\\frac12\\sum_{k=1}^{3}\\frac{J_k^2}{\\mathcal I_k(\\beta,\\gamma)}",
+    "plain": "T_rot = sum_k J_k²/(2 I_k(beta,gamma))",
+    "description": "Rotational term of a quadrupole collective Hamiltonian.",
+    "theoryIds": [
+      "nuclear-collective-model"
+    ],
+    "sourceIds": [
+      "niksic-relativistic-edf-2011"
+    ],
+    "tags": [
+      "nuclear review"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "Collective quadrupole coordinates"
+    ],
+    "variables": [
+      "J_k: body-fixed angular momentum",
+      "I_k: inertia",
+      "beta, gamma: deformation"
+    ],
+    "regime": "Collective rotation; vibrations require additional terms.",
+    "units": "Angular-momentum squared divided by inertia is energy.",
+    "theoryRelationship": "Representative equation; not the complete framework.",
+    "metadataReview": "explicit",
+    "sourceLocations": [
+      {
+        "sourceId": "niksic-relativistic-edf-2011",
+        "locator": "Section 6, Eq. (80)",
+        "url": "https://arxiv.org/pdf/1102.4193#page=41"
+      }
+    ]
+  },
+  {
+    "id": "nuclear-edf-decomposition",
+    "name": "Kohn–Sham functional decomposition",
+    "category": "Nuclear quantum theory",
+    "latex": "F[\\rho]=T_s[\\rho]+E_H[\\rho]+E_{xc}[\\rho]",
+    "plain": "F[rho] = T_s[rho] + E_H[rho] + E_xc[rho]",
+    "description": "Separates kinetic, Hartree and exchange-correlation contributions.",
+    "theoryIds": [
+      "nuclear-dft"
+    ],
+    "sourceIds": [
+      "niksic-relativistic-edf-2011"
+    ],
+    "tags": [
+      "nuclear review"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "Density-functional description; functional approximation specified separately"
+    ],
+    "variables": [
+      "rho: density",
+      "T_s: reference kinetic energy",
+      "E_H: Hartree energy",
+      "E_xc: exchange-correlation energy"
+    ],
+    "regime": "Reference decomposition; nuclear pairing needs extension.",
+    "units": "Each term has energy units.",
+    "theoryRelationship": "Representative equation; not the complete framework.",
+    "metadataReview": "explicit",
+    "sourceLocations": [
+      {
+        "sourceId": "niksic-relativistic-edf-2011",
+        "locator": "Section 2.2, Eq. (4)",
+        "url": "https://arxiv.org/pdf/1102.4193#page=7"
+      }
+    ]
+  },
+  {
+    "id": "covariant-nuclear-dirac",
+    "name": "Covariant mean-field Dirac equation",
+    "category": "Nuclear quantum theory",
+    "latex": "\\left[\\gamma_\\mu(i\\partial^\\mu-\\Sigma^\\mu-\\Sigma_R^\\mu)-(m+\\Sigma_S)\\right]\\psi=0",
+    "plain": "[gamma_mu(i partial^mu - Sigma^mu - Sigma_R^mu) - (m + Sigma_S)] psi = 0",
+    "description": "Density-dependent covariant mean-field equation.",
+    "theoryIds": [
+      "relativistic-mean-field-nuclear"
+    ],
+    "sourceIds": [
+      "niksic-relativistic-edf-2011"
+    ],
+    "tags": [
+      "nuclear review"
+    ],
+    "formulaType": "approximation",
+    "assumptions": [
+      "No-sea mean-field approximation"
+    ],
+    "variables": [
+      "psi: nucleon spinor",
+      "Sigma: vector self-energy",
+      "Sigma_R: rearrangement",
+      "Sigma_S: scalar self-energy",
+      "m: nucleon mass"
+    ],
+    "regime": "Density-dependent functional.",
+    "units": "Natural units: hbar = c = 1.",
+    "theoryRelationship": "Representative equation; not the complete framework.",
+    "metadataReview": "explicit",
+    "sourceLocations": [
+      {
+        "sourceId": "niksic-relativistic-edf-2011",
+        "locator": "Section 3, Eq. (10)",
+        "url": "https://arxiv.org/pdf/1102.4193#page=10"
+      }
+    ]
+  },
+  {
+    "id": "nuclear-hfb-quasiparticles",
+    "name": "HFB quasiparticle eigenproblem",
+    "category": "Nuclear quantum theory",
+    "latex": "\\begin{pmatrix}h&\\Delta\\\\-\\Delta^*&-h^*\\end{pmatrix}\\begin{pmatrix}U_k\\\\V_k\\end{pmatrix}=E_k\\begin{pmatrix}U_k\\\\V_k\\end{pmatrix}",
+    "plain": "[[h,Delta],[-Delta*,-h*]] [U_k,V_k]^T = E_k [U_k,V_k]^T",
+    "description": "Coupled particle–hole amplitudes include nuclear pairing.",
+    "theoryIds": [
+      "nuclear-hfb"
+    ],
+    "sourceIds": [
+      "dobaczewski-nazarewicz-hfb-2012"
+    ],
+    "tags": [
+      "nuclear review"
+    ],
+    "formulaType": "approximation",
+    "assumptions": [
+      "Quasiparticle vacuum; antisymmetric pairing field"
+    ],
+    "variables": [
+      "h: single-particle field, including chemical-potential constraint when imposed",
+      "Delta: pairing field",
+      "U_k,V_k: amplitudes",
+      "E_k: quasiparticle energy"
+    ],
+    "regime": "Self-consistent mean-field and pairing approximation.",
+    "units": "h, Delta and E_k have energy units.",
+    "theoryRelationship": "Representative equation; not the complete framework.",
+    "metadataReview": "explicit",
+    "sourceLocations": [
+      {
+        "sourceId": "dobaczewski-nazarewicz-hfb-2012",
+        "locator": "HFB section, Eq. (7); particle-number constraint discussed below Eq. (10)",
+        "url": "https://users.fuw.edu.pl/~dobaczew/BCS50-28w/node3.html"
+      }
+    ]
+  },
+  {
+    "id": "pionless-effective-range",
+    "name": "S-wave effective-range expansion",
+    "category": "Nuclear quantum theory",
+    "latex": "k\\cot\\delta_0(k)=-\\frac1a+\\frac{r_e}{2}k^2+O(k^4)",
+    "plain": "k cot(delta_0) = -1/a + r_e k²/2 + O(k⁴)",
+    "description": "Low-momentum elastic scattering expansion.",
+    "theoryIds": [
+      "pionless-nuclear-eft"
+    ],
+    "sourceIds": [
+      "wave3-nuclear-eft-review-2020"
+    ],
+    "tags": [
+      "nuclear review"
+    ],
+    "formulaType": "approximation",
+    "assumptions": [
+      "Short-range interaction; Coulomb excluded"
+    ],
+    "variables": [
+      "k: relative momentum/hbar",
+      "a: scattering length",
+      "r_e: effective range",
+      "delta_0: phase shift"
+    ],
+    "regime": "Below pion-production resolution scale.",
+    "units": "a and r_e are lengths.",
+    "theoryRelationship": "Representative equation; not the complete framework.",
+    "metadataReview": "explicit",
+    "sourceLocations": [
+      {
+        "sourceId": "wave3-nuclear-eft-review-2020",
+        "locator": "Section II.2.1, Eq. (12b), l = 0",
+        "url": "https://arxiv.org/html/1906.12122v2"
+      }
+    ]
+  },
+  {
+    "id": "halo-lo-pole",
+    "name": "Leading S-wave halo pole",
+    "category": "Nuclear quantum theory",
+    "latex": "\\gamma=\\frac1a",
+    "plain": "gamma = 1/a",
+    "description": "Leading shallow-pole relation.",
+    "theoryIds": [
+      "halo-eft"
+    ],
+    "sourceIds": [
+      "wave3-nuclear-eft-review-2020"
+    ],
+    "tags": [
+      "nuclear review"
+    ],
+    "formulaType": "limit",
+    "assumptions": [
+      "Effective range neglected; neutral S-wave channel"
+    ],
+    "variables": [
+      "gamma: signed pole momentum/hbar",
+      "a: scattering length"
+    ],
+    "regime": "Positive a: bound pole; negative a: virtual pole.",
+    "units": "gamma has inverse-length units.",
+    "theoryRelationship": "Representative equation; not the complete framework.",
+    "metadataReview": "explicit",
+    "sourceLocations": [
+      {
+        "sourceId": "wave3-nuclear-eft-review-2020",
+        "locator": "Section III.2, Eq. (48) and following pole discussion",
+        "url": "https://arxiv.org/html/1906.12122v2"
+      }
+    ]
+  },
+  {
+    "id": "chiral-nuclear-power-counting",
+    "name": "Chiral nuclear power counting",
+    "category": "Nuclear quantum theory",
+    "latex": "\\mu=2(A-1-C)+2L+\\sum_i V_i\\Delta_i",
+    "plain": "mu = 2(A-1-C) + 2L + sum_i V_i Delta_i",
+    "description": "Index organizing irreducible nuclear diagrams.",
+    "theoryIds": [
+      "chiral-nuclear-eft"
+    ],
+    "sourceIds": [
+      "wave3-nuclear-eft-review-2020"
+    ],
+    "tags": [
+      "nuclear review"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "Weinberg counting with n = 2"
+    ],
+    "variables": [
+      "A: nucleons",
+      "C: connected pieces",
+      "L: loops",
+      "V_i: vertex count",
+      "Delta_i: vertex index"
+    ],
+    "regime": "Diagram ordering; not a nonperturbative error guarantee.",
+    "units": "All quantities dimensionless.",
+    "theoryRelationship": "Representative equation; not the complete framework.",
+    "metadataReview": "explicit",
+    "sourceLocations": [
+      {
+        "sourceId": "wave3-nuclear-eft-review-2020",
+        "locator": "Section IV.3.1, Eq. (74), n = 2 choice",
+        "url": "https://arxiv.org/html/1906.12122v2"
+      }
+    ]
+  }
+]);
+
+// Equation-level review of an existing baseline record; expression and ID retained.
+Object.assign(window.QI_FORMULAS.formulas.find(f=>f.id==='hubbard-hamiltonian'), {
+  assumptions:['Single orbital per site; nearest-neighbor real hopping; local interaction'],
+  variables:['t: hopping energy','U: on-site interaction energy','c_i,sigma: fermion annihilator','n_i,sigma: occupation operator','<ij>: each undirected neighboring pair once'],
+  regime:'Single-band lattice model; material-specific reductions require additional justification.',
+  units:'t, U and H have energy units; lattice operators are dimensionless.',
+  theoryRelationship:'Defining Hamiltonian, specialized to uniform nearest-neighbor hopping.',
+  metadataReview:'explicit',reviewedAt:'2026-09-27',
+  sourceIds:['hubbard-1963','arovas-hubbard-2022'],
+  sourceLocations:[{sourceId:'arovas-hubbard-2022',locator:'Section 2, Eq. (1) and nearest-neighbor specialization immediately below it',url:'https://arxiv.org/pdf/2103.12097#page=3'}]
+});

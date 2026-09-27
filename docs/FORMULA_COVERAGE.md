@@ -5,10 +5,10 @@ _Last audited: 2026-09-22_
 ## Current formula corpus
 
 <!-- coverage:start -->
-- **375** formula entries across **28** categories
-- **247** theory entries with linked formulas
-- **186** documented formula gaps
-- **110** formulas with explicit metadata review; **265** with baseline metadata
+- **384** formula entries across **29** categories
+- **257** theory entries with linked formulas
+- **176** documented formula gaps
+- **120** formulas with explicit metadata review; **264** with baseline metadata
 
 | Formula category | Entries |
 |---|---:|
@@ -23,6 +23,7 @@ _Last audited: 2026-09-22_
 | Many-body Green functions | 4 |
 | Many-body response | 2 |
 | Mathematical structures | 3 |
+| Nuclear quantum theory | 9 |
 | Open quantum systems | 7 |
 | Perturbation theory | 5 |
 | Phase-space quantum mechanics | 3 |
