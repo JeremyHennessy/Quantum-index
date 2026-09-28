@@ -6,6 +6,9 @@
   const developmentTypes = window.QI_DEVELOPMENTS?.eventTypes || [];
   const questions = window.QI_QUESTIONS?.questions || [];
   const questionDispositions = window.QI_QUESTIONS?.dispositions || [];
+  const problems = window.QI_PROBLEMS?.problems || [];
+  const problemById = new Map(problems.map(problem=>[problem.id,problem]));
+  let selectedProblemId = problems[0]?.id || "";
   const formulaAuditByTheory = new Map(formulaAudit.map(x => [x.theoryId,x]));
   const byId = new Map(theories.map(t => [t.id,t]));
   const sourceById = new Map(sources.map(s => [s.id,s]));
@@ -113,7 +116,7 @@
     const rows=[...categoryColors.keys()].map(category=>`<tr><th scope="row">${esc(category)}</th><td>${count(t=>t.category===category)}</td><td>${count(t=>t.category===category&&gaps.has(t.id))}</td><td>${count(t=>t.category===category&&profiles[t.id])}</td></tr>`).join('');
     $('#coverageContent').innerHTML=`<h3>Coverage and review status</h3><p>The census is open. Source attachment does not establish that every claim is verified or experimentally confirmed.</p><p>${theories.length} entries · ${sources.length} bibliography records · ${Object.keys(profiles).length} reading profiles · ${learningPaths.length} learning paths.</p><p>${relations.filter(r=>r.sourceIds.length).length} source-backed relationships; ${relations.filter(r=>!r.sourceIds.length).length} editorial relationships.</p><p>${formulas.length} formulas; ${formulas.filter(f=>f.metadataReview==='explicit').length} explicitly reviewed metadata records. Baseline records still need equation-level review.</p><p>${developments.length} reviewed DevelopmentEvents extend the historical timeline through ${developments.length?Math.max(...developments.map(event=>event.year)):"—"} without changing entity origin dates.</p><div class="comparison-scroll" role="region" aria-label="Coverage by category" tabindex="0"><table class="comparison-table"><caption>Current runtime coverage by category</caption><thead><tr><th scope="col">Category</th><th scope="col">Entries</th><th scope="col">Formula gaps</th><th scope="col">Reading profiles</th></tr></thead><tbody>${rows}</tbody></table></div><p>Formula gaps mean no representative expression has yet been curated. They do not mean the framework lacks mathematics. A linked formula does not establish complete mathematical coverage.</p><p><a href="https://github.com/JeremyHennessy/Quantum-index/blob/main/docs/COVERAGE.md">Coverage methodology and research backlog</a></p>`;
   }
-  function safeReturn(value){return typeof value==="string" && value.length<4096 && /^#\/(?:theory\/[a-z0-9-]+|map|timeline|catalog|lineage|formula|compare|learn|workspace|coverage)(?:\?|$)/.test(value)?value:"";}
+  function safeReturn(value){return typeof value==="string" && value.length<4096 && /^#\/(?:theory\/[a-z0-9-]+|map|timeline|catalog|lineage|formula|compare|problems|questions|learn|workspace|coverage)(?:\?|$)/.test(value)?value:"";}
   function theoryLink(id,from=state.returnView){
     const params=new URLSearchParams({from});
     if(from==="learn"&&learningPathId)params.set("path",learningPathId);
@@ -619,8 +622,69 @@
     }).join("") || '<div class="empty-state">No research questions match these filters.</div>';
   }
 
+  function problemHash(id=selectedProblemId){
+    const params=new URLSearchParams();
+    if(id)params.set("problem",id);
+    return "#/problems"+(params.size?"?"+params:"");
+  }
+
+  function renderProblems(){
+    if(!$("#problemList")||!$("#problemDetail"))return;
+    if(!problemById.has(selectedProblemId))selectedProblemId=problems[0]?.id||"";
+    $("#problemList").innerHTML=problems.map(problem=>`
+      <a class="problem-choice ${problem.id===selectedProblemId?"active":""}" href="${problemHash(problem.id)}">
+        <strong>${esc(problem.name)}</strong>
+        <span>${esc(problem.shortQuestion)}</span>
+      </a>`).join("");
+
+    const problem=problemById.get(selectedProblemId);
+    if(!problem){$("#problemDetail").innerHTML='<div class="empty-state">No Problem records are available.</div>';return;}
+    const theoryIds=[...new Set(problem.approachGroups.flatMap(group=>group.theoryIds))];
+    const problemQuestions=problem.questionIds.map(id=>questions.find(q=>q.id===id)).filter(Boolean);
+    const problemFormulas=problem.formulaIds.map(id=>formulas.find(f=>f.id===id)).filter(Boolean);
+    const problemDevelopments=problem.developmentIds.map(id=>developments.find(event=>event.id===id)).filter(Boolean);
+    const problemSources=problem.sourceIds.map(id=>sourceById.get(id)).filter(Boolean);
+
+    $("#problemDetail").innerHTML=`
+      <p class="eyebrow">SCIENTIFIC PROBLEM</p>
+      <h2 class="problem-title">${esc(problem.name)}</h2>
+      <p class="problem-question">${esc(problem.shortQuestion)}</p>
+
+      <section class="problem-section"><h3>Why this is a problem</h3><p>${esc(problem.whyItMatters)}</p></section>
+      <section class="problem-section"><h3>Established background</h3><ul>${problem.establishedBackground.map(item=>`<li>${esc(item)}</li>`).join("")}</ul></section>
+
+      <section class="problem-section"><h3>Approaches</h3>
+        <div class="approach-grid">${problem.approachGroups.map(group=>`
+          <div class="approach-card"><h4>${esc(group.name)}</h4><p>${esc(group.description)}</p>
+          <div class="problem-chip-row">${group.theoryIds.map(id=>{const t=byId.get(id);return t?`<a class="problem-chip" href="${theoryLink(id,"problems")}">${esc(t.name)}</a>`:"";}).join("")}</div></div>
+        `).join("")}</div>
+      </section>
+
+      <section class="problem-section"><h3>Key assumptions</h3><ul>${problem.keyAssumptions.map(item=>`<li>${esc(item)}</li>`).join("")}</ul></section>
+
+      <section class="problem-section"><h3>Core mathematics</h3>
+        <div class="problem-chip-row">${problemFormulas.length?problemFormulas.map(f=>`<a class="problem-chip formula-chip" href="#/formula?search=${encodeURIComponent(f.name)}&returnTo=${encodeURIComponent(problemHash(problem.id))}">${esc(f.name)}</a>`).join(""):'<span class="muted">No formula records are yet linked at the Problem level.</span>'}</div>
+      </section>
+
+      <section class="problem-section"><h3>Research questions</h3>
+        ${problemQuestions.length?problemQuestions.map(q=>`<article class="problem-question-card"><span class="question-disposition">${esc(q.dispositionLabel)}</span><h4>${esc(q.question)}</h4><p>${esc(q.shortAnswer)}</p><p class="reviewed">Next: ${esc(q.nextInvestigation)}</p></article>`).join(""):'<p class="muted">A dedicated structured question set has not yet been reviewed for this Problem.</p>'}
+      </section>
+
+      <section class="problem-section"><h3>Recent developments</h3>
+        ${problemDevelopments.length?problemDevelopments.map(event=>`<article class="problem-development"><strong>${esc(event.date)} · ${esc(event.title)}</strong><p>${esc(event.summary)}</p><p class="reviewed">${esc(event.evidenceStatus)}</p></article>`).join(""):'<p class="muted">No current 2024–2026 DevelopmentEvent is specific enough to attach under the present review standard.</p>'}
+        ${problem.developmentContext?`<p class="muted">${esc(problem.developmentContext)}</p>`:""}
+      </section>
+
+      <section class="problem-section status-panel"><h3>Current scientific status</h3><p>${esc(problem.currentStatus)}</p></section>
+      <section class="problem-section"><h3>Open issues</h3><ul>${problem.openIssues.map(item=>`<li>${esc(item)}</li>`).join("")}</ul>${problem.questionCoverageNote?`<p class="muted">${esc(problem.questionCoverageNote)}</p>`:""}</section>
+
+      <section class="problem-section"><h3>Key literature</h3><div class="source-list">${problemSources.map(s=>`<a class="source-link" href="${esc(s.url)}" target="_blank" rel="noreferrer"><strong>${esc(s.title)}</strong><span>${esc(s.authors)} · ${esc(s.year)} · ${esc(s.type)}</span></a>`).join("")}</div></section>
+      <p class="reviewed">${theoryIds.length} linked theory/framework records · reviewed ${esc(window.QI_PROBLEMS.reviewedAt)}</p>
+    `;
+  }
+
   function renderAll(){
-    renderStats();renderLegend();renderGraph();renderTimeline();renderCatalog();renderLineage();renderDetail();renderFormulas();renderQuestions();
+    renderStats();renderLegend();renderGraph();renderTimeline();renderCatalog();renderLineage();renderDetail();renderFormulas();renderQuestions();renderProblems();
   }
   function switchView(view){
     state.view=view;
@@ -631,6 +695,7 @@
     if(view==="learn") renderLearningPaths();
     if(view==="workspace") renderWorkspace();
     if(view==="questions") renderQuestions();
+    if(view==="problems") renderProblems();
     if(view==='coverage')renderCoverage();
     $('#evidenceControls').hidden=!['map','lineage','theory'].includes(view);
     $(".controls").hidden=!["map","timeline","catalog"].includes(view);
@@ -640,7 +705,7 @@
     if(view==="lineage") setTimeout(renderThoughtTreeGraph,0);
     if(view==="formula") setTimeout(()=>{renderFormulas();typesetFormulaGrid();},0);
   }
-  const views=new Set(["map","timeline","lineage","catalog","formula","compare","questions","learn","workspace","coverage"]);
+  const views=new Set(["map","timeline","lineage","catalog","formula","compare","problems","questions","learn","workspace","coverage"]);
   function navigate(hash){
     if(location.hash===hash) applyRoute();
     else location.hash=hash;
@@ -673,6 +738,10 @@
     if(byId.has(id)) state.selected=id;
     if(view==="compare") compareIds=[...new Set((params.get("ids")||"").split(",").filter(id=>byId.has(id)))].slice(0,4);
     if(view==="learn") learningPathId=learningPaths.some(p=>p.id===params.get("path"))?params.get("path"):"";
+    if(view==="problems"){
+      const problemId=params.get("problem")||"";
+      selectedProblemId=problemById.has(problemId)?problemId:(problems[0]?.id||"");
+    }
     if(view==="questions"){
       questionState.search=params.get("search")||"";
       questionState.disposition=questionDispositions.includes(params.get("disposition"))?params.get("disposition"):"";
@@ -699,7 +768,7 @@
     renderDetail();renderLineage();switchView(view);
     document.title="Quantum Index";
   }
-  document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>navigate(b.dataset.view==="compare"?comparisonHash(compareIds):b.dataset.view==="questions"?questionHash():["map","catalog","timeline","formula","lineage"].includes(b.dataset.view)?viewHash(b.dataset.view):`#/${b.dataset.view}`)));
+  document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>navigate(b.dataset.view==="compare"?comparisonHash(compareIds):b.dataset.view==="questions"?questionHash():b.dataset.view==="problems"?problemHash():["map","catalog","timeline","formula","lineage"].includes(b.dataset.view)?viewHash(b.dataset.view):`#/${b.dataset.view}`)));
   $("#clearComparison").addEventListener("click",()=>navigate("#/compare"));
   window.addEventListener("hashchange",applyRoute);
   $("#search").addEventListener("input",e=>{state.search=e.target.value;rememberFilters();renderGraph();renderTimeline();renderCatalog();});
