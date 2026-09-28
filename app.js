@@ -122,6 +122,7 @@
     const params=new URLSearchParams({from});
     if(from==="learn"&&learningPathId)params.set("path",learningPathId);
     if(from==="compare")params.set("compare",compareIds.join(","));
+    if(from==="problems")params.set("returnTo",problemHash(selectedProblemId));
     if(from==="formula")params.set("returnTo",location.hash.startsWith("#/theory/") ? safeReturn(new URLSearchParams(location.hash.split("?")[1]||"").get("returnTo")) || "#/formula" : location.hash);
     if(['catalog','timeline','map','lineage'].includes(from))params.set('returnTo',state.view==='theory'?safeReturn(new URLSearchParams(location.hash.split('?').slice(1).join('?')).get('returnTo'))||viewHash(from):viewHash(from));
     if(state.evidence)params.set('evidence',state.evidence);
