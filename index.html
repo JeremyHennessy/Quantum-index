@@ -6,7 +6,7 @@
   <meta name="description" content="Quantum Index — a source-aware map of fundamental physics, equations, evidence and open questions." />
   <title>Quantum Index</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="./styles.css?v=664f2540a6204de5" />
+  <link rel="stylesheet" href="./styles.css?v=a30394e3a4fa9646" />
 </head>
 <body>
   <header class="topbar">
@@ -68,6 +68,7 @@
       <button class="tab" data-view="catalog">Catalog</button>
       <button class="tab" data-view="formula">Formula atlas</button>
       <button class="tab" data-view="compare">Compare</button>
+      <button class="tab" data-view="problems">Problems</button>
       <button class="tab" data-view="questions">Research questions</button>
       <button class="tab" data-view="learn">Learning paths</button>
       <button class="tab" data-view="workspace">My research</button>
@@ -164,6 +165,18 @@
         <div id="catalog" class="catalog-grid"></div>
       </div>
     </section>
+    <section id="problemsView" class="view" aria-label="Scientific problems">
+      <div class="problem-layout">
+        <aside class="card problem-selector">
+          <p class="eyebrow">SCIENTIFIC PROBLEMS</p>
+          <h3>Start with the question physics is trying to answer</h3>
+          <p class="muted">Problems organize existing theories, formulas, evidence, developments and research questions without turning the problem itself into a theory.</p>
+          <div id="problemList" class="problem-list"></div>
+        </aside>
+        <article id="problemDetail" class="card problem-detail" tabindex="-1"></article>
+      </div>
+    </section>
+
     <section id="questionsView" class="view" aria-label="Research questions">
       <div class="card question-panel">
         <div class="view-head">
@@ -261,9 +274,10 @@
   <script src="./formulas.js?v=2dc72c49b194b814"></script>
   <script src="./formula-audit.js?v=fb958416812e0ba0"></script>
   <script src="./developments.js?v=13dd3ea5957fa259"></script>
-  <script src="./questions.js?v=fe5c31f43fb48b5f"></script>
+  <script src="./questions.js?v=bfccc3e935f46777"></script>
+  <script src="./problems.js?v=bd24561b25c69f07"></script>
   <script src="./profiles.js?v=7ead242ba1709896"></script>
   <script src="./workspace.js?v=de553a16db91ad46"></script>
-  <script src="./app.js?v=6a3784b0e4210705"></script>
+  <script src="./app.js?v=8237675317cdfc20"></script>
 </body>
 </html>
