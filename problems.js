@@ -295,6 +295,7 @@ window.QI_PROBLEMS = {
       ],
       "evidenceIds": [],
       "questionIds": [
+        "rq-qft-curved-spacetime",
         "rq-gravity-effective-field-theory",
         "rq-loop-quantum-gravity",
         "rq-string-theory",
