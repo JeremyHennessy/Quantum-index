@@ -138,3 +138,14 @@ test('scientific Problems deep-link and fit narrow screens',async({page})=>{
   await page.setViewportSize({width:320,height:800});
   expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
 });
+
+
+test('Evidence view preserves constraint wording and mobile containment',async({page})=>{
+  await page.goto('/#/evidence?problem=dark-matter&search=LZ');
+  await expect(page.locator('#evidenceProblem')).toHaveValue('dark-matter');
+  await expect(page.locator('#evidenceGrid')).toContainText('LZ extended recoil-window search');
+  await expect(page.locator('#evidenceGrid')).toContainText('2.6σ global candidate excess');
+  await expect(page.locator('#evidenceGrid')).toContainText('Does not establish');
+  await page.setViewportSize({width:320,height:800});
+  expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
+});
