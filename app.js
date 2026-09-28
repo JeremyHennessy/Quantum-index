@@ -72,7 +72,8 @@
   setOptions("#questionDisposition",questionDispositions);
   setOptions("#questionCategory",[...new Set(questions.map(q=>q.category).filter(Boolean))].sort());
   setOptions("#evidenceType",[...new Set(evidenceRecords.map(item=>item.type))].sort());
-  setOptions("#evidenceProblem",problems.map(problem=>problem.id));
+  const evidenceProblemSelect=$("#evidenceProblem");
+  evidenceProblemSelect.innerHTML=evidenceProblemSelect.firstElementChild.outerHTML+problems.map(problem=>`<option value="${esc(problem.id)}">${esc(problem.name)}</option>`).join("");
 
   function renderStats(){
     const cat=new Set(theories.map(t=>t.category)).size;
@@ -128,6 +129,7 @@
     if(from==="learn"&&learningPathId)params.set("path",learningPathId);
     if(from==="compare")params.set("compare",compareIds.join(","));
     if(from==="problems")params.set("returnTo",problemHash(selectedProblemId));
+    if(from==="evidence")params.set("returnTo",evidenceHash());
     if(from==="formula")params.set("returnTo",location.hash.startsWith("#/theory/") ? safeReturn(new URLSearchParams(location.hash.split("?")[1]||"").get("returnTo")) || "#/formula" : location.hash);
     if(['catalog','timeline','map','lineage'].includes(from))params.set('returnTo',state.view==='theory'?safeReturn(new URLSearchParams(location.hash.split('?').slice(1).join('?')).get('returnTo'))||viewHash(from):viewHash(from));
     if(state.evidence)params.set('evidence',state.evidence);
