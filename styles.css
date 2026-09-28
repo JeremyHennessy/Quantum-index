@@ -488,3 +488,31 @@ html{scrollbar-color:#a8c4ce #edf3f6}
 .disposition-conditional-model-dependent .question-disposition{background:#f6f3ff;border-color:#d9d1f4;color:#6556b5}
 .disposition-model-specific-investigation .question-disposition{background:#f5f8fb;border-color:#d8e2ea;color:#526b7a}
 @media(max-width:850px){.question-controls,.question-grid{grid-template-columns:1fr}.question-grid{padding:14px}.question-card-top{display:block}.question-domain{display:block;text-align:left;margin-top:7px}}
+
+.problem-layout{display:grid;grid-template-columns:minmax(260px,340px) minmax(0,1fr);gap:14px;align-items:start}
+.problem-selector,.problem-detail{padding:22px}
+.problem-list{display:grid;gap:8px;margin-top:18px}
+.problem-choice{display:block;text-decoration:none;color:var(--text);border:1px solid #d9e4e9;border-radius:13px;padding:12px;background:#fff;box-shadow:0 3px 12px rgba(45,76,92,.035)}
+.problem-choice:hover{border-color:#9bc9d2;background:#fbfeff}
+.problem-choice.active{border-color:#89c7d1;background:#edf9fb;box-shadow:inset 3px 0 0 var(--accent)}
+.problem-choice strong{display:block;font-size:13px}
+.problem-choice span{display:block;margin-top:5px;font-size:10px;line-height:1.45;color:var(--muted)}
+.problem-title{font-size:clamp(30px,4.5vw,48px);line-height:1.05;letter-spacing:-.035em;margin:8px 0 12px;color:var(--text)}
+.problem-question{font-size:18px;line-height:1.55;color:#486775;max-width:960px}
+.problem-section{border-top:1px solid #e1e9ed;margin-top:22px;padding-top:18px}
+.problem-section h3{font-size:18px;margin:0 0 10px}
+.problem-section ul{margin:8px 0 0;padding-left:22px;color:#45616e}
+.problem-section li{margin:7px 0;line-height:1.55}
+.approach-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.approach-card{border:1px solid #d9e4e9;border-radius:14px;padding:14px;background:#fbfdfe}
+.approach-card h4{margin:0 0 7px;font-size:14px;color:var(--text)}
+.approach-card p{margin:0 0 10px;color:#5b7380;font-size:11px;line-height:1.5}
+.problem-chip-row{display:flex;flex-wrap:wrap;gap:6px}
+.problem-chip{display:inline-flex;text-decoration:none;border:1px solid #bdd9e6;background:#eef8fc;color:#2c6b84;border-radius:999px;padding:5px 8px;font-size:9px}
+.problem-chip:hover{border-color:#76aec3;color:#174e65;background:#e7f5fa}
+.formula-chip{border-color:#d8d0ef;background:#f6f3ff;color:#6758ae}
+.problem-question-card,.problem-development{border:1px solid #d9e4e9;border-radius:13px;padding:13px;margin:9px 0;background:#fff}
+.problem-question-card h4{font-size:13px;line-height:1.4;margin:8px 0}
+.problem-question-card p,.problem-development p{font-size:11px;line-height:1.55;color:#526d7a}
+.status-panel{background:linear-gradient(135deg,#f4fbfc,#f8f7ff);border:1px solid #dbe7ec;border-radius:14px;padding:16px;margin-top:22px}
+@media(max-width:900px){.problem-layout{grid-template-columns:1fr}.problem-selector{position:static}.approach-grid{grid-template-columns:1fr}.problem-detail{padding:18px}}
