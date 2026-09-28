@@ -80,6 +80,7 @@
       [formulas.length,"formula atlas entries"],
       [developments.length,"reviewed development events"],
       [questions.length,"structured research questions"],
+      [problems.length,"scientific problems"],
       [`${sourced}/${theories.length}`,"entries with review/source provenance"]
     ].map(([n,l])=>`<div class="stat"><strong>${n}</strong><span>${l}</span></div>`).join("");
   }
