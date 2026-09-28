@@ -126,3 +126,15 @@ test('structured research questions preserve dispositions and fit mobile',async(
   await page.setViewportSize({width:320,height:800});
   expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
 });
+
+
+test('scientific Problems deep-link and fit narrow screens',async({page})=>{
+  await page.goto('/#/problems?problem=black-hole-information');
+  await expect(page.locator('#problemDetail .problem-title')).toHaveText('Black-hole information problem');
+  await expect(page.locator('#problemDetail')).toContainText('Island');
+  await page.goto('/#/problems?problem=dark-matter');
+  await expect(page.locator('#problemDetail .problem-title')).toHaveText('Dark matter');
+  await expect(page.locator('#problemDetail')).toContainText('2.6σ global candidate signal');
+  await page.setViewportSize({width:320,height:800});
+  expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
+});
