@@ -347,9 +347,11 @@ window.QI_PROBLEMS = {
         "angeli-carlesso-hybrid-entanglement-2025",
         "lin-mondal-newtonian-gie-2026",
         "schneider-classical-gie-2026",
+        "feng-vedral-marletto-collapse-witness-2026",
+        "di-biagio-gie-witness-2026",
         "tomizuka-nonmarkovian-cq-2026"
       ],
-      "currentStatus": "Quantum gravity remains open at the level of a complete empirically selected fundamental theory. Several programs have deep internal mathematical results and controlled limits, while low-energy gravitational EFT is an established predictive framework. Tabletop gravity experiments are beginning to sharpen falsifiable distinctions among explicit mediator and hybrid models, but no reviewed result currently provides an assumption-free binary classifier covering every possible classical-gravity alternative.",
+      "currentStatus": "Quantum gravity remains open at the level of a complete empirically selected fundamental theory. Several programs have deep internal mathematical results and controlled limits, while low-energy gravitational EFT is an established predictive framework. Tabletop gravity experiments are beginning to sharpen falsifiable distinctions among explicit mediator and hybrid models. The locality-conditioned entanglement witness remains meaningful within its assumptions, but 2026 analyses emphasize that its locality premise is stronger than ordinary spacetime locality and that GIE is not an assumption-free binary classifier covering every possible classical-gravity alternative.",
       "openIssues": [
         "Recover robust low-energy spacetime and matter dynamics from candidate microscopic descriptions.",
         "Identify observables that distinguish candidate frameworks rather than only internal consistency tests.",
