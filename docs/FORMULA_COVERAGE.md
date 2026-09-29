@@ -5,10 +5,10 @@ _Last audited: 2026-09-22_
 ## Current formula corpus
 
 <!-- coverage:start -->
-- **390** formula entries across **29** categories
-- **263** theory entries with linked formulas
+- **391** formula entries across **29** categories
+- **264** theory entries with linked formulas
 - **171** documented formula gaps
-- **131** formulas with explicit metadata review; **259** with baseline metadata
+- **132** formulas with explicit metadata review; **259** with baseline metadata
 
 | Formula category | Entries |
 |---|---:|
@@ -19,7 +19,7 @@ _Last audited: 2026-09-22_
 | Continuous-variable quantum information | 6 |
 | Core quantum mechanics | 26 |
 | Formulations | 9 |
-| Foundations & interpretations | 9 |
+| Foundations & interpretations | 10 |
 | Many-body Green functions | 4 |
 | Many-body response | 2 |
 | Mathematical structures | 3 |
