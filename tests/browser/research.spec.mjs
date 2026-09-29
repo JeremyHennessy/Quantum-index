@@ -149,3 +149,25 @@ test('Evidence view preserves constraint wording and mobile containment',async({
   await page.setViewportSize({width:320,height:800});
   expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
 });
+
+
+test('Explore is the researcher home and routes into major workflows',async({page})=>{
+  await page.goto('/');
+  await expect(page.locator('#exploreView')).toHaveClass(/active/);
+  await expect(page.locator('#exploreCards .explore-card')).toHaveCount(10);
+  await expect(page.locator('#exploreDevelopments .explore-mini').first()).toBeVisible();
+  await expect(page.locator('#exploreQuestions .explore-mini').first()).toBeVisible();
+
+  await page.locator('#exploreCards .explore-card',{hasText:'Explore problems'}).click();
+  await expect(page).toHaveURL(/#\/problems/);
+  await expect(page.locator('#problemDetail .problem-title')).toBeVisible();
+
+  await page.goto('/#/explore');
+  await page.locator('#exploreCards .explore-card',{hasText:"What's new"}).click();
+  await expect(page).toHaveURL(/#\/timeline\?layer=developments/);
+  await expect(page.locator('#timelineLayer')).toHaveValue('developments');
+
+  await page.goto('/#/explore');
+  await page.setViewportSize({width:320,height:800});
+  expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
+});
