@@ -24,7 +24,7 @@
   window.addEventListener('storage',event=>{if(event.key!=='quantum-index-workspace-v1')return;window.QI_WORKSPACE.refresh();if(state.view==='workspace')renderWorkspace();if(state.view==='learn')renderLearningPaths();if(state.view==='theory'&&$('#researchStatus')){$('#researchStatus').textContent=window.QI_WORKSPACE.error||'Saved research changed in another tab. Your draft is retained; saving checks for conflicts.';}});
   const learningPaths = window.QI_PROFILES?.learningPaths || [];
   const profileFields = [["problem","Problem addressed"],["scope","Scope and mathematical approach"],["assumptions","Assumptions"],["predictions","Results and predictions"],["evidence","Evidence in the cited work"],["limitations","Limitations"],["questions","Questions to investigate"]];
-  const state = { search:"", category:"", kind:"", status:"", era:"", sourcedOnly:false, evidence:"", selected:null, selectedTree:0, view:"map", returnView:"map" };
+  const state = { search:"", category:"", kind:"", status:"", era:"", sourcedOnly:false, evidence:"", selected:null, selectedTree:0, view:"explore", returnView:"explore" };
   const formulaState = { search:"", category:"", theory:"", type:"", review:"" };
   const timelineState = { layer:"all", eventType:"" };
   const questionState = { search:"", disposition:"", category:"" };
@@ -123,7 +123,7 @@
     const rows=[...categoryColors.keys()].map(category=>`<tr><th scope="row">${esc(category)}</th><td>${count(t=>t.category===category)}</td><td>${count(t=>t.category===category&&gaps.has(t.id))}</td><td>${count(t=>t.category===category&&profiles[t.id])}</td></tr>`).join('');
     $('#coverageContent').innerHTML=`<h3>Coverage and review status</h3><p>The census is open. Source attachment does not establish that every claim is verified or experimentally confirmed.</p><p>${theories.length} entries · ${sources.length} bibliography records · ${Object.keys(profiles).length} reading profiles · ${learningPaths.length} learning paths.</p><p>${relations.filter(r=>r.sourceIds.length).length} source-backed relationships; ${relations.filter(r=>!r.sourceIds.length).length} editorial relationships.</p><p>${formulas.length} formulas; ${formulas.filter(f=>f.metadataReview==='explicit').length} explicitly reviewed metadata records. Baseline records still need equation-level review.</p><p>${developments.length} reviewed DevelopmentEvents extend the historical timeline through ${developments.length?Math.max(...developments.map(event=>event.year)):"—"} without changing entity origin dates.</p><div class="comparison-scroll" role="region" aria-label="Coverage by category" tabindex="0"><table class="comparison-table"><caption>Current runtime coverage by category</caption><thead><tr><th scope="col">Category</th><th scope="col">Entries</th><th scope="col">Formula gaps</th><th scope="col">Reading profiles</th></tr></thead><tbody>${rows}</tbody></table></div><p>Formula gaps mean no representative expression has yet been curated. They do not mean the framework lacks mathematics. A linked formula does not establish complete mathematical coverage.</p><p><a href="https://github.com/JeremyHennessy/Quantum-index/blob/main/docs/COVERAGE.md">Coverage methodology and research backlog</a></p>`;
   }
-  function safeReturn(value){return typeof value==="string" && value.length<4096 && /^#\/(?:theory\/[a-z0-9-]+|map|timeline|catalog|lineage|formula|compare|problems|evidence|questions|learn|workspace|coverage)(?:\?|$)/.test(value)?value:"";}
+  function safeReturn(value){return typeof value==="string" && value.length<4096 && /^#\/(?:theory\/[a-z0-9-]+|explore|map|timeline|catalog|lineage|formula|compare|problems|evidence|questions|learn|workspace|coverage)(?:\?|$)/.test(value)?value:"";}
   function theoryLink(id,from=state.returnView){
     const params=new URLSearchParams({from});
     if(from==="learn"&&learningPathId)params.set("path",learningPathId);
@@ -733,14 +733,57 @@
     `;
   }
 
+  function renderExplore(){
+    if(!$("#exploreCards"))return;
+    const newestDevelopment=developments.length?Math.max(...developments.map(item=>item.year)):"—";
+    const openQuestions=questions.filter(item=>item.disposition==="open");
+    const cards=[
+      {title:"Explore problems",meta:`${problems.length} curated Problems`,text:"Start with a scientific problem, then move into competing approaches, assumptions, equations, evidence and unresolved questions.",href:"#/problems"},
+      {title:"Explore theories",meta:`${theories.length} theories & frameworks`,text:"Browse the source-aware catalog directly when you already know the framework or concept you want.",href:"#/catalog"},
+      {title:"Explore equations",meta:`${formulas.length} formula records`,text:"Move through canonical equations, model Hamiltonians, bounds and source-located representative mathematics.",href:"#/formula"},
+      {title:"Evidence & constraints",meta:`${evidenceRecords.length} reviewed records`,text:"See what experiments and observations establish, constrain or leave unresolved.",href:"#/evidence"},
+      {title:"What's new",meta:`${developments.length} developments through ${newestDevelopment}`,text:"Review recent theoretical, experimental and observational developments without rewriting historical origin dates.",href:"#/timeline?layer=developments"},
+      {title:"Follow history",meta:`${trees.length} thought trees`,text:"Trace chronology and source-backed intellectual relationships across the history of modern physics.",href:"#/timeline?layer=origins"},
+      {title:"Compare approaches",meta:"2–4 entries side by side",text:"Compare scope, assumptions, results, limitations, formulas and literature without ranking the theories.",href:"#/compare"},
+      {title:"Research questions",meta:`${openQuestions.length} open · ${questions.length} total`,text:"Separate established learning questions from model-dependent, conditional and genuinely open research questions.",href:"#/questions"},
+      {title:"Learning paths",meta:`${learningPaths.length} guided paths`,text:"Use curated prerequisites and reading sequences to enter unfamiliar areas of the atlas.",href:"#/learn"},
+      {title:"My research",meta:"Local research workspace",text:"Return to bookmarks, reading progress, notes, saved comparisons and notebook exports.",href:"#/workspace"}
+    ];
+    $("#exploreCards").innerHTML=cards.map(card=>`
+      <a class="explore-card" href="${card.href}">
+        <span class="explore-meta">${esc(card.meta)}</span>
+        <h4>${esc(card.title)}</h4>
+        <p>${esc(card.text)}</p>
+        <span class="explore-go">Open →</span>
+      </a>`).join("");
+
+    const recent=developments.slice().sort((a,b)=>String(b.date).localeCompare(String(a.date))).slice(0,4);
+    $("#exploreDevelopments").innerHTML=recent.map(item=>`
+      <a class="explore-mini" href="#/timeline?layer=developments">
+        <span>${esc(item.date)} · ${esc(item.eventType)}</span>
+        <strong>${esc(item.title)}</strong>
+        <p>${esc(item.significance)}</p>
+      </a>`).join("");
+
+    $("#exploreQuestions").innerHTML=openQuestions.slice(0,4).map(item=>{
+      const theory=byId.get(item.relatedTheoryIds?.[0]);
+      return `<a class="explore-mini" href="#/questions?disposition=open&search=${encodeURIComponent(item.title)}">
+        <span>${esc(item.category)}</span>
+        <strong>${esc(item.question)}</strong>
+        <p>${theory?esc(theory.name):"Research question"} · reviewed ${esc(item.reviewedAt)}</p>
+      </a>`;
+    }).join("");
+  }
+
   function renderAll(){
-    renderStats();renderLegend();renderGraph();renderTimeline();renderCatalog();renderLineage();renderDetail();renderFormulas();renderQuestions();renderProblems();renderEvidence();
+    renderStats();renderLegend();renderGraph();renderTimeline();renderCatalog();renderLineage();renderDetail();renderFormulas();renderQuestions();renderProblems();renderEvidence();renderExplore();
   }
   function switchView(view){
     state.view=view;
     document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.view===view));
     $$(".view").forEach(v=>v.classList.remove("active"));
     $("#"+view+"View").classList.add("active");
+    if(view==="explore") renderExplore();
     if(view==="compare") renderComparison();
     if(view==="learn") renderLearningPaths();
     if(view==="workspace") renderWorkspace();
@@ -756,7 +799,7 @@
     if(view==="lineage") setTimeout(renderThoughtTreeGraph,0);
     if(view==="formula") setTimeout(()=>{renderFormulas();typesetFormulaGrid();},0);
   }
-  const views=new Set(["map","timeline","lineage","catalog","formula","compare","problems","evidence","questions","learn","workspace","coverage"]);
+  const views=new Set(["explore","map","timeline","lineage","catalog","formula","compare","problems","evidence","questions","learn","workspace","coverage"]);
   function navigate(hash){
     if(location.hash===hash) applyRoute();
     else location.hash=hash;
@@ -770,7 +813,7 @@
     state.evidence=['sourced','documented historical influence','formal mathematical relation','editorial relation'].includes(params.get('evidence'))?params.get('evidence'):'';
     $('#relationEvidence').value=state.evidence;
     if(isTheory){
-      state.returnView=views.has(params.get("from"))?params.get("from"):"map";
+      state.returnView=views.has(params.get("from"))?params.get("from"):"explore";
       if(state.returnView==="compare" && params.has("compare")) compareIds=[...new Set(params.get("compare").split(",").filter(id=>byId.has(id)))].slice(0,4);
       learningPathId=learningPaths.some(p=>p.id===params.get("path"))?params.get("path"):"";
       state.selected=byId.has(id)?id:null;
@@ -785,7 +828,7 @@
       $("#theoryView").scrollIntoView({block:"start"});
       return;
     }
-    const view=views.has(path)?path:"map";
+    const view=views.has(path)?path:"explore";
     if(byId.has(id)) state.selected=id;
     if(view==="compare") compareIds=[...new Set((params.get("ids")||"").split(",").filter(id=>byId.has(id)))].slice(0,4);
     if(view==="learn") learningPathId=learningPaths.some(p=>p.id===params.get("path"))?params.get("path"):"";
