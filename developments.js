@@ -307,6 +307,27 @@ window.QI_DEVELOPMENTS = (() => {
       reviewedAt:"2026-09-29"
     },
     {
+      id:"minimal-noise-nonquantized-2026",
+      title:"Systematic minimum-noise bound proposed for non-entangling non-quantized gravity",
+      date:"2026-03-30",
+      year:2026,
+      eventType:"theorem/result",
+      summary:"Fabiano, Fujita, Matsumura and Carney classify time-local Galilean-invariant non-quantized models reproducing Newtonian gravity on average and derive a minimum irreversible noise level required whenever the interaction is non-entangling.",
+      relatedTheoryIds:["bmv-gravity-entanglement","postquantum-classical-gravity","open-quantum-systems"],
+      relatedProblemIds:["quantum-gravity"],
+      relatedFormulaIds:["cq-decoherence-diffusion-tradeoff"],
+      relatedEvidenceIds:[],
+      sourceIds:["fabiano-minimal-noise-2026"],
+      sourceLocations:[{
+        sourceId:"fabiano-minimal-noise-2026",
+        locator:"arXiv:2603.26075v2, abstract and systematic classification result",
+        url:"https://arxiv.org/abs/2603.26075"
+      }],
+      significance:"The result broadens tabletop discrimination from one specific hybrid model to a wider non-entangling Newtonian model class, while remaining explicitly time-local, Galilean and nonrelativistic.",
+      evidenceStatus:"source-reviewed preprint theoretical result",
+      reviewedAt:"2026-09-29"
+    },
+    {
       id:"desi-lya-fullshape-2026",
       title:"DESI DR2 Lyman-alpha full-shape analysis tightens high-redshift cosmology",
       date:"2026-07-30",
