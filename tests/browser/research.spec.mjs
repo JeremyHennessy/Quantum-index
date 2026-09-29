@@ -171,3 +171,16 @@ test('Explore is the researcher home and routes into major workflows',async({pag
   await page.setViewportSize({width:320,height:800});
   expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
 });
+
+
+test('curated Theory Passports appear on hub theory pages',async({page})=>{
+  await page.goto('/#/theory/hawking-radiation?from=problems&returnTo=%23%2Fproblems%3Fproblem%3Dblack-hole-information');
+  await expect(page.locator('#theoryDetail .passport')).toBeVisible();
+  await expect(page.locator('#theoryDetail .passport')).toContainText('Fundamental objects / degrees of freedom');
+  await expect(page.locator('#theoryDetail .passport')).toContainText('does not claim direct astrophysical detection');
+
+  await page.goto('/#/theory/wimp-dark-matter?from=problems&returnTo=%23%2Fproblems%3Fproblem%3Ddark-matter');
+  await expect(page.locator('#theoryDetail .passport')).toContainText('2.6σ global candidate signal');
+  await page.setViewportSize({width:320,height:800});
+  expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
+});
