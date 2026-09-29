@@ -1890,7 +1890,8 @@ window.QI_QUESTIONS = {
         "postquantum-classical-gravity",
         "diosi-penrose",
         "stochastic-gravity",
-        "open-quantum-systems"
+        "open-quantum-systems",
+        "configuration-ensemble-cq"
       ],
       "relatedProblemIds": [
         "quantum-gravity"
