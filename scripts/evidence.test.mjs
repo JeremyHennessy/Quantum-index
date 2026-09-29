@@ -12,15 +12,15 @@ const sources=new Set(sandbox.window.QI_DATA.sources.map(x=>x.id));
 const problems=new Set(sandbox.window.QI_PROBLEMS.problems.map(x=>x.id));
 const evidenceIds=new Set(evidence.map(x=>x.id));
 
-test('Evidence pilot has seven auditable records with resolved references',()=>{
-  assert.equal(evidence.length,7);
-  assert.equal(evidenceIds.size,7);
+test('Evidence layer has ten auditable records with resolved references',()=>{
+  assert.equal(evidence.length,10);
+  assert.equal(evidenceIds.size,10);
   for(const item of evidence){
     assert.match(item.date,/^\d{4}-\d{2}-\d{2}$/);
     assert.ok(item.result.length>60,item.id);
     assert.ok(item.constrains.length>=1,item.id);
     assert.ok(item.doesNotEstablish.length>=1,item.id);
-    assert.equal(item.reviewedAt,'2026-09-28');
+    assert.match(item.reviewedAt,/^2026-09-(?:28|29)$/);
     for(const id of item.relatedTheoryIds)assert.ok(theories.has(id),id);
     for(const id of item.relatedProblemIds)assert.ok(problems.has(id),id);
     for(const id of item.sourceIds)assert.ok(sources.has(id),id);
@@ -37,6 +37,17 @@ test('Evidence wording preserves high-risk scientific boundaries',()=>{
   assert.ok(dp.doesNotEstablish.some(x=>/all objective-collapse/i.test(x)));
   const desi=evidence.find(x=>x.id==='ev-desi-dr2-2025');
   assert.ok(desi.doesNotEstablish.some(x=>/direct detection.*dark matter/i.test(x)));
+
+  const gravity=evidence.find(x=>x.id==='ev-gravity-entanglement-boundary-2025');
+  assert.equal(gravity.evidenceStatus,'active theoretical controversy');
+  assert.ok(gravity.doesNotEstablish.some(x=>/gravity is fundamentally classical/i.test(x)));
+  assert.ok(gravity.doesNotEstablish.some(x=>/experiments are uninformative/i.test(x)));
+
+  const cq=evidence.find(x=>x.id==='ev-cq-decoherence-diffusion-2023');
+  assert.ok(cq.doesNotEstablish.some(x=>/non-Markovian/i.test(x)));
+
+  const noise=evidence.find(x=>x.id==='ev-minimal-noise-nonquantized-gravity-2026');
+  assert.ok(noise.doesNotEstablish.some(x=>/every non-quantized gravity model is non-entangling/i.test(x)));
 });
 
 test('Problems reference only shipped Evidence IDs',()=>{
