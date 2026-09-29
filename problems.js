@@ -1,7 +1,7 @@
 // First-class scientific Problem layer. Problems organize existing catalog records; they are not theory entities.
 window.QI_PROBLEMS = {
   "version": "v1",
-  "reviewedAt": "2026-09-27",
+  "reviewedAt": "2026-09-29",
   "scope": "Five pilot scientific problems. Problems organize existing entities, equations, questions and dated developments; they are not theory entities and do not duplicate catalog records.",
   "problems": [
     {
@@ -216,6 +216,7 @@ window.QI_PROBLEMS = {
         "General relativity can be treated as a low-energy effective quantum field theory with calculable long-distance quantum corrections.",
         "Canonical, covariant, string/holographic, discrete/causal and renormalization-group approaches implement different microscopic assumptions.",
         "Many mathematical results are established inside individual frameworks, but there is no direct experimental result selecting one complete fundamental program.",
+        "Tabletop gravity-mediated-entanglement proposals can discriminate explicit mediator and hybrid models, but current 2025–2026 literature does not justify treating all 'classical gravity' as one dynamical hypothesis.",
         "Recovering the classical spacetime limit and controlled observable predictions is a central cross-program requirement."
       ],
       "approachGroups": [
@@ -267,12 +268,26 @@ window.QI_PROBLEMS = {
             "quantum-error-correction-gravity",
             "er-epr"
           ]
+        },
+        {
+          "name": "Tabletop gravity and model discrimination",
+          "description": "Compares quantized-mediator proposals with explicit semiclassical, stochastic, collapse and classical–quantum alternatives using entanglement dynamics, decoherence, diffusion/noise, back-reaction and locality assumptions.",
+          "theoryIds": [
+            "bmv-gravity-entanglement",
+            "postquantum-classical-gravity",
+            "semiclassical-gravity",
+            "stochastic-gravity",
+            "diosi-penrose",
+            "objective-collapse",
+            "open-quantum-systems"
+          ]
         }
       ],
       "keyAssumptions": [
         "What the fundamental degrees of freedom are and whether a background geometry is assumed.",
         "How diffeomorphism/gauge constraints and observables are defined.",
         "How the continuum and classical-gravity limits are recovered.",
+        "For tabletop tests, whether the alternative model is local or nonlocal, Markovian or non-Markovian, what is treated as the mediator, and which matter degrees of freedom are allowed to propagate.",
         "Which calculations can be connected to experimentally accessible observables."
       ],
       "formulaIds": [
@@ -291,9 +306,14 @@ window.QI_PROBLEMS = {
         "rt-formula",
         "causal-sprinkling",
         "cdt-partition",
-        "asymptotic-fixed-point"
+        "asymptotic-fixed-point",
+        "cq-decoherence-diffusion-tradeoff"
       ],
-      "evidenceIds": [],
+      "evidenceIds": [
+        "ev-cq-decoherence-diffusion-2023",
+        "ev-dp-gie-2025",
+        "ev-gravity-entanglement-boundary-2025"
+      ],
       "questionIds": [
         "rq-qft-curved-spacetime",
         "rq-gravity-effective-field-theory",
@@ -303,23 +323,35 @@ window.QI_PROBLEMS = {
         "rq-ads-cft",
         "rq-er-epr",
         "rq-wheeler-dewitt",
-        "rq-canonical-quantum-gravity"
+        "rq-canonical-quantum-gravity",
+        "rq-gravity-entanglement-discrimination"
       ],
       "developmentIds": [
-        "classical-gravity-entanglement-2025"
+        "dp-gie-entanglement-2025",
+        "classical-gravity-entanglement-2025",
+        "gravity-entanglement-debate-2026"
       ],
-      "developmentContext": "The 2025 classical-gravity entanglement result changes how some proposed gravity-entanglement witnesses should be interpreted; it does not experimentally establish a particular fundamental quantum-gravity theory.",
+      "developmentContext": "The gravity-entanglement literature now contains explicit classical/hybrid models that can entangle in some regimes and other classical mediator models that do not. The 2025 Aziz–Howl mechanism is directly disputed. These developments motivate model discrimination, not a single settled inference from entanglement alone.",
       "sourceIds": [
         "donoghue-gravity-eft-1994",
         "rovelli-qg-survey",
         "spin-foam-review",
         "bombelli-causal-set-1987",
-        "asymptotic-review-2026"
+        "asymptotic-review-2026",
+        "marletto-vedral-2017",
+        "oppenheim-decoherence-diffusion-2023",
+        "trillo-navascues-dp-gie-2025",
+        "angeli-carlesso-hybrid-entanglement-2025",
+        "lin-mondal-newtonian-gie-2026",
+        "schneider-classical-gie-2026",
+        "tomizuka-nonmarkovian-cq-2026"
       ],
-      "currentStatus": "Quantum gravity remains open at the level of a complete empirically selected fundamental theory. Several programs have deep internal mathematical results and controlled limits, while low-energy gravitational EFT is an established predictive framework.",
+      "currentStatus": "Quantum gravity remains open at the level of a complete empirically selected fundamental theory. Several programs have deep internal mathematical results and controlled limits, while low-energy gravitational EFT is an established predictive framework. Tabletop gravity experiments are beginning to sharpen falsifiable distinctions among explicit mediator and hybrid models, but no reviewed result currently provides an assumption-free binary classifier covering every possible classical-gravity alternative.",
       "openIssues": [
         "Recover robust low-energy spacetime and matter dynamics from candidate microscopic descriptions.",
         "Identify observables that distinguish candidate frameworks rather than only internal consistency tests.",
+        "For tabletop gravity, build a source-backed model-by-observable map spanning entanglement dynamics, decoherence, diffusion/noise, back-reaction, locality and memory, then determine experimentally feasible combinations that separate the enumerated alternatives.",
+        "Determine where Markovian classical–quantum consistency bounds cease to apply and which non-Markovian signatures can be measured.",
         "Connect formal advances to experimentally accessible gravitational or cosmological regimes."
       ]
     },
