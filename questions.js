@@ -1,9 +1,9 @@
 // Structured research questions curated from the 27 Sep 2026 profile-question audit.
 // These dispositions describe the reviewed state of each prompt; they are not a taxonomy of all unsolved physics.
 window.QI_QUESTIONS = {
-  "version": "v1",
-  "reviewedAt": "2026-09-27",
-  "scope": "Structured migration of the 59 cited profile questions. Current answers are research-orientation summaries, not independent proofs.",
+  "version": "v2",
+  "reviewedAt": "2026-09-29",
+  "scope": "Structured migration of the 59 cited profile questions plus targeted source-reviewed questions added from the Problem/Evidence layer. Current answers are research-orientation summaries, not independent proofs.",
   "dispositions": [
     "established-learning",
     "conditional-model-dependent",
@@ -1879,6 +1879,71 @@ window.QI_QUESTIONS = {
       "nextInvestigation": "Choose a Bell scenario and compare the quantum set with the sets allowed by each principle; record a counterexample or inclusion proof instead of asserting universal equivalence.",
       "reviewedAt": "2026-09-27",
       "evidenceState": "research-audit-draft"
-    }
+    },
+    {
+      "id": "rq-gravity-entanglement-discrimination",
+      "order": 60,
+      "title": "Gravity-mediated entanglement as a model-discrimination problem",
+      "question": "Which combined observables can distinguish quantized gravitational mediation from the explicit classical and classical–quantum alternatives that can mimic part of a gravity-entanglement experiment?",
+      "relatedTheoryIds": [
+        "bmv-gravity-entanglement",
+        "postquantum-classical-gravity",
+        "diosi-penrose",
+        "semiclassical-gravity",
+        "stochastic-gravity",
+        "open-quantum-systems"
+      ],
+      "relatedProblemIds": [
+        "quantum-gravity"
+      ],
+      "category": "Quantum gravity & spacetime",
+      "disposition": "open",
+      "dispositionLabel": "Open research question",
+      "shortAnswer": "The current literature does not support one binary rule in which entanglement alone cleanly partitions every classical model from every quantized-mediator model. Different explicit alternatives make different predictions for probe entanglement, decoherence, force or metric diffusion, back-reaction, locality, matter-field propagation and temporal memory. A useful experiment therefore needs a predeclared model set and a joint observable/intervention strategy rather than a single witness interpreted without its assumptions.",
+      "detailedStatus": "BMV-style locality/information arguments motivate entanglement as a nonclassicality witness under specified mediator assumptions. However, Diósi–Penrose and broader Markovian hybrid models have entangling parameter regimes, while specified semiclassical/stochastic tidal models and Newton–Cartan mediator analyses do not. Time-local completely-positive classical–quantum dynamics also obey decoherence/diffusion/back-reaction constraints, but non-Markovian effective classical–quantum descriptions need not satisfy the same instantaneous trade-off at all times. The unresolved task is to identify a minimal experimentally feasible set of observables and interventions that separates a clearly enumerated model class with controlled systematics.",
+      "supportingClaims": [],
+      "sourceIds": [
+        "marletto-vedral-2017",
+        "oppenheim-decoherence-diffusion-2023",
+        "trillo-navascues-dp-gie-2025",
+        "angeli-carlesso-hybrid-entanglement-2025",
+        "lin-mondal-newtonian-gie-2026",
+        "schneider-classical-gie-2026",
+        "tomizuka-nonmarkovian-cq-2026"
+      ],
+      "auditReferences": [
+        {
+          "title": "Gravitationally Induced Entanglement between Two Massive Particles is Sufficient Evidence of Quantum Effects in Gravity",
+          "url": "https://doi.org/10.1103/PhysRevLett.119.240402"
+        },
+        {
+          "title": "Gravitationally induced decoherence vs space-time diffusion: testing the quantum nature of gravity",
+          "url": "https://doi.org/10.1038/s41467-023-43348-2"
+        },
+        {
+          "title": "Diósi-Penrose model of classical gravity predicts gravitationally induced entanglement",
+          "url": "https://doi.org/10.1103/PhysRevD.111.L121101"
+        },
+        {
+          "title": "Entanglement in Markovian hybrid classical-quantum theories of gravity",
+          "url": "https://doi.org/10.1103/jzht-fbwt"
+        },
+        {
+          "title": "Can Newtonian gravity produce quantum entanglement?",
+          "url": "https://doi.org/10.1103/fv38-kgkb"
+        },
+        {
+          "title": "A demonstration that classical gravity does not produce entanglement",
+          "url": "https://doi.org/10.1088/1361-6382/ae6f62"
+        },
+        {
+          "title": "Emergence of Non-Markovian Classical-Quantum Dynamics from Decoherence",
+          "url": "https://arxiv.org/abs/2604.06891"
+        }
+      ],
+      "uncertainty": "No exhaustive theorem in the reviewed set establishes a finite universal test that excludes every conceivable classical, nonlocal, retrocausal or non-Markovian alternative. The discriminating set is necessarily relative to explicitly defined model classes and experimental assumptions.",
+      "nextInvestigation": "Construct a source-backed hypothesis-by-observable matrix for the concrete models now indexed; calculate which combinations of entanglement dynamics, decoherence, force noise/diffusion, back-reaction, intervention and memory are jointly incompatible with each model, then optimize the experimentally feasible hitting set without treating unmodeled alternatives as excluded.",
+      "reviewedAt": "2026-09-29",
+      "evidenceState": "source-reviewed research synthesis"
   ]
 };
