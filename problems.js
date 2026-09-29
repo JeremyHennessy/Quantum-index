@@ -311,6 +311,7 @@ window.QI_PROBLEMS = {
       ],
       "evidenceIds": [
         "ev-cq-decoherence-diffusion-2023",
+        "ev-minimal-noise-nonquantized-2026",
         "ev-dp-gie-2025",
         "ev-gravity-entanglement-boundary-2025"
       ],
@@ -329,6 +330,7 @@ window.QI_PROBLEMS = {
       "developmentIds": [
         "dp-gie-entanglement-2025",
         "classical-gravity-entanglement-2025",
+        "minimal-noise-nonquantized-2026",
         "gravity-entanglement-debate-2026"
       ],
       "developmentContext": "The gravity-entanglement literature now contains explicit classical/hybrid models that can entangle in some regimes and other classical mediator models that do not. The 2025 Aziz–Howl mechanism is directly disputed. These developments motivate model discrimination, not a single settled inference from entanglement alone.",
@@ -340,6 +342,7 @@ window.QI_PROBLEMS = {
         "asymptotic-review-2026",
         "marletto-vedral-2017",
         "oppenheim-decoherence-diffusion-2023",
+        "fabiano-minimal-noise-2026",
         "trillo-navascues-dp-gie-2025",
         "angeli-carlesso-hybrid-entanglement-2025",
         "lin-mondal-newtonian-gie-2026",
@@ -351,6 +354,7 @@ window.QI_PROBLEMS = {
         "Recover robust low-energy spacetime and matter dynamics from candidate microscopic descriptions.",
         "Identify observables that distinguish candidate frameworks rather than only internal consistency tests.",
         "For tabletop gravity, build a source-backed model-by-observable map spanning entanglement dynamics, decoherence, diffusion/noise, back-reaction, locality and memory, then determine experimentally feasible combinations that separate the enumerated alternatives.",
+        "Test whether force/noise measurements can reach below the 2026 minimum-noise thresholds for non-entangling time-local Newtonian model classes.",
         "Determine where Markovian classical–quantum consistency bounds cease to apply and which non-Markovian signatures can be measured.",
         "Connect formal advances to experimentally accessible gravitational or cosmological regimes."
       ]
