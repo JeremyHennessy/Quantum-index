@@ -235,38 +235,171 @@ window.QI_EVIDENCE = (() => {
     },
     {
       "id": "ev-gravity-entanglement-boundary-2025",
-      "title": "Classical-gravity models can generate matter entanglement",
-      "date": "2025-10-22",
-      "type": "theoretical constraint",
-      "result": "A broader class of local classical-gravity models coupled to quantum field theory was shown capable of generating entanglement, narrowing the claim that observing gravity-mediated entanglement would by itself constitute model-independent proof that gravity is quantum.",
+      "title": "Gravity-mediated entanglement inference is model-dependent",
+      "date": "2026-09-01",
+      "type": "theoretical controversy",
+      "result": "The literature no longer supports presenting gravitationally induced entanglement as an assumption-free binary test of quantized versus classical gravity. Explicit classical/hybrid countermodels predate the 2025 Aziz–Howl claim, the Diósi–Penrose model can generate entanglement in specified regimes, and several 2025–2026 analyses directly dispute Aziz and Howl's proposed classical-gravity entangling channel.",
       "relatedTheoryIds": [
         "bmv-gravity-entanglement",
-        "postquantum-classical-gravity"
+        "postquantum-classical-gravity",
+        "diosi-penrose",
+        "stochastic-gravity"
       ],
       "relatedProblemIds": [
         "quantum-gravity"
       ],
       "relatedClaimIds": [],
       "constrains": [
-        "Interpretations of gravity-mediated entanglement as a model-independent witness of quantized gravity."
+        "Unqualified claims that observing probe entanglement alone proves that the gravitational mediator is quantized.",
+        "Unqualified claims that every classical or hybrid gravity model is necessarily non-entangling."
       ],
       "doesNotEstablish": [
-        "That gravity is classical.",
-        "That every proposed gravity-entanglement experiment is uninformative.",
-        "That a specific postquantum classical-gravity model describes nature."
+        "That gravity is fundamentally classical.",
+        "That gravity-mediated entanglement experiments are uninformative.",
+        "That all classical/hybrid models can generate entanglement.",
+        "A single accepted resolution of the Aziz–Howl dispute."
       ],
       "sourceIds": [
-        "aziz-howl-gravity-entanglement-2025"
+        "hall-reginatto-classical-gravity-2018",
+        "doner-grossardt-gie-2022",
+        "trillo-navascues-dp-gie-2025",
+        "aziz-howl-gravity-entanglement-2025",
+        "marletto-oppenheim-vedral-wilson-2025",
+        "lin-mondal-newtonian-entanglement-2026",
+        "gundhi-infanti-bassi-2026",
+        "vidal-iyer-matter-exchange-2026",
+        "schneider-huggett-linnemann-2026"
       ],
       "sourceLocations": [
         {
+          "sourceId": "hall-reginatto-classical-gravity-2018",
+          "locator": "Abstract and explicit configuration-ensemble counterexample",
+          "url": "https://doi.org/10.1088/1751-8121/aaa734"
+        },
+        {
+          "sourceId": "trillo-navascues-dp-gie-2025",
+          "locator": "Abstract and main result: Diósi–Penrose dynamics can generate GIE in a specified regime",
+          "url": "https://doi.org/10.1103/PhysRevD.111.L121101"
+        },
+        {
           "sourceId": "aziz-howl-gravity-entanglement-2025",
-          "locator": "Nature (2025), main theorem/result summarized by the publication",
+          "locator": "Nature 646, 813–817 (2025), central QFT/classical-gravity claim",
           "url": "https://doi.org/10.1038/s41586-025-09595-7"
+        },
+        {
+          "sourceId": "schneider-huggett-linnemann-2026",
+          "locator": "Classical and Quantum Gravity (2026), Newton–Cartan analysis and conclusion",
+          "url": "https://doi.org/10.1088/1361-6382/ae6f62"
         }
       ],
-      "reviewedAt": "2026-09-28",
-      "evidenceStatus": "theoretical interpretation constraint"
+      "reviewedAt": "2026-09-29",
+      "evidenceStatus": "active theoretical controversy"
+    },
+    {
+      "id": "ev-cq-decoherence-diffusion-2023",
+      "title": "Markovian classical–quantum dynamics require a decoherence–diffusion trade-off",
+      "date": "2023-12-04",
+      "type": "theoretical constraint",
+      "result": "Oppenheim and collaborators prove that Markovian completely-positive dynamics coupling classical and quantum degrees of freedom necessarily links quantum decoherence to diffusion in the classical phase space, with the interaction/back-reaction strength entering the bound. Applied to gravity, this supplies an experimentally testable signature of that model class.",
+      "relatedTheoryIds": [
+        "postquantum-classical-gravity",
+        "open-quantum-systems",
+        "stochastic-gravity"
+      ],
+      "relatedProblemIds": [
+        "quantum-gravity"
+      ],
+      "relatedClaimIds": [],
+      "constrains": [
+        "Markovian completely-positive classical–quantum gravity models whose measured decoherence, diffusion and back-reaction violate the applicable trade-off."
+      ],
+      "doesNotEstablish": [
+        "That gravity is fundamentally quantum if one specific classical–quantum model is excluded.",
+        "The same trade-off for unrestricted non-Markovian hybrid dynamics.",
+        "That observing gravitational noise proves gravity is fundamentally classical."
+      ],
+      "sourceIds": [
+        "oppenheim-decoherence-diffusion-2023"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "oppenheim-decoherence-diffusion-2023",
+          "locator": "Nature Communications 14, 7910 (2023), trade-off theorem and Eqs. (26)–(27)",
+          "url": "https://doi.org/10.1038/s41467-023-43348-2"
+        }
+      ],
+      "reviewedAt": "2026-09-29",
+      "evidenceStatus": "model-class theoretical constraint"
+    },
+    {
+      "id": "ev-classical-gravity-cross-correlation-2025",
+      "title": "Cross-correlation signature for a Newtonian classical-gravity model",
+      "date": "2025-02-12",
+      "type": "theoretical experimental discriminator",
+      "result": "Kryhin and Sudhir derive a characteristic phase response in the cross-correlation of coherently moving source masses for a consistent Newtonian classical–quantum gravity model, proposing an observable that distinguishes that model from quantum gravity and from simple environmental decoherence.",
+      "relatedTheoryIds": [
+        "postquantum-classical-gravity",
+        "open-quantum-systems"
+      ],
+      "relatedProblemIds": [
+        "quantum-gravity"
+      ],
+      "relatedClaimIds": [],
+      "constrains": [
+        "The specific Newtonian classical–quantum dynamics analyzed when the predicted cross-correlation phase/noise structure is absent."
+      ],
+      "doesNotEstablish": [
+        "A universal signature shared by every conceivable classical-gravity model.",
+        "That an observed cross-correlation by itself identifies gravity as fundamentally classical."
+      ],
+      "sourceIds": [
+        "kryhin-sudhir-classical-gravity-2025"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "kryhin-sudhir-classical-gravity-2025",
+          "locator": "Phys. Rev. Lett. 134, 061501 (2025), abstract and predicted cross-correlation phase response",
+          "url": "https://doi.org/10.1103/PhysRevLett.134.061501"
+        }
+      ],
+      "reviewedAt": "2026-09-29",
+      "evidenceStatus": "model-specific proposed discriminator"
+    },
+    {
+      "id": "ev-minimal-noise-nonquantized-gravity-2026",
+      "title": "Minimum-noise bound for a broad non-entangling Newtonian model class",
+      "date": "2026-03-27",
+      "type": "theoretical constraint",
+      "result": "Fabiano, Fujita, Matsumura and Carney classify a broad time-local, Galilean-invariant set of non-quantized Newtonian interactions that reproduce Newton's force on average and show that any member of that class that remains non-entangling must inject a quantifiable minimum amount of irreversible noise. Noise measured below the relevant threshold would demonstrate that the Newtonian interaction is entangling under those assumptions.",
+      "relatedTheoryIds": [
+        "bmv-gravity-entanglement",
+        "postquantum-classical-gravity",
+        "open-quantum-systems"
+      ],
+      "relatedProblemIds": [
+        "quantum-gravity"
+      ],
+      "relatedClaimIds": [],
+      "constrains": [
+        "Time-local, Galilean-invariant, Newtonian-average non-quantized models that are required to remain non-entangling."
+      ],
+      "doesNotEstablish": [
+        "That every non-quantized gravity model is non-entangling.",
+        "A fully relativistic no-go theorem.",
+        "A unique microscopic quantum-gravity theory if the noise bound is beaten."
+      ],
+      "sourceIds": [
+        "fabiano-minimal-noise-2026"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "fabiano-minimal-noise-2026",
+          "locator": "arXiv:2603.26075v2, abstract and general classification/minimum-noise result",
+          "url": "https://arxiv.org/abs/2603.26075"
+        }
+      ],
+      "reviewedAt": "2026-09-29",
+      "evidenceStatus": "preprint theoretical bound"
     }
   ]
 };
