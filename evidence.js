@@ -269,7 +269,8 @@ window.QI_EVIDENCE = (() => {
         "lin-mondal-newtonian-entanglement-2026",
         "gundhi-infanti-bassi-2026",
         "vidal-iyer-matter-exchange-2026",
-        "schneider-huggett-linnemann-2026"
+        "schneider-huggett-linnemann-2026",
+        "feng-vedral-marletto-collapse-2026"
       ],
       "sourceLocations": [
         {
@@ -291,6 +292,11 @@ window.QI_EVIDENCE = (() => {
           "sourceId": "schneider-huggett-linnemann-2026",
           "locator": "Classical and Quantum Gravity (2026), Newton–Cartan analysis and conclusion",
           "url": "https://doi.org/10.1088/1361-6382/ae6f62"
+        },
+        {
+          "sourceId": "feng-vedral-marletto-collapse-2026",
+          "locator": "Phys. Rev. D 113, 104055 (2026), locality analysis of collapse-based gravity models",
+          "url": "https://doi.org/10.1103/83rl-nygv"
         }
       ],
       "reviewedAt": "2026-09-29",
@@ -401,6 +407,75 @@ window.QI_EVIDENCE = (() => {
       ],
       "reviewedAt": "2026-09-29",
       "evidenceStatus": "preprint theoretical bound"
+    },
+    {
+      "id": "ev-indirect-gme-interferometry-2026",
+      "title": "Existing matter-wave interferometry can imply GME under stated assumptions",
+      "date": "2026-04-02",
+      "type": "theoretical experimental inference",
+      "result": "Plávala proves that if the Schrödinger evolution of a single delocalized system interacting gravitationally with an external mass is experimentally verified, then under either of two explicit assumptions the corresponding two-delocalized-system dynamics generates gravity-mediated entanglement. The result reframes some existing interferometry as indirect evidence about an entangling gravitational interaction rather than a direct two-mass GME observation.",
+      "relatedTheoryIds": [
+        "bmv-gravity-entanglement"
+      ],
+      "relatedProblemIds": [
+        "quantum-gravity"
+      ],
+      "relatedClaimIds": [],
+      "constrains": [
+        "Models incompatible with the verified single-particle Schrödinger gravitational dynamics plus the paper's stated extension assumptions."
+      ],
+      "doesNotEstablish": [
+        "A direct experimental observation of entanglement between two gravitating masses.",
+        "An assumption-free inference that the gravitational field is fundamentally quantum.",
+        "A unique microscopic quantum-gravity theory."
+      ],
+      "sourceIds": [
+        "plavala-indirect-gme-2026"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "plavala-indirect-gme-2026",
+          "locator": "Phys. Rev. D 113, 085004 (2026), abstract and conclusions; corrected 11 September 2026",
+          "url": "https://doi.org/10.1103/87dc-qt73"
+        }
+      ],
+      "reviewedAt": "2026-09-29",
+      "evidenceStatus": "peer-reviewed conditional inference"
+    },
+    {
+      "id": "ev-cq-geodesic-deviation-2026",
+      "title": "Geodesic-deviation strain spectrum proposed for classical–quantum gravity",
+      "date": "2026-07-08",
+      "type": "theoretical experimental discriminator",
+      "result": "Hirotani and Matsumura derive geodesic-deviation strain spectra for the original Oppenheim classical–quantum gravity model and two related variants, and report that the original model can be tested at current gravitational-wave observational sensitivity in their analysis.",
+      "relatedTheoryIds": [
+        "postquantum-classical-gravity",
+        "stochastic-gravity"
+      ],
+      "relatedProblemIds": [
+        "quantum-gravity"
+      ],
+      "relatedClaimIds": [],
+      "constrains": [
+        "The analyzed Oppenheim-type and related classical–quantum gravity models through their predicted strain spectra."
+      ],
+      "doesNotEstablish": [
+        "That a null result excludes every classical–quantum gravity theory.",
+        "That agreement with one strain spectrum proves the mediator is fundamentally classical.",
+        "A direct observation of quantum gravity."
+      ],
+      "sourceIds": [
+        "hirotani-matsumura-geodesic-2026"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "hirotani-matsumura-geodesic-2026",
+          "locator": "Phys. Rev. D 114, 026014 (2026), abstract and strain-spectrum comparison",
+          "url": "https://doi.org/10.1103/fx1h-97sx"
+        }
+      ],
+      "reviewedAt": "2026-09-29",
+      "evidenceStatus": "peer-reviewed model-specific proposed test"
     }
   ]
 };
