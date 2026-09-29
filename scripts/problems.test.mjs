@@ -53,6 +53,7 @@ test('quantum-gravity Problem exposes the gravity-entanglement discrimination la
   assert.ok(qg.formulaIds.includes('cq-decoherence-diffusion-tradeoff'));
   assert.ok(qg.questionIds.includes('rq-gravity-entanglement-discrimination'));
   assert.ok(qg.evidenceIds.includes('ev-cq-decoherence-diffusion-2023'));
+  assert.ok(qg.evidenceIds.includes('ev-minimal-noise-nonquantized-2026'));
   assert.ok(qg.evidenceIds.includes('ev-dp-gie-2025'));
   assert.ok(qg.evidenceIds.includes('ev-gravity-entanglement-boundary-2025'));
   assert.ok(qg.approachGroups.some(g=>g.name==='Tabletop gravity and model discrimination'));
