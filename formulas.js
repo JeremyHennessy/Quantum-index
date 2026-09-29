@@ -2674,6 +2674,49 @@ window.QI_FORMULAS = {
       ]
     },
     {
+      "id": "configuration-ensemble-hamiltonian",
+      "name": "Classical–quantum configuration-ensemble Hamiltonian",
+      "category": "Foundations & interpretations",
+      "latex": "\\mathcal H[P,S]=\\int dq\\,dx\\,P\\left[\\frac{(\\partial_q S)^2}{2m_q}+\\frac{(\\partial_x S)^2}{2m_x}+V(q,x,t)+\\frac{\\hbar^2}{8m_q}(\\partial_q\\ln P)^2\\right]",
+      "plain": "H[P,S] = integral dq dx P[(d_q S)^2/(2m_q) + (d_x S)^2/(2m_x) + V + hbar^2(d_q ln P)^2/(8m_q)]",
+      "description": "Representative Hall–Reginatto ensemble Hamiltonian for one quantum coordinate q coupled to one classical coordinate x; the Fisher-information-like term appears only in the quantum sector.",
+      "theoryIds": [
+        "configuration-ensemble-cq"
+      ],
+      "sourceIds": [
+        "chua-hall-savage-hybrid-2012"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "chua-hall-savage-hybrid-2012",
+          "locator": "Eq. (1), hybrid ensemble Hamiltonian for one quantum and one classical particle",
+          "url": "https://doi.org/10.1103/PhysRevA.85.022110"
+        }
+      ],
+      "tags": [
+        "classical-quantum hybrid",
+        "configuration ensemble",
+        "ensemble Hamiltonian"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "One-dimensional representative model with quantum coordinate q and classical coordinate x",
+        "P(q,x) is a normalized joint configuration-space probability density",
+        "S(q,x) is canonically conjugate to P in the ensemble Hamiltonian formalism"
+      ],
+      "variables": [
+        "P(q,x): joint configuration-space probability density",
+        "S(q,x): conjugate ensemble phase field",
+        "m_q: quantum-particle mass",
+        "m_x: classical-particle mass",
+        "V(q,x,t): interaction potential"
+      ],
+      "regime": "Representative nonrelativistic Hall–Reginatto hybrid model; gravitational field applications use an extended field-theoretic configuration space.",
+      "units": "Energy after integration over the normalized configuration-space density.",
+      "theoryRelationship": "defining representative hybrid Hamiltonian",
+      "metadataReview": "explicit"
+    },
+    {
       "id": "cq-backreaction-decoherence-diffusion",
       "name": "Classical–quantum back-reaction / decoherence / diffusion trade-off",
       "category": "Quantum gravity & cosmology",
