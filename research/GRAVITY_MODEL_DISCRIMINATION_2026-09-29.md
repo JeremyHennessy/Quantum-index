@@ -38,6 +38,15 @@ At the same time, other analyses recover no gravity-mediated entanglement for th
 
 These are not contradictory once the model assumptions are kept explicit.
 
+Two 2026 analyses sharpen the logical point further:
+
+- Feng, Vedral & Marletto show that collapse-based models predicting entanglement have nonlocal features and therefore do not contradict the original **locality-conditioned** witness theorem.
+  - https://doi.org/10.1103/83rl-nygv
+- Di Biagio argues that the locality entering the no-go theorem is information-theoretic rather than simply spatiotemporal; GIE detection is therefore not a theory-independent classifier of whether the gravitational field itself is classical or quantum.
+  - https://doi.org/10.1103/r8ry-sp35
+
+This resolves an apparent contradiction without restoring a universal binary test: the witness remains valid under its locality premise, while the premise itself excludes some classical/hybrid constructions.
+
 ## Current model map
 
 | Model / claim family | Entanglement prediction in reviewed setting | Other discriminating structure | Current interpretation |
@@ -46,6 +55,7 @@ These are not contradictory once the model assumptions are kept explicit.
 | Time-local CP classical–quantum gravity | Model-dependent; some hybrid constructions can entangle | mandatory decoherence/diffusion/back-reaction trade-offs | Test with joint noise + coherence + back-reaction measurements |
 | Non-entangling time-local Galilean non-quantized Newtonian models | By definition non-entangling | quantifiable minimum irreversible noise floor | A sub-threshold noise measurement excludes this model class under the stated assumptions |
 | Diósi–Penrose classical-gravity dynamics | Can entangle below a parameter-dependent scale; asymptotically separable in the analyzed model | separation threshold, time dependence, collapse/decoherence parameter | Entanglement alone does not exclude this model |
+| Locality-conditioned entanglement witness | Entanglement implies a nonclassical mediator when the probes interact only locally through that mediator | information-theoretic locality assumption | Collapse/hybrid models with nonlocal features fall outside the theorem rather than refuting it |
 | Semiclassical/stochastic tidal models of Lin–Mondal | No final probe entanglement in the specified models | tidal-field parity/quantization and stochastic response | Model-specific negative prediction |
 | Aziz–Howl QFT-matter classical-gravity calculation | Claims entanglement via virtual matter propagation | matter-propagation channel and scaling | Active dispute; direct recalculations challenge the claimed entangling effect |
 | Newton-law evolution construction of Marchese et al. | Reproduces GIE in the stated formal setup | interpretation of direct Newtonian evolution versus a physical mediator | Does not by itself settle mediator ontology |
