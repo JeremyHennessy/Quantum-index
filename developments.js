@@ -228,24 +228,43 @@ window.QI_DEVELOPMENTS = (() => {
     },
     {
       id:"classical-gravity-entanglement-2025",
-      title:"Local classical-gravity models shown capable of generating entanglement with QFT matter",
+      title:"Aziz–Howl classical-gravity entanglement claim opens a new dispute",
       date:"2025-10-22",
       year:2025,
-      eventType:"theorem/result",
-      summary:"Aziz and Howl showed that when matter is treated using quantum field theory, local theories with classical gravity can transmit quantum information and generate entanglement through physical local processes.",
+      eventType:"controversy/debate",
+      summary:"Aziz and Howl argued that a local classical gravitational background coupled to quantum-field-theoretic matter can generate an entangling contribution. Subsequent analyses dispute either the entanglement calculation itself or its interpretation as gravity-mediated entanglement, so the claim is not treated here as a settled theorem about classical gravity.",
       relatedTheoryIds:["bmv-gravity-entanglement","postquantum-classical-gravity"],
-      relatedProblemIds:[],
+      relatedProblemIds:["quantum-gravity"],
       relatedFormulaIds:[],
-      relatedEvidenceIds:[],
-      sourceIds:["aziz-howl-gravity-entanglement-2025"],
-      sourceLocations:[{
-        sourceId:"aziz-howl-gravity-entanglement-2025",
-        locator:"Abstract and main discussion of QFT matter; Nature 646, 813–817 (2025)",
-        url:"https://doi.org/10.1038/s41586-025-09595-7"
-      }],
-      significance:"The result narrows what a gravity-mediated entanglement experiment can establish unless assumptions about classical communication and matter are specified.",
-      evidenceStatus:"peer-reviewed theoretical result",
-      reviewedAt:"2026-09-27"
+      relatedEvidenceIds:["ev-gravity-entanglement-boundary-2025"],
+      sourceIds:[
+        "aziz-howl-gravity-entanglement-2025",
+        "marletto-oppenheim-vedral-wilson-2025",
+        "gundhi-infanti-bassi-2026",
+        "vidal-iyer-matter-exchange-2026",
+        "schneider-huggett-linnemann-2026"
+      ],
+      sourceLocations:[
+        {
+          sourceId:"aziz-howl-gravity-entanglement-2025",
+          locator:"Nature 646, 813–817 (2025), central classical-gravity/QFT claim",
+          url:"https://doi.org/10.1038/s41586-025-09595-7"
+        },
+        {
+          sourceId:"marletto-oppenheim-vedral-wilson-2025",
+          locator:"arXiv:2511.07348, direct rebuttal",
+          url:"https://arxiv.org/abs/2511.07348"
+        },
+        {
+          sourceId:"schneider-huggett-linnemann-2026",
+          locator:"Classical and Quantum Gravity (2026), Newton–Cartan argument",
+          url:"https://doi.org/10.1088/1361-6382/ae6f62"
+        }
+      ],
+      significance:"The episode makes the assumptions behind gravity-mediated entanglement inference explicit and motivates model-resolved tests rather than an unqualified classical-versus-quantum label.",
+      evidenceStatus:"peer-reviewed claim with direct published/preprint rebuttals",
+      reviewedAt:"2026-09-29"
+
     },
     {
       id:"desi-lya-fullshape-2026",
@@ -295,6 +314,90 @@ window.QI_DEVELOPMENTS = (() => {
       significance:"An event of interest and new constraint dataset, not a dark-matter discovery; further data and background discrimination are required.",
       evidenceStatus:"collaboration preprint / candidate excess",
       reviewedAt:"2026-09-27"
+    },
+    {
+      id:"dp-classical-gravity-gie-2025",
+      title:"Diósi–Penrose classical-gravity model shown to permit GIE in a defined regime",
+      date:"2025-06-12",
+      year:2025,
+      eventType:"theorem/result",
+      summary:"Trillo and Navascués showed that the Diósi–Penrose model of classical gravity can entangle the mechanical degrees of freedom of two particles for specified separations and parameters, providing a concrete counterexample to an unrestricted entanglement-implies-quantized-gravity inference.",
+      relatedTheoryIds:["diosi-penrose","bmv-gravity-entanglement"],
+      relatedProblemIds:["quantum-gravity","measurement-problem"],
+      relatedFormulaIds:[],
+      relatedEvidenceIds:["ev-gravity-entanglement-boundary-2025"],
+      sourceIds:["trillo-navascues-dp-gie-2025"],
+      sourceLocations:[{
+        sourceId:"trillo-navascues-dp-gie-2025",
+        locator:"Phys. Rev. D 111, L121101 (2025), abstract and main GIE condition",
+        url:"https://doi.org/10.1103/PhysRevD.111.L121101"
+      }],
+      significance:"A model-specific classical-gravity counterexample showing that entanglement alone does not classify every hybrid theory.",
+      evidenceStatus:"peer-reviewed theoretical result",
+      reviewedAt:"2026-09-29"
+    },
+    {
+      id:"minimal-noise-nonquantized-gravity-2026",
+      title:"Minimum-noise theorem broadens low-energy tests beyond direct entanglement",
+      date:"2026-03-27",
+      year:2026,
+      eventType:"theorem/result",
+      summary:"Fabiano, Fujita, Matsumura and Carney classified a broad time-local, Galilean-invariant family of non-quantized Newtonian interactions reproducing Newtonian forces on average and derived a minimum irreversible-noise requirement for members of that class that remain non-entangling.",
+      relatedTheoryIds:["bmv-gravity-entanglement","postquantum-classical-gravity","open-quantum-systems"],
+      relatedProblemIds:["quantum-gravity"],
+      relatedFormulaIds:[],
+      relatedEvidenceIds:["ev-minimal-noise-nonquantized-gravity-2026"],
+      sourceIds:["fabiano-minimal-noise-2026"],
+      sourceLocations:[{
+        sourceId:"fabiano-minimal-noise-2026",
+        locator:"arXiv:2603.26075v2, abstract and general classification",
+        url:"https://arxiv.org/abs/2603.26075"
+      }],
+      significance:"Provides a quantitative low-noise target for a broad but explicitly assumption-bounded non-entangling model class; it is not a theorem about every non-quantized gravity model.",
+      evidenceStatus:"research preprint / theoretical classification",
+      reviewedAt:"2026-09-29"
+    },
+    {
+      id:"nonmarkovian-cq-2026",
+      title:"Non-Markovian dynamics sharpen the boundary of classical–quantum tests",
+      date:"2026-04-08",
+      year:2026,
+      eventType:"new formal connection",
+      summary:"Tomizuka and Takeda derived effective classical–quantum dynamics from decohered fully quantum models and found the reduced dynamics are generically non-Markovian, with the Oppenheim-type Markovian dynamics recovered in a short-memory limit.",
+      relatedTheoryIds:["postquantum-classical-gravity","open-quantum-systems","nonmarkovian-open-systems"],
+      relatedProblemIds:["quantum-gravity"],
+      relatedFormulaIds:["cq-backreaction-decoherence-diffusion"],
+      relatedEvidenceIds:["ev-cq-decoherence-diffusion-2023"],
+      sourceIds:["tomizuka-takeda-nonmarkovian-2026"],
+      sourceLocations:[{
+        sourceId:"tomizuka-takeda-nonmarkovian-2026",
+        locator:"arXiv:2604.06891, abstract and short-memory limit",
+        url:"https://arxiv.org/abs/2604.06891"
+      }],
+      significance:"Clarifies that successful Markovian classical–quantum phenomenology need not uniquely identify a fundamentally classical mediator and that non-Markovian alternatives require separate tests.",
+      evidenceStatus:"research preprint / theoretical result",
+      reviewedAt:"2026-09-29"
+    },
+    {
+      id:"classical-gravity-gie-rebuttal-2026",
+      title:"Peer-reviewed Newton–Cartan analysis rejects classical gravitational mediation of GIE",
+      date:"2026-09-01",
+      year:2026,
+      eventType:"controversy/debate",
+      summary:"Schneider, Huggett and Linnemann argued using a Newton–Cartan analysis that if gravity is classical and acts as the mediator, observed gravitationally induced entanglement would require some other interaction to supply the entangling force. This is one side of an active theoretical dispute rather than a universal empirical verdict.",
+      relatedTheoryIds:["bmv-gravity-entanglement","postquantum-classical-gravity"],
+      relatedProblemIds:["quantum-gravity"],
+      relatedFormulaIds:[],
+      relatedEvidenceIds:["ev-gravity-entanglement-boundary-2025"],
+      sourceIds:["schneider-huggett-linnemann-2026"],
+      sourceLocations:[{
+        sourceId:"schneider-huggett-linnemann-2026",
+        locator:"Classical and Quantum Gravity, published 1 September 2026, abstract/conclusion",
+        url:"https://doi.org/10.1088/1361-6382/ae6f62"
+      }],
+      significance:"Adds a peer-reviewed rebuttal to the 2025 Aziz–Howl claim and reinforces the need to state mediator and model assumptions explicitly.",
+      evidenceStatus:"peer-reviewed theoretical analysis",
+      reviewedAt:"2026-09-29"
     }
   ];
 
