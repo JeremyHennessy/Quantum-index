@@ -50,7 +50,7 @@ test('quantum-gravity Problem exposes model-resolved tabletop discriminators',()
   const qg=problems.find(p=>p.id==='quantum-gravity');
   assert.ok(qg.formulaIds.includes('cq-backreaction-decoherence-diffusion'));
   assert.ok(qg.questionIds.includes('rq-gravity-entanglement-discrimination'));
-  for(const id of ['ev-gravity-entanglement-boundary-2025','ev-cq-decoherence-diffusion-2023','ev-classical-gravity-cross-correlation-2025','ev-minimal-noise-nonquantized-gravity-2026'])assert.ok(qg.evidenceIds.includes(id));
+  for(const id of ['ev-gravity-entanglement-boundary-2025','ev-cq-decoherence-diffusion-2023','ev-classical-gravity-cross-correlation-2025','ev-minimal-noise-nonquantized-gravity-2026','ev-indirect-gme-interferometry-2026','ev-cq-geodesic-deviation-2026'])assert.ok(qg.evidenceIds.includes(id));
   assert.ok(qg.approachGroups.some(g=>g.name==='Low-energy experimental discrimination'));
   assert.match(qg.developmentContext,/model-dependent/i);
 });
