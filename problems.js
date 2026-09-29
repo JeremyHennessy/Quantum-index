@@ -277,7 +277,8 @@ window.QI_PROBLEMS = {
             "semiclassical-gravity",
             "stochastic-gravity",
             "diosi-penrose",
-            "open-quantum-systems"
+            "open-quantum-systems",
+            "configuration-ensemble-cq"
           ]
         }
       ],
