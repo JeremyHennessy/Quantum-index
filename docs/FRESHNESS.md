@@ -6,7 +6,7 @@ This report separates **entity origin dates** from **later scientific developmen
 
 - Newest entity origin year: **2023**
 - Newest reviewed DevelopmentEvent year: **2026**
-- Reviewed DevelopmentEvents: **13**
+- Reviewed DevelopmentEvents: **16**
 - Recent identity candidates still awaiting/deferred review: **3**
 - Entities with no recorded recent literature-review date (before 2024 or missing): **0**
 
@@ -14,15 +14,15 @@ This report separates **entity origin dates** from **later scientific developmen
 
 - **2024:** 4
 - **2025:** 4
-- **2026:** 5
+- **2026:** 8
 
 ## Development events by type
 
-- **controversy/debate:** 2
+- **controversy/debate:** 3
 - **experimental result:** 3
 - **new formal connection:** 2
 - **observational result:** 3
-- **theorem/result:** 3
+- **theorem/result:** 5
 
 ## Categories without a reviewed DevelopmentEvent in the last 3 years
 
