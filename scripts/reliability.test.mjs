@@ -125,7 +125,7 @@ test('permanent links load on a fresh page and malformed or missing IDs are hand
   assert.ok(d.querySelector('#theoryDetail a[href="#/theory/operator-product-expansion"]'));
   await route('#/theory/%E0%A4%A');assert.equal(title(),'Theory not found');
   await route('#/theory/not-in-catalog');assert.equal(title(),'Theory not found');
-  await route('#/not-a-view');assert.equal(active(),'mapView');
+  await route('#/not-a-view');assert.equal(active(),'exploreView');
 });
 
 test('both challenge relation spellings appear in rivals and no DOM runtime errors occurred',async()=>{
