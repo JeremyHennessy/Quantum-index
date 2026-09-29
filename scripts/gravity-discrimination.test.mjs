@@ -45,6 +45,8 @@ test('gravity discrimination layer is model-resolved and source-backed',()=>{
 
   const p=w.QI_PROBLEMS.problems.find(x=>x.id==='quantum-gravity');
   assert.ok(p.questionIds.includes(q.id));
+  assert.ok(p.evidenceIds.includes('ev-indirect-gme-interferometry-2026'));
+  assert.ok(p.evidenceIds.includes('ev-cq-geodesic-deviation-2026'));
   assert.ok(p.formulaIds.includes(tradeoff.id));
   assert.ok(p.approachGroups.some(g=>g.theoryIds.includes('configuration-ensemble-cq')));
 });
