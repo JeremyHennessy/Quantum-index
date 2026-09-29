@@ -243,7 +243,8 @@ window.QI_EVIDENCE = (() => {
         "bmv-gravity-entanglement",
         "postquantum-classical-gravity",
         "diosi-penrose",
-        "stochastic-gravity"
+        "stochastic-gravity",
+        "configuration-ensemble-cq"
       ],
       "relatedProblemIds": [
         "quantum-gravity"
