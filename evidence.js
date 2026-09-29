@@ -317,7 +317,7 @@ window.QI_EVIDENCE = (() => {
       "title": "A Diósi–Penrose classical-gravity model can generate transient probe entanglement",
       "date": "2025-06-12",
       "type": "model-specific theoretical result",
-      "result": "Trillo and Navascués found that the Diósi–Penrose classical-gravity dynamics they analyze can entangle two mechanical probes below a parameter-dependent separation scale, while the same dynamics drives the system toward separability asymptotically. Later work on Markovian hybrid models likewise identifies entangling regimes tied to nonlocal structure.",
+      "result": "Trillo and Navascués found that the Diósi–Penrose classical-gravity dynamics they analyze can entangle two mechanical probes below a parameter-dependent separation scale, while the same dynamics drives the system toward separability asymptotically. Later work on Markovian hybrid models likewise identifies entangling regimes tied to nonlocal structure. Feng, Vedral and Marletto argue that this does not violate the original entanglement-based witness because the collapse-based models themselves violate the witness's locality assumption.",
       "relatedTheoryIds": [
         "diosi-penrose",
         "objective-collapse",
@@ -340,7 +340,8 @@ window.QI_EVIDENCE = (() => {
       ],
       "sourceIds": [
         "trillo-navascues-dp-gie-2025",
-        "angeli-carlesso-hybrid-entanglement-2025"
+        "angeli-carlesso-hybrid-entanglement-2025",
+        "feng-vedral-marletto-collapse-witness-2026"
       ],
       "sourceLocations": [
         {
@@ -352,6 +353,11 @@ window.QI_EVIDENCE = (() => {
           "sourceId": "angeli-carlesso-hybrid-entanglement-2025",
           "locator": "Abstract and analysis of entanglement generation in Markovian hybrid gravity models",
           "url": "https://doi.org/10.1103/jzht-fbwt"
+        },
+        {
+          "sourceId": "feng-vedral-marletto-collapse-witness-2026",
+          "locator": "Phys. Rev. D 113, 104055 (2026), locality analysis of collapse-based entangling models",
+          "url": "https://doi.org/10.1103/83rl-nygv"
         }
       ],
       "reviewedAt": "2026-09-29",
@@ -362,7 +368,7 @@ window.QI_EVIDENCE = (() => {
       "title": "Whether classical gravity can mediate entanglement is model- and interpretation-dependent",
       "date": "2026-09-01",
       "type": "theoretical controversy",
-      "result": "The 2025 Aziz–Howl calculation argues that QFT matter coupled through a classical gravitational background can acquire entanglement through virtual matter propagation. Multiple 2025–2026 analyses dispute that inference or recover no final entanglement for specified classical mediator models, while other classical-hybrid constructions independently predict entangling regimes. The literature therefore does not support a single undifferentiated rule that all classical-gravity models either can or cannot entangle.",
+      "result": "The 2025 Aziz–Howl calculation argues that QFT matter coupled through a classical gravitational background can acquire entanglement through virtual matter propagation. Multiple 2025–2026 analyses dispute that inference or recover no final entanglement for specified classical mediator models, while other classical-hybrid constructions independently predict entangling regimes. Feng, Vedral and Marletto preserve the locality-conditioned witness by identifying nonlocal features in collapse-based entangling models, while Di Biagio argues that the locality premise is information-theoretic rather than simply spatiotemporal and therefore GIE is not a theory-independent classifier. The literature therefore does not support a single undifferentiated rule that all classical-gravity models either can or cannot entangle.",
       "relatedTheoryIds": [
         "bmv-gravity-entanglement",
         "postquantum-classical-gravity",
@@ -389,7 +395,9 @@ window.QI_EVIDENCE = (() => {
         "marchese-newton-gie-2025",
         "lin-mondal-newtonian-gie-2026",
         "gundhi-aziz-howl-2026",
-        "schneider-classical-gie-2026"
+        "schneider-classical-gie-2026",
+        "feng-vedral-marletto-collapse-witness-2026",
+        "di-biagio-gie-witness-2026"
       ],
       "sourceLocations": [
         {
@@ -426,6 +434,16 @@ window.QI_EVIDENCE = (() => {
           "sourceId": "schneider-classical-gie-2026",
           "locator": "Class. Quantum Grav. 43, 177001 (2026), Newton–Cartan mediator analysis",
           "url": "https://doi.org/10.1088/1361-6382/ae6f62"
+        },
+        {
+          "sourceId": "feng-vedral-marletto-collapse-witness-2026",
+          "locator": "Phys. Rev. D 113, 104055 (2026), collapse-model locality analysis",
+          "url": "https://doi.org/10.1103/83rl-nygv"
+        },
+        {
+          "sourceId": "di-biagio-gie-witness-2026",
+          "locator": "Phys. Rev. D accepted 1 September 2026, review of the information-theoretic locality assumption",
+          "url": "https://doi.org/10.1103/r8ry-sp35"
         }
       ],
       "reviewedAt": "2026-09-29",
