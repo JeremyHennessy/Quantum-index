@@ -563,3 +563,24 @@ html{scrollbar-color:#a8c4ce #edf3f6}
 @media(max-width:1200px){.explore-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:760px){.explore-grid{grid-template-columns:1fr 1fr}.explore-columns{grid-template-columns:1fr}.explore-card{min-height:165px}.explore-intro{padding:20px}}
 @media(max-width:480px){.explore-grid{grid-template-columns:1fr}.explore-card{min-height:0}}
+
+
+/* Curated Theory Passport surfaces — 2026-09-29 */
+.passport{background:linear-gradient(135deg,#f6fbfc,#faf8ff);border:1px solid #dce7ec!important;border-radius:16px;padding:16px;margin-top:18px}
+.passport-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.passport-head h4{margin:2px 0 0!important;color:var(--text)!important;font-size:17px!important;text-transform:none!important;letter-spacing:0!important}
+.passport-problems,.passport-links{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.passport-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.passport-grid>div{border:1px solid #dce6ea;border-radius:11px;background:rgba(255,255,255,.8);padding:10px}
+.passport-grid .passport-wide{grid-column:1/-1}
+.passport-grid dt{font-size:9px;text-transform:uppercase;letter-spacing:.05em;color:#6b818c;font-weight:750}
+.passport-grid dd{margin:5px 0 0;font-size:11px;line-height:1.55;color:#425f6d}
+.passport-details{border-top:1px solid #dce6ea;padding-top:10px;margin-top:12px}
+.passport-details summary{cursor:pointer;font-size:11px;font-weight:700;color:#496775}
+.passport-columns{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.passport-columns h5,.passport-developments h5{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:#6b818c;margin:0 0 6px}
+.passport-columns ul{margin:0;padding-left:17px}
+.passport-columns li{font-size:10px;line-height:1.5;color:#526d7a;margin:5px 0}
+.passport-developments{border-top:1px solid #dce6ea;margin-top:12px;padding-top:10px}
+.passport-developments p{font-size:10px;color:#526d7a;margin:5px 0}
+@media(max-width:720px){.passport-grid,.passport-columns{grid-template-columns:1fr}.passport-grid .passport-wide{grid-column:auto}.passport-head{display:block}.passport-head .badge{display:inline-flex;margin-top:8px}}
