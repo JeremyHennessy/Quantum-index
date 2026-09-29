@@ -33,7 +33,7 @@ const awaiting=candidates.candidates
   .map(c=>({id:c.id,title:c.title,disposition:c.disposition,nextAction:c.nextAction}));
 
 const report={
-  reviewedAt:"2026-09-27",
+  reviewedAt:"2026-09-29",
   newestEntityOriginYear:Math.max(...theories.map(t=>Number(t.year)||0)),
   newestDevelopmentYear:Math.max(...events.map(e=>e.year)),
   developmentEvents:events.length,
