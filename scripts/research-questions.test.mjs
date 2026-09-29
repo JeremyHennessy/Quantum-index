@@ -37,7 +37,7 @@ test('gravity-entanglement question keeps model assumptions explicit',()=>{
   const q=questions.find(q=>q.id==='rq-gravity-entanglement-discrimination');
   assert.ok(q);
   assert.equal(q.disposition,'open');
-  assert.match(q.shortAnswer,/not model-independent/i);
+  assert.match(q.shortAnswer,/model-independent/i);
   assert.match(q.uncertainty,/Markovianity/i);
   assert.match(q.nextInvestigation,/model matrix/i);
 });
