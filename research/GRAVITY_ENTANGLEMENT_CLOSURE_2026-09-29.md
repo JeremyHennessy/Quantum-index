@@ -1,9 +1,22 @@
 # Research candidate — minimum closure set for tabletop classical-gravity alternatives
 
-**Status:** original Quantum Index synthesis; **not** a verified world-first theorem  
+**Status:** **REJECTED / SUPERSEDED after continued literature review** — preserved as an audit trail, not a result to merge  
 **Baseline:** `cbe65b1f30216565fd93aea838264a4f9838bc6c`  
 **Reviewed:** 2026-09-29  
 **Production impact:** none; this note is isolated on a research branch
+
+## Continuation review — why R1 is rejected
+
+Further literature review found explicit classical/hybrid models that invalidate the broad hypothesis partition used by the original R1 matrix:
+
+- Hall & Reginatto (2018) give configuration-ensemble counterexamples to the claim that a classical intermediary cannot entangle quantum systems: https://doi.org/10.1088/1751-8121/aaa734
+- Döner & Großardt (2022) construct a classical-spacetime model, inspired by de Broglie–Bohm mechanics, that produces gravitational entanglement: https://doi.org/10.1007/s10701-022-00619-0
+- Trillo & Navascués (2025) show that the Diósi–Penrose model of classical gravity can generate gravitationally induced entanglement in specified regimes: https://doi.org/10.1103/PhysRevD.111.L121101
+- Marchese et al. (2025) show that Newtonian equations of motion can reproduce the entanglement amount in the standard setup under their construction: https://doi.org/10.1103/PhysRevA.111.042202
+
+Therefore the original H1/H2 rows were not exhaustive or mutually clean enough to support a meaningful “minimum closure set” for classical gravity as a whole. The finite set-cover proof was mathematically correct **for its own matrix**, but the matrix was scientifically under-specified. R1 must not be promoted as a physics result.
+
+The replacement research direction is **model-resolved experimental discrimination**: enumerate explicit classical/hybrid model families, their assumptions, and observables that distinguish each from quantum-mediated gravity. The production app update should encode that model dependence rather than a binary quantum-vs-classical verdict.
 
 ## Question
 
