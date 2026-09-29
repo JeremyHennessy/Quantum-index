@@ -398,6 +398,69 @@ window.QI_DEVELOPMENTS = (() => {
       significance:"Adds a peer-reviewed rebuttal to the 2025 Aziz–Howl claim and reinforces the need to state mediator and model assumptions explicitly.",
       evidenceStatus:"peer-reviewed theoretical analysis",
       reviewedAt:"2026-09-29"
+    },
+    {
+      id:"indirect-gme-interferometry-2026",
+      title:"Existing matter-wave interferometry linked conditionally to gravity-mediated entanglement",
+      date:"2026-04-02",
+      year:2026,
+      eventType:"theorem/result",
+      summary:"Plávala proved that experimentally verifying single-particle Schrödinger evolution for a delocalized mass in an external gravitational field implies two-system gravity-mediated entanglement under either of two stated assumptions. The result is an indirect inference, not a direct two-mass entanglement observation.",
+      relatedTheoryIds:["bmv-gravity-entanglement"],
+      relatedProblemIds:["quantum-gravity"],
+      relatedFormulaIds:[],
+      relatedEvidenceIds:["ev-indirect-gme-interferometry-2026"],
+      sourceIds:["plavala-indirect-gme-2026"],
+      sourceLocations:[{
+        sourceId:"plavala-indirect-gme-2026",
+        locator:"Phys. Rev. D 113, 085004 (2026), theorem/conclusions; corrected 11 September 2026",
+        url:"https://doi.org/10.1103/87dc-qt73"
+      }],
+      significance:"Moves part of the experimental question from creating a new two-mass entanglement apparatus to validating the assumptions that connect existing single-particle interferometry to two-system dynamics.",
+      evidenceStatus:"peer-reviewed conditional theoretical inference",
+      reviewedAt:"2026-09-29"
+    },
+    {
+      id:"collapse-witness-locality-2026",
+      title:"Diósi–Penrose entanglement dispute reframed around locality",
+      date:"2026-05-26",
+      year:2026,
+      eventType:"controversy/debate",
+      summary:"Feng, Vedral and Marletto argued that the Diósi–Penrose model's entangling behavior does not violate the local entanglement-witness theorem because the collapse model contains nonlocal features. The result narrows the disagreement to which locality and mediator assumptions an experiment actually tests.",
+      relatedTheoryIds:["diosi-penrose","bmv-gravity-entanglement"],
+      relatedProblemIds:["quantum-gravity","measurement-problem"],
+      relatedFormulaIds:[],
+      relatedEvidenceIds:["ev-gravity-entanglement-boundary-2025"],
+      sourceIds:["feng-vedral-marletto-collapse-2026","trillo-navascues-dp-gie-2025"],
+      sourceLocations:[{
+        sourceId:"feng-vedral-marletto-collapse-2026",
+        locator:"Phys. Rev. D 113, 104055 (2026), abstract and locality analysis",
+        url:"https://doi.org/10.1103/83rl-nygv"
+      }],
+      significance:"Clarifies that a classical label alone is insufficient: locality assumptions determine whether an entangling model is inside or outside the witness theorem.",
+      evidenceStatus:"peer-reviewed theoretical dispute",
+      reviewedAt:"2026-09-29"
+    },
+    {
+      id:"cq-geodesic-deviation-2026",
+      title:"Geodesic-deviation spectra proposed to test Oppenheim-type classical–quantum gravity",
+      date:"2026-07-08",
+      year:2026,
+      eventType:"theorem/result",
+      summary:"Hirotani and Matsumura derived strain spectra for quantum geodesic-deviation fluctuations coupled to classical gravity in the original Oppenheim model and two variants, reporting that the original model can be probed at current gravitational-wave sensitivity in their analysis.",
+      relatedTheoryIds:["postquantum-classical-gravity","stochastic-gravity"],
+      relatedProblemIds:["quantum-gravity"],
+      relatedFormulaIds:[],
+      relatedEvidenceIds:["ev-cq-geodesic-deviation-2026"],
+      sourceIds:["hirotani-matsumura-geodesic-2026"],
+      sourceLocations:[{
+        sourceId:"hirotani-matsumura-geodesic-2026",
+        locator:"Phys. Rev. D 114, 026014 (2026), abstract and strain-spectrum comparison",
+        url:"https://doi.org/10.1103/fx1h-97sx"
+      }],
+      significance:"Adds a gravitational-wave observable to the classical–quantum model-discrimination program, separate from tabletop entanglement witnesses.",
+      evidenceStatus:"peer-reviewed theoretical prediction",
+      reviewedAt:"2026-09-29"
     }
   ];
 
