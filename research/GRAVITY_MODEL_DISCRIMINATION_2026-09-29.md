@@ -44,6 +44,7 @@ These are not contradictory once the model assumptions are kept explicit.
 |---|---|---|---|
 | BMV / Marletto–Vedral local-mediator argument | Quantized mediator can entangle probes under the stated information/locality assumptions | mediator noncommutativity / information capacity | Foundational witness framework, assumption-dependent |
 | Time-local CP classical–quantum gravity | Model-dependent; some hybrid constructions can entangle | mandatory decoherence/diffusion/back-reaction trade-offs | Test with joint noise + coherence + back-reaction measurements |
+| Non-entangling time-local Galilean non-quantized Newtonian models | By definition non-entangling | quantifiable minimum irreversible noise floor | A sub-threshold noise measurement excludes this model class under the stated assumptions |
 | Diósi–Penrose classical-gravity dynamics | Can entangle below a parameter-dependent scale; asymptotically separable in the analyzed model | separation threshold, time dependence, collapse/decoherence parameter | Entanglement alone does not exclude this model |
 | Semiclassical/stochastic tidal models of Lin–Mondal | No final probe entanglement in the specified models | tidal-field parity/quantization and stochastic response | Model-specific negative prediction |
 | Aziz–Howl QFT-matter classical-gravity calculation | Claims entanglement via virtual matter propagation | matter-propagation channel and scaling | Active dispute; direct recalculations challenge the claimed entangling effect |
@@ -67,6 +68,11 @@ The broader Nature Communications analysis derives general trade-offs among deco
 - https://doi.org/10.1038/s41467-023-43348-2
 
 This is useful because a model cannot make the quantum system arbitrarily coherent and the classical gravitational sector arbitrarily quiet while maintaining the same time-local CP coupling.
+
+A 2026 preprint by Fabiano, Fujita, Matsumura and Carney extends the experimental logic to a broader class of **non-entangling** non-quantized Newtonian models satisfying Galilean invariance, time-locality and the correct average Newtonian interaction, deriving a minimum noise floor for that class:
+- https://arxiv.org/abs/2603.26075
+
+This does not cover non-quantized models that are themselves entangling, and it does not remove the non-Markovian boundary.
 
 ### Boundary
 
