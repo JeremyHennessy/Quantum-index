@@ -532,3 +532,34 @@ html{scrollbar-color:#a8c4ce #edf3f6}
 .compact-sources{margin-top:12px}
 .compact-sources .source-link{padding:8px}
 @media(max-width:700px){.evidence-grid{grid-template-columns:1fr;padding:14px}.evidence-columns{grid-template-columns:1fr}}
+
+
+/* Researcher-oriented Explore landing view — 2026-09-29 */
+.explore-intro{padding:26px}
+.explore-intro h3{font-size:clamp(24px,3.2vw,38px);letter-spacing:-.035em;margin:5px 0 8px;color:var(--text)}
+.explore-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:20px}
+.explore-card{
+  display:flex;flex-direction:column;min-height:190px;text-decoration:none;color:var(--text);
+  border:1px solid #d9e4e9;border-radius:16px;padding:16px;background:#fff;
+  box-shadow:0 5px 18px rgba(45,76,92,.05);
+  transition:border-color .16s ease,box-shadow .16s ease,transform .16s ease,background .16s ease
+}
+.explore-card:hover{border-color:#98cbd3;background:#fbfeff;box-shadow:0 11px 28px rgba(40,91,109,.09);transform:translateY(-2px)}
+.explore-card h4{font-size:15px;line-height:1.25;margin:8px 0;color:var(--text)}
+.explore-card p{font-size:10.5px;line-height:1.55;color:#607684;margin:0 0 14px}
+.explore-meta{font-size:9px;font-weight:750;text-transform:uppercase;letter-spacing:.06em;color:#0a8498}
+.explore-go{margin-top:auto;font-size:10px;font-weight:700;color:#087d91}
+.explore-columns{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.explore-section{padding:20px}
+.explore-recent{display:grid;gap:8px;margin-top:12px}
+.explore-mini{
+  display:block;text-decoration:none;color:var(--text);border-top:1px solid #e1e9ed;padding:11px 2px 4px
+}
+.explore-mini:first-child{border-top:0}
+.explore-mini span{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.05em;color:#0a8498;font-weight:700}
+.explore-mini strong{display:block;font-size:12px;line-height:1.4;margin:4px 0}
+.explore-mini p{font-size:10px;line-height:1.5;color:#687f8b;margin:0}
+.explore-mini:hover strong{color:#087d91}
+@media(max-width:1200px){.explore-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.explore-grid{grid-template-columns:1fr 1fr}.explore-columns{grid-template-columns:1fr}.explore-card{min-height:165px}.explore-intro{padding:20px}}
+@media(max-width:480px){.explore-grid{grid-template-columns:1fr}.explore-card{min-height:0}}
