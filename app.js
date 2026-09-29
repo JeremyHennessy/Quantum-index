@@ -8,6 +8,8 @@
   const questionDispositions = window.QI_QUESTIONS?.dispositions || [];
   const problems = window.QI_PROBLEMS?.problems || [];
   const evidenceRecords = window.QI_EVIDENCE?.records || [];
+  const passports = window.QI_PASSPORTS?.records || [];
+  const passportByTheory = new Map(passports.map(passport=>[passport.theoryId,passport]));
   const problemById = new Map(problems.map(problem=>[problem.id,problem]));
   let selectedProblemId = problems[0]?.id || "";
   const formulaAuditByTheory = new Map(formulaAudit.map(x => [x.theoryId,x]));
@@ -87,6 +89,7 @@
       [questions.length,"structured research questions"],
       [problems.length,"scientific problems"],
       [evidenceRecords.length,"evidence & constraint records"],
+      [passports.length,"curated Theory Passports"],
       [`${sourced}/${theories.length}`,"entries with review/source provenance"]
     ].map(([n,l])=>`<div class="stat"><strong>${n}</strong><span>${l}</span></div>`).join("");
   }
@@ -147,6 +150,41 @@
     navigate(switchLineage ? `#/lineage?theory=${encodeURIComponent(id)}` : theoryLink(id,from));
   }
 
+  function renderTheoryPassport(id){
+    const passport=passportByTheory.get(id);
+    if(!passport)return "";
+    const formulaRecords=passport.formulaIds.map(fid=>formulas.find(f=>f.id===fid)).filter(Boolean);
+    const evidence=passport.evidenceIds.map(eid=>evidenceRecords.find(item=>item.id===eid)).filter(Boolean);
+    const qs=passport.questionIds.map(qid=>questions.find(item=>item.id===qid)).filter(Boolean);
+    const devs=passport.developmentIds.map(did=>developments.find(item=>item.id===did)).filter(Boolean);
+    return `<section class="detail-section passport">
+      <div class="passport-head"><div><p class="eyebrow">THEORY PASSPORT</p><h4>Research orientation</h4></div><span class="badge">reviewed ${esc(window.QI_PASSPORTS.reviewedAt)}</span></div>
+      <div class="passport-problems">${passport.problemIds.map(pid=>{const p=problemById.get(pid);return p?`<a class="problem-chip" href="${problemHash(pid)}">${esc(p.name)}</a>`:"";}).join("")}</div>
+      <dl class="passport-grid">
+        <div><dt>Entity type</dt><dd>${esc(passport.entityType)}</dd></div>
+        <div><dt>Scientific status</dt><dd>${esc(passport.scientificStatus)}</dd></div>
+        <div class="passport-wide"><dt>Core idea</dt><dd>${esc(passport.coreIdea)}</dd></div>
+        <div class="passport-wide"><dt>Fundamental objects / degrees of freedom</dt><dd>${esc(passport.degreesOfFreedom)}</dd></div>
+        <div class="passport-wide"><dt>Mathematical structure</dt><dd>${esc(passport.mathematicalStructure)}</dd></div>
+        <div><dt>Regime / limits</dt><dd>${esc(passport.regime)}</dd></div>
+        <div><dt>Evidence / constraints</dt><dd>${esc(passport.evidenceSummary)}</dd></div>
+      </dl>
+      <details class="passport-details"><summary>Assumptions, consequences and limitations</summary>
+        <div class="passport-columns">
+          <div><h5>Assumptions</h5><ul>${passport.assumptions.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
+          <div><h5>Predictions / consequences</h5><ul>${passport.predictionsConsequences.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
+          <div><h5>Known limitations</h5><ul>${passport.limitations.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
+        </div>
+      </details>
+      <div class="passport-links">
+        ${formulaRecords.length?`<a class="ghost link-button" href="${formulaLink(id)}">${formulaRecords.length} linked Passport formula${formulaRecords.length===1?"":"s"}</a>`:""}
+        ${evidence.map(item=>`<a class="ghost link-button" href="#/evidence?search=${encodeURIComponent(item.title)}">${esc(item.title)}</a>`).join("")}
+        ${qs.map(item=>`<a class="ghost link-button" href="#/questions?search=${encodeURIComponent(item.title)}">${esc(item.dispositionLabel)}</a>`).join("")}
+      </div>
+      ${devs.length?`<div class="passport-developments"><h5>Recent developments</h5>${devs.map(item=>`<p><strong>${esc(item.date)}</strong> · ${esc(item.title)}</p>`).join("")}</div>`:""}
+    </section>`;
+  }
+
   function renderDetail(){
     renderDetailPanel($("#detailPanel"));
     renderDetailPanel($("#theoryDetail"));
@@ -186,7 +224,7 @@
         </div>`;
       })()}
       <div class="detail-section"><h4>Core idea</h4><p>${esc(t.core)}</p></div>
-      ${panel.id==="theoryDetail" ? renderLearningNavigation(t.id)+renderResearchProfile(t.id)+researchControls(t.id) : ""}
+      ${panel.id==="theoryDetail" ? renderTheoryPassport(t.id)+renderLearningNavigation(t.id)+renderResearchProfile(t.id)+researchControls(t.id) : ""}
       <div class="detail-section"><h4>Concepts</h4><div class="tag-list">${t.tags.map(x=>`<span class="tag">${esc(x)}</span>`).join("")}</div></div>
       <div class="detail-section"><h4>Sources · ${linkedSources.length}</h4>
         ${linkedSources.length ? `<div class="source-list">${linkedSources.map(s=>`<a class="source-link" href="${esc(s.url)}" target="_blank" rel="noreferrer"><strong>${esc(s.title)}</strong><span>${esc(s.authors)} · ${esc(s.year)} · ${esc(s.type)}</span></a>`).join("")}</div>` : '<p>Dedicated source pass not completed for this entry yet.</p>'}
