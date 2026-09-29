@@ -6,7 +6,7 @@
   <meta name="description" content="Quantum Index — a source-aware map of fundamental physics, equations, evidence and open questions." />
   <title>Quantum Index</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="./styles.css?v=d4fcd00b4279040f" />
+  <link rel="stylesheet" href="./styles.css?v=3fe9318cd41693ff" />
 </head>
 <body>
   <header class="topbar">
@@ -62,7 +62,8 @@
     </section>
 
     <nav class="tabs" aria-label="Views">
-      <button class="tab active" data-view="map">Network map</button>
+      <button class="tab active" data-view="explore">Explore</button>
+      <button class="tab" data-view="map">Network map</button>
       <button class="tab" data-view="timeline">Timeline</button>
       <button class="tab" data-view="lineage">Thought trees</button>
       <button class="tab" data-view="catalog">Catalog</button>
@@ -76,9 +77,28 @@
       <button class="tab" data-view="coverage">Coverage</button>
     </nav>
 
+    <section id="exploreView" class="view active" aria-label="Explore Quantum Index">
+      <div class="explore-intro card">
+        <p class="eyebrow">START WITH YOUR QUESTION</p>
+        <h3>Choose how you want to explore fundamental physics</h3>
+        <p class="muted">Move from scientific problems to competing approaches, equations, evidence, recent developments, research questions and primary literature.</p>
+        <div id="exploreCards" class="explore-grid"></div>
+      </div>
+      <div class="explore-columns">
+        <section class="card explore-section">
+          <div class="view-head"><div><p class="eyebrow">WHAT'S NEW</p><h3>Recent reviewed developments</h3></div><a class="ghost link-button" href="#/timeline?layer=developments">Full development timeline</a></div>
+          <div id="exploreDevelopments" class="explore-recent"></div>
+        </section>
+        <section class="card explore-section">
+          <div class="view-head"><div><p class="eyebrow">OPEN RESEARCH</p><h3>Questions still requiring work</h3></div><a class="ghost link-button" href="#/questions?disposition=open">All open questions</a></div>
+          <div id="exploreQuestions" class="explore-recent"></div>
+        </section>
+      </div>
+    </section>
+
     <section id="evidenceControls" class="card evidence-controls"><label for="relationEvidence">Relationship evidence</label><select id="relationEvidence"><option value="">All relationships</option><option value="sourced">Source-backed relationships</option><option value="documented historical influence">Documented historical influence</option><option value="formal mathematical relation">Formal mathematical relations</option><option value="editorial relation">Editorial associations</option></select><p class="muted">Upstream and downstream show typed connections, not necessarily historical causation. The filter also applies to theory connections and thought trees.</p></section>
     <section id="coverageView" class="view"><div id="coverageContent" class="card comparison-panel"></div></section>
-    <section id="mapView" class="view active">
+    <section id="mapView" class="view">
       <div class="map-layout">
         <div class="card graph-card">
           <div class="view-head">
@@ -299,6 +319,6 @@
   <script src="./problems.js?v=a2e9ea2d830f1583"></script>
   <script src="./profiles.js?v=7ead242ba1709896"></script>
   <script src="./workspace.js?v=de553a16db91ad46"></script>
-  <script src="./app.js?v=99af2645af3f2327"></script>
+  <script src="./app.js?v=d5a618455c5cba9a"></script>
 </body>
 </html>
