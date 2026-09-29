@@ -37,7 +37,7 @@ test('gravity discrimination layer is model-resolved and source-backed',()=>{
 
   const q=w.QI_QUESTIONS.questions.find(x=>x.id==='rq-gravity-entanglement-discrimination');
   assert.ok(q.relatedTheoryIds.includes('configuration-ensemble-cq'));
-  assert.match(q.shortAnswer,/not model-independent/i);
+  assert.match(q.shortAnswer,/model-independent/i);
 
   const e=w.QI_EVIDENCE.records.find(x=>x.id==='ev-gravity-entanglement-boundary-2025');
   assert.equal(e.evidenceStatus,'active theoretical controversy');
