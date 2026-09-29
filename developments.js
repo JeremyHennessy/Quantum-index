@@ -274,12 +274,12 @@ window.QI_DEVELOPMENTS = (() => {
       date:"2026-09-01",
       year:2026,
       eventType:"controversy/debate",
-      summary:"By September 2026 the literature contained mutually incompatible conclusions for explicitly different classical or hybrid gravity constructions: some Markovian/DP models admit entangling regimes, while semiclassical, stochastic-tidal and Newton–Cartan mediator analyses recover no gravity-mediated final entanglement in their stated settings; direct recalculations also challenge the Aziz–Howl mechanism.",
+      summary:"By September 2026 the literature contained different predictions for explicitly different classical or hybrid gravity constructions: some Markovian/DP models admit entangling regimes, while semiclassical, stochastic-tidal and Newton–Cartan mediator analyses recover no gravity-mediated final entanglement in their stated settings; direct recalculations challenge the Aziz–Howl mechanism. Further analyses clarify that collapse-model entanglement can evade locality-conditioned witnesses by violating their locality premise, while GIE is not a theory-independent classifier when that premise is interpreted information-theoretically.",
       relatedTheoryIds:["bmv-gravity-entanglement","postquantum-classical-gravity","diosi-penrose","stochastic-gravity","semiclassical-gravity"],
       relatedProblemIds:["quantum-gravity"],
       relatedFormulaIds:["cq-decoherence-diffusion-tradeoff"],
       relatedEvidenceIds:[],
-      sourceIds:["angeli-carlesso-hybrid-entanglement-2025","lin-mondal-newtonian-gie-2026","gundhi-aziz-howl-2026","schneider-classical-gie-2026"],
+      sourceIds:["angeli-carlesso-hybrid-entanglement-2025","lin-mondal-newtonian-gie-2026","gundhi-aziz-howl-2026","schneider-classical-gie-2026","feng-vedral-marletto-collapse-witness-2026","di-biagio-gie-witness-2026"],
       sourceLocations:[
         {
           sourceId:"angeli-carlesso-hybrid-entanglement-2025",
@@ -300,6 +300,16 @@ window.QI_DEVELOPMENTS = (() => {
           sourceId:"schneider-classical-gie-2026",
           locator:"Class. Quantum Grav. 43, 177001 (2026); Newton–Cartan mediator analysis",
           url:"https://doi.org/10.1088/1361-6382/ae6f62"
+        },
+        {
+          sourceId:"feng-vedral-marletto-collapse-witness-2026",
+          locator:"Phys. Rev. D 113, 104055 (2026); collapse-model locality analysis",
+          url:"https://doi.org/10.1103/83rl-nygv"
+        },
+        {
+          sourceId:"di-biagio-gie-witness-2026",
+          locator:"Phys. Rev. D accepted 1 September 2026; theory-independence/locality analysis",
+          url:"https://doi.org/10.1103/r8ry-sp35"
         }
       ],
       significance:"The discriminating question is no longer simply whether entanglement is present, but which model-specific combination of entanglement, noise, decoherence, back-reaction, locality and temporal behavior is observed.",
