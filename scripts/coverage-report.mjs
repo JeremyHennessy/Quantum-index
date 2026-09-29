@@ -3,7 +3,7 @@ import vm from 'node:vm';
 
 const sandbox = {window:{}};
 vm.createContext(sandbox);
-for (const file of ['theories.js','developments.js','formulas.js','formula-audit.js','profiles.js']) vm.runInContext(fs.readFileSync(file,'utf8'),sandbox);
+for (const file of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js']) vm.runInContext(fs.readFileSync(file,'utf8'),sandbox);
 const {theories,relations,trees,sources}=sandbox.window.QI_DATA;
 const {formulas}=sandbox.window.QI_FORMULAS;
 const {entries}=sandbox.window.QI_FORMULA_AUDIT;

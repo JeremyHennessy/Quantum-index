@@ -5,7 +5,7 @@ import vm from 'node:vm';
 
 const sandbox={window:{}};
 vm.createContext(sandbox);
-for(const file of ['theories.js','formulas.js','developments.js','questions.js','problems.js'])vm.runInContext(fs.readFileSync(file,'utf8'),sandbox);
+for(const file of ['theories.js','formulas.js','developments.js','questions.js','evidence.js','problems.js'])vm.runInContext(fs.readFileSync(file,'utf8'),sandbox);
 
 const problems=sandbox.window.QI_PROBLEMS.problems;
 const questions=sandbox.window.QI_QUESTIONS.questions;
@@ -14,6 +14,7 @@ const formulas=new Set(sandbox.window.QI_FORMULAS.formulas.map(x=>x.id));
 const developments=new Set(sandbox.window.QI_DEVELOPMENTS.events.map(x=>x.id));
 const sources=new Set(sandbox.window.QI_DATA.sources.map(x=>x.id));
 const questionIds=new Set(questions.map(x=>x.id));
+const evidenceIds=new Set(sandbox.window.QI_EVIDENCE.records.map(x=>x.id));
 
 test('five pilot Problems resolve all linked records',()=>{
   assert.deepEqual(Array.from(problems,p=>p.id),['black-hole-information','measurement-problem','quantum-gravity','quantum-thermalization','dark-matter']);
@@ -27,6 +28,7 @@ test('five pilot Problems resolve all linked records',()=>{
     for(const id of p.formulaIds)assert.ok(formulas.has(id),id);
     for(const id of p.questionIds)assert.ok(questionIds.has(id),id);
     for(const id of p.developmentIds)assert.ok(developments.has(id),id);
+    for(const id of p.evidenceIds||[])assert.ok(evidenceIds.has(id),id);
     for(const id of p.sourceIds)assert.ok(sources.has(id),id);
   }
 });
@@ -43,4 +45,17 @@ test('dark-matter development context preserves direct-vs-background evidence di
   const dm=problems.find(p=>p.id==='dark-matter');
   assert.match(dm.developmentContext,/DESI.*not direct detections of dark matter/i);
   assert.match(dm.developmentContext,/2\.6σ global candidate signal/i);
+});
+
+
+test('quantum-gravity Problem exposes the gravity-entanglement discrimination layer',()=>{
+  const qg=problems.find(p=>p.id==='quantum-gravity');
+  assert.ok(qg.formulaIds.includes('cq-decoherence-diffusion-tradeoff'));
+  assert.ok(qg.questionIds.includes('rq-gravity-entanglement-discrimination'));
+  assert.ok(qg.evidenceIds.includes('ev-cq-decoherence-diffusion-2023'));
+  assert.ok(qg.evidenceIds.includes('ev-minimal-noise-nonquantized-2026'));
+  assert.ok(qg.evidenceIds.includes('ev-dp-gie-2025'));
+  assert.ok(qg.evidenceIds.includes('ev-gravity-entanglement-boundary-2025'));
+  assert.ok(qg.approachGroups.some(g=>g.name==='Tabletop gravity and model discrimination'));
+  assert.match(qg.currentStatus,/assumption-free binary classifier/i);
 });

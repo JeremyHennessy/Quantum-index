@@ -2674,6 +2674,55 @@ window.QI_FORMULAS = {
       ]
     },
     {
+      "id": "cq-decoherence-diffusion-tradeoff",
+      "name": "Classical–quantum decoherence–diffusion trade-off",
+      "category": "Quantum gravity & cosmology",
+      "latex": "4D_2\succeq D_0^{-1}",
+      "plain": "4 D_2 >= D_0^{-1} (positive-semidefinite matrix ordering)",
+      "description": "A canonical complete-positivity constraint for the continuous time-local classical–quantum path-integral normalization used by Layton et al.: reducing quantum decoherence requires compensating classical diffusion. More general back-reaction trade-offs use D_1, D_0 and D_2 matrices.",
+      "theoryIds": [
+        "postquantum-classical-gravity",
+        "open-quantum-systems"
+      ],
+      "sourceIds": [
+        "layton-weak-field-cq-2023",
+        "oppenheim-decoherence-diffusion-2023"
+      ],
+      "tags": [
+        "classical-quantum dynamics",
+        "decoherence",
+        "diffusion",
+        "complete positivity",
+        "gravity tests"
+      ],
+      "formulaType": "canonical",
+      "assumptions": [
+        "Continuous time-local/Markovian classical–quantum dynamics in the stated normalization",
+        "Completely positive probability-preserving evolution",
+        "D_0 and D_2 are positive-semidefinite decoherence and classical-diffusion kernels; inverse denotes the appropriate generalized inverse when required"
+      ],
+      "variables": [
+        "D_0: quantum decoherence kernel/coefficient",
+        "D_2: classical phase-space diffusion kernel/coefficient"
+      ],
+      "regime": "Time-local classical–quantum dynamics and the weak-field classical-gravity applications derived from them; not a universal constraint on arbitrary non-Markovian effective dynamics.",
+      "units": "Kernel dimensions depend on the classical coordinates and Lindblad normalization; the inequality is a matrix/kernel ordering.",
+      "theoryRelationship": "complete-positivity consistency constraint and experimental discriminator",
+      "metadataReview": "explicit",
+      "sourceLocations": [
+        {
+          "sourceId": "layton-weak-field-cq-2023",
+          "locator": "Eq. (4.12), decoherence–diffusion trade-off",
+          "url": "https://doi.org/10.1007/JHEP08(2023)163"
+        },
+        {
+          "sourceId": "oppenheim-decoherence-diffusion-2023",
+          "locator": "Main trade-off result and Methods, general decoherence/diffusion/back-reaction positivity conditions",
+          "url": "https://doi.org/10.1038/s41467-023-43348-2"
+        }
+      ]
+    },
+    {
       "id": "lqg-area",
       "name": "LQG area spectrum",
       "category": "Quantum gravity & cosmology",

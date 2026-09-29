@@ -7,6 +7,8 @@ vm.createContext(sandbox);
 vm.runInContext(code, sandbox);
 const developmentCode = fs.readFileSync("developments.js","utf8");
 vm.runInContext(developmentCode, sandbox);
+const evidenceCode = fs.readFileSync("evidence.js","utf8");
+vm.runInContext(evidenceCode, sandbox);
 const data = sandbox.window.QI_DATA;
 const developmentData = sandbox.window.QI_DEVELOPMENTS;
 

@@ -29,7 +29,7 @@ window.QI_EVIDENCE = (() => {
   for(const source of extraSources)if(!existing.has(source.id))window.QI_DATA.sources.push(source);
   return {
   "version": "v1",
-  "reviewedAt": "2026-09-28",
+  "reviewedAt": "2026-09-29",
   "scope": "Curated empirical and theoretical evidence/constraint records. Records state what a result constrains and what it does not establish.",
   "records": [
     {
@@ -234,39 +234,220 @@ window.QI_EVIDENCE = (() => {
       "evidenceStatus": "2.6σ global candidate excess"
     },
     {
-      "id": "ev-gravity-entanglement-boundary-2025",
-      "title": "Classical-gravity models can generate matter entanglement",
-      "date": "2025-10-22",
+      "id": "ev-minimal-noise-nonquantized-2026",
+      "title": "Non-entangling non-quantized Newtonian gravity requires a minimum noise floor",
+      "date": "2026-03-30",
       "type": "theoretical constraint",
-      "result": "A broader class of local classical-gravity models coupled to quantum field theory was shown capable of generating entanglement, narrowing the claim that observing gravity-mediated entanglement would by itself constitute model-independent proof that gravity is quantum.",
+      "result": "Fabiano, Fujita, Matsumura and Carney classify time-local, Galilean-invariant non-quantized gravity models that reproduce the Newtonian interaction on average and show that any model in this class that remains non-entangling must inject a quantifiable minimum amount of irreversible noise. Measuring gravity below the corresponding noise threshold would therefore exclude the non-entangling portion of that model class.",
       "relatedTheoryIds": [
         "bmv-gravity-entanglement",
-        "postquantum-classical-gravity"
+        "postquantum-classical-gravity",
+        "open-quantum-systems"
       ],
       "relatedProblemIds": [
         "quantum-gravity"
       ],
       "relatedClaimIds": [],
       "constrains": [
-        "Interpretations of gravity-mediated entanglement as a model-independent witness of quantized gravity."
+        "Non-entangling, time-local, Galilean-invariant non-quantized models that reproduce Newtonian gravity on average.",
+        "Attempts to make such a non-entangling gravitational interaction arbitrarily reversible or noiseless."
       ],
       "doesNotEstablish": [
-        "That gravity is classical.",
-        "That every proposed gravity-entanglement experiment is uninformative.",
-        "That a specific postquantum classical-gravity model describes nature."
+        "That every non-quantized gravity model is non-entangling.",
+        "A universal bound for arbitrary non-Markovian or relativistic alternatives outside the paper's assumptions.",
+        "That detecting noise would uniquely imply fundamental classical gravity."
       ],
       "sourceIds": [
-        "aziz-howl-gravity-entanglement-2025"
+        "fabiano-minimal-noise-2026"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "fabiano-minimal-noise-2026",
+          "locator": "arXiv:2603.26075v2, abstract and general classification/noise-threshold result",
+          "url": "https://arxiv.org/abs/2603.26075"
+        }
+      ],
+      "reviewedAt": "2026-09-29",
+      "evidenceStatus": "preprint general non-entangling noise bound"
+    },
+    {
+      "id": "ev-cq-decoherence-diffusion-2023",
+      "title": "Time-local classical–quantum dynamics require a decoherence–diffusion trade-off",
+      "date": "2023-12-04",
+      "type": "theoretical constraint",
+      "result": "For probability-preserving time-local classical–quantum dynamics, complete positivity imposes a trade-off between quantum decoherence, diffusion of the classical phase-space variables and the strength of back-reaction. In the gravity application this makes simultaneous long matter coherence and arbitrarily quiet classical spacetime incompatible within the stated Markovian framework.",
+      "relatedTheoryIds": [
+        "postquantum-classical-gravity",
+        "open-quantum-systems"
+      ],
+      "relatedProblemIds": [
+        "quantum-gravity"
+      ],
+      "relatedClaimIds": [],
+      "constrains": [
+        "Time-local/Markovian completely-positive classical–quantum gravity models with nontrivial back-reaction.",
+        "Attempts to suppress both gravitationally induced decoherence and classical metric/force diffusion while retaining the stated coupling."
+      ],
+      "doesNotEstablish": [
+        "That gravity is fundamentally classical.",
+        "A universal bound for arbitrary non-Markovian effective classical–quantum descriptions.",
+        "That observing diffusion would uniquely identify a classical theory of gravity."
+      ],
+      "sourceIds": [
+        "oppenheim-decoherence-diffusion-2023",
+        "layton-weak-field-cq-2023"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "oppenheim-decoherence-diffusion-2023",
+          "locator": "Main decoherence–diffusion/back-reaction trade-off and gravity application",
+          "url": "https://doi.org/10.1038/s41467-023-43348-2"
+        },
+        {
+          "sourceId": "layton-weak-field-cq-2023",
+          "locator": "Weak-field Newtonian CQ dynamics; Eq. (4.12) in the path-integral normalization",
+          "url": "https://doi.org/10.1007/JHEP08(2023)163"
+        }
+      ],
+      "reviewedAt": "2026-09-29",
+      "evidenceStatus": "theoretical Markovian consistency constraint"
+    },
+    {
+      "id": "ev-dp-gie-2025",
+      "title": "A Diósi–Penrose classical-gravity model can generate transient probe entanglement",
+      "date": "2025-06-12",
+      "type": "model-specific theoretical result",
+      "result": "Trillo and Navascués found that the Diósi–Penrose classical-gravity dynamics they analyze can entangle two mechanical probes below a parameter-dependent separation scale, while the same dynamics drives the system toward separability asymptotically. Later work on Markovian hybrid models likewise identifies entangling regimes tied to nonlocal structure. Feng, Vedral and Marletto argue that this does not violate the original entanglement-based witness because the collapse-based models themselves violate the witness's locality assumption.",
+      "relatedTheoryIds": [
+        "diosi-penrose",
+        "objective-collapse",
+        "bmv-gravity-entanglement",
+        "postquantum-classical-gravity"
+      ],
+      "relatedProblemIds": [
+        "quantum-gravity",
+        "measurement-problem"
+      ],
+      "relatedClaimIds": [],
+      "constrains": [
+        "Blanket claims that every classical or hybrid gravity model is incapable of generating probe entanglement.",
+        "The use of a positive gravity-mediated-entanglement signal as a model-independent classifier without testing the dynamics and model parameters."
+      ],
+      "doesNotEstablish": [
+        "That the Diósi–Penrose model describes nature.",
+        "That classical Einstein gravity mediates entanglement.",
+        "That every stochastic or hybrid classical-gravity model can entangle."
+      ],
+      "sourceIds": [
+        "trillo-navascues-dp-gie-2025",
+        "angeli-carlesso-hybrid-entanglement-2025",
+        "feng-vedral-marletto-collapse-witness-2026"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "trillo-navascues-dp-gie-2025",
+          "locator": "Abstract and model-specific GIE threshold/dynamics",
+          "url": "https://doi.org/10.1103/PhysRevD.111.L121101"
+        },
+        {
+          "sourceId": "angeli-carlesso-hybrid-entanglement-2025",
+          "locator": "Abstract and analysis of entanglement generation in Markovian hybrid gravity models",
+          "url": "https://doi.org/10.1103/jzht-fbwt"
+        },
+        {
+          "sourceId": "feng-vedral-marletto-collapse-witness-2026",
+          "locator": "Phys. Rev. D 113, 104055 (2026), locality analysis of collapse-based entangling models",
+          "url": "https://doi.org/10.1103/83rl-nygv"
+        }
+      ],
+      "reviewedAt": "2026-09-29",
+      "evidenceStatus": "model-specific entangling prediction"
+    },
+    {
+      "id": "ev-gravity-entanglement-boundary-2025",
+      "title": "Whether classical gravity can mediate entanglement is model- and interpretation-dependent",
+      "date": "2026-09-01",
+      "type": "theoretical controversy",
+      "result": "The 2025 Aziz–Howl calculation argues that QFT matter coupled through a classical gravitational background can acquire entanglement through virtual matter propagation. Multiple 2025–2026 analyses dispute that inference or recover no final entanglement for specified classical mediator models, while other classical-hybrid constructions independently predict entangling regimes. Feng, Vedral and Marletto preserve the locality-conditioned witness by identifying nonlocal features in collapse-based entangling models, while Di Biagio argues that the locality premise is information-theoretic rather than simply spatiotemporal and therefore GIE is not a theory-independent classifier. The literature therefore does not support a single undifferentiated rule that all classical-gravity models either can or cannot entangle.",
+      "relatedTheoryIds": [
+        "bmv-gravity-entanglement",
+        "postquantum-classical-gravity",
+        "stochastic-gravity",
+        "diosi-penrose"
+      ],
+      "relatedProblemIds": [
+        "quantum-gravity"
+      ],
+      "relatedClaimIds": [],
+      "constrains": [
+        "Model-independent interpretations of a gravity-mediated entanglement signal.",
+        "Statements that treat 'classical gravity' as one dynamical hypothesis without specifying locality, Markovianity, mediator degrees of freedom and matter description."
+      ],
+      "doesNotEstablish": [
+        "That the Aziz–Howl mechanism is experimentally realized.",
+        "That a positive entanglement signal cannot provide evidence about gravity when competing channels and explicit classical alternatives are controlled.",
+        "That every classical-hybrid alternative survives current experimental constraints."
+      ],
+      "sourceIds": [
+        "aziz-howl-gravity-entanglement-2025",
+        "trillo-navascues-dp-gie-2025",
+        "angeli-carlesso-hybrid-entanglement-2025",
+        "marchese-newton-gie-2025",
+        "lin-mondal-newtonian-gie-2026",
+        "gundhi-aziz-howl-2026",
+        "schneider-classical-gie-2026",
+        "feng-vedral-marletto-collapse-witness-2026",
+        "di-biagio-gie-witness-2026"
       ],
       "sourceLocations": [
         {
           "sourceId": "aziz-howl-gravity-entanglement-2025",
-          "locator": "Nature (2025), main theorem/result summarized by the publication",
+          "locator": "Nature 646, 813–817 (2025), QFT-matter classical-gravity entanglement claim",
           "url": "https://doi.org/10.1038/s41586-025-09595-7"
+        },
+        {
+          "sourceId": "trillo-navascues-dp-gie-2025",
+          "locator": "Phys. Rev. D 111, L121101 (2025), DP model-specific entangling prediction",
+          "url": "https://doi.org/10.1103/PhysRevD.111.L121101"
+        },
+        {
+          "sourceId": "angeli-carlesso-hybrid-entanglement-2025",
+          "locator": "Phys. Rev. D 112, 024047 (2025), Markovian hybrid entanglement analysis",
+          "url": "https://doi.org/10.1103/jzht-fbwt"
+        },
+        {
+          "sourceId": "marchese-newton-gie-2025",
+          "locator": "Phys. Rev. A 111, 042202 (2025), Newton-law evolution reproducing GIE in the stated setup",
+          "url": "https://doi.org/10.1103/PhysRevA.111.042202"
+        },
+        {
+          "sourceId": "lin-mondal-newtonian-gie-2026",
+          "locator": "Phys. Rev. D 113, L061901 (2026), comparison of minisuperspace, semiclassical and stochastic tidal models",
+          "url": "https://doi.org/10.1103/fv38-kgkb"
+        },
+        {
+          "sourceId": "gundhi-aziz-howl-2026",
+          "locator": "arXiv:2604.19696, recalculation challenging the Aziz–Howl entanglement result",
+          "url": "https://arxiv.org/abs/2604.19696"
+        },
+        {
+          "sourceId": "schneider-classical-gie-2026",
+          "locator": "Class. Quantum Grav. 43, 177001 (2026), Newton–Cartan mediator analysis",
+          "url": "https://doi.org/10.1088/1361-6382/ae6f62"
+        },
+        {
+          "sourceId": "feng-vedral-marletto-collapse-witness-2026",
+          "locator": "Phys. Rev. D 113, 104055 (2026), collapse-model locality analysis",
+          "url": "https://doi.org/10.1103/83rl-nygv"
+        },
+        {
+          "sourceId": "di-biagio-gie-witness-2026",
+          "locator": "Phys. Rev. D accepted 1 September 2026, review of the information-theoretic locality assumption",
+          "url": "https://doi.org/10.1103/r8ry-sp35"
         }
       ],
-      "reviewedAt": "2026-09-28",
-      "evidenceStatus": "theoretical interpretation constraint"
+      "reviewedAt": "2026-09-29",
+      "evidenceStatus": "active model-dependent theoretical controversy"
     }
   ]
 };

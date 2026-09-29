@@ -30,10 +30,10 @@ test('high-value relationship promotions carry direct evidence metadata',()=>{
   }
 });
 
-test('relationship provenance batch changes only the intended evidence totals',()=>{
-  assert.equal(relations.length,605);
-  assert.equal(relations.filter(r=>r.sourceIds.length).length,111);
-  assert.equal(relations.filter(r=>r.confidence==='editorial').length,494);
-  assert.equal(relations.filter(r=>r.confidence==='high').length,93);
-  assert.equal(relations.filter(r=>r.confidence==='medium').length,18);
+test('relationship provenance totals include the reviewed gravity-discrimination additions',()=>{
+  assert.equal(relations.length,609);
+  assert.equal(relations.filter(r=>r.sourceIds.length).length,117);
+  assert.equal(relations.filter(r=>r.confidence==='editorial').length,492);
+  assert.equal(relations.filter(r=>r.confidence==='high').length,97);
+  assert.equal(relations.filter(r=>r.confidence==='medium').length,20);
 });
