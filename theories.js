@@ -341,6 +341,7 @@ window.QI_DATA = (() => {
     T("soft-hair","Soft-hair black-hole proposal",2016,"2015–present","Quantum gravity & spacetime","active research","The soft-hair proposal studies whether asymptotic and horizon soft charges associated with large gauge or BMS-like symmetries encode otherwise overlooked black-hole information.","Degenerate soft sectors can label black-hole states and alter the bookkeeping of information without by themselves constituting a complete evaporation model.",["soft hair","BMS symmetry","black holes","information"],[],"research program"),
     T("jt-gravity","Jackiw–Teitelboim gravity",1983,"1980–1999","Quantum gravity & spacetime","established toy framework","Jackiw–Teitelboim gravity is a two-dimensional dilaton-gravity theory that has become a controlled laboratory for near-AdS2 quantum gravity, black-hole thermodynamics and information-recovery calculations.","A dilaton enforces constant-curvature geometry while boundary dynamics capture important quantum-gravitational degrees of freedom.",["JT gravity","AdS2","dilaton","black holes"],["Jackiw-Teitelboim gravity"],"theory / framework"),
     T("postquantum-classical-gravity","Postquantum classical-gravity framework",2023,"2015–present","Quantum gravity & spacetime","active research","Oppenheim's postquantum framework explores consistent stochastic dynamics in which spacetime or gravity remains fundamentally classical while matter is quantum.","Classical degrees of freedom undergo stochastic evolution coupled to quantum matter, with the coupling inducing diffusion and decoherence constrained by consistency conditions.",["postquantum","classical gravity","hybrid dynamics","decoherence"],["postquantum theory of classical gravity"],"alternative theory"),
+    T("configuration-ensemble-cq","Configuration-ensemble classical–quantum dynamics",2005,"2000–2014","Beyond standard quantum theory","active research","The Hall–Reginatto configuration-ensemble formalism describes classical, quantum and mixed classical–quantum systems using probability ensembles on a joint configuration space with canonically conjugate phase fields.","Classical and quantum sectors are distinguished by their ensemble Hamiltonians while interactions can include back-reaction and energy-conserving hybrid dynamics; the formalism has also been applied to quantum matter coupled to classical gravity.",["configuration ensemble","classical-quantum hybrid","Hall Reginatto","back-reaction","classical gravity"],["interacting classical and quantum ensembles","Hall–Reginatto hybrid theory"],"hybrid classical–quantum framework"),
     T("bmv-gravity-entanglement","Gravity-mediated entanglement witness proposals",2017,"2015–present","Quantum gravity & spacetime","active experimental framework","Bose–Marletto–Vedral type proposals use entanglement generated between spatially superposed masses as an operational probe of whether the mediating gravitational degrees of freedom require noncommuting observables under specified assumptions.","If two probes become entangled through only a local mediator, the mediator must possess enough nonclassical structure within the information-theoretic assumptions used by the proposals.",["BMV","gravity entanglement","quantum gravity test","interferometry"],["Bose–Marletto–Vedral proposal","gravity-induced entanglement"],"experimental framework"),
     T("kaluza-klein","Kaluza–Klein theory",1921,"1900–1924","Quantum gravity & spacetime","historical framework","Kaluza–Klein theory unifies gravity and gauge structure by extending spacetime with compact extra dimensions whose metric components appear as lower-dimensional fields.","Compactification of higher-dimensional gravity yields ordinary gravity together with gauge fields, scalar fields and towers of massive modes.",["extra dimensions","compactification","unification","Kaluza Klein"],[],"theory / framework"),
     T("braneworld-gravity","Braneworld gravity",1999,"1980–1999","Quantum gravity & spacetime","active research","Braneworld models place ordinary matter on a lower-dimensional brane embedded in a higher-dimensional bulk, allowing gravity to probe the extra dimensions.","Warped or large extra dimensions modify gravitational dynamics and can generate effective four-dimensional scales from higher-dimensional geometry.",["braneworld","extra dimensions","Randall Sundrum","gravity"],["brane-world gravity"],"theory family"),
@@ -839,6 +840,10 @@ window.QI_DATA = (() => {
     {"id":"hawking-soft-hair-2016","title":"Soft Hair on Black Holes","authors":"Stephen W. Hawking, Malcolm J. Perry, Andrew Strominger","year":2016,"type":"primary source","url":"https://doi.org/10.1103/PhysRevLett.116.231301"},
     {"id":"jackiw-1985","title":"Lower dimensional gravity","authors":"Roman Jackiw","year":1985,"type":"primary source","url":"https://doi.org/10.1016/0550-3213(85)90448-1"},
     {"id":"oppenheim-postquantum-2023","title":"A Postquantum Theory of Classical Gravity?","authors":"Jonathan Oppenheim","year":2023,"type":"primary source","url":"https://doi.org/10.1103/PhysRevX.13.041040"},
+    {"id":"hall-reginatto-ensembles-2005","title":"Interacting classical and quantum ensembles","authors":"Michael J. W. Hall, Marcel Reginatto","year":2005,"type":"primary source","url":"https://doi.org/10.1103/PhysRevA.72.062109"},
+    {"id":"chua-hall-savage-hybrid-2012","title":"Interacting classical and quantum particles","authors":"Alvin J. K. Chua, Michael J. W. Hall, C. M. Savage","year":2012,"type":"peer-reviewed theoretical analysis","url":"https://doi.org/10.1103/PhysRevA.85.022110"},
+    {"id":"hall-reginatto-savage-signaling-2012","title":"Nonlocal signaling in the configuration space model of quantum-classical interactions","authors":"Michael J. W. Hall, Marcel Reginatto, C. M. Savage","year":2012,"type":"peer-reviewed theoretical constraint","url":"https://doi.org/10.1103/PhysRevA.86.054101"},
+    {"id":"reginatto-hall-classical-gravity-2019","title":"Entangling quantum fields via a classical gravitational interaction","authors":"Marcel Reginatto, Michael J. W. Hall","year":2019,"type":"peer-reviewed conference paper","url":"https://doi.org/10.1088/1742-6596/1275/1/012039"},
     {"id":"hall-reginatto-classical-gravity-2018","title":"On two recent proposals for witnessing nonclassical gravity","authors":"Michael J. W. Hall, Marcel Reginatto","year":2018,"type":"peer-reviewed theoretical analysis","url":"https://doi.org/10.1088/1751-8121/aaa734"},
     {"id":"doner-grossardt-gie-2022","title":"Is Gravitational Entanglement Evidence for the Quantization of Spacetime?","authors":"M. Kemal Döner, André Großardt","year":2022,"type":"peer-reviewed theoretical analysis","url":"https://doi.org/10.1007/s10701-022-00619-0"},
     {"id":"oppenheim-decoherence-diffusion-2023","title":"Gravitationally induced decoherence vs space-time diffusion: testing the quantum nature of gravity","authors":"Jonathan Oppenheim, Carlo Sparaciari, Barbara Šoda, Zachary Weller-Davies","year":2023,"type":"peer-reviewed theoretical result","url":"https://doi.org/10.1038/s41467-023-43348-2"},
@@ -1199,6 +1204,7 @@ window.QI_DATA = (() => {
     "soft-hair":["hawking-soft-hair-2016"],
     "jt-gravity":["jackiw-1985"],
     "postquantum-classical-gravity":["oppenheim-postquantum-2023"],
+    "configuration-ensemble-cq":["hall-reginatto-ensembles-2005","chua-hall-savage-hybrid-2012","hall-reginatto-savage-signaling-2012","reginatto-hall-classical-gravity-2019"],
     "bmv-gravity-entanglement":["marletto-vedral-2017"],
     "kaluza-klein":["overduin-wesson-1997"],
     "braneworld-gravity":["randall-sundrum-1999"],
@@ -1564,6 +1570,11 @@ window.QI_DATA = (() => {
     "curationBatch": "discovery-2026-09-26",
     "lastReviewed": "2026-09-26",
     "yearBasis": "2005 Zurek–Dorner–Zoller quantum Ising formulation; not the origin date of the broader Kibble–Zurek mechanism."
+  },
+  "configuration-ensemble-cq": {
+    "curationBatch": "gravity-discrimination-2026-09-29",
+    "lastReviewed": "2026-09-29",
+    "yearBasis": "2005 peer-reviewed Hall–Reginatto formulation of interacting classical and quantum ensembles."
   }
 };
   for (const theory of theories) {
@@ -1768,6 +1779,7 @@ window.QI_DATA = (() => {
     R("soft-hair","black-hole-complementarity","extends"),
     R("jt-gravity","island-formula","supports"),
     R("postquantum-classical-gravity","semiclassical-gravity","challenges"),
+    R("configuration-ensemble-cq","bmv-gravity-entanglement","challenges","",{"sourceIds":["hall-reginatto-classical-gravity-2018","reginatto-hall-classical-gravity-2019"],"evidenceType":"formal mathematical relation","confidence":"high","evidenceNote":"Hall and Reginatto give explicit configuration-ensemble countermodels in which a classical mediator can generate quantum entanglement, including a classical-gravity application. This challenges an assumption-free reading of gravity-mediated-entanglement witnesses, not every assumption-bounded BMV inference."}),
     R("bmv-gravity-entanglement","quantum-information","overlaps"),
     R("kaluza-klein","supergravity","precursor"),
     R("braneworld-gravity","string-theory","overlaps"),
