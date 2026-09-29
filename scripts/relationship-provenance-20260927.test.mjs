@@ -30,10 +30,10 @@ test('high-value relationship promotions carry direct evidence metadata',()=>{
   }
 });
 
-test('relationship provenance batch changes only the intended evidence totals',()=>{
-  assert.equal(relations.length,605);
-  assert.equal(relations.filter(r=>r.sourceIds.length).length,111);
+test('relationship evidence totals include later source-backed promotions',()=>{
+  assert.equal(relations.length,606);
+  assert.equal(relations.filter(r=>r.sourceIds.length).length,112);
   assert.equal(relations.filter(r=>r.confidence==='editorial').length,494);
-  assert.equal(relations.filter(r=>r.confidence==='high').length,93);
+  assert.equal(relations.filter(r=>r.confidence==='high').length,94);
   assert.equal(relations.filter(r=>r.confidence==='medium').length,18);
 });
