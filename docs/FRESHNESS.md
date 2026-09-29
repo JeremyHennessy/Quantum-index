@@ -1,33 +1,33 @@
 # Quantum Index freshness audit
 
-**Reviewed:** 2026-09-27
+**Reviewed:** 2026-09-29
 
 This report separates **entity origin dates** from **later scientific developments**. A recent event does not rewrite a theory's historical origin year.
 
 - Newest entity origin year: **2023**
 - Newest reviewed DevelopmentEvent year: **2026**
-- Reviewed DevelopmentEvents: **9**
+- Reviewed DevelopmentEvents: **16**
 - Recent identity candidates still awaiting/deferred review: **3**
 - Entities with no recorded recent literature-review date (before 2024 or missing): **0**
 
 ## Development events by year
 
 - **2024:** 4
-- **2025:** 3
-- **2026:** 2
+- **2025:** 4
+- **2026:** 8
 
 ## Development events by type
 
+- **controversy/debate:** 3
 - **experimental result:** 3
-- **new formal connection:** 1
+- **new formal connection:** 2
 - **observational result:** 3
-- **theorem/result:** 2
+- **theorem/result:** 5
 
 ## Categories without a reviewed DevelopmentEvent in the last 3 years
 
 - Beyond standard quantum theory
 - Formulations
-- Foundations & interpretations
 - Historical foundations
 - Mathematical structures
 - Nuclear quantum theory
@@ -39,7 +39,6 @@ This report separates **entity origin dates** from **later scientific developmen
 
 - Beyond standard quantum theory
 - Formulations
-- Foundations & interpretations
 - Historical foundations
 - Mathematical structures
 - Nuclear quantum theory

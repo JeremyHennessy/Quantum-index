@@ -1879,6 +1879,77 @@ window.QI_QUESTIONS = {
       "nextInvestigation": "Choose a Bell scenario and compare the quantum set with the sets allowed by each principle; record a counterexample or inclusion proof instead of asserting universal equivalence.",
       "reviewedAt": "2026-09-27",
       "evidenceState": "research-audit-draft"
+    },
+    {
+      "id": "rq-gravity-entanglement-discrimination",
+      "order": 60,
+      "title": "Gravity-mediated entanglement model discrimination",
+      "question": "Which observables can distinguish quantized gravitational mediation from specific classical or hybrid gravity models without assuming that every classical mediator is LOCC?",
+      "relatedTheoryIds": [
+        "bmv-gravity-entanglement",
+        "postquantum-classical-gravity",
+        "diosi-penrose",
+        "stochastic-gravity",
+        "open-quantum-systems",
+        "configuration-ensemble-cq"
+      ],
+      "relatedProblemIds": [
+        "quantum-gravity"
+      ],
+      "category": "Quantum gravity & spacetime",
+      "disposition": "open",
+      "dispositionLabel": "Open research question",
+      "shortAnswer": "No single positive entanglement outcome is presently model-independent across every classical or hybrid alternative. Explicit countermodels can generate entanglement, while Markovian completely-positive classical–quantum models predict linked decoherence, diffusion and back-reaction signatures. Other proposals use motion cross-correlations or minimum-noise bounds, and non-Markovian effective classical–quantum dynamics weakens simple Markovian inference. The experiment must therefore name the model class and assumptions it excludes.",
+      "detailedStatus": "The original BMV inference is robust only within specified mediator and locality assumptions. Hall–Reginatto and Döner–Großardt supplied explicit classical/hybrid counterexamples; Trillo–Navascués showed Diósi–Penrose dynamics can produce gravitationally induced entanglement in a specified regime. Oppenheim et al. derive a Markovian decoherence–diffusion trade-off, Kryhin–Sudhir identify a cross-correlation signature, and Fabiano et al. derive minimum-noise bounds for a broad time-local Galilean/Newtonian class. Tomizuka–Takeda show that effective classical–quantum dynamics can instead be generically non-Markovian. Plávala derives a conditional route from existing matter-wave interferometry to GME, Feng–Vedral–Marletto recast the Diósi–Penrose disagreement around locality, and Hirotani–Matsumura propose a geodesic-deviation strain test for Oppenheim-type dynamics. These results support a model-discrimination program rather than a binary entanglement-only verdict.",
+      "supportingClaims": [],
+      "sourceIds": [
+        "hall-reginatto-classical-gravity-2018",
+        "doner-grossardt-gie-2022",
+        "oppenheim-decoherence-diffusion-2023",
+        "kryhin-sudhir-classical-gravity-2025",
+        "trillo-navascues-dp-gie-2025",
+        "fabiano-minimal-noise-2026",
+        "tomizuka-takeda-nonmarkovian-2026",
+        "schneider-huggett-linnemann-2026",
+        "plavala-indirect-gme-2026",
+        "feng-vedral-marletto-collapse-2026",
+        "hirotani-matsumura-geodesic-2026"
+      ],
+      "auditReferences": [
+        {
+          "title": "On two recent proposals for witnessing nonclassical gravity",
+          "url": "https://doi.org/10.1088/1751-8121/aaa734"
+        },
+        {
+          "title": "Diósi-Penrose model of classical gravity predicts gravitationally induced entanglement",
+          "url": "https://doi.org/10.1103/PhysRevD.111.L121101"
+        },
+        {
+          "title": "Gravitationally induced decoherence vs space-time diffusion",
+          "url": "https://doi.org/10.1038/s41467-023-43348-2"
+        },
+        {
+          "title": "Distinguishable Consequence of Classical Gravity on Quantum Matter",
+          "url": "https://doi.org/10.1103/PhysRevLett.134.061501"
+        },
+        {
+          "title": "Minimal noise in non-quantized gravity",
+          "url": "https://arxiv.org/abs/2603.26075"
+        },
+        {
+          "title": "Emergence of Non-Markovian Classical-Quantum Dynamics from Decoherence",
+          "url": "https://arxiv.org/abs/2604.06891"
+        },
+        {
+          "title": "A demonstration that classical gravity does not produce entanglement",
+          "url": "https://doi.org/10.1088/1361-6382/ae6f62"
+        }
+      ],
+      "uncertainty": "The relevant model space is not closed. Results depend on locality, time-locality/Markovianity, mediator assumptions, matter description and the precise operational definition of gravitational mediation.",
+      "nextInvestigation": "Build a source-backed assumption-by-model matrix and derive the smallest experimentally measurable observable set that separates the major currently viable model classes; validate each exclusion against explicit countermodels rather than a generic classical/quantum label.",
+      "reviewedAt": "2026-09-29",
+      "evidenceState": "research-audit-draft"
     }
+
   ]
 };

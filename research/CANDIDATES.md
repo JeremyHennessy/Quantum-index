@@ -146,3 +146,8 @@ The search queue remains open.
 Promoted Mackey imprimitivity; Ludwig operational quantum mechanics; Stone–von Neumann and Wigner symmetry theorems; Reeh–Schlieder; sine-Gordon and nonlinear sigma models; F-theory; dS/CFT; and Liouville quantum gravity.
 
 The earlier superselection-modification candidate is now considered satisfied at first-class granularity by the source-backed DHR superselection-sector framework. More specialized superselection variants remain subtypes unless a systematic subfamily sweep is adopted.
+
+
+## Integrated in the 2026-09-29 gravity-discrimination sweep
+
+Promoted **Configuration-ensemble classical–quantum dynamics** (Hall–Reginatto) as a distinct source-backed hybrid framework after the gravity-mediated-entanglement audit showed that it is neither an alias nor a subtype of the existing postquantum classical-gravity node. The 2005 formalism has its own ensemble Hamiltonian, documented hybrid back-reaction, later experimental analyses, known signaling limitations, and an explicit classical-gravity entanglement application. This promotion reopens hybrid classical–quantum model depth as an active discovery queue.

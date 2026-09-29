@@ -2674,6 +2674,94 @@ window.QI_FORMULAS = {
       ]
     },
     {
+      "id": "configuration-ensemble-hamiltonian",
+      "name": "Classical–quantum configuration-ensemble Hamiltonian",
+      "category": "Foundations & interpretations",
+      "latex": "\\mathcal H[P,S]=\\int dq\\,dx\\,P\\left[\\frac{(\\partial_q S)^2}{2m_q}+\\frac{(\\partial_x S)^2}{2m_x}+V(q,x,t)+\\frac{\\hbar^2}{8m_q}(\\partial_q\\ln P)^2\\right]",
+      "plain": "H[P,S] = integral dq dx P[(d_q S)^2/(2m_q) + (d_x S)^2/(2m_x) + V + hbar^2(d_q ln P)^2/(8m_q)]",
+      "description": "Representative Hall–Reginatto ensemble Hamiltonian for one quantum coordinate q coupled to one classical coordinate x; the Fisher-information-like term appears only in the quantum sector.",
+      "theoryIds": [
+        "configuration-ensemble-cq"
+      ],
+      "sourceIds": [
+        "chua-hall-savage-hybrid-2012"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "chua-hall-savage-hybrid-2012",
+          "locator": "Eq. (1), hybrid ensemble Hamiltonian for one quantum and one classical particle",
+          "url": "https://doi.org/10.1103/PhysRevA.85.022110"
+        }
+      ],
+      "tags": [
+        "classical-quantum hybrid",
+        "configuration ensemble",
+        "ensemble Hamiltonian"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "One-dimensional representative model with quantum coordinate q and classical coordinate x",
+        "P(q,x) is a normalized joint configuration-space probability density",
+        "S(q,x) is canonically conjugate to P in the ensemble Hamiltonian formalism"
+      ],
+      "variables": [
+        "P(q,x): joint configuration-space probability density",
+        "S(q,x): conjugate ensemble phase field",
+        "m_q: quantum-particle mass",
+        "m_x: classical-particle mass",
+        "V(q,x,t): interaction potential"
+      ],
+      "regime": "Representative nonrelativistic Hall–Reginatto hybrid model; gravitational field applications use an extended field-theoretic configuration space.",
+      "units": "Energy after integration over the normalized configuration-space density.",
+      "theoryRelationship": "defining representative hybrid Hamiltonian",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "cq-backreaction-decoherence-diffusion",
+      "name": "Classical–quantum back-reaction / decoherence / diffusion trade-off",
+      "category": "Quantum gravity & cosmology",
+      "latex": "\\left\\langle \\omega\\!\\cdot\\!\\frac{\\partial H_I}{\\partial z}\\right\\rangle\\left\\langle \\omega\\!\\cdot\\!\\frac{\\partial H_I}{\\partial z}\\right\\rangle^{\\dagger}\\preceq 8\\langle D_2\\rangle\\langle D_0\\rangle",
+      "plain": "<omega . dH_I/dz><omega . dH_I/dz>^dagger <= 8 <D2><D0>",
+      "description": "Observational trade-off between Hamiltonian first-order back-reaction, classical diffusion and quantum decoherence for the stated Markovian completely-positive classical–quantum dynamics.",
+      "theoryIds": [
+        "postquantum-classical-gravity",
+        "open-quantum-systems"
+      ],
+      "sourceIds": [
+        "oppenheim-decoherence-diffusion-2023"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "oppenheim-decoherence-diffusion-2023",
+          "locator": "Eq. (27), observational trade-off for Hamiltonian first-order back-reaction",
+          "url": "https://doi.org/10.1038/s41467-023-43348-2"
+        }
+      ],
+      "tags": [
+        "classical-quantum gravity",
+        "decoherence",
+        "diffusion",
+        "back-reaction"
+      ],
+      "formulaType": "derived identity",
+      "assumptions": [
+        "Markovian completely-positive classical–quantum dynamics in the paper's phase-space formulation",
+        "Hamiltonian back-reaction at first order as specified in the source",
+        "The averaged coefficients refer to one common model, state and regime"
+      ],
+      "variables": [
+        "omega: classical symplectic form",
+        "H_I: interaction Hamiltonian sourcing the first-order drift",
+        "D_0: quantum decoherence/Lindblad coefficient matrix",
+        "D_2: classical phase-space diffusion coefficient matrix",
+        "z: classical phase-space coordinates"
+      ],
+      "regime": "Markovian classical–quantum hybrid dynamics; the paper separately notes that non-Markovian dynamics need not obey the same positivity trade-off.",
+      "units": "Model dependent; both sides are matrix-valued combinations with matching dimensions under the source conventions.",
+      "theoryRelationship": "experimental/model-discrimination constraint",
+      "metadataReview": "explicit"
+    },
+    {
       "id": "lqg-area",
       "name": "LQG area spectrum",
       "category": "Quantum gravity & cosmology",
