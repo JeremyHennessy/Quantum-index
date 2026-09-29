@@ -1900,7 +1900,7 @@ window.QI_QUESTIONS = {
       "disposition": "open",
       "dispositionLabel": "Open research question",
       "shortAnswer": "No single positive entanglement outcome is presently model-independent across every classical or hybrid alternative. Explicit countermodels can generate entanglement, while Markovian completely-positive classical–quantum models predict linked decoherence, diffusion and back-reaction signatures. Other proposals use motion cross-correlations or minimum-noise bounds, and non-Markovian effective classical–quantum dynamics weakens simple Markovian inference. The experiment must therefore name the model class and assumptions it excludes.",
-      "detailedStatus": "The original BMV inference is robust only within specified mediator and locality assumptions. Hall–Reginatto and Döner–Großardt supplied explicit classical/hybrid counterexamples; Trillo–Navascués showed Diósi–Penrose dynamics can produce gravitationally induced entanglement in a specified regime. Oppenheim et al. derive a Markovian decoherence–diffusion trade-off, Kryhin–Sudhir identify a cross-correlation signature, and Fabiano et al. derive minimum-noise bounds for a broad time-local Galilean/Newtonian class. Tomizuka–Takeda show that effective classical–quantum dynamics can instead be generically non-Markovian. These results support a model-discrimination program rather than a binary entanglement-only verdict.",
+      "detailedStatus": "The original BMV inference is robust only within specified mediator and locality assumptions. Hall–Reginatto and Döner–Großardt supplied explicit classical/hybrid counterexamples; Trillo–Navascués showed Diósi–Penrose dynamics can produce gravitationally induced entanglement in a specified regime. Oppenheim et al. derive a Markovian decoherence–diffusion trade-off, Kryhin–Sudhir identify a cross-correlation signature, and Fabiano et al. derive minimum-noise bounds for a broad time-local Galilean/Newtonian class. Tomizuka–Takeda show that effective classical–quantum dynamics can instead be generically non-Markovian. Plávala derives a conditional route from existing matter-wave interferometry to GME, Feng–Vedral–Marletto recast the Diósi–Penrose disagreement around locality, and Hirotani–Matsumura propose a geodesic-deviation strain test for Oppenheim-type dynamics. These results support a model-discrimination program rather than a binary entanglement-only verdict.",
       "supportingClaims": [],
       "sourceIds": [
         "hall-reginatto-classical-gravity-2018",
@@ -1910,7 +1910,10 @@ window.QI_QUESTIONS = {
         "trillo-navascues-dp-gie-2025",
         "fabiano-minimal-noise-2026",
         "tomizuka-takeda-nonmarkovian-2026",
-        "schneider-huggett-linnemann-2026"
+        "schneider-huggett-linnemann-2026",
+        "plavala-indirect-gme-2026",
+        "feng-vedral-marletto-collapse-2026",
+        "hirotani-matsumura-geodesic-2026"
       ],
       "auditReferences": [
         {
