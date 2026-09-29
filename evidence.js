@@ -234,6 +234,43 @@ window.QI_EVIDENCE = (() => {
       "evidenceStatus": "2.6σ global candidate excess"
     },
     {
+      "id": "ev-minimal-noise-nonquantized-2026",
+      "title": "Non-entangling non-quantized Newtonian gravity requires a minimum noise floor",
+      "date": "2026-03-30",
+      "type": "theoretical constraint",
+      "result": "Fabiano, Fujita, Matsumura and Carney classify time-local, Galilean-invariant non-quantized gravity models that reproduce the Newtonian interaction on average and show that any model in this class that remains non-entangling must inject a quantifiable minimum amount of irreversible noise. Measuring gravity below the corresponding noise threshold would therefore exclude the non-entangling portion of that model class.",
+      "relatedTheoryIds": [
+        "bmv-gravity-entanglement",
+        "postquantum-classical-gravity",
+        "open-quantum-systems"
+      ],
+      "relatedProblemIds": [
+        "quantum-gravity"
+      ],
+      "relatedClaimIds": [],
+      "constrains": [
+        "Non-entangling, time-local, Galilean-invariant non-quantized models that reproduce Newtonian gravity on average.",
+        "Attempts to make such a non-entangling gravitational interaction arbitrarily reversible or noiseless."
+      ],
+      "doesNotEstablish": [
+        "That every non-quantized gravity model is non-entangling.",
+        "A universal bound for arbitrary non-Markovian or relativistic alternatives outside the paper's assumptions.",
+        "That detecting noise would uniquely imply fundamental classical gravity."
+      ],
+      "sourceIds": [
+        "fabiano-minimal-noise-2026"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "fabiano-minimal-noise-2026",
+          "locator": "arXiv:2603.26075v2, abstract and general classification/noise-threshold result",
+          "url": "https://arxiv.org/abs/2603.26075"
+        }
+      ],
+      "reviewedAt": "2026-09-29",
+      "evidenceStatus": "preprint general non-entangling noise bound"
+    },
+    {
       "id": "ev-cq-decoherence-diffusion-2023",
       "title": "Time-local classical–quantum dynamics require a decoherence–diffusion trade-off",
       "date": "2023-12-04",
