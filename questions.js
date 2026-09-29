@@ -1945,5 +1945,6 @@ window.QI_QUESTIONS = {
       "nextInvestigation": "Construct a source-backed hypothesis-by-observable matrix for the concrete models now indexed; calculate which combinations of entanglement dynamics, decoherence, force noise/diffusion, back-reaction, intervention and memory are jointly incompatible with each model, then optimize the experimentally feasible hitting set without treating unmodeled alternatives as excluded.",
       "reviewedAt": "2026-09-29",
       "evidenceState": "source-reviewed research synthesis"
+    }
   ]
 };
