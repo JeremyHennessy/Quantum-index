@@ -178,7 +178,7 @@ window.QI_PROBLEMS = {
         "csl-sde",
         "qmupl-sde"
       ],
-      "evidenceIds": [],
+      "evidenceIds": ["ev-bell-loophole-free-2015","ev-diosi-penrose-underground-2021"],
       "questionIds": [
         "rq-born-rule",
         "rq-density-operator",
@@ -454,7 +454,7 @@ window.QI_PROBLEMS = {
         "Whether an alternative-gravity model can fit cosmological as well as galactic/cluster-scale data."
       ],
       "formulaIds": [],
-      "evidenceIds": [],
+      "evidenceIds": ["ev-desi-dr2-2025","ev-lz-extended-window-2026"],
       "questionIds": [
         "rq-wimp-dark-matter"
       ],

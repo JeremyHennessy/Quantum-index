@@ -7,6 +7,7 @@
   const questions = window.QI_QUESTIONS?.questions || [];
   const questionDispositions = window.QI_QUESTIONS?.dispositions || [];
   const problems = window.QI_PROBLEMS?.problems || [];
+  const evidenceRecords = window.QI_EVIDENCE?.records || [];
   const problemById = new Map(problems.map(problem=>[problem.id,problem]));
   let selectedProblemId = problems[0]?.id || "";
   const formulaAuditByTheory = new Map(formulaAudit.map(x => [x.theoryId,x]));
@@ -27,6 +28,7 @@
   const formulaState = { search:"", category:"", theory:"", type:"", review:"" };
   const timelineState = { layer:"all", eventType:"" };
   const questionState = { search:"", disposition:"", category:"" };
+  const evidenceState = { search:"", type:"", problem:"" };
   const categoryColors = new Map([
     ["Historical foundations","#f59e0b"],["Formulations","#60a5fa"],["Foundations & interpretations","#c084fc"],
     ["Quantum field theory","#34d399"],["Quantum information & open systems","#22d3ee"],["Quantum gravity & spacetime","#f472b6"],
@@ -69,6 +71,9 @@
   setOptions("#timelineEventType",[...new Set(developments.map(event=>event.eventType))].sort());
   setOptions("#questionDisposition",questionDispositions);
   setOptions("#questionCategory",[...new Set(questions.map(q=>q.category).filter(Boolean))].sort());
+  setOptions("#evidenceType",[...new Set(evidenceRecords.map(item=>item.type))].sort());
+  const evidenceProblemSelect=$("#evidenceProblem");
+  evidenceProblemSelect.innerHTML=evidenceProblemSelect.firstElementChild.outerHTML+problems.map(problem=>`<option value="${esc(problem.id)}">${esc(problem.name)}</option>`).join("");
 
   function renderStats(){
     const cat=new Set(theories.map(t=>t.category)).size;
@@ -81,6 +86,7 @@
       [developments.length,"reviewed development events"],
       [questions.length,"structured research questions"],
       [problems.length,"scientific problems"],
+      [evidenceRecords.length,"evidence & constraint records"],
       [`${sourced}/${theories.length}`,"entries with review/source provenance"]
     ].map(([n,l])=>`<div class="stat"><strong>${n}</strong><span>${l}</span></div>`).join("");
   }
@@ -117,12 +123,13 @@
     const rows=[...categoryColors.keys()].map(category=>`<tr><th scope="row">${esc(category)}</th><td>${count(t=>t.category===category)}</td><td>${count(t=>t.category===category&&gaps.has(t.id))}</td><td>${count(t=>t.category===category&&profiles[t.id])}</td></tr>`).join('');
     $('#coverageContent').innerHTML=`<h3>Coverage and review status</h3><p>The census is open. Source attachment does not establish that every claim is verified or experimentally confirmed.</p><p>${theories.length} entries · ${sources.length} bibliography records · ${Object.keys(profiles).length} reading profiles · ${learningPaths.length} learning paths.</p><p>${relations.filter(r=>r.sourceIds.length).length} source-backed relationships; ${relations.filter(r=>!r.sourceIds.length).length} editorial relationships.</p><p>${formulas.length} formulas; ${formulas.filter(f=>f.metadataReview==='explicit').length} explicitly reviewed metadata records. Baseline records still need equation-level review.</p><p>${developments.length} reviewed DevelopmentEvents extend the historical timeline through ${developments.length?Math.max(...developments.map(event=>event.year)):"—"} without changing entity origin dates.</p><div class="comparison-scroll" role="region" aria-label="Coverage by category" tabindex="0"><table class="comparison-table"><caption>Current runtime coverage by category</caption><thead><tr><th scope="col">Category</th><th scope="col">Entries</th><th scope="col">Formula gaps</th><th scope="col">Reading profiles</th></tr></thead><tbody>${rows}</tbody></table></div><p>Formula gaps mean no representative expression has yet been curated. They do not mean the framework lacks mathematics. A linked formula does not establish complete mathematical coverage.</p><p><a href="https://github.com/JeremyHennessy/Quantum-index/blob/main/docs/COVERAGE.md">Coverage methodology and research backlog</a></p>`;
   }
-  function safeReturn(value){return typeof value==="string" && value.length<4096 && /^#\/(?:theory\/[a-z0-9-]+|map|timeline|catalog|lineage|formula|compare|problems|questions|learn|workspace|coverage)(?:\?|$)/.test(value)?value:"";}
+  function safeReturn(value){return typeof value==="string" && value.length<4096 && /^#\/(?:theory\/[a-z0-9-]+|map|timeline|catalog|lineage|formula|compare|problems|evidence|questions|learn|workspace|coverage)(?:\?|$)/.test(value)?value:"";}
   function theoryLink(id,from=state.returnView){
     const params=new URLSearchParams({from});
     if(from==="learn"&&learningPathId)params.set("path",learningPathId);
     if(from==="compare")params.set("compare",compareIds.join(","));
     if(from==="problems")params.set("returnTo",problemHash(selectedProblemId));
+    if(from==="evidence")params.set("returnTo",evidenceHash());
     if(from==="formula")params.set("returnTo",location.hash.startsWith("#/theory/") ? safeReturn(new URLSearchParams(location.hash.split("?")[1]||"").get("returnTo")) || "#/formula" : location.hash);
     if(['catalog','timeline','map','lineage'].includes(from))params.set('returnTo',state.view==='theory'?safeReturn(new URLSearchParams(location.hash.split('?').slice(1).join('?')).get('returnTo'))||viewHash(from):viewHash(from));
     if(state.evidence)params.set('evidence',state.evidence);
@@ -624,6 +631,42 @@
     }).join("") || '<div class="empty-state">No research questions match these filters.</div>';
   }
 
+  function evidenceHash(){
+    const params=new URLSearchParams();
+    if(evidenceState.search)params.set("search",evidenceState.search);
+    if(evidenceState.type)params.set("type",evidenceState.type);
+    if(evidenceState.problem)params.set("problem",evidenceState.problem);
+    return "#/evidence"+(params.size?"?"+params:"");
+  }
+
+  function renderEvidence(){
+    if(!$("#evidenceGrid"))return;
+    const q=evidenceState.search.trim().toLowerCase();
+    const list=evidenceRecords.filter(item=>
+      (!q||[item.title,item.result,item.type,item.evidenceStatus,...item.constrains,...item.doesNotEstablish].join(" ").toLowerCase().includes(q)) &&
+      (!evidenceState.type||item.type===evidenceState.type) &&
+      (!evidenceState.problem||(item.relatedProblemIds||[]).includes(evidenceState.problem))
+    ).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+    $("#evidenceCount").textContent=`${list.length} of ${evidenceRecords.length}`;
+    $("#evidenceGrid").innerHTML=list.map(item=>{
+      const theories=item.relatedTheoryIds.map(id=>byId.get(id)).filter(Boolean);
+      const linkedProblems=item.relatedProblemIds.map(id=>problemById.get(id)).filter(Boolean);
+      const itemSources=item.sourceIds.map(id=>sourceById.get(id)).filter(Boolean);
+      return `<article class="evidence-card">
+        <div class="evidence-card-top"><span class="evidence-kind">${esc(item.type)}</span><span class="reviewed">${esc(item.date)}</span></div>
+        <h4>${esc(item.title)}</h4>
+        <p>${esc(item.result)}</p>
+        <div class="evidence-columns"><div><strong>Constrains</strong><ul>${item.constrains.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div><div><strong>Does not establish</strong><ul>${item.doesNotEstablish.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div></div>
+        <div class="problem-chip-row">
+          ${theories.map(t=>`<a class="problem-chip" href="${theoryLink(t.id,"evidence")}">${esc(t.name)}</a>`).join("")}
+          ${linkedProblems.map(p=>`<a class="problem-chip" href="${problemHash(p.id)}">${esc(p.name)}</a>`).join("")}
+        </div>
+        <div class="source-list compact-sources">${itemSources.map(s=>`<a class="source-link" href="${esc(s.url)}" target="_blank" rel="noreferrer"><strong>${esc(s.title)}</strong><span>${esc(s.authors)} · ${esc(s.year)}</span></a>`).join("")}</div>
+        <p class="reviewed">Status: ${esc(item.evidenceStatus)} · reviewed ${esc(item.reviewedAt)}</p>
+      </article>`;
+    }).join("")||'<div class="empty-state">No evidence records match these filters.</div>';
+  }
+
   function problemHash(id=selectedProblemId){
     const params=new URLSearchParams();
     if(id)params.set("problem",id);
@@ -646,6 +689,7 @@
     const problemFormulas=problem.formulaIds.map(id=>formulas.find(f=>f.id===id)).filter(Boolean);
     const problemDevelopments=problem.developmentIds.map(id=>developments.find(event=>event.id===id)).filter(Boolean);
     const problemSources=problem.sourceIds.map(id=>sourceById.get(id)).filter(Boolean);
+    const problemEvidence=(problem.evidenceIds||[]).map(id=>evidenceRecords.find(item=>item.id===id)).filter(Boolean);
 
     $("#problemDetail").innerHTML=`
       <p class="eyebrow">SCIENTIFIC PROBLEM</p>
@@ -672,6 +716,10 @@
         ${problemQuestions.length?problemQuestions.map(q=>`<article class="problem-question-card"><span class="question-disposition">${esc(q.dispositionLabel)}</span><h4>${esc(q.question)}</h4><p>${esc(q.shortAnswer)}</p><p class="reviewed">Next: ${esc(q.nextInvestigation)}</p></article>`).join(""):'<p class="muted">A dedicated structured question set has not yet been reviewed for this Problem.</p>'}
       </section>
 
+      <section class="problem-section"><h3>Evidence and constraints</h3>
+        ${problemEvidence.length?problemEvidence.map(item=>`<article class="problem-development"><strong>${esc(item.title)}</strong><p>${esc(item.result)}</p><p class="reviewed">${esc(item.evidenceStatus)}</p></article>`).join(""):'<p class="muted">No dedicated Evidence record is attached to this Problem yet.</p>'}
+      </section>
+
       <section class="problem-section"><h3>Recent developments</h3>
         ${problemDevelopments.length?problemDevelopments.map(event=>`<article class="problem-development"><strong>${esc(event.date)} · ${esc(event.title)}</strong><p>${esc(event.summary)}</p><p class="reviewed">${esc(event.evidenceStatus)}</p></article>`).join(""):'<p class="muted">No current 2024–2026 DevelopmentEvent is specific enough to attach under the present review standard.</p>'}
         ${problem.developmentContext?`<p class="muted">${esc(problem.developmentContext)}</p>`:""}
@@ -686,7 +734,7 @@
   }
 
   function renderAll(){
-    renderStats();renderLegend();renderGraph();renderTimeline();renderCatalog();renderLineage();renderDetail();renderFormulas();renderQuestions();renderProblems();
+    renderStats();renderLegend();renderGraph();renderTimeline();renderCatalog();renderLineage();renderDetail();renderFormulas();renderQuestions();renderProblems();renderEvidence();
   }
   function switchView(view){
     state.view=view;
@@ -698,6 +746,7 @@
     if(view==="workspace") renderWorkspace();
     if(view==="questions") renderQuestions();
     if(view==="problems") renderProblems();
+    if(view==="evidence") renderEvidence();
     if(view==='coverage')renderCoverage();
     $('#evidenceControls').hidden=!['map','lineage','theory'].includes(view);
     $(".controls").hidden=!["map","timeline","catalog"].includes(view);
@@ -707,7 +756,7 @@
     if(view==="lineage") setTimeout(renderThoughtTreeGraph,0);
     if(view==="formula") setTimeout(()=>{renderFormulas();typesetFormulaGrid();},0);
   }
-  const views=new Set(["map","timeline","lineage","catalog","formula","compare","problems","questions","learn","workspace","coverage"]);
+  const views=new Set(["map","timeline","lineage","catalog","formula","compare","problems","evidence","questions","learn","workspace","coverage"]);
   function navigate(hash){
     if(location.hash===hash) applyRoute();
     else location.hash=hash;
@@ -744,6 +793,14 @@
       const problemId=params.get("problem")||"";
       selectedProblemId=problemById.has(problemId)?problemId:(problems[0]?.id||"");
     }
+    if(view==="evidence"){
+      evidenceState.search=params.get("search")||"";
+      const type=params.get("type")||"";
+      evidenceState.type=[...$("#evidenceType").options].some(o=>o.value===type)?type:"";
+      const problem=params.get("problem")||"";
+      evidenceState.problem=problemById.has(problem)?problem:"";
+      $("#evidenceSearch").value=evidenceState.search;$("#evidenceType").value=evidenceState.type;$("#evidenceProblem").value=evidenceState.problem;
+    }
     if(view==="questions"){
       questionState.search=params.get("search")||"";
       questionState.disposition=questionDispositions.includes(params.get("disposition"))?params.get("disposition"):"";
@@ -770,7 +827,7 @@
     renderDetail();renderLineage();switchView(view);
     document.title="Quantum Index";
   }
-  document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>navigate(b.dataset.view==="compare"?comparisonHash(compareIds):b.dataset.view==="questions"?questionHash():b.dataset.view==="problems"?problemHash():["map","catalog","timeline","formula","lineage"].includes(b.dataset.view)?viewHash(b.dataset.view):`#/${b.dataset.view}`)));
+  document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>navigate(b.dataset.view==="compare"?comparisonHash(compareIds):b.dataset.view==="questions"?questionHash():b.dataset.view==="problems"?problemHash():b.dataset.view==="evidence"?evidenceHash():["map","catalog","timeline","formula","lineage"].includes(b.dataset.view)?viewHash(b.dataset.view):`#/${b.dataset.view}`)));
   $("#clearComparison").addEventListener("click",()=>navigate("#/compare"));
   window.addEventListener("hashchange",applyRoute);
   $("#search").addEventListener("input",e=>{state.search=e.target.value;rememberFilters();renderGraph();renderTimeline();renderCatalog();});
@@ -789,6 +846,9 @@
   $('#questionSearch').oninput=e=>{questionState.search=e.target.value;history.replaceState(null,'',questionHash());renderQuestions();};
   $('#questionDisposition').onchange=e=>{questionState.disposition=e.target.value;history.replaceState(null,'',questionHash());renderQuestions();};
   $('#questionCategory').onchange=e=>{questionState.category=e.target.value;history.replaceState(null,'',questionHash());renderQuestions();};
+  $('#evidenceSearch').oninput=e=>{evidenceState.search=e.target.value;history.replaceState(null,'',evidenceHash());renderEvidence();};
+  $('#evidenceType').onchange=e=>{evidenceState.type=e.target.value;history.replaceState(null,'',evidenceHash());renderEvidence();};
+  $('#evidenceProblem').onchange=e=>{evidenceState.problem=e.target.value;history.replaceState(null,'',evidenceHash());renderEvidence();};
   $('#relationEvidence').onchange=e=>{state.evidence=e.target.value;if(state.view==='theory'){const params=new URLSearchParams(location.hash.split('?').slice(1).join('?'));if(state.evidence)params.set('evidence',state.evidence);else params.delete('evidence');history.replaceState(null,'',location.hash.split('?')[0]+'?'+params);}else rememberFilters();renderGraph();renderThoughtTreeGraph();renderLineage();renderDetail();};
   $("#resetView").addEventListener("click",()=>{
     Object.assign(state,{search:"",category:"",kind:"",status:"",era:"",sourcedOnly:false});

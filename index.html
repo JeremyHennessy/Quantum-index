@@ -6,7 +6,7 @@
   <meta name="description" content="Quantum Index — a source-aware map of fundamental physics, equations, evidence and open questions." />
   <title>Quantum Index</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="./styles.css?v=a30394e3a4fa9646" />
+  <link rel="stylesheet" href="./styles.css?v=d4fcd00b4279040f" />
 </head>
 <body>
   <header class="topbar">
@@ -69,6 +69,7 @@
       <button class="tab" data-view="formula">Formula atlas</button>
       <button class="tab" data-view="compare">Compare</button>
       <button class="tab" data-view="problems">Problems</button>
+      <button class="tab" data-view="evidence">Evidence</button>
       <button class="tab" data-view="questions">Research questions</button>
       <button class="tab" data-view="learn">Learning paths</button>
       <button class="tab" data-view="workspace">My research</button>
@@ -177,6 +178,25 @@
       </div>
     </section>
 
+    <section id="evidenceView" class="view" aria-label="Evidence and constraints">
+      <div class="card evidence-panel">
+        <div class="view-head">
+          <div>
+            <p class="eyebrow">EVIDENCE + CONSTRAINTS</p>
+            <h3>What experiments and observations actually establish</h3>
+            <p class="muted">Each record separates the measured result from the theories or parameter space it constrains—and from conclusions it does not establish.</p>
+          </div>
+          <span id="evidenceCount" class="pill"></span>
+        </div>
+        <div class="question-controls">
+          <div><label for="evidenceSearch">Search evidence</label><input id="evidenceSearch" type="search" placeholder="Bell, collapse, DESI, LZ…" autocomplete="off"></div>
+          <div><label for="evidenceType">Evidence type</label><select id="evidenceType"><option value="">All evidence types</option></select></div>
+          <div><label for="evidenceProblem">Problem</label><select id="evidenceProblem"><option value="">All Problems</option></select></div>
+        </div>
+        <div id="evidenceGrid" class="evidence-grid"></div>
+      </div>
+    </section>
+
     <section id="questionsView" class="view" aria-label="Research questions">
       <div class="card question-panel">
         <div class="view-head">
@@ -275,9 +295,10 @@
   <script src="./formula-audit.js?v=fb958416812e0ba0"></script>
   <script src="./developments.js?v=13dd3ea5957fa259"></script>
   <script src="./questions.js?v=bfccc3e935f46777"></script>
-  <script src="./problems.js?v=bd24561b25c69f07"></script>
+  <script src="./evidence.js?v=aefaafd4c992ef1a"></script>
+  <script src="./problems.js?v=a2e9ea2d830f1583"></script>
   <script src="./profiles.js?v=7ead242ba1709896"></script>
   <script src="./workspace.js?v=de553a16db91ad46"></script>
-  <script src="./app.js?v=8237675317cdfc20"></script>
+  <script src="./app.js?v=99af2645af3f2327"></script>
 </body>
 </html>
