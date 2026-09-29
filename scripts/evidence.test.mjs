@@ -48,6 +48,9 @@ test('Evidence wording preserves high-risk scientific boundaries',()=>{
   const debate=evidence.find(x=>x.id==='ev-gravity-entanglement-boundary-2025');
   assert.equal(debate.type,'theoretical controversy');
   assert.match(debate.result,/does not support a single undifferentiated rule/i);
+  assert.match(debate.result,/locality-conditioned witness/i);
+  assert.ok(debate.sourceIds.includes('feng-vedral-marletto-collapse-witness-2026'));
+  assert.ok(debate.sourceIds.includes('di-biagio-gie-witness-2026'));
   assert.match(debate.evidenceStatus,/active model-dependent theoretical controversy/i);
 });
 
