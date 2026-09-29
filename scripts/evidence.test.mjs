@@ -12,9 +12,9 @@ const sources=new Set(sandbox.window.QI_DATA.sources.map(x=>x.id));
 const problems=new Set(sandbox.window.QI_PROBLEMS.problems.map(x=>x.id));
 const evidenceIds=new Set(evidence.map(x=>x.id));
 
-test('Evidence layer has ten auditable records with resolved references',()=>{
-  assert.equal(evidence.length,10);
-  assert.equal(evidenceIds.size,10);
+test('Evidence layer has twelve auditable records with resolved references',()=>{
+  assert.equal(evidence.length,12);
+  assert.equal(evidenceIds.size,12);
   for(const item of evidence){
     assert.match(item.date,/^\d{4}-\d{2}-\d{2}$/);
     assert.ok(item.result.length>60,item.id);
@@ -48,6 +48,12 @@ test('Evidence wording preserves high-risk scientific boundaries',()=>{
 
   const noise=evidence.find(x=>x.id==='ev-minimal-noise-nonquantized-gravity-2026');
   assert.ok(noise.doesNotEstablish.some(x=>/every non-quantized gravity model is non-entangling/i.test(x)));
+
+  const indirect=evidence.find(x=>x.id==='ev-indirect-gme-interferometry-2026');
+  assert.ok(indirect.doesNotEstablish.some(x=>/direct experimental observation/i.test(x)));
+
+  const geodesic=evidence.find(x=>x.id==='ev-cq-geodesic-deviation-2026');
+  assert.ok(geodesic.doesNotEstablish.some(x=>/every classical–quantum gravity theory/i.test(x)));
 });
 
 test('Problems reference only shipped Evidence IDs',()=>{
