@@ -1900,11 +1900,12 @@ window.QI_QUESTIONS = {
       "disposition": "open",
       "dispositionLabel": "Open research question",
       "shortAnswer": "The current literature does not support one binary rule in which entanglement alone cleanly partitions every classical model from every quantized-mediator model. Different explicit alternatives make different predictions for probe entanglement, decoherence, force or metric diffusion, back-reaction, locality, matter-field propagation and temporal memory. A useful experiment therefore needs a predeclared model set and a joint observable/intervention strategy rather than a single witness interpreted without its assumptions.",
-      "detailedStatus": "BMV-style locality/information arguments motivate entanglement as a nonclassicality witness under specified mediator assumptions. However, Diósi–Penrose and broader Markovian hybrid models have entangling parameter regimes, while specified semiclassical/stochastic tidal models and Newton–Cartan mediator analyses do not. Time-local completely-positive classical–quantum dynamics also obey decoherence/diffusion/back-reaction constraints, but non-Markovian effective classical–quantum descriptions need not satisfy the same instantaneous trade-off at all times. The unresolved task is to identify a minimal experimentally feasible set of observables and interventions that separates a clearly enumerated model class with controlled systematics.",
+      "detailedStatus": "BMV-style locality/information arguments motivate entanglement as a nonclassicality witness under specified mediator assumptions. However, Diósi–Penrose and broader Markovian hybrid models have entangling parameter regimes, while specified semiclassical/stochastic tidal models and Newton–Cartan mediator analyses do not. Time-local completely-positive classical–quantum dynamics also obey decoherence/diffusion/back-reaction constraints, and a 2026 classification derives a minimum noise floor for non-entangling time-local Galilean models reproducing Newtonian gravity on average; non-Markovian effective classical–quantum descriptions need not satisfy the same instantaneous trade-off at all times. The unresolved task is to identify a minimal experimentally feasible set of observables and interventions that separates a clearly enumerated model class with controlled systematics.",
       "supportingClaims": [],
       "sourceIds": [
         "marletto-vedral-2017",
         "oppenheim-decoherence-diffusion-2023",
+        "fabiano-minimal-noise-2026",
         "trillo-navascues-dp-gie-2025",
         "angeli-carlesso-hybrid-entanglement-2025",
         "lin-mondal-newtonian-gie-2026",
@@ -1919,6 +1920,10 @@ window.QI_QUESTIONS = {
         {
           "title": "Gravitationally induced decoherence vs space-time diffusion: testing the quantum nature of gravity",
           "url": "https://doi.org/10.1038/s41467-023-43348-2"
+        },
+        {
+          "title": "Minimal noise in non-quantized gravity",
+          "url": "https://arxiv.org/abs/2603.26075"
         },
         {
           "title": "Diósi-Penrose model of classical gravity predicts gravitationally induced entanglement",
