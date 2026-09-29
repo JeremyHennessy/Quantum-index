@@ -78,11 +78,11 @@ Representative source: https://doi.org/10.1103/fv38-kgkb
 
 Gravity is classical and quantum matter couples to it through a Markovian CP hybrid dynamics. Oppenheim et al. derive an observable decoherence/back-reaction/diffusion trade-off. In a Hamiltonian first-order back-reaction specialization, their Eq. (27) has the form
 
-[
+$$
 \left\langle \omega\!\cdot\!\frac{\partial H_I}{\partial z}\right\rangle
 \left\langle \omega\!\cdot\!\frac{\partial H_I}{\partial z}\right\rangle^{\dagger}
 \preceq 8\langle D_2\rangle\langle D_0\rangle.
-]
+$$
 
 Here the observable back-reaction strength is bounded by the product of classical diffusion and quantum decoherence, subject to the paper's definitions and assumptions.
 
@@ -139,9 +139,9 @@ A “1” means the corresponding test has a literature-supported incompatibilit
 
 For the four hypothesis classes above, the unique minimum covering set of the three defined test families is
 
-[
+$$
 \boxed{\mathcal T_{\min}=\{T_E,\;T_D,\;T_X\}}.
-]
+$$
 
 ### Proof
 
@@ -179,15 +179,15 @@ Temporal witnesses under conservation-law assumptions add another useful axis, b
 
 Therefore:
 
-[
+$$
 \text{closure}(H1\ldots H4)=\text{solved by the 3-test cover above},
-]
+$$
 
 while
 
-[
+$$
 \text{closure}(\text{all conceivable classical-gravity models})=\text{open}.
-]
+$$
 
 That boundary is part of the result, not a caveat to hide.
 
