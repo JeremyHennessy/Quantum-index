@@ -2674,6 +2674,51 @@ window.QI_FORMULAS = {
       ]
     },
     {
+      "id": "cq-backreaction-decoherence-diffusion",
+      "name": "Classical–quantum back-reaction / decoherence / diffusion trade-off",
+      "category": "Quantum gravity & cosmology",
+      "latex": "\\left\\langle \\omega\\!\\cdot\\!\\frac{\\partial H_I}{\\partial z}\\right\\rangle\\left\\langle \\omega\\!\\cdot\\!\\frac{\\partial H_I}{\\partial z}\\right\\rangle^{\\dagger}\\preceq 8\\langle D_2\\rangle\\langle D_0\\rangle",
+      "plain": "<omega . dH_I/dz><omega . dH_I/dz>^dagger <= 8 <D2><D0>",
+      "description": "Observational trade-off between Hamiltonian first-order back-reaction, classical diffusion and quantum decoherence for the stated Markovian completely-positive classical–quantum dynamics.",
+      "theoryIds": [
+        "postquantum-classical-gravity",
+        "open-quantum-systems"
+      ],
+      "sourceIds": [
+        "oppenheim-decoherence-diffusion-2023"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "oppenheim-decoherence-diffusion-2023",
+          "locator": "Eq. (27), observational trade-off for Hamiltonian first-order back-reaction",
+          "url": "https://doi.org/10.1038/s41467-023-43348-2"
+        }
+      ],
+      "tags": [
+        "classical-quantum gravity",
+        "decoherence",
+        "diffusion",
+        "back-reaction"
+      ],
+      "formulaType": "derived identity",
+      "assumptions": [
+        "Markovian completely-positive classical–quantum dynamics in the paper's phase-space formulation",
+        "Hamiltonian back-reaction at first order as specified in the source",
+        "The averaged coefficients refer to one common model, state and regime"
+      ],
+      "variables": [
+        "omega: classical symplectic form",
+        "H_I: interaction Hamiltonian sourcing the first-order drift",
+        "D_0: quantum decoherence/Lindblad coefficient matrix",
+        "D_2: classical phase-space diffusion coefficient matrix",
+        "z: classical phase-space coordinates"
+      ],
+      "regime": "Markovian classical–quantum hybrid dynamics; the paper separately notes that non-Markovian dynamics need not obey the same positivity trade-off.",
+      "units": "Model dependent; both sides are matrix-valued combinations with matching dimensions under the source conventions.",
+      "theoryRelationship": "experimental/model-discrimination constraint",
+      "metadataReview": "explicit"
+    },
+    {
       "id": "lqg-area",
       "name": "LQG area spectrum",
       "category": "Quantum gravity & cosmology",
