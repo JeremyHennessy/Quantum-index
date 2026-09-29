@@ -264,6 +264,7 @@ window.QI_EVIDENCE = (() => {
         "hall-reginatto-classical-gravity-2018",
         "doner-grossardt-gie-2022",
         "trillo-navascues-dp-gie-2025",
+        "marchese-newton-gie-2025",
         "aziz-howl-gravity-entanglement-2025",
         "marletto-oppenheim-vedral-wilson-2025",
         "lin-mondal-newtonian-entanglement-2026",
