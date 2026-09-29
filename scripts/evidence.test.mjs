@@ -12,9 +12,9 @@ const sources=new Set(sandbox.window.QI_DATA.sources.map(x=>x.id));
 const problems=new Set(sandbox.window.QI_PROBLEMS.problems.map(x=>x.id));
 const evidenceIds=new Set(evidence.map(x=>x.id));
 
-test('Evidence layer has nine auditable records with resolved references',()=>{
-  assert.equal(evidence.length,9);
-  assert.equal(evidenceIds.size,9);
+test('Evidence layer has ten auditable records with resolved references',()=>{
+  assert.equal(evidence.length,10);
+  assert.equal(evidenceIds.size,10);
   for(const item of evidence){
     assert.match(item.date,/^\d{4}-\d{2}-\d{2}$/);
     assert.ok(item.result.length>60,item.id);
@@ -39,6 +39,10 @@ test('Evidence wording preserves high-risk scientific boundaries',()=>{
   assert.ok(desi.doesNotEstablish.some(x=>/direct detection.*dark matter/i.test(x)));
   const cq=evidence.find(x=>x.id==='ev-cq-decoherence-diffusion-2023');
   assert.ok(cq.doesNotEstablish.some(x=>/non-Markovian/i.test(x)));
+  const minimumNoise=evidence.find(x=>x.id==='ev-minimal-noise-nonquantized-2026');
+  assert.ok(minimumNoise);
+  assert.ok(minimumNoise.constrains.some(x=>/time-local.*Galilean/i.test(x)));
+  assert.ok(minimumNoise.doesNotEstablish.some(x=>/non-entangling/i.test(x)));
   const dpGie=evidence.find(x=>x.id==='ev-dp-gie-2025');
   assert.ok(dpGie.doesNotEstablish.some(x=>/classical Einstein gravity/i.test(x)));
   const debate=evidence.find(x=>x.id==='ev-gravity-entanglement-boundary-2025');
