@@ -14,7 +14,7 @@ const map=formulas=>new Map(formulas.map(f=>[f.id,f]));
 
 test('scientific-trust corrections keep formula conventions and provenance explicit',()=>{
   const w=load(), formulas=map(w.QI_FORMULAS.formulas), sources=new Set(w.QI_DATA.sources.map(s=>s.id));
-  for(const id of ['robertson-uncertainty-1929','braunstein-caves-1994','steck-quantum-atom-optics-2026','pezze-quantum-metrology-2018']) assert.ok(sources.has(id),id);
+  for(const id of ['robertson-uncertainty-1929','braunstein-caves-1994','steck-quantum-atom-optics-2026','pezze-quantum-metrology-2018','layton-weak-field-cq-2023','oppenheim-decoherence-diffusion-2023']) assert.ok(sources.has(id),id);
 
   const we=formulas.get('wigner-eckart');
   assert.ok(we.latex.includes("\\langle j||T^{(k)}||j'\\rangle"));
@@ -42,4 +42,13 @@ test('scientific-trust corrections keep formula conventions and provenance expli
   assert.equal(uncertainty.name,'Robertson uncertainty relation');
   assert.ok(uncertainty.sourceIds.includes('robertson-uncertainty-1929'));
   assert.equal(uncertainty.metadataReview,'explicit');
+
+  const cq=formulas.get('cq-decoherence-diffusion-tradeoff');
+  assert.ok(cq);
+  assert.equal(cq.formulaType,'canonical');
+  assert.equal(cq.metadataReview,'explicit');
+  assert.ok(cq.theoryIds.includes('postquantum-classical-gravity'));
+  assert.ok(cq.assumptions.some(x=>/Markovian/i.test(x)));
+  assert.match(cq.regime,/not a universal constraint on arbitrary non-Markovian/i);
+  assert.ok(cq.sourceLocations.some(x=>/4\.12/.test(x.locator)));
 });
