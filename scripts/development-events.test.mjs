@@ -16,12 +16,12 @@ test("DevelopmentEvents preserve origin years and carry source evidence",()=>{
   const formulaIds=new Set(w.QI_FORMULAS.formulas.map(f=>f.id));
   const sourceIds=new Set(w.QI_DATA.sources.map(s=>s.id));
   const events=w.QI_DEVELOPMENTS.events;
-  assert.equal(events.length,13);
+  assert.equal(events.length,16);
   assert.equal(Math.max(...w.QI_DATA.theories.map(t=>t.year)),2023);
   assert.equal(Math.max(...events.map(e=>e.year)),2026);
   assert.deepEqual(
     Object.fromEntries([2024,2025,2026].map(year=>[year,events.filter(e=>e.year===year).length])),
-    {2024:4,2025:4,2026:5}
+    {2024:4,2025:4,2026:8}
   );
   for(const event of events){
     assert.match(event.date,/^\d{4}-\d{2}-\d{2}$/);
@@ -55,4 +55,13 @@ test("recent events retain scientifically bounded wording",()=>{
 
   const noise=QI_DEVELOPMENTS.events.find(e=>e.id==="minimal-noise-nonquantized-gravity-2026");
   assert.match(noise.significance,/assumption-bounded/i);
+
+  const indirect=QI_DEVELOPMENTS.events.find(e=>e.id==="indirect-gme-interferometry-2026");
+  assert.match(indirect.summary,/indirect inference/i);
+
+  const locality=QI_DEVELOPMENTS.events.find(e=>e.id==="collapse-witness-locality-2026");
+  assert.equal(locality.eventType,"controversy/debate");
+
+  const geodesic=QI_DEVELOPMENTS.events.find(e=>e.id==="cq-geodesic-deviation-2026");
+  assert.match(geodesic.significance,/gravitational-wave observable/i);
 });
