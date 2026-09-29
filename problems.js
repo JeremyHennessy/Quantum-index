@@ -312,7 +312,9 @@ window.QI_PROBLEMS = {
         "ev-gravity-entanglement-boundary-2025",
         "ev-cq-decoherence-diffusion-2023",
         "ev-classical-gravity-cross-correlation-2025",
-        "ev-minimal-noise-nonquantized-gravity-2026"
+        "ev-minimal-noise-nonquantized-gravity-2026",
+        "ev-indirect-gme-interferometry-2026",
+        "ev-cq-geodesic-deviation-2026"
       ],
       "questionIds": [
         "rq-qft-curved-spacetime",
@@ -331,7 +333,10 @@ window.QI_PROBLEMS = {
         "classical-gravity-entanglement-2025",
         "minimal-noise-nonquantized-gravity-2026",
         "nonmarkovian-cq-2026",
-        "classical-gravity-gie-rebuttal-2026"
+        "classical-gravity-gie-rebuttal-2026",
+        "indirect-gme-interferometry-2026",
+        "collapse-witness-locality-2026",
+        "cq-geodesic-deviation-2026"
       ],
       "developmentContext": "Recent gravity-entanglement literature is model-dependent and actively disputed. A positive entanglement signal can exclude some classical-mediator classes but not every classical or hybrid model without additional assumptions or observables.",
       "sourceIds": [
