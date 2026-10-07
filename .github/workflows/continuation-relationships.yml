@@ -1,98 +1,108 @@
-name: Assemble and verify reviewed directional links
+name: Verify deployed physics relationship evidence
 on:
   push:
     branches: [agent/relationship-review-bootstrap-20261007]
 permissions:
   contents: read
 jobs:
-  assemble:
+  hosted:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
-    permissions:
-      contents: write
-    outputs:
-      candidate: ${{ steps.candidate.outputs.sha }}
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-      - name: Verify baseline and compressed patch exactly
-        shell: bash
-        run: |
-          set -euo pipefail
-          test "$(git rev-parse origin/main)" = f186171c405c0a7ab1461d250cb1800531808982
-          test -z "$(git ls-remote --heads origin refs/heads/agent/relationship-review-20261007)"
-          python3 - <<'PY'
-          import base64,hashlib,lzma,os,pathlib
-          chunks=[pathlib.Path(f'.continuation/rel-{i}.b64').read_text().strip() for i in range(5)]
-          assert [len(c) for c in chunks]==[3800,3800,3800,3800,2888], 'encoded payload length mismatch'
-          patch=lzma.decompress(base64.b64decode(''.join(chunks),validate=True))
-          assert hashlib.sha256(patch).hexdigest()=='6644d2f405b6db4035101682d5e1359b8f53d81b832ccec12a19f20490b2761e','payload checksum mismatch'
-          pathlib.Path(os.environ['RUNNER_TEMP'],'reviewed.patch').write_bytes(patch)
-          print('Verified exact 52118-byte reviewed patch')
-          assert len(patch)==52118
-          PY
-      - name: Apply reviewed patch onto protected predecessor
-        id: candidate
-        shell: bash
-        run: |
-          set -euo pipefail
-          git checkout --detach f186171c405c0a7ab1461d250cb1800531808982
-          git apply --index --check "$RUNNER_TEMP/reviewed.patch"
-          git apply --index "$RUNNER_TEMP/reviewed.patch"
-          git diff --cached --check
-          test "$(git write-tree)" = 8e1e64322c2c4fe3ab99fd02ce1730f973b366d4
-          test -z "$(git diff --cached --name-only -- .github app.js styles.css workspace.js profiles.js passports.js formulas.js package.json package-lock.json)"
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Promote four source-located theory relationships without changing UI'
-          test "$(git rev-parse HEAD^)" = f186171c405c0a7ab1461d250cb1800531808982
-          git push origin HEAD:refs/heads/agent/relationship-review-20261007
-          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-          printf 'Candidate commit: %s\nTree: %s\nMain unchanged.\n' "$(git rev-parse HEAD)" "$(git rev-parse HEAD^{tree})" >> "$GITHUB_STEP_SUMMARY"
-  verify:
-    needs: assemble
-    runs-on: ubuntu-latest
-    timeout-minutes: 18
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ needs.assemble.outputs.candidate }}
+          ref: ade091a5d4119a21dad148326a4546d313c1c813
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Verify exact code and full scientific regression suite
-        shell: bash
+      - name: Prepare exact-release read-only browser checks
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD^{tree})" = 8e1e64322c2c4fe3ab99fd02ce1730f973b366d4
-          mkdir -p verification
-          git rev-parse HEAD > verification/tested-commit.txt
-          git rev-parse HEAD^{tree} > verification/tested-tree.txt
           npm ci --ignore-scripts
-          npm test 2>&1 | tee verification/node-tests.log
-          npm run validate 2>&1 | tee verification/data-validation.log
-      - name: Run all unchanged Chromium and WebKit assertions
-        shell: bash
+          mkdir -p verification
+          cat > .hosted-relationship-check.mjs <<'JS'
+          import fs from 'node:fs';
+          import assert from 'node:assert/strict';
+          import {createHash} from 'node:crypto';
+          import {chromium,webkit,devices,request,expect} from '@playwright/test';
+          const base='https://jeremyhennessy.github.io/Quantum-index/',out='verification';fs.mkdirSync(out,{recursive:true});
+          const report={startedAt:new Date().toISOString(),expectedCommit:process.env.EXPECTED_COMMIT,expectedTree:'8e1e64322c2c4fe3ab99fd02ce1730f973b366d4',base,assets:[],browsers:[],scope:'Read-only deployed asset checks and fresh isolated browser contexts. No existing user research accessed.'};
+          const opened=[],sha=b=>createHash('sha256').update(b).digest('hex');
+          try{
+           const api=await request.newContext();opened.push(api);const html=fs.readFileSync('index.html');
+           const paths=['index.html',...Array.from(html.toString().matchAll(/(?:src|href)="\.\/([^"?]+)\?v=([a-f0-9]+)"/g),m=>m[1]+'?v='+m[2])];assert.equal(new Set(paths).size,13);
+           for(const p of paths){const response=await api.get(base+p,{timeout:60000});assert(response.ok(),`HTTP ${response.status()} ${p}`);const bytes=await response.body();assert.equal(sha(bytes),sha(fs.readFileSync(p.split('?')[0])),`Different deployed bytes: ${p}`);report.assets.push({path:p,status:response.status(),sha256:sha(bytes)});}await api.dispose();
+           for(const [name,engine,opts] of [['chromium',chromium,{viewport:{width:1280,height:900}}],['webkit',webkit,devices['iPhone 13']]]){
+            const browser=await engine.launch({headless:true});opened.push(browser);const context=await browser.newContext(opts),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+            const result={name,routes:[],screenshots:[]};report.browsers.push(result);
+            const go=async route=>{const r=await page.goto(base+route,{waitUntil:'networkidle',timeout:60000});assert(!r||r.ok());await page.waitForFunction(()=>window.QI_DATA?.theories?.length===481);result.routes.push(route);};
+            const snap=async label=>{const path=out+`/${label}-${name}.png`;await page.screenshot({path});result.screenshots.push(path);};
+            await go('#/explore');await expect(page.locator('.hero h2')).toHaveText('Explore the ideas shaping modern physics.');
+            result.inventory=await page.evaluate(()=>({theories:QI_DATA.theories.length,formulas:QI_FORMULAS.formulas.length,sources:QI_DATA.sources.length,passports:QI_PASSPORTS.records.length,relations:QI_DATA.relations.length,explicit:QI_FORMULAS.formulas.filter(f=>f.metadataReview==='explicit').length}));
+            assert.deepEqual(result.inventory,{theories:481,formulas:402,sources:543,passports:16,relations:610,explicit:147});
+            await go('#/compare?ids=bell,quantum-steering,fano-resonance,hawking-radiation');const table=page.locator('#comparisonResults');await expect(table.locator('table')).toHaveCount(1);
+            await expect(table.locator('[data-comparison-passport="bell"]').first()).toContainText('2026-10-07');await expect(table.locator('[data-comparison-passport="hawking-radiation"]').first()).toContainText('2026-09-29');
+            await table.evaluate(el=>el.scrollIntoView({block:'start'}));await snap('bell-comparison');
+            result.comparisonScroll=await table.locator('.comparison-scroll').evaluate(el=>{el.scrollLeft=el.scrollWidth;const r={client:el.clientWidth,content:el.scrollWidth,atEnd:Math.abs(el.scrollLeft+el.clientWidth-el.scrollWidth)<=2};el.scrollLeft=0;return r;});assert(result.comparisonScroll.content<=result.comparisonScroll.client+2||result.comparisonScroll.atEnd);
+            await table.locator('thead a').first().click();const passport=page.locator('.passport');await expect(passport).toContainText('measurement independence are separate');await expect(passport).toContainText('Failing one CHSH test does not establish general Bell locality');await expect(passport.locator('a[href^="#/evidence?"]')).toHaveCount(1);
+            await passport.locator('summary').click();await passport.evaluate(el=>el.scrollIntoView({block:'start'}));await snap('bell-passport');
+            await page.locator('#backToView').click();await expect(page.locator('#compareSlot3')).toHaveValue('hawking-radiation');await expect(page.locator('#compareSlot1')).toHaveValue('quantum-steering');
+            await go('#/formula?theory=bell&review=explicit');const cards=page.locator('#formulaGrid .formula-card');await expect(cards).toHaveCount(4);await page.waitForFunction(()=>window.MathJax?.tex2svgPromise,{timeout:30000});
+            result.math=await page.evaluate(async()=>{await MathJax.startup.promise;const failures=[];for(const f of QI_FORMULAS.formulas){try{const node=await MathJax.tex2svgPromise(f.latex,{display:true});if(node.querySelector('[data-mml-node="merror"],mjx-merror'))failures.push(f.id);}catch(e){failures.push(f.id+': '+e.message);}}return {total:QI_FORMULAS.formulas.length,failures,batch:QI_FORMULAS.formulas.filter(f=>f.curationBatch==='bell-metadata-2026-10-07').map(f=>({id:f.id,latex:f.latex})),cq:QI_FORMULAS.formulas.find(f=>f.id==='cq-decoherence-diffusion-tradeoff').latex};});
+            assert.equal(result.math.total,402);assert.equal(result.math.batch.length,4);assert.deepEqual(result.math.failures,[]);assert.equal(result.math.cq,String.raw`4D_2\succeq D_0^{-1}`);
+            assert.deepEqual(Object.fromEntries(result.math.batch.map(f=>[f.id,f.latex])),{'bell-factorization':String.raw`P(a,b|x,y,\lambda)=P(a|x,\lambda)P(b|y,\lambda)`,'chsh-classical':String.raw`|S|\le2`,'chsh-tsirelson':String.raw`|S|\le2\sqrt2`,'bell-state':String.raw`|\Phi^+\rangle=\frac{|00\rangle+|11\rangle}{\sqrt2}`});
+            const byTitle=title=>cards.filter({has:page.getByRole('heading',{name:title,exact:true})});
+            await expect(byTitle('Bell-local factorization')).toContainText('q(lambda|x,y)=q(lambda)');
+            for(const title of ['CHSH classical bound','Tsirelson bound'])await expect(byTitle(title)).toContainText('S = E_00 + E_01 + E_10 - E_11');
+            await expect(byTitle('CHSH classical bound')).toContainText('finite observed excess requires statistical analysis');await expect(byTitle('Tsirelson bound')).toContainText('Hermitian contractions');await expect(byTitle('Bell state')).toContainText('not the antisymmetric singlet');
+            for(let i=0;i<4;i++){await expect(cards.nth(i).locator('a[href*="#page="]')).toHaveCount(2);await expect(cards.nth(i).locator('mjx-container').first()).toBeVisible();await cards.nth(i).evaluate(el=>el.scrollIntoView({block:'start'}));await snap(`bell-formula-${i}`);}
+            result.formulaScroll=await page.locator('#formulaGrid .formula-equation mjx-container').evaluateAll(els=>els.map(el=>{el.scrollLeft=el.scrollWidth;const r={client:el.clientWidth,content:el.scrollWidth,atEnd:Math.abs(el.scrollLeft+el.clientWidth-el.scrollWidth)<=2};el.scrollLeft=0;return r;}));assert(result.formulaScroll.every(s=>s.content<=s.client+2||s.atEnd));
+            await go('#/formula?theory=fano-resonance');await expect(page.locator('#formulaGrid .formula-card')).toHaveCount(2);await expect(page.locator('#formulaGrid')).toContainText('standard deviation');
+            await go('#/formula?theory=quantum-steering');await expect(page.locator('#formulaGrid .formula-card')).toHaveCount(2);await expect(page.locator('#formulaGrid')).toContainText('not Bell violation');
+            await go('#/formula?theory=holstein-model');await expect(page.locator('#formulaGrid')).toContainText('finite-t band is an approximation');
+            await go('#/formula?theory=quantum-zeno');await expect(page.locator('#formulaGrid')).toContainText('N consecutive survival outcomes');
+            await go('#/problems?problem=quantum-gravity');await expect(page.locator('#problemDetail')).toContainText('geodesic');
+            await go('#/catalog?search=Planck');await page.locator('#catalog a[href*="planck-quanta"]').click();await page.locator('#backToView').click();await expect(page.locator('#search')).toHaveValue('Planck');
+            await go('#/theory/wave-mechanics');await page.locator('#researchNote').fill('Isolated relationship review — no existing user data.');await page.locator('#saveNote').click();await expect(page.locator('#researchStatus')).toContainText('Note saved');await page.reload();await expect(page.locator('#researchNote')).toHaveValue('Isolated relationship review — no existing user data.');result.isolatedNoteRoundTrip=true;
+            result.relations=await page.evaluate(()=>({total:QI_DATA.relations.length,sourced:QI_DATA.relations.filter(r=>r.sourceIds.length).length,editorial:QI_DATA.relations.filter(r=>!r.sourceIds.length).length}));
+            assert.deepEqual(result.relations,{total:610,sourced:122,editorial:488});
+            for(const spec of [
+              {from:'renormalization-group',label:'Functional renormalization group',phrase:'truncations need not be exact',url:'10.1016/0370-2693'},
+              {from:'categorical-qm',label:'ZX calculus',phrase:'not completeness for arbitrary quantum processes',url:'10.1088/1367-2630'},
+              {from:'conformal-field-theory',label:'Conformal bootstrap',phrase:'not an assertion that every CFT is solved',url:'arxiv.org/abs/1602.07982'},
+              {from:'tensor-network-states',label:'MERA / entanglement-renormalization framework',phrase:'not a claim that MERA formally subsumes every MPS',url:'arxiv.org/abs/1106.1082v1'}
+            ]){
+              await go('#/theory/'+spec.from);
+              const link=page.locator('#theoryDetail a.relation').filter({has:page.getByText(spec.label,{exact:true})}).first();
+              await expect(link).toContainText('formal mathematical relation');
+              await expect(link).toContainText('1 source');
+              const details=link.locator('xpath=following-sibling::*[1]');
+              await details.locator('summary').click();await expect(details).toContainText(spec.phrase);
+              await expect(details.locator('a').first()).toHaveAttribute('href',new RegExp(spec.url.replace(/[.*+?^\u0024{}()|[\]\\]/g,'\\\            await go('#/coverage');await expect(page.locator('#coverageView'))')));
+              if(spec.from==='categorical-qm'||spec.from==='tensor-network-states'){
+                await details.evaluate(el=>el.scrollIntoView({block:'center'}));await snap('reviewed-'+spec.from);
+              }
+            }
+            await go('#/coverage');await expect(page.locator('#coverageContent')).toContainText('122 source-backed relationships');await expect(page.locator('#coverageContent')).toContainText('488 editorial relationships');
+            await go('#/coverage');await expect(page.locator('#coverageView')).toContainText('Nuclear quantum theory');await page.setViewportSize({width:320,height:900});assert(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth));assert.deepEqual(errors,[]);result.pageErrors=errors;result.passed=true;await context.close();await browser.close();
+           }
+           report.passed=true;
+          }catch(e){report.passed=false;report.error=e.stack;process.exitCode=1;}
+          finally{await Promise.allSettled(opened.map(x=>typeof x.dispose==='function'?x.dispose():x.close()));report.completedAt=new Date().toISOString();fs.writeFileSync(out+'/hosted-receipt.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));}
+          JS
+          node --check .hosted-relationship-check.mjs
+      - name: Verify real deployed bytes and isolated desktop/mobile sessions
         run: |
           set -euo pipefail
           IMAGE=mcr.microsoft.com/playwright@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27
           timeout 180 docker pull "$IMAGE"
-          docker image inspect "$IMAGE" --format '{{json .RepoDigests}}' > verification/browser-image.json
-          printf "import config from './playwright.config.mjs';\nexport default {...config,webServer:undefined};\n" > .independent-playwright.config.mjs
-          python3 -m http.server 4173 --bind 127.0.0.1 > verification/server.log 2>&1 &
-          SERVER_PID=$!
-          trap 'kill "$SERVER_PID" || true' EXIT
-          for n in $(seq 1 30); do curl --fail --silent http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
-          timeout 600 docker run --rm --ipc=host --network=host -e CI=true -v "$PWD:/work" -w /work "$IMAGE" npx playwright test --config=.independent-playwright.config.mjs
+          timeout 420 docker run --rm --ipc=host -e EXPECTED_COMMIT=ade091a5d4119a21dad148326a4546d313c1c813 -v "$PWD:/work" -w /work "$IMAGE" node .hosted-relationship-check.mjs
           git diff --exit-code
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: relationship-promotions-exact-candidate
-          path: |
-            verification/
-            playwright-report/
-            test-results/
+          name: relation-evidence-hosted-verification
+          path: verification/
           retention-days: 14
