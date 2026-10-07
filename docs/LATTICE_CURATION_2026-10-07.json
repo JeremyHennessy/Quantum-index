@@ -1,0 +1,80 @@
+{
+  "baselineCommit": "462f2d96649f3c030c06fe35b537d3fd1599d90a",
+  "baselineTree": "8e289ef17de97bf2b0b32549bca87216dfac7c97",
+  "reviewedAt": "2026-10-07",
+  "addedFormulaIds": [
+    "ssh-fixed-dimerization-bands",
+    "ssh-chiral-winding",
+    "aubry-andre-onsite-hamiltonian",
+    "holstein-local-phonon-hamiltonian",
+    "holstein-small-hopping-band"
+  ],
+  "addedPassportTheoryIds": [
+    "ssh-model",
+    "aubry-andre",
+    "holstein-model"
+  ],
+  "addedSourceIds": [
+    "asboth-ssh-course-2015",
+    "bonca-holstein-polaron-1998"
+  ],
+  "baselineIntegrity": {
+    "theories": {
+      "count": 481,
+      "sha256": "dc71df41a52091d004ee1ffc0c7bc10743b6f8e5cc841a966fdf274b51eb84df"
+    },
+    "formulas": {
+      "count": 393,
+      "sha256": "0bc413002d3d9d8aaf468f536dbf105da1b64f7f21e3c3d70cef35619f3a285b"
+    },
+    "passports": {
+      "count": 10,
+      "sha256": "79c96bd9d04c7af4f49e0538edc798d4066d1b7089d037ae53dff752ce68d280"
+    },
+    "sources": {
+      "count": 537,
+      "sha256": "fc83667cc68ce5763ee259c6d08024e8495580176e343a532175c1faaf015a2d"
+    }
+  },
+  "previousFiles": {
+    "app.js": "558659f53ea3e6038c6ca719096454502a101b0ad9b3f65f57ce930395a4edcc",
+    "passports.js": "59ade50a5b1ed2b0c842a756eecf8545e2c5a4a64621a5654b407211875a7b40"
+  },
+  "updatedFiles": {
+    "app.js": "d7802b604a9016d591664da37d010aeef4d6a01dc8a8bc036ae876feb0fa1110",
+    "passports.js": "a39be40309254872c5deb9319f7b45611ac5a2f286cb88d81aa7b3187cbfb545"
+  },
+  "untouchedFiles": {
+    "styles.css": "19f8c14858cb7a2663b5337b64eb99aeef29c378c5b42c4438e738bae59ffb24",
+    "workspace.js": "de553a16db91ad4640a99f508208137b2a43d2b113a05e65f887521225c54e09",
+    "profiles.js": "7ead242ba17098969b40e3f57e5c2ac788febb44ab5cdce546766f8c6262ce1c",
+    ".github/workflows/validate.yml": "1722de72fae3eae385bd35ae12d223df63882e69aec7ca81307e0db2d7662659",
+    "package.json": "50ee1455431713bf5ac482cad5ca71e53ea401a169724c120b238ed00ce1c91c",
+    "package-lock.json": "9336b23f013c9551394393fa6a9d5c9e87488b726cc40ceb63f01d3484ac7735",
+    "developments.js": "ac50182e95d282202540a6bcab3bbd5c0a0beb749aa13ad68ae0c9f586390bfa",
+    "questions.js": "16beba9fed1761b1da48c61a626c89a043127b74e134cd161f885d74010b2968",
+    "problems.js": "757d5d3b7767aba895aaff9438bf4a2194ee781557d2b7e16f28582a92bbf8e8",
+    "evidence.js": "2b9ab246c69fba1c21fe7555ccdabdbc549c2f8b12e119fba0de87d7b8b35252",
+    "formula-audit.js": "fb958416812e0ba093e7fbaa1ee9d995e536031ab177980f9296e85084fc72ba"
+  },
+  "scientificReview": [
+    "SSH: preserve positive hopping, +imk Bloch basis, separate open chain and periodic bulk. Winding uses vector Eq. (1.38); do not copy the inconsistent log sign in v1 Eq. (1.40).",
+    "Aubry–André: preserve the full cosine amplitude and positive hopping of Roati Eq. (1); do not extrapolate the ideal threshold to finite experiments or interacting MBL.",
+    "Holstein: source omega is an energy, renamed Omega=hbar omega_0. First-order band is marked approximation, not an exact finite-t result."
+  ],
+  "reviewLimits": [
+    "Targeted source-page/equation review, not full-paper reproduction.",
+    "No new theory entities, experimental Evidence records or relationship promotions.",
+    "Finite numerical checks verify selected conventions/limits, not an infinite-system proof.",
+    "PDF page anchors are one-based; arXiv source versions are pinned."
+  ],
+  "expected": {
+    "theories": 481,
+    "formulas": 398,
+    "formulaGaps": 167,
+    "explicitFormulaMetadata": 139,
+    "baselineFormulaMetadata": 259,
+    "sources": 539,
+    "passports": 13
+  }
+}

@@ -14,7 +14,7 @@ Quantum Index is a source-aware map of quantum theory and adjacent fundamental p
 ## Current build
 
 <!-- coverage:start -->
-The census remains **open**. The current catalog contains **481 entries**, **610 typed relationships**, **41 thought trees**, and **537 bibliography records** across **14 categories**. Provenance is attached to all entries: **352 primary-sourced** and **129 review-sourced**. The formula atlas contains **393 entries** across **29 categories**; **170** theory entries remain documented formula gaps. The reviewed development timeline contains **16** events through **2026**. Counts are generated from runtime data, separately from scientific review.
+The census remains **open**. The current catalog contains **481 entries**, **610 typed relationships**, **41 thought trees**, and **539 bibliography records** across **14 categories**. Provenance is attached to all entries: **352 primary-sourced** and **129 review-sourced**. The formula atlas contains **398 entries** across **29 categories**; **167** theory entries remain documented formula gaps. The reviewed development timeline contains **16** events through **2026**. Counts are generated from runtime data, separately from scientific review.
 <!-- coverage:end -->
 
 Static app:
@@ -136,3 +136,7 @@ The Coverage tab reports profile, formula and relationship review gaps from curr
 ### Structured comparison
 
 Compare uses curated Theory Passports when available, including their assumptions, fundamental objects, regimes, linked scientific Problems, Evidence and Research Questions. Earlier cited profiles remain available in each comparison cell. Entries without a Passport keep their existing profile or explicit coverage gap; no profile is fabricated to fill a column. Comparison links, selection limits and browser-local saved comparisons are unchanged.
+
+## Lattice-model curation
+
+Three lattice-model Theory Passports (SSH, Aubry–André and Holstein) extend the original ten hubs, with five source-located representative equations and per-record review dates. The static SSH limit, ideal quasiperiodic model and quantum-phonon model are not treated as interchangeable. See `docs/RELEASE_LATTICE_CURATION_2026-10-07.md` for mathematical checks, preservation boundaries and release verification requirements.

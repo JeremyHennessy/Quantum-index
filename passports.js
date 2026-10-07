@@ -2,7 +2,7 @@
 window.QI_PASSPORTS = {
   "version": "v1",
   "reviewedAt": "2026-09-29",
-  "scope": "Ten curated Theory Passports for high-value hub entries. Passports structure existing sourced catalog/profile content; they do not supersede the underlying sources or imply experimental confirmation.",
+  "scope": "Curated Theory Passports for hub entries and selected lattice models. Passports structure existing sourced catalog/profile content; they do not supersede the underlying sources or imply experimental confirmation.",
   "records": [
     {
       "theoryId": "hawking-radiation",
@@ -390,3 +390,113 @@ window.QI_PASSPORTS = {
     }
   ]
 };
+
+// Per-record review dates preserve the original hub review history.
+window.QI_PASSPORTS.records.push(...[
+  {
+    "theoryId": "ssh-model",
+    "problemIds": [],
+    "entityType": "model",
+    "scientificStatus": "established model; scope-limited representative",
+    "coreIdea": "Alternating bond strengths make the boundary and bulk differ in a precisely specified one-dimensional chain.",
+    "degreesOfFreedom": "One orbital on each A/B sublattice; one spin sector. The original electron–lattice model also has distortion variables.",
+    "assumptions": [
+      "Freeze the distortion for these formulas.",
+      "Neglect electron interactions and onsite terms.",
+      "Fix the unit cell and boundary termination."
+    ],
+    "mathematicalStructure": "Alternating-hopping matrix, two Bloch bands, chiral symmetry and an oriented bulk winding.",
+    "formulaIds": [
+      "ssh-fixed-dimerization-bands",
+      "ssh-chiral-winding"
+    ],
+    "regime": "Static nearest-neighbor bulk; open-chain edges require their own boundary condition.",
+    "predictionsConsequences": [
+      "Dimerization opens a bulk gap.",
+      "A compatible boundary can support in-gap edge states."
+    ],
+    "evidenceIds": [],
+    "evidenceSummary": "These cards curate a theoretical limit; no dedicated experimental Evidence record is attached.",
+    "limitations": [
+      "Finite edges can hybridize rather than remain exactly at zero energy.",
+      "Breaking chiral symmetry changes the winding argument."
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "discovery-ssh-1979",
+      "asboth-ssh-course-2015"
+    ],
+    "reviewedAt": "2026-10-07"
+  },
+  {
+    "theoryId": "aubry-andre",
+    "problemIds": [],
+    "entityType": "model",
+    "scientificStatus": "established model; scope-limited representative",
+    "coreIdea": "Localization can arise from a deterministic incommensurate onsite potential rather than random site energies.",
+    "degreesOfFreedom": "A single particle in a Wannier basis with uniform hopping and a spatially modulated site energy.",
+    "assumptions": [
+      "Neglect interactions and extra confinement.",
+      "Separate the ideal irrational ratio from finite approximants.",
+      "Specify phase, size and boundary conditions."
+    ],
+    "mathematicalStructure": "A nearest-neighbor lattice Hamiltonian with one cosine modulation; real-space and Fourier-space descriptions expose the competing energy scales.",
+    "formulaIds": [
+      "aubry-andre-onsite-hamiltonian"
+    ],
+    "regime": "Single-particle quasiperiodic chain, not interacting many-body localization.",
+    "predictionsConsequences": [
+      "The ideal golden-ratio model has its transition at Delta/J=2.",
+      "Finite samples and experimental incommensuration alter the observed crossover."
+    ],
+    "evidenceIds": [],
+    "evidenceSummary": "Roati et al. report inhibited expansion and localized profiles in a nearly noninteracting condensate. This does not establish interacting MBL; no separate Evidence card is added here.",
+    "limitations": [
+      "Do not assign the ideal threshold to every experimental setup.",
+      "A rational finite ring is not proof of the irrational infinite-system limit."
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "discovery-roati-2008"
+    ],
+    "reviewedAt": "2026-10-07"
+  },
+  {
+    "theoryId": "holstein-model",
+    "problemIds": [],
+    "entityType": "model",
+    "scientificStatus": "established model; scope-limited representative",
+    "coreIdea": "An electron moving between sites dresses itself with local vibrational excitations.",
+    "degreesOfFreedom": "One itinerant electron and a harmonic oscillator on each site; the quantum phonon cloud is retained.",
+    "assumptions": [
+      "One electron and dispersionless local phonons.",
+      "Fix coupling and energy conventions.",
+      "Use the small-hopping band only within its perturbative regime."
+    ],
+    "mathematicalStructure": "A fermion–boson Hamiltonian; displacement of occupied oscillators and small-hopping perturbation give a limiting polaron band.",
+    "formulaIds": [
+      "holstein-local-phonon-hamiltonian",
+      "holstein-small-hopping-band"
+    ],
+    "regime": "Clean one-dimensional single-polaron problem; finite-density correlations are outside these representatives.",
+    "predictionsConsequences": [
+      "At zero hopping the occupied oscillator lowers energy by lambda²/Omega.",
+      "At first order the coherent hopping is reduced by exp[-(lambda/Omega)²]."
+    ],
+    "evidenceIds": [],
+    "evidenceSummary": "The cited research supplies analytical limits and variational numerical calculations, not a direct observation that every material follows this Hamiltonian.",
+    "limitations": [
+      "The finite-t band is not exact.",
+      "Band narrowing alone does not demonstrate a sharp self-trapping ground-state transition."
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "discovery-holstein-1959",
+      "bonca-holstein-polaron-1998"
+    ],
+    "reviewedAt": "2026-10-07"
+  }
+]);
