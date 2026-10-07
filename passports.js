@@ -500,3 +500,79 @@ window.QI_PASSPORTS.records.push(...[
     "reviewedAt": "2026-10-07"
   }
 ]);
+
+// Source-scoped AMO/steering curation, 7 October 2026. Prior records are unchanged.
+window.QI_PASSPORTS.records.push(...[
+  {
+    "theoryId": "fano-resonance",
+    "problemIds": [],
+    "entityType": "resonance framework",
+    "scientificStatus": "established framework; isolated-resonance representative",
+    "coreIdea": "A discrete resonant pathway interferes with continuum excitation, producing an asymmetric spectral feature.",
+    "degreesOfFreedom": "A discrete state coupled to a continuum, plus a noninterfering background in the selected cross-section model.",
+    "assumptions": [
+      "Use a real asymmetry parameter and an isolated resonance.",
+      "Keep the background approximately constant across the relevant energy interval.",
+      "Separate the natural line width from instrumental energy spread."
+    ],
+    "mathematicalStructure": "The real-q Fano profile and its convolution with a normalized Gaussian; scaled detuning fixes the imaginary-part sign.",
+    "formulaIds": [
+      "fano-real-q-profile",
+      "fano-gaussian-broadened-profile"
+    ],
+    "regime": "Linear spectral response in the stated local line-shape model, not every multichannel or overlapping resonance.",
+    "predictionsConsequences": [
+      "The interfering contribution vanishes at epsilon=-q before instrumental broadening.",
+      "A nonzero background or finite resolution can leave a nonzero observed minimum."
+    ],
+    "evidenceIds": [],
+    "evidenceSummary": "These cards document a theoretical profile and convolution, not a new experimental measurement. Source-equation review uses Schippers 2018; the original Fano bibliography entry is retained.",
+    "limitations": [
+      "A fitted asymmetric peak alone does not uniquely identify its microscopic mechanism.",
+      "Gamma is not generally the observed asymmetric peak FWHM."
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "discovery-fano-1961",
+      "schippers-fano-convolution-2018"
+    ],
+    "reviewedAt": "2026-10-07"
+  },
+  {
+    "theoryId": "quantum-steering",
+    "problemIds": [],
+    "entityType": "correlation framework",
+    "scientificStatus": "established framework; measurement- and trust-dependent",
+    "coreIdea": "One party can demonstrate correlations that cannot be explained by pre-existing quantum states of the trusted party.",
+    "degreesOfFreedom": "A bipartite quantum state, Alice’s measurement setting and announced outcome, and Bob’s trusted conditional quantum states.",
+    "assumptions": [
+      "Specify Alice-to-Bob direction and the allowed measurements.",
+      "Use one hidden ensemble for all settings when testing an LHS explanation.",
+      "State sampling and detector assumptions before applying a witness."
+    ],
+    "mathematicalStructure": "Subnormalized conditional states form an assemblage; an LHS decomposition is the null model and a finite Pauli witness can exclude it.",
+    "formulaIds": [
+      "steering-projective-lhs",
+      "steering-finite-setting-bound"
+    ],
+    "regime": "The defining card uses the source’s projective scenario; the witness additionally assumes trusted qubit observables.",
+    "predictionsConsequences": [
+      "For three orthogonal axes the ideal LHS bound is 1/sqrt(3).",
+      "A singlet Werner example with visibility above that bound violates this witness with matched signs."
+    ],
+    "evidenceIds": [],
+    "evidenceSummary": "Saunders et al. demonstrate photonic steering with multiple settings; their experiment does not close the detection loophole. No new Evidence record or universal Bell-locality threshold is asserted here.",
+    "limitations": [
+      "Failure to violate this finite witness is inconclusive about general steerability.",
+      "Conditioned-state changes do not enable signalling and do not alone prove steering."
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "discovery-steering-2006",
+      "saunders-steering-2010"
+    ],
+    "reviewedAt": "2026-10-07"
+  }
+]);

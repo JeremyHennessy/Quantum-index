@@ -2670,3 +2670,23 @@ window.QI_DATA.sources.push(...[
     "url": "https://arxiv.org/abs/cond-mat/9812252v1"
   }
 ]);
+
+// Source-scoped AMO/steering curation, 7 October 2026. Prior records are unchanged.
+window.QI_DATA.sources.push(...[
+  {
+    "id": "schippers-fano-convolution-2018",
+    "title": "Analytical expression for the convolution of a Fano line profile with a Gaussian",
+    "authors": "S. Schippers",
+    "year": 2018,
+    "type": "primary research paper / versioned preprint",
+    "url": "https://arxiv.org/abs/1203.4281v3"
+  },
+  {
+    "id": "saunders-steering-2010",
+    "title": "Experimental EPR-Steering of Bell-local States",
+    "authors": "D. J. Saunders, S. J. Jones, H. M. Wiseman, G. J. Pryde",
+    "year": 2010,
+    "type": "primary experimental paper / revised preprint",
+    "url": "https://arxiv.org/abs/0909.0805v2"
+  }
+]);

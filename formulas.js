@@ -8519,3 +8519,178 @@ window.QI_FORMULAS.formulas.push(...[
     ]
   }
 ]);
+
+// Source-scoped AMO/steering curation, 7 October 2026. Prior records are unchanged.
+window.QI_FORMULAS.formulas.push(...[
+  {
+    "id": "fano-real-q-profile",
+    "name": "Fano profile with noninterfering background",
+    "category": "Quantum optics & AMO",
+    "latex": "\\sigma(E)=\\sigma_0+\\sigma_1\\frac{(q+\\epsilon)^2}{1+\\epsilon^2},\\qquad \\epsilon=\\frac{2(E-E_r)}{\\Gamma}",
+    "plain": "sigma(E)=sigma_0+sigma_1(q+epsilon)^2/(1+epsilon^2); epsilon=2(E-E_r)/Gamma",
+    "description": "A real-q isolated-resonance profile. The interference zero is at epsilon=-q, where the remaining cross section is sigma_0, not necessarily zero.",
+    "theoryIds": [
+      "fano-resonance"
+    ],
+    "sourceIds": [
+      "schippers-fano-convolution-2018"
+    ],
+    "tags": [
+      "amo-steering-2026-10-07",
+      "fano-resonance"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [
+      "One isolated resonance with real q; Gamma>0 is the natural energy width, not generally the measured asymmetric peak FWHM.",
+      "sigma_0>=0 and sigma_1>0 are held constant over the fitted interval; rapidly varying backgrounds require a different treatment.",
+      "Instrument broadening is excluded here. This cross section is not a normalized probability density."
+    ],
+    "variables": [
+      "E,E_r,Gamma: energy, resonance position and natural energy width",
+      "q,epsilon: dimensionless asymmetry and detuning",
+      "sigma_0: noninterfering background; sigma_1: interfering-channel scale"
+    ],
+    "regime": "Local constant-background representation, not a universal multichannel or complex-q line shape.",
+    "units": "E,E_r,Gamma share energy units; sigma,sigma_0,sigma_1 share area units.",
+    "theoryRelationship": "Representative of the existing resonance framework; the detailed equation review uses Schippers, not an unseen page of Fano 1961.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-07",
+    "curationBatch": "amo-steering-2026-10-07",
+    "sourceLocations": [
+      {
+        "sourceId": "schippers-fano-convolution-2018",
+        "locator": "arXiv:1203.4281v3, Eq. (1), PDF p. 1; detuning and slowly varying backgrounds on p. 2. Delta_L is renamed Gamma.",
+        "url": "https://arxiv.org/pdf/1203.4281v3#page=1"
+      }
+    ]
+  },
+  {
+    "id": "fano-gaussian-broadened-profile",
+    "name": "Gaussian-broadened Fano cross section",
+    "category": "Quantum optics & AMO",
+    "latex": "\\begin{aligned}\\bar\\sigma(E)&=\\sigma_0+\\sigma_1\\left[1+\\sqrt{\\pi}y\\left\\{(q^2-1)\\operatorname{Re}w(z)-2q\\operatorname{Im}w(z)\\right\\}\\right]\\\\z&=\\frac{E_r-E}{\\sqrt{2}s}+iy,\\qquad y=\\frac{\\Gamma}{2\\sqrt{2}s},\\qquad w(z)=e^{-z^2}\\operatorname{erfc}(-iz)\\end{aligned}",
+    "plain": "sigma_bar = sigma_0 + sigma_1[1+sqrt(pi)y((q^2-1)Re w(z)-2q Im w(z))]; z=(E_r-E)/(sqrt(2)s)+iy; y=Gamma/(2sqrt(2)s)",
+    "description": "Convolution of the preceding constant-background profile with G_s(u)=exp[-u^2/(2s^2)]/(sqrt(2pi)s). This full-cross-section normalization remains regular at q=0 and q=+/-1.",
+    "theoryIds": [
+      "fano-resonance"
+    ],
+    "sourceIds": [
+      "schippers-fano-convolution-2018"
+    ],
+    "tags": [
+      "amo-steering-2026-10-07",
+      "fano-resonance"
+    ],
+    "formulaType": "derived identity",
+    "assumptions": [
+      "s>0 is Gaussian standard deviation in energy, not Gaussian FWHM; FWHM=2 sqrt(2 ln 2) s.",
+      "All assumptions of fano-real-q-profile apply; sigma_0,sigma_1,q and Gamma are constant across the convolution support.",
+      "Uses x=(E_r-E)/(sqrt(2)s), the source orientation. Reversing x requires reversing the imaginary-part sign.",
+      "This is an algebraic reparameterization of the cited convolution, not a new physical result or a fitted spectrum."
+    ],
+    "variables": [
+      "s: energy standard deviation; Gamma: natural energy width",
+      "x=Re z and y=Im z>0: dimensionless scaled detuning and width",
+      "w: Faddeeva function; q,sigma_0,sigma_1: same as the unbroadened card"
+    ],
+    "regime": "Exact convolution of the specified model; use the unbroadened expression for s=0. No intrinsic decoherence inference follows from instrumental broadening.",
+    "units": "G_s has inverse-energy units; sigma_bar is an area. x,y,q are dimensionless.",
+    "theoryRelationship": "Restore the constant background in Schippers Eq. (22), identify sigma_1=2a/(q^2 Gamma pi) for q!=0, and extend continuously at q=0; no area-parameter singularities are introduced.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-07",
+    "curationBatch": "amo-steering-2026-10-07",
+    "sourceLocations": [
+      {
+        "sourceId": "schippers-fano-convolution-2018",
+        "locator": "arXiv:1203.4281v3, Eqs. (3),(6),(8),(19)-(22), PDF pp. 3-6; Eq. (22) on p. 6. Delta_G=2 sqrt(2 ln 2)s and Delta_L=Gamma; restore sigma_0+sigma_1.",
+        "url": "https://arxiv.org/pdf/1203.4281v3#page=6"
+      }
+    ]
+  },
+  {
+    "id": "steering-projective-lhs",
+    "name": "Projective steering assemblage and local hidden states",
+    "category": "Quantum information",
+    "latex": "\\begin{aligned}\\tilde\\rho_{a|x}&=\\operatorname{Tr}_A[(\\Pi_{a|x}\\otimes I)\\rho_{AB}],\\quad\\sum_a\\tilde\\rho_{a|x}=\\rho_B\\\\\\tilde\\rho_{a|x}&=\\sum_\\lambda p(\\lambda)p(a|x,\\lambda)\\rho_\\lambda\\quad\\text{(LHS model)}\\end{aligned}",
+    "plain": "rho_tilde(a|x)=Tr_A[(Pi(a|x) tensor I)rho_AB]; sum_a rho_tilde=rho_B; LHS: rho_tilde(a|x)=sum_lambda p(lambda)p(a|x,lambda)rho_lambda",
+    "description": "Steering from Alice to Bob means no single local-hidden-state ensemble reproduces all the selected subnormalized conditional states. Merely changing a conditional state is not sufficient.",
+    "theoryIds": [
+      "quantum-steering"
+    ],
+    "sourceIds": [
+      "discovery-steering-2006"
+    ],
+    "tags": [
+      "amo-steering-2026-10-07",
+      "quantum-steering"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "Bipartite normalized density matrix; the cited representative restricts Alice to projective measurements with sum_a Pi(a|x)=I.",
+      "Bob trusts his quantum measurements; the same normalized positive states rho_lambda and distribution p(lambda) must work for every setting x.",
+      "p(lambda)>=0, sum_lambda p(lambda)=1; p(a|x,lambda)>=0, sum_a p(a|x,lambda)=1. Settings are independent of the hidden preparation.",
+      "Failure for a chosen measurement set certifies directional steering; success for that set does not prove unsteerability under all possible measurements."
+    ],
+    "variables": [
+      "x,a: Alice measurement setting and outcome",
+      "rho_tilde: subnormalized Bob state with trace p(a|x); rho_B: unconditional reduced state",
+      "lambda: hidden label; rho_lambda: normalized positive Bob state"
+    ],
+    "regime": "Projective-measurement formulation from the 2007 paper; do not silently generalize its family thresholds to arbitrary POVMs. Bob’s unconditional state does not signal Alice’s choice.",
+    "units": "States, probabilities and measurement projectors are dimensionless.",
+    "theoryRelationship": "Pins the distinction between entanglement, directional steering and Bell nonlocality already represented by the existing source-backed graph edges.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-07",
+    "curationBatch": "amo-steering-2026-10-07",
+    "sourceLocations": [
+      {
+        "sourceId": "discovery-steering-2006",
+        "locator": "arXiv:quant-ph/0612147v3, PDF p. 2: projective restriction, conditional-state definition before Eq. (5), Eq. (5), and hybrid probability form Eq. (6). W is renamed rho_AB; A,a become x,a.",
+        "url": "https://arxiv.org/pdf/quant-ph/0612147v3#page=2"
+      }
+    ]
+  },
+  {
+    "id": "steering-finite-setting-bound",
+    "name": "Finite-setting qubit steering bound",
+    "category": "Quantum information",
+    "latex": "\\begin{aligned}S_n&=\\frac{1}{n}\\sum_{k=1}^n\\langle A_k(\\mathbf u_k\\cdot\\boldsymbol\\sigma_B)\\rangle\\le C_n\\quad\\text{(LHS)}\\\\C_n&=\\max_{a_k\\in\\{-1,1\\}}\\lambda_{\\max}\\!\\left(\\frac{1}{n}\\sum_{k=1}^n a_k\\mathbf u_k\\cdot\\boldsymbol\\sigma_B\\right)=\\frac{1}{n}\\max_{a_k\\in\\{-1,1\\}}\\left\\|\\sum_{k=1}^n a_k\\mathbf u_k\\right\\|\\end{aligned}",
+    "plain": "S_n=(1/n)sum_k <A_k(u_k dot sigma_B)> <= C_n for LHS; C_n=(1/n)max_{a_k=+/-1}|sum a_k u_k|",
+    "description": "A sufficient steering witness when S_n>C_n. For three orthogonal Pauli axes C_3=1/sqrt(3); this is not a necessary criterion for every steerable state.",
+    "theoryIds": [
+      "quantum-steering"
+    ],
+    "sourceIds": [
+      "saunders-steering-2010"
+    ],
+    "tags": [
+      "amo-steering-2026-10-07",
+      "quantum-steering"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [
+      "Bob’s trusted observables are Pauli operators along specified unit vectors u_k; Alice reports A_k=+/-1.",
+      "The setting average is uniform; calculate C_n for the actual axes, not simply 1/sqrt(n) for arbitrary n.",
+      "Bob’s hidden state is prepared independently of the later setting; local-hidden-state mixtures and arbitrary Alice response strategies are included.",
+      "The ideal bound assumes a valid complete-trial sample. Postselection or missed detections require a justified sampling model or a loss-aware inequality."
+    ],
+    "variables": [
+      "n: finite number of uniformly weighted settings",
+      "u_k: unit Bloch vector; sigma_B: Pauli-vector observable; A_k: Alice declared result",
+      "lambda_max: largest eigenvalue; C_n: geometry-specific local-hidden-state upper bound"
+    ],
+    "regime": "Trusted qubit on Bob’s side. Violation certifies steering under the stated sampling assumptions, not Bell violation or faster-than-light communication.",
+    "units": "All quantities are dimensionless; Pauli outcomes are +/-1, not spin values +/-hbar/2.",
+    "theoryRelationship": "The source eigenvalue bound becomes the norm using the two Pauli eigenvalues. For singlet Werner visibility v with Alice’s sign flipped, S_n=v.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-07",
+    "curationBatch": "amo-steering-2026-10-07",
+    "sourceLocations": [
+      {
+        "sourceId": "saunders-steering-2010",
+        "locator": "arXiv:0909.0805v2, Eqs. (1)-(3), PDF p. 2; matched-sign Werner example p. 3. The norm equality uses eigenvalues +/-|b| of b dot sigma. Detection loophole limitation: Methods, p. 5.",
+        "url": "https://arxiv.org/pdf/0909.0805v2#page=2"
+      }
+    ]
+  }
+]);
