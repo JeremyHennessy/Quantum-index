@@ -1,93 +1,93 @@
-name: Assemble and verify bounded lattice curation
+name: Verify deployed lattice curation
 on:
   push:
     branches: [agent/continuation-tools-20261007]
 permissions:
   contents: read
 jobs:
-  assemble:
+  hosted:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
-    permissions:
-      contents: write
-    outputs:
-      candidate: ${{ steps.candidate.outputs.sha }}
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-      - name: Check preserved baseline and reviewed patch
-        run: |
-          set -euo pipefail
-          test "$(git rev-parse origin/main)" = 462f2d96649f3c030c06fe35b537d3fd1599d90a
-          test -z "$(git ls-remote --heads origin refs/heads/agent/lattice-depth-20261007)"
-          python3 - <<'PY'
-          import pathlib,base64,lzma,hashlib,os
-          encoded=''.join(pathlib.Path(f'.continuation/lattice-{i}.b64').read_text().strip() for i in range(3))
-          payload=lzma.decompress(base64.b64decode(encoded,validate=True))
-          assert hashlib.sha256(payload).hexdigest()=='bb14376524be66a407280b55a9a2883b2544bc03dfedbe0a3f6317098c7e72b0'
-          pathlib.Path(os.environ['RUNNER_TEMP'],'lattice.patch').write_bytes(payload)
-          PY
-      - name: Reproduce reviewed app-only tree without changing main
-        id: candidate
-        run: |
-          set -euo pipefail
-          git checkout --detach 462f2d96649f3c030c06fe35b537d3fd1599d90a
-          git apply --unidiff-zero --index --check "$RUNNER_TEMP/lattice.patch"
-          git apply --unidiff-zero --index "$RUNNER_TEMP/lattice.patch"
-          git diff --cached --check
-          test "$(git write-tree)" = c0ea8a4cea143fc1c485d28ddf64437f29b2b3b3
-          test -z "$(git diff --cached --name-only -- .github styles.css workspace.js profiles.js package.json package-lock.json developments.js questions.js problems.js evidence.js formula-audit.js)"
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Curate lattice model formulas and three source-scoped Theory Passports'
-          git push origin HEAD:refs/heads/agent/lattice-depth-20261007
-          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-          printf 'Candidate `%s`\n\nTree `%s`\n\nMain and Pages unchanged.\n' "$(git rev-parse HEAD)" "$(git rev-parse HEAD^{tree})" >> "$GITHUB_STEP_SUMMARY"
-  verify:
-    needs: assemble
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ needs.assemble.outputs.candidate }}
+          ref: 197aa15c57d2a43d098f43a21f6ec0514f349bba
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Verify exact tree and full Node and data assertions
+      - name: Prepare exact-release read-only checks
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD^{tree})" = c0ea8a4cea143fc1c485d28ddf64437f29b2b3b3
-          mkdir -p verification
-          git rev-parse HEAD > verification/tested-commit.txt
-          git rev-parse HEAD^{tree} > verification/tested-tree.txt
           npm ci --ignore-scripts
-          npm test 2>&1 | tee verification/node-tests.log
-          npm run validate 2>&1 | tee verification/data-validation.log
-          node scripts/coverage-report.mjs --check
-          node scripts/freshness-report.mjs --check
-          node scripts/version-assets.mjs --check
-      - name: Run complete Chromium and WebKit tests in matching pinned browsers
+          mkdir -p verification
+          cat > .hosted-lattice-check.mjs <<'JS'
+          import fs from 'node:fs';
+          import assert from 'node:assert/strict';
+          import {createHash} from 'node:crypto';
+          import {chromium,webkit,devices,request,expect} from '@playwright/test';
+          const base='https://jeremyhennessy.github.io/Quantum-index/';
+          const out='verification';fs.mkdirSync(out,{recursive:true});
+          const report={startedAt:new Date().toISOString(),expectedCommit:process.env.EXPECTED_COMMIT,base,assets:[],browsers:[],scope:'Live deployed bytes and fresh isolated browser contexts; no existing user research is accessed.'};
+          const opened=[],sha=b=>createHash('sha256').update(b).digest('hex');
+          try{
+           const api=await request.newContext();opened.push(api);
+           const html=fs.readFileSync('index.html');
+           const paths=['index.html',...Array.from(html.toString().matchAll(/(?:src|href)="\.\/([^"?]+)\?v=([a-f0-9]+)"/g),m=>m[1]+'?v='+m[2])];
+           assert.equal(new Set(paths).size,13,'Expected complete entrypoint and 12 local assets');
+           for(const p of paths){const response=await api.get(base+p,{timeout:60000});assert(response.ok(),`HTTP ${response.status()} ${p}`);const bytes=await response.body(),local=fs.readFileSync(p.split('?')[0]);assert.equal(sha(bytes),sha(local),`Different deployed bytes: ${p}`);report.assets.push({path:p,status:response.status(),sha256:sha(bytes)});}
+           await api.dispose();
+           for(const [name,engine,opts] of [['chromium',chromium,{viewport:{width:1280,height:900}}],['webkit',webkit,devices['iPhone 13']]]){
+            const browser=await engine.launch({headless:true});opened.push(browser);const context=await browser.newContext(opts),page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
+            const result={name,routes:[],screenshots:[],formulaChecks:[]};report.browsers.push(result);
+            const go=async route=>{const r=await page.goto(base+route,{waitUntil:'networkidle',timeout:60000});assert(!r||r.ok(),`HTTP route ${route}`);await page.waitForFunction(()=>window.QI_DATA?.theories?.length===481);result.routes.push(route);};
+            const snap=async label=>{const path=out+`/${label}-${name}.png`;await page.screenshot({path});result.screenshots.push(path);};
+            await go('#/explore');await expect(page.locator('.hero h2')).toHaveText('Explore the ideas shaping modern physics.');
+            result.inventory=await page.evaluate(()=>({theories:QI_DATA.theories.length,formulas:QI_FORMULAS.formulas.length,sources:QI_DATA.sources.length,passports:QI_PASSPORTS.records.length,relations:QI_DATA.relations.length}));
+            assert.deepEqual(result.inventory,{theories:481,formulas:398,sources:539,passports:13,relations:610});
+            await go('#/compare?ids=ssh-model,aubry-andre,holstein-model,hawking-radiation');
+            const table=page.locator('#comparisonResults');await expect(table.locator('table')).toHaveCount(1);
+            for(const id of ['ssh-model','aubry-andre','holstein-model'])await expect(table.locator(`[data-comparison-passport="${id}"]`).first()).toContainText('2026-10-07');
+            await expect(table.locator('[data-comparison-passport="hawking-radiation"]').first()).toContainText('2026-09-29');
+            await table.evaluate(el=>el.scrollIntoView({block:'start'}));await snap('lattice-compare');
+            result.comparisonScroll=await table.locator('.comparison-scroll').evaluate(el=>{el.scrollLeft=el.scrollWidth;const r={client:el.clientWidth,content:el.scrollWidth,atEnd:Math.abs(el.scrollLeft+el.clientWidth-el.scrollWidth)<=2};el.scrollLeft=0;return r;});
+            assert(result.comparisonScroll.content<=result.comparisonScroll.client+2||result.comparisonScroll.atEnd);
+            await table.locator('thead a').first().click();await expect(page.locator('.passport-head .badge')).toHaveText('reviewed 2026-10-07');await expect(page.locator('.passport')).toContainText('Freeze the distortion');await page.locator('#backToView').click();await expect(page.locator('#compareSlot2')).toHaveValue('holstein-model');
+            await go('#/theory/hawking-radiation');await expect(page.locator('.passport-head .badge')).toHaveText('reviewed 2026-09-29');
+            await go('#/formula?search=lattice-2026-10-07&review=explicit');await expect(page.locator('#formulaGrid .formula-card')).toHaveCount(5);
+            await page.waitForFunction(()=>window.MathJax?.tex2svgPromise,{timeout:30000});
+            result.math=await page.evaluate(async()=>{await MathJax.startup.promise;const failures=[];for(const f of QI_FORMULAS.formulas){try{const node=await MathJax.tex2svgPromise(f.latex,{display:true});if(node.querySelector('[data-mml-node="merror"],mjx-merror'))failures.push(f.id);}catch(e){failures.push(f.id+': '+e.message);}}return {total:QI_FORMULAS.formulas.length,failures,lattice:QI_FORMULAS.formulas.filter(f=>f.curationBatch==='lattice-2026-10-07').map(f=>f.id)};});
+            assert.equal(result.math.total,398);assert.deepEqual(result.math.failures,[]);assert.equal(result.math.lattice.length,5);
+            for(const [id,count] of [['ssh-model',2],['aubry-andre',1],['holstein-model',2]]){
+             await go('#/formula?theory='+id);await expect(page.locator('#formulaGrid .formula-card')).toHaveCount(count);await expect(page.locator('#formulaGrid mjx-container').first()).toBeVisible({timeout:30000});
+             await expect(page.locator('#formulaGrid a[href*="v1#page="]').first()).toBeVisible();
+             if(id==='holstein-model'){await expect(page.locator('#formulaGrid')).toContainText('approximation');await expect(page.locator('#formulaGrid')).toContainText('finite-t band is an approximation');}
+             await page.locator('#formulaGrid').evaluate(el=>el.scrollIntoView({block:'start'}));await snap(id);
+             const scroll=await page.locator('#formulaGrid .formula-equation mjx-container').evaluateAll(els=>els.map(el=>{el.scrollLeft=el.scrollWidth;const r={client:el.clientWidth,content:el.scrollWidth,atEnd:Math.abs(el.scrollLeft+el.clientWidth-el.scrollWidth)<=2};el.scrollLeft=0;return r;}));
+             assert(scroll.every(s=>s.content<=s.client+2||s.atEnd));result.formulaChecks.push({id,count,scroll});
+            }
+            await go('#/formula?theory=quantum-zeno');await expect(page.locator('#formulaGrid .formula-card')).toHaveCount(1);await expect(page.locator('#formulaGrid')).toContainText('N consecutive survival outcomes');
+            await go('#/problems?problem=quantum-gravity');await expect(page.locator('#problemDetail')).toContainText('geodesic');
+            await go('#/catalog?search=Planck');await page.locator('#catalog a[href*="planck-quanta"]').click();await page.locator('#backToView').click();await expect(page.locator('#search')).toHaveValue('Planck');
+            await go('#/theory/wave-mechanics');await page.locator('#researchNote').fill('Isolated lattice release verification — no existing user storage.');await page.locator('#saveNote').click();await expect(page.locator('#researchStatus')).toContainText('Note saved');await page.reload();await expect(page.locator('#researchNote')).toHaveValue('Isolated lattice release verification — no existing user storage.');result.isolatedNoteRoundTrip=true;
+            await go('#/coverage');await expect(page.locator('#coverageView')).toContainText('Nuclear quantum theory');await page.setViewportSize({width:320,height:900});assert(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth),'320px overflow');assert.deepEqual(errors,[]);result.pageErrors=errors;result.passed=true;await context.close();await browser.close();
+           }
+           report.passed=true;
+          }catch(e){report.passed=false;report.error=e.stack;process.exitCode=1;}
+          finally{await Promise.allSettled(opened.map(x=>typeof x.dispose==='function'?x.dispose():x.close()));report.completedAt=new Date().toISOString();fs.writeFileSync(out+'/hosted-receipt.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));}
+          JS
+          node --check .hosted-lattice-check.mjs
+      - name: Verify real hosted bytes and isolated desktop/mobile sessions
         run: |
           set -euo pipefail
           IMAGE=mcr.microsoft.com/playwright@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27
           timeout 180 docker pull "$IMAGE"
-          docker image inspect "$IMAGE" --format '{{json .RepoDigests}}' > verification/browser-image.json
-          printf "import config from './playwright.config.mjs';\nexport default {...config,webServer:undefined};\n" > .independent-playwright.config.mjs
-          python3 -m http.server 4173 --bind 127.0.0.1 > verification/server.log 2>&1 &
-          SERVER_PID=$!
-          trap 'kill "$SERVER_PID" || true' EXIT
-          for n in $(seq 1 20); do curl --fail --silent http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
-          timeout 540 docker run --rm --ipc=host --network=host -e CI=true -v "$PWD:/work" -w /work "$IMAGE" npx playwright test --config=.independent-playwright.config.mjs
+          timeout 420 docker run --rm --ipc=host -e EXPECTED_COMMIT=197aa15c57d2a43d098f43a21f6ec0514f349bba -v "$PWD:/work" -w /work "$IMAGE" node .hosted-lattice-check.mjs
           git diff --exit-code
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: lattice-curation-verification
-          path: |
-            verification/
-            playwright-report/
-            test-results/
+          name: lattice-hosted-verification
+          path: verification/
           retention-days: 14
