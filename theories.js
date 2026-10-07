@@ -2690,3 +2690,13 @@ window.QI_DATA.sources.push(...[
     "url": "https://arxiv.org/abs/0909.0805v2"
   }
 ]);
+
+// Primary source reviewed for the bounded Bell metadata update, 7 October 2026.
+window.QI_DATA.sources.push({
+  "id": "cirelson-bell-1980",
+  "title": "Quantum generalizations of Bell’s inequality",
+  "authors": "B. S. Cirel’son (Boris Tsirelson)",
+  "year": 1980,
+  "type": "primary research paper",
+  "url": "https://doi.org/10.1007/BF00417500"
+});

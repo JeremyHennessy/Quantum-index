@@ -1,3 +1,4 @@
+import {bellReview,restoreBellFormula} from './bell-metadata-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -13,16 +14,19 @@ const get=id=>w.QI_FORMULAS.formulas.find(f=>f.id===id);
 const near=(a,b,eps=1e-10)=>assert.ok(Math.abs(a-b)<eps,`${a} != ${b}`);
 
 test('AMO/steering preserves every previous scientific record and the entire application renderer',()=>{
- const records={theories:w.QI_DATA.theories,formulas:w.QI_FORMULAS.formulas.filter(f=>!ledger.addedFormulaIds.includes(f.id)),passports:w.QI_PASSPORTS.records.filter(p=>!ledger.addedPassportTheoryIds.includes(p.theoryId)),sources:w.QI_DATA.sources.filter(s=>!ledger.addedSourceIds.includes(s.id)),relations:w.QI_DATA.relations};
+ const records={theories:w.QI_DATA.theories,formulas:w.QI_FORMULAS.formulas.map(restoreBellFormula).filter(f=>!ledger.addedFormulaIds.includes(f.id)),passports:w.QI_PASSPORTS.records.filter(p=>!ledger.addedPassportTheoryIds.includes(p.theoryId)&&!bellReview.addedPassportTheoryIds.includes(p.theoryId)),sources:w.QI_DATA.sources.filter(s=>!ledger.addedSourceIds.includes(s.id)&&!bellReview.addedSourceIds.includes(s.id)),relations:w.QI_DATA.relations};
  for(const [name,items] of Object.entries(records)){
   const key=name==='passports'?'theoryId':'id';const ordered=name==='relations'?[...items]:[...items].sort((a,b)=>a[key]<b[key]?-1:a[key]>b[key]?1:0);
   assert.equal(ordered.length,ledger.baselineIntegrity[name].count,name);
   assert.equal(hash(JSON.stringify(canonical(ordered))),ledger.baselineIntegrity[name].sha256,name);
  }
- for(const [file,expected] of Object.entries({...ledger.untouchedFiles,...ledger.updatedFiles}))assert.equal(hash(fs.readFileSync(file)),expected,file);
+ for(const [file,expected] of Object.entries({...ledger.untouchedFiles,...ledger.updatedFiles})){
+  if(bellReview.updatedFiles[file])assert.equal(bellReview.previousFiles[file],expected,`${file}: retained AMO checkpoint`);
+  assert.equal(hash(fs.readFileSync(file)),bellReview.updatedFiles[file]||expected,file);
+ }
  assert.equal(w.QI_PASSPORTS.reviewedAt,'2026-09-29');
  const coverage=JSON.parse(fs.readFileSync('docs/coverage.json','utf8'));
- for(const [key,value] of Object.entries(ledger.expected))assert.equal(key==='passports'?w.QI_PASSPORTS.records.length:coverage[key],value,key);
+ for(const [key,value] of Object.entries(ledger.expected))assert.equal(key==='passports'?w.QI_PASSPORTS.records.length:coverage[key],bellReview.expected[key]??value,key);
 });
 
 test('four scoped representatives close only Fano and steering gaps and preserve source-version provenance',()=>{

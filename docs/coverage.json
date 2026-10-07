@@ -3,7 +3,7 @@
   "researchProfiles": 59,
   "learningPaths": 5,
   "categories": 14,
-  "sources": 541,
+  "sources": 542,
   "primarySourced": 352,
   "reviewSourced": 129,
   "cataloguedOnly": 0,
@@ -21,8 +21,8 @@
   "conceptual": 16,
   "theorems": 18,
   "thoughtExperiments": 1,
-  "explicitFormulaMetadata": 143,
-  "baselineFormulaMetadata": 259,
+  "explicitFormulaMetadata": 147,
+  "baselineFormulaMetadata": 255,
   "developmentEvents": 16,
   "newestDevelopmentYear": 2026
 }
