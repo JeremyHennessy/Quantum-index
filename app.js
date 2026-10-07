@@ -327,6 +327,23 @@
       <div class="detail-section"><h4>Suggested prerequisites</h4><div class="detail-actions">${p.prerequisites.map(id=>`<a class="ghost link-button" href="${theoryLink(id)}">${esc(byId.get(id)?.name)}</a>`).join("")}</div><p class="reviewed">Suggested reading order; not a claim of historical influence.</p></div>
     </section>`;
   }
+  function comparisonPassport(id,key){
+    const p=passportByTheory.get(id);if(!p)return null;
+    const paragraph=text=>`<p>${esc(text)}</p>`;
+    const list=items=>items.length?`<ul>${items.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:'<p class="muted">Not yet recorded in this Passport.</p>';
+    const bodies={
+      problem:()=>p.problemIds.length?p.problemIds.map(pid=>{const item=problemById.get(pid);return item?`<p><a href="${problemHash(pid)}">${esc(item.name)}</a></p>`:"";}).join(""):'<p class="muted">No Problem page linked in this Passport.</p>',
+      scope:()=>paragraph(p.mathematicalStructure)+`<p><strong>Fundamental objects / degrees of freedom</strong></p>`+paragraph(p.degreesOfFreedom)+`<p><strong>Regime / limits</strong></p>`+paragraph(p.regime),
+      assumptions:()=>list(p.assumptions),
+      predictions:()=>list(p.predictionsConsequences),
+      evidence:()=>paragraph(p.evidenceSummary)+p.evidenceIds.map(eid=>{const item=evidenceRecords.find(e=>e.id===eid);return item?`<p><a href="#/evidence?search=${encodeURIComponent(item.title)}">${esc(item.title)}</a><br><span class="reviewed">${esc(item.evidenceStatus)} · reviewed ${esc(item.reviewedAt)}</span></p>`:"";}).join(""),
+      limitations:()=>list(p.limitations),
+      questions:()=>p.questionIds.length?p.questionIds.map(qid=>{const item=questions.find(q=>q.id===qid);return item?`<p><a href="#/questions?search=${encodeURIComponent(item.title)}">${esc(item.title)}</a><br><span class="reviewed">${esc(item.dispositionLabel)}</span></p>`:"";}).join(""):'<p class="muted">No structured question linked in this Passport.</p>'
+    };
+    if(!bodies[key])return null;
+    const original=profiles[id]?.[key];
+    return `<div data-comparison-passport="${esc(id)}"><p class="reviewed">Theory Passport · summary reviewed ${esc(window.QI_PASSPORTS.reviewedAt)}</p>${bodies[key]()}${profileCitations(p.sourceIds)}</div>${original?`<details><summary>Cited reading profile</summary>${profileClaim(original)}</details>`:""}`;
+  }
   function renderComparison(){
     const sorted=theories.slice().sort((a,b)=>a.name.localeCompare(b.name));
     $("#compareSelectors").innerHTML=Array.from({length:4},(_,i)=>`<div><label for="compareSlot${i}">Entry ${i+1}</label><input type="search" id="compareSearch${i}" data-compare-search="${i}" aria-label="Search entry ${i+1}" placeholder="Search name or alias"><select id="compareSlot${i}" data-compare-slot="${i}"><option value="">Choose an entry</option>${sorted.map(t=>`<option value="${t.id}"${compareIds[i]===t.id?" selected":""}>${esc(t.name)}</option>`).join("")}</select></div>`).join("");
@@ -353,11 +370,12 @@
     $("#comparisonResults").innerHTML=`<div class="comparison-scroll" role="region" aria-label="Theory comparison table" tabindex="0"><table class="comparison-table"><caption>Side-by-side theory comparison</caption><thead><tr><th scope="col">Aspect</th>${compareIds.map(id=>`<th scope="col"><a href="#/theory/${encodeURIComponent(id)}?from=compare&compare=${compareIds.map(encodeURIComponent).join(",")}">${esc(byId.get(id).name)}</a></th>`).join("")}</tr></thead><tbody>
       ${row("Catalog type",id=>`<p>${esc(byId.get(id).kind)}</p><p>${esc(byId.get(id).category)}</p>`)}
       ${row("Overview",id=>`<p>${esc(byId.get(id).summary)}</p>`)}
-      ${profileFields.map(([key,label])=>row(label,id=>profiles[id]?profileClaim(profiles[id][key]):missing)).join("")}
+      ${row("Scientific status",id=>`<p>${esc(passportByTheory.get(id)?.scientificStatus||byId.get(id).status)}</p><p class="reviewed">${passportByTheory.has(id)?"Curated Passport description":"Catalog description; Passport not yet curated"}. Not a confidence score.</p>`)}
+      ${profileFields.map(([key,label])=>row(label,id=>comparisonPassport(id,key)??(profiles[id]?profileClaim(profiles[id][key]):missing))).join("")}
       ${row("Suggested prerequisites",id=>profiles[id]?profiles[id].prerequisites.map(pid=>`<p><a href="#/theory/${encodeURIComponent(pid)}?from=compare&compare=${compareIds.map(encodeURIComponent).join(",")}">${esc(byId.get(pid).name)}</a></p>`).join(""):missing)}
       ${row("Formula coverage",id=>{const a=formulaAuditByTheory.get(id);return a?.formulaIds.length?`<a href="${formulaLink(id)}">${a.formulaIds.length} linked formulas</a>`:`<p>${esc(a?.gapReason||"Not reviewed")}</p>`;})}
       ${row("Bibliography",id=>profileCitations(byId.get(id).sources))}
-      </tbody></table></div><p class="reviewed">Scroll horizontally to compare columns on smaller screens. Existing catalog status labels are descriptive categories, not confidence scores.</p>`;
+      </tbody></table></div><p class="reviewed">Scroll horizontally to compare columns on smaller screens. Existing catalog status labels are descriptive categories, not confidence scores. Passport summaries use their recorded review dates; linked Evidence has its own review date. Cited reading profiles remain available within each Passport cell.</p>`;
   }
 
   let simulation=null;

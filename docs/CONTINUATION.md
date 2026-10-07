@@ -13,10 +13,14 @@ The reconciliation release combines the distinct useful content from PRs #60 and
 3. Inspect desktop/mobile screenshots before publishing, then verify hosted assets against the merged revision and smoke-test the changed routes.
 4. Only after integration succeeds, close #60/#61 as superseded without deleting the preserved branches.
 
+## Implemented follow-up (release checks still required)
+
+The single-table Passport comparison and source-located Quantum Zeno representative are implemented in a separate follow-up. See `RELEASE_COMPARE_ZENO_2026-10-07.md` and `COMPARE_ZENO_2026-10-07.json`. Do not repeat these as missing features. Merge/deployment verification is recorded in the corresponding PR discussion; code presence alone is not a hosted acceptance receipt.
+
 ## Product and curation queue
 
-1. Extend Compare using the existing Theory Passport schema, preserving existing comparison links, selection limits and workspace exports. Keep any UI implementation a separate change from scientific-data repair.
-2. Complete a source-located Quantum Zeno representative (previously deferred), followed by a coherent canonical-formula batch; never attach an arbitrary equation simply to reduce a gap counter.
+1. Expand curated Passport coverage beyond the ten hubs, using the implemented comparison workflow to identify useful gaps.
+2. Continue a coherent canonical-formula batch after the now-curated Zeno representative; never attach an arbitrary equation simply to reduce a gap counter. Current documented formula gaps: 170.
 3. Review baseline formula metadata and equation-level source locations in bounded, explicitly recorded batches. An `explicit` label does not certify the entire paper.
 4. Upgrade high-value editorial relationships only when the citation establishes that precise directional relation.
 5. Expand reading profiles, Passports and Evidence where they support major learning paths and useful comparisons; do not drift into gravity-only coverage.

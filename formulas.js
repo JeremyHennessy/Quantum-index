@@ -8238,3 +8238,52 @@ window.QI_FORMULAS.formulas.push(...[
     }]
   }
 ]);
+
+// Exact finite-N representative; approximations and projection protocol are separate.
+window.QI_FORMULAS.formulas.push({
+  "id": "zeno-repeated-survival",
+  "name": "Quantum Zeno survival under repeated ideal projections",
+  "category": "Quantum information",
+  "latex": "\\begin{aligned}p_N(t)&=\\left|\\langle\\psi_0|e^{-iHt/(N\\hbar)}|\\psi_0\\rangle\\right|^{2N}\\\\ \\tau_Z^{-2}&=\\frac{\\langle H^2\\rangle_{\\psi_0}-\\langle H\\rangle_{\\psi_0}^2}{\\hbar^2}\\end{aligned}",
+  "plain": "p_N(t) = |<psi_0|exp[-i H t/(N hbar)]|psi_0>|^(2N); tau_Z^(-2) = Var(H)/hbar^2",
+  "description": "Exact finite-N probability of N consecutive survival outcomes. At fixed total time, its ideal-projection limit tends to one; the short-interval estimate is exp[-t^2/(N tau_Z^2)], not an exact finite-N identity.",
+  "theoryIds": [
+    "quantum-zeno"
+  ],
+  "sourceIds": [
+    "facchi-pascazio-zeno-2008"
+  ],
+  "tags": [
+    "Zeno",
+    "survival",
+    "projective measurement",
+    "energy variance"
+  ],
+  "formulaType": "exact",
+  "assumptions": [
+    "Finite-dimensional closed quantum system with time-independent Hermitian Hamiltonian H and normalized pure initial state psi_0.",
+    "N equally spaced, instantaneous ideal rank-one projections onto the same initial state, with every outcome required to be survival.",
+    "The N-to-infinity limit holds fixed finite total time t. The exponential estimate uses the quadratic short-time regime of each interval t/N.",
+    "Zero energy variance means an energy eigenstate: survival is already one and tau_Z is infinite."
+  ],
+  "variables": [
+    "p_N(t): joint probability of all N survival outcomes, not merely final occupation after allowing intervening departures and returns",
+    "H: energy-valued Hamiltonian; hbar: reduced Planck constant",
+    "t: total elapsed time; N: positive integer number of measurements",
+    "psi_0: normalized initial state; <H^k>_psi_0: its energy moments",
+    "tau_Z: hbar divided by the energy standard deviation when nonzero"
+  ],
+  "regime": "Ideal rank-one measurements in a finite-dimensional system. Higher-rank projections can permit motion inside the measured subspace; this card does not cover finite-duration monitoring, continuous-coupling protocols or unbounded-Hamiltonian domain questions.",
+  "units": "p_N is dimensionless; t and tau_Z have time units; Ht/hbar is dimensionless. hbar is restored relative to the source convention hbar=1.",
+  "theoryRelationship": "Canonical repeated-survival representative. It does not assert that observation always suppresses evolution or that all quantum Zeno dynamics freezes every degree of freedom.",
+  "metadataReview": "explicit",
+  "reviewedAt": "2026-10-07",
+  "curationBatch": "zeno-2026-10-07",
+  "sourceLocations": [
+    {
+      "sourceId": "facchi-pascazio-zeno-2008",
+      "locator": "arXiv:0903.3297v1, Sec. 2.1 Eqs. (2), (3), (8); two-level check Eqs. (9)–(11); scope discussion Secs. 1.3 and 2.2.3–2.2.5. Journal: J. Phys. A 41 (2008) 493001.",
+      "url": "https://arxiv.org/html/0903.3297v1#S2.SS1"
+    }
+  ]
+});
