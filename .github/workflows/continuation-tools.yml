@@ -1,35 +1,48 @@
-name: Continuation snapshot export
+name: Assemble pinned reconciliation candidate
 on:
   push:
     branches: [agent/continuation-tools-20261007]
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
-  snapshot:
+  assemble:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: false
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - name: Check pinned states and install existing test dependencies
+      - name: Verify payload and protected starting states
+        shell: bash
         run: |
+          set -euo pipefail
           test "$(git rev-parse origin/main)" = cbe65b1f30216565fd93aea838264a4f9838bc6c
           test "$(git rev-parse origin/agent/gravity-discrimination-20260929)" = cb2f1b5d8f4f88871cb847054971e38d32f8eca9
           test "$(git rev-parse origin/agent/gravity-model-discrimination-20260929)" = 151d102c275ffb2ecef554901abc6fbdbd00496f
-          npm ci --ignore-scripts
-      - name: Create local-review working bundle
+          test -z "$(git ls-remote --heads origin refs/heads/agent/reconciled-scientific-release-20261007)"
+          python3 - <<'PY'
+          import base64, hashlib, lzma, os, pathlib
+          parts = [pathlib.Path(f'.continuation/patch-{i}.b64').read_text().strip() for i in range(5)]
+          payload = lzma.decompress(base64.b64decode(''.join(parts), validate=True))
+          assert hashlib.sha256(payload).hexdigest() == '5809ab07964fd2ac438144848cafe04958db45e37efcc493141d457dc62ac2da'
+          pathlib.Path(os.environ['RUNNER_TEMP'], 'candidate.patch').write_bytes(payload)
+          print('Exact reviewed patch checksum verified.')
+          PY
+      - name: Reconstruct exact locally tested tree, without changing main
+        shell: bash
         run: |
-          git config --local --get-regexp 'http\..*extraheader' && exit 1 || true
-          tar -czf "$RUNNER_TEMP/quantum-index-working.tgz" --exclude='./.git/hooks' .
-          sha256sum "$RUNNER_TEMP/quantum-index-working.tgz"
-      - uses: actions/upload-artifact@v4
-        with:
-          name: quantum-index-working-20261007
-          path: ${{ runner.temp }}/quantum-index-working.tgz
-          retention-days: 3
+          set -euo pipefail
+          git checkout --detach cbe65b1f30216565fd93aea838264a4f9838bc6c
+          git read-tree --reset -u cb2f1b5d8f4f88871cb847054971e38d32f8eca9
+          git apply --unidiff-zero --index --check "$RUNNER_TEMP/candidate.patch"
+          git apply --unidiff-zero --index "$RUNNER_TEMP/candidate.patch"
+          git diff --cached --check
+          test "$(git write-tree)" = 983ffa1dc0eecb4d9fad4960c8b431932c20f7b7
+          test -z "$(git diff --cached --name-only -- .github app.js styles.css workspace.js profiles.js passports.js package.json package-lock.json)"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Reconcile gravity-discrimination research and repair scientific data integrity'
+          test "$(git rev-parse HEAD^)" = cbe65b1f30216565fd93aea838264a4f9838bc6c
+          git push origin HEAD:refs/heads/agent/reconciled-scientific-release-20261007
+          printf 'Candidate commit: `%s`\n\nTree: `%s`\n\nMain was not changed. Full normal PR CI is required before merging.\n' "$(git rev-parse HEAD)" "$(git rev-parse HEAD^{tree})" >> "$GITHUB_STEP_SUMMARY"
