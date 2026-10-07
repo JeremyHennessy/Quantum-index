@@ -1,0 +1,99 @@
+{
+  "reviewedAt": "2026-10-07",
+  "baseline": "cbe65b1f30216565fd93aea838264a4f9838bc6c",
+  "retainedFrom": {
+    "60": "cb2f1b5d8f4f88871cb847054971e38d32f8eca9",
+    "61": "151d102c275ffb2ecef554901abc6fbdbd00496f"
+  },
+  "sourceAliases": {
+    "lin-mondal-newtonian-gie-2026": "lin-mondal-newtonian-entanglement-2026",
+    "gundhi-aziz-howl-2026": "gundhi-infanti-bassi-2026",
+    "schneider-classical-gie-2026": "schneider-huggett-linnemann-2026",
+    "tomizuka-nonmarkovian-cq-2026": "tomizuka-takeda-nonmarkovian-2026",
+    "feng-vedral-marletto-collapse-witness-2026": "feng-vedral-marletto-collapse-2026",
+    "ev-minimal-noise-nonquantized-2026": "ev-minimal-noise-nonquantized-gravity-2026",
+    "dp-gie-entanglement-2025": "dp-classical-gravity-gie-2025",
+    "minimal-noise-nonquantized-2026": "minimal-noise-nonquantized-gravity-2026",
+    "gravity-entanglement-debate-2026": "classical-gravity-gie-rebuttal-2026"
+  },
+  "uniqueSourcesRetained": [
+    "layton-weak-field-cq-2023",
+    "angeli-carlesso-hybrid-entanglement-2025",
+    "oppenheim-general-cq-2026",
+    "di-biagio-gie-witness-2026"
+  ],
+  "relationshipChanges": [
+    [
+      "postquantum-classical-gravity",
+      "semiclassical-gravity",
+      "challenges"
+    ],
+    [
+      "bmv-gravity-entanglement",
+      "quantum-information",
+      "overlaps"
+    ],
+    [
+      "postquantum-classical-gravity",
+      "open-quantum-systems",
+      "overlaps"
+    ],
+    [
+      "diosi-penrose",
+      "bmv-gravity-entanglement",
+      "overlaps"
+    ],
+    [
+      "stochastic-gravity",
+      "bmv-gravity-entanglement",
+      "overlaps"
+    ],
+    [
+      "postquantum-classical-gravity",
+      "nonmarkovian-open-systems",
+      "overlaps"
+    ]
+  ],
+  "scientificBoundary": "Source-reviewed synthesis, not an independent rederivation of every cited paper or a universal gravity witness.",
+  "duplicateEventPolicy": "Keep PR60 publication/preprint dates. PR61 duplicate DP/minimal-noise events and Sept-1 controversy synthesis map to existing events, not extra discoveries.",
+  "originalClaimDate": "ev-gravity-entanglement-boundary-2025 retains 2025-10-22; reviewedAt records the later assessment.",
+  "formulasReviewed": [
+    "configuration-ensemble-hamiltonian",
+    "cq-backreaction-decoherence-diffusion",
+    "cq-decoherence-diffusion-tradeoff"
+  ],
+  "unchangedFiles": [
+    "app.js",
+    "styles.css",
+    "workspace.js",
+    "profiles.js",
+    "passports.js",
+    "package.json",
+    "package-lock.json",
+    ".github/workflows/validate.yml"
+  ],
+  "baselineIntegrity": {
+    "theories": {
+      "count": 480,
+      "sha256": "7b5b55f77c55f4ca6dd0cf262bef7caa3fb89c445e01c599d012681f9fd170d6"
+    },
+    "formulas": {
+      "count": 389,
+      "sha256": "87816427374044313ebb7bbdeb153b84fb65442832e60fcb9cfdf551bef4493f"
+    },
+    "profiles": {
+      "count": 59,
+      "sha256": "d358ca6b834cef71fffffa867032ce093f7edf4f1cee0260007b4425b8acee94"
+    }
+  },
+  "baselineFiles": {
+    "app.js": "10e370fcc765cea790eab495d38ceb07b00f050d8b7055ca56bc1270f2604682",
+    "styles.css": "19f8c14858cb7a2663b5337b64eb99aeef29c378c5b42c4438e738bae59ffb24",
+    "workspace.js": "de553a16db91ad4640a99f508208137b2a43d2b113a05e65f887521225c54e09",
+    "profiles.js": "7ead242ba17098969b40e3f57e5c2ac788febb44ab5cdce546766f8c6262ce1c",
+    "passports.js": "59ade50a5b1ed2b0c842a756eecf8545e2c5a4a64621a5654b407211875a7b40",
+    "package.json": "50ee1455431713bf5ac482cad5ca71e53ea401a169724c120b238ed00ce1c91c",
+    "package-lock.json": "9336b23f013c9551394393fa6a9d5c9e87488b726cc40ceb63f01d3484ac7735",
+    ".github/workflows/validate.yml": "1722de72fae3eae385bd35ae12d223df63882e69aec7ca81307e0db2d7662659"
+  }
+}

@@ -1879,6 +1879,102 @@ window.QI_QUESTIONS = {
       "nextInvestigation": "Choose a Bell scenario and compare the quantum set with the sets allowed by each principle; record a counterexample or inclusion proof instead of asserting universal equivalence.",
       "reviewedAt": "2026-09-27",
       "evidenceState": "research-audit-draft"
+    },
+    {
+      "id": "rq-gravity-entanglement-discrimination",
+      "order": 60,
+      "title": "Gravity-mediated entanglement as a model-discrimination problem",
+      "question": "Which combined observables can distinguish quantized gravitational mediation from the explicit classical and classical–quantum alternatives that can mimic part of a gravity-entanglement experiment?",
+      "relatedTheoryIds": [
+        "bmv-gravity-entanglement",
+        "postquantum-classical-gravity",
+        "diosi-penrose",
+        "semiclassical-gravity",
+        "stochastic-gravity",
+        "open-quantum-systems",
+        "configuration-ensemble-cq"
+      ],
+      "relatedProblemIds": [
+        "quantum-gravity"
+      ],
+      "category": "Quantum gravity & spacetime",
+      "disposition": "open",
+      "dispositionLabel": "Open research question",
+      "shortAnswer": "No single positive entanglement outcome is presently model-independent across every classical or hybrid alternative. Explicit countermodels can generate entanglement, while Markovian completely-positive classical–quantum models predict linked decoherence, diffusion and back-reaction signatures. Other proposals use motion cross-correlations or minimum-noise bounds, and non-Markovian effective classical–quantum dynamics weakens simple Markovian inference. The experiment must therefore name the model class and assumptions it excludes.",
+      "detailedStatus": "BMV-style locality/information arguments motivate entanglement as a nonclassicality witness under specified mediator assumptions. However, Diósi–Penrose and broader Markovian hybrid models have entangling parameter regimes, while specified semiclassical/stochastic tidal models and Newton–Cartan mediator analyses do not. Time-local completely-positive classical–quantum dynamics also obey decoherence/diffusion/back-reaction constraints, and a 2026 classification derives a minimum noise floor for non-entangling time-local Galilean models reproducing Newtonian gravity on average; non-Markovian effective classical–quantum descriptions need not satisfy the same instantaneous trade-off at all times. Feng, Vedral and Marletto show that collapse-based entangling models can evade the locality-conditioned witness by violating its locality premise, while Di Biagio emphasizes that this locality is information-theoretic and therefore GIE is not a theory-independent classifier of the gravitational field. The unresolved task is to identify a minimal experimentally feasible set of observables and interventions that separates a clearly enumerated model class with controlled systematics. The retained configuration-ensemble models have explicit signaling caveats. The experimental leads also include classical motion cross-correlations, conditional matter-wave interferometry and geodesic-deviation strain spectra; none is promoted here to a completed experimental exclusion.",
+      "supportingClaims": [],
+      "sourceIds": [
+        "marletto-vedral-2017",
+        "oppenheim-decoherence-diffusion-2023",
+        "fabiano-minimal-noise-2026",
+        "trillo-navascues-dp-gie-2025",
+        "angeli-carlesso-hybrid-entanglement-2025",
+        "lin-mondal-newtonian-entanglement-2026",
+        "schneider-huggett-linnemann-2026",
+        "feng-vedral-marletto-collapse-2026",
+        "di-biagio-gie-witness-2026",
+        "tomizuka-takeda-nonmarkovian-2026",
+        "hall-reginatto-classical-gravity-2018",
+        "doner-grossardt-gie-2022",
+        "kryhin-sudhir-classical-gravity-2025",
+        "plavala-indirect-gme-2026",
+        "hirotani-matsumura-geodesic-2026"
+      ],
+      "auditReferences": [
+        {
+          "title": "Gravitationally Induced Entanglement between Two Massive Particles is Sufficient Evidence of Quantum Effects in Gravity",
+          "url": "https://doi.org/10.1103/PhysRevLett.119.240402"
+        },
+        {
+          "title": "Gravitationally induced decoherence vs space-time diffusion: testing the quantum nature of gravity",
+          "url": "https://doi.org/10.1038/s41467-023-43348-2"
+        },
+        {
+          "title": "Minimal noise in non-quantized gravity",
+          "url": "https://arxiv.org/abs/2603.26075"
+        },
+        {
+          "title": "Diósi-Penrose model of classical gravity predicts gravitationally induced entanglement",
+          "url": "https://doi.org/10.1103/PhysRevD.111.L121101"
+        },
+        {
+          "title": "Entanglement in Markovian hybrid classical-quantum theories of gravity",
+          "url": "https://doi.org/10.1103/jzht-fbwt"
+        },
+        {
+          "title": "Can Newtonian gravity produce quantum entanglement?",
+          "url": "https://doi.org/10.1103/fv38-kgkb"
+        },
+        {
+          "title": "A demonstration that classical gravity does not produce entanglement",
+          "url": "https://doi.org/10.1088/1361-6382/ae6f62"
+        },
+        {
+          "title": "Collapse-based models for gravity do not violate the entanglement-based witness of nonclassicality",
+          "url": "https://doi.org/10.1103/83rl-nygv"
+        },
+        {
+          "title": "Gravity-induced entanglement is not a theory-independent witness of nonclassicality of the gravitational field",
+          "url": "https://doi.org/10.1103/r8ry-sp35"
+        },
+        {
+          "title": "Emergence of Non-Markovian Classical-Quantum Dynamics from Decoherence",
+          "url": "https://arxiv.org/abs/2604.06891"
+        },
+        {
+          "title": "On two recent proposals for witnessing nonclassical gravity",
+          "url": "https://doi.org/10.1088/1751-8121/aaa734"
+        },
+        {
+          "title": "Distinguishable Consequence of Classical Gravity on Quantum Matter",
+          "url": "https://doi.org/10.1103/PhysRevLett.134.061501"
+        }
+      ],
+      "uncertainty": "No exhaustive theorem in the reviewed set establishes a finite universal test that excludes every conceivable classical, nonlocal, retrocausal or non-Markovian alternative. The discriminating set is necessarily relative to explicitly defined model classes, Markovianity, locality and experimental assumptions.",
+      "nextInvestigation": "Construct a source-backed hypothesis-by-observable model matrix for the concrete models now indexed; calculate which combinations of entanglement dynamics, decoherence, force noise/diffusion, back-reaction, intervention and memory are jointly incompatible with each model, then optimize the experimentally feasible hitting set without treating unmodeled alternatives as excluded.",
+      "reviewedAt": "2026-10-07",
+      "evidenceState": "source-reviewed research synthesis"
     }
+
   ]
 };

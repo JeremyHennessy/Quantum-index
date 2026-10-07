@@ -9,6 +9,8 @@ const developmentCode = fs.readFileSync("developments.js","utf8");
 vm.runInContext(developmentCode, sandbox);
 const data = sandbox.window.QI_DATA;
 const developmentData = sandbox.window.QI_DEVELOPMENTS;
+// Evidence injects additional bibliography records used by the browser runtime.
+vm.runInContext(fs.readFileSync("evidence.js","utf8"), sandbox);
 
 const formulaCode = fs.readFileSync("formulas.js","utf8");
 vm.runInContext(formulaCode, sandbox);
