@@ -23,14 +23,18 @@ The single-table Passport comparison and source-located Quantum Zeno representat
 
 The five SSH/Aubry–André/Holstein representatives and three matching Passports are implemented. See `RELEASE_LATTICE_CURATION_2026-10-07.md` and `LATTICE_CURATION_2026-10-07.json`. Merged as `197aa15c57d2a43d098f43a21f6ec0514f349bba`; complete tests and hosted acceptance are recorded in PR #64 comment `6047147501`. Old review dates are preserved; only two renderer date fallbacks change.
 
-## AMO / steering batch
+## Verified AMO / steering batch
 
-Four formula cards and two Passports are implemented for Fano resonance and quantum steering. Read `RELEASE_AMO_STEERING_2026-10-07.md` and the corresponding ledger. The exact PR/deployment receipt, not code presence, determines hosted acceptance. No UI, storage, graph-edge or earlier scientific-record changes.
+Four formula cards and two Passports are implemented for Fano resonance and quantum steering. Read `RELEASE_AMO_STEERING_2026-10-07.md` and the corresponding ledger. Merged as `4034edd3bd3f631c67b12255193d203beff234df`; exact-head and hosted acceptance are recorded in PR #65 comment `6047775725`. No UI, storage, graph-edge or earlier scientific-record changes.
+
+## Bell metadata review
+
+Four existing formula records now have source-located assumptions, variables, normalizations and limitations, with their equations and stable identities unchanged. One Bell Passport reuses these cards and the existing experimental Evidence record. Read `RELEASE_BELL_METADATA_2026-10-07.md` and `BELL_METADATA_2026-10-07.json`; check the corresponding PR receipt for exact-head and hosted acceptance. The ledger stores before/after fingerprints and the full prior metadata. No app, CSS, storage, graph or publishing changes.
 
 ## Product and curation queue
 
-1. Expand curated Passport coverage beyond the fifteen curated records, using the implemented comparison workflow to identify useful gaps.
-2. Continue a coherent canonical-formula batch after the now-curated Zeno representative; never attach an arbitrary equation simply to reduce a gap counter. Current documented formula gaps: 165. Fano and steering representatives are now implemented; do not add duplicates. Next review baseline Bell/CHSH metadata and source locations as a separate declared record-change batch, then expand associated Passports.
+1. Expand curated Passport coverage beyond the sixteen curated records, using the implemented comparison workflow to identify useful gaps.
+2. Continue a coherent canonical-formula batch after the now-curated Zeno representative; never attach an arbitrary equation simply to reduce a gap counter. Current documented formula gaps: 165. Fano and steering representatives are now implemented; do not add duplicates. The Bell/CHSH metadata pass and associated Passport are now implemented; do not duplicate them. Remaining baseline formula metadata: 255. A useful next bounded pass is directional source review of high-value editorial relationships, while continuing coherent formula/Passport depth.
 3. Review baseline formula metadata and equation-level source locations in bounded, explicitly recorded batches. An `explicit` label does not certify the entire paper.
 4. Upgrade high-value editorial relationships only when the citation establishes that precise directional relation.
 5. Expand reading profiles, Passports and Evidence where they support major learning paths and useful comparisons; do not drift into gravity-only coverage.

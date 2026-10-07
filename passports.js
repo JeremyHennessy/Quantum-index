@@ -576,3 +576,53 @@ window.QI_PASSPORTS.records.push(...[
     "reviewedAt": "2026-10-07"
   }
 ]);
+
+// Bell Passport reuses existing formulas and experimental evidence; no new observation.
+window.QI_PASSPORTS.records.push({
+  "theoryId": "bell",
+  "problemIds": [
+    "measurement-problem"
+  ],
+  "entityType": "no-go theorem and correlation framework",
+  "scientificStatus": "established theorem under explicit assumptions",
+  "coreIdea": "Some quantum correlations cannot be reproduced by a common setting-independent hidden-variable distribution and local responses.",
+  "degreesOfFreedom": "Observed conditional outcome probabilities, two local setting choices per party in CHSH, and hypothetical shared hidden variables.",
+  "assumptions": [
+    "Specify the allowed settings, outcome alphabet and coding before choosing a Bell inequality.",
+    "Bell locality and measurement independence are separate ingredients of the local model.",
+    "An experimental conclusion needs valid trial selection, locality controls and finite-sample statistics."
+  ],
+  "mathematicalStructure": "Conditional factorization and convex mixtures define the local set; CHSH separates some quantum behaviors from it, while the quantum operator bound limits the achievable value.",
+  "formulaIds": [
+    "bell-factorization",
+    "chsh-classical",
+    "chsh-tsirelson",
+    "bell-state"
+  ],
+  "regime": "Bipartite Bell/CHSH comparisons; the four cards do not classify all states, scenarios or Bell inequalities.",
+  "predictionsConsequences": [
+    "The declared local CHSH model obeys |S| <= 2; appropriate two-qubit measurements can reach 2 sqrt(2).",
+    "Phi+ is maximally entangled, but poorly chosen measurements can give no CHSH violation."
+  ],
+  "evidenceIds": [
+    "ev-bell-loophole-free-2015"
+  ],
+  "evidenceSummary": "The existing linked 2015 Bell-test record is retained with its experimental assumptions. This Passport adds no new experimental result and does not convert theoretical bounds into observed values.",
+  "limitations": [
+    "Bell violation does not enable faster-than-light signalling or select a unique interpretation of quantum mechanics.",
+    "Entanglement, steering and Bell nonlocality are distinct tests with different trust and measurement assumptions.",
+    "Failing one CHSH test does not establish general Bell locality."
+  ],
+  "questionIds": [
+    "rq-bell"
+  ],
+  "developmentIds": [],
+  "sourceIds": [
+    "bell-1964",
+    "brunner-bell-2014",
+    "discovery-steering-2006",
+    "cirelson-bell-1980",
+    "hensen-bell-2015"
+  ],
+  "reviewedAt": "2026-10-07"
+});

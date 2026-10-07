@@ -1,0 +1,296 @@
+{
+  "baselineCommit": "4034edd3bd3f631c67b12255193d203beff234df",
+  "baselineTree": "6b75fdfc2e261f4bb4c0c2e6918f4dabbd88177b",
+  "reviewedAt": "2026-10-07",
+  "authorization": "Continuation of the declared Bell metadata review after the verified PR65 release; approved prior lattice checkpoint remains immutable in history. No new user visual approval is inferred.",
+  "editedFormulaIds": [
+    "bell-factorization",
+    "chsh-classical",
+    "chsh-tsirelson",
+    "bell-state"
+  ],
+  "addedFormulaIds": [],
+  "addedPassportTheoryIds": [
+    "bell"
+  ],
+  "addedSourceIds": [
+    "cirelson-bell-1980"
+  ],
+  "baselineIntegrity": {
+    "theories": {
+      "count": 481,
+      "sha256": "dc71df41a52091d004ee1ffc0c7bc10743b6f8e5cc841a966fdf274b51eb84df"
+    },
+    "formulas": {
+      "count": 402,
+      "sha256": "d30b157de8dad2f7b670894b193f953405db4b969a01548fe60e164ba80a6c7d"
+    },
+    "sources": {
+      "count": 541,
+      "sha256": "a2e1d782af37f4f8881f59b94e72108affc96f3eb5ab7f7b1ef6f42c6e8a8fb6"
+    },
+    "passports": {
+      "count": 15,
+      "sha256": "49c38195737062a81d452211303653c4e79a7d991467f5dbe38b0de5c90dc478"
+    },
+    "relations": {
+      "count": 610,
+      "sha256": "8d6c33a806949a22369b43a5de12d32efaf3aad74b95c682c18e1b98281c2450"
+    }
+  },
+  "formulaEdits": {
+    "bell-factorization": {
+      "before": {
+        "id": "bell-factorization",
+        "name": "Bell-local factorization",
+        "category": "Foundations & interpretations",
+        "latex": "P(a,b|x,y,\\lambda)=P(a|x,\\lambda)P(b|y,\\lambda)",
+        "plain": "P(ab|xy lambda)=P(a|x lambda)P(b|y lambda)",
+        "description": "Local hidden-variable factorization used in Bell-type analyses.",
+        "theoryIds": [
+          "bell",
+          "ontological-models"
+        ],
+        "sourceIds": [
+          "bell-1964",
+          "sep-bell"
+        ],
+        "tags": [
+          "Bell locality"
+        ],
+        "formulaType": "canonical",
+        "assumptions": [],
+        "variables": [],
+        "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+        "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+        "theoryRelationship": "canonical representative",
+        "metadataReview": "baseline-audit-v1"
+      },
+      "beforeSha256": "9e52d01adc6fbd53f487d7e299d2f521ce1aa53dbfe240677ea494bf70315dcc",
+      "afterSha256": "5ebd9a033a8a969af5a50170e78a639922735004de212ebdac8c16ee9ab9d296",
+      "changedFields": [
+        "assumptions",
+        "curationBatch",
+        "description",
+        "formulaType",
+        "metadataReview",
+        "regime",
+        "reviewedAt",
+        "sourceIds",
+        "sourceLocations",
+        "theoryRelationship",
+        "units",
+        "variables"
+      ],
+      "reason": "Replace baseline placeholder metadata with source-located assumptions, normalization, variables and limits; keep the equation and stable identity unchanged."
+    },
+    "chsh-classical": {
+      "before": {
+        "id": "chsh-classical",
+        "name": "CHSH classical bound",
+        "category": "Foundations & interpretations",
+        "latex": "|S|\\le2",
+        "plain": "|S| <= 2",
+        "description": "Bound satisfied by local hidden-variable models in the CHSH scenario.",
+        "theoryIds": [
+          "bell"
+        ],
+        "sourceIds": [
+          "sep-bell"
+        ],
+        "tags": [
+          "CHSH"
+        ],
+        "formulaType": "derived identity",
+        "assumptions": [],
+        "variables": [],
+        "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+        "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+        "theoryRelationship": "canonical representative",
+        "metadataReview": "baseline-audit-v1"
+      },
+      "beforeSha256": "a71b65fd3bbaccfa169c78e5c59fa8a895cd19aa74a031ce1f15465f47dfbb54",
+      "afterSha256": "a4374293f2d2df4c363eff3cb3c63af08e0226e2cf6761223c9ee3ff5da5017b",
+      "changedFields": [
+        "assumptions",
+        "curationBatch",
+        "description",
+        "formulaType",
+        "metadataReview",
+        "regime",
+        "reviewedAt",
+        "sourceIds",
+        "sourceLocations",
+        "theoryRelationship",
+        "units",
+        "variables"
+      ],
+      "reason": "Replace baseline placeholder metadata with source-located assumptions, normalization, variables and limits; keep the equation and stable identity unchanged."
+    },
+    "chsh-tsirelson": {
+      "before": {
+        "id": "chsh-tsirelson",
+        "name": "Tsirelson bound",
+        "category": "Foundations & interpretations",
+        "latex": "|S|\\le2\\sqrt2",
+        "plain": "|S| <= 2 sqrt(2)",
+        "description": "Maximum CHSH value allowed by quantum theory.",
+        "theoryIds": [
+          "bell",
+          "quantum-information",
+          "device-independent-qi"
+        ],
+        "sourceIds": [
+          "sep-bell",
+          "barrett-gpt-2007",
+          "brunner-bell-2014"
+        ],
+        "tags": [
+          "CHSH",
+          "nonlocality"
+        ],
+        "formulaType": "derived identity",
+        "assumptions": [],
+        "variables": [],
+        "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+        "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+        "theoryRelationship": "canonical representative",
+        "metadataReview": "baseline-audit-v1"
+      },
+      "beforeSha256": "f02b4004a7e064d3b37905a71b53c20ebf889e444f81500f65e251d76728228c",
+      "afterSha256": "ffc5b3fb3489aa137ce8dfed1f5eba73e0cbb319ed4520c9c4fb6fee86bfc590",
+      "changedFields": [
+        "assumptions",
+        "curationBatch",
+        "description",
+        "formulaType",
+        "metadataReview",
+        "regime",
+        "reviewedAt",
+        "sourceIds",
+        "sourceLocations",
+        "theoryRelationship",
+        "units",
+        "variables"
+      ],
+      "reason": "Replace baseline placeholder metadata with source-located assumptions, normalization, variables and limits; keep the equation and stable identity unchanged."
+    },
+    "bell-state": {
+      "before": {
+        "id": "bell-state",
+        "name": "Bell state",
+        "category": "Quantum information",
+        "latex": "|\\Phi^+\\rangle=\\frac{|00\\rangle+|11\\rangle}{\\sqrt2}",
+        "plain": "Phi+ = (|00>+|11>)/sqrt2",
+        "description": "One of the four maximally entangled two-qubit Bell states.",
+        "theoryIds": [
+          "quantum-information",
+          "bell"
+        ],
+        "sourceIds": [
+          "schumacher-1995",
+          "bell-1964"
+        ],
+        "tags": [
+          "entanglement"
+        ],
+        "formulaType": "defining",
+        "assumptions": [],
+        "variables": [],
+        "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+        "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+        "theoryRelationship": "canonical representative",
+        "metadataReview": "baseline-audit-v1"
+      },
+      "beforeSha256": "2e80e6ce0c4705d4e6a5c7f3e9e77c6a7ca5c419fb0615d4362f0e28450cd812",
+      "afterSha256": "217f875ccd0e9c30851bc2627d6135dc23ab27ed4296c022d2c9861068396f86",
+      "changedFields": [
+        "assumptions",
+        "curationBatch",
+        "description",
+        "metadataReview",
+        "regime",
+        "reviewedAt",
+        "sourceIds",
+        "sourceLocations",
+        "theoryRelationship",
+        "units",
+        "variables"
+      ],
+      "reason": "Replace baseline placeholder metadata with source-located assumptions, normalization, variables and limits; keep the equation and stable identity unchanged."
+    }
+  },
+  "previousFiles": {
+    "formulas.js": "78503ade0ff1f11df1d30c810b13678b8db1f16c8c404aabfd676156b6a764b4",
+    "theories.js": "9fc7e0c93dc51a6e1a57b59d47fac683b91ae6538a396451f7f865e4dd51672b",
+    "passports.js": "116dad1b95b39038972119ee9543db369f05f55331a5a46600fc15249c8689d0"
+  },
+  "updatedFiles": {
+    "formulas.js": "560d7ecf151ae12cb82b418f16e1f0f9876ec689824d8c6ac2d10fd1d8111ecc",
+    "theories.js": "1d3ad5d0e4606e1aefe21f79615559f5649fe230dbb439632a222021c5d66a1b",
+    "passports.js": "9073d051e561e1e30cfa3f428c4d8ad6b8c623c74ca66afc6b358753e645008f"
+  },
+  "untouchedFiles": {
+    "app.js": "d7802b604a9016d591664da37d010aeef4d6a01dc8a8bc036ae876feb0fa1110",
+    "styles.css": "19f8c14858cb7a2663b5337b64eb99aeef29c378c5b42c4438e738bae59ffb24",
+    "workspace.js": "de553a16db91ad4640a99f508208137b2a43d2b113a05e65f887521225c54e09",
+    "profiles.js": "7ead242ba17098969b40e3f57e5c2ac788febb44ab5cdce546766f8c6262ce1c",
+    "package.json": "50ee1455431713bf5ac482cad5ca71e53ea401a169724c120b238ed00ce1c91c",
+    "package-lock.json": "9336b23f013c9551394393fa6a9d5c9e87488b726cc40ceb63f01d3484ac7735",
+    ".github/workflows/validate.yml": "1722de72fae3eae385bd35ae12d223df63882e69aec7ca81307e0db2d7662659",
+    "developments.js": "ac50182e95d282202540a6bcab3bbd5c0a0beb749aa13ad68ae0c9f586390bfa",
+    "questions.js": "16beba9fed1761b1da48c61a626c89a043127b74e134cd161f885d74010b2968",
+    "problems.js": "757d5d3b7767aba895aaff9438bf4a2194ee781557d2b7e16f28582a92bbf8e8",
+    "evidence.js": "2b9ab246c69fba1c21fe7555ccdabdbc549c2f8b12e119fba0de87d7b8b35252",
+    "formula-audit.js": "fb958416812e0ba093e7fbaa1ee9d995e536031ab177980f9296e85084fc72ba",
+    "docs/RECONCILIATION_2026-10-07.json": "92fa6235958971c3e41bb32d44730de588d87e5b69c6e415bc47cc77a1fd1d8b",
+    "docs/COMPARE_ZENO_2026-10-07.json": "7015089246749c6b4d3c98b778087e423220f0e02012453d210b01e91338010f",
+    "docs/LATTICE_CURATION_2026-10-07.json": "dead601d2ee21358f40f84d6e66b22a48f566a74911e2299810cf7bbe22ea8c0",
+    "docs/AMO_STEERING_2026-10-07.json": "1fb3393f416f2f393053e43fddd2f07ca8bc15d8b63600918d50fb065613ff84"
+  },
+  "expected": {
+    "theories": 481,
+    "formulas": 402,
+    "formulaGaps": 165,
+    "explicitFormulaMetadata": 147,
+    "baselineFormulaMetadata": 255,
+    "sources": 542,
+    "passports": 16,
+    "relations": 610
+  },
+  "reviewLimits": [
+    "Metadata/provenance change to exactly four existing formula IDs; their LaTeX, names, plain forms and theory links stay identical.",
+    "The original 1969 CHSH full text was not inspected; reviewed normalizations use Brunner v3 and Cirelson pp. 93–95. No original-paper equation locator is fabricated.",
+    "WJD v3 is projective in its quantum examples; its mixture illustrates the local model without turning the Bell condition itself into a projective-measurement requirement.",
+    "Cirelson 1980 scanned pages 1–3 were visually inspected. Brunner v3 pages 3 and 21 were inspected; historical open-problem status elsewhere in that review is not imported.",
+    "Numerical checks validate explicit examples and negative controls, not a new experimental result or an exhaustive Bell-locality decision method."
+  ],
+  "sourceReviews": [
+    {
+      "sourceId": "brunner-bell-2014",
+      "version": "arXiv 1303.2849v3, 19 April 2014",
+      "reviewedLocations": [
+        "PDF page 3, Sec. I.A, Eqs. (2)–(5)",
+        "PDF page 21, Sec. III.A.1, Phi+ definition before Eq. (47)"
+      ],
+      "scope": "Modern local-mixture and CHSH conventions; Bell-state definition. No import of historical open-problem status."
+    },
+    {
+      "sourceId": "cirelson-bell-1980",
+      "version": "Original 1980 article, Letters in Mathematical Physics 4, 93–100",
+      "reviewedLocations": [
+        "Scanned PDF pages 1–3, printed pages 93–95"
+      ],
+      "scope": "Theorem 1 operator hypotheses, classical bound, quantum sharp bound and operator argument; scanned pages visually inspected."
+    },
+    {
+      "sourceId": "discovery-steering-2006",
+      "version": "arXiv quant-ph/0612147v3, 20 April 2007",
+      "reviewedLocations": [
+        "PDF page 2, Eqs. (3), (5), (6)",
+        "PDF page 3, maximally entangled vector following Eq. (12)"
+      ],
+      "scope": "Common LHV/LHS ensembles and d=2 state specialization; quantum examples in this paper restrict to projective measurements."
+    }
+  ]
+}

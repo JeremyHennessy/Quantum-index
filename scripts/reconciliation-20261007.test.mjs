@@ -1,3 +1,4 @@
+import {bellReview,restoreBellFormula} from './bell-metadata-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -16,7 +17,7 @@ const canonical=v=>Array.isArray(v)?v.map(canonical):v&&typeof v==='object'?Obje
 const newFormulaIds=['configuration-ensemble-hamiltonian','cq-backreaction-decoherence-diffusion','cq-decoherence-diffusion-tradeoff'];
 
 test('reconciliation preserves every baseline theory, formula, profile and Passport exactly',()=>{
- const items={theories:w.QI_DATA.theories.filter(t=>t.id!=='configuration-ensemble-cq'),formulas:w.QI_FORMULAS.formulas.filter(f=>!newFormulaIds.includes(f.id)&&!followup.addedFormulaIds.includes(f.id)&&!lattice.addedFormulaIds.includes(f.id)&&!amo.addedFormulaIds.includes(f.id)),profiles:w.QI_PROFILES.profiles};
+ const items={theories:w.QI_DATA.theories.filter(t=>t.id!=='configuration-ensemble-cq'),formulas:w.QI_FORMULAS.formulas.map(restoreBellFormula).filter(f=>!newFormulaIds.includes(f.id)&&!followup.addedFormulaIds.includes(f.id)&&!lattice.addedFormulaIds.includes(f.id)&&!amo.addedFormulaIds.includes(f.id)),profiles:w.QI_PROFILES.profiles};
  for(const [name,raw] of Object.entries(items)){
    const data=Array.isArray(raw)?[...raw].sort((a,b)=>a.id<b.id?-1:a.id>b.id?1:0):raw;
    assert.equal(Array.isArray(data)?data.length:Object.keys(data).length,ledger.baselineIntegrity[name].count,name);
@@ -26,7 +27,8 @@ test('reconciliation preserves every baseline theory, formula, profile and Passp
   if(followup.updatedFiles[file])assert.equal(followup.previousFiles[file],expected,`${file}: original checkpoint`);
   if(lattice.updatedFiles[file])assert.equal(lattice.previousFiles[file],followup.updatedFiles[file]||expected,`${file}: lattice predecessor`);
   if(amo.updatedFiles[file])assert.equal(amo.previousFiles[file],lattice.updatedFiles[file]||followup.updatedFiles[file]||expected,`${file}: AMO predecessor`);
-  assert.equal(hash(fs.readFileSync(file)),amo.updatedFiles[file]||lattice.updatedFiles[file]||followup.updatedFiles[file]||expected,file);
+  if(bellReview.updatedFiles[file])assert.equal(bellReview.previousFiles[file],amo.updatedFiles[file]||lattice.updatedFiles[file]||followup.updatedFiles[file]||expected,`${file}: retained predecessor`);
+  assert.equal(hash(fs.readFileSync(file)),bellReview.updatedFiles[file]||amo.updatedFiles[file]||lattice.updatedFiles[file]||followup.updatedFiles[file]||expected,file);
  }
 });
 

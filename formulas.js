@@ -649,18 +649,49 @@ window.QI_FORMULAS = {
       "category": "Foundations & interpretations",
       "latex": "P(a,b|x,y,\\lambda)=P(a|x,\\lambda)P(b|y,\\lambda)",
       "plain": "P(ab|xy lambda)=P(a|x lambda)P(b|y lambda)",
-      "description": "Local hidden-variable factorization used in Bell-type analyses.",
+      "description": "Conditional factorization at a specified hidden variable. A Bell-local observed behavior also requires a common setting-independent distribution over that variable; observed outcomes need not be statistically independent.",
       "theoryIds": [
         "bell",
         "ontological-models"
       ],
       "sourceIds": [
         "bell-1964",
-        "sep-bell"
+        "discovery-steering-2006",
+        "brunner-bell-2014"
       ],
       "tags": [
         "Bell locality"
-      ]
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Positive normalized local response distributions are defined for every setting and hidden variable in the model.",
+        "Observed probabilities are obtained by averaging the product with one normalized q(lambda), shared across all x,y.",
+        "Measurement independence means q(lambda|x,y)=q(lambda); the displayed conditional equation alone does not impose this separate assumption.",
+        "The response of one party has no dependence on the remote setting once lambda is specified."
+      ],
+      "variables": [
+        "a,b: local measurement outcomes; x,y: measurement settings",
+        "lambda: shared hidden variable; q(lambda): its setting-independent probability density",
+        "P(a,b|x,y) = integral d lambda q(lambda) P(a|x,lambda) P(b|y,lambda)"
+      ],
+      "regime": "Bipartite Bell-local models. This is not the stronger claim P(a,b|x,y)=P(a|x)P(b|y), and no-signalling alone does not imply Bell locality.",
+      "units": "All probabilities are dimensionless; q(lambda) d lambda is a normalized dimensionless measure.",
+      "theoryRelationship": "Conditional locality assumption plus a separately stated measurement-independent mixture",
+      "sourceLocations": [
+        {
+          "sourceId": "brunner-bell-2014",
+          "locator": "Sec. I.A, Eqs. (2)–(3), p. 3 of arXiv v3; conditional factorization and measurement independence distinguished explicitly",
+          "url": "https://arxiv.org/pdf/1303.2849v3#page=3"
+        },
+        {
+          "sourceId": "discovery-steering-2006",
+          "locator": "p. 2, Eq. (3): one positive normalized LHV ensemble for all settings; projective quantum scenario in this primary paper",
+          "url": "https://arxiv.org/pdf/quant-ph/0612147v3#page=2"
+        }
+      ],
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-07",
+      "curationBatch": "bell-metadata-2026-10-07"
     },
     {
       "id": "chsh-classical",
@@ -668,16 +699,47 @@ window.QI_FORMULAS = {
       "category": "Foundations & interpretations",
       "latex": "|S|\\le2",
       "plain": "|S| <= 2",
-      "description": "Bound satisfied by local hidden-variable models in the CHSH scenario.",
+      "description": "The local bound for a specified two-setting, two-outcome correlator combination. The inequality applies to the underlying distribution; a finite observed excess requires statistical analysis.",
       "theoryIds": [
         "bell"
       ],
       "sourceIds": [
-        "sep-bell"
+        "brunner-bell-2014",
+        "cirelson-bell-1980"
       ],
       "tags": [
         "CHSH"
-      ]
+      ],
+      "formulaType": "exact",
+      "assumptions": [
+        "Each party chooses x,y in {0,1}; outcomes are coded a,b in {-1,+1}.",
+        "One Bell-local factorization and one setting-independent hidden-variable distribution reproduce all four setting pairs.",
+        "Each probability distribution is positive and normalized; no assumption of deterministic hidden responses is required.",
+        "Settings and outcome coding are fixed. Dropping trials based on settings or outcomes needs an additional sampling justification."
+      ],
+      "variables": [
+        "S = E_00 + E_01 + E_10 - E_11; E_xy = sum over a,b of a*b*P(a,b|x,y)",
+        "x,y: local choices 0 or 1; a,b: numerical outcomes -1 or +1",
+        "E_xy: conditional expectation of the product of the two outcomes"
+      ],
+      "regime": "The standard bipartite CHSH scenario, with three plus signs and one minus sign. Nonviolation of this one expression is not a certificate of Bell locality for every possible test.",
+      "units": "Dimensionless correlators and S; changing the outcome scale changes the numerical bound.",
+      "theoryRelationship": "Exact consequence of the declared Bell-local model, not a bound on arbitrary nonsignalling probabilities",
+      "sourceLocations": [
+        {
+          "sourceId": "brunner-bell-2014",
+          "locator": "Sec. I.A, Eq. (4) and its derivation, p. 3 of arXiv v3; the lower bound follows by flipping all outcomes on one side",
+          "url": "https://arxiv.org/pdf/1303.2849v3#page=3"
+        },
+        {
+          "sourceId": "cirelson-bell-1980",
+          "locator": "p. 94 (PDF p. 2): unnumbered classical four-correlator inequality, with all classical observables commuting",
+          "url": "https://ma.huji.ac.il/~ohadfeld/Tsirelson/download/qbell80.pdf#page=2"
+        }
+      ],
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-07",
+      "curationBatch": "bell-metadata-2026-10-07"
     },
     {
       "id": "chsh-tsirelson",
@@ -685,21 +747,50 @@ window.QI_FORMULAS = {
       "category": "Foundations & interpretations",
       "latex": "|S|\\le2\\sqrt2",
       "plain": "|S| <= 2 sqrt(2)",
-      "description": "Maximum CHSH value allowed by quantum theory.",
+      "description": "Sharp quantum upper bound on the same CHSH combination used in the classical card. Suitable entangled states and measurement settings attain it; an arbitrary state or choice of settings need not.",
       "theoryIds": [
         "bell",
         "quantum-information",
         "device-independent-qi"
       ],
       "sourceIds": [
-        "sep-bell",
-        "barrett-gpt-2007",
+        "cirelson-bell-1980",
         "brunner-bell-2014"
       ],
       "tags": [
         "CHSH",
         "nonlocality"
-      ]
+      ],
+      "formulaType": "exact",
+      "assumptions": [
+        "A positive quantum state has trace one; all four correlators use that same state.",
+        "A_0,A_1,B_0,B_1 are Hermitian contractions with spectra in [-1,+1]. Dichotomic projective observables are a special case.",
+        "Every A_x commutes with every B_y, as for observables on different tensor factors. The two observables within one party need not commute.",
+        "The coefficients and outcome normalization are those of the standard CHSH expression, not an arbitrary Bell inequality."
+      ],
+      "variables": [
+        "S = E_00 + E_01 + E_10 - E_11; E_xy = sum over a,b of a*b*P(a,b|x,y)",
+        "E_xy = Tr(rho A_x B_y), or Tr(rho (A_x tensor B_y)) for a bipartite tensor-product representation",
+        "rho: normalized quantum state; A_x,B_y: local bounded observables"
+      ],
+      "regime": "Bipartite CHSH quantum correlations with the stated operator assumptions. No-signalling by itself only enforces the algebraic bound 4, not 2 sqrt(2).",
+      "units": "Dimensionless observables normalized to [-1,+1], and dimensionless S.",
+      "theoryRelationship": "Sharp quantum correlation constraint; not a claim that all entangled states violate CHSH",
+      "sourceLocations": [
+        {
+          "sourceId": "cirelson-bell-1980",
+          "locator": "Theorem 1, pp. 93–94, and unnumbered CHSH inequality/operator argument pp. 94–95 (PDF pp. 1–3); source labels 1,2 relabeled 0,1",
+          "url": "https://ma.huji.ac.il/~ohadfeld/Tsirelson/download/qbell80.pdf#page=2"
+        },
+        {
+          "sourceId": "brunner-bell-2014",
+          "locator": "Sec. I.A, Eq. (5), p. 3: an attaining two-qubit example; its singlet convention differs from the Phi+ card",
+          "url": "https://arxiv.org/pdf/1303.2849v3#page=3"
+        }
+      ],
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-07",
+      "curationBatch": "bell-metadata-2026-10-07"
     },
     {
       "id": "histories-decoherence",
@@ -1568,18 +1659,48 @@ window.QI_FORMULAS = {
       "category": "Quantum information",
       "latex": "|\\Phi^+\\rangle=\\frac{|00\\rangle+|11\\rangle}{\\sqrt2}",
       "plain": "Phi+ = (|00>+|11>)/sqrt2",
-      "description": "One of the four maximally entangled two-qubit Bell states.",
+      "description": "The normalized Phi+ Bell state in the computational basis. It is not the antisymmetric singlet; the relative sign and choice of basis determine its correlations.",
       "theoryIds": [
         "quantum-information",
         "bell"
       ],
       "sourceIds": [
-        "schumacher-1995",
-        "bell-1964"
+        "discovery-steering-2006",
+        "brunner-bell-2014"
       ],
       "tags": [
         "entanglement"
-      ]
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Two distinguishable qubit subsystems have Hilbert space C^2 tensor C^2.",
+        "Each computational basis is orthonormal, and |ab> means |a> tensor |b>.",
+        "The displayed state is pure with the stated relative plus phase; a global phase is physically irrelevant.",
+        "Bell violation additionally requires appropriate local measurement settings and the assumptions of the relevant test."
+      ],
+      "variables": [
+        "|0>,|1>: orthonormal local computational basis states",
+        "|Phi+>: normalized two-qubit vector; rho_AB = |Phi+><Phi+|",
+        "rho_A = rho_B = I_2/2: reduced states; I_2 is the single-qubit identity"
+      ],
+      "regime": "An ideal maximally entangled two-qubit state, not every entangled state and not an experimental certification from a state label alone.",
+      "units": "Dimensionless amplitudes with total squared norm one; each reduced state has entropy one bit using log base two.",
+      "theoryRelationship": "A concrete entangled state that can attain CHSH violation with suitable settings; entanglement is not signalling",
+      "sourceLocations": [
+        {
+          "sourceId": "discovery-steering-2006",
+          "locator": "p. 3, definition of |psi+> immediately following Eq. (12), specialized to d=2 and basis indices relabeled 1,2 to 0,1",
+          "url": "https://arxiv.org/pdf/quant-ph/0612147v3#page=3"
+        },
+        {
+          "sourceId": "brunner-bell-2014",
+          "locator": "Sec. III.A.1, p. 21 of arXiv v3: |phi+> is defined immediately before Eq. (47)",
+          "url": "https://arxiv.org/pdf/1303.2849v3#page=21"
+        }
+      ],
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-07",
+      "curationBatch": "bell-metadata-2026-10-07"
     },
     {
       "id": "schmidt",
