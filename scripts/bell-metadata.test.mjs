@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import {bellReview as ledger,restoreBellFormula,fingerprint} from './bell-metadata-baseline.mjs';
+import {priorRelations,priorSources,verifyFileTransition} from './relation-review-baseline.mjs';
 const c={window:{}};vm.createContext(c);
 for(const file of ['theories.js','developments.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','evidence.js','passports.js','workspace.js'])vm.runInContext(fs.readFileSync(file,'utf8'),c);
 const w=c.window,get=id=>w.QI_FORMULAS.formulas.find(f=>f.id===id);
@@ -13,18 +14,21 @@ const ids=['bell-factorization','chsh-classical','chsh-tsirelson','bell-state'];
 test('Bell review changes exactly four metadata records, preserving every equation and historical ledger',()=>{
  assert.deepEqual(ledger.editedFormulaIds,ids);assert.deepEqual(ledger.addedFormulaIds,[]);
  assert.deepEqual(Object.keys(ledger.formulaEdits).sort(),[...ids].sort());
- const before={theories:w.QI_DATA.theories,formulas:w.QI_FORMULAS.formulas.map(restoreBellFormula),sources:w.QI_DATA.sources.filter(s=>!ledger.addedSourceIds.includes(s.id)),passports:w.QI_PASSPORTS.records.filter(p=>!ledger.addedPassportTheoryIds.includes(p.theoryId)),relations:w.QI_DATA.relations};
+ const before={theories:w.QI_DATA.theories,formulas:w.QI_FORMULAS.formulas.map(restoreBellFormula),sources:priorSources(w.QI_DATA.sources).filter(s=>!ledger.addedSourceIds.includes(s.id)),passports:w.QI_PASSPORTS.records.filter(p=>!ledger.addedPassportTheoryIds.includes(p.theoryId)),relations:priorRelations(w.QI_DATA.relations)};
  for(const [name,items] of Object.entries(before)){
   const key=name==='passports'?'theoryId':'id',ordered=name==='relations'?[...items]:[...items].sort((a,b)=>a[key]<b[key]?-1:a[key]>b[key]?1:0);
   assert.equal(items.length,ledger.baselineIntegrity[name].count,name);assert.equal(fingerprint(ordered),ledger.baselineIntegrity[name].sha256,name);
  }
- for(const [file,sha] of Object.entries({...ledger.untouchedFiles,...ledger.updatedFiles}))assert.equal(createHash('sha256').update(fs.readFileSync(file)).digest('hex'),sha,file);
+ for(const [file,sha] of Object.entries({...ledger.untouchedFiles,...ledger.updatedFiles})){
+  if(file==='theories.js')verifyFileTransition(file,sha);
+  else assert.equal(createHash('sha256').update(fs.readFileSync(file)).digest('hex'),sha,file);
+ }
  for(const id of ids){const f=get(id),before=ledger.formulaEdits[id].before;
   for(const key of ['id','name','latex','plain','theoryIds','category','tags'])assert.deepEqual(JSON.parse(JSON.stringify(f[key])),before[key],`${id}/${key}`);
   const fields=[...new Set([...Object.keys(f),...Object.keys(before)])].filter(k=>JSON.stringify(f[k])!==JSON.stringify(before[k])).sort();assert.deepEqual(fields,ledger.formulaEdits[id].changedFields);
  }
  const coverage=JSON.parse(fs.readFileSync('docs/coverage.json'));
- for(const [key,value] of Object.entries(ledger.expected))assert.equal(key==='passports'?w.QI_PASSPORTS.records.length:coverage[key],value,key);
+ for(const [key,value] of Object.entries(ledger.expected))assert.equal(key==='passports'?w.QI_PASSPORTS.records.length:coverage[key],value+(key==='sources'?1:0),key);
 });
 
 test('historical fingerprint bridge rejects undeclared changes instead of hiding them',()=>{

@@ -42,10 +42,10 @@ Used for useful navigation/overlap edges that have not yet completed a relations
 
 <!-- coverage:start -->
 - **610** total relationship edges
-- **118** source-backed
-- **98** high confidence
-- **20** medium confidence
-- **492** explicitly editorial
+- **122** source-backed
+- **101** high confidence
+- **21** medium confidence
+- **488** explicitly editorial
 <!-- coverage:end -->
 
 The editorial count is intentionally visible. Node-level source provenance does not automatically prove an edge between two nodes.
@@ -116,3 +116,11 @@ Next relation-evidence work should prioritize the new modified-gravity hierarchy
 ## 2026-09-23 third-wave edge state
 
 The third-wave census added 53 navigation edges. They remain editorial unless relationship-specific literature has been reviewed; node provenance is never treated as automatic edge provenance.
+
+## 2026-10-07 directional evidence review
+
+Four existing editorial edges were promoted after checking relationship-specific publications, without changing their endpoints, direction, type, or original note: renormalization group → functional RG (Wetterich 1993), categorical quantum mechanics → ZX calculus (Coecke–Duncan 2011), conformal field theory → conformal bootstrap (Simmons-Duffin 2016), and tensor-network states → MERA (Evenbly–Vidal 2011). The first three are labeled high confidence formal relations; the broad tensor-network-family link is medium because MERA does not subsume all MPS states or constructions.
+
+The review uses the 1993 publisher abstract and its effective-action discussion, Coecke–Duncan's 2011 v3 abstract, Simmons-Duffin's versioned HTML sections on bootstrap consistency, and Evenbly–Vidal's v1 abstract explicitly comparing MPS/PEPS/MERA. These are source-level checks of the stated directional connections, not independent reproductions of the papers' full results. `RELATION_PROMOTIONS_2026-10-07.json` records original and new metadata and exact preservation fingerprints; `RELEASE_RELATION_PROMOTIONS_2026-10-07.md` documents the scope and rollback.
+
+No additional editorial edges were silently relabeled. Source labels remain separate from source-specific proof of generality.

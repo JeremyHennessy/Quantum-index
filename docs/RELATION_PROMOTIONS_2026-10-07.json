@@ -1,0 +1,163 @@
+{
+  "releaseDate": "2026-10-07",
+  "baselineCommit": "f186171c405c0a7ab1461d250cb1800531808982",
+  "baselineTree": "038f7a930f19feb43031bc347e8478eeae1686a7",
+  "policy": "Only promote exactly four editorial edges with relationship-specific evidence; no changes to relation identities, types, notes, or other records. Treat formal relation as domain-qualified; source attachment does not imply universal scientific proof.",
+  "sourceReview": {
+    "wetterich-1993": "Publisher abstract directly describes exact scale evolution of effective action; not a claim that truncations remain exact. https://doi.org/10.1016/0370-2693(93)90726-X",
+    "coecke-duncan-2011": "arXiv 0906.4725v3 abstract directly links categorical methods with the ZX calculus. https://arxiv.org/abs/0906.4725",
+    "simmons-duffin-bootstrap-2016": "arXiv 1602.07982v1 HTML Sec 1.3 and Ch 9.1–9.4 directly present CFT crossing/bootstrap. https://arxiv.org/html/1602.07982v1",
+    "evenbly-vidal-tn-geometry-2011": "arXiv 1106.1082v1 abstract directly contrasts MPS, PEPS, MERA network geometries; supports family relation, not an MPS generalization. https://arxiv.org/abs/1106.1082"
+  },
+  "newSource": {
+    "id": "evenbly-vidal-tn-geometry-2011",
+    "title": "Tensor network states and geometry",
+    "authors": "G. Evenbly, G. Vidal",
+    "year": 2011,
+    "type": "primary source",
+    "url": "https://arxiv.org/abs/1106.1082v1"
+  },
+  "before": {
+    "relations": 610,
+    "sources": 542,
+    "sourced": 118,
+    "editorial": 492,
+    "high": 98,
+    "medium": 20,
+    "relationsSha256": "feb038f1ee6297aaa2a1f14e95c106fe8b8323b649d5d0497de2c4ddd5bdc75d",
+    "sourcesSha256": "ee782d2d29c2a5606025410e503088f7c1ecb694e368d953fe69fc73355efeb3"
+  },
+  "updates": [
+    {
+      "prior": {
+        "from": "renormalization-group",
+        "to": "functional-rg",
+        "type": "extends",
+        "note": "",
+        "sourceIds": [],
+        "evidenceType": "editorial relation",
+        "confidence": "editorial",
+        "evidenceNote": ""
+      },
+      "new": {
+        "to": "functional-rg",
+        "type": "extends",
+        "sourceIds": [
+          "wetterich-1993"
+        ],
+        "confidence": "high",
+        "evidenceType": "formal mathematical relation",
+        "reviewedAt": "2026-10-07",
+        "sourceLocator": "Wetterich (1993), Phys. Lett. B 301:90–94, publisher abstract: scale-dependent effective action and continuous RG flow.",
+        "evidenceNote": "Wetterich derives an exact evolution equation for a scale-dependent effective action, a functional formulation of renormalization-group flow. This is a formal methodological relation; practical truncations need not be exact, and this edge does not imply that every RG scheme is a functional RG.",
+        "from": "renormalization-group"
+      }
+    },
+    {
+      "prior": {
+        "from": "categorical-qm",
+        "to": "zx-calculus",
+        "type": "extends",
+        "note": "",
+        "sourceIds": [],
+        "evidenceType": "editorial relation",
+        "confidence": "editorial",
+        "evidenceNote": ""
+      },
+      "new": {
+        "to": "zx-calculus",
+        "type": "extends",
+        "sourceIds": [
+          "coecke-duncan-2011"
+        ],
+        "confidence": "high",
+        "evidenceType": "formal mathematical relation",
+        "reviewedAt": "2026-10-07",
+        "sourceLocator": "Coecke and Duncan (2011), arXiv:0906.4725v3, abstract: ZX calculus via dagger symmetric monoidal categories and complementarity.",
+        "evidenceNote": "Coecke and Duncan explicitly present ZX as a graphical calculus within dagger symmetric monoidal category methods, identifying complementary observables and phase structure. This establishes a categorical derivation/representation link, not completeness for arbitrary quantum processes or classical diagrams.",
+        "from": "categorical-qm"
+      }
+    },
+    {
+      "prior": {
+        "from": "conformal-field-theory",
+        "to": "conformal-bootstrap",
+        "type": "supports",
+        "note": "",
+        "sourceIds": [],
+        "evidenceType": "editorial relation",
+        "confidence": "editorial",
+        "evidenceNote": ""
+      },
+      "new": {
+        "to": "conformal-bootstrap",
+        "type": "supports",
+        "sourceIds": [
+          "simmons-duffin-bootstrap-2016"
+        ],
+        "confidence": "high",
+        "evidenceType": "formal mathematical relation",
+        "reviewedAt": "2026-10-07",
+        "sourceLocator": "Simmons-Duffin, arXiv:1602.07982v1, Sec. 1.3 (bootstrap philosophy), Ch. 9.1–9.4 (crossing, scalar bootstrap, bounds).",
+        "evidenceNote": "The conformal-bootstrap method imposes conformal symmetry, crossing and unitarity on CFT operator data rather than selecting a microscopic Lagrangian. It derives consistency constraints on conformal field theories; it is not an assertion that every CFT is solved or all quantum field theories are conformal.",
+        "from": "conformal-field-theory"
+      }
+    },
+    {
+      "prior": {
+        "from": "tensor-network-states",
+        "to": "mera",
+        "type": "extends",
+        "note": "",
+        "sourceIds": [],
+        "evidenceType": "editorial relation",
+        "confidence": "editorial",
+        "evidenceNote": ""
+      },
+      "new": {
+        "to": "mera",
+        "type": "extends",
+        "sourceIds": [
+          "evenbly-vidal-tn-geometry-2011"
+        ],
+        "confidence": "medium",
+        "evidenceType": "formal mathematical relation",
+        "reviewedAt": "2026-10-07",
+        "sourceLocator": "Evenbly and Vidal, arXiv:1106.1082v1, abstract: explicit comparison of MPS, PEPS and MERA tensor-network geometries.",
+        "evidenceNote": "Evenbly and Vidal compare MERA with MPS and PEPS as distinct tensor-network ansatz families, showing that MERA has a multiscale geometry. This navigation edge means an additional tensor-network family, not a claim that MERA formally subsumes every MPS or provides an exact representation for all states.",
+        "from": "tensor-network-states"
+      }
+    }
+  ],
+  "untouchedFileHashes": {
+    "app.js": "d7802b604a9016d591664da37d010aeef4d6a01dc8a8bc036ae876feb0fa1110",
+    "styles.css": "19f8c14858cb7a2663b5337b64eb99aeef29c378c5b42c4438e738bae59ffb24",
+    "workspace.js": "de553a16db91ad4640a99f508208137b2a43d2b113a05e65f887521225c54e09",
+    "profiles.js": "7ead242ba17098969b40e3f57e5c2ac788febb44ab5cdce546766f8c6262ce1c",
+    "passports.js": "9073d051e561e1e30cfa3f428c4d8ad6b8c623c74ca66afc6b358753e645008f",
+    "formulas.js": "560d7ecf151ae12cb82b418f16e1f0f9876ec689824d8c6ac2d10fd1d8111ecc",
+    "formula-audit.js": "fb958416812e0ba093e7fbaa1ee9d995e536031ab177980f9296e85084fc72ba",
+    "evidence.js": "2b9ab246c69fba1c21fe7555ccdabdbc549c2f8b12e119fba0de87d7b8b35252",
+    "developments.js": "ac50182e95d282202540a6bcab3bbd5c0a0beb749aa13ad68ae0c9f586390bfa",
+    "questions.js": "16beba9fed1761b1da48c61a626c89a043127b74e134cd161f885d74010b2968",
+    "problems.js": "757d5d3b7767aba895aaff9438bf4a2194ee781557d2b7e16f28582a92bbf8e8",
+    "package.json": "50ee1455431713bf5ac482cad5ca71e53ea401a169724c120b238ed00ce1c91c",
+    "package-lock.json": "9336b23f013c9551394393fa6a9d5c9e87488b726cc40ceb63f01d3484ac7735",
+    ".github/workflows/validate.yml": "1722de72fae3eae385bd35ae12d223df63882e69aec7ca81307e0db2d7662659"
+  },
+  "deferred": [
+    {
+      "edge": "psi-ontology -> pbr-theorem",
+      "reason": "Historical motivation and theorem constraints need original preprint-specific scrutiny before promotion."
+    },
+    {
+      "edge": "matrix-models -> tensor-models",
+      "reason": "Generalization wording appears too broad; source-level categorical relation not yet verified."
+    }
+  ],
+  "fileTransition": {
+    "path": "theories.js",
+    "priorSha256": "1d3ad5d0e4606e1aefe21f79615559f5649fe230dbb439632a222021c5d66a1b",
+    "afterSha256": "278f98fa51f3abe021ec3439800ddd03df72a9f4def362ddb5b95ee5f416ae42"
+  }
+}

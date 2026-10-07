@@ -31,6 +31,14 @@ Four formula cards and two Passports are implemented for Fano resonance and quan
 
 Four existing formula records now have source-located assumptions, variables, normalizations and limitations, with their equations and stable identities unchanged. One Bell Passport reuses these cards and the existing experimental Evidence record. Read `RELEASE_BELL_METADATA_2026-10-07.md` and `BELL_METADATA_2026-10-07.json`; check the corresponding PR receipt for exact-head and hosted acceptance. The ledger stores before/after fingerprints and the full prior metadata. No app, CSS, storage, graph or publishing changes.
 
+## Next bounded relationship evidence release (2026-10-07)
+
+The prior Bell/CHSH metadata release #66 was merged and technically verified; its main checkpoint is `f186171c405c0a7ab1461d250cb1800531808982` (tree `038f7a930f19feb43031bc347e8478eeae1686a7`). The earlier #62–#65 releases are already merged; do not reintroduce duplicate records.
+
+Exactly four existing editorial directional edges are now **prepared as a separate reviewed candidate**, with source locators and an immutable before/after relation ledger. The candidate is *not* approved, merged, or hosted merely because local tests pass. Review `RELEASE_RELATION_PROMOTIONS_2026-10-07.md`, `RELATION_PROMOTIONS_2026-10-07.json`, the exact-tree Node/Chromium/WebKit outcomes, and desktop/mobile relationship evidence screenshots before publishing. The live app theme, workspace, formula catalog, theories and older Passport reviews remain locked.
+
+After a fully verified deployment, future rounds should prioritize additional source-specific **directional** edges rather than racing to eliminate all editorial edges; overlaps are intentionally editorial until a specific source supports the claim. The documented 165 formula gaps and 255 baseline-metadata records remain independent research backlogs.
+
 ## Product and curation queue
 
 1. Expand curated Passport coverage beyond the sixteen curated records, using the implemented comparison workflow to identify useful gaps.

@@ -2700,3 +2700,83 @@ window.QI_DATA.sources.push({
   "type": "primary research paper",
   "url": "https://doi.org/10.1007/BF00417500"
 });
+
+// 2026-10-07 relationship-specific provenance promotions.
+// Original identities, edge kinds, notes, and all other relationships are unchanged.
+(() => {
+  const reviewed = [
+  {
+    "to": "functional-rg",
+    "type": "extends",
+    "sourceIds": [
+      "wetterich-1993"
+    ],
+    "confidence": "high",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-10-07",
+    "sourceLocator": "Wetterich (1993), Phys. Lett. B 301:90–94, publisher abstract: scale-dependent effective action and continuous RG flow.",
+    "evidenceNote": "Wetterich derives an exact evolution equation for a scale-dependent effective action, a functional formulation of renormalization-group flow. This is a formal methodological relation; practical truncations need not be exact, and this edge does not imply that every RG scheme is a functional RG.",
+    "from": "renormalization-group"
+  },
+  {
+    "to": "zx-calculus",
+    "type": "extends",
+    "sourceIds": [
+      "coecke-duncan-2011"
+    ],
+    "confidence": "high",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-10-07",
+    "sourceLocator": "Coecke and Duncan (2011), arXiv:0906.4725v3, abstract: ZX calculus via dagger symmetric monoidal categories and complementarity.",
+    "evidenceNote": "Coecke and Duncan explicitly present ZX as a graphical calculus within dagger symmetric monoidal category methods, identifying complementary observables and phase structure. This establishes a categorical derivation/representation link, not completeness for arbitrary quantum processes or classical diagrams.",
+    "from": "categorical-qm"
+  },
+  {
+    "to": "conformal-bootstrap",
+    "type": "supports",
+    "sourceIds": [
+      "simmons-duffin-bootstrap-2016"
+    ],
+    "confidence": "high",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-10-07",
+    "sourceLocator": "Simmons-Duffin, arXiv:1602.07982v1, Sec. 1.3 (bootstrap philosophy), Ch. 9.1–9.4 (crossing, scalar bootstrap, bounds).",
+    "evidenceNote": "The conformal-bootstrap method imposes conformal symmetry, crossing and unitarity on CFT operator data rather than selecting a microscopic Lagrangian. It derives consistency constraints on conformal field theories; it is not an assertion that every CFT is solved or all quantum field theories are conformal.",
+    "from": "conformal-field-theory"
+  },
+  {
+    "to": "mera",
+    "type": "extends",
+    "sourceIds": [
+      "evenbly-vidal-tn-geometry-2011"
+    ],
+    "confidence": "medium",
+    "evidenceType": "formal mathematical relation",
+    "reviewedAt": "2026-10-07",
+    "sourceLocator": "Evenbly and Vidal, arXiv:1106.1082v1, abstract: explicit comparison of MPS, PEPS and MERA tensor-network geometries.",
+    "evidenceNote": "Evenbly and Vidal compare MERA with MPS and PEPS as distinct tensor-network ansatz families, showing that MERA has a multiscale geometry. This navigation edge means an additional tensor-network family, not a claim that MERA formally subsumes every MPS or provides an exact representation for all states.",
+    "from": "tensor-network-states"
+  }
+];
+  const registeredSource = {
+  "id": "evenbly-vidal-tn-geometry-2011",
+  "title": "Tensor network states and geometry",
+  "authors": "G. Evenbly, G. Vidal",
+  "year": 2011,
+  "type": "primary source",
+  "url": "https://arxiv.org/abs/1106.1082v1"
+};
+  if (window.QI_DATA.sources.some(s => s.id === registeredSource.id)) {
+    throw new Error("Duplicate relation-review bibliography record: " + registeredSource.id);
+  }
+  window.QI_DATA.sources.push(registeredSource);
+  for (const reviewedEdge of reviewed) {
+    const matches = window.QI_DATA.relations.filter(r =>
+      r.from === reviewedEdge.from && r.to === reviewedEdge.to && r.type === reviewedEdge.type
+    );
+    if (matches.length !== 1 || matches[0].confidence !== "editorial" || matches[0].sourceIds.length) {
+      throw new Error("Relation review does not match the approved baseline: " + reviewedEdge.from + " -> " + reviewedEdge.to);
+    }
+    Object.assign(matches[0], reviewedEdge);
+  }
+})();
