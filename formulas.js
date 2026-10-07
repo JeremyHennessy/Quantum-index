@@ -2674,6 +2674,147 @@ window.QI_FORMULAS = {
       ]
     },
     {
+      "id": "cq-decoherence-diffusion-tradeoff",
+      "name": "Classical–quantum decoherence–diffusion trade-off",
+      "category": "Quantum gravity & cosmology",
+      "latex": "4D_2\\succeq D_0^{-1}",
+      "plain": "4 D_2 >= D_0^{-1} (positive-semidefinite matrix ordering)",
+      "description": "A canonical complete-positivity constraint for the continuous time-local classical–quantum path-integral normalization used by Layton et al.: reducing quantum decoherence requires compensating classical diffusion. More general back-reaction trade-offs use D_1, D_0 and D_2 matrices.",
+      "theoryIds": [
+        "postquantum-classical-gravity",
+        "open-quantum-systems"
+      ],
+      "sourceIds": [
+        "layton-weak-field-cq-2023",
+        "oppenheim-decoherence-diffusion-2023"
+      ],
+      "tags": [
+        "classical-quantum dynamics",
+        "decoherence",
+        "diffusion",
+        "complete positivity",
+        "gravity tests"
+      ],
+      "formulaType": "canonical",
+      "assumptions": [
+        "Continuous time-local (Markovian), completely-positive, probability-preserving classical–quantum generator in the cited normalization",
+        "The source-specific Hamiltonian drift and kernel normalization have been imposed; this factor-of-four form is not a generic statement for arbitrary back-reaction matrices",
+        "D_0 and D_2 are positive semidefinite; the inverse is restricted to the appropriate support (generalized inverse), with the generator support/range conditions also required",
+        "An instantaneous Markovian bound is not asserted for arbitrary non-Markovian effective dynamics"
+      ],
+      "variables": [
+        "D_0: decoherence kernel in the source-specific continuous-generator normalization",
+        "D_2: classical diffusion kernel in the same model and normalization",
+        "D_0^{-1}: inverse on the supported subspace, or the generalized kernel inverse with its range conditions",
+        "succeq: positive-semidefinite kernel ordering, tested against arbitrary supported test functions"
+      ],
+      "regime": "Continuous Markovian CQ dynamics with Hamiltonian drift in arXiv:2307.02557v1, Eqs. (54)–(55); a necessary CP consistency constraint, not a sufficient definition of a full gravity model.",
+      "units": "Kernel dimensions depend on the classical coordinates and Lindblad normalization; the inequality is a matrix/kernel ordering.",
+      "theoryRelationship": "complete-positivity consistency constraint and experimental discriminator",
+      "metadataReview": "explicit",
+      "sourceLocations": [
+        {
+          "sourceId": "layton-weak-field-cq-2023",
+          "locator": "arXiv:2307.02557v1, Eq. (54) and test-function Eq. (55); general CP/range conditions around Eq. (48). Preprint equation numbering, not assumed identical to the journal version.",
+          "url": "https://arxiv.org/abs/2307.02557v1"
+        }
+      ],
+      "reviewedAt": "2026-10-07",
+      "curationBatch": "reconciled-gravity-2026-10-07"
+    },
+    {
+      "id": "configuration-ensemble-hamiltonian",
+      "name": "Classical–quantum configuration-ensemble Hamiltonian",
+      "category": "Foundations & interpretations",
+      "latex": "\\mathcal H[P,S]=\\int dq\\,dx\\,P\\left[\\frac{(\\partial_q S)^2}{2m_q}+\\frac{(\\partial_x S)^2}{2m_x}+V(q,x,t)+\\frac{\\hbar^2}{8m_q}(\\partial_q\\ln P)^2\\right]",
+      "plain": "H[P,S] = integral dq dx P[(d_q S)^2/(2m_q) + (d_x S)^2/(2m_x) + V + hbar^2(d_q ln P)^2/(8m_q)]",
+      "description": "Representative Hall–Reginatto ensemble Hamiltonian for one quantum coordinate q coupled to one classical coordinate x; the Fisher-information-like term appears only in the quantum sector.",
+      "theoryIds": [
+        "configuration-ensemble-cq"
+      ],
+      "sourceIds": [
+        "chua-hall-savage-hybrid-2012"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "chua-hall-savage-hybrid-2012",
+          "locator": "Eq. (1), hybrid ensemble Hamiltonian for one quantum and one classical particle",
+          "url": "https://doi.org/10.1103/PhysRevA.85.022110"
+        }
+      ],
+      "tags": [
+        "classical-quantum hybrid",
+        "configuration ensemble",
+        "ensemble Hamiltonian"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "One-dimensional representative model with quantum coordinate q and classical coordinate x",
+        "P(q,x) is a normalized joint configuration-space probability density",
+        "S(q,x) is canonically conjugate to P in the ensemble Hamiltonian formalism"
+      ],
+      "variables": [
+        "P(q,x): joint configuration-space probability density",
+        "S(q,x): conjugate ensemble phase field",
+        "m_q: quantum-particle mass",
+        "m_x: classical-particle mass",
+        "V(q,x,t): interaction potential"
+      ],
+      "regime": "Representative nonrelativistic Hall–Reginatto hybrid model; gravitational field applications use an extended field-theoretic configuration space.",
+      "units": "Energy after integration over the normalized configuration-space density.",
+      "theoryRelationship": "defining representative hybrid Hamiltonian",
+      "metadataReview": "explicit"
+    },
+    {
+      "id": "cq-backreaction-decoherence-diffusion",
+      "name": "Classical–quantum back-reaction / decoherence / diffusion trade-off",
+      "category": "Quantum gravity & cosmology",
+      "latex": "\\left\\langle \\omega\\!\\cdot\\!\\frac{\\partial H_I}{\\partial z}\\right\\rangle\\left\\langle \\omega\\!\\cdot\\!\\frac{\\partial H_I}{\\partial z}\\right\\rangle^{\\dagger}\\preceq 8\\langle D_2\\rangle\\langle D_0\\rangle",
+      "plain": "<omega . dH_I/dz><omega . dH_I/dz>^dagger <= 8 <D2><D0>",
+      "description": "Observational trade-off between Hamiltonian first-order back-reaction, classical diffusion and quantum decoherence for the stated Markovian completely-positive classical–quantum dynamics.",
+      "theoryIds": [
+        "postquantum-classical-gravity",
+        "open-quantum-systems"
+      ],
+      "sourceIds": [
+        "oppenheim-decoherence-diffusion-2023"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "oppenheim-decoherence-diffusion-2023",
+          "locator": "arXiv:2203.01982v1, Eqs. (19)–(21), (24)–(26), especially Hamiltonian back-reaction Eq. (26), and the restriction on the D_1 construction preceding Eq. (25). This locator uses preprint, not journal numbering.",
+          "url": "https://arxiv.org/abs/2203.01982v1"
+        }
+      ],
+      "tags": [
+        "classical-quantum gravity",
+        "decoherence",
+        "diffusion",
+        "back-reaction"
+      ],
+      "formulaType": "canonical",
+      "assumptions": [
+        "Markovian completely-positive classical–quantum dynamics in the phase-space formulation of the cited source",
+        "Hamiltonian back-reaction at first order as defined in Eq. (12) of arXiv:2203.01982v1",
+        "The proved form uses back-reaction sourced by either D_1^{0 mu} or D_1^{alpha beta}, not an unproved arbitrary mixture of the two constructions",
+        "All expectation values use the same normalized CQ state; the scalar contraction <D_0> and matrix <D_2> follow the source definitions, not a product of arbitrary noncommuting matrices"
+      ],
+      "variables": [
+        "z: classical phase-space coordinates; omega: symplectic tensor acting on the interaction-Hamiltonian gradient",
+        "H_I: interaction Hamiltonian defining the first-order classical drift",
+        "<omega . partial H_I/partial z>: expectation-valued drift vector; its outer product with the adjoint is positive semidefinite",
+        "<D_0>: scalar, state-traced contraction of Lindblad coefficients and operators as defined in preprint Eq. (21), not the bare decoherence matrix",
+        "<D_2>: expectation-valued classical diffusion matrix in the same source convention",
+        "preceq: positive-semidefinite ordering on the classical phase-space matrix indices"
+      ],
+      "regime": "Markovian classical–quantum hybrid dynamics; the paper separately notes that non-Markovian dynamics need not obey the same positivity trade-off.",
+      "units": "Model dependent; both sides are matrix-valued combinations with matching dimensions under the source conventions.",
+      "theoryRelationship": "experimental/model-discrimination constraint",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-07",
+      "curationBatch": "reconciled-gravity-2026-10-07"
+    },
+    {
       "id": "lqg-area",
       "name": "LQG area spectrum",
       "category": "Quantum gravity & cosmology",

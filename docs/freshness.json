@@ -1,8 +1,8 @@
 {
-  "reviewedAt": "2026-09-27",
+  "reviewedAt": "2026-09-29",
   "newestEntityOriginYear": 2023,
   "newestDevelopmentYear": 2026,
-  "developmentEvents": 9,
+  "developmentEvents": 16,
   "entitiesByYear": {
     "1900": 1,
     "1905": 1,
@@ -82,7 +82,7 @@
     "2002": 6,
     "2003": 6,
     "2004": 12,
-    "2005": 6,
+    "2005": 7,
     "2006": 8,
     "2007": 8,
     "2008": 7,
@@ -102,19 +102,19 @@
   },
   "developmentsByYear": {
     "2024": 4,
-    "2025": 3,
-    "2026": 2
+    "2025": 4,
+    "2026": 8
   },
   "eventTypes": {
+    "controversy/debate": 3,
     "experimental result": 3,
-    "new formal connection": 1,
+    "new formal connection": 2,
     "observational result": 3,
-    "theorem/result": 2
+    "theorem/result": 5
   },
   "categoriesNoReviewedDevelopmentLast3Years": [
     "Beyond standard quantum theory",
     "Formulations",
-    "Foundations & interpretations",
     "Historical foundations",
     "Mathematical structures",
     "Nuclear quantum theory",
@@ -125,7 +125,6 @@
   "categoriesNoReviewedDevelopmentLast5Years": [
     "Beyond standard quantum theory",
     "Formulations",
-    "Foundations & interpretations",
     "Historical foundations",
     "Mathematical structures",
     "Nuclear quantum theory",

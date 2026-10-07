@@ -178,7 +178,11 @@ window.QI_PROBLEMS = {
         "csl-sde",
         "qmupl-sde"
       ],
-      "evidenceIds": ["ev-bell-loophole-free-2015","ev-diosi-penrose-underground-2021"],
+      "evidenceIds": [
+        "ev-bell-loophole-free-2015",
+        "ev-diosi-penrose-underground-2021",
+        "ev-dp-gie-2025"
+      ],
       "questionIds": [
         "rq-born-rule",
         "rq-density-operator",
@@ -216,6 +220,7 @@ window.QI_PROBLEMS = {
         "General relativity can be treated as a low-energy effective quantum field theory with calculable long-distance quantum corrections.",
         "Canonical, covariant, string/holographic, discrete/causal and renormalization-group approaches implement different microscopic assumptions.",
         "Many mathematical results are established inside individual frameworks, but there is no direct experimental result selecting one complete fundamental program.",
+        "Tabletop gravity-mediated-entanglement proposals can discriminate explicit mediator and hybrid models, but current 2025–2026 literature does not justify treating all 'classical gravity' as one dynamical hypothesis.",
         "Recovering the classical spacetime limit and controlled observable predictions is a central cross-program requirement."
       ],
       "approachGroups": [
@@ -267,13 +272,29 @@ window.QI_PROBLEMS = {
             "quantum-error-correction-gravity",
             "er-epr"
           ]
+        },
+        {
+          "name": "Low-energy experimental discrimination",
+          "description": "Compares quantized-mediator proposals with explicit semiclassical, stochastic, collapse and classical–quantum alternatives using entanglement dynamics, decoherence, diffusion/noise, back-reaction and locality assumptions.",
+          "theoryIds": [
+            "bmv-gravity-entanglement",
+            "postquantum-classical-gravity",
+            "semiclassical-gravity",
+            "stochastic-gravity",
+            "diosi-penrose",
+            "open-quantum-systems",
+            "configuration-ensemble-cq",
+            "objective-collapse",
+            "nonmarkovian-open-systems"
+          ]
         }
       ],
       "keyAssumptions": [
         "What the fundamental degrees of freedom are and whether a background geometry is assumed.",
         "How diffeomorphism/gauge constraints and observables are defined.",
         "How the continuum and classical-gravity limits are recovered.",
-        "Which calculations can be connected to experimentally accessible observables."
+        "Which calculations can be connected to experimentally accessible observables.",
+        "For low-energy gravity tests, whether a classical/hybrid model is local, time-local or Markovian, what degrees of freedom are classical, and what is operationally meant by the gravitational mediator."
       ],
       "formulaIds": [
         "eft-expansion",
@@ -291,9 +312,20 @@ window.QI_PROBLEMS = {
         "rt-formula",
         "causal-sprinkling",
         "cdt-partition",
-        "asymptotic-fixed-point"
+        "asymptotic-fixed-point",
+        "cq-backreaction-decoherence-diffusion",
+        "cq-decoherence-diffusion-tradeoff",
+        "configuration-ensemble-hamiltonian"
       ],
-      "evidenceIds": [],
+      "evidenceIds": [
+        "ev-gravity-entanglement-boundary-2025",
+        "ev-cq-decoherence-diffusion-2023",
+        "ev-classical-gravity-cross-correlation-2025",
+        "ev-minimal-noise-nonquantized-gravity-2026",
+        "ev-indirect-gme-interferometry-2026",
+        "ev-cq-geodesic-deviation-2026",
+        "ev-dp-gie-2025"
+      ],
       "questionIds": [
         "rq-qft-curved-spacetime",
         "rq-gravity-effective-field-theory",
@@ -303,23 +335,44 @@ window.QI_PROBLEMS = {
         "rq-ads-cft",
         "rq-er-epr",
         "rq-wheeler-dewitt",
-        "rq-canonical-quantum-gravity"
+        "rq-canonical-quantum-gravity",
+        "rq-gravity-entanglement-discrimination"
       ],
       "developmentIds": [
-        "classical-gravity-entanglement-2025"
+        "dp-classical-gravity-gie-2025",
+        "classical-gravity-entanglement-2025",
+        "minimal-noise-nonquantized-gravity-2026",
+        "nonmarkovian-cq-2026",
+        "classical-gravity-gie-rebuttal-2026",
+        "indirect-gme-interferometry-2026",
+        "collapse-witness-locality-2026",
+        "cq-geodesic-deviation-2026"
       ],
-      "developmentContext": "The 2025 classical-gravity entanglement result changes how some proposed gravity-entanglement witnesses should be interpreted; it does not experimentally establish a particular fundamental quantum-gravity theory.",
+      "developmentContext": "The gravity-entanglement literature now contains explicit classical/hybrid models that can entangle in some regimes and other classical mediator models that do not. The 2025 Aziz–Howl mechanism is directly disputed. These model-dependent developments motivate model discrimination, not a single settled inference from entanglement alone.",
       "sourceIds": [
         "donoghue-gravity-eft-1994",
         "rovelli-qg-survey",
         "spin-foam-review",
         "bombelli-causal-set-1987",
-        "asymptotic-review-2026"
+        "asymptotic-review-2026",
+        "oppenheim-decoherence-diffusion-2023",
+        "trillo-navascues-dp-gie-2025",
+        "fabiano-minimal-noise-2026",
+        "marletto-vedral-2017",
+        "angeli-carlesso-hybrid-entanglement-2025",
+        "lin-mondal-newtonian-entanglement-2026",
+        "schneider-huggett-linnemann-2026",
+        "feng-vedral-marletto-collapse-2026",
+        "di-biagio-gie-witness-2026",
+        "tomizuka-takeda-nonmarkovian-2026"
       ],
-      "currentStatus": "Quantum gravity remains open at the level of a complete empirically selected fundamental theory. Several programs have deep internal mathematical results and controlled limits, while low-energy gravitational EFT is an established predictive framework.",
+      "currentStatus": "Quantum gravity remains open at the level of a complete empirically selected fundamental theory. Several programs have deep internal mathematical results and controlled limits, while low-energy gravitational EFT is an established predictive framework. Tabletop gravity experiments are beginning to sharpen falsifiable distinctions among explicit mediator and hybrid models. The locality-conditioned entanglement witness remains meaningful within its assumptions, but 2026 analyses emphasize that its locality premise is stronger than ordinary spacetime locality and that GIE is not an assumption-free binary classifier covering every possible classical-gravity alternative.",
       "openIssues": [
         "Recover robust low-energy spacetime and matter dynamics from candidate microscopic descriptions.",
         "Identify observables that distinguish candidate frameworks rather than only internal consistency tests.",
+        "For tabletop gravity, build a source-backed model-by-observable map spanning entanglement dynamics, decoherence, diffusion/noise, back-reaction, locality and memory, then determine experimentally feasible combinations that separate the enumerated alternatives.",
+        "Test whether force/noise measurements can reach below the 2026 minimum-noise thresholds for non-entangling time-local Newtonian model classes.",
+        "Determine where Markovian classical–quantum consistency bounds cease to apply and which non-Markovian signatures can be measured.",
         "Connect formal advances to experimentally accessible gravitational or cosmological regimes."
       ]
     },
