@@ -1,93 +1,32 @@
-name: Verify deployed lattice curation
+name: Export pinned post-lattice snapshot
 on:
   push:
     branches: [agent/continuation-tools-20261007]
 permissions:
   contents: read
 jobs:
-  hosted:
+  export:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 197aa15c57d2a43d098f43a21f6ec0514f349bba
+          fetch-depth: 0
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Prepare exact-release read-only checks
+      - name: Export verified main without credentials
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD^{tree})" = c0ea8a4cea143fc1c485d28ddf64437f29b2b3b3
+          test "$(git rev-parse origin/main)" = 197aa15c57d2a43d098f43a21f6ec0514f349bba
+          if git config --local --get-regexp 'http\..*extraheader'; then exit 1; fi
+          git checkout --detach origin/main
           npm ci --ignore-scripts
-          mkdir -p verification
-          cat > .hosted-lattice-check.mjs <<'JS'
-          import fs from 'node:fs';
-          import assert from 'node:assert/strict';
-          import {createHash} from 'node:crypto';
-          import {chromium,webkit,devices,request,expect} from '@playwright/test';
-          const base='https://jeremyhennessy.github.io/Quantum-index/';
-          const out='verification';fs.mkdirSync(out,{recursive:true});
-          const report={startedAt:new Date().toISOString(),expectedCommit:process.env.EXPECTED_COMMIT,base,assets:[],browsers:[],scope:'Live deployed bytes and fresh isolated browser contexts; no existing user research is accessed.'};
-          const opened=[],sha=b=>createHash('sha256').update(b).digest('hex');
-          try{
-           const api=await request.newContext();opened.push(api);
-           const html=fs.readFileSync('index.html');
-           const paths=['index.html',...Array.from(html.toString().matchAll(/(?:src|href)="\.\/([^"?]+)\?v=([a-f0-9]+)"/g),m=>m[1]+'?v='+m[2])];
-           assert.equal(new Set(paths).size,13,'Expected complete entrypoint and 12 local assets');
-           for(const p of paths){const response=await api.get(base+p,{timeout:60000});assert(response.ok(),`HTTP ${response.status()} ${p}`);const bytes=await response.body(),local=fs.readFileSync(p.split('?')[0]);assert.equal(sha(bytes),sha(local),`Different deployed bytes: ${p}`);report.assets.push({path:p,status:response.status(),sha256:sha(bytes)});}
-           await api.dispose();
-           for(const [name,engine,opts] of [['chromium',chromium,{viewport:{width:1280,height:900}}],['webkit',webkit,devices['iPhone 13']]]){
-            const browser=await engine.launch({headless:true});opened.push(browser);const context=await browser.newContext(opts),page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
-            const result={name,routes:[],screenshots:[],formulaChecks:[]};report.browsers.push(result);
-            const go=async route=>{const r=await page.goto(base+route,{waitUntil:'networkidle',timeout:60000});assert(!r||r.ok(),`HTTP route ${route}`);await page.waitForFunction(()=>window.QI_DATA?.theories?.length===481);result.routes.push(route);};
-            const snap=async label=>{const path=out+`/${label}-${name}.png`;await page.screenshot({path});result.screenshots.push(path);};
-            await go('#/explore');await expect(page.locator('.hero h2')).toHaveText('Explore the ideas shaping modern physics.');
-            result.inventory=await page.evaluate(()=>({theories:QI_DATA.theories.length,formulas:QI_FORMULAS.formulas.length,sources:QI_DATA.sources.length,passports:QI_PASSPORTS.records.length,relations:QI_DATA.relations.length}));
-            assert.deepEqual(result.inventory,{theories:481,formulas:398,sources:539,passports:13,relations:610});
-            await go('#/compare?ids=ssh-model,aubry-andre,holstein-model,hawking-radiation');
-            const table=page.locator('#comparisonResults');await expect(table.locator('table')).toHaveCount(1);
-            for(const id of ['ssh-model','aubry-andre','holstein-model'])await expect(table.locator(`[data-comparison-passport="${id}"]`).first()).toContainText('2026-10-07');
-            await expect(table.locator('[data-comparison-passport="hawking-radiation"]').first()).toContainText('2026-09-29');
-            await table.evaluate(el=>el.scrollIntoView({block:'start'}));await snap('lattice-compare');
-            result.comparisonScroll=await table.locator('.comparison-scroll').evaluate(el=>{el.scrollLeft=el.scrollWidth;const r={client:el.clientWidth,content:el.scrollWidth,atEnd:Math.abs(el.scrollLeft+el.clientWidth-el.scrollWidth)<=2};el.scrollLeft=0;return r;});
-            assert(result.comparisonScroll.content<=result.comparisonScroll.client+2||result.comparisonScroll.atEnd);
-            await table.locator('thead a').first().click();await expect(page.locator('.passport-head .badge')).toHaveText('reviewed 2026-10-07');await expect(page.locator('.passport')).toContainText('Freeze the distortion');await page.locator('#backToView').click();await expect(page.locator('#compareSlot2')).toHaveValue('holstein-model');
-            await go('#/theory/hawking-radiation');await expect(page.locator('.passport-head .badge')).toHaveText('reviewed 2026-09-29');
-            await go('#/formula?search=lattice-2026-10-07&review=explicit');await expect(page.locator('#formulaGrid .formula-card')).toHaveCount(5);
-            await page.waitForFunction(()=>window.MathJax?.tex2svgPromise,{timeout:30000});
-            result.math=await page.evaluate(async()=>{await MathJax.startup.promise;const failures=[];for(const f of QI_FORMULAS.formulas){try{const node=await MathJax.tex2svgPromise(f.latex,{display:true});if(node.querySelector('[data-mml-node="merror"],mjx-merror'))failures.push(f.id);}catch(e){failures.push(f.id+': '+e.message);}}return {total:QI_FORMULAS.formulas.length,failures,lattice:QI_FORMULAS.formulas.filter(f=>f.curationBatch==='lattice-2026-10-07').map(f=>f.id)};});
-            assert.equal(result.math.total,398);assert.deepEqual(result.math.failures,[]);assert.equal(result.math.lattice.length,5);
-            for(const [id,count] of [['ssh-model',2],['aubry-andre',1],['holstein-model',2]]){
-             await go('#/formula?theory='+id);await expect(page.locator('#formulaGrid .formula-card')).toHaveCount(count);await expect(page.locator('#formulaGrid mjx-container').first()).toBeVisible({timeout:30000});
-             await expect(page.locator('#formulaGrid a[href*="v1#page="]').first()).toBeVisible();
-             if(id==='holstein-model'){await expect(page.locator('#formulaGrid')).toContainText('approximation');await expect(page.locator('#formulaGrid')).toContainText('finite-t band is an approximation');}
-             await page.locator('#formulaGrid').evaluate(el=>el.scrollIntoView({block:'start'}));await snap(id);
-             const scroll=await page.locator('#formulaGrid .formula-equation mjx-container').evaluateAll(els=>els.map(el=>{el.scrollLeft=el.scrollWidth;const r={client:el.clientWidth,content:el.scrollWidth,atEnd:Math.abs(el.scrollLeft+el.clientWidth-el.scrollWidth)<=2};el.scrollLeft=0;return r;}));
-             assert(scroll.every(s=>s.content<=s.client+2||s.atEnd));result.formulaChecks.push({id,count,scroll});
-            }
-            await go('#/formula?theory=quantum-zeno');await expect(page.locator('#formulaGrid .formula-card')).toHaveCount(1);await expect(page.locator('#formulaGrid')).toContainText('N consecutive survival outcomes');
-            await go('#/problems?problem=quantum-gravity');await expect(page.locator('#problemDetail')).toContainText('geodesic');
-            await go('#/catalog?search=Planck');await page.locator('#catalog a[href*="planck-quanta"]').click();await page.locator('#backToView').click();await expect(page.locator('#search')).toHaveValue('Planck');
-            await go('#/theory/wave-mechanics');await page.locator('#researchNote').fill('Isolated lattice release verification — no existing user storage.');await page.locator('#saveNote').click();await expect(page.locator('#researchStatus')).toContainText('Note saved');await page.reload();await expect(page.locator('#researchNote')).toHaveValue('Isolated lattice release verification — no existing user storage.');result.isolatedNoteRoundTrip=true;
-            await go('#/coverage');await expect(page.locator('#coverageView')).toContainText('Nuclear quantum theory');await page.setViewportSize({width:320,height:900});assert(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth),'320px overflow');assert.deepEqual(errors,[]);result.pageErrors=errors;result.passed=true;await context.close();await browser.close();
-           }
-           report.passed=true;
-          }catch(e){report.passed=false;report.error=e.stack;process.exitCode=1;}
-          finally{await Promise.allSettled(opened.map(x=>typeof x.dispose==='function'?x.dispose():x.close()));report.completedAt=new Date().toISOString();fs.writeFileSync(out+'/hosted-receipt.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));}
-          JS
-          node --check .hosted-lattice-check.mjs
-      - name: Verify real hosted bytes and isolated desktop/mobile sessions
-        run: |
-          set -euo pipefail
-          IMAGE=mcr.microsoft.com/playwright@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27
-          timeout 180 docker pull "$IMAGE"
-          timeout 420 docker run --rm --ipc=host -e EXPECTED_COMMIT=197aa15c57d2a43d098f43a21f6ec0514f349bba -v "$PWD:/work" -w /work "$IMAGE" node .hosted-lattice-check.mjs
-          git diff --exit-code
+          tar -czf "$RUNNER_TEMP/qi-post-lattice.tgz" --exclude='./.git/hooks' .
+          sha256sum "$RUNNER_TEMP/qi-post-lattice.tgz"
       - uses: actions/upload-artifact@v4
-        if: always()
         with:
-          name: lattice-hosted-verification
-          path: verification/
-          retention-days: 14
+          name: qi-post-lattice-working-snapshot
+          path: ${{ runner.temp }}/qi-post-lattice.tgz
+          retention-days: 3
