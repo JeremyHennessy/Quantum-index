@@ -1,32 +1,90 @@
-name: Export pinned Bell review baseline
+name: Assemble and verify Bell metadata review
 on:
   push:
     branches: [agent/continuation-tools-20261007]
 permissions:
   contents: read
 jobs:
-  export:
+  assemble:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    permissions:
+      contents: write
+    outputs:
+      candidate: ${{ steps.candidate.outputs.sha }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Verify parent and reviewed payload
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse origin/main)" = 4034edd3bd3f631c67b12255193d203beff234df
+          test -z "$(git ls-remote --heads origin refs/heads/agent/bell-metadata-20261007)"
+          python3 - <<'PY'
+          import pathlib,base64,lzma,hashlib,os
+          encoded=''.join(pathlib.Path(f'.continuation/bell-{i}.b64').read_text().strip() for i in range(4))
+          payload=lzma.decompress(base64.b64decode(encoded,validate=True))
+          assert hashlib.sha256(payload).hexdigest()=='2327432e240fb2116e4aea54cfaeab274f474febff4433ba4fe72511716b60b6'
+          pathlib.Path(os.environ['RUNNER_TEMP'],'bell.patch').write_bytes(payload)
+          PY
+      - name: Assemble exact app-only candidate
+        id: candidate
+        run: |
+          set -euo pipefail
+          git checkout --detach 4034edd3bd3f631c67b12255193d203beff234df
+          git apply --unidiff-zero --index --check "$RUNNER_TEMP/bell.patch"
+          git apply --unidiff-zero --index "$RUNNER_TEMP/bell.patch"
+          git diff --cached --check
+          test "$(git write-tree)" = c6356b9298b04d9abca59fb6b25a0fe66e8e52e0
+          test -z "$(git diff --cached --name-only -- .github app.js styles.css workspace.js profiles.js package.json package-lock.json developments.js questions.js problems.js evidence.js formula-audit.js)"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Review Bell formula metadata and add a source-scoped Bell Passport'
+          git push origin HEAD:refs/heads/agent/bell-metadata-20261007
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          printf 'Candidate `%s`\n\nTree `%s`\n\nMain unchanged.\n' "$(git rev-parse HEAD)" "$(git rev-parse HEAD^{tree})" >> "$GITHUB_STEP_SUMMARY"
+  verify:
+    needs: assemble
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.assemble.outputs.candidate }}
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Export exact verified main without credentials
+      - name: Verify exact tree and complete Node/data checks
         run: |
           set -euo pipefail
-          test "$(git rev-parse origin/main)" = 4034edd3bd3f631c67b12255193d203beff234df
-          if git config --local --get-regexp 'http\..*extraheader'; then exit 1; fi
-          git checkout --detach origin/main
+          test "$(git rev-parse HEAD^{tree})" = c6356b9298b04d9abca59fb6b25a0fe66e8e52e0
+          mkdir -p verification
+          git rev-parse HEAD > verification/tested-commit.txt
+          git rev-parse HEAD^{tree} > verification/tested-tree.txt
           npm ci --ignore-scripts
-          tar -czf "$RUNNER_TEMP/qi-bell-baseline.tgz" --exclude='./.git/hooks' .
-          sha256sum "$RUNNER_TEMP/qi-bell-baseline.tgz"
+          npm test 2>&1 | tee verification/node-tests.log
+          npm run validate 2>&1 | tee verification/data-validation.log
+      - name: Run complete real browser assertions in matching pinned environment
+        run: |
+          set -euo pipefail
+          IMAGE=mcr.microsoft.com/playwright@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27
+          timeout 180 docker pull "$IMAGE"
+          docker image inspect "$IMAGE" --format '{{json .RepoDigests}}' > verification/browser-image.json
+          printf "import config from './playwright.config.mjs';\nexport default {...config,webServer:undefined};\n" > .independent-playwright.config.mjs
+          python3 -m http.server 4173 --bind 127.0.0.1 > verification/server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" || true' EXIT
+          for n in $(seq 1 20); do curl --fail --silent http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
+          timeout 540 docker run --rm --ipc=host --network=host -e CI=true -v "$PWD:/work" -w /work "$IMAGE" npx playwright test --config=.independent-playwright.config.mjs
+          git diff --exit-code
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: qi-bell-baseline-snapshot
-          path: ${{ runner.temp }}/qi-bell-baseline.tgz
-          retention-days: 3
+          name: bell-metadata-verification
+          path: |
+            verification/
+            playwright-report/
+            test-results/
+          retention-days: 14
