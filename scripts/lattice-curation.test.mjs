@@ -7,27 +7,31 @@ import {JSDOM,VirtualConsole} from 'jsdom';
 const files=['theories.js','developments.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','evidence.js','passports.js','workspace.js'];
 const c={window:{}};vm.createContext(c);for(const f of files)vm.runInContext(fs.readFileSync(f,'utf8'),c);
 const w=c.window,ledger=JSON.parse(fs.readFileSync('docs/LATTICE_CURATION_2026-10-07.json'));
+const amo=JSON.parse(fs.readFileSync('docs/AMO_STEERING_2026-10-07.json','utf8'));
 const canonical=v=>Array.isArray(v)?v.map(canonical):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,canonical(v[k])])):v;
 const hash=x=>createHash('sha256').update(x).digest('hex');
 const get=id=>w.QI_FORMULAS.formulas.find(f=>f.id===id);
 const near=(a,b,eps=1e-10)=>assert.ok(Math.abs(a-b)<eps,`${a} != ${b}`);
 
 test('lattice batch preserves all prior scientific records and protected application files',()=>{
- const records={theories:w.QI_DATA.theories,formulas:w.QI_FORMULAS.formulas.filter(f=>!ledger.addedFormulaIds.includes(f.id)),passports:w.QI_PASSPORTS.records.filter(p=>!ledger.addedPassportTheoryIds.includes(p.theoryId)),sources:w.QI_DATA.sources.filter(s=>!ledger.addedSourceIds.includes(s.id))};
+ const records={theories:w.QI_DATA.theories,formulas:w.QI_FORMULAS.formulas.filter(f=>!ledger.addedFormulaIds.includes(f.id)&&!amo.addedFormulaIds.includes(f.id)),passports:w.QI_PASSPORTS.records.filter(p=>!ledger.addedPassportTheoryIds.includes(p.theoryId)&&!amo.addedPassportTheoryIds.includes(p.theoryId)),sources:w.QI_DATA.sources.filter(s=>!ledger.addedSourceIds.includes(s.id)&&!amo.addedSourceIds.includes(s.id))};
  for(const [name,items] of Object.entries(records)){
   const key=name==='passports'?'theoryId':'id';const ordered=[...items].sort((a,b)=>a[key]<b[key]?-1:a[key]>b[key]?1:0);
   assert.equal(ordered.length,ledger.baselineIntegrity[name].count);
   assert.equal(hash(JSON.stringify(canonical(ordered))),ledger.baselineIntegrity[name].sha256,name);
  }
- for(const [file,expected] of Object.entries({...ledger.untouchedFiles,...ledger.updatedFiles}))assert.equal(hash(fs.readFileSync(file)),expected,file);
+ for(const [file,expected] of Object.entries({...ledger.untouchedFiles,...ledger.updatedFiles})){
+  if(amo.updatedFiles[file])assert.equal(amo.previousFiles[file],expected,`${file}: retained lattice checkpoint`);
+  assert.equal(hash(fs.readFileSync(file)),amo.updatedFiles[file]||expected,file);
+ }
  assert.equal(w.QI_PASSPORTS.reviewedAt,'2026-09-29','original global date must not be advanced');
 });
 
 test('five source-located lattice formulas close only three selected representative gaps',()=>{
  const data=JSON.parse(fs.readFileSync('docs/coverage.json'));
- for(const [key,value] of Object.entries(ledger.expected))if(key!=='passports')assert.equal(data[key],value,key);
- assert.equal(w.QI_PASSPORTS.records.length,13);
- assert.equal(new Set(w.QI_PASSPORTS.records.map(p=>p.theoryId)).size,13);
+ for(const [key,value] of Object.entries(ledger.expected))if(key!=='passports')assert.equal(data[key],amo.expected[key]??value,key);
+ assert.equal(w.QI_PASSPORTS.records.length,13+amo.addedPassportTheoryIds.length);
+ assert.equal(new Set(w.QI_PASSPORTS.records.map(p=>p.theoryId)).size,13+amo.addedPassportTheoryIds.length);
  for(const id of ledger.addedFormulaIds){
   const f=get(id);assert.ok(f,id);assert.equal(f.metadataReview,'explicit');
   assert.equal(f.curationBatch,'lattice-2026-10-07');assert.ok(f.assumptions.length>=3);assert.ok(f.variables.length>=3);

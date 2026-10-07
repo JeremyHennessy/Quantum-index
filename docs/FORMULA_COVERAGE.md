@@ -5,10 +5,10 @@ _Last audited: 2026-09-22_
 ## Current formula corpus
 
 <!-- coverage:start -->
-- **398** formula entries across **29** categories
-- **268** theory entries with linked formulas
-- **167** documented formula gaps
-- **139** formulas with explicit metadata review; **259** with baseline metadata
+- **402** formula entries across **29** categories
+- **270** theory entries with linked formulas
+- **165** documented formula gaps
+- **143** formulas with explicit metadata review; **259** with baseline metadata
 
 | Formula category | Entries |
 |---|---:|
@@ -31,10 +31,10 @@ _Last audited: 2026-09-22_
 | Quantum error correction | 10 |
 | Quantum field theory | 45 |
 | Quantum gravity & cosmology | 62 |
-| Quantum information | 38 |
+| Quantum information | 40 |
 | Quantum many-body & condensed matter | 50 |
 | Quantum metrology | 7 |
-| Quantum optics & AMO | 28 |
+| Quantum optics & AMO | 30 |
 | Quantum spacetime | 1 |
 | Quantum thermodynamics | 3 |
 | Relativistic quantum theory | 4 |

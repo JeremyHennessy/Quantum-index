@@ -19,14 +19,18 @@ The reconciliation release combines the distinct useful content from PRs #60 and
 
 The single-table Passport comparison and source-located Quantum Zeno representative are implemented in a separate follow-up. See `RELEASE_COMPARE_ZENO_2026-10-07.md` and `COMPARE_ZENO_2026-10-07.json`. Do not repeat these as missing features. Merge/deployment verification is recorded in the corresponding PR discussion; code presence alone is not a hosted acceptance receipt.
 
-## New scoped lattice batch
+## Verified lattice batch
 
-The five SSH/Aubry–André/Holstein representatives and three matching Passports are implemented. See `RELEASE_LATTICE_CURATION_2026-10-07.md` and `LATTICE_CURATION_2026-10-07.json`. Exact-head tests, screenshot review and hosted acceptance must be checked in its PR receipt before treating it as released. Old review dates are preserved; only two renderer date fallbacks change.
+The five SSH/Aubry–André/Holstein representatives and three matching Passports are implemented. See `RELEASE_LATTICE_CURATION_2026-10-07.md` and `LATTICE_CURATION_2026-10-07.json`. Merged as `197aa15c57d2a43d098f43a21f6ec0514f349bba`; complete tests and hosted acceptance are recorded in PR #64 comment `6047147501`. Old review dates are preserved; only two renderer date fallbacks change.
+
+## AMO / steering batch
+
+Four formula cards and two Passports are implemented for Fano resonance and quantum steering. Read `RELEASE_AMO_STEERING_2026-10-07.md` and the corresponding ledger. The exact PR/deployment receipt, not code presence, determines hosted acceptance. No UI, storage, graph-edge or earlier scientific-record changes.
 
 ## Product and curation queue
 
-1. Expand curated Passport coverage beyond the thirteen curated records, using the implemented comparison workflow to identify useful gaps.
-2. Continue a coherent canonical-formula batch after the now-curated Zeno representative; never attach an arbitrary equation simply to reduce a gap counter. Current documented formula gaps: 167. Continue with a focused AMO/information batch (for example Fano and steering) only after checking its exact source statements; do not re-add the five lattice formulas.
+1. Expand curated Passport coverage beyond the fifteen curated records, using the implemented comparison workflow to identify useful gaps.
+2. Continue a coherent canonical-formula batch after the now-curated Zeno representative; never attach an arbitrary equation simply to reduce a gap counter. Current documented formula gaps: 165. Fano and steering representatives are now implemented; do not add duplicates. Next review baseline Bell/CHSH metadata and source locations as a separate declared record-change batch, then expand associated Passports.
 3. Review baseline formula metadata and equation-level source locations in bounded, explicitly recorded batches. An `explicit` label does not certify the entire paper.
 4. Upgrade high-value editorial relationships only when the citation establishes that precise directional relation.
 5. Expand reading profiles, Passports and Evidence where they support major learning paths and useful comparisons; do not drift into gravity-only coverage.
