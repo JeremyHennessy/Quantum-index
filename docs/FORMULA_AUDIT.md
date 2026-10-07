@@ -13,9 +13,9 @@ The runtime audit is `formula-audit.js`; formula records are in `formulas.js`.
 <!-- coverage:start -->
 - **59** cited reading profiles and **5** learning paths
 - **481** theory/framework entities across **14** categories
-- **542** bibliography records
+- **543** bibliography records
 - **352** primary-sourced; **129** review-sourced; **0** catalogued-only entries
-- **610** relationships: **118** source-backed; **492** editorial
+- **610** relationships: **122** source-backed; **488** editorial
 - **41** thought trees
 - **402** formulas across **29** categories
 - **270** entries with linked formulas; **165** documented formula gaps
