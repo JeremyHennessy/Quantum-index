@@ -1,0 +1,35 @@
+name: Continuation snapshot export
+on:
+  push:
+    branches: [agent/continuation-tools-20261007]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check pinned states and install existing test dependencies
+        run: |
+          test "$(git rev-parse origin/main)" = cbe65b1f30216565fd93aea838264a4f9838bc6c
+          test "$(git rev-parse origin/agent/gravity-discrimination-20260929)" = cb2f1b5d8f4f88871cb847054971e38d32f8eca9
+          test "$(git rev-parse origin/agent/gravity-model-discrimination-20260929)" = 151d102c275ffb2ecef554901abc6fbdbd00496f
+          npm ci --ignore-scripts
+      - name: Create local-review working bundle
+        run: |
+          git config --local --get-regexp 'http\..*extraheader' && exit 1 || true
+          tar -czf "$RUNNER_TEMP/quantum-index-working.tgz" --exclude='./.git/hooks' .
+          sha256sum "$RUNNER_TEMP/quantum-index-working.tgz"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: quantum-index-working-20261007
+          path: ${{ runner.temp }}/quantum-index-working.tgz
+          retention-days: 3
