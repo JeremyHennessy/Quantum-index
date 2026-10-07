@@ -1,40 +1,33 @@
-name: Assemble isolated Compare and Zeno follow-up
+name: Export preserved continuation review
 on:
   push:
     branches: [agent/continuation-tools-20261007]
-  workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 jobs:
-  assemble:
+  snapshot:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Verify fixed parent and reviewed patch
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Export pinned repository and original follow-up
+        shell: bash
         run: |
           set -euo pipefail
+          test "$(git rev-parse origin/main)" = cbe65b1f30216565fd93aea838264a4f9838bc6c
           test "$(git rev-parse origin/agent/reconciled-scientific-release-20261007)" = 349ef716d8c272852af687ab81aeae59c203d641
-          test -z "$(git ls-remote --heads origin refs/heads/agent/passport-compare-zeno-20261007)"
-          python3 - <<'PY'
-          import pathlib,base64,lzma,hashlib,os
-          payload=lzma.decompress(base64.b64decode(pathlib.Path('.continuation/followup.b64').read_text(),validate=True))
-          assert hashlib.sha256(payload).hexdigest()=='434c3e447640b0e95a7d8c383ed50431e7367b72afdefa2927eee9937f56cd29'
-          pathlib.Path(os.environ['RUNNER_TEMP'],'followup.patch').write_bytes(payload)
-          PY
-      - name: Reproduce exact locally checked tree without publishing
-        run: |
-          set -euo pipefail
-          git checkout --detach 349ef716d8c272852af687ab81aeae59c203d641
-          git apply --unidiff-zero --index --check "$RUNNER_TEMP/followup.patch"
-          git apply --unidiff-zero --index "$RUNNER_TEMP/followup.patch"
-          git diff --cached --check
-          test "$(git write-tree)" = cec1aa2a191c2402793d2d3300fdc7901c792d9c
-          test -z "$(git diff --cached --name-only -- styles.css workspace.js profiles.js passports.js package.json package-lock.json)"
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Extend Passport comparisons, curate Zeno survival, and repair runner mirror setup'
-          git push origin HEAD:refs/heads/agent/passport-compare-zeno-20261007
-          printf 'Candidate: `%s`\n\nTree: `%s`\n\nNo main or Pages changes.\n' "$(git rev-parse HEAD)" "$(git rev-parse HEAD^{tree})" >> "$GITHUB_STEP_SUMMARY"
+          if git config --local --get-regexp 'http\..*extraheader'; then exit 1; fi
+          npm ci --ignore-scripts
+          tar -czf "$RUNNER_TEMP/qi-continuation-snapshot.tgz" --exclude='./.git/hooks' .
+          sha256sum "$RUNNER_TEMP/qi-continuation-snapshot.tgz"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: qi-continuation-snapshot-20261007b
+          path: ${{ runner.temp }}/qi-continuation-snapshot.tgz
+          retention-days: 3
