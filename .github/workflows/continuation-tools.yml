@@ -1,48 +1,52 @@
-name: Assemble pinned reconciliation candidate
+name: Independent pinned browser verification
 on:
   push:
     branches: [agent/continuation-tools-20261007]
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 jobs:
-  assemble:
+  browser:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-      - name: Verify payload and protected starting states
+          ref: 349ef716d8c272852af687ab81aeae59c203d641
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify exact candidate and install its locked test dependencies
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = 349ef716d8c272852af687ab81aeae59c203d641
+          test "$(git rev-parse HEAD^{tree})" = 983ffa1dc0eecb4d9fad4960c8b431932c20f7b7
+          npm ci --ignore-scripts
+          node -e "if(require('./package.json').devDependencies['@playwright/test']!=='1.63.0')process.exit(1)"
+      - name: Pull matching official preinstalled browser environment
+        run: |
+          timeout 180 docker pull mcr.microsoft.com/playwright:v1.63.0-noble
+          mkdir -p verification
+          docker image inspect mcr.microsoft.com/playwright:v1.63.0-noble --format '{{json .RepoDigests}}' > verification/browser-image.json
+          printf '%s\n' '349ef716d8c272852af687ab81aeae59c203d641' > verification/tested-commit.txt
+      - name: Run unchanged complete browser suite against the original Python static server
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git rev-parse origin/main)" = cbe65b1f30216565fd93aea838264a4f9838bc6c
-          test "$(git rev-parse origin/agent/gravity-discrimination-20260929)" = cb2f1b5d8f4f88871cb847054971e38d32f8eca9
-          test "$(git rev-parse origin/agent/gravity-model-discrimination-20260929)" = 151d102c275ffb2ecef554901abc6fbdbd00496f
-          test -z "$(git ls-remote --heads origin refs/heads/agent/reconciled-scientific-release-20261007)"
-          python3 - <<'PY'
-          import base64, hashlib, lzma, os, pathlib
-          parts = [pathlib.Path(f'.continuation/patch-{i}.b64').read_text().strip() for i in range(5)]
-          payload = lzma.decompress(base64.b64decode(''.join(parts), validate=True))
-          assert hashlib.sha256(payload).hexdigest() == '5809ab07964fd2ac438144848cafe04958db45e37efcc493141d457dc62ac2da'
-          pathlib.Path(os.environ['RUNNER_TEMP'], 'candidate.patch').write_bytes(payload)
-          print('Exact reviewed patch checksum verified.')
-          PY
-      - name: Reconstruct exact locally tested tree, without changing main
-        shell: bash
-        run: |
-          set -euo pipefail
-          git checkout --detach cbe65b1f30216565fd93aea838264a4f9838bc6c
-          git read-tree --reset -u cb2f1b5d8f4f88871cb847054971e38d32f8eca9
-          git apply --unidiff-zero --index --check "$RUNNER_TEMP/candidate.patch"
-          git apply --unidiff-zero --index "$RUNNER_TEMP/candidate.patch"
-          git diff --cached --check
-          test "$(git write-tree)" = 983ffa1dc0eecb4d9fad4960c8b431932c20f7b7
-          test -z "$(git diff --cached --name-only -- .github app.js styles.css workspace.js profiles.js passports.js package.json package-lock.json)"
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Reconcile gravity-discrimination research and repair scientific data integrity'
-          test "$(git rev-parse HEAD^)" = cbe65b1f30216565fd93aea838264a4f9838bc6c
-          git push origin HEAD:refs/heads/agent/reconciled-scientific-release-20261007
-          printf 'Candidate commit: `%s`\n\nTree: `%s`\n\nMain was not changed. Full normal PR CI is required before merging.\n' "$(git rev-parse HEAD)" "$(git rev-parse HEAD^{tree})" >> "$GITHUB_STEP_SUMMARY"
+          printf "import config from './playwright.config.mjs';\nexport default {...config,webServer:undefined};\n" > .independent-playwright.config.mjs
+          python3 -m http.server 4173 --bind 127.0.0.1 > verification/static-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" || true' EXIT
+          for n in $(seq 1 20); do curl --fail --silent http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
+          timeout 540 docker run --rm --ipc=host --network=host -e CI=true -v "$PWD:/work" -w /work mcr.microsoft.com/playwright:v1.63.0-noble npx playwright test --config=.independent-playwright.config.mjs
+          git diff --exit-code
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: candidate62-browser-verification
+          path: |
+            verification/
+            playwright-report/
+            test-results/
+          retention-days: 7
