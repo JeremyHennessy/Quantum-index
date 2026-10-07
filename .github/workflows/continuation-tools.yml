@@ -1,90 +1,81 @@
-name: Assemble and verify Fano steering curation
+name: Verify deployed Fano and steering release
 on:
   push:
     branches: [agent/continuation-tools-20261007]
 permissions:
   contents: read
 jobs:
-  assemble:
+  hosted:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
-    permissions:
-      contents: write
-    outputs:
-      candidate: ${{ steps.candidate.outputs.sha }}
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-      - name: Check baseline and exact reviewed payload
-        run: |
-          set -euo pipefail
-          test "$(git rev-parse origin/main)" = 197aa15c57d2a43d098f43a21f6ec0514f349bba
-          test -z "$(git ls-remote --heads origin refs/heads/agent/amo-steering-depth-20261007)"
-          python3 - <<'PY'
-          import pathlib,base64,lzma,hashlib,os
-          encoded=''.join(pathlib.Path(f'.continuation/amo-{i}.b64').read_text().strip() for i in range(4))
-          payload=lzma.decompress(base64.b64decode(encoded,validate=True))
-          assert hashlib.sha256(payload).hexdigest()=='75103fa6f147700efaf96b49512667ab2489fbf6a9a820dff71b468299f5b3a1'
-          pathlib.Path(os.environ['RUNNER_TEMP'],'amo.patch').write_bytes(payload)
-          PY
-      - name: Reproduce reviewed tree on isolated app branch
-        id: candidate
-        run: |
-          set -euo pipefail
-          git checkout --detach 197aa15c57d2a43d098f43a21f6ec0514f349bba
-          git apply --unidiff-zero --index --check "$RUNNER_TEMP/amo.patch"
-          git apply --unidiff-zero --index "$RUNNER_TEMP/amo.patch"
-          git diff --cached --check
-          test "$(git write-tree)" = 6b75fdfc2e261f4bb4c0c2e6918f4dabbd88177b
-          test -z "$(git diff --cached --name-only -- .github app.js styles.css workspace.js profiles.js package.json package-lock.json developments.js questions.js problems.js evidence.js formula-audit.js)"
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Curate Fano resonance and projective steering equations and Passports'
-          git push origin HEAD:refs/heads/agent/amo-steering-depth-20261007
-          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-          printf 'Candidate `%s`\n\nTree `%s`\n\nMain and Pages unchanged.\n' "$(git rev-parse HEAD)" "$(git rev-parse HEAD^{tree})" >> "$GITHUB_STEP_SUMMARY"
-  verify:
-    needs: assemble
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ needs.assemble.outputs.candidate }}
+          ref: 4034edd3bd3f631c67b12255193d203beff234df
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Full exact-tree Node and scientific data checks
+      - name: Prepare read-only hosted checks for exact merged tree
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD^{tree})" = 6b75fdfc2e261f4bb4c0c2e6918f4dabbd88177b
-          mkdir -p verification
-          git rev-parse HEAD > verification/tested-commit.txt
-          git rev-parse HEAD^{tree} > verification/tested-tree.txt
           npm ci --ignore-scripts
-          npm test 2>&1 | tee verification/node-tests.log
-          npm run validate 2>&1 | tee verification/data-validation.log
-      - name: Complete browser suite in matching pinned environment
+          mkdir -p verification
+          cat > .hosted-amo-check.mjs <<'JS'
+          import fs from 'node:fs';
+          import assert from 'node:assert/strict';
+          import {createHash} from 'node:crypto';
+          import {chromium,webkit,devices,request,expect} from '@playwright/test';
+          const base='https://jeremyhennessy.github.io/Quantum-index/',out='verification';fs.mkdirSync(out,{recursive:true});
+          const report={startedAt:new Date().toISOString(),expectedCommit:process.env.EXPECTED_COMMIT,base,assets:[],browsers:[],scope:'Live bytes and fresh isolated contexts. No existing user data or production write.'};
+          const opened=[],sha=b=>createHash('sha256').update(b).digest('hex');
+          try{
+           const api=await request.newContext();opened.push(api);const html=fs.readFileSync('index.html');
+           const paths=['index.html',...Array.from(html.toString().matchAll(/(?:src|href)="\.\/([^"?]+)\?v=([a-f0-9]+)"/g),m=>m[1]+'?v='+m[2])];assert.equal(new Set(paths).size,13);
+           for(const p of paths){const response=await api.get(base+p,{timeout:60000});assert(response.ok(),`HTTP ${response.status()} ${p}`);const bytes=await response.body();assert.equal(sha(bytes),sha(fs.readFileSync(p.split('?')[0])),`Different bytes ${p}`);report.assets.push({path:p,status:response.status(),sha256:sha(bytes)});}await api.dispose();
+           for(const [name,engine,opts] of [['chromium',chromium,{viewport:{width:1280,height:900}}],['webkit',webkit,devices['iPhone 13']]]){
+            const browser=await engine.launch({headless:true});opened.push(browser);const context=await browser.newContext(opts),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+            const result={name,routes:[],screenshots:[],formulaChecks:[]};report.browsers.push(result);
+            const go=async route=>{const r=await page.goto(base+route,{waitUntil:'networkidle',timeout:60000});assert(!r||r.ok());await page.waitForFunction(()=>window.QI_DATA?.theories?.length===481);result.routes.push(route);};
+            const snap=async label=>{const path=out+`/${label}-${name}.png`;await page.screenshot({path});result.screenshots.push(path);};
+            await go('#/explore');await expect(page.locator('.hero h2')).toHaveText('Explore the ideas shaping modern physics.');
+            result.inventory=await page.evaluate(()=>({theories:QI_DATA.theories.length,formulas:QI_FORMULAS.formulas.length,sources:QI_DATA.sources.length,passports:QI_PASSPORTS.records.length,relations:QI_DATA.relations.length}));assert.deepEqual(result.inventory,{theories:481,formulas:402,sources:541,passports:15,relations:610});
+            await go('#/compare?ids=fano-resonance,quantum-steering,hawking-radiation,ssh-model');const table=page.locator('#comparisonResults');await expect(table.locator('table')).toHaveCount(1);
+            for(const id of ['fano-resonance','quantum-steering'])await expect(table.locator(`[data-comparison-passport="${id}"]`).first()).toContainText('2026-10-07');await expect(table.locator('[data-comparison-passport="hawking-radiation"]').first()).toContainText('2026-09-29');
+            await table.evaluate(el=>el.scrollIntoView({block:'start'}));await snap('fano-steering-compare');
+            result.comparisonScroll=await table.locator('.comparison-scroll').evaluate(el=>{el.scrollLeft=el.scrollWidth;const r={client:el.clientWidth,content:el.scrollWidth,atEnd:Math.abs(el.scrollLeft+el.clientWidth-el.scrollWidth)<=2};el.scrollLeft=0;return r;});assert(result.comparisonScroll.content<=result.comparisonScroll.client+2||result.comparisonScroll.atEnd);
+            await table.locator('thead a').first().click();await expect(page.locator('.passport')).toContainText('instrumental energy spread');await page.locator('#backToView').click();await expect(page.locator('#compareSlot1')).toHaveValue('quantum-steering');
+            await go('#/theory/quantum-steering');await expect(page.locator('.passport')).toContainText('does not close the detection loophole');
+            await go('#/formula?search=amo-steering-2026-10-07&review=explicit');await expect(page.locator('#formulaGrid .formula-card')).toHaveCount(4);await page.waitForFunction(()=>window.MathJax?.tex2svgPromise,{timeout:30000});
+            result.math=await page.evaluate(async()=>{await MathJax.startup.promise;const failures=[];for(const f of QI_FORMULAS.formulas){try{const node=await MathJax.tex2svgPromise(f.latex,{display:true});if(node.querySelector('[data-mml-node="merror"],mjx-merror'))failures.push(f.id);}catch(e){failures.push(f.id+': '+e.message);}}return {total:QI_FORMULAS.formulas.length,failures,batch:QI_FORMULAS.formulas.filter(f=>f.curationBatch==='amo-steering-2026-10-07').map(f=>f.id),cq:QI_FORMULAS.formulas.find(f=>f.id==='cq-decoherence-diffusion-tradeoff').latex};});assert.equal(result.math.total,402);assert.equal(result.math.batch.length,4);assert.deepEqual(result.math.failures,[]);assert.equal(result.math.cq,String.raw`4D_2\succeq D_0^{-1}`);
+            for(const id of ['fano-resonance','quantum-steering']){
+             await go('#/formula?theory='+id);await expect(page.locator('#formulaGrid .formula-card')).toHaveCount(2);await expect(page.locator('#formulaGrid a[href*="v3#page="]').first()).toBeVisible();await expect(page.locator('#formulaGrid mjx-container').first()).toBeVisible({timeout:30000});await expect(page.locator('#formulaGrid')).toContainText(id==='fano-resonance'?'standard deviation':'not Bell violation');
+             const cards=page.locator('#formulaGrid .formula-card');for(let i=0;i<2;i++){await cards.nth(i).evaluate(el=>el.scrollIntoView({block:'start'}));await snap(`${id}-${i}`);}
+             const scroll=await page.locator('#formulaGrid .formula-equation mjx-container').evaluateAll(els=>els.map(el=>{el.scrollLeft=el.scrollWidth;const r={client:el.clientWidth,content:el.scrollWidth,atEnd:Math.abs(el.scrollLeft+el.clientWidth-el.scrollWidth)<=2};el.scrollLeft=0;return r;}));assert(scroll.every(s=>s.content<=s.client+2||s.atEnd));result.formulaChecks.push({id,scroll});
+            }
+            await go('#/formula?theory=holstein-model');await expect(page.locator('#formulaGrid .formula-card')).toHaveCount(2);await expect(page.locator('#formulaGrid')).toContainText('finite-t band is an approximation');
+            await go('#/formula?theory=quantum-zeno');await expect(page.locator('#formulaGrid .formula-card')).toHaveCount(1);await expect(page.locator('#formulaGrid')).toContainText('N consecutive survival outcomes');
+            await go('#/problems?problem=quantum-gravity');await expect(page.locator('#problemDetail')).toContainText('geodesic');
+            await go('#/catalog?search=Planck');await page.locator('#catalog a[href*="planck-quanta"]').click();await page.locator('#backToView').click();await expect(page.locator('#search')).toHaveValue('Planck');
+            await go('#/theory/wave-mechanics');await page.locator('#researchNote').fill('Isolated Fano/steering release check — no existing user storage.');await page.locator('#saveNote').click();await expect(page.locator('#researchStatus')).toContainText('Note saved');await page.reload();await expect(page.locator('#researchNote')).toHaveValue('Isolated Fano/steering release check — no existing user storage.');result.isolatedNoteRoundTrip=true;
+            await go('#/coverage');await expect(page.locator('#coverageView')).toContainText('Nuclear quantum theory');await page.setViewportSize({width:320,height:900});assert(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth));assert.deepEqual(errors,[]);result.pageErrors=errors;result.passed=true;await context.close();await browser.close();
+           }
+           report.passed=true;
+          }catch(e){report.passed=false;report.error=e.stack;process.exitCode=1;}
+          finally{await Promise.allSettled(opened.map(x=>typeof x.dispose==='function'?x.dispose():x.close()));report.completedAt=new Date().toISOString();fs.writeFileSync(out+'/hosted-receipt.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));}
+          JS
+          node --check .hosted-amo-check.mjs
+      - name: Verify deployed files and actual desktop and mobile behavior
         run: |
           set -euo pipefail
           IMAGE=mcr.microsoft.com/playwright@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27
           timeout 180 docker pull "$IMAGE"
-          docker image inspect "$IMAGE" --format '{{json .RepoDigests}}' > verification/browser-image.json
-          printf "import config from './playwright.config.mjs';\nexport default {...config,webServer:undefined};\n" > .independent-playwright.config.mjs
-          python3 -m http.server 4173 --bind 127.0.0.1 > verification/server.log 2>&1 &
-          SERVER_PID=$!
-          trap 'kill "$SERVER_PID" || true' EXIT
-          for n in $(seq 1 20); do curl --fail --silent http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
-          timeout 540 docker run --rm --ipc=host --network=host -e CI=true -v "$PWD:/work" -w /work "$IMAGE" npx playwright test --config=.independent-playwright.config.mjs
+          timeout 420 docker run --rm --ipc=host -e EXPECTED_COMMIT=4034edd3bd3f631c67b12255193d203beff234df -v "$PWD:/work" -w /work "$IMAGE" node .hosted-amo-check.mjs
           git diff --exit-code
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: fano-steering-curation-verification
-          path: |
-            verification/
-            playwright-report/
-            test-results/
+          name: fano-steering-hosted-verification
+          path: verification/
           retention-days: 14
