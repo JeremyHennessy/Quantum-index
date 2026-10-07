@@ -1,0 +1,98 @@
+name: Assemble and verify reviewed directional links
+on:
+  push:
+    branches: [agent/relationship-review-bootstrap-20261007]
+permissions:
+  contents: read
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    outputs:
+      candidate: ${{ steps.candidate.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify baseline and compressed patch exactly
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse origin/main)" = f186171c405c0a7ab1461d250cb1800531808982
+          test -z "$(git ls-remote --heads origin refs/heads/agent/relationship-review-20261007)"
+          python3 - <<'PY'
+          import base64,hashlib,lzma,os,pathlib
+          chunks=[pathlib.Path(f'.continuation/rel-{i}.b64').read_text().strip() for i in range(5)]
+          assert [len(c) for c in chunks]==[3800,3800,3800,3800,2888], 'encoded payload length mismatch'
+          patch=lzma.decompress(base64.b64decode(''.join(chunks),validate=True))
+          assert hashlib.sha256(patch).hexdigest()=='6644d2f405b6db4035101682d5e1359b8f53d81b832ccec12a19f20490b2761e','payload checksum mismatch'
+          pathlib.Path(os.environ['RUNNER_TEMP'],'reviewed.patch').write_bytes(patch)
+          print('Verified exact 52118-byte reviewed patch')
+          assert len(patch)==52118
+          PY
+      - name: Apply reviewed patch onto protected predecessor
+        id: candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          git checkout --detach f186171c405c0a7ab1461d250cb1800531808982
+          git apply --index --check "$RUNNER_TEMP/reviewed.patch"
+          git apply --index "$RUNNER_TEMP/reviewed.patch"
+          git diff --cached --check
+          test "$(git write-tree)" = 8e1e64322c2c4fe3ab99fd02ce1730f973b366d4
+          test -z "$(git diff --cached --name-only -- .github app.js styles.css workspace.js profiles.js passports.js formulas.js package.json package-lock.json)"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Promote four source-located theory relationships without changing UI'
+          test "$(git rev-parse HEAD^)" = f186171c405c0a7ab1461d250cb1800531808982
+          git push origin HEAD:refs/heads/agent/relationship-review-20261007
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          printf 'Candidate commit: %s\nTree: %s\nMain unchanged.\n' "$(git rev-parse HEAD)" "$(git rev-parse HEAD^{tree})" >> "$GITHUB_STEP_SUMMARY"
+  verify:
+    needs: assemble
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.assemble.outputs.candidate }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify exact code and full scientific regression suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^{tree})" = 8e1e64322c2c4fe3ab99fd02ce1730f973b366d4
+          mkdir -p verification
+          git rev-parse HEAD > verification/tested-commit.txt
+          git rev-parse HEAD^{tree} > verification/tested-tree.txt
+          npm ci --ignore-scripts
+          npm test 2>&1 | tee verification/node-tests.log
+          npm run validate 2>&1 | tee verification/data-validation.log
+      - name: Run all unchanged Chromium and WebKit assertions
+        shell: bash
+        run: |
+          set -euo pipefail
+          IMAGE=mcr.microsoft.com/playwright@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27
+          timeout 180 docker pull "$IMAGE"
+          docker image inspect "$IMAGE" --format '{{json .RepoDigests}}' > verification/browser-image.json
+          printf "import config from './playwright.config.mjs';\nexport default {...config,webServer:undefined};\n" > .independent-playwright.config.mjs
+          python3 -m http.server 4173 --bind 127.0.0.1 > verification/server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" || true' EXIT
+          for n in $(seq 1 30); do curl --fail --silent http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
+          timeout 600 docker run --rm --ipc=host --network=host -e CI=true -v "$PWD:/work" -w /work "$IMAGE" npx playwright test --config=.independent-playwright.config.mjs
+          git diff --exit-code
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: relationship-promotions-exact-candidate
+          path: |
+            verification/
+            playwright-report/
+            test-results/
+          retention-days: 14
