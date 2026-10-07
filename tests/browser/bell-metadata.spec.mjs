@@ -24,7 +24,8 @@ test('Bell Passport distinguishes test assumptions and preserves existing compar
 
 test('four existing Bell equations show reviewed definitions, source locations and statistical limits',async({page},info)=>{
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
- await page.goto('/#/formula?search=bell-metadata-2026-10-07&review=explicit');
+ // Batch metadata is not a searchable tag: retain existing tags and use the supported theory filter.
+ await page.goto('/#/formula?theory=bell&review=explicit');
  const cards=page.locator('#formulaGrid .formula-card');await expect(cards).toHaveCount(4);
  await page.waitForFunction(()=>window.MathJax?.tex2svgPromise,{timeout:30000});
  const result=await page.evaluate(async()=>{
