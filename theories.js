@@ -2650,3 +2650,23 @@ Object.assign(window.QI_DATA.sources.find(s=>s.id==='wave3-hergert-imsrg-2016'),
 
 // Source-located Zeno representative; journal year 2008, arXiv v1 posted 2009.
 window.QI_DATA.sources.push({"id": "facchi-pascazio-zeno-2008", "title": "Quantum Zeno dynamics: mathematical and physical aspects", "authors": "Paolo Facchi and Saverio Pascazio", "year": 2008, "type": "authoritative review", "url": "https://doi.org/10.1088/1751-8113/41/49/493001"});
+
+// Source register for the scoped lattice curation; existing records are unchanged.
+window.QI_DATA.sources.push(...[
+  {
+    "id": "asboth-ssh-course-2015",
+    "title": "A Short Course on Topological Insulators: Band-structure topology and edge states in one and two dimensions",
+    "authors": "J. K. Asbóth, L. Oroszlány, A. Pályi",
+    "year": 2015,
+    "type": "author lecture notes",
+    "url": "https://arxiv.org/abs/1509.02295v1"
+  },
+  {
+    "id": "bonca-holstein-polaron-1998",
+    "title": "The Holstein Polaron",
+    "authors": "J. Bonča, S. A. Trugman, I. Batistić",
+    "year": 1998,
+    "type": "primary research preprint",
+    "url": "https://arxiv.org/abs/cond-mat/9812252v1"
+  }
+]);

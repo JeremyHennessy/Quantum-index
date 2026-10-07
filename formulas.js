@@ -8287,3 +8287,235 @@ window.QI_FORMULAS.formulas.push({
     }
   ]
 });
+
+// Source-located lattice representatives — 2026-10-07.
+window.QI_FORMULAS.formulas.push(...[
+  {
+    "id": "ssh-fixed-dimerization-bands",
+    "name": "SSH fixed-dimerization Hamiltonian and bulk bands",
+    "category": "Quantum many-body & condensed matter",
+    "latex": "\\begin{aligned}H&=v\\sum_{m=1}^{N}(|m,B\\rangle\\langle m,A|+\\mathrm{h.c.})\\\\&\\quad+w\\sum_{m=1}^{N-1}(|m+1,A\\rangle\\langle m,B|+\\mathrm{h.c.})\\\\H(k)&=\\begin{pmatrix}0&v+we^{-ik}\\\\v+we^{ik}&0\\end{pmatrix}\\\\E_\\pm(k)&=\\pm\\sqrt{v^2+w^2+2vw\\cos k}\\end{aligned}",
+    "plain": "H: alternating intracell v and intercell w hopping; H_AB(k)=v+w exp(-ik); E_±(k)=±sqrt(v²+w²+2vw cos k)",
+    "description": "Open-chain operator and periodic-bulk dispersion, with different boundary conditions stated explicitly. The two bands meet at v=w; the full bulk gap is 2|v-w|.",
+    "theoryIds": [
+      "ssh-model"
+    ],
+    "sourceIds": [
+      "asboth-ssh-course-2015"
+    ],
+    "tags": [
+      "lattice-2026-10-07",
+      "SSH",
+      "band structure",
+      "dimerization"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [
+      "One noninteracting spin sector on a chain with two sites A,B per unit cell; real nonnegative hoppings v,w and no onsite potential.",
+      "Fixed dimerization: lattice vibrations and electron–electron interactions are omitted. This is not the complete dynamical polyacetylene Hamiltonian.",
+      "The first two sums use open boundaries. H(k) and the bands instead use periodic boundaries or an infinite translationally invariant bulk.",
+      "Bloch basis |k,alpha> = N^(-1/2) sum_m exp(+imk)|m,alpha>; cell length is one."
+    ],
+    "variables": [
+      "m: unit-cell index; N: number of cells in the open chain",
+      "A,B: sublattice labels; h.c.: Hermitian conjugate",
+      "v,w: intracell and intercell hopping energies",
+      "k: dimensionless cell momentum; E_±: bulk eigenenergies"
+    ],
+    "regime": "Static, nearest-neighbor SSH chain. Bulk band energies do not supply the finite open-chain spectrum or its edge-state splitting.",
+    "units": "H, v, w and E have energy units. k is in radians per unit cell; use k_phys a when restoring cell length a.",
+    "theoryRelationship": "Fixed-distortion representative of the indexed electron–lattice model, not an equation for its self-consistent phonon dynamics.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-07",
+    "curationBatch": "lattice-2026-10-07",
+    "sourceLocations": [
+      {
+        "sourceId": "asboth-ssh-course-2015",
+        "locator": "arXiv:1509.02295v1, Ch. 1, Eqs. (1.1), (1.6), (1.8), (1.14)–(1.18), printed pp. 1–6. Bulk matrix checked on PDF p. 12; open operator on PDF p. 9.",
+        "url": "https://arxiv.org/pdf/1509.02295v1#page=9"
+      }
+    ]
+  },
+  {
+    "id": "ssh-chiral-winding",
+    "name": "SSH winding number in a fixed chiral basis",
+    "category": "Quantum many-body & condensed matter",
+    "latex": "\\begin{aligned}d_x&=v+w\\cos k,\\qquad d_y=w\\sin k\\\\\\nu&=\\frac{1}{2\\pi}\\int_{-\\pi}^{\\pi}\\frac{d_x\\partial_k d_y-d_y\\partial_k d_x}{d_x^2+d_y^2}\\,dk\\\\&=\\begin{cases}0,&v>w\\\\1,&w>v\\end{cases}\\end{aligned}",
+    "plain": "nu = (1/2pi) integral (dx dy/dk - dy dx/dk)/(dx²+dy²) dk; nu=0 for v>w, 1 for w>v",
+    "description": "Counts the oriented turns of (d_x,d_y) around zero. It is undefined at the gap closing v=w; it is not a unit-cell-independent absolute edge count.",
+    "theoryIds": [
+      "ssh-model"
+    ],
+    "sourceIds": [
+      "asboth-ssh-course-2015"
+    ],
+    "tags": [
+      "lattice-2026-10-07",
+      "SSH",
+      "winding",
+      "chiral symmetry"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "Same cell and Bloch convention as ssh-fixed-dimerization-bands; real v,w>=0 with v!=w.",
+      "Chiral symmetry: sigma_z H(k) sigma_z = -H(k). No onsite imbalance, same-sublattice hopping or added sigma_z term.",
+      "Integrate increasing k from -pi to pi. Reversing orientation or exchanging sublattices changes the signed convention.",
+      "Boundary interpretation requires a termination consistent with this unit cell; finite opposite edges can hybridize."
+    ],
+    "variables": [
+      "d_x,d_y: energy-valued Pauli coefficients of H(k)",
+      "nu: dimensionless winding in the specified convention",
+      "partial_k: derivative with respect to dimensionless cell momentum"
+    ],
+    "regime": "Gapped periodic bulk of the chiral two-band SSH chain. A zero-mode claim for a finite chain needs a separate boundary calculation.",
+    "units": "The numerator and denominator have matching energy-squared dimensions; nu is dimensionless.",
+    "theoryRelationship": "Topological diagnostic for the frozen SSH chain, not a universal invariant of all electron–phonon models.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-07",
+    "curationBatch": "lattice-2026-10-07",
+    "sourceLocations": [
+      {
+        "sourceId": "asboth-ssh-course-2015",
+        "locator": "arXiv:1509.02295v1, Eqs. (1.17)–(1.18), (1.37)–(1.38); winding discussion printed p. 14 and boundary discussion pp. 16–17. Uses the vector formula (1.38), not the off-diagonal logarithm in (1.40).",
+        "url": "https://arxiv.org/pdf/1509.02295v1#page=22"
+      }
+    ]
+  },
+  {
+    "id": "aubry-andre-onsite-hamiltonian",
+    "name": "Aubry–André quasiperiodic onsite Hamiltonian",
+    "category": "Quantum many-body & condensed matter",
+    "latex": "H=J\\sum_m\\bigl(|m\\rangle\\langle m+1|+\\mathrm{h.c.}\\bigr)+\\Delta\\sum_m\\cos(2\\pi\\beta m+\\phi)|m\\rangle\\langle m|",
+    "plain": "H = J sum_m (|m><m+1| + h.c.) + Delta sum_m cos(2pi beta m + phi)|m><m|",
+    "description": "A deterministic onsite modulation competes with nearest-neighbor hopping. The positive hopping sign follows the cited experimental paper; its symbol w_m for a Wannier state is written m here.",
+    "theoryIds": [
+      "aubry-andre"
+    ],
+    "sourceIds": [
+      "discovery-roati-2008"
+    ],
+    "tags": [
+      "lattice-2026-10-07",
+      "quasiperiodic",
+      "localization",
+      "Aubry-André"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "Single-band, one-dimensional, noninteracting tight-binding model with uniform J>0 and onsite amplitude Delta>=0.",
+      "beta is an irrational lattice-wavevector ratio in the ideal quasiperiodic system; a finite rational approximation is a different finite periodic problem.",
+      "phi is a fixed relative phase. No harmonic trap, phonon coupling or interparticle interaction is included in this operator.",
+      "The ideal golden-ratio transition at Delta/J=2 is not a claim of an identical sharp threshold in a finite experiment."
+    ],
+    "variables": [
+      "|m>: orthonormal localized Wannier orbital at integer site m",
+      "J: hopping energy; Delta: full cosine modulation amplitude, not half its amplitude",
+      "beta: ratio of lattice wavevectors; phi: relative phase in radians",
+      "h.c.: Hermitian conjugate of the hopping term"
+    ],
+    "regime": "Ideal nearest-neighbor quasiperiodic chain; specify open boundaries or a rational periodic approximant for finite calculations. Not an interacting many-body-localization Hamiltonian.",
+    "units": "J, Delta and H have energy units. m, beta and the cosine argument are dimensionless.",
+    "theoryRelationship": "Representative defining operator. Localization thresholds require the stated modulation, irrational limit, and experimental/finite-size qualifications.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-07",
+    "curationBatch": "lattice-2026-10-07",
+    "sourceLocations": [
+      {
+        "sourceId": "discovery-roati-2008",
+        "locator": "Roati et al., arXiv:0804.2609v1, Eq. (1), PDF p. 2; adjacent paragraph distinguishes the ideal golden-ratio threshold from the finite experimental crossover.",
+        "url": "https://arxiv.org/pdf/0804.2609v1#page=2"
+      }
+    ]
+  },
+  {
+    "id": "holstein-local-phonon-hamiltonian",
+    "name": "Holstein single-electron local-phonon Hamiltonian",
+    "category": "Quantum many-body & condensed matter",
+    "latex": "\\begin{aligned}H&=-t\\sum_j(c_j^\\dagger c_{j+1}+\\mathrm{h.c.})+\\Omega\\sum_j b_j^\\dagger b_j\\\\&\\quad-\\lambda\\sum_j n_j(b_j+b_j^\\dagger),\\qquad n_j=c_j^\\dagger c_j,\\quad\\Omega=\\hbar\\omega_0\\end{aligned}",
+    "plain": "H = -t sum(c†_j c_(j+1)+h.c.) + Omega sum b†_j b_j - lambda sum n_j(b_j+b†_j); Omega=hbar omega_0",
+    "description": "Local occupancy displaces an optical oscillator. Omega denotes phonon energy, preventing confusion between the source’s energy-valued omega and angular frequency omega_0.",
+    "theoryIds": [
+      "holstein-model"
+    ],
+    "sourceIds": [
+      "bonca-holstein-polaron-1998"
+    ],
+    "tags": [
+      "lattice-2026-10-07",
+      "Holstein",
+      "polaron",
+      "phonons"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "One electron on a uniform one-dimensional lattice with nearest-neighbor hopping and local dispersionless harmonic phonons.",
+      "Omega>0 and t,lambda are real energy parameters; c are fermion operators and b are boson operators.",
+      "The phonon zero-point constant is subtracted, as in the source; electron number is conserved.",
+      "This is the single-electron model, not a finite-density Holstein–Hubbard model with additional Coulomb interactions."
+    ],
+    "variables": [
+      "t: hopping energy; lambda: energy-valued displacement coupling",
+      "Omega=hbar omega_0: phonon energy; omega_0: angular frequency",
+      "n_j: electron occupancy; c_j: electron annihilator; b_j: phonon annihilator"
+    ],
+    "regime": "Clean single-polaron problem with a quantum phonon cloud. A phonon-basis truncation used for numerics is an approximation, not part of the exact operator.",
+    "units": "t, lambda and Omega are energies; c,b,n are dimensionless; omega_0 has inverse-time units.",
+    "theoryRelationship": "Canonical local-coupling representative of the molecular-crystal model; distinct from SSH bond-dependent coupling.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-07",
+    "curationBatch": "lattice-2026-10-07",
+    "sourceLocations": [
+      {
+        "sourceId": "bonca-holstein-polaron-1998",
+        "locator": "Bonča, Trugman and Batistić, arXiv:cond-mat/9812252v1, Eq. (1), PDF p. 3, and definitions on PDF pp. 3–4. Source a_j is renamed b_j and energy-valued omega is renamed Omega.",
+        "url": "https://arxiv.org/pdf/cond-mat/9812252v1#page=3"
+      }
+    ]
+  },
+  {
+    "id": "holstein-small-hopping-band",
+    "name": "Holstein polaron band to first order in hopping",
+    "category": "Quantum many-body & condensed matter",
+    "latex": "E^{(1)}(k)=-\\frac{\\lambda^2}{\\Omega}-2t e^{-g^2}\\cos k,\\qquad g=\\frac{\\lambda}{\\Omega}",
+    "plain": "E^(1)(k) = -lambda²/Omega - 2t exp(-g²) cos k; g=lambda/Omega",
+    "description": "Lowest displaced-oscillator manifold projected to first order in t. The energy shift is exact at t=0; the displayed finite-t band is an approximation, not the full polaron dispersion.",
+    "theoryIds": [
+      "holstein-model"
+    ],
+    "sourceIds": [
+      "bonca-holstein-polaron-1998"
+    ],
+    "tags": [
+      "lattice-2026-10-07",
+      "Holstein",
+      "polaron",
+      "small hopping",
+      "approximation"
+    ],
+    "formulaType": "approximation",
+    "assumptions": [
+      "Single electron, uniform chain, Omega>0 and the coupling convention of holstein-local-phonon-hamiltonian.",
+      "Small-hopping perturbation around t=0 at fixed g, projected onto the lowest displaced-oscillator manifold.",
+      "Virtual excited-phonon corrections of second and higher order in t are omitted; this is not an all-coupling exact solution.",
+      "Periodic or infinite bulk; dimensionless k uses site spacing one. No claim of thermal-band transport is made."
+    ],
+    "variables": [
+      "E^(1): lowest band through first order in hopping",
+      "g=lambda/Omega: dimensionless displacement, not a differently normalized coupling used elsewhere",
+      "t,lambda,Omega: energy parameters; k: dimensionless lattice momentum"
+    ],
+    "regime": "A small-t/Omega expansion at fixed g; do not use it without an error check at intermediate hopping or in the adiabatic Omega-to-zero limit.",
+    "units": "lambda²/Omega and t are energies. g² and k are dimensionless.",
+    "theoryRelationship": "Controlled limiting depth beyond the defining Hamiltonian; it does not assert a sharp self-trapping ground-state transition.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-07",
+    "curationBatch": "lattice-2026-10-07",
+    "sourceLocations": [
+      {
+        "sourceId": "bonca-holstein-polaron-1998",
+        "locator": "arXiv:cond-mat/9812252v1, Sec. III.B, Eqs. (8)–(11), PDF pp. 13–14. Source energy omega is Omega here.",
+        "url": "https://arxiv.org/pdf/cond-mat/9812252v1#page=14"
+      }
+    ]
+  }
+]);

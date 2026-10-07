@@ -8,17 +8,19 @@ const files=['theories.js','developments.js','formulas.js','formula-audit.js','p
 const sandbox={window:{}};vm.createContext(sandbox);
 for(const f of files)vm.runInContext(fs.readFileSync(f,'utf8'),sandbox,{filename:f});
 const w=sandbox.window;
+const lattice=JSON.parse(fs.readFileSync('docs/LATTICE_CURATION_2026-10-07.json','utf8'));
 const ledger=JSON.parse(fs.readFileSync('docs/COMPARE_ZENO_2026-10-07.json','utf8'));
 const canonical=v=>Array.isArray(v)?v.map(canonical):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,canonical(v[k])])):v;
 const hash=v=>createHash('sha256').update(v).digest('hex');
 test('Compare extension preserves all prior 481 theory and 392 formula records',()=>{
- for(const [name,items] of Object.entries({theories:w.QI_DATA.theories,formulas:w.QI_FORMULAS.formulas.filter(f=>!ledger.addedFormulaIds.includes(f.id))})){
+ for(const [name,items] of Object.entries({theories:w.QI_DATA.theories,formulas:w.QI_FORMULAS.formulas.filter(f=>!ledger.addedFormulaIds.includes(f.id)&&!lattice.addedFormulaIds.includes(f.id))})){
   const ordered=[...items].sort((a,b)=>a.id<b.id?-1:a.id>b.id?1:0);
   assert.equal(ordered.length,ledger.priorScientificIntegrity[name].count);
   assert.equal(hash(JSON.stringify(canonical(ordered))),ledger.priorScientificIntegrity[name].sha256,name);
  }
  assert.deepEqual(Object.keys(ledger.updatedFiles),['app.js']);
- assert.equal(hash(fs.readFileSync('app.js')),ledger.updatedFiles['app.js']);
+ assert.equal(lattice.previousFiles['app.js'],ledger.updatedFiles['app.js']);
+ assert.equal(hash(fs.readFileSync('app.js')),lattice.updatedFiles['app.js']);
 });
 test('Zeno representative resolves the deferred gap with exact protocol and source version',()=>{
  const f=w.QI_FORMULAS.formulas.find(f=>f.id==='zeno-repeated-survival');

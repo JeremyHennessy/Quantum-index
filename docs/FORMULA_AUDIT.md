@@ -13,14 +13,14 @@ The runtime audit is `formula-audit.js`; formula records are in `formulas.js`.
 <!-- coverage:start -->
 - **59** cited reading profiles and **5** learning paths
 - **481** theory/framework entities across **14** categories
-- **537** bibliography records
+- **539** bibliography records
 - **352** primary-sourced; **129** review-sourced; **0** catalogued-only entries
 - **610** relationships: **118** source-backed; **492** editorial
 - **41** thought trees
-- **393** formulas across **29** categories
-- **265** entries with linked formulas; **170** documented formula gaps
+- **398** formulas across **29** categories
+- **268** entries with linked formulas; **167** documented formula gaps
 - Other audit classes: **11** interpretations, **16** conceptual, **18** theorem-first, **1** thought experiment
-- Formula metadata: **134** explicitly reviewed; **259** baseline records
+- Formula metadata: **139** explicitly reviewed; **259** baseline records
 - **16** reviewed DevelopmentEvents through **2026**
 
 Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.

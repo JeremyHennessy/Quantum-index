@@ -158,7 +158,7 @@
     const qs=passport.questionIds.map(qid=>questions.find(item=>item.id===qid)).filter(Boolean);
     const devs=passport.developmentIds.map(did=>developments.find(item=>item.id===did)).filter(Boolean);
     return `<section class="detail-section passport">
-      <div class="passport-head"><div><p class="eyebrow">THEORY PASSPORT</p><h4>Research orientation</h4></div><span class="badge">reviewed ${esc(window.QI_PASSPORTS.reviewedAt)}</span></div>
+      <div class="passport-head"><div><p class="eyebrow">THEORY PASSPORT</p><h4>Research orientation</h4></div><span class="badge">reviewed ${esc(passport.reviewedAt||window.QI_PASSPORTS.reviewedAt)}</span></div>
       <div class="passport-problems">${passport.problemIds.map(pid=>{const p=problemById.get(pid);return p?`<a class="problem-chip" href="${problemHash(pid)}">${esc(p.name)}</a>`:"";}).join("")}</div>
       <dl class="passport-grid">
         <div><dt>Entity type</dt><dd>${esc(passport.entityType)}</dd></div>
@@ -342,7 +342,7 @@
     };
     if(!bodies[key])return null;
     const original=profiles[id]?.[key];
-    return `<div data-comparison-passport="${esc(id)}"><p class="reviewed">Theory Passport · summary reviewed ${esc(window.QI_PASSPORTS.reviewedAt)}</p>${bodies[key]()}${profileCitations(p.sourceIds)}</div>${original?`<details><summary>Cited reading profile</summary>${profileClaim(original)}</details>`:""}`;
+    return `<div data-comparison-passport="${esc(id)}"><p class="reviewed">Theory Passport · summary reviewed ${esc(p.reviewedAt||window.QI_PASSPORTS.reviewedAt)}</p>${bodies[key]()}${profileCitations(p.sourceIds)}</div>${original?`<details><summary>Cited reading profile</summary>${profileClaim(original)}</details>`:""}`;
   }
   function renderComparison(){
     const sorted=theories.slice().sort((a,b)=>a.name.localeCompare(b.name));
