@@ -14,7 +14,7 @@ Quantum Index is a source-aware map of quantum theory and adjacent fundamental p
 ## Current build
 
 <!-- coverage:start -->
-The census remains **open**. The current catalog contains **481 entries**, **610 typed relationships**, **41 thought trees**, and **536 bibliography records** across **14 categories**. Provenance is attached to all entries: **352 primary-sourced** and **129 review-sourced**. The formula atlas contains **392 entries** across **29 categories**; **171** theory entries remain documented formula gaps. The reviewed development timeline contains **16** events through **2026**. Counts are generated from runtime data, separately from scientific review.
+The census remains **open**. The current catalog contains **481 entries**, **610 typed relationships**, **41 thought trees**, and **537 bibliography records** across **14 categories**. Provenance is attached to all entries: **352 primary-sourced** and **129 review-sourced**. The formula atlas contains **393 entries** across **29 categories**; **170** theory entries remain documented formula gaps. The reviewed development timeline contains **16** events through **2026**. Counts are generated from runtime data, separately from scientific review.
 <!-- coverage:end -->
 
 Static app:
@@ -132,3 +132,7 @@ The September 26 workspace release also reviews 25 existing graph edges in `docs
 My research also searches saved entries by name, alias, tag or full note text and saved comparisons by name or included entry. The Read entries list opens any marked entry, including entries outside learning paths. Search stays in place while visiting a detail and returning. Export research notebook downloads a Markdown reading copy with complete notes, entry links, catalog sources and comparison links; it always includes the whole workspace and does not replace the restorable JSON backup. Notes are exported as literal text.
 
 The Coverage tab reports profile, formula and relationship review gaps from current data. URL filters survive reloads; relationship evidence and formula metadata review can be filtered separately. Draft notes survive navigation and tab reloads; conflicting cross-tab saves require explicit combination. See [the reliability release notes](docs/RELEASE_RELIABILITY_2026-09-27.md) for storage limits, browser CI and the Pages gate activation requirement.
+
+### Structured comparison
+
+Compare uses curated Theory Passports when available, including their assumptions, fundamental objects, regimes, linked scientific Problems, Evidence and Research Questions. Earlier cited profiles remain available in each comparison cell. Entries without a Passport keep their existing profile or explicit coverage gap; no profile is fabricated to fill a column. Comparison links, selection limits and browser-local saved comparisons are unchanged.

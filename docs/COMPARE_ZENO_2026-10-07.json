@@ -1,0 +1,33 @@
+{
+  "reviewedAt": "2026-10-07",
+  "authorization": "Jeremy requested completion of the continuation plan; Compare is a separate product extension, not an incidental UI change in the reconciliation fix.",
+  "baselineTree": "983ffa1dc0eecb4d9fad4960c8b431932c20f7b7",
+  "baselineCommit": "349ef716d8c272852af687ab81aeae59c203d641",
+  "addedFormulaIds": [
+    "zeno-repeated-survival"
+  ],
+  "modifiedAppScope": "comparisonPassport helper and renderComparison only; existing comparison selections, URLs and workspace schema are unchanged.",
+  "previousFiles": {
+    "app.js": "10e370fcc765cea790eab495d38ceb07b00f050d8b7055ca56bc1270f2604682"
+  },
+  "updatedFiles": {
+    "app.js": "558659f53ea3e6038c6ca719096454502a101b0ad9b3f65f57ce930395a4edcc"
+  },
+  "priorScientificIntegrity": {
+    "theories": {
+      "count": 481,
+      "sha256": "dc71df41a52091d004ee1ffc0c7bc10743b6f8e5cc841a966fdf274b51eb84df"
+    },
+    "formulas": {
+      "count": 392,
+      "sha256": "5b20c0ca2d30a1a972fe083ddcf6730385f063cd39444fc5c56487e1b3bf672d"
+    }
+  },
+  "runnerChange": {
+    "scope": "Only the ephemeral Ubuntu mirror list before the existing install command; no dependency, Pages source, publishing gate, test assertions, or test timeout changes.",
+    "evidenceRun": 37665870604,
+    "evidenceJob": 112944808079,
+    "observedFailure": "Browser job timed out in apt dependency index retrieval; no browser test ran. Azure mirror index requests stalled while archive.ubuntu.com InRelease requests succeeded.",
+    "status": "Deferred; not included in this release. The original assembly was rejected because its GitHub Actions token lacked workflows permission. Tests use an isolated matching official Playwright image, leaving the production workflow and Pages settings unchanged."
+  }
+}
