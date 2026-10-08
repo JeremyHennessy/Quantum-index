@@ -1,0 +1,108 @@
+{
+  "releaseDate": "2026-10-08",
+  "baselineCommit": "5679138652bd24a7c52b31558205d19b7cecbbc0",
+  "reviewLedger": "research/RELATION_SOURCE_REVIEW_2026-10-08.json",
+  "marker": "// 2026-10-08 audited directional relationship promotions.",
+  "policy": "Promote exactly three previously editorial edges with direct source locators. Preserve all relation identities, notes, theory entities, source entries, prior ledgers and UI. Restore prior graph for historical tests before evaluating old fingerprints.",
+  "before": {
+    "relations": 610,
+    "sources": 549,
+    "sourcedRelations": 122,
+    "editorialRelations": 488,
+    "highConfidenceRelations": 101,
+    "mediumConfidenceRelations": 21
+  },
+  "after": {
+    "relations": 610,
+    "sources": 549,
+    "sourcedRelations": 125,
+    "editorialRelations": 485,
+    "highConfidenceRelations": 101,
+    "mediumConfidenceRelations": 24
+  },
+  "fileTransition": {
+    "path": "theories.js",
+    "beforeSha256": "278f98fa51f3abe021ec3439800ddd03df72a9f4def362ddb5b95ee5f416ae42",
+    "afterSha256": "71b6fb8cca652d84179372cd31a5732f5393832bbabe8e3ef91fbc1f99a2dbe0"
+  },
+  "updates": [
+    {
+      "prior": {
+        "from": "tensor-network-states",
+        "to": "peps",
+        "type": "extends",
+        "note": "",
+        "sourceIds": [],
+        "evidenceType": "editorial relation",
+        "confidence": "editorial",
+        "evidenceNote": ""
+      },
+      "new": {
+        "from": "tensor-network-states",
+        "to": "peps",
+        "type": "extends",
+        "note": "",
+        "sourceIds": [
+          "verstraete-cirac-peps-2004"
+        ],
+        "evidenceType": "formal mathematical relation",
+        "confidence": "medium",
+        "evidenceNote": "PEPS are a tensor-network ansatz family that extends matrix-product-state constructions to two and higher spatial dimensions. Because the existing edge originates from the broader tensor-network category, this is a family-level directional navigation link, not an exact generalization of all tensor-network ansatzes or an efficient solver for every state.",
+        "sourceLocator": "Verstraete and Cirac (2004), arXiv:cond-mat/0407066, abstract: PEPS naturally extend matrix-product constructions to two or more dimensions",
+        "reviewedAt": "2026-10-08"
+      }
+    },
+    {
+      "prior": {
+        "from": "quantum-error-correction",
+        "to": "stabilizer-formalism",
+        "type": "formalizes",
+        "note": "",
+        "sourceIds": [],
+        "evidenceType": "editorial relation",
+        "confidence": "editorial",
+        "evidenceNote": ""
+      },
+      "new": {
+        "from": "quantum-error-correction",
+        "to": "stabilizer-formalism",
+        "type": "formalizes",
+        "note": "",
+        "sourceIds": [
+          "gottesman-stabilizer-1997"
+        ],
+        "evidenceType": "formal mathematical relation",
+        "confidence": "medium",
+        "evidenceNote": "Gottesman's stabilizer formalism gives a group-theoretic description of an important subclass of quantum error-correcting codes. The edge formalizes that subclass, not every possible quantum error-correction scheme.",
+        "sourceLocator": "Gottesman, Stabilizer Codes and Quantum Error Correction (1997), thesis abstract on group-theoretic stabilizer code subclass",
+        "reviewedAt": "2026-10-08"
+      }
+    },
+    {
+      "prior": {
+        "from": "quantum-rabi-model",
+        "to": "jaynes-cummings",
+        "type": "reformulates",
+        "note": "",
+        "sourceIds": [],
+        "evidenceType": "editorial relation",
+        "confidence": "editorial",
+        "evidenceNote": ""
+      },
+      "new": {
+        "from": "quantum-rabi-model",
+        "to": "jaynes-cummings",
+        "type": "reformulates",
+        "note": "",
+        "sourceIds": [
+          "he-jaynes-cummings-2012"
+        ],
+        "evidenceType": "formal mathematical relation",
+        "confidence": "medium",
+        "evidenceNote": "The Jaynes–Cummings Hamiltonian is a rotating-wave approximation to the quantum Rabi interaction under appropriate coupling and detuning assumptions. This navigational 'reformulates' edge is not an exact equivalence; omitted counter-rotating terms matter in other regimes.",
+        "sourceLocator": "He et al., arXiv:1203.2410, abstract: rotating-wave approximation and counter-rotating corrections; cross-check Guo (2009), Phys. Rev. A 80, 033828 abstract",
+        "reviewedAt": "2026-10-08"
+      }
+    }
+  ]
+}

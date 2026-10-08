@@ -2780,3 +2780,58 @@ window.QI_DATA.sources.push({
     Object.assign(matches[0], reviewedEdge);
   }
 })();
+
+
+// 2026-10-08 audited directional relationship promotions.
+// The exact before/after state and sources are recorded in docs/RELATION_PROMOTIONS_2026-10-08.json.
+(() => {
+  const updates = [
+  {
+    "from": "tensor-network-states",
+    "to": "peps",
+    "type": "extends",
+    "sourceIds": [
+      "verstraete-cirac-peps-2004"
+    ],
+    "evidenceType": "formal mathematical relation",
+    "confidence": "medium",
+    "evidenceNote": "PEPS are a tensor-network ansatz family that extends matrix-product-state constructions to two and higher spatial dimensions. Because the existing edge originates from the broader tensor-network category, this is a family-level directional navigation link, not an exact generalization of all tensor-network ansatzes or an efficient solver for every state.",
+    "sourceLocator": "Verstraete and Cirac (2004), arXiv:cond-mat/0407066, abstract: PEPS naturally extend matrix-product constructions to two or more dimensions",
+    "reviewedAt": "2026-10-08"
+  },
+  {
+    "from": "quantum-error-correction",
+    "to": "stabilizer-formalism",
+    "type": "formalizes",
+    "sourceIds": [
+      "gottesman-stabilizer-1997"
+    ],
+    "evidenceType": "formal mathematical relation",
+    "confidence": "medium",
+    "evidenceNote": "Gottesman's stabilizer formalism gives a group-theoretic description of an important subclass of quantum error-correcting codes. The edge formalizes that subclass, not every possible quantum error-correction scheme.",
+    "sourceLocator": "Gottesman, Stabilizer Codes and Quantum Error Correction (1997), thesis abstract on group-theoretic stabilizer code subclass",
+    "reviewedAt": "2026-10-08"
+  },
+  {
+    "from": "quantum-rabi-model",
+    "to": "jaynes-cummings",
+    "type": "reformulates",
+    "sourceIds": [
+      "he-jaynes-cummings-2012"
+    ],
+    "evidenceType": "formal mathematical relation",
+    "confidence": "medium",
+    "evidenceNote": "The Jaynes–Cummings Hamiltonian is a rotating-wave approximation to the quantum Rabi interaction under appropriate coupling and detuning assumptions. This navigational 'reformulates' edge is not an exact equivalence; omitted counter-rotating terms matter in other regimes.",
+    "sourceLocator": "He et al., arXiv:1203.2410, abstract: rotating-wave approximation and counter-rotating corrections; cross-check Guo (2009), Phys. Rev. A 80, 033828 abstract",
+    "reviewedAt": "2026-10-08"
+  }
+];
+  for (const update of updates) {
+    const matches = window.QI_DATA.relations.filter(r => r.from===update.from && r.to===update.to && r.type===update.type);
+    if (matches.length!==1 || matches[0].confidence!=="editorial" || matches[0].sourceIds.length)
+      throw new Error("Relation promotion baseline changed: "+update.from+" -> "+update.to);
+    for (const sourceId of update.sourceIds)if (!window.QI_DATA.sources.some(s=>s.id===sourceId))
+      throw new Error("Missing source for relation promotion: "+sourceId);
+    Object.assign(matches[0], update);
+  }
+})();

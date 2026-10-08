@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
+import {priorNewRelations} from './relation-promotions-20261008-baseline.mjs';
 
 const sandbox={window:{}};
 vm.createContext(sandbox);
@@ -31,9 +32,10 @@ test('high-value relationship promotions carry direct evidence metadata',()=>{
 });
 
 test('relationship evidence totals include later source-backed promotions',()=>{
-  assert.equal(relations.length,610);
-  assert.equal(relations.filter(r=>r.sourceIds.length).length,122);
-  assert.equal(relations.filter(r=>r.confidence==='editorial').length,488);
-  assert.equal(relations.filter(r=>r.confidence==='high').length,101);
-  assert.equal(relations.filter(r=>r.confidence==='medium').length,21);
+  const prior=priorNewRelations(relations);
+  assert.equal(prior.length,610);
+  assert.equal(prior.filter(r=>r.sourceIds.length).length,122);
+  assert.equal(prior.filter(r=>r.confidence==='editorial').length,488);
+  assert.equal(prior.filter(r=>r.confidence==='high').length,101);
+  assert.equal(prior.filter(r=>r.confidence==='medium').length,21);
 });

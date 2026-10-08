@@ -1,4 +1,7 @@
 import {test,expect} from '@playwright/test';
+import {readFileSync} from 'node:fs';
+const coverage=JSON.parse(readFileSync(new URL('../../docs/coverage.json',import.meta.url),'utf8'));
+
 
 const promoted = [
   {from:'renormalization-group',to:'functional-rg',other:'Functional renormalization group',source:'wetterich-1993',sourceUrl:'10.1016/0370-2693(93)90726-X',term:'truncations need not be exact'},
@@ -46,8 +49,8 @@ test('four source-specific directional relationships appear in unchanged theory 
 test('graph sourced filter and source index include the four promotions but leave other editorial edges visible',async({page})=>{
   const errors=[];page.on('pageerror',err=>errors.push(err.message));
   await page.goto('/#/coverage');
-  await expect(page.locator('#coverageContent')).toContainText('122 source-backed relationships');
-  await expect(page.locator('#coverageContent')).toContainText('488 editorial relationships');
+  await expect(page.locator('#coverageContent')).toContainText(coverage.sourcedRelations+' source-backed relationships');
+  await expect(page.locator('#coverageContent')).toContainText(coverage.editorialRelations+' editorial relationships');
   const result=await page.evaluate(()=>({sources:QI_DATA.sources.length,relations:QI_DATA.relations.length,promoted:QI_DATA.relations.filter(r=>r.reviewedAt==='2026-10-07'&&r.sourceLocator&&['functional-rg','zx-calculus','conformal-bootstrap','mera'].includes(r.to)).length,untouchedEditorial:QI_DATA.relations.find(r=>r.from==='qed'&&r.to==='aqft').confidence}));
   expect(result).toEqual({sources:549,relations:610,promoted:4,untouchedEditorial:'editorial'});
   await page.goto('/#/theory/renormalization-group?evidence=sourced');

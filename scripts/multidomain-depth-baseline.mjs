@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
+import {stripNewTheoryAppend} from './relation-promotions-20261008-baseline.mjs';
 
 export const multidomainReview=JSON.parse(fs.readFileSync(new URL('../docs/MULTIDOMAIN_DEPTH_2026-10-08.json',import.meta.url),'utf8'));
 
@@ -37,6 +38,11 @@ function gitBlob(input){
 export function verifyDepthFile(path,expectedBlobSha){
   const marker=multidomainReview.appendedMarkers[path];
   if(!marker){
+    if(path==='theories.js'){
+      const old=stripNewTheoryAppend(fs.readFileSync(path));
+      assert.equal(gitBlob(old),expectedBlobSha,path+': historical source blob changed');
+      return;
+    }
     const out=spawnSync('git',['hash-object',path],{encoding:'utf8'});
     assert.equal(out.status,0,out.stderr||path);
     assert.equal(out.stdout.trim(),expectedBlobSha,path);
@@ -52,7 +58,7 @@ export function verifyDepthFile(path,expectedBlobSha){
 }
 
 export function verifyDepthFileSha256(path,expectedSha256){
-  const marker=multidomainReview.appendedMarkers[path],bytes=fs.readFileSync(path);
+  const marker=multidomainReview.appendedMarkers[path],bytes=path==='theories.js'?stripNewTheoryAppend(fs.readFileSync(path)):fs.readFileSync(path);
   const digest=buf=>createHash('sha256').update(buf).digest('hex');
   if(!marker){assert.equal(digest(bytes),expectedSha256,path);return;}
   const needle=Buffer.from(marker),at=bytes.indexOf(needle);
