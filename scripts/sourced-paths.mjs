@@ -6,7 +6,9 @@ import {pathToFileURL} from 'node:url';
 export function readGraph(directory='.') {
   const sandbox={window:{}};
   vm.createContext(sandbox);
-  for(const file of ['theories.js','evidence.js'])
+  // Match the authoritative coverage pipeline's runtime source-registration order.
+  for(const file of ['theories.js','developments.js','evidence.js','formulas.js',
+                     'formula-audit.js','profiles.js','questions.js','problems.js','passports.js'])
     vm.runInContext(fs.readFileSync(directory+'/'+file,'utf8'),sandbox,{filename:file});
   return sandbox.window.QI_DATA;
 }
