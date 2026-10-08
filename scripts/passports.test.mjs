@@ -15,9 +15,9 @@ const evidenceIds=new Set(sandbox.window.QI_EVIDENCE.records.map(x=>x.id));
 const developmentIds=new Set(sandbox.window.QI_DEVELOPMENTS.events.map(x=>x.id));
 const sourceIds=new Set(sandbox.window.QI_DATA.sources.map(x=>x.id));
 
-test('sixteen curated Theory Passports resolve all structured references',()=>{
-  assert.equal(passports.length,16);
-  assert.equal(new Set(passports.map(x=>x.theoryId)).size,16);
+test('twenty-three curated Theory Passports resolve all structured references',()=>{
+  assert.equal(passports.length,23);
+  assert.equal(new Set(passports.map(x=>x.theoryId)).size,23);
   for(const p of passports){
     assert.ok(theoryIds.has(p.theoryId),p.theoryId);
     assert.ok(p.coreIdea.length>40,p.theoryId);
