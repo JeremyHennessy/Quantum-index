@@ -12,15 +12,15 @@ const sources=new Set(sandbox.window.QI_DATA.sources.map(x=>x.id));
 const problems=new Set(sandbox.window.QI_PROBLEMS.problems.map(x=>x.id));
 const evidenceIds=new Set(evidence.map(x=>x.id));
 
-test('Evidence layer has thirteen auditable records with resolved references',()=>{
-  assert.equal(evidence.length,13);
-  assert.equal(evidenceIds.size,13);
+test('Evidence layer has sixteen auditable records with resolved references',()=>{
+  assert.equal(evidence.length,16);
+  assert.equal(evidenceIds.size,16);
   for(const item of evidence){
     assert.match(item.date,/^\d{4}-\d{2}-\d{2}$/);
     assert.ok(item.result.length>60,item.id);
     assert.ok(item.constrains.length>=1,item.id);
     assert.ok(item.doesNotEstablish.length>=1,item.id);
-    assert.match(item.reviewedAt,/^(?:2026-09-(?:28|29)|2026-10-07)$/);
+    assert.match(item.reviewedAt,/^(?:2026-09-(?:28|29)|2026-10-(?:07|08))$/);
     for(const id of item.relatedTheoryIds)assert.ok(theories.has(id),id);
     for(const id of item.relatedProblemIds)assert.ok(problems.has(id),id);
     for(const id of item.sourceIds)assert.ok(sources.has(id),id);

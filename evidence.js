@@ -575,3 +575,162 @@ window.QI_EVIDENCE = (() => {
   ]
 };
 })();
+
+
+// 2026-10-08 multidomain depth sources and empirical constraints.
+for (const source of [
+  {
+    "id": "greiner-mott-2002",
+    "title": "Quantum phase transition from a superfluid to a Mott insulator in a gas of ultracold atoms",
+    "authors": "Markus Greiner, Olaf Mandel, Tilman Esslinger, Theodor W. Hänsch, Immanuel Bloch",
+    "year": 2002,
+    "type": "primary experimental paper",
+    "url": "https://doi.org/10.1038/415039a"
+  },
+  {
+    "id": "brune-rabi-1996",
+    "title": "Quantum Rabi Oscillation: A Direct Test of Field Quantization in a Cavity",
+    "authors": "M. Brune, F. Schmidt-Kaler, A. Maali, J. Dreyer, E. Hagley, J. M. Raimond, S. Haroche",
+    "year": 1996,
+    "type": "primary experimental paper",
+    "url": "https://doi.org/10.1103/PhysRevLett.76.1800"
+  },
+  {
+    "id": "pdg-neutrino-mixing-2026",
+    "title": "Neutrino Masses, Mixing, and Oscillations (Review of Particle Physics 2026)",
+    "authors": "M.C. Gonzalez-Garcia, R. Wendell; Particle Data Group",
+    "year": 2026,
+    "type": "authoritative review",
+    "url": "https://pdg.lbl.gov/2026/reviews/rpp2026-rev-neutrino-mixing.pdf"
+  },
+  {
+    "id": "kozak-wojnar-scalar-tensor-2021",
+    "title": "Invariant quantities of scalar–tensor theories for stellar structure",
+    "authors": "Aleksander Kozak, Aneta Wojnar",
+    "year": 2021,
+    "type": "peer-reviewed theoretical paper",
+    "url": "https://doi.org/10.1140/epjc/s10052-021-09277-4"
+  },
+  {
+    "id": "bertotti-cassini-2003",
+    "title": "A test of general relativity using radio links with the Cassini spacecraft",
+    "authors": "B. Bertotti, L. Iess, P. Tortora",
+    "year": 2003,
+    "type": "primary experimental paper",
+    "url": "https://doi.org/10.1038/nature01997"
+  },
+  {
+    "id": "fienga-minazzoli-gravity-tests-2024",
+    "title": "Testing theories of gravity with planetary ephemerides",
+    "authors": "Agnès Fienga, Olivier Minazzoli",
+    "year": 2024,
+    "type": "authoritative review",
+    "url": "https://doi.org/10.1007/s41114-023-00047-0"
+  }
+]) {
+  if (!window.QI_DATA.sources.some(existing => existing.id === source.id)) window.QI_DATA.sources.push(source);
+}
+window.QI_EVIDENCE.records.push(...[
+  {
+    "id": "ev-bose-mott-transition-2002",
+    "title": "Optical-lattice superfluid–Mott-insulator transition",
+    "date": "2002-01-03",
+    "type": "experimental result",
+    "result": "An ultracold repulsive Bose gas in a three-dimensional optical lattice was driven reversibly from a phase-coherent superfluid regime into a Mott-insulating regime with integer site occupation, suppressed long-range phase coherence and a measured excitation gap.",
+    "relatedTheoryIds": [
+      "bose-hubbard",
+      "optical-lattice-quantum-simulation"
+    ],
+    "relatedProblemIds": [],
+    "relatedClaimIds": [],
+    "constrains": [
+      "Descriptions of the lattice gas that do not accommodate interaction-driven number localization and loss of phase coherence in the explored regime."
+    ],
+    "doesNotEstablish": [
+      "That every optical-lattice realization is described exactly by the single-band Bose–Hubbard Hamiltonian.",
+      "Universal critical behavior in all dimensions, fillings or trap geometries."
+    ],
+    "sourceIds": [
+      "greiner-mott-2002"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "greiner-mott-2002",
+        "locator": "Nature 415, 39–44 (2002), abstract and superfluid-to-Mott transition result",
+        "url": "https://doi.org/10.1038/415039a"
+      }
+    ],
+    "reviewedAt": "2026-10-08",
+    "evidenceStatus": "observed many-body quantum phase transition"
+  },
+  {
+    "id": "ev-cavity-rabi-1996",
+    "title": "Cavity quantum Rabi oscillation with discrete photon-number components",
+    "date": "1996-03-11",
+    "type": "experimental result",
+    "result": "Circular Rydberg atoms interacting with vacuum and weak coherent fields in a high-Q cavity exhibited Rabi-oscillation Fourier components whose frequencies scaled with square roots of successive photon numbers, providing direct evidence of field quantization in the cavity.",
+    "relatedTheoryIds": [
+      "jaynes-cummings",
+      "cavity-qed"
+    ],
+    "relatedProblemIds": [],
+    "relatedClaimIds": [],
+    "constrains": [
+      "Semiclassical descriptions that cannot reproduce the observed discrete photon-number-dependent Rabi frequencies in the tested cavity regime."
+    ],
+    "doesNotEstablish": [
+      "That the ideal lossless Jaynes–Cummings Hamiltonian is exact at arbitrary coupling, detuning or damping.",
+      "That all cavity-QED implementations share the same two-level and single-mode approximations."
+    ],
+    "sourceIds": [
+      "brune-rabi-1996"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "brune-rabi-1996",
+        "locator": "Phys. Rev. Lett. 76, 1800 (1996), abstract and photon-number-resolved Rabi-oscillation result",
+        "url": "https://doi.org/10.1103/PhysRevLett.76.1800"
+      }
+    ],
+    "reviewedAt": "2026-10-08",
+    "evidenceStatus": "observed cavity-field quantization signature"
+  },
+  {
+    "id": "ev-cassini-ppn-2003",
+    "title": "Cassini solar-conjunction constraint on the PPN light-propagation parameter",
+    "date": "2003-09-25",
+    "type": "experimental constraint",
+    "result": "Radio links to the Cassini spacecraft during solar conjunction measured the post-Newtonian light-propagation parameter as gamma = 1 + (2.1 ± 2.3) × 10^-5, consistent with general relativity. In the constant-omega massless Brans–Dicke mapping reviewed in the planetary-ephemeris literature, this strongly constrains small omega values.",
+    "relatedTheoryIds": [
+      "brans-dicke"
+    ],
+    "relatedProblemIds": [],
+    "relatedClaimIds": [],
+    "constrains": [
+      "Constant-parameter massless Brans–Dicke models through their PPN gamma prediction under the stated mapping and solar-system assumptions."
+    ],
+    "doesNotEstablish": [
+      "That every scalar–tensor theory is excluded.",
+      "That constraints inferred through a PPN mapping replace a direct fit of each alternative theory to the full planetary data set.",
+      "That scalar fields could not have different behavior in cosmological or screened regimes."
+    ],
+    "sourceIds": [
+      "bertotti-cassini-2003",
+      "fienga-minazzoli-gravity-tests-2024"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "bertotti-cassini-2003",
+        "locator": "Nature 425, 374–376 (2003), abstract; gamma measurement from solar-conjunction radio links",
+        "url": "https://doi.org/10.1038/nature01997"
+      },
+      {
+        "sourceId": "fienga-minazzoli-gravity-tests-2024",
+        "locator": "Living Rev. Relativity 27, 1 (2024), scalar–tensor/PPN discussion and caution on translating fitted PPN bounds into theory constraints",
+        "url": "https://doi.org/10.1007/s41114-023-00047-0"
+      }
+    ],
+    "reviewedAt": "2026-10-08",
+    "evidenceStatus": "solar-system parameter constraint"
+  }
+]);

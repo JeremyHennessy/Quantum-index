@@ -34,7 +34,7 @@ test('four existing Bell equations show reviewed definitions, source locations a
   for(const f of fs){const node=await MathJax.tex2svgPromise(f.latex,{display:true});if(node.querySelector('[data-mml-node="merror"],mjx-merror'))failures.push(f.id);}
   return {failures,formulaCount:QI_FORMULAS.formulas.length,latex:Object.fromEntries(fs.map(f=>[f.id,f.latex]))};
  });
- expect(result.formulaCount).toBe(402);expect(result.failures).toEqual([]);
+ expect(result.formulaCount).toBe(405);expect(result.failures).toEqual([]);
  expect(result.latex).toEqual({'bell-factorization':String.raw`P(a,b|x,y,\lambda)=P(a|x,\lambda)P(b|y,\lambda)`,'chsh-classical':String.raw`|S|\le2`,'chsh-tsirelson':String.raw`|S|\le2\sqrt2`,'bell-state':String.raw`|\Phi^+\rangle=\frac{|00\rangle+|11\rangle}{\sqrt2}`});
  const byTitle=title=>cards.filter({has:page.getByRole('heading',{name:title,exact:true})});
  await expect(byTitle('Bell-local factorization')).toContainText('q(lambda|x,y)=q(lambda)');

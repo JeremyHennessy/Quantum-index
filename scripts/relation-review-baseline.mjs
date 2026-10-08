@@ -4,6 +4,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
+import {priorDepthSources} from './multidomain-depth-baseline.mjs';
 export const relationLedger=JSON.parse(fs.readFileSync(new URL('../docs/RELATION_PROMOTIONS_2026-10-07.json',import.meta.url),'utf8'));
 const canonical=v=>Array.isArray(v)?v.map(canonical):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,canonical(v[k])])):v;
 const signature=x=>createHash('sha256').update(JSON.stringify(canonical(x))).digest('hex');
@@ -23,6 +24,7 @@ export function priorRelations(current){
   return original;
 }
 export function priorSources(current){
+  current=priorDepthSources(current);
   const id=relationLedger.newSource.id;
   const matching=current.filter(s=>s.id===id);
   assert.equal(matching.length,1,`expected exactly one ${id}`);

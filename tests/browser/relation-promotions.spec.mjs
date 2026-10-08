@@ -49,7 +49,7 @@ test('graph sourced filter and source index include the four promotions but leav
   await expect(page.locator('#coverageContent')).toContainText('122 source-backed relationships');
   await expect(page.locator('#coverageContent')).toContainText('488 editorial relationships');
   const result=await page.evaluate(()=>({sources:QI_DATA.sources.length,relations:QI_DATA.relations.length,promoted:QI_DATA.relations.filter(r=>r.reviewedAt==='2026-10-07'&&r.sourceLocator&&['functional-rg','zx-calculus','conformal-bootstrap','mera'].includes(r.to)).length,untouchedEditorial:QI_DATA.relations.find(r=>r.from==='qed'&&r.to==='aqft').confidence}));
-  expect(result).toEqual({sources:543,relations:610,promoted:4,untouchedEditorial:'editorial'});
+  expect(result).toEqual({sources:549,relations:610,promoted:4,untouchedEditorial:'editorial'});
   await page.goto('/#/theory/renormalization-group?evidence=sourced');
   await expect(page.locator('#theoryDetail')).toContainText('Functional renormalization group');
   expect(errors).toEqual([]);

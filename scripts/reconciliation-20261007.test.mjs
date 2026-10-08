@@ -1,4 +1,5 @@
 import {bellReview,restoreBellFormula} from './bell-metadata-baseline.mjs';
+import {priorDepthFormulas,priorDepthEvidence,verifyDepthFileSha256} from './multidomain-depth-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -17,7 +18,7 @@ const canonical=v=>Array.isArray(v)?v.map(canonical):v&&typeof v==='object'?Obje
 const newFormulaIds=['configuration-ensemble-hamiltonian','cq-backreaction-decoherence-diffusion','cq-decoherence-diffusion-tradeoff'];
 
 test('reconciliation preserves every baseline theory, formula, profile and Passport exactly',()=>{
- const items={theories:w.QI_DATA.theories.filter(t=>t.id!=='configuration-ensemble-cq'),formulas:w.QI_FORMULAS.formulas.map(restoreBellFormula).filter(f=>!newFormulaIds.includes(f.id)&&!followup.addedFormulaIds.includes(f.id)&&!lattice.addedFormulaIds.includes(f.id)&&!amo.addedFormulaIds.includes(f.id)),profiles:w.QI_PROFILES.profiles};
+ const items={theories:w.QI_DATA.theories.filter(t=>t.id!=='configuration-ensemble-cq'),formulas:priorDepthFormulas(w.QI_FORMULAS.formulas).map(restoreBellFormula).filter(f=>!newFormulaIds.includes(f.id)&&!followup.addedFormulaIds.includes(f.id)&&!lattice.addedFormulaIds.includes(f.id)&&!amo.addedFormulaIds.includes(f.id)),profiles:w.QI_PROFILES.profiles};
  for(const [name,raw] of Object.entries(items)){
    const data=Array.isArray(raw)?[...raw].sort((a,b)=>a.id<b.id?-1:a.id>b.id?1:0):raw;
    assert.equal(Array.isArray(data)?data.length:Object.keys(data).length,ledger.baselineIntegrity[name].count,name);
@@ -28,7 +29,7 @@ test('reconciliation preserves every baseline theory, formula, profile and Passp
   if(lattice.updatedFiles[file])assert.equal(lattice.previousFiles[file],followup.updatedFiles[file]||expected,`${file}: lattice predecessor`);
   if(amo.updatedFiles[file])assert.equal(amo.previousFiles[file],lattice.updatedFiles[file]||followup.updatedFiles[file]||expected,`${file}: AMO predecessor`);
   if(bellReview.updatedFiles[file])assert.equal(bellReview.previousFiles[file],amo.updatedFiles[file]||lattice.updatedFiles[file]||followup.updatedFiles[file]||expected,`${file}: retained predecessor`);
-  assert.equal(hash(fs.readFileSync(file)),bellReview.updatedFiles[file]||amo.updatedFiles[file]||lattice.updatedFiles[file]||followup.updatedFiles[file]||expected,file);
+  verifyDepthFileSha256(file,bellReview.updatedFiles[file]||amo.updatedFiles[file]||lattice.updatedFiles[file]||followup.updatedFiles[file]||expected);
  }
 });
 
@@ -63,8 +64,8 @@ test('all scientific-layer references resolve and generated source count equals 
 });
 
 test('both branches retain their distinct model constraints without inventing extra discoveries',()=>{
- assert.equal(w.QI_DATA.theories.length,481);assert.equal(w.QI_FORMULAS.formulas.length,392+followup.addedFormulaIds.length+lattice.addedFormulaIds.length+amo.addedFormulaIds.length);
- assert.equal(w.QI_EVIDENCE.records.length,13);assert.equal(w.QI_DEVELOPMENTS.events.length,16);
+ assert.equal(w.QI_DATA.theories.length,481);assert.equal(priorDepthFormulas(w.QI_FORMULAS.formulas).length,392+followup.addedFormulaIds.length+lattice.addedFormulaIds.length+amo.addedFormulaIds.length);
+ assert.equal(priorDepthEvidence(w.QI_EVIDENCE.records).length,13);assert.equal(w.QI_DEVELOPMENTS.events.length,16);
  const p=w.QI_PROBLEMS.problems.find(p=>p.id==='quantum-gravity');
  for(const id of ['ev-dp-gie-2025','ev-indirect-gme-interferometry-2026','ev-cq-geodesic-deviation-2026','ev-classical-gravity-cross-correlation-2025'])assert.ok(p.evidenceIds.includes(id),id);
  for(const id of newFormulaIds)assert.ok(p.formulaIds.includes(id),id);
