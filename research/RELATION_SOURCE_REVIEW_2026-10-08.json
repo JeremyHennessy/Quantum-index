@@ -1,0 +1,105 @@
+{
+  "reviewedAt": "2026-10-08",
+  "baselineCommit": "b8827b151d46a7332e062e76a36ab6271d621c46",
+  "status": "reviewed-not-promoted",
+  "policy": "Source-specific review records only. No runtime edge, source, note, UI or historical release metadata changes. Do not equate node sources with proof of an edge.",
+  "candidates": [
+    {
+      "from": "semiclassical-gravity",
+      "to": "stochastic-gravity",
+      "type": "extends",
+      "sourceIds": [
+        "hu-verdaguer-stochastic-2008"
+      ],
+      "sourceLocator": "Hu and Verdaguer, Living Reviews in Relativity 11:3 (2008), abstract and Einstein–Langevin/noise-kernel introduction",
+      "sourceUrl": "https://doi.org/10.12942/lrr-2008-3",
+      "evidenceType": "formal mathematical relation",
+      "proposedConfidence": "high",
+      "evidenceNote": "The Einstein–Langevin framework extends the mean-stress-tensor semiclassical Einstein equation with stress-energy fluctuations encoded in a noise kernel. This does not establish that gravity is quantized or that every stochastic gravity model has the same noise dynamics.",
+      "limitations": [
+        "Stochastic gravity is not a quantum-gravity measurement",
+        "A source for the exact extension does not validate all stochastic-gravity predictions"
+      ]
+    },
+    {
+      "from": "tensor-network-states",
+      "to": "peps",
+      "type": "extends",
+      "sourceIds": [
+        "verstraete-cirac-peps-2004"
+      ],
+      "sourceLocator": "Verstraete and Cirac (2004), arXiv:cond-mat/0407066, abstract: PEPS naturally extend matrix-product constructions to two or more dimensions",
+      "sourceUrl": "https://arxiv.org/abs/cond-mat/0407066",
+      "evidenceType": "formal mathematical relation",
+      "proposedConfidence": "high",
+      "evidenceNote": "Projected entangled-pair states extend the matrix-product-state tensor construction to two and higher spatial dimensions within the family of tensor-network ansatzes. This is not a claim of efficient exact representability for every many-body wavefunction.",
+      "limitations": [
+        "Family-level relation, not a theorem that all 2D states are efficiently representable",
+        "An ansatz is not a universal exact solver"
+      ]
+    },
+    {
+      "from": "quantum-error-correction",
+      "to": "stabilizer-formalism",
+      "type": "formalizes",
+      "sourceIds": [
+        "gottesman-stabilizer-1997"
+      ],
+      "sourceLocator": "Gottesman, Stabilizer Codes and Quantum Error Correction (1997), thesis abstract on group-theoretic stabilizer code subclass",
+      "sourceUrl": "https://arxiv.org/abs/quant-ph/9705052",
+      "evidenceType": "formal mathematical relation",
+      "proposedConfidence": "medium",
+      "evidenceNote": "Gottesman's stabilizer formalism gives a group-theoretic description of an important subclass of quantum error-correcting codes. The edge formalizes that subclass, not every possible quantum error-correction scheme.",
+      "limitations": [
+        "Stabilizer codes are a subclass of QEC",
+        "The edge does not imply that all QEC has a stabilizer representation"
+      ]
+    },
+    {
+      "from": "quantum-rabi-model",
+      "to": "jaynes-cummings",
+      "type": "reformulates",
+      "sourceIds": [
+        "he-jaynes-cummings-2012"
+      ],
+      "sourceLocator": "He et al., arXiv:1203.2410, abstract: rotating-wave approximation and counter-rotating corrections; cross-check Guo (2009), Phys. Rev. A 80, 033828 abstract",
+      "sourceUrl": "https://arxiv.org/abs/1203.2410",
+      "evidenceType": "formal mathematical relation",
+      "proposedConfidence": "medium",
+      "evidenceNote": "The Jaynes–Cummings Hamiltonian is a rotating-wave approximation to the quantum Rabi interaction under appropriate coupling and detuning assumptions. This navigational 'reformulates' edge is not an exact equivalence; omitted counter-rotating terms matter in other regimes.",
+      "limitations": [
+        "Approximation depends on coupling and detuning",
+        "No assertion of exact Rabi-JC equivalence or validity at arbitrary ultrastrong coupling"
+      ]
+    }
+  ],
+  "alreadySourced": [
+    {
+      "from": "decoherence",
+      "to": "quantum-darwinism",
+      "type": "extends",
+      "sourceId": "zurek-darwinism",
+      "reviewedAt": "2026-09-27"
+    }
+  ],
+  "held": [
+    {
+      "from": "brst",
+      "to": "bv-formalism",
+      "type": "generalizes",
+      "reason": "Needs narrower theorem or source section to establish the exact broad directed edge rather than coexisting formalisms"
+    }
+  ],
+  "expectedBefore": {
+    "theories": 481,
+    "relations": 610,
+    "sourcedRelations": 122,
+    "editorialRelations": 488
+  },
+  "expectedIfPromoted": {
+    "theories": 481,
+    "relations": 610,
+    "sourcedRelations": 126,
+    "editorialRelations": 484
+  }
+}
