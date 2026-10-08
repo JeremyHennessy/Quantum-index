@@ -14,3 +14,15 @@ export const priorDepthFormulas=current=>prior(current,multidomainReview.addedFo
 export const priorDepthPassports=current=>prior(current,multidomainReview.addedPassportTheoryIds,'theoryId','Passport');
 export const priorDepthEvidence=current=>prior(current,multidomainReview.addedEvidenceIds,'id','Evidence');
 export const priorDepthSources=current=>prior(current,multidomainReview.addedSourceIds,'id','source');
+
+export function priorDepthCoverage(current){
+  const x={...current};
+  x.sources-=multidomainReview.addedSourceIds.length;
+  x.formulas-=multidomainReview.addedFormulaIds.length;
+  x.passports-=multidomainReview.addedPassportTheoryIds.length;
+  if('evidenceRecords' in x)x.evidenceRecords-=multidomainReview.addedEvidenceIds.length;
+  if('formulaBearing' in x)x.formulaBearing-=multidomainReview.closedGapTheoryIds.length;
+  if('formulaGaps' in x)x.formulaGaps+=multidomainReview.closedGapTheoryIds.length;
+  if('explicitFormulaMetadata' in x)x.explicitFormulaMetadata-=multidomainReview.addedFormulaIds.length;
+  return x;
+}
