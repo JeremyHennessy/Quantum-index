@@ -9,7 +9,8 @@ import {shortestDocumentedPath} from './sourced-paths.mjs';
 
 const sandbox={window:{}};
 vm.createContext(sandbox);
-vm.runInContext(fs.readFileSync('theories.js','utf8'),sandbox);
+for(const file of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','passports.js'])
+  vm.runInContext(fs.readFileSync(file,'utf8'),sandbox,{filename:file});
 const data=sandbox.window.QI_DATA;
 const key=x=>[x.from,x.to,x.type].join('|');
 const hash=x=>createHash('sha256').update(x).digest('hex');
