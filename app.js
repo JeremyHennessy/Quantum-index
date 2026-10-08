@@ -123,9 +123,41 @@
   function renderCoverage(){
     const count=fn=>theories.filter(fn).length;
     const gaps=new Set(formulaAudit.filter(a=>a.classification==='formula-bearing-gap').map(a=>a.theoryId));
-    const rows=[...categoryColors.keys()].map(category=>`<tr><th scope="row">${esc(category)}</th><td>${count(t=>t.category===category)}</td><td>${count(t=>t.category===category&&gaps.has(t.id))}</td><td>${count(t=>t.category===category&&profiles[t.id])}</td></tr>`).join('');
-    $('#coverageContent').innerHTML=`<h3>Coverage and review status</h3><p>The census is open. Source attachment does not establish that every claim is verified or experimentally confirmed.</p><p>${theories.length} entries · ${sources.length} bibliography records · ${Object.keys(profiles).length} reading profiles · ${learningPaths.length} learning paths.</p><p>${relations.filter(r=>r.sourceIds.length).length} source-backed relationships; ${relations.filter(r=>!r.sourceIds.length).length} editorial relationships.</p><p>${formulas.length} formulas; ${formulas.filter(f=>f.metadataReview==='explicit').length} explicitly reviewed metadata records. Baseline records still need equation-level review.</p><p>${developments.length} reviewed DevelopmentEvents extend the historical timeline through ${developments.length?Math.max(...developments.map(event=>event.year)):"—"} without changing entity origin dates.</p><div class="comparison-scroll" role="region" aria-label="Coverage by category" tabindex="0"><table class="comparison-table"><caption>Current runtime coverage by category</caption><thead><tr><th scope="col">Category</th><th scope="col">Entries</th><th scope="col">Formula gaps</th><th scope="col">Reading profiles</th></tr></thead><tbody>${rows}</tbody></table></div><p>Formula gaps mean no representative expression has yet been curated. They do not mean the framework lacks mathematics. A linked formula does not establish complete mathematical coverage.</p><p><a href="https://github.com/JeremyHennessy/Quantum-index/blob/main/docs/COVERAGE.md">Coverage methodology and research backlog</a></p>`;
+    const explicitTheoryIds=new Set(formulas.filter(f=>f.metadataReview==='explicit').flatMap(f=>f.theoryIds||[]));
+    const evidenceTheoryIds=new Set(evidenceRecords.flatMap(e=>e.relatedTheoryIds||[]));
+    const passportTheoryIds=new Set(passports.map(p=>p.theoryId));
+    const rows=[...categoryColors.keys()].map(category=>{
+      const items=theories.filter(t=>t.category===category),ids=new Set(items.map(t=>t.id));
+      const outgoing=relations.filter(rel=>ids.has(rel.from)),sourcedOutgoing=outgoing.filter(rel=>rel.sourceIds.length);
+      return `<tr>
+        <th scope="row"><a href="#/catalog?category=${encodeURIComponent(category)}">${esc(category)}</a></th>
+        <td>${items.length}</td>
+        <td>${items.filter(t=>t.provenance==='primary-sourced').length}</td>
+        <td>${items.filter(t=>gaps.has(t.id)).length}</td>
+        <td>${items.filter(t=>explicitTheoryIds.has(t.id)).length}</td>
+        <td>${items.filter(t=>profiles[t.id]).length}</td>
+        <td>${items.filter(t=>passportTheoryIds.has(t.id)).length}</td>
+        <td>${items.filter(t=>evidenceTheoryIds.has(t.id)).length}</td>
+        <td>${sourcedOutgoing.length}/${outgoing.length}</td>
+      </tr>`;
+    }).join('');
+    $('#coverageContent').innerHTML=`<h3>Coverage and review status</h3>
+      <p>The census is open. These are structural depth indicators, not scientific confidence scores; source attachment does not establish that every claim is verified or experimentally confirmed.</p>
+      <p>${theories.length} entries · ${sources.length} bibliography records · ${Object.keys(profiles).length} reading profiles · ${learningPaths.length} learning paths · ${passports.length} Theory Passports.</p>
+      <p><a href="#/problems">${problems.length} scientific Problems</a> · <a href="#/evidence">${evidenceRecords.length} Evidence records</a> · <a href="#/questions">${questions.length} structured Research Questions</a>.</p>
+      <p>${relations.filter(r=>r.sourceIds.length).length} source-backed relationships; ${relations.filter(r=>!r.sourceIds.length).length} editorial relationships.</p>
+      <p>${formulas.length} formulas; ${formulas.filter(f=>f.metadataReview==='explicit').length} explicitly reviewed metadata records; ${gaps.size} documented theory-level formula gaps.</p>
+      <p>${developments.length} reviewed DevelopmentEvents extend the historical timeline through ${developments.length?Math.max(...developments.map(event=>event.year)):"—"} without changing entity origin dates.</p>
+      <div class="comparison-scroll" role="region" aria-label="Coverage and research depth by category" tabindex="0"><table class="comparison-table">
+        <caption>Current runtime coverage and depth by category</caption>
+        <thead><tr><th scope="col">Category</th><th scope="col">Entries</th><th scope="col">Primary sourced</th><th scope="col">Formula gaps</th><th scope="col">Explicit formula</th><th scope="col">Profiles</th><th scope="col">Passports</th><th scope="col">Evidence-linked</th><th scope="col">Sourced outgoing edges</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table></div>
+      <p>“Explicit formula” counts theory entries with at least one explicitly metadata-reviewed formula. “Evidence-linked” counts entries referenced by at least one curated Evidence record. Relationship counts use outgoing edges from theories in the category; editorial edges remain useful navigation but are not relationship-specific source claims.</p>
+      <p>Formula gaps mean no representative expression has yet been curated. They do not mean the framework lacks mathematics. A linked formula does not establish complete mathematical coverage.</p>
+      <p><a href="https://github.com/JeremyHennessy/Quantum-index/blob/main/docs/COVERAGE.md">Coverage methodology and research backlog</a></p>`;
   }
+
   function safeReturn(value){return typeof value==="string" && value.length<4096 && /^#\/(?:theory\/[a-z0-9-]+|explore|map|timeline|catalog|lineage|formula|compare|problems|evidence|questions|learn|workspace|coverage)(?:\?|$)/.test(value)?value:"";}
   function theoryLink(id,from=state.returnView){
     const params=new URLSearchParams({from});
