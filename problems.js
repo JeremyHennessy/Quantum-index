@@ -2,7 +2,7 @@
 window.QI_PROBLEMS = {
   "version": "v1",
   "reviewedAt": "2026-09-27",
-  "scope": "Five pilot scientific problems. Problems organize existing entities, equations, questions and dated developments; they are not theory entities and do not duplicate catalog records.",
+  "scope": "Ten curated scientific problems. Problems organize existing entities, equations, evidence, questions and dated developments; they are not theory entities and do not duplicate catalog records.",
   "problems": [
     {
       "id": "black-hole-information",
@@ -536,3 +536,345 @@ window.QI_PROBLEMS = {
     }
   ]
 };
+
+
+// 2026-10-08 expanded cross-domain scientific Problems.
+window.QI_PROBLEMS.problems.push(...[
+  {
+    "id": "neutrino-mass",
+    "name": "Neutrino mass and flavor",
+    "shortQuestion": "What generates neutrino masses and mixings, what is the mass ordering and absolute scale, and are neutrinos Dirac or Majorana particles?",
+    "whyItMatters": "Flavor oscillations establish that at least two neutrino mass eigenstates are nondegenerate, but oscillation experiments do not determine the absolute mass scale or the microscopic origin of neutrino mass. Extensions such as seesaw models connect the problem to physics beyond the minimal Standard Model and, in some scenarios, to the cosmic matter–antimatter asymmetry.",
+    "establishedBackground": [
+      "Weak-interaction flavor states are coherent mixtures of neutrino mass eigenstates, and relative propagation phases generate oscillations.",
+      "Atmospheric, solar, reactor and accelerator observations establish flavor conversion; the current Evidence layer includes the Super-Kamiokande atmospheric result as a concrete anchor.",
+      "Matter modifies oscillation amplitudes and effective mixing through the MSW mechanism.",
+      "The Standard Model in its minimal field content does not explain the observed neutrino mass pattern; seesaw constructions are one important class of extensions rather than an established unique mechanism."
+    ],
+    "approachGroups": [
+      {
+        "name": "Observed mixing and propagation",
+        "description": "Describes flavor/mass mixing and vacuum or matter-enhanced oscillation phenomenology.",
+        "theoryIds": [
+          "neutrino-mixing",
+          "msw-effect"
+        ]
+      },
+      {
+        "name": "Mass-generation mechanisms",
+        "description": "Introduces additional degrees of freedom or effective operators to account for tiny neutrino masses.",
+        "theoryIds": [
+          "seesaw-mechanism"
+        ]
+      },
+      {
+        "name": "Cosmological connection",
+        "description": "Uses heavy-neutrino dynamics in models that can also source a lepton asymmetry.",
+        "theoryIds": [
+          "leptogenesis"
+        ]
+      }
+    ],
+    "keyAssumptions": [
+      "The number of light propagating neutrino states and whether the low-energy mixing matrix is unitary.",
+      "The matter density profile and interaction model used for propagation through matter.",
+      "Whether new heavy states, Majorana masses or other beyond-Standard-Model ingredients are present."
+    ],
+    "formulaIds": [
+      "neutrino-flavor-mixing-state",
+      "neutrino-vacuum-oscillation-probability"
+    ],
+    "evidenceIds": [
+      "ev-superk-atmospheric-1998"
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "developmentContext": "No dedicated 2024–2026 DevelopmentEvent in the current reviewed seed set is attached; current oscillation and mass-ordering developments should be added only through a separate source review.",
+    "sourceIds": [
+      "mns-1962",
+      "wolfenstein-1978",
+      "minkowski-seesaw-1977",
+      "superk-atmospheric-1998",
+      "pdg-neutrino-mixing-2026"
+    ],
+    "currentStatus": "Neutrino oscillations and nonzero mass splittings are established. The absolute mass scale, Dirac-versus-Majorana character, detailed ordering/CP questions and the microscopic mass-generation mechanism remain active experimental and theoretical targets.",
+    "openIssues": [
+      "Determine the absolute neutrino mass scale and sharpen the mass ordering.",
+      "Establish or exclude Majorana mass signatures and identify the origin of neutrino mass.",
+      "Measure leptonic CP violation precisely enough to test specific flavor and baryogenesis scenarios."
+    ]
+  },
+  {
+    "id": "matter-antimatter-asymmetry",
+    "name": "Matter–antimatter asymmetry",
+    "shortQuestion": "What dynamical mechanism produced the observed cosmic excess of matter over antimatter?",
+    "whyItMatters": "A nearly matter-symmetric early universe would annihilate far more completely than the universe we observe. Baryogenesis frameworks therefore seek a dynamical origin for a small net baryon asymmetry while remaining compatible with particle-physics and cosmological constraints.",
+    "establishedBackground": [
+      "Sakharov identified baryon-number violation, C/CP violation and departure from thermal equilibrium as generic ingredients for dynamical baryogenesis.",
+      "Leptogenesis generates a lepton asymmetry that electroweak processes can partially convert into a baryon asymmetry.",
+      "Affleck–Dine baryogenesis uses coherent scalar-field dynamics in extensions with suitable flat directions.",
+      "No single baryogenesis mechanism is established as the unique explanation of the observed asymmetry."
+    ],
+    "approachGroups": [
+      {
+        "name": "General conditions",
+        "description": "States the broad dynamical requirements for generating a baryon asymmetry.",
+        "theoryIds": [
+          "sakharov-baryogenesis"
+        ]
+      },
+      {
+        "name": "Lepton-sector mechanisms",
+        "description": "Generates a lepton asymmetry before electroweak conversion to baryon number.",
+        "theoryIds": [
+          "leptogenesis"
+        ]
+      },
+      {
+        "name": "Scalar-condensate mechanisms",
+        "description": "Uses coherent scalar-field dynamics in beyond-Standard-Model settings.",
+        "theoryIds": [
+          "affleck-dine-baryogenesis"
+        ]
+      }
+    ],
+    "keyAssumptions": [
+      "The early-universe thermal history and relevant departure from equilibrium.",
+      "The available baryon/lepton-number violating processes and CP-violating phases.",
+      "The particle content above electroweak scales and whether additional heavy or scalar states exist."
+    ],
+    "formulaIds": [],
+    "evidenceIds": [],
+    "questionIds": [],
+    "developmentIds": [],
+    "developmentContext": "The current reviewed DevelopmentEvent set does not yet contain a dedicated baryogenesis update; adding one requires a focused current-literature pass rather than repurposing unrelated cosmology events.",
+    "sourceIds": [
+      "sakharov-1967",
+      "fukugita-yanagida-1986",
+      "affleck-dine-1985"
+    ],
+    "currentStatus": "The existence of the cosmic matter excess is an observational fact, while its microscopic dynamical origin remains unresolved. Multiple viable mechanism classes depend on beyond-Standard-Model ingredients or poorly constrained early-universe conditions.",
+    "openIssues": [
+      "Identify experimentally testable CP-violating or lepton/baryon-number violating signatures tied to a viable mechanism.",
+      "Connect high-scale mechanisms to observables without erasing the asymmetry during later thermal evolution.",
+      "Determine whether neutrino-sector physics, scalar dynamics or another mechanism dominates the origin of the asymmetry."
+    ]
+  },
+  {
+    "id": "dark-energy",
+    "name": "Cosmic acceleration and dark energy",
+    "shortQuestion": "What causes the late-time accelerated expansion of the universe: a cosmological constant, a dynamical component, modified gravity, or something else?",
+    "whyItMatters": "The standard cosmological model fits a wide range of observations with a cosmological-constant-like component, yet the physical origin and naturalness of that component remain unresolved. Precision expansion-history measurements increasingly discriminate phenomenological alternatives without yet providing a unique microphysical explanation.",
+    "establishedBackground": [
+      "Flat ΛCDM remains a highly successful baseline description of the expansion history and structure data.",
+      "Scalar-field dark-energy models such as quintessence and k-essence allow time-dependent effective equations of state.",
+      "Modified-gravity families can mimic or alter accelerated expansion through changed gravitational dynamics.",
+      "DESI DR2 is well described by flat ΛCDM on its own, while combinations with other datasets give model- and dataset-dependent preferences for evolving dark energy."
+    ],
+    "approachGroups": [
+      {
+        "name": "Phenomenological baseline",
+        "description": "Uses a cosmological-constant-like component within the standard cosmological model.",
+        "theoryIds": [
+          "lambda-cdm"
+        ]
+      },
+      {
+        "name": "Dynamical dark-energy fields",
+        "description": "Promotes the accelerating component to evolving scalar or effective fluid degrees of freedom.",
+        "theoryIds": [
+          "quintessence",
+          "k-essence",
+          "phantom-dark-energy",
+          "chaplygin-gas"
+        ]
+      },
+      {
+        "name": "Modified-gravity alternatives",
+        "description": "Changes gravitational field equations so acceleration need not arise from a separate dark-energy component.",
+        "theoryIds": [
+          "f-r-gravity",
+          "horndeski-gravity",
+          "unimodular-gravity"
+        ]
+      }
+    ],
+    "keyAssumptions": [
+      "The background cosmological model and datasets combined in a parameter fit.",
+      "The parameterization used for time-varying dark energy and the priors imposed.",
+      "Whether deviations from general relativity are screened or otherwise suppressed in local tests."
+    ],
+    "formulaIds": [
+      "friedmann",
+      "metric-fr-field-equation"
+    ],
+    "evidenceIds": [
+      "ev-desi-dr2-2025"
+    ],
+    "questionIds": [],
+    "developmentIds": [
+      "desi-y1-bao-cosmology-2024",
+      "desi-dr2-bao-cosmology-2025",
+      "desi-lya-fullshape-2026"
+    ],
+    "developmentContext": "The current DESI sequence tightens the expansion-history comparison. Its combined-data preference for evolving dark energy is explicitly model- and dataset-dependent rather than a model-independent discovery.",
+    "sourceIds": [
+      "planck-cosmology-2020",
+      "ratra-peebles-1988",
+      "desi-y1-cosmology-2024",
+      "desi-dr2-cosmology-2025",
+      "desi-dr2-lya-2026",
+      "fr-review-2010",
+      "horndeski-1974"
+    ],
+    "currentStatus": "ΛCDM remains the standard phenomenological baseline. Current precision data motivate serious tests of evolving dark energy and modified gravity, but they do not yet identify a unique new component or demonstrate a dataset-independent failure of a cosmological constant.",
+    "openIssues": [
+      "Determine whether apparent evolution survives additional data, calibration and model choices.",
+      "Explain the small observed acceleration scale and its relation to vacuum-energy expectations.",
+      "Discriminate dynamical fields from modified-gravity explanations using growth, lensing and expansion observables."
+    ]
+  },
+  {
+    "id": "nuclear-many-body",
+    "name": "Nuclear many-body structure",
+    "shortQuestion": "How do nuclear forces and many-body correlations generate the spectra, shapes, reactions and bulk properties of finite nuclei across the chart of nuclides?",
+    "whyItMatters": "Nuclei sit in an intermediate strongly interacting regime where the underlying QCD theory is not directly solved for most observables. Predictive nuclear structure therefore depends on systematically connecting effective interactions and many-body approximations to finite nuclei with controlled uncertainties.",
+    "establishedBackground": [
+      "Shell-model, collective and mean-field frameworks capture complementary aspects of finite-nucleus structure.",
+      "Ab initio methods such as no-core shell model and in-medium SRG target increasingly direct many-body solutions within defined model spaces and interaction truncations.",
+      "Chiral and pionless nuclear EFT organize low-energy interactions and uncertainty expansions in appropriate regimes.",
+      "No single many-body method is uniformly optimal across all mass numbers, deformation regimes, continuum couplings and reaction observables."
+    ],
+    "approachGroups": [
+      {
+        "name": "Configuration and collective models",
+        "description": "Use selected many-body spaces or collective coordinates to organize low-energy spectra and structure.",
+        "theoryIds": [
+          "nuclear-shell-model",
+          "nuclear-collective-model",
+          "no-core-shell-model"
+        ]
+      },
+      {
+        "name": "Mean-field and quasiparticle methods",
+        "description": "Use energy-density or covariant mean fields, often with pairing, for medium and heavy nuclei.",
+        "theoryIds": [
+          "nuclear-dft",
+          "nuclear-hfb",
+          "relativistic-mean-field-nuclear"
+        ]
+      },
+      {
+        "name": "Ab initio transformations",
+        "description": "Decouple many-body sectors through systematically evolved Hamiltonians and truncations.",
+        "theoryIds": [
+          "in-medium-srg"
+        ]
+      },
+      {
+        "name": "Low-energy interactions",
+        "description": "Organize nuclear forces and observables through effective-field-theory expansions.",
+        "theoryIds": [
+          "chiral-nuclear-eft",
+          "pionless-nuclear-eft"
+        ]
+      }
+    ],
+    "keyAssumptions": [
+      "The adopted nuclear interaction and its resolution scale/effective-field-theory truncation.",
+      "The many-body model space and truncation used for induced operators and correlations.",
+      "Treatment of continuum coupling, deformation, pairing and three-body or higher interactions."
+    ],
+    "formulaIds": [
+      "nuclear-model-space-eigenproblem",
+      "nuclear-edf-decomposition",
+      "nuclear-hfb-quasiparticles",
+      "imsrg-flow-equation",
+      "chiral-nuclear-power-counting",
+      "pionless-effective-range",
+      "covariant-nuclear-dirac"
+    ],
+    "evidenceIds": [],
+    "questionIds": [
+      "rq-nuclear-hfb",
+      "rq-in-medium-srg"
+    ],
+    "developmentIds": [],
+    "developmentContext": "The current DevelopmentEvent seed set does not track a representative nuclear-structure result; future additions should use a dedicated nuclear review rather than borrowing events from other domains.",
+    "sourceIds": [
+      "wave3-shell-review-2019",
+      "wave3-bohr-collective-1953",
+      "wave3-nuclear-meanfield-review-2003",
+      "wave3-hergert-imsrg-2016",
+      "wave3-nuclear-eft-review-2020"
+    ],
+    "currentStatus": "Several nuclear many-body methods are quantitatively successful in overlapping regions, but predictive coverage with controlled uncertainties across all nuclei and observables remains an active computational and theoretical challenge.",
+    "openIssues": [
+      "Control truncation and interaction uncertainties while extending calculations to heavier and more weakly bound nuclei.",
+      "Treat continuum, deformation and collective correlations consistently with ab initio interactions.",
+      "Connect structure calculations to reactions and electroweak observables with consistently evolved operators."
+    ]
+  },
+  {
+    "id": "strong-cp",
+    "name": "Strong CP problem",
+    "shortQuestion": "Why is CP violation from the QCD vacuum angle so small, and what mechanism—if any—dynamically enforces that smallness?",
+    "whyItMatters": "QCD permits a CP-violating vacuum parameter, yet strong-interaction CP violation is experimentally constrained to be tiny. The mismatch is a naturalness problem and motivates mechanisms that can introduce new particles or symmetries with independent experimental consequences.",
+    "establishedBackground": [
+      "Non-Abelian gauge theory admits topologically distinct sectors and θ-vacuum structure.",
+      "A generic QCD θ term would violate CP; empirical limits require the physically relevant strong-CP phase to be very small.",
+      "The Peccei–Quinn mechanism promotes the effective angle to a dynamical field whose relaxation can suppress strong CP violation.",
+      "The associated axion is a well-motivated consequence of the mechanism, not an experimentally established particle."
+    ],
+    "approachGroups": [
+      {
+        "name": "QCD topological structure",
+        "description": "Provides the nonperturbative vacuum structure in which the CP-violating angle appears.",
+        "theoryIds": [
+          "qcd",
+          "yang-mills-instantons"
+        ]
+      },
+      {
+        "name": "Dynamical relaxation",
+        "description": "Introduces a global symmetry whose breaking makes the effective QCD angle dynamical.",
+        "theoryIds": [
+          "peccei-quinn"
+        ]
+      },
+      {
+        "name": "Axion consequence and searches",
+        "description": "Tracks the pseudoscalar degree of freedom generated by Peccei–Quinn symmetry breaking.",
+        "theoryIds": [
+          "axion"
+        ]
+      }
+    ],
+    "keyAssumptions": [
+      "The nonperturbative QCD vacuum structure and definition of the physical CP-violating phase.",
+      "Whether a Peccei–Quinn-like global symmetry exists and how it is broken.",
+      "The axion decay constant, cosmological history and possible ultraviolet corrections to the symmetry."
+    ],
+    "formulaIds": [
+      "qcd-lagrangian",
+      "axial-anomaly"
+    ],
+    "evidenceIds": [],
+    "questionIds": [],
+    "developmentIds": [],
+    "developmentContext": "The current reviewed DevelopmentEvent set does not yet include a representative axion/strong-CP search result; adding one requires a dedicated evidence pass.",
+    "sourceIds": [
+      "gross-wilczek-1973",
+      "politzer-1973",
+      "wave3-bpst-1975",
+      "peccei-quinn-1977",
+      "weinberg-axion-1978"
+    ],
+    "currentStatus": "The smallness of strong CP violation remains unexplained within the minimal QCD parameter set. Peccei–Quinn/axion physics is a leading solution class, but neither the axion nor a unique alternative mechanism has been established experimentally.",
+    "openIssues": [
+      "Discover or exclude axion parameter space across complementary laboratory, astrophysical and cosmological searches.",
+      "Understand whether ultraviolet physics preserves the quality of a Peccei–Quinn solution.",
+      "Clarify viable non-axion solutions and their experimentally distinguishable consequences."
+    ]
+  }
+]);
