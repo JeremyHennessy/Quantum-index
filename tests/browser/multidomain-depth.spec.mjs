@@ -48,7 +48,7 @@ test('new Evidence records keep experiment and inference boundaries visible',asy
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   for(const [search,phrase,limit] of [
     ['Mott','superfluid','every optical-lattice realization'],
-    ['Rabi','square roots','ideal lossless Jaynes–Cummings Hamiltonian'],
+    ['discrete photon-number','square roots','ideal lossless Jaynes–Cummings Hamiltonian'],
     ['Cassini','gamma = 1','every scalar–tensor theory']
   ]){
     await page.goto('/#/evidence?search='+encodeURIComponent(search));
