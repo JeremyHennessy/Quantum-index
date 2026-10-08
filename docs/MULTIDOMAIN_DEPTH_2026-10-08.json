@@ -71,5 +71,9 @@
     "formulas.js": "// 2026-10-08 multidomain formula-depth batch.",
     "evidence.js": "// 2026-10-08 multidomain depth sources and empirical constraints.",
     "passports.js": "// 2026-10-08 multidomain Theory Passports."
-  }
+  },
+  "closedGapTheoryIds": [
+    "neutrino-mixing",
+    "brans-dicke"
+  ]
 }
