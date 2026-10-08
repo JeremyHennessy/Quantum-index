@@ -1,5 +1,5 @@
 import {bellReview,restoreBellFormula} from './bell-metadata-baseline.mjs';
-import {priorDepthFormulas,priorDepthEvidence} from './multidomain-depth-baseline.mjs';
+import {priorDepthFormulas,priorDepthEvidence,verifyDepthFileSha256} from './multidomain-depth-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -29,7 +29,7 @@ test('reconciliation preserves every baseline theory, formula, profile and Passp
   if(lattice.updatedFiles[file])assert.equal(lattice.previousFiles[file],followup.updatedFiles[file]||expected,`${file}: lattice predecessor`);
   if(amo.updatedFiles[file])assert.equal(amo.previousFiles[file],lattice.updatedFiles[file]||followup.updatedFiles[file]||expected,`${file}: AMO predecessor`);
   if(bellReview.updatedFiles[file])assert.equal(bellReview.previousFiles[file],amo.updatedFiles[file]||lattice.updatedFiles[file]||followup.updatedFiles[file]||expected,`${file}: retained predecessor`);
-  assert.equal(hash(fs.readFileSync(file)),bellReview.updatedFiles[file]||amo.updatedFiles[file]||lattice.updatedFiles[file]||followup.updatedFiles[file]||expected,file);
+  verifyDepthFileSha256(file,bellReview.updatedFiles[file]||amo.updatedFiles[file]||lattice.updatedFiles[file]||followup.updatedFiles[file]||expected);
  }
 });
 
