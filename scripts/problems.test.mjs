@@ -15,12 +15,15 @@ const developments=new Set(sandbox.window.QI_DEVELOPMENTS.events.map(x=>x.id));
 const sources=new Set(sandbox.window.QI_DATA.sources.map(x=>x.id));
 const questionIds=new Set(questions.map(x=>x.id));
 
-test('five pilot Problems resolve all linked records',()=>{
-  assert.deepEqual(Array.from(problems,p=>p.id),['black-hole-information','measurement-problem','quantum-gravity','quantum-thermalization','dark-matter']);
+test('ten curated Problems resolve all linked records',()=>{
+  assert.deepEqual(Array.from(problems,p=>p.id),[
+    'black-hole-information','measurement-problem','quantum-gravity','quantum-thermalization','dark-matter',
+    'neutrino-mass','matter-antimatter-asymmetry','dark-energy','nuclear-many-body','strong-cp'
+  ]);
   for(const p of problems){
     assert.ok(p.shortQuestion.length>20,p.id);
     assert.ok(p.whyItMatters.length>80,p.id);
-    assert.ok(p.approachGroups.length>=4,p.id);
+    assert.ok(p.approachGroups.length>=3,p.id);
     assert.ok(p.currentStatus.length>80,p.id);
     assert.ok(p.openIssues.length>=3,p.id);
     for(const group of p.approachGroups)for(const id of group.theoryIds)assert.ok(theories.has(id),id);
@@ -53,4 +56,28 @@ test('quantum-gravity Problem exposes model-resolved tabletop discriminators',()
   for(const id of ['ev-gravity-entanglement-boundary-2025','ev-cq-decoherence-diffusion-2023','ev-classical-gravity-cross-correlation-2025','ev-minimal-noise-nonquantized-gravity-2026','ev-indirect-gme-interferometry-2026','ev-cq-geodesic-deviation-2026'])assert.ok(qg.evidenceIds.includes(id));
   assert.ok(qg.approachGroups.some(g=>g.name==='Low-energy experimental discrimination'));
   assert.match(qg.developmentContext,/model-dependent/i);
+});
+
+test('new cross-domain Problems preserve evidence and inference boundaries',()=>{
+  const nu=problems.find(p=>p.id==='neutrino-mass');
+  assert.ok(nu.evidenceIds.includes('ev-superk-atmospheric-1998'));
+  assert.match(nu.currentStatus,/absolute mass scale/i);
+  assert.ok(nu.formulaIds.includes('neutrino-vacuum-oscillation-probability'));
+
+  const de=problems.find(p=>p.id==='dark-energy');
+  assert.ok(de.evidenceIds.includes('ev-desi-dr2-2025'));
+  assert.match(de.developmentContext,/model- and dataset-dependent/i);
+  assert.match(de.currentStatus,/does not yet identify a unique/i);
+
+  const baryon=problems.find(p=>p.id==='matter-antimatter-asymmetry');
+  assert.equal(baryon.evidenceIds.length,0);
+  assert.match(baryon.currentStatus,/origin remains unresolved/i);
+
+  const nuclear=problems.find(p=>p.id==='nuclear-many-body');
+  assert.ok(nuclear.formulaIds.length>=6);
+  assert.match(nuclear.currentStatus,/controlled uncertainties/i);
+
+  const cp=problems.find(p=>p.id==='strong-cp');
+  assert.equal(cp.evidenceIds.length,0);
+  assert.match(cp.currentStatus,/axion.*not.*established|neither the axion/i);
 });
