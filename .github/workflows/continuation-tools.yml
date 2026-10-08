@@ -1,55 +1,42 @@
-name: Independently verify multidomain depth candidate
+name: Regenerate corrected multidomain depth artifacts
 on:
   push:
     branches: [agent/continuation-tools-20261007]
 permissions:
-  contents: read
+  contents: write
 jobs:
-  verify:
+  generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 18
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 1077631ba3f4cebfc66901ea7a6e467e665461da
-          persist-credentials: false
+          fetch-depth: 0
+          ref: agent/multidomain-depth-20261008
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Verify exact candidate identity
+      - name: Pin candidate and predecessor
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD)" = 1077631ba3f4cebfc66901ea7a6e467e665461da
-          test "$(git rev-parse HEAD^{tree})" = 1acd93a914d65cc91a72d2340dc98ed450bd02ac
-          test "$(git rev-parse HEAD~13)" || true
-          mkdir -p verification
-          git rev-parse HEAD > verification/tested-commit.txt
-          git rev-parse HEAD^{tree} > verification/tested-tree.txt
-      - name: Run full Node data and generated-artifact checks
+          test "$(git rev-parse HEAD)" = b206a92fd8115849b9a9960f10e846f78b2c7914
+          test "$(git rev-parse origin/main)" = 483d507225c2632a995c9c6317cb0f690c20d920
+      - name: Regenerate derived outputs only
         run: |
           set -euo pipefail
-          npm ci --ignore-scripts
-          npm test 2>&1 | tee verification/node-tests.log
-          npm run validate 2>&1 | tee verification/data-validation.log
-      - name: Run complete Chromium and WebKit suite in pinned official image
+          node scripts/coverage-report.mjs
+          node scripts/freshness-report.mjs
+          node scripts/version-assets.mjs
+          node scripts/coverage-report.mjs --check
+          node scripts/freshness-report.mjs --check
+          node scripts/version-assets.mjs --check
+      - name: Commit generated outputs
         run: |
           set -euo pipefail
-          IMAGE=mcr.microsoft.com/playwright@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27
-          timeout 180 docker pull "$IMAGE"
-          docker image inspect "$IMAGE" --format '{{json .RepoDigests}}' > verification/browser-image.json
-          printf "import config from './playwright.config.mjs';\nexport default {...config,webServer:undefined};\n" > .independent-playwright.config.mjs
-          python3 -m http.server 4173 --bind 127.0.0.1 > verification/server.log 2>&1 &
-          SERVER_PID=$!
-          trap 'kill "$SERVER_PID" || true' EXIT
-          for n in $(seq 1 30); do curl --fail --silent http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
-          timeout 720 docker run --rm --ipc=host --network=host -e CI=true -v "$PWD:/work" -w /work "$IMAGE" npx playwright test --config=.independent-playwright.config.mjs
-          git diff --exit-code
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: multidomain-depth-exact-verification
-          path: |
-            verification/
-            playwright-report/
-            test-results/
-          retention-days: 14
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md docs/COVERAGE.md docs/FORMULA_AUDIT.md docs/FORMULA_COVERAGE.md docs/RELATION_PROVENANCE.md docs/RESEARCH_PROFILES.md docs/coverage.json docs/FRESHNESS.md docs/freshness.json index.html docs/responsive-check.html
+          git diff --cached --check
+          if git diff --cached --quiet; then echo "No generated changes"; exit 0; fi
+          git commit -m 'Regenerate corrected multidomain depth derived artifacts'
+          git push origin HEAD:refs/heads/agent/multidomain-depth-20261008
