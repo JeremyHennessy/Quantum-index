@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
-import {multidomainReview,priorDepthSources} from './multidomain-depth-baseline.mjs';
+import {multidomainReview,priorDepthSources,verifyDepthFileSha256} from './multidomain-depth-baseline.mjs';
 const ledger=JSON.parse(fs.readFileSync('docs/RELATION_PROMOTIONS_2026-10-07.json','utf8'));
 const sandbox={window:{}};vm.createContext(sandbox);
 for(const file of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js']) vm.runInContext(fs.readFileSync(file,'utf8'),sandbox);
@@ -48,7 +48,7 @@ test('new count changes exactly match four promotions and one new primary paper'
 });
 test('approved presentation/workspace/formula/other source files remain byte-identical',()=>{
   for(const [path,expected] of Object.entries(ledger.untouchedFileHashes)){
-    assert.equal(createHash('sha256').update(fs.readFileSync(path)).digest('hex'),expected,path);
+    verifyDepthFileSha256(path,expected);
   }
 });
 test('evidence notes prohibit unsupported universal equivalences',()=>{
