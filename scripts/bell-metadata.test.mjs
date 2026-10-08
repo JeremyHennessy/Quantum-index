@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import {bellReview as ledger,restoreBellFormula,fingerprint} from './bell-metadata-baseline.mjs';
-import {priorDepthFormulas,priorDepthPassports,priorDepthCoverage} from './multidomain-depth-baseline.mjs';
+import {priorDepthFormulas,priorDepthPassports,priorDepthCoverage,verifyDepthFileSha256} from './multidomain-depth-baseline.mjs';
 import {priorRelations,priorSources,verifyFileTransition} from './relation-review-baseline.mjs';
 const c={window:{}};vm.createContext(c);
 for(const file of ['theories.js','developments.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','evidence.js','passports.js','workspace.js'])vm.runInContext(fs.readFileSync(file,'utf8'),c);
@@ -22,7 +22,7 @@ test('Bell review changes exactly four metadata records, preserving every equati
  }
  for(const [file,sha] of Object.entries({...ledger.untouchedFiles,...ledger.updatedFiles})){
   if(file==='theories.js')verifyFileTransition(file,sha);
-  else assert.equal(createHash('sha256').update(fs.readFileSync(file)).digest('hex'),sha,file);
+  else verifyDepthFileSha256(file,sha);
  }
  for(const id of ids){const f=get(id),before=ledger.formulaEdits[id].before;
   for(const key of ['id','name','latex','plain','theoryIds','category','tags'])assert.deepEqual(JSON.parse(JSON.stringify(f[key])),before[key],`${id}/${key}`);
