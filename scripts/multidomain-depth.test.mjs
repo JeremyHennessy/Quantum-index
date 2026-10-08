@@ -19,7 +19,7 @@ test('multidomain batch is additive and preserves protected application/scientif
   for(const path of ['theories.js','app.js','styles.css','workspace.js','profiles.js','questions.js','problems.js','developments.js','package.json','package-lock.json','.github/workflows/validate.yml']){
     verifyDepthFile(path,ledger.baselineBlobSha[path]);
   }
-  for(const path of Object.keys(ledger.appendedMarkers))assertAppendedOnly(path);
+  for(const path of Object.keys(ledger.appendedMarkers))verifyDepthFile(path,ledger.baselineBlobSha[path]);
   assert.equal(w.QI_DATA.theories.length,ledger.expectedCounts.theories);
   assert.equal(w.QI_DATA.relations.length,ledger.expectedCounts.relations);
   assert.equal(new Set(w.QI_DATA.theories.map(x=>x.id)).size,w.QI_DATA.theories.length);

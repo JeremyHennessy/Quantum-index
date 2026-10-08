@@ -8,7 +8,7 @@ test('multidomain Passports compare across matter particle gravity and electroni
     await expect(table.locator(`[data-comparison-passport="${id}"]`).first()).toContainText('2026-10-08');
   }
   await expect(table).toContainText('Fundamental objects / degrees of freedom');
-  await expect(table).toContainText('Evidence / constraints');
+  await expect(table).toContainText('Evidence in the cited work');
   for(const width of [1280,320]){
     await page.setViewportSize({width,height:900});await table.evaluate(el=>el.scrollIntoView({block:'start'}));
     expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
@@ -52,9 +52,9 @@ test('new Evidence records keep experiment and inference boundaries visible',asy
     ['Cassini','gamma = 1','every scalar–tensor theory']
   ]){
     await page.goto('/#/evidence?search='+encodeURIComponent(search));
-    const card=page.locator('#evidenceList .evidence-card').first();await expect(card).toBeVisible();await expect(card).toContainText(phrase);await expect(card).toContainText(limit);
+    const card=page.locator('#evidenceGrid .evidence-card').first();await expect(card).toBeVisible();await expect(card).toContainText(phrase);await expect(card).toContainText(limit);
   }
-  await page.setViewportSize({width:320,height:900});await page.goto('/#/evidence?search=Cassini');await page.locator('#evidenceList').evaluate(el=>el.scrollIntoView({block:'start'}));
+  await page.setViewportSize({width:320,height:900});await page.goto('/#/evidence?search=Cassini');await page.locator('#evidenceGrid').evaluate(el=>el.scrollIntoView({block:'start'}));
   const path=info.outputPath('cassini-evidence-mobile.png');await page.screenshot({path});await info.attach('cassini-evidence-mobile',{path,contentType:'image/png'});
   expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
   expect(errors).toEqual([]);
