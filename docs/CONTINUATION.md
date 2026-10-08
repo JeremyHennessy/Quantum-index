@@ -1,6 +1,27 @@
 # Quantum Index — current continuation plan
 
-Updated 7 October 2026. This is the single continuation entry point; dated release/research notes remain the audit trail.
+Updated 8 October 2026. This is the single continuation entry point; dated release/research notes remain the audit trail. Runtime counts below are generated and checked by CI.
+
+## Current inventory (generated; not a scientific quality score)
+
+<!-- coverage:start -->
+- **59** cited reading profiles and **5** learning paths
+- **23** Theory Passports, **5** scientific Problems, **16** Evidence records and **60** structured Research Questions
+- **481** theory/framework entities across **14** categories
+- **549** bibliography records
+- **352** primary-sourced; **129** review-sourced; **0** catalogued-only entries
+- **610** relationships: **122** source-backed; **488** editorial
+- **41** thought trees
+- **405** formulas across **29** categories
+- **272** entries with linked formulas; **163** documented formula gaps
+- Other audit classes: **11** interpretations, **16** conceptual, **18** theorem-first, **1** thought experiment
+- Formula metadata: **150** explicitly reviewed; **255** baseline records
+- **16** reviewed DevelopmentEvents through **2026**
+
+Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.
+<!-- coverage:end -->
+
+This block is generated from shipped runtime data by `scripts/coverage-report.mjs`; the existing CI coverage check fails if it drifts. Historical release-specific counts remain in the dated receipts, not in this active plan.
 
 ## Verified preceding release
 
@@ -37,18 +58,18 @@ PR #67 promoted exactly four existing editorial directional edges after relation
 
 Do not re-add the four promoted edges or convert remaining editorial links by inference from node-level sources. Future provenance rounds should continue source-specific directional review and intentionally leave useful conceptual overlaps editorial when no publication establishes the claimed direction.
 
-## Prepared multidomain scientific-depth release (2026-10-08)
+## Merged multidomain scientific-depth release (2026-10-08)
 
-Seven comparison-ready Passports, three source-located formulas, six source records and three Evidence records are prepared across many-body physics, AMO, quantum chemistry/electronic structure, neutrino physics and scalar–tensor gravity. The two formula closures move the runtime gap census from 165 to 163 without adding theory entities. Read `RELEASE_MULTIDOMAIN_DEPTH_2026-10-08.md` and `MULTIDOMAIN_DEPTH_2026-10-08.json`.
+PR #69 merged as `b8827b151d46a7332e062e76a36ab6271d621c46`, adding seven comparison-ready Passports, three source-located formulas, six source records and three Evidence records across many-body physics, AMO, quantum chemistry/electronic structure, neutrino physics and scalar–tensor gravity. The two formula closures reduce documented gaps by two without adding theory entities. The merged commit preserves the renderer, styles, workspace, theory identities and relationship identities. Read `RELEASE_MULTIDOMAIN_DEPTH_2026-10-08.md` and `MULTIDOMAIN_DEPTH_2026-10-08.json`.
 
-This candidate is **not** treated as released until the exact PR head passes the complete Node/data/generated-report suite and Chromium/WebKit acceptance, screenshots are inspected, the merge tree matches the tested tree, Pages deploys that merge, and fresh hosted checks pass. Existing UI, workspace semantics, theories and relationship identities remain locked.
+The exact PR head passed 116 Node checks, the full 50-test Chromium/WebKit suite, and a separate pinned-image 50-test independent browser suite. The native Pages workflow reported deployment success on the merged SHA. Keep post-merge validation and fresh hosted-route/asset verification as separate acceptance evidence; green PR tests and a successful deployment event alone do not establish all hosted behavior. Existing UI and workspace semantics remain locked.
 
 ## Product and curation queue
 
-1. After the multidomain candidate is verified, continue Passport depth beyond 23 records using the same source-scoped comparison workflow; next hubs should fill quantum information, black-hole/cosmology, nuclear and additional chemistry/many-body gaps rather than duplicate this batch.
-2. Continue coherent source-located formula and metadata batches; never attach an arbitrary equation simply to reduce a gap counter. Candidate documented formula gaps: 163; baseline metadata records remain 255. Fano, steering, Bell/CHSH and the recent lattice representatives are already implemented; do not duplicate them.
+1. Continue Passport depth beyond the generated count above using the same source-scoped comparison workflow; next hubs should fill quantum information, black-hole/cosmology, nuclear and additional chemistry/many-body gaps rather than duplicate this batch.
+2. Continue coherent source-located formula and metadata batches; never attach an arbitrary equation simply to reduce a gap counter. Use the generated inventory above for the current formula-gap and baseline-metadata counts. Fano, steering, Bell/CHSH and the recent lattice representatives are already implemented; do not duplicate them.
 3. Review baseline formula metadata and equation-level source locations in bounded, explicitly recorded batches. An `explicit` label does not certify the entire paper.
-4. Continue bounded relationship-provenance rounds only when a citation establishes the precise directional relation; the current verified count is 122 source-backed / 488 editorial.
+4. Continue bounded relationship-provenance rounds only when a citation establishes the precise directional relation; use the current sourced/editorial counts in the generated inventory above.
 5. Expand reading profiles, Passports and Evidence where they support major learning paths and useful comparisons; do not drift into gravity-only coverage.
 6. Reconcile the September 27 PBS-discovery audit against actual current catalog identities before adding duplicate cosmological frameworks.
 7. Continue the gravity model-by-observable matrix as a research product. Track source-supported predictions, parameter dependence, non-derived cells and disputes. A finite matrix is not exhaustive and must not claim universal model exclusions.
