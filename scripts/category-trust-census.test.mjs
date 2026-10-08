@@ -53,5 +53,7 @@ test('overlapping relation and formula counts remain identified as non-additive,
   assert.match(census.countingRules.linkedFormulaRecords,/cross-category links may be counted in multiple rows/);
   assert.match(census.countingRules.latestRecordedTheoryReview,/not a guarantee/);
   assert.ok(census.categories.some(c=>c.incidentRelations>c.sourcedIncidentRelations));
+  assert.ok(census.categories.some(c=>c.latestRecordedTheoryReview!==null),'Expected real recorded theory review dates');
+  for(const c of census.categories)if(c.latestRecordedTheoryReview!==null)assert.match(c.latestRecordedTheoryReview,/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/);
   assert.throws(()=>buildCategoryTrustCensus({}),/Missing required runtime collections/);
 });
