@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: a1bbbad32684084a3fba057606d3903a7639c34a
+          ref: 1c1cf6a8636b54b55f88416c187494e9247d9a14
           fetch-depth: 0
           persist-credentials: false
       - uses: actions/setup-node@v4
@@ -20,7 +20,7 @@ jobs:
       - name: Verify exact candidate and install locked JS dependencies
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD)" = a1bbbad32684084a3fba057606d3903a7639c34a
+          test "$(git rev-parse HEAD)" = 1c1cf6a8636b54b55f88416c187494e9247d9a14
           test "$(git rev-parse origin/main)" = 483d507225c2632a995c9c6317cb0f690c20d920
           test "$(node -p "require('./package.json').devDependencies['@playwright/test']")" = "1.63.0"
           npm ci --ignore-scripts
