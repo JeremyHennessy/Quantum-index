@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import {multidomainReview,priorDepthSources,verifyDepthFileSha256} from './multidomain-depth-baseline.mjs';
+import {priorNewRelations} from './relation-promotions-20261008-baseline.mjs';
 const ledger=JSON.parse(fs.readFileSync('docs/RELATION_PROMOTIONS_2026-10-07.json','utf8'));
 const sandbox={window:{}};vm.createContext(sandbox);
 for(const file of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js']) vm.runInContext(fs.readFileSync(file,'utf8'),sandbox);
@@ -27,7 +28,7 @@ test('selected directional relations have the audited source-specific proof and 
   }
 });
 test('every prior relationship except the four audited promotions is byte-for-byte restored',()=>{
-  const oldRelations=data.relations.map(x=>{
+  const oldRelations=priorNewRelations(data.relations).map(x=>{
     const prior=ledger.updates.find(u=>ids(u.prior)===ids(x));
     return prior?prior.prior:x;
   });
@@ -40,10 +41,11 @@ test('every prior relationship except the four audited promotions is byte-for-by
 });
 test('new count changes exactly match four promotions and one new primary paper',()=>{
   assert.equal(data.sources.length,543+multidomainReview.addedSourceIds.length);
-  assert.equal(data.relations.filter(r=>r.sourceIds.length).length,122);
-  assert.equal(data.relations.filter(r=>r.confidence==='editorial').length,488);
-  assert.equal(data.relations.filter(r=>r.confidence==='high').length,101);
-  assert.equal(data.relations.filter(r=>r.confidence==='medium').length,21);
+  const old=priorNewRelations(data.relations);
+  assert.equal(old.filter(r=>r.sourceIds.length).length,122);
+  assert.equal(old.filter(r=>r.confidence==='editorial').length,488);
+  assert.equal(old.filter(r=>r.confidence==='high').length,101);
+  assert.equal(old.filter(r=>r.confidence==='medium').length,21);
   assert.equal(data.theories.length,481);
 });
 test('approved presentation/workspace/formula/other source files remain byte-identical',()=>{
