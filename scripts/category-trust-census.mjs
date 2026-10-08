@@ -38,7 +38,7 @@ export function buildCategoryTrustCensus(w) {
     const linkedFormulas=formulas.filter(f=>f.theoryIds.some(id=>ids.has(id)));
     const touchingEdges=relations.filter(r=>ids.has(r.from)||ids.has(r.to));
     const evidenceRecords=evidence.filter(r=>r.relatedTheoryIds.some(id=>ids.has(id)));
-    const datedReviews=nodes.map(t=>t.lastReviewed).filter(d=>/^\\d{4}-\\d{2}-\\d{2}$/.test(d||'')).sort();
+    const datedReviews=nodes.map(t=>t.lastReviewed).filter(d=>/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(d||'')).sort();
     return {
       category:name,
       theories:nodes.length,
