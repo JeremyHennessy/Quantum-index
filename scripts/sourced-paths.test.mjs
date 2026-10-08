@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import {readGraph,shortestDocumentedPath} from './sourced-paths.mjs';
 
 const node=id=>({id,name:id,category:'test'});
@@ -69,8 +70,9 @@ test('live graph path reproduces a specific documented promotion without inferri
 
 test('reported live source-backed counts reflect source-bearing actual relationships',()=>{
   const graph=readGraph();
+  const authoritative=JSON.parse(fs.readFileSync('docs/coverage.json','utf8'));
   const eligible=graph.relations.filter(r=>r.sourceIds.length&&['high','medium'].includes(r.confidence)&&r.evidenceType!=='editorial relation');
-  assert.equal(graph.relations.length,610);
-  assert.equal(eligible.length,122);
-  assert.ok(graph.sources.length>=549);
+  assert.equal(graph.relations.length,authoritative.relations);
+  assert.equal(eligible.length,authoritative.sourcedRelations);
+  assert.equal(graph.sources.length,authoritative.sources);
 });
