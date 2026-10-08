@@ -2,8 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
-import {createHash} from 'node:crypto';
 
+import {verifyDepthFile} from './multidomain-depth-baseline.mjs';
 const ledger=JSON.parse(fs.readFileSync('docs/MULTIDOMAIN_DEPTH_2026-10-08.json','utf8'));
 const files=['theories.js','developments.js','formulas.js','formula-audit.js','profiles.js','questions.js','evidence.js','problems.js','passports.js','workspace.js'];
 const sandbox={window:{}};vm.createContext(sandbox);
@@ -13,22 +13,11 @@ const formula=id=>w.QI_FORMULAS.formulas.find(f=>f.id===id);
 const evidence=id=>w.QI_EVIDENCE.records.find(e=>e.id===id);
 const passport=id=>w.QI_PASSPORTS.records.find(p=>p.theoryId===id);
 
-function gitBlobSha(bytes){
-  const b=Buffer.isBuffer(bytes)?bytes:Buffer.from(bytes);
-  return createHash('sha1').update(Buffer.concat([Buffer.from('blob '+b.length+'\\0'),b])).digest('hex');
-}
-function assertAppendedOnly(path){
-  const text=fs.readFileSync(path,'utf8'),marker=ledger.appendedMarkers[path],at=text.indexOf(marker);
-  assert.ok(at>0,path+': release marker missing');
-  const prefix=text.slice(0,at);
-  const candidates=Array.from({length:5},(_,n)=>prefix.slice(0,Math.max(0,prefix.length-n)));
-  assert.ok(candidates.some(c=>gitBlobSha(c)===ledger.baselineBlobSha[path]),path+': content before additive block changed');
-}
 function near(a,b,eps=1e-12){assert.ok(Math.abs(a-b)<eps,Math.abs(a-b)+' >= '+eps);}
 
 test('multidomain batch is additive and preserves protected application/scientific files',()=>{
   for(const path of ['theories.js','app.js','styles.css','workspace.js','profiles.js','questions.js','problems.js','developments.js','package.json','package-lock.json','.github/workflows/validate.yml']){
-    assert.equal(gitBlobSha(fs.readFileSync(path)),ledger.baselineBlobSha[path],path);
+    verifyDepthFile(path,ledger.baselineBlobSha[path]);
   }
   for(const path of Object.keys(ledger.appendedMarkers))assertAppendedOnly(path);
   assert.equal(w.QI_DATA.theories.length,ledger.expectedCounts.theories);
