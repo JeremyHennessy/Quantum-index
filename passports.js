@@ -626,3 +626,276 @@ window.QI_PASSPORTS.records.push({
   ],
   "reviewedAt": "2026-10-07"
 });
+
+
+// 2026-10-08 multidomain Theory Passports.
+window.QI_PASSPORTS.records.push(...[
+  {
+    "theoryId": "bose-hubbard",
+    "problemIds": [],
+    "entityType": "lattice many-body model",
+    "scientificStatus": "established model with controlled experimental realizations",
+    "coreIdea": "Bosons hopping on a lattice compete with local repulsion, producing delocalized superfluid and number-localized Mott-insulating regimes.",
+    "degreesOfFreedom": "Bosonic creation/annihilation operators on lattice sites, local occupations, hopping amplitudes, on-site interaction energies and optional site offsets.",
+    "assumptions": [
+      "A single-band lattice description is adequate in the representative formula.",
+      "Interactions are predominantly local and the displayed Hamiltonian keeps nearest-neighbor hopping.",
+      "Trap geometry, dimensionality and filling affect the phase diagram and must be specified for quantitative comparisons."
+    ],
+    "mathematicalStructure": "Interacting lattice-boson Hamiltonian, strong/weak-coupling limits and quantum critical behavior controlled by the hopping-to-interaction competition.",
+    "formulaIds": [
+      "bose-hubbard-lattice"
+    ],
+    "regime": "Low-energy lattice bosons in regimes where a single-band Bose–Hubbard description is justified.",
+    "predictionsConsequences": [
+      "Increasing interaction relative to hopping can drive superfluid–Mott-insulator transitions at commensurate filling.",
+      "The Mott regime has suppressed number fluctuations/phase coherence and an interaction-generated excitation gap in the idealized setting."
+    ],
+    "evidenceIds": [
+      "ev-bose-mott-transition-2002"
+    ],
+    "evidenceSummary": "The 2002 optical-lattice experiment observed a reversible superfluid-to-Mott transition with localization, loss of phase coherence and a gap. That validates the targeted regime, not every Bose–Hubbard approximation.",
+    "limitations": [
+      "Higher bands, long-range interactions, disorder, trapping and finite temperature can require extensions.",
+      "The model does not by itself specify a universal phase boundary across all lattice geometries and dimensions."
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "fisher-bose-hubbard-1989",
+      "jaksch-optical-lattice-1998",
+      "greiner-mott-2002"
+    ],
+    "reviewedAt": "2026-10-08"
+  },
+  {
+    "theoryId": "jaynes-cummings",
+    "problemIds": [],
+    "entityType": "light–matter model",
+    "scientificStatus": "established approximation with experimentally resolved quantum signatures",
+    "coreIdea": "A two-level emitter coherently exchanges one excitation at a time with a single quantized field mode under the rotating-wave approximation.",
+    "degreesOfFreedom": "One bosonic cavity mode and a two-level emitter, with excitation-number sectors coupled by the light–matter interaction.",
+    "assumptions": [
+      "Single relevant cavity mode and a valid two-level emitter approximation.",
+      "Rotating-wave approximation; drive, damping and additional levels are absent from the canonical Hamiltonian card.",
+      "Near-resonant weak-to-moderate coupling relative to bare frequencies for the canonical approximation."
+    ],
+    "mathematicalStructure": "Exactly block-diagonalizable rotating-wave Hamiltonian with photon-number-dependent dressed-state splittings and coherent Rabi exchange.",
+    "formulaIds": [
+      "jc-hamiltonian",
+      "jc-rabi-frequency"
+    ],
+    "regime": "Cavity/circuit QED and related single-mode two-level systems outside the ultrastrong-coupling regime.",
+    "predictionsConsequences": [
+      "Dressed-state splittings scale with the square root of photon number in the ideal model.",
+      "Vacuum and low-photon-number fields drive resolvable quantum Rabi oscillations."
+    ],
+    "evidenceIds": [
+      "ev-cavity-rabi-1996"
+    ],
+    "evidenceSummary": "Brune et al. resolved photon-number-dependent Rabi frequencies in a high-Q cavity, directly probing field quantization in the regime tested.",
+    "limitations": [
+      "Counter-rotating terms become important in ultrastrong coupling.",
+      "Dissipation, multilevel structure, multimode fields and external drive require open-system or extended models."
+    ],
+    "questionIds": [
+      "rq-jaynes-cummings"
+    ],
+    "developmentIds": [],
+    "sourceIds": [
+      "jaynes-cummings-1963",
+      "he-jaynes-cummings-2012",
+      "brune-rabi-1996"
+    ],
+    "reviewedAt": "2026-10-08"
+  },
+  {
+    "theoryId": "hartree-fock",
+    "problemIds": [],
+    "entityType": "electronic-structure approximation",
+    "scientificStatus": "established mean-field framework",
+    "coreIdea": "Approximate an interacting fermionic state by one optimized antisymmetrized Slater determinant and solve the resulting orbital equations self-consistently.",
+    "degreesOfFreedom": "Occupied one-particle spin orbitals forming a Slater determinant; Coulomb and exchange operators built from those orbitals.",
+    "assumptions": [
+      "Single-determinant ansatz and orthonormal spin orbitals.",
+      "Typical molecular use assumes a nonrelativistic Born–Oppenheimer electronic Hamiltonian.",
+      "Exchange is included within the determinant, while correlation beyond the single determinant is omitted."
+    ],
+    "mathematicalStructure": "Variational optimization of a determinant gives nonlinear self-consistent Fock equations, a Fock operator and a mean-field total energy.",
+    "formulaIds": [
+      "hf-fock-equation",
+      "hf-fock-operator",
+      "hf-energy"
+    ],
+    "regime": "Mean-field electronic structure where a single reference determinant is qualitatively adequate.",
+    "predictionsConsequences": [
+      "Provides self-consistent orbitals and an exchange-aware reference energy.",
+      "Supplies a common reference for post-Hartree–Fock correlation methods."
+    ],
+    "evidenceIds": [],
+    "evidenceSummary": "This Passport is methodological and source-based; it does not attach a single experiment as validation of Hartree–Fock across all chemical systems.",
+    "limitations": [
+      "Dynamical electron correlation is absent and static correlation can invalidate a single-reference description.",
+      "Orbital energies are auxiliary eigenvalues and should not all be interpreted as exact charged excitation energies."
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "bartlett-musial-2007"
+    ],
+    "reviewedAt": "2026-10-08"
+  },
+  {
+    "theoryId": "neutrino-mixing",
+    "problemIds": [],
+    "entityType": "particle-mixing framework",
+    "scientificStatus": "established framework supported by oscillation experiments",
+    "coreIdea": "Weak-interaction flavor states are coherent superpositions of neutrino mass eigenstates; relative propagation phases produce flavor oscillations.",
+    "degreesOfFreedom": "Light neutrino mass eigenstates, flavor production/detection states, a unitary low-energy mixing matrix and mass-squared splittings.",
+    "assumptions": [
+      "The standard practical three-neutrino description treats the light mixing matrix as unitary.",
+      "Vacuum probability cards assume relativistic coherent propagation without matter effects.",
+      "Real experiments average over source spectra, detector resolution and finite baselines."
+    ],
+    "mathematicalStructure": "Unitary basis transformation between flavor and mass states plus phase evolution of distinct masses; interference yields oscillation probabilities and CP-sensitive terms.",
+    "formulaIds": [
+      "neutrino-flavor-mixing-state",
+      "neutrino-vacuum-oscillation-probability"
+    ],
+    "regime": "Standard light-neutrino flavor oscillations; matter propagation and nonstandard interactions require extended evolution equations.",
+    "predictionsConsequences": [
+      "Flavor composition changes with L/E when nonzero mass-squared splittings and mixing are present.",
+      "Three-flavor interference allows CP-sensitive differences between neutrino and antineutrino oscillation probabilities."
+    ],
+    "evidenceIds": [
+      "ev-superk-atmospheric-1998"
+    ],
+    "evidenceSummary": "Atmospheric-neutrino data provide direct evidence for flavor oscillation; the record does not determine the absolute neutrino mass scale or every mixing parameter.",
+    "limitations": [
+      "Oscillations determine mass-squared differences rather than the absolute mass scale.",
+      "The vacuum formula does not include matter effects, decoherence, sterile states or general nonunitarity."
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "mns-1962",
+      "pdg-neutrino-mixing-2026",
+      "superk-atmospheric-1998"
+    ],
+    "reviewedAt": "2026-10-08"
+  },
+  {
+    "theoryId": "brans-dicke",
+    "problemIds": [],
+    "entityType": "alternative classical gravity theory",
+    "scientificStatus": "established scalar–tensor benchmark; strongly constrained in simple constant-parameter form",
+    "coreIdea": "Promote the effective gravitational coupling to a dynamical scalar degree of freedom coupled to spacetime curvature.",
+    "degreesOfFreedom": "A spacetime metric plus a scalar gravitational field; the representative action also records the connection convention and scalar kinetic parameter.",
+    "assumptions": [
+      "The displayed action is a no-potential Brans–Dicke representative in the normalization of the cited scalar–tensor paper.",
+      "Solar-system bounds quoted through PPN gamma apply to the corresponding constant-parameter massless mapping and should not be generalized automatically to all scalar–tensor models.",
+      "Matter coupling and frame/field normalizations must be stated when comparing formulations."
+    ],
+    "mathematicalStructure": "Scalar–tensor gravitational action with nonminimal scalar-curvature coupling and a kinetic term controlled by the Brans–Dicke parameter.",
+    "formulaIds": [
+      "brans-dicke-scalar-tensor-action"
+    ],
+    "regime": "Classical scalar–tensor gravity; the canonical massless constant-parameter benchmark and its close variants.",
+    "predictionsConsequences": [
+      "The scalar modifies post-Newtonian gravity unless its coupling becomes sufficiently weak or the model has additional suppressing structure.",
+      "The general-relativistic limit is approached in the appropriate weak-scalar-coupling parameter regime, subject to model assumptions."
+    ],
+    "evidenceIds": [
+      "ev-cassini-ppn-2003"
+    ],
+    "evidenceSummary": "Cassini strongly constrains deviations of the PPN light-propagation parameter from GR; translating that result into a Brans–Dicke parameter bound is model-dependent and is recorded with that caveat.",
+    "limitations": [
+      "Not a quantum theory of gravity.",
+      "A bound on constant massless Brans–Dicke does not exclude scalar–tensor theories with potentials, environment dependence or screening."
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "brans-dicke-1961",
+      "kozak-wojnar-scalar-tensor-2021",
+      "bertotti-cassini-2003",
+      "fienga-minazzoli-gravity-tests-2024"
+    ],
+    "reviewedAt": "2026-10-08"
+  },
+  {
+    "theoryId": "bcs-theory",
+    "problemIds": [],
+    "entityType": "many-body theory",
+    "scientificStatus": "established theory of conventional superconductivity",
+    "coreIdea": "An effective attraction near the Fermi surface destabilizes the normal state toward a coherent condensate of paired fermions with an excitation gap.",
+    "degreesOfFreedom": "Fermionic quasiparticles near the Fermi surface, pair amplitudes and a superconducting order parameter.",
+    "assumptions": [
+      "Canonical BCS treats a weak-coupling pairing instability with a mean-field-like coherent pair state.",
+      "The simplest formulas assume the conventional pairing channel and a homogeneous equilibrium state.",
+      "Strong-coupling, unconventional or strongly disordered superconductors can require extensions."
+    ],
+    "mathematicalStructure": "Variational paired ground-state ansatz, Bogoliubov quasiparticle transformation, self-consistent gap equation and broken-symmetry mean-field structure.",
+    "formulaIds": [
+      "bcs-wavefunction",
+      "bcs-dispersion",
+      "bcs-gap"
+    ],
+    "regime": "Conventional superconductivity and weak-coupling paired-fermion systems where BCS assumptions are appropriate.",
+    "predictionsConsequences": [
+      "A quasiparticle excitation gap opens below the superconducting transition.",
+      "Coherent Cooper pairing produces characteristic thermodynamic and electromagnetic responses."
+    ],
+    "evidenceIds": [],
+    "evidenceSummary": "The theory is historically well established for conventional superconductors; this Passport does not substitute one experiment for the broader experimental literature.",
+    "limitations": [
+      "Does not automatically describe unconventional pairing mechanisms or strongly correlated superconductors.",
+      "The simplest weak-coupling relations are not universal in strong-coupling or anisotropic systems."
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "bcs-1957"
+    ],
+    "reviewedAt": "2026-10-08"
+  },
+  {
+    "theoryId": "density-functional-theory",
+    "problemIds": [],
+    "entityType": "electronic-structure framework",
+    "scientificStatus": "established exact ground-state framework with approximation-dependent practical functionals",
+    "coreIdea": "Ground-state observables can be formulated in terms of the particle density; Kohn–Sham theory maps the density problem to auxiliary noninteracting orbitals with an effective potential.",
+    "degreesOfFreedom": "Ground-state electron density and, in the Kohn–Sham construction, auxiliary orbitals reproducing that density.",
+    "assumptions": [
+      "The Hohenberg–Kohn framework concerns ground-state density information under its theorem assumptions.",
+      "Practical Kohn–Sham calculations require an approximate exchange-correlation functional.",
+      "Kohn–Sham orbital eigenvalues are not generically exact many-body excitation energies."
+    ],
+    "mathematicalStructure": "Density variational principle plus self-consistent one-particle Kohn–Sham equations and density reconstruction.",
+    "formulaIds": [
+      "hk-variational",
+      "ks-equation",
+      "ks-density"
+    ],
+    "regime": "Ground-state electronic structure; time-dependent and strongly correlated extensions introduce additional structure.",
+    "predictionsConsequences": [
+      "The exact ground-state density determines the external potential up to an additive constant under the theorem conditions.",
+      "Practical functionals enable scalable first-principles calculations but introduce approximation error."
+    ],
+    "evidenceIds": [],
+    "evidenceSummary": "This is a mathematical/computational framework; its practical accuracy depends on the chosen functional and system rather than one universal experimental validation.",
+    "limitations": [
+      "Unknown exact exchange-correlation functional necessitates approximations.",
+      "Approximate functionals can have self-interaction, delocalization, derivative-discontinuity and strong-correlation errors."
+    ],
+    "questionIds": [
+      "rq-density-functional-theory"
+    ],
+    "developmentIds": [],
+    "sourceIds": [
+      "hohenberg-kohn-1964",
+      "kohn-sham-1965"
+    ],
+    "reviewedAt": "2026-10-08"
+  }
+]);
