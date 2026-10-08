@@ -1,0 +1,138 @@
+{
+  "reviewedAt": "2026-10-08",
+  "baselineCommit": "5679138652bd24a7c52b31558205d19b7cecbbc0",
+  "status": "scoped-not-source-reviewed-not-shipped",
+  "policy": "Curate full comparison-ready Passports only after verifying exact source sections, equation conventions, limits and evidence boundaries. These are candidates, not approved scientific claims.",
+  "targetCount": 6,
+  "candidates": [
+    {
+      "theoryId": "qed",
+      "domain": "Quantum field theory",
+      "sourceIds": [
+        "feynman-qed-1949",
+        "dyson-qed-1949"
+      ],
+      "formulaIds": [
+        "qed-lagrangian",
+        "fermion-propagator"
+      ],
+      "compareWith": [
+        "yang-mills"
+      ],
+      "reviewQuestions": [
+        "Specify Dirac matter and Abelian gauge-field degrees of freedom",
+        "Distinguish gauge invariance and perturbative renormalization from all-regime exact solvability",
+        "Separate precision tests of QED from claims about all of quantum field theory"
+      ],
+      "sourceLocationStatus": "not-yet-reviewed"
+    },
+    {
+      "theoryId": "yang-mills",
+      "domain": "Quantum field theory",
+      "sourceIds": [
+        "yang-mills-1954"
+      ],
+      "formulaIds": [
+        "yang-mills-field",
+        "yang-mills-lagrangian"
+      ],
+      "compareWith": [
+        "qed"
+      ],
+      "reviewQuestions": [
+        "Define non-Abelian gauge fields and structure constants",
+        "Separate pure gauge theory from QCD and electroweak matter content",
+        "Avoid treating confinement or mass gap as established by classical Lagrangian alone"
+      ],
+      "sourceLocationStatus": "not-yet-reviewed"
+    },
+    {
+      "theoryId": "gksl",
+      "domain": "Quantum information & open systems",
+      "sourceIds": [
+        "gks-1976",
+        "lindblad-1976"
+      ],
+      "formulaIds": [
+        "lindblad"
+      ],
+      "compareWith": [
+        "open-quantum-systems"
+      ],
+      "reviewQuestions": [
+        "State completely positive trace-preserving semigroup and Markovian assumptions",
+        "Identify jump operators, rates, and generator domain",
+        "Do not extrapolate semigroup theorems to general non-Markovian dynamics"
+      ],
+      "sourceLocationStatus": "not-yet-reviewed"
+    },
+    {
+      "theoryId": "quantum-error-correction",
+      "domain": "Quantum information & open systems",
+      "sourceIds": [
+        "knill-laflamme-1997",
+        "gottesman-stabilizer-1997"
+      ],
+      "formulaIds": [
+        "knill-laflamme",
+        "stabilizer-condition"
+      ],
+      "compareWith": [
+        "stabilizer-formalism"
+      ],
+      "reviewQuestions": [
+        "Define code subspace, error set, and exact Knill–Laflamme conditions",
+        "Distinguish stabilizer subclasses from general codes",
+        "Separate fault-tolerant thresholds from the bare correction condition"
+      ],
+      "sourceLocationStatus": "not-yet-reviewed"
+    },
+    {
+      "theoryId": "nuclear-shell-model",
+      "domain": "Nuclear quantum theory",
+      "sourceIds": [
+        "wave3-shell-review-2019"
+      ],
+      "formulaIds": [
+        "nuclear-model-space-eigenproblem"
+      ],
+      "compareWith": [
+        "in-medium-srg"
+      ],
+      "reviewQuestions": [
+        "Specify valence/model space and effective interaction",
+        "Distinguish phenomenological shell-model and no-core approaches",
+        "Record truncation, effective operators, and uncertainties"
+      ],
+      "sourceLocationStatus": "not-yet-reviewed"
+    },
+    {
+      "theoryId": "in-medium-srg",
+      "domain": "Nuclear quantum theory",
+      "sourceIds": [
+        "wave3-hergert-imsrg-2016",
+        "wave3-shell-review-2019"
+      ],
+      "formulaIds": [
+        "imsrg-flow-equation"
+      ],
+      "compareWith": [
+        "nuclear-shell-model"
+      ],
+      "reviewQuestions": [
+        "State flow generator, normal-ordering reference, and truncation level",
+        "Separate formal unitary flow from practical IMSRG(n) truncations",
+        "Specify induced many-body terms and observable uncertainties"
+      ],
+      "sourceLocationStatus": "not-yet-reviewed"
+    }
+  ],
+  "acceptance": [
+    "All candidate theory/source/formula IDs exist and none has an existing Passport",
+    "Verify exact primary/review source locations and equation conventions before writing substantive Passport text",
+    "Create 6 comparable Passports with degrees of freedom, assumptions, mathematical structure, regime, predictions, evidence limits, competitors, discriminators, unresolved questions",
+    "Preserve existing 23 Passports and global reviewedAt without modification; add only six records",
+    "Update generated counts and asset hashes, add historical-append verification and domain-balanced regression tests",
+    "Full Node/graph/coverage/Chromium/WebKit validation before merge"
+  ]
+}
