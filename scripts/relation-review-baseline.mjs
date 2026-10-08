@@ -5,11 +5,13 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {priorDepthSources} from './multidomain-depth-baseline.mjs';
+import {priorNewRelations,stripNewTheoryAppend} from './relation-promotions-20261008-baseline.mjs';
 export const relationLedger=JSON.parse(fs.readFileSync(new URL('../docs/RELATION_PROMOTIONS_2026-10-07.json',import.meta.url),'utf8'));
 const canonical=v=>Array.isArray(v)?v.map(canonical):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,canonical(v[k])])):v;
 const signature=x=>createHash('sha256').update(JSON.stringify(canonical(x))).digest('hex');
 const key=x=>`${x.from}|${x.to}|${x.type}`;
 export function priorRelations(current){
+  current=priorNewRelations(current);
   assert.equal(current.length,relationLedger.before.relations);
   const edited=new Map(relationLedger.updates.map(u=>[key(u.new),u]));
   const original=current.map(row=>{
@@ -37,5 +39,5 @@ export function verifyFileTransition(path,previousExpected){
   const t=relationLedger.fileTransition;
   assert.equal(path,t.path);
   assert.equal(t.priorSha256,previousExpected,'historical source-file hash chain diverged');
-  assert.equal(createHash('sha256').update(fs.readFileSync(path)).digest('hex'),t.afterSha256,'reviewed source file changed unexpectedly');
+  assert.equal(createHash('sha256').update(path==='theories.js'?stripNewTheoryAppend(fs.readFileSync(path)):fs.readFileSync(path)).digest('hex'),t.afterSha256,'reviewed source file changed unexpectedly');
 }
