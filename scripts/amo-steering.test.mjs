@@ -1,5 +1,5 @@
 import {bellReview,restoreBellFormula} from './bell-metadata-baseline.mjs';
-import {priorDepthFormulas,priorDepthPassports,priorDepthCoverage} from './multidomain-depth-baseline.mjs';
+import {priorDepthFormulas,priorDepthPassports,priorDepthCoverage,verifyDepthFileSha256} from './multidomain-depth-baseline.mjs';
 import {priorRelations,priorSources,verifyFileTransition} from './relation-review-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -25,7 +25,7 @@ test('AMO/steering preserves every previous scientific record and the entire app
  for(const [file,expected] of Object.entries({...ledger.untouchedFiles,...ledger.updatedFiles})){
   if(bellReview.updatedFiles[file])assert.equal(bellReview.previousFiles[file],expected,`${file}: retained AMO checkpoint`);
   if(file==='theories.js')verifyFileTransition(file,bellReview.updatedFiles[file]||expected);
-  else assert.equal(hash(fs.readFileSync(file)),bellReview.updatedFiles[file]||expected,file);
+  else verifyDepthFileSha256(file,bellReview.updatedFiles[file]||expected);
  }
  assert.equal(w.QI_PASSPORTS.reviewedAt,'2026-09-29');
  const coverage=priorDepthCoverage(JSON.parse(fs.readFileSync('docs/coverage.json','utf8')));
