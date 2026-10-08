@@ -8815,3 +8815,143 @@ window.QI_FORMULAS.formulas.push(...[
     ]
   }
 ]);
+
+
+// 2026-10-08 multidomain formula-depth batch.
+window.QI_FORMULAS.formulas.push(...[
+  {
+    "id": "neutrino-flavor-mixing-state",
+    "name": "Neutrino flavor state in the mass basis",
+    "category": "Quantum field theory",
+    "latex": "|\\nu_\\alpha\\rangle=\\sum_{i=1}^{n}U_{\\alpha i}^{*}|\\nu_i\\rangle",
+    "plain": "|nu_alpha> = sum_i U*_{alpha i} |nu_i>",
+    "description": "A weak-interaction flavor eigenstate is a coherent linear combination of light neutrino mass eigenstates.",
+    "theoryIds": [
+      "neutrino-mixing"
+    ],
+    "sourceIds": [
+      "pdg-neutrino-mixing-2026"
+    ],
+    "tags": [
+      "neutrino mixing",
+      "PMNS",
+      "flavor",
+      "mass eigenstates"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "The light-neutrino mixing matrix U is treated as unitary for the practical three-neutrino description used by the review.",
+      "Flavor states are the weak charged-current production/detection states; the formula suppresses the state’s momentum and spacetime labels."
+    ],
+    "variables": [
+      "alpha: charged-lepton flavor label",
+      "i: light-neutrino mass-eigenstate index",
+      "U: light-neutrino mixing matrix",
+      "|nu_i>: neutrino mass eigenstate"
+    ],
+    "regime": "Relativistic light-neutrino flavor mixing; the formula is the starting point for vacuum oscillations and does not by itself describe matter effects.",
+    "units": "State amplitudes and U matrix elements are dimensionless.",
+    "theoryRelationship": "defining basis transformation between flavor and mass eigenstates",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-08",
+    "curationBatch": "multidomain-depth-2026-10-08",
+    "sourceLocations": [
+      {
+        "sourceId": "pdg-neutrino-mixing-2026",
+        "locator": "Review of Particle Physics 2026, Neutrino Masses, Mixing, and Oscillations, Eq. (14.35), PDF p. 8",
+        "url": "https://pdg.lbl.gov/2026/reviews/rpp2026-rev-neutrino-mixing.pdf#page=8"
+      }
+    ]
+  },
+  {
+    "id": "neutrino-vacuum-oscillation-probability",
+    "name": "General vacuum neutrino oscillation probability",
+    "category": "Quantum field theory",
+    "latex": "P_{\\alpha\\beta}=\\delta_{\\alpha\\beta}-4\\sum_{i>j}\\operatorname{Re}\\!\\left(U_{\\alpha i}^{*}U_{\\beta i}U_{\\alpha j}U_{\\beta j}^{*}\\right)\\sin^{2}X_{ij}+2\\sum_{i>j}\\operatorname{Im}\\!\\left(U_{\\alpha i}^{*}U_{\\beta i}U_{\\alpha j}U_{\\beta j}^{*}\\right)\\sin 2X_{ij}",
+    "plain": "P_ab = delta_ab - 4 sum Re(...) sin^2 X_ij + 2 sum Im(...) sin 2X_ij",
+    "description": "Vacuum flavor-transition probability for relativistic neutrinos with coherent mass-eigenstate propagation; X_ij = Delta m^2_ij L/(4E).",
+    "theoryIds": [
+      "neutrino-mixing"
+    ],
+    "sourceIds": [
+      "pdg-neutrino-mixing-2026"
+    ],
+    "tags": [
+      "neutrino oscillation",
+      "vacuum probability",
+      "PMNS",
+      "CP violation"
+    ],
+    "formulaType": "derived identity",
+    "assumptions": [
+      "Mass eigenstates propagate coherently as relativistic plane-wave components over the baseline used in the derivation.",
+      "The light-neutrino mixing matrix is treated as unitary; matter effects are absent.",
+      "Experimental beams and detectors generally average this ideal probability over energy spectra and resolution."
+    ],
+    "variables": [
+      "P_{alpha beta}: probability to detect flavor beta after producing alpha",
+      "Delta m^2_ij = m_i^2-m_j^2",
+      "L: propagation distance",
+      "E: neutrino energy",
+      "X_ij = Delta m^2_ij L/(4E)"
+    ],
+    "regime": "Coherent relativistic neutrino propagation in vacuum. Matter effects and finite wave-packet/coherence corrections require additional treatment.",
+    "units": "In natural units X_ij is dimensionless; the cited review also gives X_ij = 1.267 (Delta m^2_ij/eV^2)(L/E)/(m/MeV).",
+    "theoryRelationship": "canonical vacuum oscillation probability derived from flavor mixing",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-08",
+    "curationBatch": "multidomain-depth-2026-10-08",
+    "sourceLocations": [
+      {
+        "sourceId": "pdg-neutrino-mixing-2026",
+        "locator": "Review of Particle Physics 2026, Eqs. (14.39)–(14.40), PDF pp. 8–9; sums use i>j",
+        "url": "https://pdg.lbl.gov/2026/reviews/rpp2026-rev-neutrino-mixing.pdf#page=8"
+      }
+    ]
+  },
+  {
+    "id": "brans-dicke-scalar-tensor-action",
+    "name": "Brans–Dicke scalar–tensor action (source normalization)",
+    "category": "Quantum gravity & cosmology",
+    "latex": "S[g,\\Gamma,\\Phi]=\\frac{1}{2\\kappa^{2}}\\int d^{4}x\\sqrt{-g}\\left[\\xi\\Phi R(g,\\Gamma)-\\frac{\\omega}{\\Phi}g^{\\mu\\nu}\\partial_{\\mu}\\Phi\\,\\partial_{\\nu}\\Phi\\right]+S_{\\mathrm{matter}}[g,\\chi]",
+    "plain": "S = (1/2kappa^2) integral sqrt(-g) [xi Phi R - (omega/Phi)(dPhi)^2] + S_matter",
+    "description": "A source-normalized Brans–Dicke action without a scalar self-interaction potential, written so the same scalar functions can be compared in metric and Palatini formulations.",
+    "theoryIds": [
+      "brans-dicke"
+    ],
+    "sourceIds": [
+      "kozak-wojnar-scalar-tensor-2021"
+    ],
+    "tags": [
+      "Brans-Dicke",
+      "scalar-tensor gravity",
+      "modified gravity"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "No scalar self-interaction potential in the displayed representative.",
+      "The cited source keeps an explicit positive normalization parameter xi and distinguishes metric from Palatini definitions of R(g,Gamma).",
+      "For the metric formulation Gamma is not an independent dynamical connection; alternative scalar-field normalizations can make the action look different."
+    ],
+    "variables": [
+      "Phi: scalar gravitational degree of freedom",
+      "omega: Brans–Dicke kinetic parameter",
+      "xi: source normalization parameter",
+      "kappa: gravitational coupling convention",
+      "R(g,Gamma): curvature scalar in the chosen metric or Palatini formulation"
+    ],
+    "regime": "Classical scalar–tensor gravity in the no-potential Brans–Dicke representative used by the cited source; not a quantum-gravity action or a statement that every scalar–tensor model has constant omega.",
+    "units": "Action units follow the gravitational convention used for kappa; Phi and xi depend on field normalization.",
+    "theoryRelationship": "defining scalar–tensor action representative",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-08",
+    "curationBatch": "multidomain-depth-2026-10-08",
+    "sourceLocations": [
+      {
+        "sourceId": "kozak-wojnar-scalar-tensor-2021",
+        "locator": "Eur. Phys. J. C 81, 492 (2021), Sec. 4.2, Eq. (52)",
+        "url": "https://doi.org/10.1140/epjc/s10052-021-09277-4"
+      }
+    ]
+  }
+]);
