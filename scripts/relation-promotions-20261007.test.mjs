@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
+import {multidomainReview,priorDepthSources} from './multidomain-depth-baseline.mjs';
 const ledger=JSON.parse(fs.readFileSync('docs/RELATION_PROMOTIONS_2026-10-07.json','utf8'));
 const sandbox={window:{}};vm.createContext(sandbox);
 for(const file of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js']) vm.runInContext(fs.readFileSync(file,'utf8'),sandbox);
@@ -32,13 +33,13 @@ test('every prior relationship except the four audited promotions is byte-for-by
   });
   assert.equal(data.relations.length,610);
   assert.equal(digest(oldRelations),ledger.before.relationsSha256);
-  const oldSources=data.sources.filter(s=>s.id!==ledger.newSource.id);
+  const oldSources=priorDepthSources(data.sources).filter(s=>s.id!==ledger.newSource.id);
   assert.equal(oldSources.length,ledger.before.sources);
   assert.equal(digest(oldSources),ledger.before.sourcesSha256);
   assert.deepEqual(JSON.parse(stable(data.sources.find(s=>s.id===ledger.newSource.id))),ledger.newSource);
 });
 test('new count changes exactly match four promotions and one new primary paper',()=>{
-  assert.equal(data.sources.length,543);
+  assert.equal(data.sources.length,543+multidomainReview.addedSourceIds.length);
   assert.equal(data.relations.filter(r=>r.sourceIds.length).length,122);
   assert.equal(data.relations.filter(r=>r.confidence==='editorial').length,488);
   assert.equal(data.relations.filter(r=>r.confidence==='high').length,101);
