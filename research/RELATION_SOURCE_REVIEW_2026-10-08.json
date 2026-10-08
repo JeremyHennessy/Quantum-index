@@ -2,25 +2,8 @@
   "reviewedAt": "2026-10-08",
   "baselineCommit": "b8827b151d46a7332e062e76a36ab6271d621c46",
   "status": "reviewed-not-promoted",
-  "policy": "Source-specific review records only. No runtime edge, source, note, UI or historical release metadata changes. Do not equate node sources with proof of an edge.",
+  "policy": "Source-specific review records only. No runtime edge, source, note, UI or historical release metadata changes. Do not equate node sources with proof of an edge. The 2026-09-26 semiclassical-to-stochastic-gravity review is preexisting sourced provenance; it is excluded from new candidate counts.",
   "candidates": [
-    {
-      "from": "semiclassical-gravity",
-      "to": "stochastic-gravity",
-      "type": "extends",
-      "sourceIds": [
-        "hu-verdaguer-stochastic-2008"
-      ],
-      "sourceLocator": "Hu and Verdaguer, Living Reviews in Relativity 11:3 (2008), abstract and Einstein–Langevin/noise-kernel introduction",
-      "sourceUrl": "https://doi.org/10.12942/lrr-2008-3",
-      "evidenceType": "formal mathematical relation",
-      "proposedConfidence": "high",
-      "evidenceNote": "The Einstein–Langevin framework extends the mean-stress-tensor semiclassical Einstein equation with stress-energy fluctuations encoded in a noise kernel. This does not establish that gravity is quantized or that every stochastic gravity model has the same noise dynamics.",
-      "limitations": [
-        "Stochastic gravity is not a quantum-gravity measurement",
-        "A source for the exact extension does not validate all stochastic-gravity predictions"
-      ]
-    },
     {
       "from": "tensor-network-states",
       "to": "peps",
@@ -80,6 +63,13 @@
       "type": "extends",
       "sourceId": "zurek-darwinism",
       "reviewedAt": "2026-09-27"
+    },
+    {
+      "from": "semiclassical-gravity",
+      "to": "stochastic-gravity",
+      "type": "extends",
+      "sourceId": "hu-verdaguer-stochastic-2008",
+      "reviewedAt": "2026-09-26"
     }
   ],
   "held": [
@@ -99,7 +89,7 @@
   "expectedIfPromoted": {
     "theories": 481,
     "relations": 610,
-    "sourcedRelations": 126,
-    "editorialRelations": 484
+    "sourcedRelations": 125,
+    "editorialRelations": 485
   }
 }
