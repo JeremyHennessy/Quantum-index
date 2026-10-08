@@ -4,7 +4,16 @@ Fifty-nine profiles in `profiles.js` cover historical foundations, quantum formu
 
 The Compare tab accepts any two to four catalog entries. Three presets provide starting points. Each selector can search names, aliases and tags while retaining its current selection. Uncurated entries retain their catalog summaries, bibliography and formula coverage with an explicit missing-profile message. Selection is stored in the URL; theory links preserve the comparison return URL across reloads. Invalid IDs and duplicates are discarded; at most four valid IDs are retained.
 
-All 480 catalog records and 605 relationship endpoints/types are preserved. The atlas contains 384 formulas and the bibliography contains 495 records. Original IDs are preserved; subsequent equation-level metadata and bibliography corrections are documented in the release notes. The workspace release reviews the evidence for 25 existing relationships; its decisions are recorded in `RELATION_REVIEW_2026-09-26.json`. Profile prerequisites do not create graph edges. The current typography and colors are reused; comparison columns scroll horizontally when needed.
+<!-- coverage:start -->
+- **59** cited reading profiles and **5** guided learning paths
+- **16** Theory Passports available to the comparison workflow
+- **481** catalog entries; **402** formula records; **543** bibliography records
+- **610** typed relationships, including **122** source-backed edges
+
+These counts are generated from runtime data; older release notes retain their historical snapshots.
+<!-- coverage:end -->
+
+Original IDs are preserved; subsequent equation-level metadata and bibliography corrections are documented in the release notes. Profile prerequisites do not create graph edges. The current typography and colors are reused; comparison columns scroll horizontally when needed.
 
 Validation includes profile citations and identifiers, presets, navigation, selection limits, uncurated-entry fallback, all profile rendering, and fresh comparison/detail loads. Browser checks complement DOM tests; a real narrow viewport must be checked separately before claiming mobile verification.
 

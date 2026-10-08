@@ -8,6 +8,7 @@ Quantum Index indexes source-backed theories, formulations, interpretations, res
 
 <!-- coverage:start -->
 - **59** cited reading profiles and **5** learning paths
+- **16** Theory Passports, **5** scientific Problems, **13** Evidence records and **60** structured Research Questions
 - **481** theory/framework entities across **14** categories
 - **543** bibliography records
 - **352** primary-sourced; **129** review-sourced; **0** catalogued-only entries

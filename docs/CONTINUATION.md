@@ -31,20 +31,18 @@ Four formula cards and two Passports are implemented for Fano resonance and quan
 
 Four existing formula records now have source-located assumptions, variables, normalizations and limitations, with their equations and stable identities unchanged. One Bell Passport reuses these cards and the existing experimental Evidence record. Read `RELEASE_BELL_METADATA_2026-10-07.md` and `BELL_METADATA_2026-10-07.json`; check the corresponding PR receipt for exact-head and hosted acceptance. The ledger stores before/after fingerprints and the full prior metadata. No app, CSS, storage, graph or publishing changes.
 
-## Next bounded relationship evidence release (2026-10-07)
+## Verified directional relationship evidence release
 
-The prior Bell/CHSH metadata release #66 was merged and technically verified; its main checkpoint is `f186171c405c0a7ab1461d250cb1800531808982` (tree `038f7a930f19feb43031bc347e8478eeae1686a7`). The earlier #62–#65 releases are already merged; do not reintroduce duplicate records.
+PR #67 promoted exactly four existing editorial directional edges after relationship-specific source review and merged as `ade091a5d4119a21dad148326a4546d313c1c813`. The release preserved all 610 relation identities/endpoints/types while moving the evidence census to 122 source-backed / 488 editorial. Exact-tree Node/Chromium/WebKit checks and fresh hosted desktop/mobile checks passed before this state was treated as verified. See `RELEASE_RELATION_PROMOTIONS_2026-10-07.md`, `RELATION_PROMOTIONS_2026-10-07.json` and PR #67 for the audit trail and rollback boundary.
 
-Exactly four existing editorial directional edges are now **prepared as a separate reviewed candidate**, with source locators and an immutable before/after relation ledger. The candidate is *not* approved, merged, or hosted merely because local tests pass. Review `RELEASE_RELATION_PROMOTIONS_2026-10-07.md`, `RELATION_PROMOTIONS_2026-10-07.json`, the exact-tree Node/Chromium/WebKit outcomes, and desktop/mobile relationship evidence screenshots before publishing. The live app theme, workspace, formula catalog, theories and older Passport reviews remain locked.
-
-After a fully verified deployment, future rounds should prioritize additional source-specific **directional** edges rather than racing to eliminate all editorial edges; overlaps are intentionally editorial until a specific source supports the claim. The documented 165 formula gaps and 255 baseline-metadata records remain independent research backlogs.
+Do not re-add the four promoted edges or convert remaining editorial links by inference from node-level sources. Future provenance rounds should continue source-specific directional review and intentionally leave useful conceptual overlaps editorial when no publication establishes the claimed direction.
 
 ## Product and curation queue
 
-1. Expand curated Passport coverage beyond the sixteen curated records, using the implemented comparison workflow to identify useful gaps.
-2. Continue a coherent canonical-formula batch after the now-curated Zeno representative; never attach an arbitrary equation simply to reduce a gap counter. Current documented formula gaps: 165. Fano and steering representatives are now implemented; do not add duplicates. The Bell/CHSH metadata pass and associated Passport are now implemented; do not duplicate them. Remaining baseline formula metadata: 255. A useful next bounded pass is directional source review of high-value editorial relationships, while continuing coherent formula/Passport depth.
+1. Expand curated Passport coverage beyond the sixteen curated records across underrepresented many-body, chemistry, AMO, astroparticle and modified-gravity hubs; use the implemented comparison workflow to identify useful gaps.
+2. Continue coherent source-located formula and metadata batches; never attach an arbitrary equation simply to reduce a gap counter. Current documented formula gaps: 165 and baseline metadata records: 255. Fano, steering, Bell/CHSH and the recent lattice representatives are already implemented; do not duplicate them.
 3. Review baseline formula metadata and equation-level source locations in bounded, explicitly recorded batches. An `explicit` label does not certify the entire paper.
-4. Upgrade high-value editorial relationships only when the citation establishes that precise directional relation.
+4. Continue bounded relationship-provenance rounds only when a citation establishes the precise directional relation; the current verified count is 122 source-backed / 488 editorial.
 5. Expand reading profiles, Passports and Evidence where they support major learning paths and useful comparisons; do not drift into gravity-only coverage.
 6. Reconcile the September 27 PBS-discovery audit against actual current catalog identities before adding duplicate cosmological frameworks.
 7. Continue the gravity model-by-observable matrix as a research product. Track source-supported predictions, parameter dependence, non-derived cells and disputes. A finite matrix is not exhaustive and must not claim universal model exclusions.
