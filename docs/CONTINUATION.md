@@ -37,10 +37,16 @@ PR #67 promoted exactly four existing editorial directional edges after relation
 
 Do not re-add the four promoted edges or convert remaining editorial links by inference from node-level sources. Future provenance rounds should continue source-specific directional review and intentionally leave useful conceptual overlaps editorial when no publication establishes the claimed direction.
 
+## Prepared multidomain scientific-depth release (2026-10-08)
+
+Seven comparison-ready Passports, three source-located formulas, six source records and three Evidence records are prepared across many-body physics, AMO, quantum chemistry/electronic structure, neutrino physics and scalar–tensor gravity. The two formula closures move the runtime gap census from 165 to 163 without adding theory entities. Read `RELEASE_MULTIDOMAIN_DEPTH_2026-10-08.md` and `MULTIDOMAIN_DEPTH_2026-10-08.json`.
+
+This candidate is **not** treated as released until the exact PR head passes the complete Node/data/generated-report suite and Chromium/WebKit acceptance, screenshots are inspected, the merge tree matches the tested tree, Pages deploys that merge, and fresh hosted checks pass. Existing UI, workspace semantics, theories and relationship identities remain locked.
+
 ## Product and curation queue
 
-1. Expand curated Passport coverage beyond the sixteen curated records across underrepresented many-body, chemistry, AMO, astroparticle and modified-gravity hubs; use the implemented comparison workflow to identify useful gaps.
-2. Continue coherent source-located formula and metadata batches; never attach an arbitrary equation simply to reduce a gap counter. Current documented formula gaps: 165 and baseline metadata records: 255. Fano, steering, Bell/CHSH and the recent lattice representatives are already implemented; do not duplicate them.
+1. After the multidomain candidate is verified, continue Passport depth beyond 23 records using the same source-scoped comparison workflow; next hubs should fill quantum information, black-hole/cosmology, nuclear and additional chemistry/many-body gaps rather than duplicate this batch.
+2. Continue coherent source-located formula and metadata batches; never attach an arbitrary equation simply to reduce a gap counter. Candidate documented formula gaps: 163; baseline metadata records remain 255. Fano, steering, Bell/CHSH and the recent lattice representatives are already implemented; do not duplicate them.
 3. Review baseline formula metadata and equation-level source locations in bounded, explicitly recorded batches. An `explicit` label does not certify the entire paper.
 4. Continue bounded relationship-provenance rounds only when a citation establishes the precise directional relation; the current verified count is 122 source-backed / 488 editorial.
 5. Expand reading profiles, Passports and Evidence where they support major learning paths and useful comparisons; do not drift into gravity-only coverage.
