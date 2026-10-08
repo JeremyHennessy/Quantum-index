@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {spawnSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
 
 export const multidomainReview=JSON.parse(fs.readFileSync(new URL('../docs/MULTIDOMAIN_DEPTH_2026-10-08.json',import.meta.url),'utf8'));
 
@@ -48,4 +49,16 @@ export function verifyDepthFile(path,expectedBlobSha){
   const candidates=[prefix];
   for(let n=1;n<=4&&prefix.length>=n;n++)candidates.push(prefix.subarray(0,prefix.length-n));
   assert.ok(candidates.some(buf=>gitBlob(buf)===expectedBlobSha),path+': pre-addition content changed');
+}
+
+export function verifyDepthFileSha256(path,expectedSha256){
+  const marker=multidomainReview.appendedMarkers[path],bytes=fs.readFileSync(path);
+  const digest=buf=>createHash('sha256').update(buf).digest('hex');
+  if(!marker){assert.equal(digest(bytes),expectedSha256,path);return;}
+  const needle=Buffer.from(marker),at=bytes.indexOf(needle);
+  assert.ok(at>0,path+': additive marker missing');
+  assert.equal(bytes.indexOf(needle,at+needle.length),-1,path+': duplicate additive marker');
+  const prefix=bytes.subarray(0,at),candidates=[prefix];
+  for(let n=1;n<=4&&prefix.length>=n;n++)candidates.push(prefix.subarray(0,prefix.length-n));
+  assert.ok(candidates.some(buf=>digest(buf)===expectedSha256),path+': historical SHA-256 prefix changed');
 }
