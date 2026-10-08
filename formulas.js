@@ -8841,7 +8841,8 @@ window.QI_FORMULAS.formulas.push(...[
     "formulaType": "defining",
     "assumptions": [
       "The light-neutrino mixing matrix U is treated as unitary for the practical three-neutrino description used by the review.",
-      "Flavor states are the weak charged-current production/detection states; the formula suppresses the state’s momentum and spacetime labels."
+      "Flavor states are the weak charged-current production/detection states; the formula suppresses the state’s momentum and spacetime labels.",
+      "Production and detection are treated in the usual coherent flavor-state approximation; loss of coherence requires a wave-packet treatment."
     ],
     "variables": [
       "alpha: charged-lepton flavor label",
