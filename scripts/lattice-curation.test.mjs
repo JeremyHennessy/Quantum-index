@@ -1,5 +1,5 @@
 import {bellReview,restoreBellFormula} from './bell-metadata-baseline.mjs';
-import {priorDepthFormulas,priorDepthPassports,priorDepthCoverage} from './multidomain-depth-baseline.mjs';
+import {priorDepthFormulas,priorDepthPassports,priorDepthCoverage,verifyDepthFileSha256} from './multidomain-depth-baseline.mjs';
 import {priorSources} from './relation-review-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -26,7 +26,7 @@ test('lattice batch preserves all prior scientific records and protected applica
  for(const [file,expected] of Object.entries({...ledger.untouchedFiles,...ledger.updatedFiles})){
   if(amo.updatedFiles[file])assert.equal(amo.previousFiles[file],expected,`${file}: retained lattice checkpoint`);
   if(bellReview.updatedFiles[file])assert.equal(bellReview.previousFiles[file],amo.updatedFiles[file]||expected,`${file}: retained predecessor`);
-  assert.equal(hash(fs.readFileSync(file)),bellReview.updatedFiles[file]||amo.updatedFiles[file]||expected,file);
+  verifyDepthFileSha256(file,bellReview.updatedFiles[file]||amo.updatedFiles[file]||expected);
  }
  assert.equal(w.QI_PASSPORTS.reviewedAt,'2026-09-29','original global date must not be advanced');
 });
