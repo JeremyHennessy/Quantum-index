@@ -1,0 +1,75 @@
+{
+  "version": "v1",
+  "reviewedAt": "2026-10-08",
+  "baselineTreeCommit": "6bb3cbf29222879f51c0236fbce0c38087f45997",
+  "stateIntegrityMerge": "483d507225c2632a995c9c6317cb0f690c20d920",
+  "scope": "Additive multidomain depth batch: seven Theory Passports, three canonical formula records closing two documented theory gaps, six bibliography records and three empirical Evidence records. Existing scientific records and application UI are preserved.",
+  "addedFormulaIds": [
+    "neutrino-flavor-mixing-state",
+    "neutrino-vacuum-oscillation-probability",
+    "brans-dicke-scalar-tensor-action"
+  ],
+  "addedPassportTheoryIds": [
+    "bose-hubbard",
+    "jaynes-cummings",
+    "hartree-fock",
+    "neutrino-mixing",
+    "brans-dicke",
+    "bcs-theory",
+    "density-functional-theory"
+  ],
+  "addedEvidenceIds": [
+    "ev-bose-mott-transition-2002",
+    "ev-cavity-rabi-1996",
+    "ev-cassini-ppn-2003"
+  ],
+  "addedSourceIds": [
+    "greiner-mott-2002",
+    "brune-rabi-1996",
+    "pdg-neutrino-mixing-2026",
+    "kozak-wojnar-scalar-tensor-2021",
+    "bertotti-cassini-2003",
+    "fienga-minazzoli-gravity-tests-2024"
+  ],
+  "baselineCounts": {
+    "theories": 481,
+    "relations": 610,
+    "sources": 543,
+    "formulas": 402,
+    "evidence": 13,
+    "passports": 16
+  },
+  "expectedCounts": {
+    "theories": 481,
+    "relations": 610,
+    "sources": 549,
+    "formulas": 405,
+    "evidence": 16,
+    "passports": 23,
+    "formulaBearing": 272,
+    "formulaGaps": 163,
+    "explicitFormulaMetadata": 150,
+    "baselineFormulaMetadata": 255
+  },
+  "baselineBlobSha": {
+    "theories.js": "d749a2db25f4a660bc80165bd486e9a30103fa97",
+    "formulas.js": "e9f3330758ea09ee1473c6c1483578f65dc773cc",
+    "evidence.js": "d92e11e161f1a49cae3158302ce48bfe4b8b43d4",
+    "passports.js": "d00d0a58892f5357b0db363314d48b20ab281cb2",
+    "app.js": "1cbb86104d6d4f3d80adbbc4a17b7041ec6e7982",
+    "styles.css": "0794e3255ddfbace404df4a233baf561f6143db4",
+    "workspace.js": "da0d5fb4dea277aec11b3e3c6480a50f19fcb9b5",
+    "profiles.js": "1c7089d32e183ef733e525cd1fcb42cdae5c3207",
+    "questions.js": "e160923b4c877d9c619ea0af0f46c2ba9a906cbc",
+    "problems.js": "05a8c8ae8ee28cb34e5b3d95eb436e52e0a27d43",
+    "developments.js": "007366993a344a11ec3c2959784ef9f4bb261283",
+    "package.json": "be240e48a7ba7ef19b6f8365ae558339bb9a3841",
+    "package-lock.json": "be0bb9d923f407d019e7ef5946778c2b27ca59e5",
+    ".github/workflows/validate.yml": "d318e6cd8af5603bc31f94d0d09a27c554e7d9ef"
+  },
+  "appendedMarkers": {
+    "formulas.js": "// 2026-10-08 multidomain formula-depth batch.",
+    "evidence.js": "// 2026-10-08 multidomain depth sources and empirical constraints.",
+    "passports.js": "// 2026-10-08 multidomain Theory Passports."
+  }
+}
