@@ -110,7 +110,9 @@ window.QI_EVIDENCE = (() => {
       "relatedTheoryIds": [
         "neutrino-mixing"
       ],
-      "relatedProblemIds": [],
+      "relatedProblemIds": [
+        "neutrino-mass"
+      ],
       "relatedClaimIds": [],
       "constrains": [
         "No-oscillation descriptions of the atmospheric-neutrino data under the analysis assumptions."
@@ -177,7 +179,8 @@ window.QI_EVIDENCE = (() => {
         "phantom-dark-energy"
       ],
       "relatedProblemIds": [
-        "dark-matter"
+        "dark-matter",
+        "dark-energy"
       ],
       "relatedClaimIds": [],
       "constrains": [
