@@ -17,7 +17,7 @@ test('research-only relation review is bounded and does not silently relabel pro
   assert.equal(relations.length,ledger.expectedBefore.relations);
   assert.equal(relations.filter(r=>r.sourceIds.length>0).length,ledger.expectedBefore.sourcedRelations);
   assert.equal(relations.filter(r=>r.confidence==='editorial').length,ledger.expectedBefore.editorialRelations);
-  assert.equal(ledger.candidates.length,4);
+  assert.equal(ledger.candidates.length,3);
   assert.equal(new Set(ledger.candidates.map(key)).size,ledger.candidates.length);
   assert.equal(ledger.expectedIfPromoted.sourcedRelations-ledger.expectedBefore.sourcedRelations,ledger.candidates.length);
   assert.equal(ledger.expectedIfPromoted.editorialRelations-ledger.expectedBefore.editorialRelations,-ledger.candidates.length);
