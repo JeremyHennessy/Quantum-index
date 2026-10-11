@@ -1,5 +1,6 @@
 import {bellReview,restoreBellFormula} from './bell-metadata-baseline.mjs';
 import {priorDepthFormulas,priorDepthPassports,priorDepthCoverage,verifyDepthFileSha256} from './multidomain-depth-baseline.mjs';
+import {priorNuclearPassports} from './nuclear-passports-20261011-baseline.mjs';
 import {priorSources} from './relation-review-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -17,7 +18,7 @@ const get=id=>w.QI_FORMULAS.formulas.find(f=>f.id===id);
 const near=(a,b,eps=1e-10)=>assert.ok(Math.abs(a-b)<eps,`${a} != ${b}`);
 
 test('lattice batch preserves all prior scientific records and protected application files',()=>{
- const records={theories:w.QI_DATA.theories,formulas:priorDepthFormulas(w.QI_FORMULAS.formulas).map(restoreBellFormula).filter(f=>!ledger.addedFormulaIds.includes(f.id)&&!amo.addedFormulaIds.includes(f.id)),passports:priorDepthPassports(w.QI_PASSPORTS.records).filter(p=>!ledger.addedPassportTheoryIds.includes(p.theoryId)&&!amo.addedPassportTheoryIds.includes(p.theoryId)&&!bellReview.addedPassportTheoryIds.includes(p.theoryId)),sources:priorSources(w.QI_DATA.sources).filter(s=>!ledger.addedSourceIds.includes(s.id)&&!amo.addedSourceIds.includes(s.id)&&!bellReview.addedSourceIds.includes(s.id))};
+ const records={theories:w.QI_DATA.theories,formulas:priorDepthFormulas(w.QI_FORMULAS.formulas).map(restoreBellFormula).filter(f=>!ledger.addedFormulaIds.includes(f.id)&&!amo.addedFormulaIds.includes(f.id)),passports:priorDepthPassports(priorNuclearPassports(w.QI_PASSPORTS.records)).filter(p=>!ledger.addedPassportTheoryIds.includes(p.theoryId)&&!amo.addedPassportTheoryIds.includes(p.theoryId)&&!bellReview.addedPassportTheoryIds.includes(p.theoryId)),sources:priorSources(w.QI_DATA.sources).filter(s=>!ledger.addedSourceIds.includes(s.id)&&!amo.addedSourceIds.includes(s.id)&&!bellReview.addedSourceIds.includes(s.id))};
  for(const [name,items] of Object.entries(records)){
   const key=name==='passports'?'theoryId':'id';const ordered=[...items].sort((a,b)=>a[key]<b[key]?-1:a[key]>b[key]?1:0);
   assert.equal(ordered.length,ledger.baselineIntegrity[name].count);
@@ -34,8 +35,8 @@ test('lattice batch preserves all prior scientific records and protected applica
 test('five source-located lattice formulas close only three selected representative gaps',()=>{
  const data=priorDepthCoverage(JSON.parse(fs.readFileSync('docs/coverage.json')));
  for(const [key,value] of Object.entries(ledger.expected))if(key!=='passports')assert.equal(data[key],(bellReview.expected[key]??amo.expected[key]??value)+(key==='sources'?1:0),key);
- assert.equal(priorDepthPassports(w.QI_PASSPORTS.records).length,13+amo.addedPassportTheoryIds.length+bellReview.addedPassportTheoryIds.length);
- assert.equal(new Set(priorDepthPassports(w.QI_PASSPORTS.records).map(p=>p.theoryId)).size,13+amo.addedPassportTheoryIds.length+bellReview.addedPassportTheoryIds.length);
+ assert.equal(priorDepthPassports(priorNuclearPassports(w.QI_PASSPORTS.records)).length,13+amo.addedPassportTheoryIds.length+bellReview.addedPassportTheoryIds.length);
+ assert.equal(new Set(priorDepthPassports(priorNuclearPassports(w.QI_PASSPORTS.records)).map(p=>p.theoryId)).size,13+amo.addedPassportTheoryIds.length+bellReview.addedPassportTheoryIds.length);
  for(const id of ledger.addedFormulaIds){
   const f=get(id);assert.ok(f,id);assert.equal(f.metadataReview,'explicit');
   assert.equal(f.curationBatch,'lattice-2026-10-07');assert.ok(f.assumptions.length>=3);assert.ok(f.variables.length>=3);

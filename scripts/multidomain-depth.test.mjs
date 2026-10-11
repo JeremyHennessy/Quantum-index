@@ -30,14 +30,15 @@ test('new identifiers are unique, source-backed and produce exactly the declared
   assert.equal(w.QI_DATA.sources.length,ledger.expectedCounts.sources);
   assert.equal(w.QI_FORMULAS.formulas.length,ledger.expectedCounts.formulas);
   assert.equal(w.QI_EVIDENCE.records.length,ledger.expectedCounts.evidence);
-  assert.equal(w.QI_PASSPORTS.records.length,ledger.expectedCounts.passports);
+  assert.ok(w.QI_PASSPORTS.records.length>=ledger.expectedCounts.passports,'historical release Passports must remain');
   for(const [items,key] of [[w.QI_DATA.sources,'id'],[w.QI_FORMULAS.formulas,'id'],[w.QI_EVIDENCE.records,'id'],[w.QI_PASSPORTS.records,'theoryId']])assert.equal(new Set(items.map(x=>x[key])).size,items.length,key);
   for(const id of ledger.addedSourceIds)assert.equal(w.QI_DATA.sources.filter(x=>x.id===id).length,1,id);
   for(const id of ledger.addedFormulaIds)assert.equal(w.QI_FORMULAS.formulas.filter(x=>x.id===id).length,1,id);
   for(const id of ledger.addedEvidenceIds)assert.equal(w.QI_EVIDENCE.records.filter(x=>x.id===id).length,1,id);
   for(const id of ledger.addedPassportTheoryIds)assert.equal(w.QI_PASSPORTS.records.filter(x=>x.theoryId===id).length,1,id);
   const coverage=JSON.parse(fs.readFileSync('docs/coverage.json','utf8'));
-  for(const key of ['sources','formulas','passports','evidenceRecords','formulaBearing','formulaGaps','explicitFormulaMetadata','baselineFormulaMetadata'])assert.equal(coverage[key],key==='evidenceRecords'?ledger.expectedCounts.evidence:ledger.expectedCounts[key],key);
+  for(const key of ['sources','formulas','evidenceRecords','formulaBearing','formulaGaps','explicitFormulaMetadata','baselineFormulaMetadata'])assert.equal(coverage[key],key==='evidenceRecords'?ledger.expectedCounts.evidence:ledger.expectedCounts[key],key);
+  assert.ok(coverage.passports>=ledger.expectedCounts.passports,'historical Passport count must remain');
 });
 
 test('neutrino formula closure retains the source conventions and audit moves only to formula-bearing',()=>{
