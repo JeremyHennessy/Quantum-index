@@ -50,6 +50,12 @@ Used for useful navigation/overlap edges that have not yet completed a relations
 
 The editorial count is intentionally visible. Node-level source provenance does not automatically prove an edge between two nodes.
 
+## 2026-10-11 relation release reconciliation
+
+PR #74 merged at `e1520a6c4b09cd425629825038dd0e190878024d` after PR #71's independent three-edge review. It promoted three **existing directed relations** (tensor-network states → PEPS; QEC → stabilizer formalism; quantum Rabi → Jaynes–Cummings), without changing identities, endpoints or relation types; see `RELEASE_RELATION_PROMOTIONS_2026-10-08.md` and the immutable `RELATION_PROMOTIONS_2026-10-08.json` receipt. The first two are explicitly scoped subclass/construction claims; Rabi → Jaynes–Cummings assumes the rotating-wave approximation. The final census is **610 total / 125 sourced / 485 editorial** (101 high, 24 medium). The initial wording in the dated release candidate is historical, not an indication that the PR is still open.
+
+The full **485 editorial** links remain legitimate navigation relationships, not proven false by their editorial status. A theory-level bibliography reference never substitutes for a relationship-specific provenance review.
+
 ## First-pass sourced families
 
 The initial sourced set prioritizes:

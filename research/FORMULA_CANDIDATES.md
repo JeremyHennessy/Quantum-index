@@ -4,6 +4,10 @@ Reviewed 2026-09-27. This ledger reconciles the historical proposal list with th
 
 The machine-readable ledger is [formula-candidates.json](formula-candidates.json). Earlier notes are preserved in [FORMULA_CANDIDATES_HISTORY.md](FORMULA_CANDIDATES_HISTORY.md). The runtime formula-gap census in [COVERAGE.md](../docs/COVERAGE.md) is the authoritative entry-level queue.
 
+## 2026-10-11 reconciliation against the live atlas
+
+The 50 existing candidate records were rechecked against the **405** distinct shipped formula IDs on main `e1520a6c4b09cd425629825038dd0e190878024d`. All referenced `formulaIds` resolve (no dangling IDs). Dispositions remain **15 represented / 13 partial / 22 open**; no formula was re-added or status promoted merely because another related equation exists. This catalog is a *candidate-level* queue, distinct from the **163 theory-level formula gaps** and **255 baseline-metadata formula records**. The September 27 candidate decisions and historical source ledger remain unchanged. A new Node integrity test enforces formula-ID resolution for future edits.
+
 | Candidate | Disposition | Formula IDs |
 |---|---|---|
 | degenerate perturbation theory matrix problem | open |  |

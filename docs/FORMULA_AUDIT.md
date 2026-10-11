@@ -29,6 +29,12 @@ Source attachment and formula presence are structural coverage measures, not ver
 
 A `formula-bearing-gap` is an explicit curation gap. It does not claim that the theory lacks mathematics.
 
+## 2026-10-11 formula candidate reconciliation
+
+The currently shipped atlas has **405** unique formula IDs. The separate `research/formula-candidates.json` curation ledger has **50** named candidates: **15 represented**, **13 partial**, **22 open**. Every linked formula ID in that ledger resolves to a shipped record at main `e1520a6c4b09cd425629825038dd0e190878024d`. These flags indicate representation scope, not full source/metadata validation; even an `open` candidate can reference a related but insufficient equation. The candidate ledger's September 27 reviewed date and historical proposal history are preserved.
+
+The current gap count of **163** is entry-level; it cannot be subtracted from the 50 candidate rows because these use different units of analysis. **255** formula records still carry baseline metadata rather than an explicit source-location review. Next batches should inspect current gaps and baseline records by exact theory/formula ID, preserving equations already reviewed.
+
 ## Why the gap count increased
 
 Theory breadth was expanded before formula curation. The third wave adds 50 source-backed frameworks without fabricating equations merely to keep the formula metric low. Of those additions, 49 enter as explicit formula-bearing gaps and the ABJ anomaly enters as theorem-first.

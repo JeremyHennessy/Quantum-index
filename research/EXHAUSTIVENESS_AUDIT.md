@@ -17,6 +17,12 @@ The sixth-wave baseline recorded on 2026-09-23 was (see `docs/COVERAGE.md` for g
 - **345** formula-atlas entries
 - **215** explicit formula-bearing gaps
 
+## Current verified working snapshot (2026-10-11 reconciliation)
+
+At main `e1520a6c4b09cd425629825038dd0e190878024d` the generated runtime inventory reports **481** entries in **14** categories (**352 primary-sourced**, **129 review-sourced**, **0 catalogued-only**), **549** bibliography records, **610** relations, **405** formulas, **163** documented formula-bearing gaps, **23** Theory Passports, **16** Evidence records, **5** Problems and **60** Research Questions. The sixth-wave **464-entry** inventory below is retained as a dated historical baseline, **not** the current count. New domain sweeps remain OPEN and must check all 481 existing theory IDs before ADD decisions.
+
+The current scoped research directions are constructive/axiomatic QFT; quantum causal inference and channels; impurity/lattice/superconducting models; nuclear ab-initio and QCD EFT; modified-gravity subfamilies; inflation and dark sectors; black-hole information; nonlinear/post-quantum approaches. Give each candidate an explicit **ADD / ALIAS / SUBTYPE / RELATION ONLY / FORMULA ONLY / ALREADY COVERED / REJECT** disposition with source evidence and granularity rationale. A proposed named model does not automatically merit a first-class node.
+
 ## Why the census reopened
 
 Searches across authoritative reviews and primary literature found missing first-class families in five areas:
