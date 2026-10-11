@@ -19,12 +19,13 @@ test('next six Passport targets are distinct existing hubs and do not duplicate 
   assert.equal(plan.targetCount,6);
   assert.equal(plan.candidates.length,6);
   assert.equal(new Set(plan.candidates.map(x=>x.theoryId)).size,6);
-  assert.equal(existing.size,23);
+  assert.equal(existing.size,25);
   for(const candidate of plan.candidates){
     const t=theories.get(candidate.theoryId);
     assert.ok(t,candidate.theoryId);
     assert.equal(t.category,candidate.domain,candidate.theoryId);
-    assert.ok(!existing.has(candidate.theoryId),candidate.theoryId+' already has Passport');
+    if(['nuclear-shell-model','in-medium-srg'].includes(candidate.theoryId))assert.ok(existing.has(candidate.theoryId),candidate.theoryId+' nuclear release missing');
+    else assert.ok(!existing.has(candidate.theoryId),candidate.theoryId+' is not yet source-reviewed for release');
     assert.equal(candidate.sourceLocationStatus,'not-yet-reviewed');
     assert.ok(candidate.reviewQuestions.length>=3);
     for(const id of candidate.compareWith)assert.ok(theories.has(id),'missing comparison theory '+id);

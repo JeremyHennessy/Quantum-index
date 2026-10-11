@@ -6,7 +6,7 @@ Updated 8 October 2026. This is the single continuation entry point; dated relea
 
 <!-- coverage:start -->
 - **59** cited reading profiles and **5** learning paths
-- **23** Theory Passports, **5** scientific Problems, **16** Evidence records and **60** structured Research Questions
+- **25** Theory Passports, **5** scientific Problems, **16** Evidence records and **60** structured Research Questions
 - **481** theory/framework entities across **14** categories
 - **549** bibliography records
 - **352** primary-sourced; **129** review-sourced; **0** catalogued-only entries
@@ -22,6 +22,10 @@ Source attachment and formula presence are structural coverage measures, not ver
 <!-- coverage:end -->
 
 This block is generated from shipped runtime data by `scripts/coverage-report.mjs`; the existing CI coverage check fails if it drifts. Historical release-specific counts remain in the dated receipts, not in this active plan.
+
+## 2026-10-11 source-reviewed nuclear Passport batch
+
+This tree includes **two additive Theory Passports** (`nuclear-shell-model` and `in-medium-srg`), supported by inspected sections/equations of Stroberg et al. (2019) and Hergert (2016). The existing 23 curated Passport records remain byte-for-byte intact. See `research/PASSPORT_SOURCE_REVIEW_2026-10-11.md` and its JSON record for exact locators, explicit evidence nonclaims, discriminators, and four deferred candidates. **Current runtime Passport count: 25**; there are still four scoped candidates not shipped. The October 8 scope JSON retains its historical pre-review status and is not retroactively edited. No experimental Evidence was created.
 
 ## 2026-10-11 live-main reconciliation (recorded baseline: `e1520a6c4b09cd425629825038dd0e190878024d`)
 

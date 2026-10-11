@@ -1,0 +1,101 @@
+{
+  "version": "v1",
+  "reviewedAt": "2026-10-11",
+  "baselineMain": "3e2dd8ba4fb1101e239b71521bf9e2a8743b646c",
+  "previousPassportBlob": "d2989bd92ae605fecc2f4103de7471960c7c3153",
+  "acceptedAppendOnlyPassportTheoryIds": [
+    "nuclear-shell-model",
+    "in-medium-srg"
+  ],
+  "preservedExistingPassportCount": 23,
+  "evidenceCaveat": "Source-located mathematics and numerics are not experimental confirmation; zero new Evidence records added.",
+  "historicalScopeLedger": "PASSPORT_CURATION_QUEUE_2026-10-08.json remains unchanged as an immutable planning snapshot.",
+  "candidates": [
+    {
+      "theoryId": "nuclear-shell-model",
+      "status": "source-reviewed-added-in-candidate-tree",
+      "formulaIds": [
+        "nuclear-model-space-eigenproblem"
+      ],
+      "sourceIds": [
+        "wave3-shell-review-2019"
+      ],
+      "locations": [
+        {
+          "sourceId": "wave3-shell-review-2019",
+          "locator": "Sec. 1 Introduction (mean field, spin-orbit and valence residual interaction); Sec. 2.1 Eq. (3), P/Q projected eigenproblem and decoupling",
+          "url": "https://ar5iv.labs.arxiv.org/html/1902.06154"
+        },
+        {
+          "sourceId": "wave3-shell-review-2019",
+          "locator": "Secs. 5–6 (selected comparisons, transitions and intruder-state challenges); Sec. 8, concluding constraints and interpretation",
+          "url": "https://ar5iv.labs.arxiv.org/html/1902.06154"
+        }
+      ],
+      "criticalLimit": "Valence Hamiltonian and interaction source, model-space dependence, not a universal exact calculation."
+    },
+    {
+      "theoryId": "in-medium-srg",
+      "status": "source-reviewed-added-in-candidate-tree",
+      "formulaIds": [
+        "imsrg-flow-equation"
+      ],
+      "sourceIds": [
+        "wave3-hergert-imsrg-2016",
+        "wave3-shell-review-2019"
+      ],
+      "locations": [
+        {
+          "sourceId": "wave3-hergert-imsrg-2016",
+          "locator": "Sec. 3.1 Eqs. (1)–(4), unitary H(s), commutator flow, anti-Hermitian generator and s-ordering; Secs. 3.2–3.5, normal-ordering and flow expansion",
+          "url": "https://ar5iv.labs.arxiv.org/html/1512.06956"
+        },
+        {
+          "sourceId": "wave3-hergert-imsrg-2016",
+          "locator": "Sec. 4, generator choices; Sec. 7, truncation/MBPT analysis; Secs. 8–9, selected limitations and review conclusions",
+          "url": "https://ar5iv.labs.arxiv.org/html/1512.06956"
+        },
+        {
+          "sourceId": "wave3-shell-review-2019",
+          "locator": "Sec. 3.1, many-body approaches; Sec. 6.2, intruder-state problem in IMSRG; Sec. 8, distinctions between solver and interaction",
+          "url": "https://ar5iv.labs.arxiv.org/html/1902.06154"
+        }
+      ],
+      "criticalLimit": "Exact operator-level unitarity does not establish unitarity of rank-truncated calculations."
+    },
+    {
+      "theoryId": "qed",
+      "status": "hold-formula-convention-review",
+      "sourceId": "feynman-qed-1949",
+      "locator": "Phys. Rev. 76 (1949), Sec. 1, interaction framework; Dyson Phys. Rev. 75 (1949), Secs. II–III, interaction theory",
+      "reason": "Original historical papers do not present the atlas's compact modern Lagrangian verbatim; audit its hbar/c and gauge-coupling conventions against a source that prints the modern equation before attaching an exact equation locator."
+    },
+    {
+      "theoryId": "yang-mills",
+      "status": "hold-full-passport-claim-review",
+      "sourceId": "yang-mills-1954",
+      "locator": "Phys. Rev. 96 (1954), p. 193, Eqs. (4), (9) and (11)",
+      "reason": "Original SU(2) isotopic gauge-field expressions located. Finish modern group/convention and empirical status comparisons before new Passport claims; do not infer confinement or a mass gap."
+    },
+    {
+      "theoryId": "gksl",
+      "status": "hold-full-primary-source-check",
+      "sourceId": "gks-1976",
+      "locator": "J. Math. Phys. 17 (1976), Theorem 2.2 and Eq. (2.3), primary access remains to be independently checked",
+      "reason": "Original journal is access restricted in current review; verify Lindblad primary bounded-generator theorem and semigroup/non-Markovian limitations using authoritative full text before shipping."
+    },
+    {
+      "theoryId": "quantum-error-correction",
+      "status": "hold-original-equation-provenance",
+      "sourceId": "knill-laflamme-1997",
+      "locator": "Phys. Rev. A 55 (1997) original and Gottesman (1997) Ch. 3, Sec. 3.2",
+      "reason": "Canonical condition P E_a† E_b P = c_ab P is in atlas but its existing sourceIds omit Knill–Laflamme 1997; independently locate the original condition in the paper and reconcile before citing it as source-reviewed."
+    }
+  ],
+  "remainingUnshippedIds": [
+    "qed",
+    "yang-mills",
+    "gksl",
+    "quantum-error-correction"
+  ]
+}

@@ -899,3 +899,143 @@ window.QI_PASSPORTS.records.push(...[
     "reviewedAt": "2026-10-08"
   }
 ]);
+// 2026-10-11 nuclear Passports — independently source-reviewed additive batch.
+window.QI_PASSPORTS.records.push(...[
+  {
+    "theoryId": "nuclear-shell-model",
+    "problemIds": [],
+    "entityType": "effective many-body model/framework",
+    "scientificStatus": "established nuclear-structure framework; calculation-dependent predictions",
+    "coreIdea": "Use quantized proton and neutron orbitals in a mean field plus residual interactions to organize low-lying nuclear structure and calculate valence-nucleon spectra in a selected model space.",
+    "degreesOfFreedom": "Protons and neutrons occupying finite single-particle orbitals; inert-core and valence-space partitions are approximations chosen for a calculation, not newly postulated fundamental particles.",
+    "assumptions": [
+      "Low-energy nuclear states of interest admit a useful finite configuration/valence-space truncation with a specified core and orbital basis.",
+      "The effective Hamiltonian and its many-nucleon interactions are suited to that same model space, with relevant symmetries retained.",
+      "Out-of-space excitations and continuum channels are either small enough to neglect or are reflected consistently in effective interactions and operators.",
+      "Comparisons must identify whether the interaction was phenomenologically adjusted to the observations or derived from an input nuclear force."
+    ],
+    "mathematicalStructure": "Diagonalization of a projected effective many-body Hamiltonian; Stroberg et al. Sec. 2.1 Eq. (3) states P H_eff P |Psi_n> = E_n P |Psi_n>, together with decoupling Q H_eff P = 0, in its specified P/Q convention.",
+    "formulaIds": [
+      "nuclear-model-space-eigenproblem"
+    ],
+    "regime": "Primarily low-lying nuclear spectra and transition observables for nuclei where the selected shell/valence truncation is applicable; strongly collective, continuum-coupled and intruder-state regimes require extra care.",
+    "predictionsConsequences": [
+      "Mean-field shell structure with spin-orbit splitting helps organize observed magic numbers and single-particle levels.",
+      "Given a specified interaction and model space, configuration mixing produces calculable excitation spectra and transitions.",
+      "Different interactions, truncations and effective operators can produce distinguishable predictions for the same nucleus."
+    ],
+    "evidenceIds": [],
+    "evidenceSummary": "The review describes experimental magic-number patterns and spectroscopy comparisons, but no new experimental Evidence record has been source-reviewed here. Agreement with fitted spectra is not an independent out-of-sample confirmation of the chosen effective interaction.",
+    "whatEvidenceDoesNotEstablish": "Fitted or approximately reproduced energy levels do not establish that a particular potential, valence truncation or many-body solver is unique or microscopically exact.",
+    "limitations": [
+      "Predictions depend on the effective interaction, many-body truncations and selected model space; omitted collective and intruder configurations can be consequential.",
+      "Continuum coupling, consistent effective transition operators and three-nucleon contributions require additional treatment in many applications.",
+      "Uncertainty quantification is often incomplete; model-to-experiment disagreement cannot be attributed unambiguously without controlling the input interaction and solver."
+    ],
+    "comparisonFrameworks": [
+      "no-core-shell-model",
+      "nuclear-collective-model",
+      "in-medium-srg",
+      "coupled-cluster"
+    ],
+    "usefulDiscriminators": [
+      "Excitation energies and level ordering at fixed Hamiltonian and valence space, with out-of-sample levels kept distinct from fitted inputs.",
+      "Electromagnetic transition strengths and radii computed using consistently evolved operators.",
+      "Sensitivity to model-space enlargement, interaction choice, continuum inclusion and explicit uncertainty estimates."
+    ],
+    "unresolvedQuestions": [
+      "How can controlled theoretical uncertainties be assigned to truncated valence-space nuclear observables?",
+      "How do intruder configurations, collective excitations and continuum channels alter predicted spectroscopy?"
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "wave3-shell-review-2019"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "wave3-shell-review-2019",
+        "locator": "Sec. 1 Introduction (mean field, spin-orbit and valence residual interaction); Sec. 2.1 Eq. (3), P/Q projected eigenproblem and decoupling",
+        "url": "https://ar5iv.labs.arxiv.org/html/1902.06154"
+      },
+      {
+        "sourceId": "wave3-shell-review-2019",
+        "locator": "Secs. 5–6 (selected comparisons, transitions and intruder-state challenges); Sec. 8, concluding constraints and interpretation",
+        "url": "https://ar5iv.labs.arxiv.org/html/1902.06154"
+      }
+    ],
+    "sourceVersion": "Stroberg, Hergert, Bogner & Holt, arXiv:1902.06154 review / Annual Review of Nuclear and Particle Science 69 (2019); equations follow the review's P/Q projectors.",
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "theoryId": "in-medium-srg",
+    "problemIds": [],
+    "entityType": "computational many-body transformation framework",
+    "scientificStatus": "established ab-initio nuclear many-body method with controlled but nonzero truncation errors",
+    "coreIdea": "Use a continuous unitary similarity transformation, implemented with operators normal-ordered relative to a finite-density reference, to suppress off-diagonal many-body couplings and compute nuclear structure or effective valence Hamiltonians.",
+    "degreesOfFreedom": "Nucleon creation and annihilation operators in a chosen single-particle basis with a reference Slater determinant or suitable many-body reference; flowing zero-, one-, two- and optionally higher-body operators are not independent physical fields.",
+    "assumptions": [
+      "A specific input nuclear Hamiltonian and finite basis are provided; input two-/three-body forces and their resolution scales matter.",
+      "The formal flow has anti-Hermitian eta(s) and unitary U(s), with eta chosen to target a stated decoupling.",
+      "Practical IM-SRG truncates the normal-ordered operator hierarchy, for example at two-body rank; formally exact unitarity does not survive that truncation unchanged.",
+      "A reference state and generator are chosen in a regime where targeted decoupling is numerically meaningful; challenging intruder states require attention."
+    ],
+    "mathematicalStructure": "H(s)=U(s)H(0)U†(s) and dH(s)/ds=[eta(s),H(s)], with eta=(dU/ds)U†=-eta†; Hergert Sec. 3.1 Eqs. (1)–(3). Secs. 3.2–3.5 expand the operators and flow in a normal-ordered many-body basis.",
+    "formulaIds": [
+      "imsrg-flow-equation"
+    ],
+    "regime": "Low-energy nuclear many-body calculations in finite bases, especially closed shells and suitable valence-space/open-shell extensions; accuracy depends on reference, truncation, generator and input nuclear forces.",
+    "predictionsConsequences": [
+      "Decoupled ground-state sectors and effective valence Hamiltonians permit numerical spectra for specified input interactions.",
+      "Computed binding energies and observables can be compared across generators, rank truncations and other many-body approaches.",
+      "The flowing transformation induces higher-body interactions and observable corrections that require consistent treatment."
+    ],
+    "evidenceIds": [],
+    "evidenceSummary": "Hergert reviews numerical nuclear-energy comparisons and algorithmic convergence. Numerical agreement with benchmarks or measured nuclear properties tests an input Hamiltonian plus approximations; it is not experimental confirmation that the exact, untruncated flow was realized.",
+    "whatEvidenceDoesNotEstablish": "A successful finite-basis nuclear calculation does not demonstrate exact unitary equivalence after IM-SRG(2) truncation, uniquely validate the input nuclear interaction, or prove a new fundamental physical theory.",
+    "limitations": [
+      "Discarded induced many-body operators introduce truncation and resolution-scale dependence.",
+      "Reference and generator selection can encounter slow convergence and intruder-state difficulties.",
+      "Evolving observables, three-nucleon terms, continuum effects and uncertainty budgets adds work beyond the formal flow equation."
+    ],
+    "comparisonFrameworks": [
+      "nuclear-shell-model",
+      "no-core-shell-model",
+      "coupled-cluster"
+    ],
+    "usefulDiscriminators": [
+      "Energy and operator convergence with truncation rank, generator choice and single-particle basis.",
+      "Comparison at fixed input Hamiltonian against coupled-cluster and exact-diagonalization benchmarks where available.",
+      "Consistency of radii and transition observables after evolving both Hamiltonian and operators."
+    ],
+    "unresolvedQuestions": [
+      "How are omitted higher-body terms and model-space truncation errors estimated quantitatively across nuclei?",
+      "Which reference, generator and decoupling choices control difficult open-shell and intruder-state regimes?"
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "wave3-hergert-imsrg-2016",
+      "wave3-shell-review-2019"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "wave3-hergert-imsrg-2016",
+        "locator": "Sec. 3.1 Eqs. (1)–(4), unitary H(s), commutator flow, anti-Hermitian generator and s-ordering; Secs. 3.2–3.5, normal-ordering and flow expansion",
+        "url": "https://ar5iv.labs.arxiv.org/html/1512.06956"
+      },
+      {
+        "sourceId": "wave3-hergert-imsrg-2016",
+        "locator": "Sec. 4, generator choices; Sec. 7, truncation/MBPT analysis; Secs. 8–9, selected limitations and review conclusions",
+        "url": "https://ar5iv.labs.arxiv.org/html/1512.06956"
+      },
+      {
+        "sourceId": "wave3-shell-review-2019",
+        "locator": "Sec. 3.1, many-body approaches; Sec. 6.2, intruder-state problem in IMSRG; Sec. 8, distinctions between solver and interaction",
+        "url": "https://ar5iv.labs.arxiv.org/html/1902.06154"
+      }
+    ],
+    "sourceVersion": "Hergert, arXiv:1512.06956 / Physics Reports 621 (2016), and Stroberg et al., arXiv:1902.06154 (2019); formula uses the exact untruncated flow convention with hbar absorbed into s/eta.",
+    "reviewedAt": "2026-10-11"
+  }
+]);
