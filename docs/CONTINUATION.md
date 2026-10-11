@@ -23,6 +23,22 @@ Source attachment and formula presence are structural coverage measures, not ver
 
 This block is generated from shipped runtime data by `scripts/coverage-report.mjs`; the existing CI coverage check fails if it drifts. Historical release-specific counts remain in the dated receipts, not in this active plan.
 
+## 2026-10-11 live-main reconciliation (recorded baseline: `e1520a6c4b09cd425629825038dd0e190878024d`)
+
+The repository main ref was checked against the handoff and was unchanged. PRs #69–#75 are merged; no open PRs were present at this checkpoint. The generated inventory above is current. PR #69 shipped seven Passports, three formulas and three Evidence records; #70 generated continuation metrics; #71 independently reviewed three directional relations; #72 added the read-only category-trust census; #73 added the read-only source-only path engine; #74 promoted three reviewed relations, reaching **125 sourced / 485 editorial**; and #75 **only scoped** six Passport candidates.
+
+The six `research/PASSPORT_CURATION_QUEUE_2026-10-08.json` candidates—QED, Yang–Mills, GKSL/Lindblad, QEC, nuclear shell model, in-medium SRG—are not yet source-location reviewed or shipped as Passports. Do not prematurely count them among the 23. The category census and path engine are Node tools, **not user-facing app views**. PRs #59–#61 remain superseded/closed.
+
+Recorded latest main workflows: Validate catalog run [37838463196](https://github.com/JeremyHennessy/Quantum-index/actions/runs/37838463196) and Pages run [37838461958](https://github.com/JeremyHennessy/Quantum-index/actions/runs/37838461958), both success on the recorded main. This is workflow/deployment evidence only, **not** a fresh hosted-browser acceptance check. Release-specific historical receipts and counts are unchanged.
+
+### Next bounded releases (evidence gates apply independently)
+
+1. Source-review the six pre-scoped Passports, including exact source/equation locators and empirical limitations, before adding records. Keep the existing 23 unchanged.
+2. Add an isolated Coverage/Trust drill-down using `scripts/category-trust-census.mjs` with record-level gap links and explicit non-additivity; no invented quality score.
+3. Surface `scripts/sourced-paths.mjs` as a source-only directed-path analytical control with no editorial fallback; preserve existing Network layout.
+4. Deepen coherent formula/metadata batches and Evidence/Problem records only after source-specific review.
+5. Continue the open exhaustiveness disposition queue, then address PR-only workflow concurrency without cancelling main validation/deployment.
+
 ## Verified preceding release
 
 PR #62 merged at `3a61dc9319a45a432e3d6753fc428347de5dffbe`; #63 merged at `462f2d96649f3c030c06fe35b537d3fd1599d90a`. Hosted verification and rollback receipt: PR #63 comment `6046478062`. #60/#61 are closed as superseded; do not merge them again.
@@ -66,13 +82,9 @@ The exact PR head passed 116 Node checks, the full 50-test Chromium/WebKit suite
 
 ## Product and curation queue
 
-1. Continue Passport depth beyond the generated count above using the same source-scoped comparison workflow; next hubs should fill quantum information, black-hole/cosmology, nuclear and additional chemistry/many-body gaps rather than duplicate this batch.
-2. Continue coherent source-located formula and metadata batches; never attach an arbitrary equation simply to reduce a gap counter. Use the generated inventory above for the current formula-gap and baseline-metadata counts. Fano, steering, Bell/CHSH and the recent lattice representatives are already implemented; do not duplicate them.
-3. Review baseline formula metadata and equation-level source locations in bounded, explicitly recorded batches. An `explicit` label does not certify the entire paper.
-4. Continue bounded relationship-provenance rounds only when a citation establishes the precise directional relation; use the current sourced/editorial counts in the generated inventory above.
-5. Expand reading profiles, Passports and Evidence where they support major learning paths and useful comparisons; do not drift into gravity-only coverage.
-6. Reconcile the September 27 PBS-discovery audit against actual current catalog identities before adding duplicate cosmological frameworks.
-7. Continue the gravity model-by-observable matrix as a research product. Track source-supported predictions, parameter dependence, non-derived cells and disputes. A finite matrix is not exhaustive and must not claim universal model exclusions.
+The five next bounded releases and their scientific/visual boundaries are recorded in the **2026-10-11 live-main reconciliation** above. The current generated counts, not dated release counts, define outstanding formula, Passport, Evidence and provenance coverage. Continue to distinguish domain breadth from mathematical depth and experiment-backed evidence from source attachment.
+
+The gravity model-by-observable matrix remains a research product: track source-supported predictions, parameter dependence, non-derived cells and disputes. Do not claim that a finite matrix gives universal exclusions. Reconcile PBS-discovery candidates with existing theory IDs before promotion.
 
 ## Locked operating constraints
 
