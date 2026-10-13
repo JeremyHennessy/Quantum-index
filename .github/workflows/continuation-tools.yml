@@ -1,52 +1,48 @@
-name: Independently verify exact PR69 browsers
+name: Prepare four-Passport candidate without PR churn
 on:
   push:
     branches: [agent/continuation-tools-20261007]
 permissions:
   contents: read
 jobs:
-  browser:
+  prepare:
     runs-on: ubuntu-latest
     timeout-minutes: 12
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 1c1cf6a8636b54b55f88416c187494e9247d9a14
+          ref: science/four-passports-20261013
           fetch-depth: 0
-          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Verify exact candidate and install locked JS dependencies
+      - name: Pin expected candidate base
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD)" = 1c1cf6a8636b54b55f88416c187494e9247d9a14
-          test "$(git rev-parse origin/main)" = 483d507225c2632a995c9c6317cb0f690c20d920
-          test "$(node -p "require('./package.json').devDependencies['@playwright/test']")" = "1.63.0"
+          test "$(git merge-base HEAD origin/main)" = d2a9f204cdd664b2751669aea0d229fc3188b79e
+          test "$(git rev-parse HEAD)" = d3200f2e992fbe72585e2d376e2968746a65b36e
+      - name: Generate authoritative reports and asset hashes
+        run: |
+          set -euo pipefail
           npm ci --ignore-scripts
-          mkdir -p verification
-          git rev-parse HEAD > verification/tested-commit.txt
-          git rev-parse HEAD^{tree} > verification/tested-tree.txt
-      - name: Run unchanged complete browser suite in pinned official image
-        shell: bash
+          npm run coverage
+          npm run assets
+      - name: Run full non-browser release gate before publishing PR
         run: |
           set -euo pipefail
-          IMAGE=mcr.microsoft.com/playwright@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27
-          timeout 180 docker pull "$IMAGE"
-          docker image inspect "$IMAGE" --format '{{json .RepoDigests}}' > verification/browser-image.json
-          printf "import config from './playwright.config.mjs';\nexport default {...config,webServer:undefined};\n" > .independent-playwright.config.mjs
-          python3 -m http.server 4173 --bind 127.0.0.1 > verification/server.log 2>&1 &
-          SERVER_PID=$!
-          trap 'kill "$SERVER_PID" || true' EXIT
-          for n in $(seq 1 30); do curl --fail --silent http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
-          timeout 600 docker run --rm --ipc=host --network=host -e CI=true -v "$PWD:/work" -w /work "$IMAGE" npx playwright test --config=.independent-playwright.config.mjs
-          git diff --exit-code
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: pr69-exact-browser-verification
-          path: |
-            verification/
-            playwright-report/
-            test-results/
-          retention-days: 14
+          npm test
+          npm run validate
+      - name: Commit generated outputs only after tests pass
+        run: |
+          set -euo pipefail
+          git add README.md docs/COVERAGE.md docs/FORMULA_AUDIT.md docs/FORMULA_COVERAGE.md docs/RESEARCH_PROFILES.md docs/CONTINUATION.md docs/coverage.json index.html docs/responsive-check.html
+          test -n "$(git diff --cached --name-only)"
+          test -z "$(git diff --cached --name-only -- theories.js formulas.js passports.js evidence.js app.js styles.css workspace.js)"
+          git diff --cached --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Regenerate coverage and asset hashes for four-Passport review'
+          git push origin HEAD:refs/heads/science/four-passports-20261013
+          printf 'Prepared candidate: `%s`\n\nTree: `%s`\n' "$(git rev-parse HEAD)" "$(git rev-parse HEAD^{tree})" >> "$GITHUB_STEP_SUMMARY"
