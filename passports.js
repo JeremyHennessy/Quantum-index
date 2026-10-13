@@ -1039,3 +1039,282 @@ window.QI_PASSPORTS.records.push(...[
     "reviewedAt": "2026-10-11"
   }
 ]);
+
+
+// 2026-10-13 source-reviewed QED/Yang-Mills/GKSL/QEC Passports.
+window.QI_PASSPORTS.records.push(...[
+  {
+    "theoryId": "qed",
+    "problemIds": [],
+    "entityType": "relativistic gauge quantum field theory",
+    "scientificStatus": "established theory with extremely precise perturbative tests in its applicable regimes",
+    "coreIdea": "Charged Dirac matter couples locally to an Abelian U(1) gauge field; the gauge principle fixes the interaction structure while quantization yields photons, charged fermions and their scattering/loop corrections.",
+    "degreesOfFreedom": "A U(1) gauge potential A_mu (photon field) and charged Dirac spinor fields, with gauge redundancy removed by a quantization/gauge-fixing prescription when computing observables.",
+    "assumptions": [
+      "The displayed defining Lagrangian uses one spin-1/2 charged matter field in natural units; realistic QED may include several charged species.",
+      "Local U(1) gauge invariance and minimal coupling define the classical interaction structure; perturbative calculations additionally require gauge fixing and renormalization.",
+      "The compact modern Lagrangian is source-locked to Tong's Cambridge notes; Feynman and Dyson remain historical primary sources rather than verbatim provenance for that notation.",
+      "Perturbative success at small electromagnetic coupling is not a proof of convergent perturbation theory or exact solvability at arbitrary fields/energies."
+    ],
+    "mathematicalStructure": "Abelian gauge theory with F_mu nu=partial_mu A_nu-partial_nu A_mu, D_mu=partial_mu+i e A_mu, a Dirac action and gauge-field kinetic term; perturbative observables use gauge-fixed propagators, vertices and renormalized correlation functions.",
+    "formulaIds": [
+      "qed-lagrangian",
+      "fermion-propagator"
+    ],
+    "regime": "Relativistic electromagnetic interactions where QED is the appropriate low-energy gauge theory. Electroweak unification, hadronic structure and genuinely nonperturbative strong-field settings require additional physics or methods.",
+    "predictionsConsequences": [
+      "Photons mediate electromagnetic interactions between charged quantum fields and appear as gauge-field quanta with two physical polarizations.",
+      "Perturbative amplitudes include virtual-particle and loop corrections organized by the electromagnetic coupling.",
+      "Gauge invariance enforces Ward-type identities and constrains allowed interactions."
+    ],
+    "evidenceIds": [],
+    "evidenceSummary": "This Passport source-reviews the formal QED structure and does not add a new experimental Evidence record. Precision QED experiments are a separate empirical layer and should be represented by source-specific Evidence records before being summarized as app evidence.",
+    "whatEvidenceDoesNotEstablish": "The defining Lagrangian and perturbative formalism do not by themselves establish convergence at all orders, exact nonperturbative solvability, or the validity of QED beyond the domain where electroweak/hadronic effects become relevant.",
+    "limitations": [
+      "Gauge fixing and renormalization are required for practical perturbative calculations but are not shown in the compact defining Lagrangian.",
+      "QED is embedded in the electroweak Standard Model at higher energies and is not a theory of strong or weak interactions.",
+      "Bound states, very strong external fields and infrared/collinear observables can require resummation or specialized nonperturbative techniques."
+    ],
+    "comparisonFrameworks": [
+      "yang-mills",
+      "electroweak",
+      "qcd"
+    ],
+    "usefulDiscriminators": [
+      "Abelian versus non-Abelian self-interaction: the photon field strength lacks the gauge-boson self-coupling term present in Yang–Mills theory.",
+      "Gauge group, matter representation and coupling structure when comparing QED with electroweak and QCD sectors.",
+      "Observable precision tests must be matched to the perturbative/resummation order and hadronic/electroweak corrections used."
+    ],
+    "unresolvedQuestions": [
+      "How should strongly coupled or nonperturbative QED regimes be computed with controlled uncertainties in the relevant physical setting?",
+      "How do infrared structure and resummation choices affect precision observables beyond fixed-order perturbation theory?"
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "feynman-qed-1949",
+      "dyson-qed-1949",
+      "tong-qft-qed-notes"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "tong-qft-qed-notes",
+        "locator": "Tong QFT notes, Sec. 6.3 Eq. (6.67) / HTML Eq. (6.559): QED Lagrangian with D_mu=partial_mu+i e A_mu; Sec. 6.4 repeats the full QED theory",
+        "url": "https://www.damtp.cam.ac.uk/user/tong/qft/qfthtml/S6.html"
+      },
+      {
+        "sourceId": "tong-qft-qed-notes",
+        "locator": "Sec. 5.5 Eq. (5.35): Dirac Feynman propagator; Sec. 6.5 repeats it as the QED internal fermion line",
+        "url": "https://www.damtp.cam.ac.uk/user/tong/qft/five.pdf"
+      },
+      {
+        "sourceId": "feynman-qed-1949",
+        "locator": "Historical primary source for the space-time/Feynman formulation of QED; not used as verbatim provenance for the modern compact Lagrangian notation",
+        "url": "https://doi.org/10.1103/PhysRev.76.769"
+      },
+      {
+        "sourceId": "dyson-qed-1949",
+        "locator": "Historical primary source establishing equivalence and perturbative organization of the Tomonaga–Schwinger/Feynman formulations; not a verbatim modern-Lagrangian citation",
+        "url": "https://doi.org/10.1103/PhysRev.75.486"
+      }
+    ],
+    "sourceVersion": "Modern equations follow David Tong's Cambridge QFT notes in natural units; 1949 Feynman/Dyson papers are retained for historical/program provenance.",
+    "reviewedAt": "2026-10-13"
+  },
+  {
+    "theoryId": "yang-mills",
+    "problemIds": [],
+    "entityType": "non-Abelian gauge-field theory",
+    "scientificStatus": "established foundational gauge-theory framework; pure-theory nonperturbative questions remain",
+    "coreIdea": "Local non-Abelian gauge symmetry introduces Lie-algebra-valued gauge fields whose field strength contains gauge-boson self-interactions, providing the structural basis for modern non-Abelian gauge theories.",
+    "degreesOfFreedom": "Gauge potentials A_mu^a valued in a Lie algebra, with redundant gauge coordinates; matter fields may be added in chosen group representations but are absent from the pure-gauge Lagrangian card.",
+    "assumptions": [
+      "A specified Lie group/algebra and generator normalization define the modern component notation.",
+      "Yang and Mills (1954) formulate the original SU(2) isotopic-spin case; the atlas structure-constant equations are an explicitly declared generalization.",
+      "The displayed pure-gauge Lagrangian omits matter, gauge-fixing and ghost terms.",
+      "A classical gauge Lagrangian does not by itself prove confinement, a quantum mass gap or the phenomenology of QCD."
+    ],
+    "mathematicalStructure": "Non-Abelian connection A_mu, covariant derivative and curvature F_mu nu=dA+g A∧A; the pure action is quadratic in F while F itself is nonlinear in A, generating gauge-boson self-couplings after quantization.",
+    "formulaIds": [
+      "yang-mills-field",
+      "yang-mills-lagrangian"
+    ],
+    "regime": "Local non-Abelian gauge theories and the pure-gauge sector underlying QCD/electroweak constructions; detailed quantum predictions require gauge fixing, renormalization and often nonperturbative methods.",
+    "predictionsConsequences": [
+      "Gauge bosons carry the non-Abelian charge and self-interact through the nonlinear field strength.",
+      "Matter representations couple through the same gauge connection once a representation is specified.",
+      "The same formal gauge principle extends beyond the original SU(2) isotopic example to general compact gauge groups used in particle physics."
+    ],
+    "evidenceIds": [],
+    "evidenceSummary": "This Passport source-reviews the theoretical construction. It does not add an experimental Evidence record and does not treat QCD confinement or the Yang–Mills mass gap as experimentally/theoretically established by the 1954 paper alone.",
+    "whatEvidenceDoesNotEstablish": "The original gauge principle and classical equations do not prove confinement, asymptotic freedom, a mass gap, or that a particular non-Abelian gauge group describes nature without additional matter content and empirical evidence.",
+    "limitations": [
+      "Pure Yang–Mills omits fermion/scalar matter and spontaneous symmetry breaking used in realistic Standard-Model sectors.",
+      "Gauge fixing and ghosts enter perturbative quantization although they are absent from the gauge-invariant classical action.",
+      "Nonperturbative infrared dynamics cannot be inferred solely from the classical field equations."
+    ],
+    "comparisonFrameworks": [
+      "qed",
+      "qcd",
+      "electroweak",
+      "lattice-gauge"
+    ],
+    "usefulDiscriminators": [
+      "Presence of non-Abelian structure constants and gauge-boson self-interactions versus Abelian QED.",
+      "Choice of gauge group and matter representations when distinguishing QCD/electroweak realizations.",
+      "Perturbative running and nonperturbative observables require quantum calculations beyond the defining action."
+    ],
+    "unresolvedQuestions": [
+      "How can nonperturbative pure Yang–Mills observables be computed with rigorous continuum control?",
+      "How should continuum and lattice descriptions be connected quantitatively across strongly coupled regimes?"
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "yang-mills-1954"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "yang-mills-1954",
+        "locator": "Phys. Rev. 96 (1954), pp. 192–193: isotopic gauge transformation and covariant derivative; Eqs. (4)–(9) define the SU(2) nonlinear field strength; Eq. (11) gives the gauge-invariant Lagrangian density",
+        "url": "https://journals.aps.org/pr/pdf/10.1103/PhysRev.96.191"
+      }
+    ],
+    "sourceVersion": "Yang & Mills (1954) original SU(2) isotopic-gauge conventions; atlas formulas state the standard modern Lie-algebra component generalization explicitly.",
+    "reviewedAt": "2026-10-13"
+  },
+  {
+    "theoryId": "gksl",
+    "problemIds": [],
+    "entityType": "open-system dynamical framework",
+    "scientificStatus": "established structural theorem for norm-continuous Markovian quantum dynamical semigroups",
+    "coreIdea": "Time-homogeneous completely positive trace-preserving semigroup dynamics have a generator consisting of a Hamiltonian commutator plus a constrained dissipative term, giving the canonical GKSL/Lindblad master-equation structure.",
+    "degreesOfFreedom": "A reduced-system density operator, a Hermitian effective Hamiltonian and system operators that encode dissipative channels/rates; the environment has already been eliminated into the generator.",
+    "assumptions": [
+      "The reduced dynamics form a time-homogeneous quantum dynamical semigroup with complete positivity and trace preservation.",
+      "Lindblad's theorem assumes a bounded/norm-continuous generator on B(H); finite-dimensional systems fall inside this setting.",
+      "Positive rates may be absorbed into rescaled Lindblad operators, so many algebraically equivalent operator bases represent the same generator.",
+      "General non-Markovian, memory-kernel or explicitly time-dependent evolution is not characterized by this semigroup theorem."
+    ],
+    "mathematicalStructure": "Generator of a CPTP semigroup: Hamiltonian derivation plus completely dissipative quadratic operator terms. Lindblad Theorem 2 gives the Heisenberg generator and its dual Schrödinger-picture master equation.",
+    "formulaIds": [
+      "lindblad"
+    ],
+    "regime": "Markovian semigroup open-system dynamics, especially finite-dimensional or bounded-generator settings; microscopic derivations may impose additional weak-coupling/coarse-graining approximations.",
+    "predictionsConsequences": [
+      "If a model satisfies the theorem's assumptions, its reduced dynamics preserve positivity even when the system is entangled with an arbitrary ancilla.",
+      "Dissipative channels generate relaxation, dephasing and other irreversible reduced-system behavior while maintaining trace preservation.",
+      "Different operator representations can describe the same physical generator after basis transformations and rate rescaling."
+    ],
+    "evidenceIds": [],
+    "evidenceSummary": "The attached sources establish the mathematical generator structure, not an experimental observation. Whether a concrete physical system is accurately Markovian/GKSL is an additional modeling and empirical question.",
+    "whatEvidenceDoesNotEstablish": "The GKSL theorem does not say every open quantum system is Markovian, that a fitted Lindblad model uniquely identifies its microscopic bath, or that arbitrary non-Markovian dynamics can be rewritten as one time-independent semigroup generator.",
+    "limitations": [
+      "Memory effects, strong system–bath correlations and time-dependent environments can violate the semigroup assumptions.",
+      "Unbounded generators/operators require domain analysis beyond the bounded theorem quoted here.",
+      "A phenomenological Lindblad fit can reproduce data without uniquely revealing the microscopic reservoir."
+    ],
+    "comparisonFrameworks": [
+      "open-quantum-systems",
+      "nonmarkovian-open-systems",
+      "bloch-redfield",
+      "davies-generator"
+    ],
+    "usefulDiscriminators": [
+      "Check CP divisibility/time-homogeneous semigroup assumptions before applying the theorem as a physical model.",
+      "Compare inferred decay/dephasing rates against microscopic bath calculations and non-Markovian alternatives.",
+      "Test whether one time-independent generator reproduces multi-time/initial-state behavior, not only a single decay curve."
+    ],
+    "unresolvedQuestions": [
+      "Which microscopic regimes justify a controlled GKSL reduction for a given experimental platform?",
+      "How should model selection distinguish genuine memory effects from time-dependent Markovian rates or parameter drift?"
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "gks-1976",
+      "lindblad-1976"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "lindblad-1976",
+        "locator": "Commun. Math. Phys. 48 (1976), Theorem 2, Eqs. (4.2)–(4.3), p. 128: bounded generator on B(H) and dual state-space form",
+        "url": "https://doi.org/10.1007/BF01608499"
+      },
+      {
+        "sourceId": "gks-1976",
+        "locator": "J. Math. Phys. 17 (1976), pp. 821–825: establishes the general generator form for completely positive dynamical semigroups of finite N-level systems",
+        "url": "https://doi.org/10.1063/1.522979"
+      }
+    ],
+    "sourceVersion": "Lindblad (1976) theorem statement and GKS (1976) finite-N result; displayed atlas equation is the equivalent Schrödinger form with nonnegative rates shown explicitly.",
+    "reviewedAt": "2026-10-13"
+  },
+  {
+    "theoryId": "quantum-error-correction",
+    "problemIds": [],
+    "entityType": "quantum-information coding framework",
+    "scientificStatus": "established framework for protecting specified logical information against specified error sets",
+    "coreIdea": "Encode logical states into a larger physical Hilbert space so that correctable errors leave no distinguishable imprint of the logical state in the error syndrome, permitting recovery without measuring the unknown logical amplitudes.",
+    "degreesOfFreedom": "A logical/code subspace with projector P, physical Hilbert-space degrees of freedom, a specified set/span of error operators and a recovery channel; stabilizer codes add commuting Pauli-group constraints as a structured subclass.",
+    "assumptions": [
+      "Correctability is always relative to a declared code subspace and error/operator span; no finite code corrects arbitrary unrestricted errors.",
+      "The Knill–Laflamme condition here concerns exact subspace recovery; approximate error correction uses relaxed criteria.",
+      "Stabilizer codes are an important subclass of QEC, not the general form of every quantum code.",
+      "Fault-tolerant computation additionally constrains how gates, syndrome extraction and correlated faults propagate; it does not follow from the bare correction condition alone."
+    ],
+    "mathematicalStructure": "Exact correction is characterized by P E_a† E_b P=c_ab P (basis-independent form of Knill–Laflamme's logical-state conditions). Stabilizer codes describe code spaces as simultaneous +1 eigenspaces of commuting Pauli-group generators.",
+    "formulaIds": [
+      "knill-laflamme",
+      "stabilizer-condition"
+    ],
+    "regime": "Finite-dimensional subspace quantum error correction for specified noise/error spans; operator-algebra, bosonic/continuous-variable and approximate codes generalize the framework.",
+    "predictionsConsequences": [
+      "Errors satisfying the Knill–Laflamme condition can be reversed on the code without learning the encoded amplitudes.",
+      "Error syndromes can distinguish correctable error sectors while preserving logical coherence.",
+      "Structured stabilizer codes allow efficient algebraic descriptions of many useful QEC constructions."
+    ],
+    "evidenceIds": [],
+    "evidenceSummary": "This Passport source-reviews the mathematical correction criteria. It does not add a new experimental Evidence record or claim a fault-tolerance threshold for any hardware platform.",
+    "whatEvidenceDoesNotEstablish": "The existence of an exact code condition does not establish that a given device reaches fault-tolerant logical error rates, that all physical noise lies in the modeled correctable set, or that stabilizer codes exhaust quantum coding possibilities.",
+    "limitations": [
+      "Performance depends on the actual noise channel, encoding overhead, syndrome measurement fidelity and decoder/recovery implementation.",
+      "Approximate/coherent/correlated errors can require metrics beyond exact correctability.",
+      "Fault tolerance and scalable logical computation require circuit-level architecture and threshold analyses beyond static code conditions."
+    ],
+    "comparisonFrameworks": [
+      "stabilizer-formalism",
+      "surface-code",
+      "quantum-information"
+    ],
+    "usefulDiscriminators": [
+      "Evaluate logical error channels under the measured physical-noise model rather than code distance alone.",
+      "Distinguish exact algebraic correctability from approximate logical fidelity and from fault-tolerant threshold claims.",
+      "Compare code families at fixed physical resources, decoder assumptions and correlated-noise model."
+    ],
+    "unresolvedQuestions": [
+      "Which code/decoder architectures provide the best logical performance for realistic biased, correlated and leakage-dominated noise?",
+      "How should exact Knill–Laflamme structure be generalized and benchmarked for approximate or subsystem/operator-algebra codes in hardware?"
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "knill-laflamme-1997",
+      "gottesman-stabilizer-1997"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "knill-laflamme-1997",
+        "locator": "arXiv:quant-ph/9604034v1, Sec. 2 Eqs. (6)–(7), PDF pp. 5–6: necessary and sufficient logical-state recovery conditions; Sec. 3 formalizes the general code conditions",
+        "url": "https://arxiv.org/pdf/quant-ph/9604034v1"
+      },
+      {
+        "sourceId": "gottesman-stabilizer-1997",
+        "locator": "Gottesman thesis, Ch. 3 Sec. 3.2: general stabilizer code as the simultaneous +1 eigenspace of an Abelian subgroup of the Pauli group",
+        "url": "https://arxiv.org/abs/quant-ph/9705052"
+      }
+    ],
+    "sourceVersion": "Knill–Laflamme arXiv:quant-ph/9604034v1 and Gottesman quant-ph/9705052; compact projector notation is declared as the basis-independent rewrite of the original logical-state conditions.",
+    "reviewedAt": "2026-10-13"
+  }
+]);
