@@ -1,48 +1,36 @@
-name: Prepare four-Passport candidate without PR churn
+name: Diagnose four-Passport historical bytes
 on:
   push:
     branches: [agent/continuation-tools-20261007]
 permissions:
   contents: read
 jobs:
-  prepare:
+  diagnose:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
-    permissions:
-      contents: write
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
           ref: science/four-passports-20261013
           fetch-depth: 0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-      - name: Pin expected candidate base
+      - name: Compare current prefix, baseline commit and audited relation release
+        shell: bash
         run: |
           set -euo pipefail
-          test "$(git merge-base HEAD origin/main)" = d2a9f204cdd664b2751669aea0d229fc3188b79e
-          test "$(git rev-parse HEAD)" = d3200f2e992fbe72585e2d376e2968746a65b36e
-      - name: Generate authoritative reports and asset hashes
-        run: |
-          set -euo pipefail
-          npm ci --ignore-scripts
-          npm run coverage
-          npm run assets
-      - name: Run full non-browser release gate before publishing PR
-        run: |
-          set -euo pipefail
-          npm test
-          npm run validate
-      - name: Commit generated outputs only after tests pass
-        run: |
-          set -euo pipefail
-          git add README.md docs/COVERAGE.md docs/FORMULA_AUDIT.md docs/FORMULA_COVERAGE.md docs/RESEARCH_PROFILES.md docs/CONTINUATION.md docs/coverage.json index.html docs/responsive-check.html
-          test -n "$(git diff --cached --name-only)"
-          test -z "$(git diff --cached --name-only -- theories.js formulas.js passports.js evidence.js app.js styles.css workspace.js)"
-          git diff --cached --check
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Regenerate coverage and asset hashes for four-Passport review'
-          git push origin HEAD:refs/heads/science/four-passports-20261013
-          printf 'Prepared candidate: `%s`\n\nTree: `%s`\n' "$(git rev-parse HEAD)" "$(git rev-parse HEAD^{tree})" >> "$GITHUB_STEP_SUMMARY"
+          echo "CURRENT"; sha256sum theories.js; git hash-object theories.js
+          python3 - <<'PY'
+          from pathlib import Path
+          b=Path('theories.js').read_bytes()
+          marker=b'// 2026-10-13 modern QED notation source.'
+          at=b.index(marker)
+          prefix=b[:at]
+          import subprocess,hashlib
+          print("marker offset",at,"prefix tail",repr(prefix[-8:]))
+          for n in range(5):
+            x=prefix[:-n] if n else prefix
+            p=subprocess.run(['git','hash-object','--stdin'],input=x,stdout=subprocess.PIPE,check=True)
+            print("trim",n,"len",len(x),"git",p.stdout.decode().strip(),"sha256",hashlib.sha256(x).hexdigest())
+          PY
+          echo "BASE d2a9"; git show d2a9f204cdd664b2751669aea0d229fc3188b79e:theories.js | sha256sum; git show d2a9f204cdd664b2751669aea0d229fc3188b79e:theories.js | git hash-object --stdin
+          echo "PR74 e152"; git show e1520a6c4b09cd425629825038dd0e190878024d:theories.js | sha256sum; git show e1520a6c4b09cd425629825038dd0e190878024d:theories.js | git hash-object --stdin
+          echo "Ledger"; grep -A5 '"fileTransition"' docs/RELATION_PROMOTIONS_2026-10-08.json
