@@ -54,12 +54,13 @@ function gitBlob(input){
 export function stripPassportReviewAppend(bytes,path){
   const marker=passportSourceReview.appendedMarkers[path];
   if(!marker)return bytes;
+  const expected=passportSourceReview.baselineBlobSha[path];
+  if(gitBlob(bytes)===expected)return bytes; // already reconstructed exactly
   const needle=Buffer.from(marker),at=bytes.indexOf(needle);
   assert.ok(at>0,path+': 2026-10-13 additive marker missing');
   assert.equal(bytes.indexOf(needle,at+needle.length),-1,path+': duplicate 2026-10-13 marker');
   const prefix=bytes.subarray(0,at),candidates=[prefix];
   for(let n=1;n<=4&&prefix.length>=n;n++)candidates.push(prefix.subarray(0,prefix.length-n));
-  const expected=passportSourceReview.baselineBlobSha[path];
   const match=candidates.find(buf=>gitBlob(buf)===expected);
   assert.ok(match,path+': pre-2026-10-13 bytes changed');
   return match;
