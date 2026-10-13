@@ -540,9 +540,9 @@
     "baselineFormulaMetadata": 248
   },
   "appendedMarkers": {
-    "theories": "// 2026-10-13 modern QED notation source.",
-    "formulas": "// 2026-10-13 source review for four held Passport frameworks.",
-    "passports": "// 2026-10-13 source-reviewed QED/Yang-Mills/GKSL/QEC Passports."
+    "theories.js": "// 2026-10-13 modern QED notation source.",
+    "formulas.js": "// 2026-10-13 source review for four held Passport frameworks.",
+    "passports.js": "// 2026-10-13 source-reviewed QED/Yang-Mills/GKSL/QEC Passports."
   },
   "baselineBlobSha": {
     "theories.js": "5a953c4e6a35e5d3e753f17feb7cc8e9b8f06632",

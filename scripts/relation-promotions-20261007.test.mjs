@@ -5,6 +5,7 @@ import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import {multidomainReview,priorDepthSources,verifyDepthFileSha256} from './multidomain-depth-baseline.mjs';
 import {priorNewRelations} from './relation-promotions-20261008-baseline.mjs';
+import {priorPassportSources} from './passport-source-review-20261013-baseline.mjs';
 const ledger=JSON.parse(fs.readFileSync('docs/RELATION_PROMOTIONS_2026-10-07.json','utf8'));
 const sandbox={window:{}};vm.createContext(sandbox);
 for(const file of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js']) vm.runInContext(fs.readFileSync(file,'utf8'),sandbox);
@@ -40,7 +41,7 @@ test('every prior relationship except the four audited promotions is byte-for-by
   assert.deepEqual(JSON.parse(stable(data.sources.find(s=>s.id===ledger.newSource.id))),ledger.newSource);
 });
 test('new count changes exactly match four promotions and one new primary paper',()=>{
-  assert.equal(data.sources.length,543+multidomainReview.addedSourceIds.length);
+  assert.equal(priorPassportSources(data.sources).length,543+multidomainReview.addedSourceIds.length);
   const old=priorNewRelations(data.relations);
   assert.equal(old.filter(r=>r.sourceIds.length).length,122);
   assert.equal(old.filter(r=>r.confidence==='editorial').length,488);
