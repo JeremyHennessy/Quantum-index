@@ -8956,3 +8956,232 @@ window.QI_FORMULAS.formulas.push(...[
     ]
   }
 ]);
+
+
+// 2026-10-13 source review for four held Passport frameworks.
+(() => {
+  const updates=[
+  {
+    "id": "qed-lagrangian",
+    "latex": "\\mathcal L_{\\mathrm{QED}}=-\\frac14F_{\\mu\\nu}F^{\\mu\\nu}+\\bar\\psi(i\\gamma^\\mu D_\\mu-m)\\psi",
+    "plain": "L_QED = -F_mn F^mn/4 + psi-bar(i gamma^mu D_mu - m)psi",
+    "description": "Gauge-invariant spinor QED Lagrangian in natural units before gauge fixing.",
+    "sourceIds": [
+      "feynman-qed-1949",
+      "dyson-qed-1949",
+      "tong-qft-qed-notes"
+    ],
+    "assumptions": [
+      "One Dirac matter field coupled minimally to an Abelian U(1) gauge field in the displayed representative.",
+      "Natural units hbar=c=1; D_mu psi = (partial_mu + i e A_mu)psi and F_mu nu = partial_mu A_nu - partial_nu A_mu.",
+      "Gauge-fixing and ghost terms are absent from the displayed gauge-invariant classical Lagrangian; perturbative quantization requires a gauge choice.",
+      "The compact modern notation is source-locked to Tong's course notes rather than attributed verbatim to the 1949 Feynman/Dyson papers."
+    ],
+    "variables": [
+      "psi: Dirac spinor field",
+      "A_mu: electromagnetic gauge potential",
+      "D_mu: U(1) covariant derivative",
+      "F_mu nu: electromagnetic field strength",
+      "e: electric charge coupling",
+      "m: fermion mass"
+    ],
+    "regime": "Relativistic spinor quantum electrodynamics in the standard U(1) formulation. The displayed action defines the theory but does not by itself solve strong-field, bound-state or nonperturbative observables.",
+    "units": "Natural units hbar=c=1; restore constants only after choosing a consistent unit convention for both matter and gauge terms.",
+    "theoryRelationship": "defining gauge-invariant QED Lagrangian",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-13",
+    "curationBatch": "passport-source-review-2026-10-13",
+    "sourceLocations": [
+      {
+        "sourceId": "tong-qft-qed-notes",
+        "locator": "Sec. 6.3, Eq. (6.67) / HTML Eq. (6.559), with D_mu=partial_mu+i e A_mu; Sec. 6.4 repeats the QED Lagrangian",
+        "url": "https://www.damtp.cam.ac.uk/user/tong/qft/qfthtml/S6.html"
+      }
+    ]
+  },
+  {
+    "id": "fermion-propagator",
+    "sourceIds": [
+      "feynman-qed-1949",
+      "sep-qft",
+      "tong-qft-qed-notes"
+    ],
+    "assumptions": [
+      "Free Dirac-field propagator used as the internal fermion line of perturbative QED.",
+      "Natural units hbar=c=1 and metric/sign conventions are those of the cited QFT notes.",
+      "The Feynman i epsilon prescription fixes the time-ordered boundary condition."
+    ],
+    "variables": [
+      "S_F(p): momentum-space Dirac Feynman propagator",
+      "p: four-momentum",
+      "m: fermion mass",
+      "slash p = gamma^mu p_mu",
+      "epsilon: positive infinitesimal prescription"
+    ],
+    "regime": "Free Dirac propagator and perturbative-QED internal line; self-energy corrections replace the free propagator in interacting resummed descriptions.",
+    "units": "Natural units hbar=c=1.",
+    "theoryRelationship": "canonical free-fermion propagator used by QED perturbation theory",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-13",
+    "curationBatch": "passport-source-review-2026-10-13",
+    "sourceLocations": [
+      {
+        "sourceId": "tong-qft-qed-notes",
+        "locator": "Sec. 5.5, Eq. (5.35), momentum-space factor i(gamma dot p + m)/(p^2-m^2+i epsilon); repeated in Sec. 6.5 QED Feynman rules",
+        "url": "https://www.damtp.cam.ac.uk/user/tong/qft/five.pdf"
+      }
+    ]
+  },
+  {
+    "id": "yang-mills-field",
+    "description": "Modern Lie-algebra notation for the non-Abelian field strength; Yang and Mills wrote the original SU(2) case in isotopic-vector/matrix notation.",
+    "assumptions": [
+      "Gauge potential A_mu=A_mu^a T^a takes values in a Lie algebra with [T^a,T^b]=i f^{abc}T^c under the displayed convention.",
+      "The sign of the nonlinear term follows D_mu=partial_mu+i g A_mu; changing generator or covariant-derivative conventions can flip signs or move factors of g.",
+      "Yang and Mills (1954) explicitly treat the SU(2) isotopic-spin case; the displayed f^{abc} form is its standard modern generalization."
+    ],
+    "variables": [
+      "A_mu^a: gauge potential components",
+      "f^{abc}: Lie-algebra structure constants",
+      "g: gauge coupling",
+      "F_mu nu^a: non-Abelian field strength"
+    ],
+    "regime": "Classical local non-Abelian gauge field before gauge fixing/quantization. This identity alone does not establish confinement or a mass gap.",
+    "units": "Natural-unit gauge-theory convention; dimensions depend on spacetime dimension and field normalization.",
+    "theoryRelationship": "defining non-Abelian curvature tensor",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-13",
+    "curationBatch": "passport-source-review-2026-10-13",
+    "sourceLocations": [
+      {
+        "sourceId": "yang-mills-1954",
+        "locator": "Phys. Rev. 96, pp. 192–193, Eqs. (4)–(9): SU(2) matrix/isotopic-vector gauge field and nonlinear field strength; modern structure-constant notation is a declared generalization",
+        "url": "https://journals.aps.org/pr/pdf/10.1103/PhysRev.96.191"
+      }
+    ]
+  },
+  {
+    "id": "yang-mills-lagrangian",
+    "description": "Pure non-Abelian gauge-field Lagrangian in standard modern normalization.",
+    "assumptions": [
+      "Pure gauge sector only; matter fields and gauge-fixing/ghost terms are not included.",
+      "Generator normalization is absorbed into the component normalization giving the conventional -1/4 coefficient.",
+      "The original Yang–Mills paper uses SU(2) isotopic-vector conventions; the displayed compact component formula is a modern normalization of the same gauge-field kinetic structure."
+    ],
+    "variables": [
+      "F_mu nu^a: non-Abelian field strength",
+      "a: adjoint Lie-algebra index",
+      "g: coupling contained in F_mu nu^a through the chosen convention"
+    ],
+    "regime": "Classical pure Yang–Mills action and starting point for quantized non-Abelian gauge theory; the Lagrangian alone is not a proof of confinement, a mass gap or QCD phenomenology.",
+    "units": "Natural units with conventional four-dimensional field normalization.",
+    "theoryRelationship": "defining pure-gauge Yang–Mills kinetic Lagrangian",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-13",
+    "curationBatch": "passport-source-review-2026-10-13",
+    "sourceLocations": [
+      {
+        "sourceId": "yang-mills-1954",
+        "locator": "Phys. Rev. 96, p. 193, Eq. (11) with the field-strength definitions developed in Eqs. (4)–(9); modern -1/4 F^a_mu nu F^{a mu nu} notation is convention-normalized",
+        "url": "https://journals.aps.org/pr/pdf/10.1103/PhysRev.96.191"
+      }
+    ]
+  },
+  {
+    "id": "lindblad",
+    "description": "Schrödinger-picture GKSL generator for a norm-continuous completely positive trace-preserving quantum dynamical semigroup, with positive rates shown explicitly.",
+    "assumptions": [
+      "Time-homogeneous quantum dynamical semigroup (Markovian semigroup) rather than general non-Markovian evolution.",
+      "Bounded/norm-continuous generator in Lindblad's theorem; finite-dimensional systems satisfy the boundedness condition automatically.",
+      "gamma_k >= 0; factors sqrt(gamma_k) can equivalently be absorbed into Lindblad operators.",
+      "Trace preservation is encoded by the anticommutator terms and complete positivity by the GKSL structure."
+    ],
+    "variables": [
+      "rho: density operator",
+      "H: Hermitian Hamiltonian contribution",
+      "L_k: Lindblad/jump operators",
+      "gamma_k: nonnegative dissipative rates"
+    ],
+    "regime": "Uniformly/norm-continuous CPTP semigroup dynamics. Time-dependent, memory-kernel and general non-Markovian equations are outside the theorem's semigroup scope.",
+    "units": "H has energy units; gamma_k has inverse-time units if L_k is dimensionless; hbar is displayed explicitly in the Hamiltonian term.",
+    "theoryRelationship": "canonical Schrödinger-picture form equivalent to the bounded-generator GKSL theorem",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-13",
+    "curationBatch": "passport-source-review-2026-10-13",
+    "sourceLocations": [
+      {
+        "sourceId": "lindblad-1976",
+        "locator": "Commun. Math. Phys. 48, 119–130 (1976), Theorem 2, Eqs. (4.2)–(4.3), p. 128: bounded generator and dual Schrödinger-picture form",
+        "url": "https://doi.org/10.1007/BF01608499"
+      },
+      {
+        "sourceId": "gks-1976",
+        "locator": "J. Math. Phys. 17, 821–825 (1976): general generator of completely positive dynamical semigroups for finite N-level systems",
+        "url": "https://doi.org/10.1063/1.522979"
+      }
+    ]
+  },
+  {
+    "id": "knill-laflamme",
+    "sourceIds": [
+      "knill-laflamme-1997"
+    ],
+    "description": "Basis-independent projector form of the necessary and sufficient exact quantum error-correction conditions for a specified error set.",
+    "assumptions": [
+      "P projects onto the chosen code subspace and {E_a} is the specified set/span of correctable interaction/error operators.",
+      "c_ab is independent of the encoded logical state; equivalently E_a^dagger E_b acts as a scalar on the code subspace.",
+      "The condition is for exact subspace quantum error correction, not approximate correction, fault-tolerance thresholds or a claim that arbitrary errors are correctable."
+    ],
+    "variables": [
+      "P: projector onto the code subspace",
+      "E_a,E_b: error/interaction operators in the correctable set",
+      "c_ab: scalar Hermitian matrix over error labels"
+    ],
+    "regime": "Exact subspace quantum error correction for a declared error set/channel operator span. Approximate/operator-algebra QEC use generalized conditions.",
+    "units": "Dimensionless operator identity.",
+    "theoryRelationship": "necessary and sufficient exact recovery condition in compact projector form",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-13",
+    "curationBatch": "passport-source-review-2026-10-13",
+    "sourceLocations": [
+      {
+        "sourceId": "knill-laflamme-1997",
+        "locator": "arXiv:quant-ph/9604034v1, Sec. 2 Eqs. (6)–(7), PDF pp. 5–6; Sec. 3 formalizes the necessary/sufficient recovery conditions. P E_a†E_b P=c_ab P is the basis-independent rewrite.",
+        "url": "https://arxiv.org/pdf/quant-ph/9604034v1"
+      }
+    ]
+  },
+  {
+    "id": "stabilizer-condition",
+    "assumptions": [
+      "S is an Abelian subgroup of the n-qubit Pauli group that does not contain -I for a nonempty code space.",
+      "Code states are simultaneous +1 eigenstates of every stabilizer element; it is sufficient to impose the condition on an independent generating set.",
+      "This characterizes stabilizer codes, an important subclass of quantum error-correcting codes, not all QEC codes."
+    ],
+    "variables": [
+      "g_i: independent commuting stabilizer generator",
+      "S: stabilizer group",
+      "|psi>: code state fixed by all stabilizer generators"
+    ],
+    "regime": "Qubit stabilizer-code formalism. Nonadditive, bosonic and other non-stabilizer codes require different structures.",
+    "units": "Dimensionless eigenvalue equation.",
+    "theoryRelationship": "defining common +1 eigenspace condition for stabilizer codes",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-13",
+    "curationBatch": "passport-source-review-2026-10-13",
+    "sourceLocations": [
+      {
+        "sourceId": "gottesman-stabilizer-1997",
+        "locator": "Gottesman thesis (1997), Ch. 3 Sec. 3.2, general stabilizer code: codewords are the simultaneous +1 eigenspace of the Abelian stabilizer group",
+        "url": "https://arxiv.org/abs/quant-ph/9705052"
+      }
+    ]
+  }
+];
+  for (const update of updates) {
+    const matches=window.QI_FORMULAS.formulas.filter(f=>f.id===update.id);
+    if (matches.length!==1) throw new Error("Passport source-review formula identity changed: "+update.id);
+    if (matches[0].metadataReview!=="baseline-audit-v1") throw new Error("Passport source-review formula baseline already changed: "+update.id);
+    Object.assign(matches[0],update);
+  }
+})();
