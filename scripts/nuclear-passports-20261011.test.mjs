@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
+import {priorHeldPassports} from './passport-source-review-20261013-baseline.mjs';
 
 const ledger=JSON.parse(fs.readFileSync('research/PASSPORT_SOURCE_REVIEW_2026-10-11.json','utf8'));
 const bytes=fs.readFileSync('passports.js');
@@ -17,15 +18,16 @@ const byTheory=new Map(theories.map(x=>[x.id,x]));
 const bySource=new Map(sources.map(x=>[x.id,x]));
 const byFormula=new Map(sandbox.window.QI_FORMULAS.formulas.map(x=>[x.id,x]));
 const all=sandbox.window.QI_PASSPORTS.records;
+const historicalAll=priorHeldPassports(all);
 
 test('reviewed nuclear batch appends without editing the prior 23 Passport bytes',()=>{
  assert.ok(boundary>0,'additive release marker');
  assert.equal(blobSha,ledger.previousPassportBlob,'prior approved Passport blob modified');
  assert.equal(ledger.preservedExistingPassportCount,23);
- assert.equal(all.length,25);
- assert.equal(new Set(all.map(x=>x.theoryId)).size,all.length);
+ assert.equal(historicalAll.length,25);
+ assert.equal(new Set(historicalAll.map(x=>x.theoryId)).size,historicalAll.length);
  assert.equal(ledger.acceptedAppendOnlyPassportTheoryIds.length,2);
- for(const id of ledger.acceptedAppendOnlyPassportTheoryIds)assert.equal(all.filter(x=>x.theoryId===id).length,1,id);
+ for(const id of ledger.acceptedAppendOnlyPassportTheoryIds)assert.equal(historicalAll.filter(x=>x.theoryId===id).length,1,id);
 });
 test('both nuclear Passports have source-located mathematics, honest limits and comparators',()=>{
  for(const id of ledger.acceptedAppendOnlyPassportTheoryIds){
@@ -51,7 +53,7 @@ test('both nuclear Passports have source-located mathematics, honest limits and 
  assert.match(all.find(x=>x.theoryId==='in-medium-srg').limitations.join(' '),/truncation/i);
  assert.match(all.find(x=>x.theoryId==='nuclear-shell-model').evidenceSummary,/not an independent/i);
 });
-test('historical six-candidate scope ledger remains immutable and four source gates are still open',()=>{
+test('historical six-candidate scope ledger remains immutable with its four recorded holds',()=>{
  const original=JSON.parse(fs.readFileSync('research/PASSPORT_CURATION_QUEUE_2026-10-08.json','utf8'));
  assert.equal(original.targetCount,6);
  assert.equal(original.status,'scoped-not-source-reviewed-not-shipped');

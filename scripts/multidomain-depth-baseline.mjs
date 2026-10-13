@@ -5,6 +5,7 @@ import assert from 'node:assert/strict';
 import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {stripNewTheoryAppend} from './relation-promotions-20261008-baseline.mjs';
+import {priorPassportSources,priorPassportCoverage,stripPassportReviewAppend} from './passport-source-review-20261013-baseline.mjs';
 
 export const multidomainReview=JSON.parse(fs.readFileSync(new URL('../docs/MULTIDOMAIN_DEPTH_2026-10-08.json',import.meta.url),'utf8'));
 
@@ -16,10 +17,10 @@ function prior(items,ids,key,label){
 export const priorDepthFormulas=current=>prior(current,multidomainReview.addedFormulaIds,'id','formula');
 export const priorDepthPassports=current=>prior(current,multidomainReview.addedPassportTheoryIds,'theoryId','Passport');
 export const priorDepthEvidence=current=>prior(current,multidomainReview.addedEvidenceIds,'id','Evidence');
-export const priorDepthSources=current=>prior(current,multidomainReview.addedSourceIds,'id','source');
+export const priorDepthSources=current=>prior(priorPassportSources(current),multidomainReview.addedSourceIds,'id','source');
 
 export function priorDepthCoverage(current){
-  const x={...current};
+  const x=priorPassportCoverage(current);
   x.sources-=multidomainReview.addedSourceIds.length;
   x.formulas-=multidomainReview.addedFormulaIds.length;
   x.passports-=multidomainReview.addedPassportTheoryIds.length;
@@ -36,19 +37,18 @@ function gitBlob(input){
   return out.stdout.toString().trim();
 }
 export function verifyDepthFile(path,expectedBlobSha){
+  const currentBytes=stripPassportReviewAppend(fs.readFileSync(path),path);
   const marker=multidomainReview.appendedMarkers[path];
   if(!marker){
     if(path==='theories.js'){
-      const old=stripNewTheoryAppend(fs.readFileSync(path));
+      const old=stripNewTheoryAppend(currentBytes);
       assert.equal(gitBlob(old),expectedBlobSha,path+': historical source blob changed');
       return;
     }
-    const out=spawnSync('git',['hash-object',path],{encoding:'utf8'});
-    assert.equal(out.status,0,out.stderr||path);
-    assert.equal(out.stdout.trim(),expectedBlobSha,path);
+    assert.equal(gitBlob(currentBytes),expectedBlobSha,path);
     return;
   }
-  const bytes=fs.readFileSync(path),needle=Buffer.from(marker),at=bytes.indexOf(needle);
+  const bytes=currentBytes,needle=Buffer.from(marker),at=bytes.indexOf(needle);
   assert.ok(at>0,path+': additive marker missing');
   assert.equal(bytes.indexOf(needle,at+needle.length),-1,path+': duplicate additive marker');
   const prefix=bytes.subarray(0,at);
@@ -58,7 +58,8 @@ export function verifyDepthFile(path,expectedBlobSha){
 }
 
 export function verifyDepthFileSha256(path,expectedSha256){
-  const marker=multidomainReview.appendedMarkers[path],bytes=path==='theories.js'?stripNewTheoryAppend(fs.readFileSync(path)):fs.readFileSync(path);
+  const currentBytes=stripPassportReviewAppend(fs.readFileSync(path),path);
+  const marker=multidomainReview.appendedMarkers[path],bytes=path==='theories.js'?stripNewTheoryAppend(currentBytes):currentBytes;
   const digest=buf=>createHash('sha256').update(buf).digest('hex');
   if(!marker){assert.equal(digest(bytes),expectedSha256,path);return;}
   const needle=Buffer.from(marker),at=bytes.indexOf(needle);

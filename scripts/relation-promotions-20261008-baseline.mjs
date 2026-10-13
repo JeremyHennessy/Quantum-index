@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
+import {stripPassportReviewAppend} from './passport-source-review-20261013-baseline.mjs';
 
 export const promotionLedger=JSON.parse(fs.readFileSync(new URL('../docs/RELATION_PROMOTIONS_2026-10-08.json',import.meta.url),'utf8'));
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
@@ -11,6 +12,7 @@ const sig=x=>hash(JSON.stringify(canonical(x)));
 const key=x=>[x.from,x.to,x.type].join('|');
 
 export function stripNewTheoryAppend(bytes){
+  bytes=stripPassportReviewAppend(bytes,'theories.js');
   const t=promotionLedger.fileTransition;
   assert.equal(t.path,'theories.js');
   const marker=Buffer.from(promotionLedger.marker);

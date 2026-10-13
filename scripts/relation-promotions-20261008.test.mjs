@@ -6,6 +6,7 @@ import {createHash} from 'node:crypto';
 import {promotionLedger,priorNewRelations,stripNewTheoryAppend} from './relation-promotions-20261008-baseline.mjs';
 import {priorRelations} from './relation-review-baseline.mjs';
 import {shortestDocumentedPath} from './sourced-paths.mjs';
+import {priorPassportSources,stripPassportReviewAppend} from './passport-source-review-20261013-baseline.mjs';
 
 const sandbox={window:{}};
 vm.createContext(sandbox);
@@ -24,7 +25,7 @@ test('new batch changes only three declared editorial edges and preserves all 61
   const previous=priorNewRelations(data.relations);
   assert.equal(previous.length,ledger.before.relations);
   assert.equal(data.relations.length,ledger.after.relations);
-  assert.equal(data.sources.length,ledger.after.sources);
+  assert.equal(priorPassportSources(data.sources).length,ledger.after.sources);
   assert.equal(data.relations.filter(x=>x.sourceIds.length).length,ledger.after.sourcedRelations);
   assert.equal(data.relations.filter(x=>x.confidence==='editorial').length,ledger.after.editorialRelations);
   assert.equal(data.relations.filter(x=>x.confidence==='high').length,ledger.after.highConfidenceRelations);
@@ -44,7 +45,7 @@ test('new batch changes only three declared editorial edges and preserves all 61
 
 test('immutable old scientific release is reconstructed and all earlier fingerprints remain authoritative',()=>{
   assert.equal(hash(stripNewTheoryAppend(fs.readFileSync('theories.js'))),promotionLedger.fileTransition.beforeSha256);
-  assert.equal(hash(fs.readFileSync('theories.js')),promotionLedger.fileTransition.afterSha256);
+  assert.equal(hash(stripPassportReviewAppend(fs.readFileSync('theories.js'),'theories.js')),promotionLedger.fileTransition.afterSha256);
   assert.equal(priorRelations(data.relations).length,610);
   const altered=plain(data.relations);
   altered.find(x=>x.from==='quantum-rabi-model'&&x.to==='jaynes-cummings').evidenceNote+=' unsupported';
