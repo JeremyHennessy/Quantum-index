@@ -22,7 +22,7 @@ jobs:
         run: |
           set -euo pipefail
           test "$(git merge-base HEAD origin/main)" = d2a9f204cdd664b2751669aea0d229fc3188b79e
-          test "$(git rev-parse HEAD)" = 592be9f812a161987d308926fe1fc24d15b59477
+          test "$(git rev-parse HEAD)" = 8d68e9525e1e1995c25f34f60f405367f9017676
       - name: Generate authoritative reports and asset hashes
         run: |
           set -euo pipefail
