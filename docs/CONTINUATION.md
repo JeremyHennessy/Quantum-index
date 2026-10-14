@@ -27,7 +27,7 @@ This block is generated from shipped runtime data by `scripts/coverage-report.mj
 
 Intake main was `d2a9f204cdd664b2751669aea0d229fc3188b79e` (merged PR #77); no open PRs at intake. A subsequent Actions/branch audit found unpublished `science/four-passports-20261013` at `e30f090`. That candidate had passed non-browser preparation run [38341887618](https://github.com/JeremyHennessy/Quantum-index/actions/runs/38341887618), but was neither merged nor browser-accepted. This release reuses its QED notation work and historical reconstruction, independently qualifies **QED and GKSL only**, and records the reconciliation in `research/PASSPORT_SOURCE_REVIEW_2026-10-14.md` / `.json`.
 
-Current candidate: **27 Passports**, **550 sources**, **153 explicit / 252 baseline formula metadata**. Existing counts of 481 theories, 405 formulas, 610 relations and 16 Evidence records stay unchanged. The QED Lagrangian now uses explicit natural-unit conventions; two other existing cards receive qualified metadata, with the free-propagator slash expanded to gamma^mu p_mu for correct MathJax rendering. All 25 preceding Passport bytes, unrelated scientific records, UI and workspace semantics are preserved. Original review ledgers remain historical.
+Current release: **27 Passports**, **550 sources**, **153 explicit / 252 baseline formula metadata**. Existing counts of 481 theories, 405 formulas, 610 relations and 16 Evidence records stay unchanged. The QED Lagrangian now uses explicit natural-unit conventions; two other existing cards receive qualified metadata, with the free-propagator slash expanded to gamma^mu p_mu for correct MathJax rendering. All 25 preceding Passport bytes, unrelated scientific records, UI and workspace semantics are preserved. Original review ledgers remain historical.
 
 Remaining Passport holds: **Yang–Mills and quantum error correction**. Do not merge the older four-Passport candidate wholesale: it overlaps this release, includes an unqualified Yang–Mills sign convention and contains stale GKSL locators/comparison identity. QED's precision-experiment and broad nonperturbative claims remain outside this formal Passport qualification; no Evidence record is invented.
 
@@ -35,7 +35,15 @@ Validation on scientific head `25c8d38bb27a496116f57a70d64945c19088e54d` (tree `
 
 Pre-release QA caught two separate issues: initial run 38639875577 had 50 passes and two failures caused by a misplaced new-test source-link selector; after that correction, run 38640790043 passed 52 tests but visual inspection exposed the pre-existing unsupported `\slashed` macro. The equivalent explicit gamma contraction and stronger rendering assertion passed the final run above. Original scientific records and UI behavior remain protected by regression fingerprints.
 
-The remaining pre-merge change is this continuation receipt only; runtime assets and browser tests are identical to the accepted scientific head. Merge/deployment and fresh hosted acceptance are recorded separately below after they occur.
+The final pre-merge head `2f86c1fc04b4ae8c827ac178193b2f6a325e2aef` changed only this continuation receipt and passed all **142 Node tests, 0 failed**, plus `npm run validate`. Its runtime assets and browser tests are identical to the accepted scientific head.
+
+### Merged and hosted acceptance — 14 October 2026
+
+[PR #78](https://github.com/JeremyHennessy/Quantum-index/pull/78) merged as `290c1ac68677b2d2266a2e11d15be3f23c3075a4`; the merged file tree matched the final local candidate exactly. Native [Pages run 38643345039](https://github.com/JeremyHennessy/Quantum-index/actions/runs/38643345039) completed successfully. On 14 October, approximately 21:52–21:53 UTC, all **15/15 checked hosted files matched the merged revision byte-for-byte**: `index.html`, `app.js`, `styles.css`, `theories.js`, `formulas.js`, `formula-audit.js`, `developments.js`, `questions.js`, `problems.js`, `evidence.js`, `passports.js`, `profiles.js`, `workspace.js`, `docs/coverage.json` and `docs/responsive-check.html`.
+
+Fresh hosted Chrome checks confirmed the 27-Passport inventory; GKSL/open-system/non-Markovian comparison; QED/Dirac/Yang–Mills comparison; GKSL detail navigation and original-source locators; and both explicitly reviewed QED formula cards with two MathJax outputs and zero red unknown-command/error nodes. The 390px verification frame displayed the corrected propagator and preserved document containment (375px client/scroll width after its scrollbar). Screenshots were inspected. This fixed-width hosted check is not native iOS emulation; the separate passing CI WebKit suite provides that engine coverage. No application-origin browser errors were observed.
+
+The post-merge [Validate catalog run 38643345160](https://github.com/JeremyHennessy/Quantum-index/actions/runs/38643345160) is additional automatic revalidation; the completed pre-release and hosted acceptance evidence is specified above. This receipt changes documentation only. Pages publishing settings and workflows remain unchanged.
 
 ### Next scientific-depth work
 
