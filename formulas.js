@@ -9010,7 +9010,7 @@ const updates=[
     "id": "fermion-propagator",
     "name": "Dirac Feynman propagator",
     "category": "Quantum field theory",
-    "latex": "S_F(p)=\\frac{i(\\slashed p+m)}{p^2-m^2+i\\epsilon}",
+    "latex": "S_F(p)=\\frac{i(\\gamma^\\mu p_\\mu+m)}{p^2-m^2+i\\epsilon}",
     "plain": "S_F(p)=i(p-slash+m)/(p^2-m^2+i epsilon)",
     "description": "Momentum-space propagator of a free Dirac fermion in natural units.",
     "theoryIds": [

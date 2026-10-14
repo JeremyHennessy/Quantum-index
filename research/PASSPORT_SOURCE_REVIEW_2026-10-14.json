@@ -336,7 +336,7 @@
         "id": "fermion-propagator",
         "name": "Dirac Feynman propagator",
         "category": "Quantum field theory",
-        "latex": "S_F(p)=\\frac{i(\\slashed p+m)}{p^2-m^2+i\\epsilon}",
+        "latex": "S_F(p)=\\frac{i(\\gamma^\\mu p_\\mu+m)}{p^2-m^2+i\\epsilon}",
         "plain": "S_F(p)=i(p-slash+m)/(p^2-m^2+i epsilon)",
         "description": "Momentum-space propagator of a free Dirac fermion in natural units.",
         "theoryIds": [
@@ -477,5 +477,6 @@
     "theories.js": "// 2026-10-14 modern QED notation source.",
     "formulas.js": "// 2026-10-14 QED/GKSL formula convention review.",
     "passports.js": "// 2026-10-14 independently qualified QED/GKSL Passports."
-  }
+  },
+  "propagatorRenderingNote": "Equivalent explicit gamma^mu p_mu replaces the unsupported slashed macro after visual browser inspection; the baseline mathematical convention is unchanged."
 }

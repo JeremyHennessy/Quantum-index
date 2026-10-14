@@ -28,7 +28,7 @@ The reused modern convention is [Tong's author-hosted notes](https://www.damtp.c
 
 Reviewer's consistency check: `i gamma D = i gamma partial - e gamma A`; the gauge-phase derivative cancels the added connection. An SI or Gaussian restoration needs its own explicit field normalization. The baseline free propagator additionally needed a verified metric, Fourier convention, slash definition and pole prescription mapping; it is not the full interacting propagator.
 
-The prior candidate already supplied the missing convention correction. Independent inspection confirms the free propagator at Tong Sec. 5.5 Eq. (5.35), printed p. 115 (PDF page 10), using `exp(-ip·(x-y))`, `d⁴p/(2pi)⁴`, numerator `i(slash p+m)` and denominator `p²-m²+i epsilon`. Metric (+---) is explicit in Sec. 1.1.1 Eq. (1.10). The formula metadata now spells these out. QED is accepted for this bounded formal scope; precision-experiment and all-regime claims are not promoted.
+The prior candidate already supplied the missing convention correction. Independent inspection confirms the free propagator at Tong Sec. 5.5 Eq. (5.35), printed p. 115 (PDF page 10), using `exp(-ip·(x-y))`, `d⁴p/(2pi)⁴`, numerator `i(slash p+m)` and denominator `p²-m²+i epsilon`. Metric (+---) is explicit in Sec. 1.1.1 Eq. (1.10). The formula metadata now spells these out. Visual browser inspection found that the existing `\slashed` macro rendered as an unknown command; the card now prints the equivalent explicit `gamma^mu p_mu` numerator. This changes the TeX representation, not the mathematical propagator. QED is accepted for this bounded formal scope; precision-experiment and all-regime claims are not promoted.
 
 ## Reconciliation with unpublished work
 

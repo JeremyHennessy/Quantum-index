@@ -19,6 +19,8 @@ test('GKSL comparison shows theorem boundaries and renders source-qualified QED'
  await expect(page.locator('#formulaGrid a[href="https://web2.ph.utexas.edu/~gsudama/pub/1976_002.pdf"]')).toBeVisible();
  await expect(page.locator('#formulaGrid mjx-container').first()).toBeVisible({timeout:30000});
  await page.goto('/#/formula?theory=qed&review=explicit');await expect(page.locator('#formulaGrid .formula-card')).toHaveCount(2);await expect(page.locator('#formulaGrid')).toContainText('Natural units');await expect(page.locator('#formulaGrid mjx-container').first()).toBeVisible({timeout:30000});
+ await expect(page.locator('#formulaGrid mjx-container [data-mml-node="merror"], #formulaGrid mjx-container [fill="red"], #formulaGrid mjx-container [stroke="red"]')).toHaveCount(0);
+ expect(await page.locator('#formulaGrid mjx-container').allTextContents()).not.toEqual(expect.arrayContaining([expect.stringContaining('\\slashed')]));
  const qpath=info.outputPath('qed-formulas.png');await page.locator('#formulaGrid').scrollIntoViewIfNeeded();await page.screenshot({path:qpath});await info.attach('qed-formulas',{path:qpath,contentType:'image/png'});
  expect(errors).toEqual([]);
 });
