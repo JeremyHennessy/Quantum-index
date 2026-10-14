@@ -1,21 +1,21 @@
 # Quantum Index — current continuation plan
 
-Updated 8 October 2026. This is the single continuation entry point; dated release/research notes remain the audit trail. Runtime counts below are generated and checked by CI.
+Updated 14 October 2026. This is the single continuation entry point; dated release/research notes remain the audit trail. Runtime counts below are generated and checked by CI.
 
 ## Current inventory (generated; not a scientific quality score)
 
 <!-- coverage:start -->
 - **59** cited reading profiles and **5** learning paths
-- **25** Theory Passports, **5** scientific Problems, **16** Evidence records and **60** structured Research Questions
+- **27** Theory Passports, **5** scientific Problems, **16** Evidence records and **60** structured Research Questions
 - **481** theory/framework entities across **14** categories
-- **549** bibliography records
+- **550** bibliography records
 - **352** primary-sourced; **129** review-sourced; **0** catalogued-only entries
 - **610** relationships: **125** source-backed; **485** editorial
 - **41** thought trees
 - **405** formulas across **29** categories
 - **272** entries with linked formulas; **163** documented formula gaps
 - Other audit classes: **11** interpretations, **16** conceptual, **18** theorem-first, **1** thought experiment
-- Formula metadata: **150** explicitly reviewed; **255** baseline records
+- Formula metadata: **153** explicitly reviewed; **252** baseline records
 - **16** reviewed DevelopmentEvents through **2026**
 
 Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.
@@ -23,21 +23,37 @@ Source attachment and formula presence are structural coverage measures, not ver
 
 This block is generated from shipped runtime data by `scripts/coverage-report.mjs`; the existing CI coverage check fails if it drifts. Historical release-specific counts remain in the dated receipts, not in this active plan.
 
+## 2026-10-14 QED / GKSL source qualification
+
+Intake main was `d2a9f204cdd664b2751669aea0d229fc3188b79e` (merged PR #77); no open PRs at intake. A subsequent Actions/branch audit found unpublished `science/four-passports-20261013` at `e30f090`. That candidate had passed non-browser preparation run [38341887618](https://github.com/JeremyHennessy/Quantum-index/actions/runs/38341887618), but was neither merged nor browser-accepted. This release reuses its QED notation work and historical reconstruction, independently qualifies **QED and GKSL only**, and records the reconciliation in `research/PASSPORT_SOURCE_REVIEW_2026-10-14.md` / `.json`.
+
+Current candidate: **27 Passports**, **550 sources**, **153 explicit / 252 baseline formula metadata**. Existing counts of 481 theories, 405 formulas, 610 relations and 16 Evidence records stay unchanged. The QED Lagrangian now uses explicit natural-unit conventions; two other existing cards receive qualified metadata. All 25 preceding Passport bytes, unrelated scientific records, UI and workspace semantics are preserved. Original review ledgers remain historical.
+
+Remaining Passport holds: **Yang–Mills and quantum error correction**. Do not merge the older four-Passport candidate wholesale: it overlaps this release, includes an unqualified Yang–Mills sign convention and contains stale GKSL locators/comparison identity. QED's precision-experiment and broad nonperturbative claims remain outside this formal Passport qualification; no Evidence record is invented.
+
+Validation status: pending reconciled-candidate checks. No merge or hosted acceptance is claimed by this paragraph; replace with exact results before release.
+
+### Next scientific-depth work
+
+1. Finish Yang–Mills source qualification, including the covariant-derivative/curvature sign relationship, before lifting its hold.
+2. Independently qualify QEC recovery-condition and stabilizer source locations; reuse the unpublished candidate only after checking its claims.
+3. Add source-specific empirical Evidence separately from formal Passport qualification; then follow the product queue below.
+
 ## 2026-10-11 source-reviewed nuclear Passport batch
 
-This tree includes **two additive Theory Passports** (`nuclear-shell-model` and `in-medium-srg`), supported by inspected sections/equations of Stroberg et al. (2019) and Hergert (2016). The existing 23 curated Passport records remain byte-for-byte intact. See `research/PASSPORT_SOURCE_REVIEW_2026-10-11.md` and its JSON record for exact locators, explicit evidence nonclaims, discriminators, and four deferred candidates. **Current runtime Passport count: 25**; there are still four scoped candidates not shipped. The October 8 scope JSON retains its historical pre-review status and is not retroactively edited. No experimental Evidence was created.
+This tree includes **two additive Theory Passports** (`nuclear-shell-model` and `in-medium-srg`), supported by inspected sections/equations of Stroberg et al. (2019) and Hergert (2016). The existing 23 curated Passport records remain byte-for-byte intact. See `research/PASSPORT_SOURCE_REVIEW_2026-10-11.md` and its JSON record for exact locators, explicit evidence nonclaims, discriminators, and four deferred candidates. **Historical release Passport count: 25**; four scoped candidates remained unshipped at that checkpoint (superseded by the October 14 disposition above). The October 8 scope JSON retains its historical pre-review status and is not retroactively edited. No experimental Evidence was created.
 
 ## 2026-10-11 live-main reconciliation (recorded baseline: `e1520a6c4b09cd425629825038dd0e190878024d`)
 
 The repository main ref was checked against the handoff and was unchanged. PRs #69–#75 are merged; no open PRs were present at this checkpoint. The generated inventory above is current. PR #69 shipped seven Passports, three formulas and three Evidence records; #70 generated continuation metrics; #71 independently reviewed three directional relations; #72 added the read-only category-trust census; #73 added the read-only source-only path engine; #74 promoted three reviewed relations, reaching **125 sourced / 485 editorial**; and #75 **only scoped** six Passport candidates.
 
-The six `research/PASSPORT_CURATION_QUEUE_2026-10-08.json` candidates—QED, Yang–Mills, GKSL/Lindblad, QEC, nuclear shell model, in-medium SRG—are not yet source-location reviewed or shipped as Passports. Do not prematurely count them among the 23. The category census and path engine are Node tools, **not user-facing app views**. PRs #59–#61 remain superseded/closed.
+At that pre-PR #77 checkpoint, the six `research/PASSPORT_CURATION_QUEUE_2026-10-08.json` candidates were unshipped. This historical count is superseded by the October 11 and October 14 review decisions above. The category census and path engine are Node tools, **not user-facing app views**. PRs #59–#61 remain superseded/closed.
 
 Recorded latest main workflows: Validate catalog run [37838463196](https://github.com/JeremyHennessy/Quantum-index/actions/runs/37838463196) and Pages run [37838461958](https://github.com/JeremyHennessy/Quantum-index/actions/runs/37838461958), both success on the recorded main. This is workflow/deployment evidence only, **not** a fresh hosted-browser acceptance check. Release-specific historical receipts and counts are unchanged.
 
 ### Next bounded releases (evidence gates apply independently)
 
-1. Source-review the six pre-scoped Passports, including exact source/equation locators and empirical limitations, before adding records. Keep the existing 23 unchanged.
+1. Complete the remaining source-qualified Passport queue identified above, preserving all existing Passport records.
 2. Add an isolated Coverage/Trust drill-down using `scripts/category-trust-census.mjs` with record-level gap links and explicit non-additivity; no invented quality score.
 3. Surface `scripts/sourced-paths.mjs` as a source-only directed-path analytical control with no editorial fallback; preserve existing Network layout.
 4. Deepen coherent formula/metadata batches and Evidence/Problem records only after source-specific review.

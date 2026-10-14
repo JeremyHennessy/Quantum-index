@@ -1039,3 +1039,150 @@ window.QI_PASSPORTS.records.push(...[
     "reviewedAt": "2026-10-11"
   }
 ]);
+// 2026-10-14 independently qualified QED/GKSL Passports.
+window.QI_PASSPORTS.records.push(...[
+  {
+    "theoryId": "qed",
+    "problemIds": [],
+    "entityType": "relativistic gauge quantum field theory",
+    "scientificStatus": "established relativistic electromagnetic theory; this review qualifies its formal structure, not new experimental evidence",
+    "coreIdea": "Describe electrons, positrons and photons using a charged Dirac field coupled to an Abelian gauge potential.",
+    "degreesOfFreedom": "Dirac spinor matter and a U(1) gauge field; gauge redundancy must be handled when computing physical amplitudes.",
+    "assumptions": [
+      "One Dirac species in the displayed representative; hbar=c=1.",
+      "Metric (+---), D_mu=partial_mu+i e A_mu; F_mu nu=partial_mu A_nu-partial_nu A_mu.",
+      "The linked propagator is free and time-ordered; interacting amplitudes require additional calculation.",
+      "Modern notation follows Tong; historical primary papers support the perturbative formulation."
+    ],
+    "mathematicalStructure": "L=-F_mu nu F^mu nu/4+psi-bar(i gamma^mu D_mu-m)psi. S_F(p)=i(slash p+m)/(p²-m²+i epsilon), epsilon→0+, with Fourier kernel exp(-ip·(x-y)) and measure d⁴p/(2pi)⁴.",
+    "formulaIds": [
+      "qed-lagrangian",
+      "fermion-propagator"
+    ],
+    "regime": "Relativistic electromagnetic calculations with specified particle content, boundary conditions and approximation order.",
+    "predictionsConsequences": [
+      "Perturbative amplitudes organize photon exchange and radiative corrections.",
+      "Equivalent historical formulations agree within their shared applicability domain."
+    ],
+    "evidenceIds": [],
+    "evidenceSummary": "Formal source review only; precision experiments need separate, source-specific Evidence records.",
+    "whatEvidenceDoesNotEstablish": "Neither the action nor the historical equivalence proof establishes convergent all-order expansions or an all-energy completion.",
+    "limitations": [
+      "A free propagator is not an exact interacting two-point function.",
+      "Gauge-invariant action alone does not supply gauge-fixed amplitudes or renormalized predictions.",
+      "The reviewed historical papers do not establish every modern strong-field or nonperturbative claim."
+    ],
+    "comparisonFrameworks": [
+      "yang-mills",
+      "dirac-electron-theory"
+    ],
+    "usefulDiscriminators": [
+      "Against the free Dirac model: calculate the effect of photon exchange and radiative corrections for the same observable.",
+      "Against Yang–Mills: compare Abelian versus non-Abelian connection algebra; this is a structural distinction, not an empirical exclusion.",
+      "Compare calculations at matched conventions, approximation order and observable definitions."
+    ],
+    "unresolvedQuestions": [
+      "Which source-specific precision results should be added as experimental Evidence?",
+      "Which controlled approximation is appropriate for a selected interacting observable?"
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "feynman-qed-1949",
+      "dyson-qed-1949",
+      "tong-qft-qed-notes"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "tong-qft-qed-notes",
+        "locator": "Sec. 6.3.1, Eqs. (6.67)–(6.69), printed p. 137 (PDF page 14); HTML equivalent Eq. (6.559)",
+        "url": "https://www.damtp.cam.ac.uk/user/tong/qft/six.pdf"
+      },
+      {
+        "sourceId": "tong-qft-qed-notes",
+        "locator": "Sec. 5.5, Eq. (5.35), printed p. 115 (PDF page 10)",
+        "url": "https://www.damtp.cam.ac.uk/user/tong/qft/five.pdf"
+      },
+      {
+        "sourceId": "feynman-qed-1949",
+        "locator": "Introduction; Secs. 2–4, Eqs. (4), (6), (10)–(11): exchange, self-energy and momentum representation; historical conventions retained",
+        "url": "https://journals.aps.org/pr/pdf/10.1103/PhysRev.76.769"
+      },
+      {
+        "sourceId": "dyson-qed-1949",
+        "locator": "p. 486, abstract and Sec. I; Secs. II–III: historical equivalence, perturbative organization and absence of a convergence proof",
+        "url": "https://journals.aps.org/pr/pdf/10.1103/PhysRev.75.486"
+      },
+      {
+        "sourceId": "tong-qft-qed-notes",
+        "locator": "Sec. 1.1.1, Eq. (1.10): Minkowski metric (+---)",
+        "url": "https://www.damtp.cam.ac.uk/user/tong/qft/qfthtml/S1.html"
+      }
+    ],
+    "sourceVersion": "Feynman/Dyson 1949 primary papers independently reviewed; modern conventions checked in Tong author-hosted notes, explicitly a pedagogical source. Comparison tests are review synthesis, not new graph evidence.",
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "theoryId": "gksl",
+    "problemIds": [],
+    "entityType": "generator characterization theorem and dynamical framework",
+    "scientificStatus": "proved under stated semigroup assumptions; physical applicability is model-dependent",
+    "coreIdea": "Characterize generators of completely positive, trace-preserving continuous quantum dynamical semigroups.",
+    "degreesOfFreedom": "Density matrices on an N-dimensional Hilbert space; Lindblad also treats normal maps on bounded operators B(Hilbert space), subject to norm continuity.",
+    "assumptions": [
+      "Time-homogeneous semigroup: Phi(t+s)=Phi(t)Phi(s), Phi(0)=identity.",
+      "Complete positivity and trace preservation; positivity alone is insufficient.",
+      "GKS: finite N. Lindblad: bounded generator, bounded Hamiltonian and jump operators with bounded sum of V†V."
+    ],
+    "mathematicalStructure": "GKS Theorem 2.2, Eq. (2.3), uses a positive coefficient matrix in a traceless orthonormal operator basis. Lindblad Theorem 2, Eqs. (4.2)–(4.3), gives dual Heisenberg/Schrödinger generators. Catalog translation: V_k=sqrt(gamma_k)L_k, gamma_k>=0; H_paper=H_catalog/hbar.",
+    "formulaIds": [
+      "lindblad"
+    ],
+    "regime": "Finite-level semigroup dynamics, or the bounded-generator extension; applying it to a reservoir requires separate justification.",
+    "predictionsConsequences": [
+      "The generator yields CPTP evolution for every nonnegative time.",
+      "Its specified coefficients determine relaxation and coherence evolution; the theorem does not supply those coefficients."
+    ],
+    "evidenceIds": [],
+    "evidenceSummary": "Mathematical characterization, not an experimental validation of any particular environment or fitted rate.",
+    "whatEvidenceDoesNotEstablish": "Neither a unique microscopic bath nor a universal memoryless description follows from the generator form.",
+    "limitations": [
+      "General unbounded generators require domain analysis beyond the reviewed theorem.",
+      "Time-dependent generators are not automatically time-homogeneous semigroups.",
+      "A physical reduced evolution can retain memory; a semigroup approximation needs a justified time window."
+    ],
+    "comparisonFrameworks": [
+      "open-quantum-systems",
+      "nonmarkovian-open-systems"
+    ],
+    "usefulDiscriminators": [
+      "Against general open-system models: test the semigroup composition law on reconstructed maps.",
+      "Against memory-dependent models: compare predictions across preparation histories and times outside the fitted interval.",
+      "Check complete positivity, not merely positivity on isolated-system states."
+    ],
+    "unresolvedQuestions": [
+      "For a chosen system, over which time window is semigroup modeling accurate?",
+      "Which generator parameters are identifiable from the available measurements?"
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "gks-1976",
+      "lindblad-1976"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "gks-1976",
+        "locator": "Sec. I, p. 821, Eq. (1.1); Sec. II, p. 822, Theorem 2.2 and Eq. (2.3)",
+        "url": "https://web2.ph.utexas.edu/~gsudama/pub/1976_002.pdf"
+      },
+      {
+        "sourceId": "lindblad-1976",
+        "locator": "Sec. 1, pp. 120–121 (norm continuity); Sec. 4, p. 127, Theorem 2, Eqs. (4.2)–(4.3); Sec. 6, p. 129",
+        "url": "https://doi.org/10.1007/BF01608499"
+      }
+    ],
+    "sourceVersion": "GKS, J. Math. Phys. 17, 821–825 (1976), university-hosted scan; Lindblad, Commun. Math. Phys. 48, 119–130 (1976), original-page scan retrieved from the Studyres mirror. Comparators/discriminators are review synthesis, not new source-backed graph edges.",
+    "reviewedAt": "2026-10-14"
+  }
+]);
