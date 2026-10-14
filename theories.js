@@ -2835,3 +2835,12 @@ window.QI_DATA.sources.push({
     Object.assign(matches[0], update);
   }
 })();
+// 2026-10-14 modern QED notation source.
+window.QI_DATA.sources.push({
+  "id": "tong-qft-qed-notes",
+  "title": "Lectures on Quantum Field Theory — Sections 5–6",
+  "authors": "David Tong",
+  "year": "living course notes",
+  "type": "authoritative lecture notes",
+  "url": "https://www.damtp.cam.ac.uk/user/tong/qft.html"
+});

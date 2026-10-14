@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
+import {priorHeldPassports} from './passport-source-review-20261014-baseline.mjs';
 
 const plan=JSON.parse(fs.readFileSync('research/PASSPORT_CURATION_QUEUE_2026-10-08.json','utf8'));
 const sandbox={window:{}};
@@ -12,9 +13,11 @@ const w=sandbox.window;
 const theories=new Map(w.QI_DATA.theories.map(x=>[x.id,x]));
 const sources=new Map(w.QI_DATA.sources.map(x=>[x.id,x]));
 const formulas=new Map(w.QI_FORMULAS.formulas.map(x=>[x.id,x]));
-const existing=new Set(w.QI_PASSPORTS.records.map(x=>x.theoryId));
+const currentPassports=w.QI_PASSPORTS.records;
+const existing=new Set(priorHeldPassports(currentPassports).map(x=>x.theoryId));
+const current=new Set(currentPassports.map(x=>x.theoryId));
 
-test('next six Passport targets are distinct existing hubs and do not duplicate shipped Passports',()=>{
+test('historical six-Passport scope reconstructs the post-nuclear 25-Passport checkpoint',()=>{
   assert.equal(plan.status,'scoped-not-source-reviewed-not-shipped');
   assert.equal(plan.targetCount,6);
   assert.equal(plan.candidates.length,6);
@@ -25,7 +28,8 @@ test('next six Passport targets are distinct existing hubs and do not duplicate 
     assert.ok(t,candidate.theoryId);
     assert.equal(t.category,candidate.domain,candidate.theoryId);
     if(['nuclear-shell-model','in-medium-srg'].includes(candidate.theoryId))assert.ok(existing.has(candidate.theoryId),candidate.theoryId+' nuclear release missing');
-    else assert.ok(!existing.has(candidate.theoryId),candidate.theoryId+' is not yet source-reviewed for release');
+    else assert.ok(!existing.has(candidate.theoryId),candidate.theoryId+' was not source-reviewed at the historical checkpoint');
+    assert.equal(current.has(candidate.theoryId),['qed','gksl','nuclear-shell-model','in-medium-srg'].includes(candidate.theoryId),candidate.theoryId+' current disposition');
     assert.equal(candidate.sourceLocationStatus,'not-yet-reviewed');
     assert.ok(candidate.reviewQuestions.length>=3);
     for(const id of candidate.compareWith)assert.ok(theories.has(id),'missing comparison theory '+id);

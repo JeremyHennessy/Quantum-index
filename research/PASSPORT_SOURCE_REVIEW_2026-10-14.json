@@ -1,0 +1,482 @@
+{
+  "reviewedAt": "2026-10-14",
+  "baselineCommit": "d2a9f204cdd664b2751669aea0d229fc3188b79e",
+  "acceptedAppendOnlyPassportTheoryIds": [
+    "qed",
+    "gksl"
+  ],
+  "remainingUnshippedIds": [
+    "yang-mills",
+    "quantum-error-correction"
+  ],
+  "previousPassportCount": 25,
+  "expectedPassportCount": 27,
+  "appendMarker": "// 2026-10-14 independently qualified QED/GKSL Passports.",
+  "previousPassportSha256": "d37f6832560afdbb5b9140a22a405b623ecbdf2a5d32da3910ee29fe5efce0ef",
+  "protectedFileSha256": {
+    "formula-audit.js": "fb958416812e0ba093e7fbaa1ee9d995e536031ab177980f9296e85084fc72ba",
+    "app.js": "d7802b604a9016d591664da37d010aeef4d6a01dc8a8bc036ae876feb0fa1110",
+    "styles.css": "19f8c14858cb7a2663b5337b64eb99aeef29c378c5b42c4438e738bae59ffb24",
+    "workspace.js": "de553a16db91ad4640a99f508208137b2a43d2b113a05e65f887521225c54e09",
+    "developments.js": "ac50182e95d282202540a6bcab3bbd5c0a0beb749aa13ad68ae0c9f586390bfa",
+    "evidence.js": "591ac2f385b3cd828f27169f889989d2c73a571653d894efd20be87be171289a",
+    "problems.js": "757d5d3b7767aba895aaff9438bf4a2194ee781557d2b7e16f28582a92bbf8e8",
+    "questions.js": "16beba9fed1761b1da48c61a626c89a043127b74e134cd161f885d74010b2968",
+    "profiles.js": "7ead242ba17098969b40e3f57e5c2ac788febb44ab5cdce546766f8c6262ce1c",
+    "research/PASSPORT_CURATION_QUEUE_2026-10-08.json": "fe85baa0bf64402d89ebd59c11936adeedfb09ff39a773e1e03f3b7f3db6330c",
+    "research/PASSPORT_SOURCE_REVIEW_2026-10-11.json": "a0028bb6b57d13fb26e512189d7a95373c2de87ebdf372d8c329bf44968a46e7"
+  },
+  "originalSourceCopies": [
+    {
+      "sourceId": "gks-1976",
+      "url": "https://web2.ph.utexas.edu/~gsudama/pub/1976_002.pdf",
+      "sha256": "95013becf236e955943fb2ff87be337e46d74fb32735cf829ff17b52baafde13",
+      "visuallyInspectedPrintedPages": [
+        821,
+        822
+      ]
+    },
+    {
+      "sourceId": "lindblad-1976",
+      "url": "https://studyres.com/doc/413329/physics-on-the-generators-of-quantum-dynamical-semigroups",
+      "sha256": "8b510a97a8015f7f7794728de2f078e7998218ed6944a648087cbb25b7ac79c9",
+      "visuallyInspectedPrintedPages": [
+        127
+      ],
+      "textReviewedPrintedPages": [
+        120,
+        121,
+        125,
+        127,
+        129
+      ],
+      "accessNote": "Original journal scan via public viewer link; publisher abstract alone was not treated as theorem verification."
+    }
+  ],
+  "unchangedCounts": {
+    "theories": 481,
+    "formulas": 405,
+    "relations": 610,
+    "evidenceRecords": 16,
+    "problems": 5
+  },
+  "reconciledUnpublishedCandidate": "e30f090",
+  "reconciledBranch": "science/four-passports-20261013",
+  "scope": "Reuse and independently qualify only QED/GKSL; do not ship the unpublished Yang-Mills/QEC candidates.",
+  "addedPassportTheoryIds": [
+    "qed",
+    "gksl"
+  ],
+  "addedPassportRecords": [
+    {
+      "theoryId": "qed",
+      "problemIds": [],
+      "entityType": "relativistic gauge quantum field theory",
+      "scientificStatus": "established relativistic electromagnetic theory; this review qualifies its formal structure, not new experimental evidence",
+      "coreIdea": "Describe electrons, positrons and photons using a charged Dirac field coupled to an Abelian gauge potential.",
+      "degreesOfFreedom": "Dirac spinor matter and a U(1) gauge field; gauge redundancy must be handled when computing physical amplitudes.",
+      "assumptions": [
+        "One Dirac species in the displayed representative; hbar=c=1.",
+        "Metric (+---), D_mu=partial_mu+i e A_mu; F_mu nu=partial_mu A_nu-partial_nu A_mu.",
+        "The linked propagator is free and time-ordered; interacting amplitudes require additional calculation.",
+        "Modern notation follows Tong; historical primary papers support the perturbative formulation."
+      ],
+      "mathematicalStructure": "L=-F_mu nu F^mu nu/4+psi-bar(i gamma^mu D_mu-m)psi. S_F(p)=i(slash p+m)/(p²-m²+i epsilon), epsilon→0+, with Fourier kernel exp(-ip·(x-y)) and measure d⁴p/(2pi)⁴.",
+      "formulaIds": [
+        "qed-lagrangian",
+        "fermion-propagator"
+      ],
+      "regime": "Relativistic electromagnetic calculations with specified particle content, boundary conditions and approximation order.",
+      "predictionsConsequences": [
+        "Perturbative amplitudes organize photon exchange and radiative corrections.",
+        "Equivalent historical formulations agree within their shared applicability domain."
+      ],
+      "evidenceIds": [],
+      "evidenceSummary": "Formal source review only; precision experiments need separate, source-specific Evidence records.",
+      "whatEvidenceDoesNotEstablish": "Neither the action nor the historical equivalence proof establishes convergent all-order expansions or an all-energy completion.",
+      "limitations": [
+        "A free propagator is not an exact interacting two-point function.",
+        "Gauge-invariant action alone does not supply gauge-fixed amplitudes or renormalized predictions.",
+        "The reviewed historical papers do not establish every modern strong-field or nonperturbative claim."
+      ],
+      "comparisonFrameworks": [
+        "yang-mills",
+        "dirac-electron-theory"
+      ],
+      "usefulDiscriminators": [
+        "Against the free Dirac model: calculate the effect of photon exchange and radiative corrections for the same observable.",
+        "Against Yang–Mills: compare Abelian versus non-Abelian connection algebra; this is a structural distinction, not an empirical exclusion.",
+        "Compare calculations at matched conventions, approximation order and observable definitions."
+      ],
+      "unresolvedQuestions": [
+        "Which source-specific precision results should be added as experimental Evidence?",
+        "Which controlled approximation is appropriate for a selected interacting observable?"
+      ],
+      "questionIds": [],
+      "developmentIds": [],
+      "sourceIds": [
+        "feynman-qed-1949",
+        "dyson-qed-1949",
+        "tong-qft-qed-notes"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "tong-qft-qed-notes",
+          "locator": "Sec. 6.3.1, Eqs. (6.67)–(6.69), printed p. 137 (PDF page 14); HTML equivalent Eq. (6.559)",
+          "url": "https://www.damtp.cam.ac.uk/user/tong/qft/six.pdf"
+        },
+        {
+          "sourceId": "tong-qft-qed-notes",
+          "locator": "Sec. 5.5, Eq. (5.35), printed p. 115 (PDF page 10)",
+          "url": "https://www.damtp.cam.ac.uk/user/tong/qft/five.pdf"
+        },
+        {
+          "sourceId": "feynman-qed-1949",
+          "locator": "Introduction; Secs. 2–4, Eqs. (4), (6), (10)–(11): exchange, self-energy and momentum representation; historical conventions retained",
+          "url": "https://journals.aps.org/pr/pdf/10.1103/PhysRev.76.769"
+        },
+        {
+          "sourceId": "dyson-qed-1949",
+          "locator": "p. 486, abstract and Sec. I; Secs. II–III: historical equivalence, perturbative organization and absence of a convergence proof",
+          "url": "https://journals.aps.org/pr/pdf/10.1103/PhysRev.75.486"
+        },
+        {
+          "sourceId": "tong-qft-qed-notes",
+          "locator": "Sec. 1.1.1, Eq. (1.10): Minkowski metric (+---)",
+          "url": "https://www.damtp.cam.ac.uk/user/tong/qft/qfthtml/S1.html"
+        }
+      ],
+      "sourceVersion": "Feynman/Dyson 1949 primary papers independently reviewed; modern conventions checked in Tong author-hosted notes, explicitly a pedagogical source. Comparison tests are review synthesis, not new graph evidence.",
+      "reviewedAt": "2026-10-14"
+    },
+    {
+      "theoryId": "gksl",
+      "problemIds": [],
+      "entityType": "generator characterization theorem and dynamical framework",
+      "scientificStatus": "proved under stated semigroup assumptions; physical applicability is model-dependent",
+      "coreIdea": "Characterize generators of completely positive, trace-preserving continuous quantum dynamical semigroups.",
+      "degreesOfFreedom": "Density matrices on an N-dimensional Hilbert space; Lindblad also treats normal maps on bounded operators B(Hilbert space), subject to norm continuity.",
+      "assumptions": [
+        "Time-homogeneous semigroup: Phi(t+s)=Phi(t)Phi(s), Phi(0)=identity.",
+        "Complete positivity and trace preservation; positivity alone is insufficient.",
+        "GKS: finite N. Lindblad: bounded generator, bounded Hamiltonian and jump operators with bounded sum of V†V."
+      ],
+      "mathematicalStructure": "GKS Theorem 2.2, Eq. (2.3), uses a positive coefficient matrix in a traceless orthonormal operator basis. Lindblad Theorem 2, Eqs. (4.2)–(4.3), gives dual Heisenberg/Schrödinger generators. Catalog translation: V_k=sqrt(gamma_k)L_k, gamma_k>=0; H_paper=H_catalog/hbar.",
+      "formulaIds": [
+        "lindblad"
+      ],
+      "regime": "Finite-level semigroup dynamics, or the bounded-generator extension; applying it to a reservoir requires separate justification.",
+      "predictionsConsequences": [
+        "The generator yields CPTP evolution for every nonnegative time.",
+        "Its specified coefficients determine relaxation and coherence evolution; the theorem does not supply those coefficients."
+      ],
+      "evidenceIds": [],
+      "evidenceSummary": "Mathematical characterization, not an experimental validation of any particular environment or fitted rate.",
+      "whatEvidenceDoesNotEstablish": "Neither a unique microscopic bath nor a universal memoryless description follows from the generator form.",
+      "limitations": [
+        "General unbounded generators require domain analysis beyond the reviewed theorem.",
+        "Time-dependent generators are not automatically time-homogeneous semigroups.",
+        "A physical reduced evolution can retain memory; a semigroup approximation needs a justified time window."
+      ],
+      "comparisonFrameworks": [
+        "open-quantum-systems",
+        "nonmarkovian-open-systems"
+      ],
+      "usefulDiscriminators": [
+        "Against general open-system models: test the semigroup composition law on reconstructed maps.",
+        "Against memory-dependent models: compare predictions across preparation histories and times outside the fitted interval.",
+        "Check complete positivity, not merely positivity on isolated-system states."
+      ],
+      "unresolvedQuestions": [
+        "For a chosen system, over which time window is semigroup modeling accurate?",
+        "Which generator parameters are identifiable from the available measurements?"
+      ],
+      "questionIds": [],
+      "developmentIds": [],
+      "sourceIds": [
+        "gks-1976",
+        "lindblad-1976"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "gks-1976",
+          "locator": "Sec. I, p. 821, Eq. (1.1); Sec. II, p. 822, Theorem 2.2 and Eq. (2.3)",
+          "url": "https://web2.ph.utexas.edu/~gsudama/pub/1976_002.pdf"
+        },
+        {
+          "sourceId": "lindblad-1976",
+          "locator": "Sec. 1, pp. 120–121 (norm continuity); Sec. 4, p. 127, Theorem 2, Eqs. (4.2)–(4.3); Sec. 6, p. 129",
+          "url": "https://doi.org/10.1007/BF01608499"
+        }
+      ],
+      "sourceVersion": "GKS, J. Math. Phys. 17, 821–825 (1976), university-hosted scan; Lindblad, Commun. Math. Phys. 48, 119–130 (1976), original-page scan retrieved from the Studyres mirror. Comparators/discriminators are review synthesis, not new source-backed graph edges.",
+      "reviewedAt": "2026-10-14"
+    }
+  ],
+  "addedSourceIds": [
+    "tong-qft-qed-notes"
+  ],
+  "addedSourceRecord": {
+    "id": "tong-qft-qed-notes",
+    "title": "Lectures on Quantum Field Theory — Sections 5–6",
+    "authors": "David Tong",
+    "year": "living course notes",
+    "type": "authoritative lecture notes",
+    "url": "https://www.damtp.cam.ac.uk/user/tong/qft.html"
+  },
+  "reviewedFormulaIds": [
+    "qed-lagrangian",
+    "fermion-propagator",
+    "lindblad"
+  ],
+  "formulaEdits": {
+    "qed-lagrangian": {
+      "before": {
+        "id": "qed-lagrangian",
+        "name": "QED Lagrangian",
+        "category": "Quantum field theory",
+        "latex": "\\mathcal L_{\\mathrm{QED}}=\\bar\\psi(i\\hbar c\\gamma^\\mu D_\\mu-mc^2)\\psi-\\frac14F_{\\mu\\nu}F^{\\mu\\nu}",
+        "plain": "L_QED = psi-bar(i hbar c gamma D - mc^2)psi - F^2/4",
+        "description": "Compact Lagrangian of quantum electrodynamics.",
+        "theoryIds": [
+          "qed"
+        ],
+        "sourceIds": [
+          "feynman-qed-1949",
+          "dyson-qed-1949"
+        ],
+        "tags": [
+          "QED"
+        ],
+        "formulaType": "defining",
+        "assumptions": [],
+        "variables": [],
+        "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+        "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+        "theoryRelationship": "canonical representative",
+        "metadataReview": "baseline-audit-v1"
+      },
+      "after": {
+        "id": "qed-lagrangian",
+        "name": "QED Lagrangian",
+        "category": "Quantum field theory",
+        "latex": "\\mathcal L_{\\mathrm{QED}}=-\\frac14F_{\\mu\\nu}F^{\\mu\\nu}+\\bar\\psi(i\\gamma^\\mu D_\\mu-m)\\psi",
+        "plain": "L_QED = -F_mn F^mn/4 + psi-bar(i gamma^mu D_mu - m)psi",
+        "description": "Gauge-invariant spinor QED Lagrangian in natural units before gauge fixing.",
+        "theoryIds": [
+          "qed"
+        ],
+        "sourceIds": [
+          "feynman-qed-1949",
+          "dyson-qed-1949",
+          "tong-qft-qed-notes"
+        ],
+        "tags": [
+          "QED"
+        ],
+        "formulaType": "defining",
+        "assumptions": [
+          "One Dirac matter field coupled minimally to an Abelian U(1) gauge field in the displayed representative.",
+          "Natural units hbar=c=1; D_mu psi = (partial_mu + i e A_mu)psi and F_mu nu = partial_mu A_nu - partial_nu A_mu.",
+          "Gauge-fixing and ghost terms are absent from the displayed gauge-invariant classical Lagrangian; perturbative quantization requires a gauge choice.",
+          "The compact modern notation is source-locked to Tong's course notes rather than attributed verbatim to the 1949 Feynman/Dyson papers."
+        ],
+        "variables": [
+          "psi: Dirac spinor field",
+          "A_mu: electromagnetic gauge potential",
+          "D_mu: U(1) covariant derivative",
+          "F_mu nu: electromagnetic field strength",
+          "e: electric charge coupling",
+          "m: fermion mass"
+        ],
+        "regime": "Relativistic spinor quantum electrodynamics in the standard U(1) formulation. The displayed action defines the theory but does not by itself solve strong-field, bound-state or nonperturbative observables.",
+        "units": "Natural units hbar=c=1; restore constants only after choosing a consistent unit convention for both matter and gauge terms.",
+        "theoryRelationship": "defining gauge-invariant QED Lagrangian",
+        "metadataReview": "explicit",
+        "reviewedAt": "2026-10-14",
+        "curationBatch": "passport-source-review-2026-10-14",
+        "sourceLocations": [
+          {
+            "sourceId": "tong-qft-qed-notes",
+            "locator": "Sec. 6.3, Eq. (6.67) / HTML Eq. (6.559), with D_mu=partial_mu+i e A_mu; Sec. 6.4 repeats the QED Lagrangian",
+            "url": "https://www.damtp.cam.ac.uk/user/tong/qft/qfthtml/S6.html"
+          }
+        ]
+      },
+      "beforeFingerprint": "ce02a8f3467b108f59291857efef3f547b73fc085631ea5b83b01f2914cfc8b8"
+    },
+    "fermion-propagator": {
+      "before": {
+        "id": "fermion-propagator",
+        "name": "Dirac Feynman propagator",
+        "category": "Quantum field theory",
+        "latex": "S_F(p)=\\frac{i(\\slashed p+m)}{p^2-m^2+i\\epsilon}",
+        "plain": "S_F(p)=i(p-slash+m)/(p^2-m^2+i epsilon)",
+        "description": "Momentum-space propagator of a free Dirac fermion in natural units.",
+        "theoryIds": [
+          "qed",
+          "dirac-electron-theory"
+        ],
+        "sourceIds": [
+          "feynman-qed-1949",
+          "sep-qft"
+        ],
+        "tags": [
+          "propagator"
+        ],
+        "formulaType": "canonical",
+        "assumptions": [],
+        "variables": [],
+        "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+        "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+        "theoryRelationship": "canonical representative",
+        "metadataReview": "baseline-audit-v1"
+      },
+      "after": {
+        "id": "fermion-propagator",
+        "name": "Dirac Feynman propagator",
+        "category": "Quantum field theory",
+        "latex": "S_F(p)=\\frac{i(\\gamma^\\mu p_\\mu+m)}{p^2-m^2+i\\epsilon}",
+        "plain": "S_F(p)=i(p-slash+m)/(p^2-m^2+i epsilon)",
+        "description": "Momentum-space propagator of a free Dirac fermion in natural units.",
+        "theoryIds": [
+          "qed",
+          "dirac-electron-theory"
+        ],
+        "sourceIds": [
+          "feynman-qed-1949",
+          "sep-qft",
+          "tong-qft-qed-notes"
+        ],
+        "tags": [
+          "propagator"
+        ],
+        "formulaType": "canonical",
+        "assumptions": [
+          "Free Dirac-field propagator used as the internal fermion line of perturbative QED.",
+          "Natural units hbar=c=1, metric (+---), slash p=gamma^mu p_mu; Fourier kernel exp(-ip·(x-y)) with d⁴p/(2pi)⁴.",
+          "The Feynman i epsilon prescription fixes the time-ordered boundary condition."
+        ],
+        "variables": [
+          "S_F(p): momentum-space Dirac Feynman propagator",
+          "p: four-momentum",
+          "m: fermion mass",
+          "slash p = gamma^mu p_mu",
+          "epsilon: positive infinitesimal prescription"
+        ],
+        "regime": "Free Dirac propagator and perturbative-QED internal line; self-energy corrections replace the free propagator in interacting resummed descriptions.",
+        "units": "Natural units hbar=c=1.",
+        "theoryRelationship": "canonical free-fermion propagator used by QED perturbation theory",
+        "metadataReview": "explicit",
+        "reviewedAt": "2026-10-14",
+        "curationBatch": "passport-source-review-2026-10-14",
+        "sourceLocations": [
+          {
+            "sourceId": "tong-qft-qed-notes",
+            "locator": "Sec. 5.5 Eq. (5.35), printed p. 115 (PDF page 10): Fourier kernel and momentum-space factor; metric from Sec. 1.1.1 Eq. (1.10)",
+            "url": "https://www.damtp.cam.ac.uk/user/tong/qft/five.pdf"
+          }
+        ]
+      },
+      "beforeFingerprint": "0d8e66154e3ad7996ca9d7ad438d60295724fe1ef1159bf5d651d7b452617968"
+    },
+    "lindblad": {
+      "before": {
+        "id": "lindblad",
+        "name": "GKSL/Lindblad master equation",
+        "category": "Open quantum systems",
+        "latex": "\\dot\\rho=-\\frac{i}{\\hbar}[H,\\rho]+\\sum_k\\gamma_k\\left(L_k\\rho L_k^{\\dagger}-\\frac12\\{L_k^{\\dagger}L_k,\\rho\\}\\right)",
+        "plain": "rho-dot = -i[H,rho]/hbar + dissipator",
+        "description": "General Markovian completely positive trace-preserving semigroup generator.",
+        "theoryIds": [
+          "gksl",
+          "open-quantum-systems"
+        ],
+        "sourceIds": [
+          "gks-1976",
+          "lindblad-1976"
+        ],
+        "tags": [
+          "Lindblad"
+        ],
+        "formulaType": "canonical",
+        "assumptions": [],
+        "variables": [],
+        "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+        "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+        "theoryRelationship": "canonical representative",
+        "metadataReview": "baseline-audit-v1"
+      },
+      "after": {
+        "id": "lindblad",
+        "name": "GKSL/Lindblad master equation",
+        "category": "Open quantum systems",
+        "latex": "\\dot\\rho=-\\frac{i}{\\hbar}[H,\\rho]+\\sum_k\\gamma_k\\left(L_k\\rho L_k^{\\dagger}-\\frac12\\{L_k^{\\dagger}L_k,\\rho\\}\\right)",
+        "plain": "rho-dot = -i[H,rho]/hbar + dissipator",
+        "description": "Schrödinger-picture GKSL generator for a norm-continuous completely positive trace-preserving quantum dynamical semigroup, with positive rates shown explicitly.",
+        "theoryIds": [
+          "gksl",
+          "open-quantum-systems"
+        ],
+        "sourceIds": [
+          "gks-1976",
+          "lindblad-1976"
+        ],
+        "tags": [
+          "Lindblad"
+        ],
+        "formulaType": "canonical",
+        "assumptions": [
+          "Time-homogeneous quantum dynamical semigroup (Markovian semigroup) rather than general non-Markovian evolution.",
+          "Bounded/norm-continuous generator in Lindblad's theorem; finite-dimensional systems satisfy the boundedness condition automatically.",
+          "gamma_k >= 0; factors sqrt(gamma_k) can equivalently be absorbed into Lindblad operators.",
+          "Trace preservation is encoded by the anticommutator terms and complete positivity by the GKSL structure.",
+          "Original-paper Hamiltonian equals H/hbar; V_k=sqrt(gamma_k)L_k. Lindblad requires bounded V_k and bounded sum V_k†V_k."
+        ],
+        "variables": [
+          "rho: density operator",
+          "H: Hermitian Hamiltonian contribution",
+          "L_k: Lindblad/jump operators",
+          "gamma_k: nonnegative dissipative rates"
+        ],
+        "regime": "Uniformly/norm-continuous CPTP semigroup dynamics. Time-dependent, memory-kernel and general non-Markovian equations are outside the theorem's semigroup scope.",
+        "units": "H has energy units; gamma_k has inverse-time units if L_k is dimensionless; hbar is displayed explicitly in the Hamiltonian term.",
+        "theoryRelationship": "canonical Schrödinger-picture form equivalent to the bounded-generator GKSL theorem",
+        "metadataReview": "explicit",
+        "reviewedAt": "2026-10-14",
+        "curationBatch": "passport-source-review-2026-10-14",
+        "sourceLocations": [
+          {
+            "sourceId": "gks-1976",
+            "locator": "Sec. I, p. 821, Eq. (1.1); Sec. II, p. 822, Theorem 2.2 and Eq. (2.3)",
+            "url": "https://web2.ph.utexas.edu/~gsudama/pub/1976_002.pdf"
+          },
+          {
+            "sourceId": "lindblad-1976",
+            "locator": "Sec. 1, pp. 120–121 (norm continuity); Sec. 4, p. 127, Theorem 2, Eqs. (4.2)–(4.3); Sec. 6, p. 129",
+            "url": "https://doi.org/10.1007/BF01608499"
+          }
+        ]
+      },
+      "beforeFingerprint": "9d3b0e8aa87e12dff064c498e05209e9e95b705d9b5d8b16034703fd301da6fc"
+    }
+  },
+  "baselineCounts": {
+    "sources": 549,
+    "formulas": 405,
+    "passports": 25,
+    "explicitFormulaMetadata": 150,
+    "baselineFormulaMetadata": 255
+  },
+  "baselineBlobSha": {
+    "theories.js": "5a953c4e6a35e5d3e753f17feb7cc8e9b8f06632",
+    "formulas.js": "b8d82a528e864252a1305e9a0096c5ed50490656",
+    "passports.js": "28026b953d5b76d2581c370ee201e90c31c29831"
+  },
+  "appendedMarkers": {
+    "theories.js": "// 2026-10-14 modern QED notation source.",
+    "formulas.js": "// 2026-10-14 QED/GKSL formula convention review.",
+    "passports.js": "// 2026-10-14 independently qualified QED/GKSL Passports."
+  },
+  "propagatorRenderingNote": "Equivalent explicit gamma^mu p_mu replaces the unsupported slashed macro after visual browser inspection; the baseline mathematical convention is unchanged."
+}

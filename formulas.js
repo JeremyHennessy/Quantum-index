@@ -8956,3 +8956,157 @@ window.QI_FORMULAS.formulas.push(...[
     ]
   }
 ]);
+// 2026-10-14 QED/GKSL formula convention review.
+(() => {
+const updates=[
+  {
+    "id": "qed-lagrangian",
+    "name": "QED Lagrangian",
+    "category": "Quantum field theory",
+    "latex": "\\mathcal L_{\\mathrm{QED}}=-\\frac14F_{\\mu\\nu}F^{\\mu\\nu}+\\bar\\psi(i\\gamma^\\mu D_\\mu-m)\\psi",
+    "plain": "L_QED = -F_mn F^mn/4 + psi-bar(i gamma^mu D_mu - m)psi",
+    "description": "Gauge-invariant spinor QED Lagrangian in natural units before gauge fixing.",
+    "theoryIds": [
+      "qed"
+    ],
+    "sourceIds": [
+      "feynman-qed-1949",
+      "dyson-qed-1949",
+      "tong-qft-qed-notes"
+    ],
+    "tags": [
+      "QED"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "One Dirac matter field coupled minimally to an Abelian U(1) gauge field in the displayed representative.",
+      "Natural units hbar=c=1; D_mu psi = (partial_mu + i e A_mu)psi and F_mu nu = partial_mu A_nu - partial_nu A_mu.",
+      "Gauge-fixing and ghost terms are absent from the displayed gauge-invariant classical Lagrangian; perturbative quantization requires a gauge choice.",
+      "The compact modern notation is source-locked to Tong's course notes rather than attributed verbatim to the 1949 Feynman/Dyson papers."
+    ],
+    "variables": [
+      "psi: Dirac spinor field",
+      "A_mu: electromagnetic gauge potential",
+      "D_mu: U(1) covariant derivative",
+      "F_mu nu: electromagnetic field strength",
+      "e: electric charge coupling",
+      "m: fermion mass"
+    ],
+    "regime": "Relativistic spinor quantum electrodynamics in the standard U(1) formulation. The displayed action defines the theory but does not by itself solve strong-field, bound-state or nonperturbative observables.",
+    "units": "Natural units hbar=c=1; restore constants only after choosing a consistent unit convention for both matter and gauge terms.",
+    "theoryRelationship": "defining gauge-invariant QED Lagrangian",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-14",
+    "curationBatch": "passport-source-review-2026-10-14",
+    "sourceLocations": [
+      {
+        "sourceId": "tong-qft-qed-notes",
+        "locator": "Sec. 6.3, Eq. (6.67) / HTML Eq. (6.559), with D_mu=partial_mu+i e A_mu; Sec. 6.4 repeats the QED Lagrangian",
+        "url": "https://www.damtp.cam.ac.uk/user/tong/qft/qfthtml/S6.html"
+      }
+    ]
+  },
+  {
+    "id": "fermion-propagator",
+    "name": "Dirac Feynman propagator",
+    "category": "Quantum field theory",
+    "latex": "S_F(p)=\\frac{i(\\gamma^\\mu p_\\mu+m)}{p^2-m^2+i\\epsilon}",
+    "plain": "S_F(p)=i(p-slash+m)/(p^2-m^2+i epsilon)",
+    "description": "Momentum-space propagator of a free Dirac fermion in natural units.",
+    "theoryIds": [
+      "qed",
+      "dirac-electron-theory"
+    ],
+    "sourceIds": [
+      "feynman-qed-1949",
+      "sep-qft",
+      "tong-qft-qed-notes"
+    ],
+    "tags": [
+      "propagator"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [
+      "Free Dirac-field propagator used as the internal fermion line of perturbative QED.",
+      "Natural units hbar=c=1, metric (+---), slash p=gamma^mu p_mu; Fourier kernel exp(-ip·(x-y)) with d⁴p/(2pi)⁴.",
+      "The Feynman i epsilon prescription fixes the time-ordered boundary condition."
+    ],
+    "variables": [
+      "S_F(p): momentum-space Dirac Feynman propagator",
+      "p: four-momentum",
+      "m: fermion mass",
+      "slash p = gamma^mu p_mu",
+      "epsilon: positive infinitesimal prescription"
+    ],
+    "regime": "Free Dirac propagator and perturbative-QED internal line; self-energy corrections replace the free propagator in interacting resummed descriptions.",
+    "units": "Natural units hbar=c=1.",
+    "theoryRelationship": "canonical free-fermion propagator used by QED perturbation theory",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-14",
+    "curationBatch": "passport-source-review-2026-10-14",
+    "sourceLocations": [
+      {
+        "sourceId": "tong-qft-qed-notes",
+        "locator": "Sec. 5.5 Eq. (5.35), printed p. 115 (PDF page 10): Fourier kernel and momentum-space factor; metric from Sec. 1.1.1 Eq. (1.10)",
+        "url": "https://www.damtp.cam.ac.uk/user/tong/qft/five.pdf"
+      }
+    ]
+  },
+  {
+    "id": "lindblad",
+    "name": "GKSL/Lindblad master equation",
+    "category": "Open quantum systems",
+    "latex": "\\dot\\rho=-\\frac{i}{\\hbar}[H,\\rho]+\\sum_k\\gamma_k\\left(L_k\\rho L_k^{\\dagger}-\\frac12\\{L_k^{\\dagger}L_k,\\rho\\}\\right)",
+    "plain": "rho-dot = -i[H,rho]/hbar + dissipator",
+    "description": "Schrödinger-picture GKSL generator for a norm-continuous completely positive trace-preserving quantum dynamical semigroup, with positive rates shown explicitly.",
+    "theoryIds": [
+      "gksl",
+      "open-quantum-systems"
+    ],
+    "sourceIds": [
+      "gks-1976",
+      "lindblad-1976"
+    ],
+    "tags": [
+      "Lindblad"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [
+      "Time-homogeneous quantum dynamical semigroup (Markovian semigroup) rather than general non-Markovian evolution.",
+      "Bounded/norm-continuous generator in Lindblad's theorem; finite-dimensional systems satisfy the boundedness condition automatically.",
+      "gamma_k >= 0; factors sqrt(gamma_k) can equivalently be absorbed into Lindblad operators.",
+      "Trace preservation is encoded by the anticommutator terms and complete positivity by the GKSL structure.",
+      "Original-paper Hamiltonian equals H/hbar; V_k=sqrt(gamma_k)L_k. Lindblad requires bounded V_k and bounded sum V_k†V_k."
+    ],
+    "variables": [
+      "rho: density operator",
+      "H: Hermitian Hamiltonian contribution",
+      "L_k: Lindblad/jump operators",
+      "gamma_k: nonnegative dissipative rates"
+    ],
+    "regime": "Uniformly/norm-continuous CPTP semigroup dynamics. Time-dependent, memory-kernel and general non-Markovian equations are outside the theorem's semigroup scope.",
+    "units": "H has energy units; gamma_k has inverse-time units if L_k is dimensionless; hbar is displayed explicitly in the Hamiltonian term.",
+    "theoryRelationship": "canonical Schrödinger-picture form equivalent to the bounded-generator GKSL theorem",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-14",
+    "curationBatch": "passport-source-review-2026-10-14",
+    "sourceLocations": [
+      {
+        "sourceId": "gks-1976",
+        "locator": "Sec. I, p. 821, Eq. (1.1); Sec. II, p. 822, Theorem 2.2 and Eq. (2.3)",
+        "url": "https://web2.ph.utexas.edu/~gsudama/pub/1976_002.pdf"
+      },
+      {
+        "sourceId": "lindblad-1976",
+        "locator": "Sec. 1, pp. 120–121 (norm continuity); Sec. 4, p. 127, Theorem 2, Eqs. (4.2)–(4.3); Sec. 6, p. 129",
+        "url": "https://doi.org/10.1007/BF01608499"
+      }
+    ]
+  }
+];
+for(const row of updates){
+const f=window.QI_FORMULAS.formulas.find(f=>f.id===row.id);
+if(!f || f.metadataReview!=="baseline-audit-v1") throw new Error("Unexpected baseline: "+row.id);
+Object.assign(f,row);
+}
+})();

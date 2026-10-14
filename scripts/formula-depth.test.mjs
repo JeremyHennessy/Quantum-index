@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import {multidomainReview} from './multidomain-depth-baseline.mjs';
+import {restorePassportFormula} from './passport-source-review-20261014-baseline.mjs';
 
 function load(){
   const sandbox={window:{}};
@@ -33,7 +34,7 @@ test('formula-depth pilot adds five reviewed representatives with four documente
     assert.ok(audit.formulaIds.includes(formulaId),theoryId);
   }
   assert.equal(w.QI_FORMULA_AUDIT.entries.filter(e=>e.classification==='formula-bearing-gap').length+multidomainReview.closedGapTheoryIds.length,165);
-  assert.equal(w.QI_FORMULAS.formulas.filter(f=>f.metadataReview==='explicit').length-multidomainReview.addedFormulaIds.length,147);
+  assert.equal(w.QI_FORMULAS.formulas.map(restorePassportFormula).filter(f=>f.metadataReview==='explicit').length-multidomainReview.addedFormulaIds.length,147);
 });
 
 test('formula-depth pilot keeps critical scope restrictions machine-visible',()=>{

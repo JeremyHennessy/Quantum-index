@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 
 import {verifyDepthFile} from './multidomain-depth-baseline.mjs';
+import {priorPassportSources,priorPassportCoverage} from './passport-source-review-20261014-baseline.mjs';
 const ledger=JSON.parse(fs.readFileSync('docs/MULTIDOMAIN_DEPTH_2026-10-08.json','utf8'));
 const files=['theories.js','developments.js','formulas.js','formula-audit.js','profiles.js','questions.js','evidence.js','problems.js','passports.js','workspace.js'];
 const sandbox={window:{}};vm.createContext(sandbox);
@@ -27,7 +28,7 @@ test('multidomain batch is additive and preserves protected application/scientif
 });
 
 test('new identifiers are unique, source-backed and produce exactly the declared depth-count changes',()=>{
-  assert.equal(w.QI_DATA.sources.length,ledger.expectedCounts.sources);
+  assert.equal(priorPassportSources(w.QI_DATA.sources).length,ledger.expectedCounts.sources);
   assert.equal(w.QI_FORMULAS.formulas.length,ledger.expectedCounts.formulas);
   assert.equal(w.QI_EVIDENCE.records.length,ledger.expectedCounts.evidence);
   assert.ok(w.QI_PASSPORTS.records.length>=ledger.expectedCounts.passports,'historical release Passports must remain');
@@ -36,7 +37,7 @@ test('new identifiers are unique, source-backed and produce exactly the declared
   for(const id of ledger.addedFormulaIds)assert.equal(w.QI_FORMULAS.formulas.filter(x=>x.id===id).length,1,id);
   for(const id of ledger.addedEvidenceIds)assert.equal(w.QI_EVIDENCE.records.filter(x=>x.id===id).length,1,id);
   for(const id of ledger.addedPassportTheoryIds)assert.equal(w.QI_PASSPORTS.records.filter(x=>x.theoryId===id).length,1,id);
-  const coverage=JSON.parse(fs.readFileSync('docs/coverage.json','utf8'));
+  const coverage=priorPassportCoverage(JSON.parse(fs.readFileSync('docs/coverage.json','utf8')));
   for(const key of ['sources','formulas','evidenceRecords','formulaBearing','formulaGaps','explicitFormulaMetadata','baselineFormulaMetadata'])assert.equal(coverage[key],key==='evidenceRecords'?ledger.expectedCounts.evidence:ledger.expectedCounts[key],key);
   assert.ok(coverage.passports>=ledger.expectedCounts.passports,'historical Passport count must remain');
 });
