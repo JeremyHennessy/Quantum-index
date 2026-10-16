@@ -8,18 +8,24 @@ Updated 16 October 2026. This is the single continuation entry point; dated rele
 - **59** cited reading profiles and **5** learning paths
 - **29** Theory Passports, **5** scientific Problems, **16** Evidence records and **60** structured Research Questions
 - **481** theory/framework entities across **14** categories
-- **556** bibliography records
+- **558** bibliography records
 - **352** primary-sourced; **129** review-sourced; **0** catalogued-only entries
 - **610** relationships: **125** source-backed; **485** editorial
 - **41** thought trees
-- **410** formulas across **30** categories
-- **277** entries with linked formulas; **158** documented formula gaps
+- **413** formulas across **30** categories
+- **279** entries with linked formulas; **156** documented formula gaps
 - Other audit classes: **11** interpretations, **16** conceptual, **18** theorem-first, **1** thought experiment
-- Formula metadata: **161** explicitly reviewed; **249** baseline records
+- Formula metadata: **164** explicitly reviewed; **249** baseline records
 - **16** reviewed DevelopmentEvents through **2026**
 
 Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.
 <!-- coverage:end -->
+
+## 2026-10-16 Stochastic-inflation and preheating formula wave — acceptance candidate
+
+A source-specific extension proposes **three new formula records covering two existing theory gaps**: the e-fold-time Langevin equation and Itô Fokker–Planck equation for `stochastic-inflation`, and the friction-rescaled daughter-field oscillator mode equation for `reheating-preheating`. All three are independently matched to *original theory papers* and have source-specific notation, assumptions and validity limits. The Vennin–Starobinsky source is explicitly leading slow roll with N=ln a, Itô probability interpretation and **reduced M_Pl** (unlike the PDG 2025 potential slow-roll formula); the Kofman–Linde–Starobinsky mode treatment retains residual expansion/curvature term Delta and does not substitute the static Mathieu equation for broad expanding-universe resonance.
+
+Candidate metrics: **413** formulas, **279** formula-linked theories, **156** gaps, **558** bibliography sources, **164 explicit / 249 baseline** formula metadata, existing 481 theory IDs, 29 Passports, 610 graph relationships and 16 Evidence unchanged. All pre-existing source and mathematical record bytes are preserved with exact parent-blobs and test-only history reconstruction. This is *not* a deployed status: require branch-level Node, generated coverage/freshness/asset and Chromium/WebKit testing, and then merged-main and hosted acceptance before declaring publication. Primary equation locations and nonclaims: [source review](../research/STOCHASTIC_PREHEATING_SOURCE_REVIEW_2026-10-16.md).
 
 ## 2026-10-16 Two further dark-matter model formulas — dependent candidate
 

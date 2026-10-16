@@ -1,6 +1,7 @@
 // Read-only bridge for the source-reviewed dark-matter equation wave of 16 Oct 2026.
 // Never loaded by app. Older approved records must exactly match their original Git blobs.
 import fs from 'node:fs';
+import {priorFollowupFormulas,priorFollowupSources,priorFollowupCoverage} from './astro-stochastic-preheating-20261016-baseline.mjs';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 export const darkMatterFormulaIds=['thermal-wimp-number-density-boltzmann','fuzzy-dark-matter-stationary-schrodinger-poisson'];
@@ -27,6 +28,7 @@ export function preDarkMatterBytes(path){
  return original;
 }
 export function priorDarkMatterFormulas(formulas){
+ formulas=priorFollowupFormulas(formulas);
  const targets=[
  ['thermal-wimp-number-density-boltzmann','wimp-dark-matter','arcadi-wimp-freezeout-2018','Boltzmann'],
  ['fuzzy-dark-matter-stationary-schrodinger-poisson','fuzzy-dark-matter','hui-ostriker-tremaine-witten-fdm-2017','Schrödinger']
@@ -49,6 +51,7 @@ export function priorDarkMatterFormulas(formulas){
  return formulas.filter(f=>!darkMatterFormulaIds.includes(f.id));
 }
 export function priorDarkMatterSources(sources){
+ sources=priorFollowupSources(sources);
  const expected=[
   ['arcadi-wimp-freezeout-2018','authoritative review','https://doi.org/10.1140/epjc/s10052-018-5662-y'],
   ['hui-ostriker-tremaine-witten-fdm-2017','primary source','https://doi.org/10.1103/PhysRevD.95.043541']
@@ -61,7 +64,7 @@ export function priorDarkMatterSources(sources){
  return sources.filter(s=>!darkMatterSourceIds.includes(s.id));
 }
 export function priorDarkMatterCoverage(current){
- const x={...current};
+ const x=priorFollowupCoverage(current);
  x.sources-=2;x.formulas-=2;x.formulaBearing-=2;x.formulaGaps+=2;
  x.explicitFormulaMetadata-=2;
  return x;

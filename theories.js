@@ -2913,3 +2913,27 @@ const additions=[
 const existing=new Set(window.QI_DATA.sources.map(s=>s.id));
 for(const s of additions){if(existing.has(s.id))throw new Error("Duplicate source: "+s.id);existing.add(s.id);window.QI_DATA.sources.push(s);}
 })();
+
+// 2026-10-16 stochastic-inflation and preheating research source registration.
+(()=>{
+const batch=[
+  {
+    "id": "vennin-starobinsky-stochastic-2015",
+    "title": "Correlation Functions in Stochastic Inflation",
+    "authors": "Vincent Vennin, Alexei A. Starobinsky",
+    "year": 2015,
+    "type": "primary source",
+    "url": "https://doi.org/10.1140/epjc/s10052-015-3643-y"
+  },
+  {
+    "id": "kofman-linde-starobinsky-reheating-1997",
+    "title": "Towards the Theory of Reheating After Inflation",
+    "authors": "Lev Kofman, Andrei Linde, Alexei A. Starobinsky",
+    "year": 1997,
+    "type": "primary source",
+    "url": "https://doi.org/10.1103/PhysRevD.56.3258"
+  }
+];
+const known=new Set(window.QI_DATA.sources.map(s=>s.id));
+for(const row of batch){if(known.has(row.id))throw new Error("Duplicate source "+row.id);known.add(row.id);window.QI_DATA.sources.push(row);}
+})();

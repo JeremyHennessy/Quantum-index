@@ -9511,3 +9511,160 @@ const additions=[
 const existing=new Set(window.QI_FORMULAS.formulas.map(f=>f.id));
 for(const f of additions){if(existing.has(f.id))throw new Error("Duplicate dark-matter formula: "+f.id);existing.add(f.id);window.QI_FORMULAS.formulas.push(f);}
 })();
+
+// 2026-10-16 stochastic inflation and preheating source-specific formula wave.
+(()=>{
+const batch=[
+  {
+    "id": "stochastic-inflation-efold-langevin",
+    "name": "Single-field stochastic-inflation e-fold Langevin equation",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "\\frac{d\\varphi}{dN}=-\\frac{V'(\\varphi)}{3H^2(\\varphi)}+\\frac{H(\\varphi)}{2\\pi}\\xi(N)",
+    "plain": "dvarphi/dN = - V'(varphi)/(3 H(varphi)^2) + H(varphi) xi(N)/(2pi)",
+    "description": "Leading-slow-roll coarse-grained scalar Langevin dynamics in e-fold time with Gaussian horizon-crossing noise.",
+    "theoryIds": [
+      "stochastic-inflation"
+    ],
+    "sourceIds": [
+      "vennin-starobinsky-stochastic-2015"
+    ],
+    "tags": [
+      "stochastic inflation",
+      "Langevin",
+      "e-folds",
+      "white noise"
+    ],
+    "formulaType": "approximation",
+    "assumptions": [
+      "A single canonical slowly rolling inflaton with potential V(varphi), coarse-grained at a super-Hubble scale with short modes described as stochastic noise.",
+      "Time is e-fold N=ln a, not an arbitrarily reparameterized stochastic cosmic time; H=H(varphi) at leading slow-roll order.",
+      "Gaussian white noise has zero mean and correlation <xi(N) xi(N')>=delta(N-N'), with its normalization H/(2pi) derived for the stated slow-roll coarse-graining.",
+      "Leading slow roll H² ≈ V/(3 M_Pl,reduced²); M_Pl here is the reduced mass (8 pi G)^(-1/2), unlike the 2025 PDG potential slow-roll card that explicitly uses unreduced M_P.",
+      "Use the Itô prescription when relating the displayed multiplicative-noise Langevin process to its separately indexed probability-density equation; other discretizations generate additional drift terms beyond the leading source approximation.",
+      "The stochastic description is effective, not a complete quantum-gravity theory or a claim that every inflation model admits this noise term."
+    ],
+    "variables": [
+      "varphi(N): coarse-grained inflaton amplitude",
+      "N=ln a: number of expansion e-folds",
+      "V'(varphi): derivative of inflaton potential",
+      "H(varphi): leading-order Hubble rate",
+      "xi(N): normalized zero-mean Gaussian white noise in N"
+    ],
+    "regime": "Coarse-grained single-field canonical slow-roll stochastic inflation with Itô convention for ensemble interpretation; not general multi-field, non-slow-roll, non-Gaussian or arbitrarily coarse-grained stochastic evolution.",
+    "units": "Natural units c=hbar=1, varphi and H dimension mass; N and xi delta-normalized in dimensionless e-fold time, V' dimension mass^3, H² dimension mass².",
+    "theoryRelationship": "Source-defining leading-order effective stochastic evolution for long-wavelength inflationary field, not all inflationary models.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-16",
+    "curationBatch": "astro-stochastic-preheating-2026-10-16",
+    "sourceLocations": [
+      {
+        "sourceId": "vennin-starobinsky-stochastic-2015",
+        "locator": "Vennin and Starobinsky, arXiv:1506.04732v4, Introduction Eq. (1.1), printed p. 2 (PDF page 3); normalized white noise and reduced Planck mass immediately following Eq. (1.1), coarse-graining conditions on previous page.",
+        "url": "https://arxiv.org/pdf/1506.04732v4#page=3"
+      }
+    ]
+  },
+  {
+    "id": "stochastic-inflation-ito-fokker-planck",
+    "name": "Single-field stochastic inflation Itô Fokker–Planck equation",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "\\frac{\\partial P}{\\partial N}=\\frac{\\partial}{\\partial\\varphi}\\left[\\frac{V'}{3H^2}P\\right]+\\frac{\\partial^2}{\\partial\\varphi^2}\\left[\\frac{H^2}{8\\pi^2}P\\right]",
+    "plain": "partial_N P = partial_varphi [ V' P/(3H²) ] + partial_varphi² [ H² P/(8pi²) ]",
+    "description": "Probability-conserving Itô Fokker–Planck evolution corresponding to the single-field leading-order e-fold Langevin process.",
+    "theoryIds": [
+      "stochastic-inflation"
+    ],
+    "sourceIds": [
+      "vennin-starobinsky-stochastic-2015"
+    ],
+    "tags": [
+      "stochastic inflation",
+      "Fokker-Planck",
+      "Itô",
+      "probability diffusion"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [
+      "Itô interpretation of the leading-order coarse-grained single-field stochastic process, with N=e-fold time and field-dependent H(varphi).",
+      "The probability density P(varphi,N) is normalized over a specified domain in field space with probability-conserving boundary conditions; absorbing or first-passage boundaries require separate treatment.",
+      "Gaussian delta-correlated white-noise covariance <xi(N)xi(N')>=delta(N-N') and noise amplitude H/(2pi), giving diffusion coefficient H²/(8pi²).",
+      "The Itô second-derivative acts on the full field-dependent H² P product; moving H² outside the derivative is generally incorrect.",
+      "The source distinguishes Itô from Stratonovich and excludes volume-weighted probability evolution as not normalized in this formulation; no general model-independent stochastic-time reparameterization is assumed."
+    ],
+    "variables": [
+      "P(varphi,N): normalized probability density of coarse-grained field",
+      "varphi: inflaton field coordinate",
+      "N: dimensionless expansion e-fold count",
+      "V': derivative dV/dvarphi",
+      "H: leading slow-roll Hubble scale H(varphi)"
+    ],
+    "regime": "Single-field slow-roll leading-order Itô evolution for a normalized coarse-grained field distribution. Multiplicative-noise prescription, time choice and boundaries are part of the model.",
+    "units": "P has units inverse field (mass^-1 in hbar=c=1 units); both ∂_N P and φ derivatives of drift/diffusion have equal dimensions.",
+    "theoryRelationship": "Probability-density equation for the explicitly source-matched e-fold Langevin stochastic process, with no separate empirical claim.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-16",
+    "curationBatch": "astro-stochastic-preheating-2026-10-16",
+    "sourceLocations": [
+      {
+        "sourceId": "vennin-starobinsky-stochastic-2015",
+        "locator": "Vennin and Starobinsky, arXiv:1506.04732v4, Sec. 2 Eq. (2.3), printed p. 3 (PDF page 4), Itô density equation; adjacent Eq. (2.2) gives alternate prescriptions and footnote 6 rejects unnormalized volume-weighted variant.",
+        "url": "https://arxiv.org/pdf/1506.04732v4#page=4"
+      }
+    ]
+  },
+  {
+    "id": "preheating-rescaled-chi-mode-1997",
+    "name": "Oscillating-inflaton preheating rescaled boson-mode equation",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "\\begin{aligned}\\ddot X_k+\\omega_k^2X_k&=0,\\quad X_k=a^{3/2}\\chi_k,\\\\\\omega_k^2&=\\frac{k^2}{a^2}+g^2\\Phi^2\\sin^2(mt)+\\Delta\\end{aligned}",
+    "plain": "X_k'' + omega_k² X_k=0; X_k=a^(3/2) chi_k; omega_k²=k²/a² +g² Phi² sin²(mt)+Delta",
+    "description": "Rescaled scalar daughter-field mode equation for a massive sinusoidally oscillating inflaton coupled quadratically to a second scalar in an expanding universe.",
+    "theoryIds": [
+      "reheating-preheating"
+    ],
+    "sourceIds": [
+      "kofman-linde-starobinsky-reheating-1997"
+    ],
+    "tags": [
+      "preheating",
+      "reheating",
+      "mode amplification",
+      "resonance"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [
+      "Two real scalar fields in a spatially flat FLRW background: homogeneous oscillating inflaton phi(t) approximately Phi(t) sin(mt) and spectator daughter field chi with interaction -g² phi² chi²/2.",
+      "The daughter Fourier mode chi_k experiences cosmological expansion a(t); X_k=a^(3/2) chi_k eliminates its leading 3H time-friction term.",
+      "The effective potential is quadratic m²phi²/2 near the inflaton minimum; the inflaton mass m and amplitude Phi(t) define oscillations.",
+      "Delta is the residual mass/expansion/curvature term m_chi²-(3/4)(dot a/a)²-(3/2)(ddot a/a)-xi R as defined in the source; the formula does not assume Delta=0 universally.",
+      "Linear initial-stage daughter-field mode treatment: nonlinear backreaction, daughter scattering, rescattering and thermalization are not represented by the displayed oscillator equation.",
+      "A static Mathieu equation with fixed resonance parameter is not generally valid for expanding-universe broad resonance; the source explicitly distinguishes stochastic-resonance regimes."
+    ],
+    "variables": [
+      "X_k=a^(3/2)chi_k: friction-rescaled daughter scalar Fourier mode",
+      "k: comoving Fourier momentum",
+      "a(t): FLRW scale factor",
+      "Phi(t): oscillating inflaton amplitude",
+      "m: inflaton oscillation mass",
+      "g: scalar coupling",
+      "Delta: residual mass/curvature/expansion contribution",
+      "omega_k²: effective time-dependent squared frequency"
+    ],
+    "regime": "Linearized daughter-scalar-mode production for a massive near-sinusoidally oscillating homogeneous inflaton in FLRW spacetime, with specified quadratic interaction; not a complete account of nonlinear reheating, backreaction or thermalization.",
+    "units": "Natural units c=hbar=1; k/a, m, g Phi, sqrt(|Delta|) dimension mass; omega_k² and Delta dimension mass²; t inverse mass.",
+    "theoryRelationship": "Original source-specific linear mode amplification equation with expansion; do not equate with universal reheating dynamics or non-expanding static Mathieu-resonance bands.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-16",
+    "curationBatch": "astro-stochastic-preheating-2026-10-16",
+    "sourceLocations": [
+      {
+        "sourceId": "kofman-linde-starobinsky-reheating-1997",
+        "locator": "Kofman, Linde and Starobinsky, arXiv:hep-ph/9704452v2, Sec. IV, Eq. (38) and Eq. (39), printed p. 12 (PDF page 12); Delta definition immediately under (39). Sec. V, printed pp. 12–13 discusses expanding-universe stochastic resonance beyond a static Mathieu approximation.",
+        "url": "https://arxiv.org/pdf/hep-ph/9704452v2#page=12"
+      }
+    ]
+  }
+];
+const known=new Set(window.QI_FORMULAS.formulas.map(f=>f.id));
+for(const row of batch){if(known.has(row.id))throw new Error("Duplicate scientific formula "+row.id);known.add(row.id);window.QI_FORMULAS.formulas.push(row);}
+})();
