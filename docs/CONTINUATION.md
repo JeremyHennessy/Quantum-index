@@ -8,18 +8,24 @@ Updated 16 October 2026. This is the single continuation entry point; dated rele
 - **59** cited reading profiles and **5** learning paths
 - **29** Theory Passports, **5** scientific Problems, **16** Evidence records and **60** structured Research Questions
 - **481** theory/framework entities across **14** categories
-- **554** bibliography records
+- **556** bibliography records
 - **352** primary-sourced; **129** review-sourced; **0** catalogued-only entries
 - **610** relationships: **125** source-backed; **485** editorial
 - **41** thought trees
-- **408** formulas across **30** categories
-- **275** entries with linked formulas; **160** documented formula gaps
+- **410** formulas across **30** categories
+- **277** entries with linked formulas; **158** documented formula gaps
 - Other audit classes: **11** interpretations, **16** conceptual, **18** theorem-first, **1** thought experiment
-- Formula metadata: **159** explicitly reviewed; **249** baseline records
+- Formula metadata: **161** explicitly reviewed; **249** baseline records
 - **16** reviewed DevelopmentEvents through **2026**
 
 Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.
 <!-- coverage:end -->
+
+## 2026-10-16 Two further dark-matter model formulas — dependent candidate
+
+A second independent source review prepared two additional *model-scoped* formula cards: a single self-conjugate thermal WIMP annihilation Boltzmann equation, sourced to Arcadi et al. (2018), Sec. 2 Eq. (1), and the stationary nonrelativistic Schrödinger–Poisson eigenproblem of fuzzy/ultralight dark matter, sourced to Hui et al. (2017), Appendix B Eq. (B1), printed p. 24. Neither a WIMP discovery nor evidence for ultralight scalar dark matter is claimed. The original 408 equations and bibliography entries from PR #82 are retained byte-for-byte.
+
+This **dependent branch** starts at PR #82 exact head, *not at the production main baseline*. It must not be merged or presented as published until PR #82 is accepted, its content reconciled to merged main, and independent CI/browser/hosted checks pass. Proposed cumulative metrics: **410** formulas, **277** formula-linked theories, **158** documented gaps, **556** sources, **161 explicit / 249 baseline** formula metadata; theories **481**, Passports **29** and relationships **610** unchanged. Source and model-accuracy boundaries: [dark-matter source review](../research/ASTRO_DARK_MATTER_SOURCE_REVIEW_2026-10-16.md).
 
 ## 2026-10-16 Astroparticle formulas — candidate source review
 

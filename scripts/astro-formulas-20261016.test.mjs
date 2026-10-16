@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import {beforeAstroBytes,astroFormulaIds,astroSourceIds,priorAstroFormulas,priorAstroSources,priorAstroCoverage} from './astro-formulas-20261016-baseline.mjs';
+import {priorDarkMatterCoverage} from './astro-darkmatter-20261016-baseline.mjs';
 const sandbox={window:{}};vm.createContext(sandbox);
 for(const p of ['theories.js','formulas.js','formula-audit.js','developments.js','evidence.js','questions.js','problems.js','passports.js'])
  vm.runInContext(fs.readFileSync(p,'utf8'),sandbox,{filename:p});
@@ -12,14 +13,15 @@ const near=(a,b,eps=1e-12)=>assert.ok(Math.abs(a-b)<eps,a+' != '+b);
 test('three source-reviewed formulas and sources are append-only after exact Git-blob boundaries',()=>{
  for(const p of ['theories.js','formulas.js'])assert.ok(beforeAstroBytes(p).length>0);
  assert.equal(astroFormulaIds.length,3);assert.equal(astroSourceIds.length,3);
- const metrics=JSON.parse(fs.readFileSync('docs/coverage.json','utf8'));
+ const latest=JSON.parse(fs.readFileSync('docs/coverage.json','utf8'));
+ const metrics=priorDarkMatterCoverage(latest);
  assert.equal(metrics.theories,481);assert.equal(metrics.passports,29);
  assert.equal(metrics.relations,610);assert.equal(metrics.evidenceRecords,16);
  assert.equal(metrics.sources,554);assert.equal(metrics.formulas,408);
  assert.equal(metrics.formulaCategories,30);assert.equal(metrics.formulaBearing,275);
  assert.equal(metrics.formulaGaps,160);assert.equal(metrics.explicitFormulaMetadata,159);
  assert.equal(metrics.baselineFormulaMetadata,249);
- const before=priorAstroCoverage(metrics);
+ const before=priorAstroCoverage(latest);
  assert.equal(before.sources,551);assert.equal(before.formulas,405);
  assert.equal(before.formulaCategories,29);assert.equal(before.formulaBearing,272);
  assert.equal(before.formulaGaps,163);assert.equal(before.explicitFormulaMetadata,156);

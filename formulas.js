@@ -9406,3 +9406,108 @@ Object.assign(f,row);
  const names=new Set(window.QI_FORMULAS.formulas.map(f=>f.id));
  for(const f of additions){if(names.has(f.id))throw new Error("Astroparticle formula already exists: "+f.id);names.add(f.id);window.QI_FORMULAS.formulas.push(f);}
 })();
+
+// 2026-10-16 two source-scoped dark-matter representatives.
+(()=>{
+const additions=[
+  {
+    "id": "thermal-wimp-number-density-boltzmann",
+    "name": "Thermal WIMP annihilation Boltzmann equation",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "\\frac{dn_\\chi}{dt}+3H(T)n_\\chi=-\\langle\\sigma v_{\\mathrm{rel}}\\rangle\\left(n_\\chi^2-n_{\\chi,\\mathrm{eq}}^2\\right)",
+    "plain": "dn_chi/dt + 3 H n_chi = -<sigma v_rel> (n_chi^2 - n_chi,eq^2)",
+    "description": "Thermal, pair-annihilating self-conjugate WIMP number-density evolution balancing cosmological dilution against annihilation and inverse production.",
+    "theoryIds": [
+      "wimp-dark-matter"
+    ],
+    "sourceIds": [
+      "arcadi-wimp-freezeout-2018"
+    ],
+    "tags": [
+      "WIMP",
+      "thermal freeze-out",
+      "Boltzmann equation"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [
+      "Homogeneous/isotropic expanding background with H(T) and a cosmologically long-lived, effectively self-conjugate WIMP χ.",
+      "χχ annihilation/inverse production into a thermalized bath; the same thermally averaged pair rate determines loss and detailed-balance production.",
+      "Number density evolves in kinetic equilibrium with the plasma so a temperature-dependent equilibrium number density n_eq(T) and thermally averaged cross section are meaningful.",
+      "Coannihilation, particle/antiparticle asymmetry, freeze-in, additional hidden-sector species, nonstandard expansion and late entropy injection are not represented by this one-species equation.",
+      "The equation models a possible thermal relic and does not imply any WIMP has been detected or that every dark-matter candidate is a thermal WIMP."
+    ],
+    "variables": [
+      "n_chi: WIMP physical number density",
+      "n_chi,eq: equilibrium number density at bath temperature T",
+      "H(T): expansion Hubble rate",
+      "<sigma v_rel>: thermal average of the annihilation cross section times relative velocity",
+      "t: cosmological proper time",
+      "χ: self-conjugate particle candidate in the representative model"
+    ],
+    "regime": "Standard homogeneous thermal chemical freeze-out for a single self-conjugate pair-annihilating WIMP species; departures from kinetic equilibrium and coupled-channel models need additional Boltzmann equations.",
+    "units": "n and n_eq length^-3; H time^-1; <sigma v_rel> volume/time; both sides number density per time (c=ℏ=k_B=1 may be chosen consistently).",
+    "theoryRelationship": "Canonical one-species thermal annihilation Boltzmann equation illustrating a well-defined WIMP-production submodel, not the defining mathematical form of all dark-matter theories.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-16",
+    "curationBatch": "astro-darkmatter-sourced-2026-10-16",
+    "sourceLocations": [
+      {
+        "sourceId": "arcadi-wimp-freezeout-2018",
+        "locator": "Arcadi et al. (2018), Sec. 2 'The WIMP paradigm', Eq. (1) for dn_chi/dt+3H(T)n_chi= -<sigma v>(n_chi^2-n_eq^2), plus definitions Eqs. (2)–(4); source is an open-access scientific review.",
+        "url": "https://link.springer.com/article/10.1140/epjc/s10052-018-5662-y#Sec2"
+      }
+    ]
+  },
+  {
+    "id": "fuzzy-dark-matter-stationary-schrodinger-poisson",
+    "name": "Fuzzy dark-matter stationary Schrödinger–Poisson equations",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "\\begin{aligned}-\\frac{\\hbar^2}{2m}\\nabla^2\\psi+m\\Phi\\psi&=mE\\psi,\\\\\\nabla^2\\Phi&=4\\pi Gm|\\psi|^2\\end{aligned}",
+    "plain": "-hbar^2/(2m) nabla^2 psi + m Phi psi = m E psi; nabla^2 Phi = 4 pi G m |psi|^2",
+    "description": "Stationary Newtonian self-gravitating ultralight-boson eigenstate problem, using the number-density-normalized wavefunction of Hui et al.",
+    "theoryIds": [
+      "fuzzy-dark-matter"
+    ],
+    "sourceIds": [
+      "hui-ostriker-tremaine-witten-fdm-2017"
+    ],
+    "tags": [
+      "fuzzy dark matter",
+      "Schrödinger–Poisson",
+      "ultralight scalars",
+      "soliton"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [
+      "Nonrelativistic, weak-gravity, Newtonian self-gravitating ultralight scalar/bosonic wavefield with no explicit scalar self-interaction in the displayed eigenproblem.",
+      "Stationary isolated bound-state ansatz with eigenvalue mE; the equations describe eigenstates rather than all time-dependent wave dark matter.",
+      "ψ is normalized so n=|ψ|^2 is particle number density and physical mass density is ρ=m|ψ|^2, not |ψ|^2 alone.",
+      "The Newtonian gravitational potential Φ has units of specific energy (velocity squared); regularity and isolated-system boundary conditions matter.",
+      "Strong relativistic effects, particle creation, cosmological expansion, baryonic potentials and external tides are outside this isolated stationary representative."
+    ],
+    "variables": [
+      "ψ(r): bosonic wavefunction with |ψ|^2 equal to particle number density",
+      "m: ultralight boson mass",
+      "Φ(r): Newtonian gravitational potential per unit mass",
+      "E: energy eigenvalue per unit boson mass",
+      "G: Newton gravitational constant",
+      "ℏ: reduced Planck constant"
+    ],
+    "regime": "Isolated stationary nonrelativistic Schrödinger–Poisson bound states for fuzzy dark matter; not a full relativistic scalar-field theory or evidence that ultralight bosons constitute measured cosmological dark matter.",
+    "units": "ψ has dimensions length^-3/2 in particle-number normalization; |ψ|² number density; Φ,E velocity²; both Schrödinger terms energy×wavefunction; ∇²Φ and 4πGm|ψ|² have dimensions time^-2.",
+    "theoryRelationship": "Model-specific stationary Schrödinger–Poisson eigenproblem supplying one mathematical representative of the FDM halo soliton framework, not an exact description of all cosmological perturbations.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-16",
+    "curationBatch": "astro-darkmatter-sourced-2026-10-16",
+    "sourceLocations": [
+      {
+        "sourceId": "hui-ostriker-tremaine-witten-fdm-2017",
+        "locator": "Hui, Ostriker, Tremaine and Witten (2017), arXiv:1610.08297v2, Appendix B, Eq. (B1), printed p. 24 (PDF page 24): stationary Schrödinger eigenproblem and Poisson equation. Immediately after Eq. (B1) define isolated-state conditions and M=m∫d³r|ψ|².",
+        "url": "https://arxiv.org/pdf/1610.08297#page=24"
+      }
+    ]
+  }
+];
+const existing=new Set(window.QI_FORMULAS.formulas.map(f=>f.id));
+for(const f of additions){if(existing.has(f.id))throw new Error("Duplicate dark-matter formula: "+f.id);existing.add(f.id);window.QI_FORMULAS.formulas.push(f);}
+})();

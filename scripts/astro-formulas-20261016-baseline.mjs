@@ -2,6 +2,7 @@
 // Test-only: reconstruct earlier checkpoints only AFTER checking the accepted
 // pre-astro data blob bytes; never used by application runtime.
 import fs from 'node:fs';
+import {priorDarkMatterFormulas,priorDarkMatterSources,priorDarkMatterCoverage} from './astro-darkmatter-20261016-baseline.mjs';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 export const astroFormulaIds=["lambda-cdm-redshift-expansion","inflation-potential-slow-roll-2025","quintessence-canonical-fluid-2008"];
@@ -30,6 +31,7 @@ export function beforeAstroBytes(path){
  return old;
 }
 export function priorAstroFormulas(current){
+ current=priorDarkMatterFormulas(current);
  for(const id of astroFormulaIds){
   const rows=current.filter(f=>f.id===id);
   assert.equal(rows.length,1,'missing/duplicate new formula '+id);
@@ -44,6 +46,7 @@ export function priorAstroFormulas(current){
  return current.filter(f=>!astroFormulaIds.includes(f.id));
 }
 export function priorAstroSources(current){
+ current=priorDarkMatterSources(current);
  for(const id of astroSourceIds){
   const rows=current.filter(s=>s.id===id);
   assert.equal(rows.length,1,'missing/duplicate astro source '+id);
@@ -53,7 +56,7 @@ export function priorAstroSources(current){
  return current.filter(s=>!astroSourceIds.includes(s.id));
 }
 export function priorAstroCoverage(latest){
- const x={...latest};
+ const x=priorDarkMatterCoverage(latest);
  x.sources-=3;x.formulas-=3;x.formulaCategories-=1;
  x.formulaBearing-=3;x.formulaGaps+=3;
  x.explicitFormulaMetadata-=3;

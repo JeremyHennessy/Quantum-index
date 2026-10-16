@@ -5,6 +5,7 @@ import vm from 'node:vm';
 import {multidomainReview} from './multidomain-depth-baseline.mjs';
 import {restorePassportFormula} from './passport-source-review-20261014-baseline.mjs';
 import {priorAstroFormulas,astroFormulaIds} from './astro-formulas-20261016-baseline.mjs';
+import {darkMatterFormulaIds} from './astro-darkmatter-20261016-baseline.mjs';
 
 function load(){
   const sandbox={window:{}};
@@ -35,7 +36,7 @@ test('formula-depth pilot adds five reviewed representatives with four documente
     assert.ok(audit.formulaIds.includes(formulaId),theoryId);
   }
   // Reconstruct the historical gap count after removing the three later astrophysics closures.
-  assert.equal(w.QI_FORMULA_AUDIT.entries.filter(e=>e.classification==='formula-bearing-gap').length+astroFormulaIds.length+multidomainReview.closedGapTheoryIds.length,165);
+  assert.equal(w.QI_FORMULA_AUDIT.entries.filter(e=>e.classification==='formula-bearing-gap').length+darkMatterFormulaIds.length+astroFormulaIds.length+multidomainReview.closedGapTheoryIds.length,165);
   assert.equal(priorAstroFormulas(w.QI_FORMULAS.formulas).map(restorePassportFormula).filter(f=>f.metadataReview==='explicit'&&f.id!=='knill-laflamme').length-multidomainReview.addedFormulaIds.length,147);
 });
 
