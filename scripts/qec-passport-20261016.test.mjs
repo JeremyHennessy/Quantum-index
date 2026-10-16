@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import {restoreQecFormula} from './qec-source-review-20261016-baseline.mjs';
+import {priorAstroFormulas} from './astro-formulas-20261016-baseline.mjs';
 const w={window:{}};vm.createContext(w);
 for(const file of ['theories.js','formulas.js','formula-audit.js','developments.js','evidence.js','questions.js','problems.js','passports.js'])vm.runInContext(fs.readFileSync(file,'utf8'),w,{filename:file});
 const data=w.window;
@@ -16,7 +17,7 @@ test('QEC review preserves exact pre-candidate formula and Passport files before
     for(let j=1;j<=4&&prefix.length>=j;j++)if(prefix.subarray(prefix.length-j).every(byte=>byte===10||byte===13))accepted.push(prefix.subarray(0,prefix.length-j));
     assert.ok(accepted.some(bytes=>shaBlob(bytes)===sha),path+': original record bytes modified')}}
   assert.equal(data.QI_DATA.theories.length,481);
-  assert.equal(data.QI_FORMULAS.formulas.length,405);
+  assert.equal(priorAstroFormulas(data.QI_FORMULAS.formulas).length,405);
   assert.equal(data.QI_PASSPORTS.records.filter(x=>x.theoryId!=='yang-mills').length,28);
   assert.equal(data.QI_DATA.relations.length,610);
 });

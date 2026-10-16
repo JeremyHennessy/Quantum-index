@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import {beforeYangMillsBytes,restoreYangMillsFormula,priorYangMillsSources} from './yang-mills-source-review-20261016-baseline.mjs';
+import {priorAstroCoverage,priorAstroSources,priorAstroFormulas} from './astro-formulas-20261016-baseline.mjs';
 
 const sandbox={window:{}};vm.createContext(sandbox);
 for(const p of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','questions.js','problems.js','passports.js'])
@@ -10,14 +11,14 @@ for(const p of ['theories.js','developments.js','evidence.js','formulas.js','for
 const w=sandbox.window;
 test('source review is append-only and retains exact pre-Yang-Mills source/formula/Passport bytes',()=>{
  for(const path of ['theories.js','formulas.js','passports.js'])assert.ok(beforeYangMillsBytes(path).length>0);
- const c=JSON.parse(fs.readFileSync('docs/coverage.json','utf8'));
+ const c=priorAstroCoverage(JSON.parse(fs.readFileSync('docs/coverage.json','utf8')));
  assert.equal(c.theories,481);assert.equal(c.formulas,405);assert.equal(c.formulaGaps,163);
  assert.equal(c.relations,610);assert.equal(c.sources,551);assert.equal(c.passports,29);
  assert.equal(c.explicitFormulaMetadata,156);assert.equal(c.baselineFormulaMetadata,249);
  assert.equal(w.QI_DATA.theories.length,481);assert.equal(w.QI_DATA.relations.length,610);
- assert.equal(w.QI_FORMULAS.formulas.length,405);
+ assert.equal(priorAstroFormulas(w.QI_FORMULAS.formulas).length,405);
  assert.equal(w.QI_PASSPORTS.records.length,29);
- assert.equal(priorYangMillsSources(w.QI_DATA.sources).length,550);
+ assert.equal(priorAstroSources(priorYangMillsSources(w.QI_DATA.sources)).length,550);
 });
 test('both existing Yang-Mills formulas retain their original mathematics and independent locators',()=>{
  for(const id of ['yang-mills-field','yang-mills-lagrangian']){
