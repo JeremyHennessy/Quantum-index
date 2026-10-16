@@ -2857,3 +2857,35 @@ window.QI_DATA.sources.push({
   "url": "https://fma.if.usp.br/~burdman/QFT2/lecture_15.pdf"
 });
 })();
+
+// 2026-10-16 astroparticle formula wave — reviewed bibliography only.
+(()=>{
+  const newSources=[
+  {
+    "id": "pdg-bigbang-2025-reviewed",
+    "title": "Review of Particle Physics 2025 Update — Big-Bang Cosmology",
+    "authors": "K. A. Olive and J. A. Peacock (Particle Data Group)",
+    "year": 2025,
+    "type": "authoritative review",
+    "url": "https://pdg.lbl.gov/2025/reviews/rpp2025-rev-bbang-cosmology.pdf"
+  },
+  {
+    "id": "pdg-inflation-2025-reviewed",
+    "title": "Review of Particle Physics 2025 Update — Inflation",
+    "authors": "J. Ellis, V. Vennin and D. Wands (Particle Data Group)",
+    "year": 2025,
+    "type": "authoritative review",
+    "url": "https://pdg.lbl.gov/2025/reviews/rpp2025-rev-inflation.pdf"
+  },
+  {
+    "id": "frieman-turner-huterer-2008-reviewed",
+    "title": "Dark Energy and the Accelerating Universe",
+    "authors": "J. A. Frieman, M. S. Turner and D. Huterer",
+    "year": 2008,
+    "type": "authoritative peer-reviewed review",
+    "url": "https://lss.fnal.gov/archive/2008/pub/fermilab-pub-08-613-a.pdf"
+  }
+];
+  const existing=new Set(window.QI_DATA.sources.map(s=>s.id));
+  for(const s of newSources){if(existing.has(s.id))throw new Error("Duplicate scientific source "+s.id);existing.add(s.id);window.QI_DATA.sources.push(s);}
+})();
