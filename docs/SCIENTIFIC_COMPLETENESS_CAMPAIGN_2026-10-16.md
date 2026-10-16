@@ -27,3 +27,5 @@ Work on branches from the live `main` head. Keep batches independent, reversible
 
 - **16 October / phase 1:** generated freshness report corrected to distinguish *unknown literature sweep status* from *zero stale reviews among actual documented sweeps*, while keeping all original theory/formula/graph/Passport/Evidence data and UI unchanged. Source-attachment dates remain as historical catalog metadata. This statement describes branch intent; publication is subject to PR CI and merge verification.
 - **Next scientific decision:** independently qualify `yang-mills` and `quantum-error-correction` held Passports using original sources; otherwise hold them and proceed with independently verifiable astroparticle equations.
+
+- **16 October / QEC candidate:** independently inspected Knill–Laflamme original theorem, Eqs. (19)–(20), printed p. 13, and prepared a bounded QEC Passport and original-source formula metadata. This is still subject to PR, merged-main and hosted verification. Yang–Mills stays held.

@@ -18,7 +18,7 @@ const byTheory=new Map(theories.map(x=>[x.id,x]));
 const bySource=new Map(sources.map(x=>[x.id,x]));
 const byFormula=new Map(sandbox.window.QI_FORMULAS.formulas.map(x=>[x.id,x]));
 const all=sandbox.window.QI_PASSPORTS.records;
-const historicalAll=priorHeldPassports(all);
+const historicalAll=priorHeldPassports(all.filter(p=>p.theoryId!=='quantum-error-correction'));
 
 test('reviewed nuclear batch appends without editing the prior 23 Passport bytes',()=>{
  assert.ok(boundary>0,'additive release marker');

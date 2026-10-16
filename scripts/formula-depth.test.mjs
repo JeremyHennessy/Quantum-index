@@ -34,7 +34,7 @@ test('formula-depth pilot adds five reviewed representatives with four documente
     assert.ok(audit.formulaIds.includes(formulaId),theoryId);
   }
   assert.equal(w.QI_FORMULA_AUDIT.entries.filter(e=>e.classification==='formula-bearing-gap').length+multidomainReview.closedGapTheoryIds.length,165);
-  assert.equal(w.QI_FORMULAS.formulas.map(restorePassportFormula).filter(f=>f.metadataReview==='explicit').length-multidomainReview.addedFormulaIds.length,147);
+  assert.equal(w.QI_FORMULAS.formulas.map(restorePassportFormula).filter(f=>f.metadataReview==='explicit'&&f.id!=='knill-laflamme').length-multidomainReview.addedFormulaIds.length,147);
 });
 
 test('formula-depth pilot keeps critical scope restrictions machine-visible',()=>{

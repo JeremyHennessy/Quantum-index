@@ -1186,3 +1186,74 @@ window.QI_PASSPORTS.records.push(...[
     "reviewedAt": "2026-10-14"
   }
 ]);
+
+// 2026-10-16 QEC original-source-reviewed Passport.
+(() => {
+  const rows=window.QI_PASSPORTS.records;
+  if(rows.length!==27||rows.some(p=>p.theoryId==="quantum-error-correction"))
+    throw new Error("QEC Passport append baseline changed");
+  rows.push({
+  "theoryId": "quantum-error-correction",
+  "problemIds": [],
+  "entityType": "quantum-code framework and necessary-and-sufficient exact-recovery theorem",
+  "scientificStatus": "established mathematical result with code- and noise-dependent applicability",
+  "coreIdea": "Protect an encoded quantum state against a declared error family when pairwise errors do not distinguish the logical information on the code subspace.",
+  "degreesOfFreedom": "A code subspace of a larger Hilbert space, unknown encoded logical amplitudes, error-operator family and permissible completely positive recovery operations.",
+  "assumptions": [
+    "A fixed quantum-code subspace C with orthogonal projector P, and a known family of correctable error operators E_a.",
+    "Every pair E_a,E_b obeys P E_a† E_b P=c_ab P on C, for logical-state-independent coefficients c_ab.",
+    "Exact recovery of all encoded states is sought for this family; an unknown logical superposition need not be measured to recover it.",
+    "The result is not a physical device-noise model, a fault-tolerance threshold theorem or a claim that arbitrary errors are correctable."
+  ],
+  "mathematicalStructure": "Theorem 3.2, Eqs. (19)–(20), in the original Knill–Laflamme preprint imposes equal logical-basis diagonal overlaps and zero off-diagonal overlaps for each E_a†E_b. Together they are equivalent to P E_a† E_b P=c_ab P. Nonorthogonal error-syndrome outcomes are permitted.",
+  "formulaIds": [
+    "knill-laflamme"
+  ],
+  "regime": "Exact finite-dimensional code-subspace correction for a specified noise-operator family. Approximate recovery, correlated device noise and fault-tolerant computing require additional analysis.",
+  "predictionsConsequences": [
+    "The condition decides whether an exact recovery operation can exist for a specified code and set of errors.",
+    "It permits recovery without measuring the unknown encoded logical amplitudes.",
+    "Stabilizer and surface codes are examples of specific schemes, not an exhaustive characterization of all QEC designs."
+  ],
+  "evidenceIds": [],
+  "evidenceSummary": "Original mathematical proof and algebraic source qualification only; no new experimental Evidence or measured logical error rate is asserted.",
+  "whatEvidenceDoesNotEstablish": "The theorem does not establish scalable hardware, a threshold for noisy syndrome circuits, universal noise correction or experimentally achieved performance.",
+  "limitations": [
+    "Different error families and codes may violate the exact condition and require approximation or a different code.",
+    "Imperfect decoding, noisy syndrome extraction, leakage and correlated errors require separate modeling.",
+    "A stabilizer-code construction is a subclass of error correction, not the full space of recoverable quantum channels."
+  ],
+  "comparisonFrameworks": [
+    "stabilizer-formalism",
+    "surface-code",
+    "quantum-information"
+  ],
+  "usefulDiscriminators": [
+    "Compute the compressed operators P E_a† E_b P on the candidate code and check whether each is a code-state-independent scalar.",
+    "Compare proposed codes under matched physical noise, resource overhead and recovery assumptions rather than the abstract theorem alone."
+  ],
+  "unresolvedQuestions": [
+    "Which code and decoder meet a desired logical error rate under a measured device-noise channel?",
+    "How do recovery guarantees degrade when error correlations and approximate correctness are included?"
+  ],
+  "questionIds": [],
+  "developmentIds": [],
+  "sourceIds": [
+    "knill-laflamme-1997"
+  ],
+  "sourceLocations": [
+    {
+      "sourceId": "knill-laflamme-1997",
+      "locator": "Original arXiv v1, Sec. 3.2 Theorem 3.2, Eqs. (19)–(20), printed p. 13 (PDF page 13); related Sec. 2 Eqs. (6)–(7), p. 6",
+      "url": "https://arxiv.org/pdf/quant-ph/9604034v1#page=13"
+    },
+    {
+      "sourceId": "knill-laflamme-1997",
+      "locator": "Sec. 3.2, Theorem 3.5, syndrome-subspace decomposition and recovery construction, printed pp. 17–18",
+      "url": "https://arxiv.org/pdf/quant-ph/9604034v1#page=18"
+    }
+  ],
+  "sourceVersion": "Directly inspected Knill and Laflamme arXiv:quant-ph/9604034v1 (1996); journal publication Phys. Rev. A 55, 900 (1997). The compact projector equation is the reviewer's algebraic translation of the primary paper's logical-basis conditions.",
+  "reviewedAt": "2026-10-16"
+});
+})();
