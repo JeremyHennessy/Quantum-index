@@ -72,7 +72,7 @@ This report separates **entity origin dates** from **later scientific developmen
 
 ## Literature-sweep provenance rule
 
-The `theory.lastReviewed` field may be populated from citation attachment or editorial cataloguing, including the 2026-09-22 source-attachment fallback in `theories.js`. It is **not** automatically evidence of a domain-wide literature review. A dated `literatureSweep` record must include a scope and existing bibliography source IDs before this report counts it. Missing sweep evidence is **unknown**, not proof that the scientific literature has been neglected. The prior report's zero-stale count used catalog dates and should not be interpreted as 481 verified recent literature reviews.
+The \`theory.lastReviewed\` field may be populated from citation attachment or editorial cataloguing, including the 2026-09-22 source-attachment fallback in \`theories.js\`. It is **not** automatically evidence of a domain-wide literature review. A dated \`literatureSweep\` record must include a scope and existing bibliography source IDs before this report counts it. Missing sweep evidence is **unknown**, not proof that the scientific literature has been neglected. The prior report's zero-stale count used catalog dates and should not be interpreted as 481 verified recent literature reviews.
 
 ## Development events by year
 
