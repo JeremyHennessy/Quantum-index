@@ -9,7 +9,7 @@ import {
 import {priorDarkMatterFormulas,priorDarkMatterSources} from './astro-darkmatter-20261016-baseline.mjs';
 import {priorAstroFormulas} from './astro-formulas-20261016-baseline.mjs';
 const ctx={window:{}};vm.createContext(ctx);
-for(const file of ['theories.js','formulas.js','formula-audit.js','evidence.js','questions.js','problems.js','passports.js']) {
+for(const file of ['theories.js','developments.js','formulas.js','formula-audit.js','evidence.js','questions.js','problems.js','passports.js']) {
  vm.runInContext(fs.readFileSync(file,'utf8'),ctx,{filename:file});
 }
 const w=ctx.window;
