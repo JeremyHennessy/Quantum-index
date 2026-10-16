@@ -37,9 +37,7 @@ test('new identifiers are unique, source-backed and produce exactly the declared
   for(const id of ledger.addedFormulaIds)assert.equal(w.QI_FORMULAS.formulas.filter(x=>x.id===id).length,1,id);
   for(const id of ledger.addedEvidenceIds)assert.equal(w.QI_EVIDENCE.records.filter(x=>x.id===id).length,1,id);
   for(const id of ledger.addedPassportTheoryIds)assert.equal(w.QI_PASSPORTS.records.filter(x=>x.theoryId===id).length,1,id);
-  const latest=JSON.parse(fs.readFileSync('docs/coverage.json','utf8'));
-  const preQec={...latest,passports:latest.passports-1,explicitFormulaMetadata:latest.explicitFormulaMetadata-1,baselineFormulaMetadata:latest.baselineFormulaMetadata+1};
-  const coverage=priorPassportCoverage(preQec);
+  const coverage=priorPassportCoverage(JSON.parse(fs.readFileSync('docs/coverage.json','utf8')));
   for(const key of ['sources','formulas','evidenceRecords','formulaBearing','formulaGaps','explicitFormulaMetadata','baselineFormulaMetadata'])assert.equal(coverage[key],key==='evidenceRecords'?ledger.expectedCounts.evidence:ledger.expectedCounts[key],key);
   assert.ok(coverage.passports>=ledger.expectedCounts.passports,'historical Passport count must remain');
 });

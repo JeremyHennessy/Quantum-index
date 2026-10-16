@@ -17,7 +17,7 @@ const sourceIds=new Set(sandbox.window.QI_DATA.sources.map(x=>x.id));
 
 test('twenty-eight curated Theory Passports resolve all structured references',()=>{
   assert.equal(passports.length,28);
-  assert.equal(new Set(passports.map(x=>x.theoryId)).size,27);
+  assert.equal(new Set(passports.map(x=>x.theoryId)).size,28);
   for(const p of passports){
     assert.ok(theoryIds.has(p.theoryId),p.theoryId);
     assert.ok(p.coreIdea.length>40,p.theoryId);

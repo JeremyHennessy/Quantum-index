@@ -2,6 +2,7 @@
 // New runtime records must match the audited after-state exactly before this helper
 // reconstructs any older immutable release view. Never loaded by the app.
 import fs from 'node:fs';
+import {restoreQecFormula} from './qec-source-review-20261016-baseline.mjs';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {spawnSync} from 'node:child_process';
@@ -11,6 +12,7 @@ const canonical=x=>Array.isArray(x)?x.map(canonical):x&&typeof x==='object'?Obje
 export const passportFingerprint=x=>createHash('sha256').update(JSON.stringify(canonical(x))).digest('hex');
 
 export function restorePassportFormula(formula){
+  formula=restoreQecFormula(formula);
   const edit=passportSourceReview.formulaEdits[formula.id];
   if(!edit)return formula;
   assert.equal(passportFingerprint(formula),passportFingerprint(edit.after),formula.id+': unexpected post-2026-10-14 formula edit');
@@ -27,6 +29,9 @@ export function priorPassportSources(current){
 }
 
 export function priorHeldPassports(current){
+  // QEC was added after the October 14 checkpoint; its own test guards the addition.
+  assert.equal(current.filter(p=>p.theoryId==='quantum-error-correction').length,1,'one post-Oct14 QEC Passport expected');
+  current=current.filter(p=>p.theoryId!=='quantum-error-correction');
   const expected=new Map(passportSourceReview.addedPassportRecords.map(p=>[p.theoryId,p]));
   assert.equal(expected.size,2,'two held Passports were reviewed');
   for(const [id,row] of expected){
@@ -38,7 +43,11 @@ export function priorHeldPassports(current){
 }
 
 export function priorPassportCoverage(current){
+  // The 2026-10-16 release must be removed before evaluating an older release census.
   const x={...current};
+  x.passports-=1;
+  x.explicitFormulaMetadata-=1;
+  x.baselineFormulaMetadata+=1;
   x.sources-=passportSourceReview.addedSourceIds.length;
   x.passports-=passportSourceReview.addedPassportTheoryIds.length;
   x.explicitFormulaMetadata-=passportSourceReview.reviewedFormulaIds.length;

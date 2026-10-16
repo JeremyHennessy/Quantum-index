@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
+import {restoreQecFormula} from './qec-source-review-20261016-baseline.mjs';
 const w={window:{}};vm.createContext(w);
 for(const file of ['theories.js','formulas.js','formula-audit.js','developments.js','evidence.js','questions.js','problems.js','passports.js'])vm.runInContext(fs.readFileSync(file,'utf8'),w,{filename:file});
 const data=w.window;
@@ -24,6 +25,9 @@ test('QEC source review maps exactly to original theorem and preserves nonclaims
   const p=data.QI_PASSPORTS.records.find(x=>x.theoryId==='quantum-error-correction');
   assert.ok(f&&p);
   assert.equal(f.metadataReview,'explicit');
+  const reconstructed=restoreQecFormula(f);
+  assert.equal(reconstructed.metadataReview,'baseline-audit-v1');
+  assert.deepEqual(Array.from(reconstructed.sourceIds),['kitaev-anyons-2003','schumacher-1995']);
   assert.ok(f.sourceIds.includes('knill-laflamme-1997'));
   assert.match(f.sourceLocations[0].locator,/Theorem 3.2/);
   assert.match(p.mathematicalStructure,/Eqs. \(19\)–\(20\)/);
