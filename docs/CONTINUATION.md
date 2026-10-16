@@ -6,7 +6,7 @@ Updated 16 October 2026. This is the single continuation entry point; dated rele
 
 <!-- coverage:start -->
 - **59** cited reading profiles and **5** learning paths
-- **27** Theory Passports, **5** scientific Problems, **16** Evidence records and **60** structured Research Questions
+- **28** Theory Passports, **5** scientific Problems, **16** Evidence records and **60** structured Research Questions
 - **481** theory/framework entities across **14** categories
 - **550** bibliography records
 - **352** primary-sourced; **129** review-sourced; **0** catalogued-only entries
@@ -15,7 +15,7 @@ Updated 16 October 2026. This is the single continuation entry point; dated rele
 - **405** formulas across **29** categories
 - **272** entries with linked formulas; **163** documented formula gaps
 - Other audit classes: **11** interpretations, **16** conceptual, **18** theorem-first, **1** thought experiment
-- Formula metadata: **153** explicitly reviewed; **252** baseline records
+- Formula metadata: **154** explicitly reviewed; **251** baseline records
 - **16** reviewed DevelopmentEvents through **2026**
 
 Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.
@@ -28,6 +28,10 @@ The current prioritized, read-only-baseline campaign is in [SCIENTIFIC_COMPLETEN
 Next content gates remain **Yang–Mills and quantum error correction** source qualifications; neither held Passport is implicitly accepted. Then prioritize source-specific astroparticle formulas, formal-QFT and many-body equation gaps, metadata reviews, empirical constraints and directional graph provenance. Every batch must preserve identity, existing scientific review bytes and app/workspace behavior unless a source-located correction is explicit and tested.
 
 This block is generated from shipped runtime data by `scripts/coverage-report.mjs`; the existing CI coverage check fails if it drifts. Historical release-specific counts remain in the dated receipts, not in this active plan.
+
+## 2026-10-16 QEC original-theorem qualification candidate
+
+The scientific-completeness campaign directly inspected Knill–Laflamme arXiv:quant-ph/9604034v1, Sec. 3.2 Theorem 3.2 Eqs. (19)–(20), printed p. 13. The existing `knill-laflamme` formula now directly cites its original theorem, with bounded exact-recovery assumptions and unchanged mathematics. One QEC Passport is appended, with zero new empirical Evidence. All earlier 27 Passport bytes and all 405 formula identities are protected. Candidate inventory: **28 Passports, 154 explicit / 251 baseline formula metadata**. Yang–Mills remains on hold. This is not a deployment claim; acceptance requires exact-head CI and hosted verification. See [QEC_SOURCE_REVIEW_2026-10-16.md](../research/QEC_SOURCE_REVIEW_2026-10-16.md).
 
 ## 2026-10-14 QED / GKSL source qualification
 

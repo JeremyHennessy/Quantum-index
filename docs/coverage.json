@@ -2,7 +2,7 @@
   "theories": 481,
   "researchProfiles": 59,
   "learningPaths": 5,
-  "passports": 27,
+  "passports": 28,
   "problems": 5,
   "evidenceRecords": 16,
   "researchQuestions": 60,
@@ -25,8 +25,8 @@
   "conceptual": 16,
   "theorems": 18,
   "thoughtExperiments": 1,
-  "explicitFormulaMetadata": 153,
-  "baselineFormulaMetadata": 252,
+  "explicitFormulaMetadata": 154,
+  "baselineFormulaMetadata": 251,
   "developmentEvents": 16,
   "newestDevelopmentYear": 2026
 }
