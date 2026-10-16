@@ -2889,3 +2889,27 @@ window.QI_DATA.sources.push({
   const existing=new Set(window.QI_DATA.sources.map(s=>s.id));
   for(const s of newSources){if(existing.has(s.id))throw new Error("Duplicate scientific source "+s.id);existing.add(s.id);window.QI_DATA.sources.push(s);}
 })();
+
+// 2026-10-16 dark-matter model formula wave — source registration only.
+(()=>{
+const additions=[
+  {
+    "id": "arcadi-wimp-freezeout-2018",
+    "title": "The waning of the WIMP? A review of models, searches, and constraints",
+    "authors": "G. Arcadi et al.",
+    "year": 2018,
+    "type": "authoritative review",
+    "url": "https://doi.org/10.1140/epjc/s10052-018-5662-y"
+  },
+  {
+    "id": "hui-ostriker-tremaine-witten-fdm-2017",
+    "title": "Ultralight scalars as cosmological dark matter",
+    "authors": "L. Hui, J. P. Ostriker, S. Tremaine, E. Witten",
+    "year": 2017,
+    "type": "primary source",
+    "url": "https://doi.org/10.1103/PhysRevD.95.043541"
+  }
+];
+const existing=new Set(window.QI_DATA.sources.map(s=>s.id));
+for(const s of additions){if(existing.has(s.id))throw new Error("Duplicate source: "+s.id);existing.add(s.id);window.QI_DATA.sources.push(s);}
+})();
