@@ -9110,3 +9110,37 @@ if(!f || f.metadataReview!=="baseline-audit-v1") throw new Error("Unexpected bas
 Object.assign(f,row);
 }
 })();
+
+// 2026-10-16 QEC original-source qualification.
+(() => {
+  const f=window.QI_FORMULAS.formulas.find(row=>row.id==="knill-laflamme");
+  if (!f || f.metadataReview!=="baseline-audit-v1" ||
+      JSON.stringify(f.sourceIds)!=='["kitaev-anyons-2003","schumacher-1995"]') {
+    throw new Error("QEC equation provenance baseline changed");
+  }
+  Object.assign(f,{
+    "description":"Necessary and sufficient criterion for exact recovery of a specified family of errors on a quantum-code subspace.",
+    "sourceIds":["knill-laflamme-1997","kitaev-anyons-2003","schumacher-1995"],
+    "assumptions":[
+      "P is the orthogonal projector onto a fixed code subspace and E_a,E_b belong to the specified error-operator family.",
+      "For every pair of errors, the compressed operator P E_a† E_b P must be proportional to P, with coefficient independent of the encoded logical state.",
+      "Pairwise errors need not create orthogonal syndromes, and the condition is exact for the declared errors rather than arbitrary device noise."
+    ],
+    "variables":[
+      "P: code-subspace projector",
+      "E_a,E_b: declared error operators",
+      "c_ab: encoded-state-independent scalar overlap coefficients"
+    ],
+    "regime":"Exact quantum subspace error correction for a specified family of errors; approximate recovery and fault-tolerant thresholds are separate problems.",
+    "units":"Dimensionless operator identity; physical dimensions depend on the chosen error-operator normalization.",
+    "theoryRelationship":"Necessary and sufficient exact-recoverability condition, written as the projector equivalent of the original Theorem 3.2 logical-basis Eqs. (19)–(20).",
+    "metadataReview":"explicit",
+    "reviewedAt":"2026-10-16",
+    "curationBatch":"qec-original-source-2026-10-16",
+    "sourceLocations":[{
+      "sourceId":"knill-laflamme-1997",
+      "locator":"Knill and Laflamme arXiv:quant-ph/9604034v1, Sec. 3.2, Theorem 3.2, Eqs. (19)–(20), printed p. 13 (PDF page 13); two-codeword version Sec. 2, Eqs. (6)–(7), printed p. 6",
+      "url":"https://arxiv.org/pdf/quant-ph/9604034v1#page=13"
+    }]
+  });
+})();
