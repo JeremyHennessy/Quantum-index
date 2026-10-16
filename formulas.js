@@ -9144,3 +9144,102 @@ Object.assign(f,row);
     }]
   });
 })();
+
+// 2026-10-16 Yang-Mills independently checked convention metadata.
+(()=>{
+  for(const entry of [
+  {
+    "id": "yang-mills-field",
+    "expected": [
+      "yang-mills-1954"
+    ],
+    "after": {
+      "description": "Non-Abelian gauge curvature in the explicitly specified modern hermitian-generator, D_mu=partial_mu-ig A_mu convention.",
+      "sourceIds": [
+        "yang-mills-1954",
+        "usp-nonabelian-gauge-lecture15"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Hermitian generators satisfy [T^a,T^b]=i f^{abc} T^c; A_mu=A_mu^a T^a with real gauge fields.",
+        "Use D_mu=partial_mu - i g A_mu and define [D_mu,D_nu]=-ig F_mu nu for the displayed plus-gf component term.",
+        "The historical Yang–Mills (1954) matrix curvature uses the reversed derivative/index orientation; converting A_mu^a=2 b_mu^a and g=e gives F_modern^a_mu nu=-2 f_original^a_mu nu, not an independent sign discrepancy.",
+        "The expression is classical curvature; gauge fixing, renormalization, quantum corrections and boundary conditions are not supplied."
+      ],
+      "variables": [
+        "A_mu^a: components of Lie-algebra-valued gauge connection",
+        "g: gauge coupling",
+        "T^a: hermitian generators with commutator [T^a,T^b]=i f^{abc}T^c",
+        "f^{abc}: real structure constants in the chosen generator basis",
+        "F_mu nu^a: non-Abelian curvature components"
+      ],
+      "regime": "Classical, local non-Abelian gauge field theory with a specified generator/covariant-derivative convention; no confinement, mass gap or universal quantum prediction follows from this expression alone.",
+      "units": "Natural units hbar=c=1 in four spacetime dimensions: A has mass dimension 1, F dimension 2, g dimensionless.",
+      "theoryRelationship": "Defining field strength whose nonlinear term is fixed by the covariant-derivative commutator and generator algebra.",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-16",
+      "curationBatch": "yang-mills-sign-source-review-2026-10-16",
+      "sourceLocations": [
+        {
+          "sourceId": "usp-nonabelian-gauge-lecture15",
+          "url": "https://fma.if.usp.br/~burdman/QFT2/lecture_15.pdf#page=9",
+          "locator": "Lecture 15 Sec. 15.2, Eq. (15.48)–(15.52), printed pp. 9–10: [D_mu,D_nu]=-igF_mu nu and component +g f^abc term with D_mu=partial_mu-igA_mu"
+        },
+        {
+          "sourceId": "yang-mills-1954",
+          "url": "https://eclass.upatras.gr/modules/document/file.php/PHY2129/PhysRev.96.191.pdf#page=3",
+          "locator": "Yang and Mills (1954), Phys. Rev. 96 p. 193, Eqs. (4), (7), (8), (9): opposite index orientation of historical F_mu nu and f_mu nu; original b-field nonlinear cross product is negative"
+        }
+      ]
+    }
+  },
+  {
+    "id": "yang-mills-lagrangian",
+    "expected": [
+      "yang-mills-1954"
+    ],
+    "after": {
+      "description": "Classical pure Yang–Mills gauge-field action density with trace normalization Tr(T^a T^b)=delta^ab/2.",
+      "sourceIds": [
+        "yang-mills-1954",
+        "usp-nonabelian-gauge-lecture15"
+      ],
+      "formulaType": "defining",
+      "assumptions": [
+        "Compact gauge-group basis of hermitian T^a with Tr(T^a T^b)=delta^{ab}/2, and field strength using D_mu=partial_mu-ig A_mu.",
+        "Displayed expression is pure gauge with no quarks, leptons, explicit mass, gauge fixing, or ghost terms; the 1954 original also writes a matter-coupled total Lagrangian.",
+        "Four-dimensional Lorentzian signature (+---) in standard particle-physics natural-unit normalization; alternative signature/coupling placements change typography.",
+        "The quadratic trace invariant yields cubic and quartic classical gauge self-interaction terms after substituting the nonlinear F, but not a proof of confinement or a nonperturbative mass gap."
+      ],
+      "variables": [
+        "L_YM: pure gauge Lagrangian density",
+        "F_mu nu^a: field-strength components in the same generator convention as the linked curvature formula",
+        "Tr(T^aT^b)=delta^{ab}/2: normalization fixing the 1/4 coefficient"
+      ],
+      "regime": "Local classical pure non-Abelian gauge theory; quantized/gauge-fixed applications and matter couplings require additional terms and source-specific renormalization.",
+      "units": "Natural units hbar=c=1 in D=4: L has mass dimension 4; F_mu nu has dimension 2.",
+      "theoryRelationship": "Defining gauge-invariant kinetic action density, equivalent to -1/2 Tr(F_mu nu F^{mu nu}) under the declared normalization.",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-16",
+      "curationBatch": "yang-mills-sign-source-review-2026-10-16",
+      "sourceLocations": [
+        {
+          "sourceId": "usp-nonabelian-gauge-lecture15",
+          "url": "https://fma.if.usp.br/~burdman/QFT2/lecture_15.pdf#page=11",
+          "locator": "Lecture 15 Sec. 15.2, Eq. (15.58)–(15.59), printed pp. 10–11: tr(T^a T^b)=delta^ab/2 gives -1/4 F^a_mu nu F^{a mu nu}"
+        },
+        {
+          "sourceId": "yang-mills-1954",
+          "url": "https://eclass.upatras.gr/modules/document/file.php/PHY2129/PhysRev.96.191.pdf#page=3",
+          "locator": "Yang and Mills (1954), Phys. Rev. 96 p. 193, Eq. (11): gauge kinetic -1/4 f_mu nu dot f_mu nu within a total matter-plus-field Lagrangian; pure-gauge modern expression is not verbatim Eq. (11)"
+        }
+      ]
+    }
+  }
+]){
+    const f=window.QI_FORMULAS.formulas.find(x=>x.id===entry.id);
+    if(!f||f.metadataReview!=="baseline-audit-v1"||JSON.stringify(f.sourceIds)!==JSON.stringify(entry.expected))
+      throw new Error("Yang-Mills formula baseline changed: "+entry.id);
+    Object.assign(f,entry.after);
+  }
+})();

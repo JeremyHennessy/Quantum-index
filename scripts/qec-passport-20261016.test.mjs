@@ -17,7 +17,7 @@ test('QEC review preserves exact pre-candidate formula and Passport files before
     assert.ok(accepted.some(bytes=>shaBlob(bytes)===sha),path+': original record bytes modified')}}
   assert.equal(data.QI_DATA.theories.length,481);
   assert.equal(data.QI_FORMULAS.formulas.length,405);
-  assert.equal(data.QI_PASSPORTS.records.length,28);
+  assert.equal(data.QI_PASSPORTS.records.filter(x=>x.theoryId!=='yang-mills').length,28);
   assert.equal(data.QI_DATA.relations.length,610);
 });
 test('QEC source review maps exactly to original theorem and preserves nonclaims',()=>{
@@ -33,5 +33,5 @@ test('QEC source review maps exactly to original theorem and preserves nonclaims
   assert.match(p.mathematicalStructure,/Eqs. \(19\)–\(20\)/);
   assert.equal(p.evidenceIds.length,0);
   assert.match(p.whatEvidenceDoesNotEstablish,/threshold/);
-  assert.ok(!data.QI_PASSPORTS.records.some(x=>x.theoryId==='yang-mills'));
+  assert.equal(data.QI_PASSPORTS.records.filter(x=>x.theoryId==='yang-mills').length,1,'post-QEC independent Yang-Mills addition');
 });

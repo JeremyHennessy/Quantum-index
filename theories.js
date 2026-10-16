@@ -2844,3 +2844,16 @@ window.QI_DATA.sources.push({
   "type": "authoritative lecture notes",
   "url": "https://www.damtp.cam.ac.uk/user/tong/qft.html"
 });
+
+// 2026-10-16 Yang-Mills modern notation source (scientific completeness campaign).
+(()=>{
+  if(window.QI_DATA.sources.some(s=>s.id==="usp-nonabelian-gauge-lecture15"))throw new Error("Duplicate Yang-Mills convention source");
+  window.QI_DATA.sources.push({
+  "id": "usp-nonabelian-gauge-lecture15",
+  "title": "Lecture 15: Non Abelian Gauge Symmetries",
+  "authors": "University of São Paulo QFT II course materials",
+  "year": "undated course notes",
+  "type": "authoritative lecture notes",
+  "url": "https://fma.if.usp.br/~burdman/QFT2/lecture_15.pdf"
+});
+})();

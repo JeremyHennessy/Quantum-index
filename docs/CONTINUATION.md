@@ -6,20 +6,26 @@ Updated 16 October 2026. This is the single continuation entry point; dated rele
 
 <!-- coverage:start -->
 - **59** cited reading profiles and **5** learning paths
-- **28** Theory Passports, **5** scientific Problems, **16** Evidence records and **60** structured Research Questions
+- **29** Theory Passports, **5** scientific Problems, **16** Evidence records and **60** structured Research Questions
 - **481** theory/framework entities across **14** categories
-- **550** bibliography records
+- **551** bibliography records
 - **352** primary-sourced; **129** review-sourced; **0** catalogued-only entries
 - **610** relationships: **125** source-backed; **485** editorial
 - **41** thought trees
 - **405** formulas across **29** categories
 - **272** entries with linked formulas; **163** documented formula gaps
 - Other audit classes: **11** interpretations, **16** conceptual, **18** theorem-first, **1** thought experiment
-- Formula metadata: **154** explicitly reviewed; **251** baseline records
+- Formula metadata: **156** explicitly reviewed; **249** baseline records
 - **16** reviewed DevelopmentEvents through **2026**
 
 Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.
 <!-- coverage:end -->
+
+## 2026-10-16 Yang–Mills source-qualification candidate
+
+Two existing formula expressions (`yang-mills-field`, `yang-mills-lagrangian`) have source-reviewed **metadata only**; mathematical strings and formula identities are unchanged. Independent comparison of Yang–Mills (1954), printed p. 193 Eqs. (4), (7), (9), (11), with university QFT Lecture 15 pp. 9–11 established the exact index-orientation and covariant-derivative sign mapping. In modern D=partial−igA notation the nonlinear component term is **+g f A A**; with the original A=2b normalization F_modern=−F_original. Neither sign is presented without its conventions. One comparison-ready Yang–Mills Passport is added with no empirical Evidence claim or unproven mass-gap assertion.
+
+Candidate metrics: **29** Passports, **551** bibliography records, **156 explicit / 249 baseline** formula metadata. Theories 481, formulas 405, gaps 163 and relationships 610 remain unchanged. All pre-candidate theory/formula/Passport files are protected by byte-level baselines, and historic receipts remain immutable. Publication is **pending exact-head Node/browser validation and subsequent hosted checks**; see [independent source review](../research/YANG_MILLS_SOURCE_REVIEW_2026-10-16.md).
 
 ## Scientific completeness campaign — 16 October 2026
 

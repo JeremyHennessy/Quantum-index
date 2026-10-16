@@ -29,7 +29,7 @@ test('historical six-Passport scope reconstructs the post-nuclear 25-Passport ch
     assert.equal(t.category,candidate.domain,candidate.theoryId);
     if(['nuclear-shell-model','in-medium-srg'].includes(candidate.theoryId))assert.ok(existing.has(candidate.theoryId),candidate.theoryId+' nuclear release missing');
     else assert.ok(!existing.has(candidate.theoryId),candidate.theoryId+' was not source-reviewed at the historical checkpoint');
-    assert.equal(current.has(candidate.theoryId),['qed','gksl','quantum-error-correction','nuclear-shell-model','in-medium-srg'].includes(candidate.theoryId),candidate.theoryId+' current disposition');
+    assert.equal(current.has(candidate.theoryId),['qed','gksl','quantum-error-correction','yang-mills','nuclear-shell-model','in-medium-srg'].includes(candidate.theoryId),candidate.theoryId+' current disposition');
     assert.equal(candidate.sourceLocationStatus,'not-yet-reviewed');
     assert.ok(candidate.reviewQuestions.length>=3);
     for(const id of candidate.compareWith)assert.ok(theories.has(id),'missing comparison theory '+id);
