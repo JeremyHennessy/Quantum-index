@@ -3,6 +3,7 @@
 // reconstructs any older immutable release view. Never loaded by the app.
 import fs from 'node:fs';
 import {restoreQecFormula} from './qec-source-review-20261016-baseline.mjs';
+import {restoreYangMillsFormula,priorYangMillsSources} from './yang-mills-source-review-20261016-baseline.mjs';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {spawnSync} from 'node:child_process';
@@ -12,6 +13,7 @@ const canonical=x=>Array.isArray(x)?x.map(canonical):x&&typeof x==='object'?Obje
 export const passportFingerprint=x=>createHash('sha256').update(JSON.stringify(canonical(x))).digest('hex');
 
 export function restorePassportFormula(formula){
+  formula=restoreYangMillsFormula(formula);
   formula=restoreQecFormula(formula);
   const edit=passportSourceReview.formulaEdits[formula.id];
   if(!edit)return formula;
@@ -21,6 +23,7 @@ export function restorePassportFormula(formula){
 }
 
 export function priorPassportSources(current){
+  current=priorYangMillsSources(current);
   const expected=passportSourceReview.addedSourceRecord;
   const matches=current.filter(x=>x.id===expected.id);
   assert.equal(matches.length,1,'expected exactly one '+expected.id);
@@ -29,6 +32,9 @@ export function priorPassportSources(current){
 }
 
 export function priorHeldPassports(current){
+  // Both Yang-Mills and QEC were accepted after the 14 October baseline.
+  assert.ok(current.filter(p=>p.theoryId==='yang-mills').length<=1,'duplicate Yang-Mills Passport in historical reconstruction');
+  current=current.filter(p=>p.theoryId!=='yang-mills');
   // QEC was added after the October 14 checkpoint; its own test guards the addition.
   assert.ok(current.filter(p=>p.theoryId==='quantum-error-correction').length<=1,'duplicate QEC Passport in historical reconstruction');
   current=current.filter(p=>p.theoryId!=='quantum-error-correction');
@@ -45,6 +51,10 @@ export function priorHeldPassports(current){
 export function priorPassportCoverage(current){
   // The 2026-10-16 release must be removed before evaluating an older release census.
   const x={...current};
+  x.passports-=1; // Yang-Mills Passport
+  x.sources-=1; // modern non-Abelian lecture source
+  x.explicitFormulaMetadata-=2; // two Yang-Mills formula reviews
+  x.baselineFormulaMetadata+=2;
   x.passports-=1;
   x.explicitFormulaMetadata-=1;
   x.baselineFormulaMetadata+=1;

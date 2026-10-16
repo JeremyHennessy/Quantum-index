@@ -16,12 +16,12 @@ test('QED/GKSL append to the exact approved 25-Passport bytes and preserves scie
  assert.equal(hash(bytes.subarray(0,at)),ledger.previousPassportSha256);
  for(const [file,digest] of Object.entries(ledger.protectedFileSha256))assert.equal(hash(fs.readFileSync(file)),digest,file);
  assert.deepEqual(ledger.acceptedAppendOnlyPassportTheoryIds,['qed','gksl']);
- assert.equal(w.QI_PASSPORTS.records.filter(p=>p.theoryId!=='quantum-error-correction').length,27);
- assert.equal(priorGkslPassports(w.QI_PASSPORTS.records.filter(p=>p.theoryId!=='quantum-error-correction')).length,25);
+ assert.equal(w.QI_PASSPORTS.records.filter(p=>!['quantum-error-correction','yang-mills'].includes(p.theoryId)).length,27);
+ assert.equal(priorGkslPassports(w.QI_PASSPORTS.records.filter(p=>!['quantum-error-correction','yang-mills'].includes(p.theoryId))).length,25);
  const coverage=JSON.parse(fs.readFileSync('docs/coverage.json'));
- assert.equal(coverage.passports-1,27);
+ assert.equal(coverage.passports-2,27);
  for(const [key,n] of Object.entries(ledger.unchangedCounts))assert.equal(coverage[key],n,key);
- for(const id of ledger.remainingUnshippedIds)assert.ok(!w.QI_PASSPORTS.records.filter(p=>p.theoryId!=='quantum-error-correction').some(p=>p.theoryId===id),id+' was held at the 2026-10-14 checkpoint');
+ for(const id of ledger.remainingUnshippedIds)assert.ok(!w.QI_PASSPORTS.records.filter(p=>!['quantum-error-correction','yang-mills'].includes(p.theoryId)).some(p=>p.theoryId===id),id+' was held at the 2026-10-14 checkpoint');
 });
 
 test('GKSL qualification records original theorem assumptions, mapping and nonclaims',()=>{
@@ -33,7 +33,7 @@ test('GKSL qualification records original theorem assumptions, mapping and noncl
  assert.ok(p.sourceLocations.some(x=>x.sourceId==='gks-1976'&&/Theorem 2.2/.test(x.locator)));
  assert.ok(p.sourceLocations.some(x=>x.sourceId==='lindblad-1976'&&/4.3/.test(x.locator)));
  for(const id of p.comparisonFrameworks)assert.ok(w.QI_DATA.theories.some(t=>t.id===id),id);
- assert.throws(()=>priorGkslPassports(priorGkslPassports(w.QI_PASSPORTS.records.filter(p=>p.theoryId!=='quantum-error-correction'))),/exactly one/);
+ assert.throws(()=>priorGkslPassports(priorGkslPassports(w.QI_PASSPORTS.records.filter(p=>!['quantum-error-correction','yang-mills'].includes(p.theoryId)))),/exactly one/);
 });
 
 const add=(a,b)=>a.map((r,i)=>r.map((v,j)=>v+b[i][j]));
