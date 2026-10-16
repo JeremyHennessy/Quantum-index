@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import vm from "node:vm";
+import {isDocumentedLiteratureSweep} from "./literature-review-evidence.mjs";
 
 const sandbox={window:{}};
 vm.createContext(sandbox);
@@ -24,8 +25,13 @@ const categoriesWithDevelopmentSince=year=>{
 };
 const last3=categoriesWithDevelopmentSince(2024);
 const last5=categoriesWithDevelopmentSince(2022);
-const staleReviewIds=theories
-  .filter(t=>!t.lastReviewed || String(t.lastReviewed)<"2024-01-01")
+// Source attachment / record review dates are not evidence of a recent literature sweep.
+// An entry is counted only when it has dedicated, source-resolving sweep metadata.
+const registeredSourceIds=new Set(sandbox.window.QI_DATA.sources.map(source=>source.id));
+const documentedReviewTheories=theories.filter(t=>isDocumentedLiteratureSweep(t,registeredSourceIds));
+const unknownReviewTheories=theories.filter(t=>!isDocumentedLiteratureSweep(t,registeredSourceIds));
+const staleReviewIds=documentedReviewTheories
+  .filter(t=>String(t.literatureSweep.reviewedAt)<"2024-01-01")
   .map(t=>t.id)
   .sort();
 const awaiting=candidates.candidates
@@ -33,7 +39,7 @@ const awaiting=candidates.candidates
   .map(c=>({id:c.id,title:c.title,disposition:c.disposition,nextAction:c.nextAction}));
 
 const report={
-  reviewedAt:"2026-09-29",
+  reviewedAt:"2026-10-16",
   newestEntityOriginYear:Math.max(...theories.map(t=>Number(t.year)||0)),
   newestDevelopmentYear:Math.max(...events.map(e=>e.year)),
   developmentEvents:events.length,
@@ -44,6 +50,8 @@ const report={
   categoriesNoReviewedDevelopmentLast5Years:categories.filter(c=>!last5.has(c)),
   staleLiteratureReviewIds:staleReviewIds,
   staleLiteratureReviewCount:staleReviewIds.length,
+  documentedLiteratureSweepCount:documentedReviewTheories.length,
+  unknownLiteratureReviewCount:unknownReviewTheories.length,
   recentCandidatesAwaitingReview:awaiting,
   recentCandidateCount:awaiting.length
 };
@@ -58,7 +66,13 @@ This report separates **entity origin dates** from **later scientific developmen
 - Newest reviewed DevelopmentEvent year: **${report.newestDevelopmentYear}**
 - Reviewed DevelopmentEvents: **${report.developmentEvents}**
 - Recent identity candidates still awaiting/deferred review: **${report.recentCandidateCount}**
-- Entities with no recorded recent literature-review date (before 2024 or missing): **${report.staleLiteratureReviewCount}**
+- Entries with a documented literature sweep (review date, scope and source IDs): **${report.documentedLiteratureSweepCount} / ${theories.length}**
+- Entries without qualifying sweep provenance (unknown, not necessarily stale): **${report.unknownLiteratureReviewCount}**
+- Outdated documented literature sweeps (before 2024): **${report.staleLiteratureReviewCount} of ${report.documentedLiteratureSweepCount}**
+
+## Literature-sweep provenance rule
+
+The `theory.lastReviewed` field may be populated from citation attachment or editorial cataloguing, including the 2026-09-22 source-attachment fallback in `theories.js`. It is **not** automatically evidence of a domain-wide literature review. A dated `literatureSweep` record must include a scope and existing bibliography source IDs before this report counts it. Missing sweep evidence is **unknown**, not proof that the scientific literature has been neglected. The prior report's zero-stale count used catalog dates and should not be interpreted as 481 verified recent literature reviews.
 
 ## Development events by year
 

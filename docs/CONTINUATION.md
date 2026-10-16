@@ -1,6 +1,6 @@
 # Quantum Index — current continuation plan
 
-Updated 14 October 2026. This is the single continuation entry point; dated release/research notes remain the audit trail. Runtime counts below are generated and checked by CI.
+Updated 16 October 2026. This is the single continuation entry point; dated release/research notes remain the audit trail. Runtime counts below are generated and checked by CI.
 
 ## Current inventory (generated; not a scientific quality score)
 
@@ -20,6 +20,12 @@ Updated 14 October 2026. This is the single continuation entry point; dated rele
 
 Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.
 <!-- coverage:end -->
+
+## Scientific completeness campaign — 16 October 2026
+
+The current prioritized, read-only-baseline campaign is in [SCIENTIFIC_COMPLETENESS_CAMPAIGN_2026-10-16.md](SCIENTIFIC_COMPLETENESS_CAMPAIGN_2026-10-16.md). Phase 1 corrects misleading freshness semantics without changing the science corpus or approved UI. Historical `theory.lastReviewed` values reflect catalog/source attachment; a literature sweep is unknown unless documented independently (see [FRESHNESS.md](FRESHNESS.md)).
+
+Next content gates remain **Yang–Mills and quantum error correction** source qualifications; neither held Passport is implicitly accepted. Then prioritize source-specific astroparticle formulas, formal-QFT and many-body equation gaps, metadata reviews, empirical constraints and directional graph provenance. Every batch must preserve identity, existing scientific review bytes and app/workspace behavior unless a source-located correction is explicit and tested.
 
 This block is generated from shipped runtime data by `scripts/coverage-report.mjs`; the existing CI coverage check fails if it drifts. Historical release-specific counts remain in the dated receipts, not in this active plan.
 
