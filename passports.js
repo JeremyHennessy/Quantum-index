@@ -1257,3 +1257,82 @@ window.QI_PASSPORTS.records.push(...[
   "reviewedAt": "2026-10-16"
 });
 })();
+
+// 2026-10-16 Yang-Mills independent original/modern source Passport.
+(()=>{
+  const records=window.QI_PASSPORTS.records;
+  if(records.length!==28||records.some(p=>p.theoryId==="yang-mills"))throw new Error("Yang-Mills Passport baseline changed");
+  records.push({
+  "theoryId": "yang-mills",
+  "problemIds": [],
+  "entityType": "non-Abelian local gauge field theory",
+  "scientificStatus": "established gauge-theory framework; exact nonperturbative dynamics remain model-dependent and incompletely solved",
+  "coreIdea": "Promote global internal rotations to local gauge symmetry using Lie-algebra-valued connections whose noncommuting components generate nonlinear gauge self-interactions.",
+  "degreesOfFreedom": "Local gauge connection A_mu=A_mu^a T^a, Lie algebra and structure constants, gauge redundancy, and physical degrees of freedom determined after constraints, representation and boundary conditions are specified.",
+  "assumptions": [
+    "Modern representative uses hermitian generators [T^a,T^b]=i f^{abc}T^c with Tr(T^aT^b)=delta^{ab}/2.",
+    "D_mu=partial_mu-ig A_mu gives [D_mu,D_nu]=-ig F_mu nu and the displayed +g f^{abc}A_mu^b A_nu^c curvature convention.",
+    "The printed 1954 original SU(2) B=2 b·T, D_mu=partial_mu-2ie b_mu·T and historical F/f use the opposite mu-nu orientation. Under A=2b, g=e, F_modern=-F_1954; the sign difference is convention, not a contradiction.",
+    "The displayed L_YM is a classical pure-gauge action, with separate choices needed for group, matter, gauge fixing and quantization."
+  ],
+  "mathematicalStructure": "D_mu=partial_mu-ig A_mu, [D_mu,D_nu]=-igF_mu nu, [T^a,T^b]=if^{abc}T^c give F^a_mu nu=partial_mu A^a_nu-partial_nu A^a_mu+g f^{abc}A^b_mu A^c_nu. For normalized Tr(T^aT^b)=delta^ab/2, L_YM=-1/2 Tr(F_mu nu F^{mu nu})=-1/4 F^a_mu nu F^{a mu nu}.",
+  "formulaIds": [
+    "yang-mills-field",
+    "yang-mills-lagrangian"
+  ],
+  "regime": "Four-dimensional classical pure non-Abelian gauge fields in the stated notation; perturbative quantum field theory and nonperturbative gauge dynamics require separate treatment.",
+  "predictionsConsequences": [
+    "The curvature transforms by conjugation under a local gauge transformation, while its trace-squared is gauge invariant.",
+    "Nonlinear F produces three- and four-gauge-field interactions in the classical action.",
+    "The non-Abelian formalism provides a structural basis for distinct matter-coupled gauge theories such as QCD, not identical predictions for all such theories."
+  ],
+  "evidenceIds": [],
+  "evidenceSummary": "This is a source-qualified mathematical/field-theoretic Passport. No new experimental measurement or nonperturbative physical result is asserted.",
+  "whatEvidenceDoesNotEstablish": "Deriving gauge symmetry and its classical action does not establish a nonzero Yang–Mills mass gap, quark confinement in a specific matter theory, or an experimentally observed gauge boson solely from these equations.",
+  "limitations": [
+    "Gauge potentials contain redundancy; physical observables require gauge-invariant constructions and appropriate quantization.",
+    "Pure-gauge action does not specify a matter sector, QCD quarks, electroweak symmetry breaking, or a given set of measured couplings.",
+    "The existence of a nonperturbative mass gap and its value is not established by the classical equations alone.",
+    "Different hermitian/antihermitian generator and curvature-orientation conventions may reverse intermediate signs without changing physics when used consistently."
+  ],
+  "comparisonFrameworks": [
+    "qed",
+    "qcd",
+    "standard-model"
+  ],
+  "usefulDiscriminators": [
+    "Against QED: check whether the generator commutator vanishes and whether cubic/quartic pure gauge interactions appear.",
+    "Against QCD: compare the same gauge algebra with additional matter content, running couplings, scale and nonperturbative assumptions; pure Yang–Mills is not the complete QCD Lagrangian.",
+    "For disputed signs, expand [D_mu,D_nu] explicitly using the stated conventions before comparing component formulas."
+  ],
+  "unresolvedQuestions": [
+    "What additional assumptions and boundary conditions make a nonperturbative observable calculable for a chosen gauge group?",
+    "How should a lattice/continuum comparison be stated without claiming a proof of a four-dimensional Yang–Mills mass gap?"
+  ],
+  "questionIds": [],
+  "developmentIds": [],
+  "sourceIds": [
+    "yang-mills-1954",
+    "usp-nonabelian-gauge-lecture15"
+  ],
+  "sourceLocations": [
+    {
+      "sourceId": "yang-mills-1954",
+      "locator": "Phys. Rev. 96 (1954) 193, Eqs. (4), (7), (8), (9), (11): original SU(2) curvature orientation, b-field cross term and classical Lagrangian",
+      "url": "https://eclass.upatras.gr/modules/document/file.php/PHY2129/PhysRev.96.191.pdf#page=3"
+    },
+    {
+      "sourceId": "usp-nonabelian-gauge-lecture15",
+      "locator": "QFT II Lecture 15, Sec. 15.2, Eq. (15.34), Eqs. (15.45)–(15.52), printed pp. 7–10 (PDF pp. 7–10): modern D and curvature normalization",
+      "url": "https://fma.if.usp.br/~burdman/QFT2/lecture_15.pdf#page=10"
+    },
+    {
+      "sourceId": "usp-nonabelian-gauge-lecture15",
+      "locator": "QFT II Lecture 15, Eq. (15.58)–(15.59), printed pp. 10–11 (PDF pp. 10–11): normalized pure Yang–Mills action",
+      "url": "https://fma.if.usp.br/~burdman/QFT2/lecture_15.pdf#page=11"
+    }
+  ],
+  "sourceVersion": "Yang and Mills (1954) original scanned journal pp. 191–195, visually inspected p. 193, and university-hosted QFT II Lecture 15, printed pp. 9–11. Original 1954 SU(2) notation is not silently treated as a generic modern SU(N) convention.",
+  "reviewedAt": "2026-10-16"
+});
+})();
