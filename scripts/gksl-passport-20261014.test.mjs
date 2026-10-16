@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import {priorHeldPassports as priorGkslPassports,restorePassportFormula,passportFingerprint} from './passport-source-review-20261014-baseline.mjs';
+import {priorAstroCoverage} from './astro-formulas-20261016-baseline.mjs';
 const ledger=JSON.parse(fs.readFileSync('research/PASSPORT_SOURCE_REVIEW_2026-10-14.json'));
 const hash=b=>createHash('sha256').update(b).digest('hex');
 const c={window:{}};vm.createContext(c);
@@ -18,7 +19,7 @@ test('QED/GKSL append to the exact approved 25-Passport bytes and preserves scie
  assert.deepEqual(ledger.acceptedAppendOnlyPassportTheoryIds,['qed','gksl']);
  assert.equal(w.QI_PASSPORTS.records.filter(p=>!['quantum-error-correction','yang-mills'].includes(p.theoryId)).length,27);
  assert.equal(priorGkslPassports(w.QI_PASSPORTS.records.filter(p=>!['quantum-error-correction','yang-mills'].includes(p.theoryId))).length,25);
- const coverage=JSON.parse(fs.readFileSync('docs/coverage.json'));
+ const coverage=priorAstroCoverage(JSON.parse(fs.readFileSync('docs/coverage.json')));
  assert.equal(coverage.passports-2,27);
  for(const [key,n] of Object.entries(ledger.unchangedCounts))assert.equal(coverage[key],n,key);
  for(const id of ledger.remainingUnshippedIds)assert.ok(!w.QI_PASSPORTS.records.filter(p=>!['quantum-error-correction','yang-mills'].includes(p.theoryId)).some(p=>p.theoryId===id),id+' was held at the 2026-10-14 checkpoint');

@@ -1,6 +1,7 @@
 // Test-only bridge for immutable checkpoints that predate the 2026-10-08 multidomain additions.
 // It removes only identifiers declared in the reviewed ledger and asserts each addition exists exactly once.
 import fs from 'node:fs';
+import {priorAstroFormulas} from './astro-formulas-20261016-baseline.mjs';
 import assert from 'node:assert/strict';
 import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
@@ -14,7 +15,7 @@ function prior(items,ids,key,label){
   for(const id of declared)assert.equal(items.filter(x=>x[key]===id).length,1,label+': expected exactly one '+id);
   return items.filter(x=>!declared.has(x[key]));
 }
-export const priorDepthFormulas=current=>prior(current,multidomainReview.addedFormulaIds,'id','formula');
+export const priorDepthFormulas=current=>prior(priorAstroFormulas(current),multidomainReview.addedFormulaIds,'id','formula');
 export const priorDepthPassports=current=>prior(current,multidomainReview.addedPassportTheoryIds,'theoryId','Passport');
 export const priorDepthEvidence=current=>prior(current,multidomainReview.addedEvidenceIds,'id','Evidence');
 export const priorDepthSources=current=>prior(priorPassportSources(current),multidomainReview.addedSourceIds,'id','source');

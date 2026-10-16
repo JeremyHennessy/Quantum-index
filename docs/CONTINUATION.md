@@ -8,18 +8,24 @@ Updated 16 October 2026. This is the single continuation entry point; dated rele
 - **59** cited reading profiles and **5** learning paths
 - **29** Theory Passports, **5** scientific Problems, **16** Evidence records and **60** structured Research Questions
 - **481** theory/framework entities across **14** categories
-- **551** bibliography records
+- **554** bibliography records
 - **352** primary-sourced; **129** review-sourced; **0** catalogued-only entries
 - **610** relationships: **125** source-backed; **485** editorial
 - **41** thought trees
-- **405** formulas across **29** categories
-- **272** entries with linked formulas; **163** documented formula gaps
+- **408** formulas across **30** categories
+- **275** entries with linked formulas; **160** documented formula gaps
 - Other audit classes: **11** interpretations, **16** conceptual, **18** theorem-first, **1** thought experiment
-- Formula metadata: **156** explicitly reviewed; **249** baseline records
+- Formula metadata: **159** explicitly reviewed; **249** baseline records
 - **16** reviewed DevelopmentEvents through **2026**
 
 Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.
 <!-- coverage:end -->
+
+## 2026-10-16 Astroparticle formulas — candidate source review
+
+Three **new** source-reviewed equations are appended to existing entries, with full mathematical conventions and no changes to prior equation strings: `lambda-cdm-redshift-expansion` (ΛCDM component-resolved background E(z)), `inflation-potential-slow-roll-2025` (single-canonical-field PDG unreduced-Planck potential slow-roll), and `quintessence-canonical-fluid-2008` (homogeneous canonical field ρ, p and w). Primary existing theory IDs are `lambda-cdm`, `inflationary-cosmology`, and `quintessence`. Source locations were inspected directly in 2025 PDG reviews and the Fermilab-hosted Frieman–Turner–Huterer 2008 review. The ΛCDM redshift formula is explicitly flagged as a reviewer's component-wise derived combination, not a verbatim PDG equation.
+
+Candidate metrics: **408** formulas, **30** formula categories, **275** formula-linked theory entries, **160** documented formula gaps, **554** registered sources, **159 explicit / 249 baseline** formula metadata, Passports **29** unchanged. No other scientific entities, existing equation bytes, graph relationships, Evidence or UI elements are changed. See [ASTROPARTICLE_FORMULA_SOURCE_REVIEW_2026-10-16.md](../research/ASTROPARTICLE_FORMULA_SOURCE_REVIEW_2026-10-16.md). Exact-head CI, desktop/WebKit and subsequent main/hosted acceptance are required; this is candidate documentation, not a deployment assertion.
 
 ## 2026-10-16 Yang–Mills source-qualification candidate
 

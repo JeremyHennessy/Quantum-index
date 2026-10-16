@@ -5,6 +5,7 @@ import vm from 'node:vm';
 
 import {verifyDepthFile} from './multidomain-depth-baseline.mjs';
 import {priorPassportSources,priorPassportCoverage} from './passport-source-review-20261014-baseline.mjs';
+import {priorAstroFormulas} from './astro-formulas-20261016-baseline.mjs';
 const ledger=JSON.parse(fs.readFileSync('docs/MULTIDOMAIN_DEPTH_2026-10-08.json','utf8'));
 const files=['theories.js','developments.js','formulas.js','formula-audit.js','profiles.js','questions.js','evidence.js','problems.js','passports.js','workspace.js'];
 const sandbox={window:{}};vm.createContext(sandbox);
@@ -29,7 +30,7 @@ test('multidomain batch is additive and preserves protected application/scientif
 
 test('new identifiers are unique, source-backed and produce exactly the declared depth-count changes',()=>{
   assert.equal(priorPassportSources(w.QI_DATA.sources).length,ledger.expectedCounts.sources);
-  assert.equal(w.QI_FORMULAS.formulas.length,ledger.expectedCounts.formulas);
+  assert.equal(priorAstroFormulas(w.QI_FORMULAS.formulas).length,ledger.expectedCounts.formulas);
   assert.equal(w.QI_EVIDENCE.records.length,ledger.expectedCounts.evidence);
   assert.ok(w.QI_PASSPORTS.records.length>=ledger.expectedCounts.passports,'historical release Passports must remain');
   for(const [items,key] of [[w.QI_DATA.sources,'id'],[w.QI_FORMULAS.formulas,'id'],[w.QI_EVIDENCE.records,'id'],[w.QI_PASSPORTS.records,'theoryId']])assert.equal(new Set(items.map(x=>x[key])).size,items.length,key);

@@ -9243,3 +9243,166 @@ Object.assign(f,row);
     Object.assign(f,entry.after);
   }
 })();
+
+// 2026-10-16 astroparticle source-qualified three-formula wave.
+(()=>{
+ const additions=[
+  {
+    "id": "lambda-cdm-redshift-expansion",
+    "name": "ΛCDM component-resolved expansion history",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "E^2(z)=\\frac{H^2(z)}{H_0^2}=\\Omega_{r0}(1+z)^4+\\Omega_{m0}(1+z)^3+\\Omega_{k0}(1+z)^2+\\Omega_{\\Lambda0}",
+    "plain": "[H(z)/H0]^2 = Omega_r0(1+z)^4 + Omega_m0(1+z)^3 + Omega_k0(1+z)^2 + Omega_Lambda0",
+    "description": "Component-resolved ΛCDM background expansion obtained by combining the Friedmann equation with independently conserved matter, radiation, curvature, and constant vacuum energy.",
+    "theoryIds": [
+      "lambda-cdm"
+    ],
+    "sourceIds": [
+      "pdg-bigbang-2025-reviewed"
+    ],
+    "tags": [
+      "Lambda CDM",
+      "FLRW",
+      "Hubble expansion",
+      "redshift"
+    ],
+    "formulaType": "derived identity",
+    "assumptions": [
+      "Homogeneous and isotropic FLRW spacetime in general relativity, a(t0)=1 and 1+z=1/a.",
+      "Pressureless matter (baryons plus cold dark matter) scales as (1+z)^3; relativistic species scale as (1+z)^4; Λ is strictly constant.",
+      "Component densities evolve independently without interactions beyond the gravitational background coupling; parameter values refer to the same H0.",
+      "Ω_k0 is defined as -k/(R0²H0²), so Ω_r0+Ω_m0+Ω_k0+Ω_Λ0=1 at z=0.",
+      "The fixed radiation/matter decomposition excludes epochs in which a neutrino species becomes semi-relativistic without an appropriate time-dependent treatment."
+    ],
+    "variables": [
+      "E(z): dimensionless Hubble expansion rate H(z)/H0",
+      "H0: present Hubble rate",
+      "Ω_r0: present relativistic density fraction",
+      "Ω_m0: present pressureless matter density fraction",
+      "Ω_k0: present curvature parameter -k/(R0²H0²)",
+      "Ω_Λ0: present vacuum contribution Λ/(3H0²)",
+      "z: cosmological redshift"
+    ],
+    "regime": "Background-level ΛCDM Friedmann expansion for noninteracting constant-equation-of-state components; does not by itself provide CMB anisotropies, growth, neutrino-transition dynamics or an inflationary perturbation spectrum.",
+    "units": "E(z), Ω_i and z dimensionless; H and H0 inverse time; c=1 as in PDG, with no hbar requirement.",
+    "theoryRelationship": "Component-specialized derived ΛCDM background equation; distinct from the general already-indexed Friedmann equation.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-16",
+    "curationBatch": "astro-first-equations-2026-10-16",
+    "sourceLocations": [
+      {
+        "sourceId": "pdg-bigbang-2025-reviewed",
+        "locator": "Section 22.1.2 Eq. (22.5), printed p. 2 (PDF p. 2): redshift–scale-factor relation; Section 22.1.3 Eq. (22.8), printed p. 2: general Friedmann background",
+        "url": "https://pdg.lbl.gov/2025/reviews/rpp2025-rev-bbang-cosmology.pdf#page=2"
+      },
+      {
+        "sourceId": "pdg-bigbang-2025-reviewed",
+        "locator": "Section 22.1.4 Eq. (22.15), printed p. 3 (PDF p. 3): present Ω_m, Ω_r, Ω_v and curvature balance",
+        "url": "https://pdg.lbl.gov/2025/reviews/rpp2025-rev-bbang-cosmology.pdf#page=3"
+      },
+      {
+        "sourceId": "pdg-bigbang-2025-reviewed",
+        "locator": "Section 22.1.5.1 Eq. (22.16), printed p. 4 (PDF p. 4): ρ ∝ a^{-3(1+w)}; displayed E(z) expression is derived combination of these cited equations, not a verbatim PDG equation",
+        "url": "https://pdg.lbl.gov/2025/reviews/rpp2025-rev-bbang-cosmology.pdf#page=4"
+      }
+    ]
+  },
+  {
+    "id": "inflation-potential-slow-roll-2025",
+    "name": "Single-field potential slow-roll parameters",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "\\epsilon_V=\\frac{M_{\\mathrm P}^2}{16\\pi}\\left(\\frac{V'}{V}\\right)^2,\\qquad\\eta_V=\\frac{M_{\\mathrm P}^2}{8\\pi}\\frac{V''}{V}",
+    "plain": "epsilon_V = (M_P^2/16pi)(V'/V)^2; eta_V = (M_P^2/8pi)(V''/V)",
+    "description": "Potential slow-roll parameters for a canonical scalar inflaton, in the 2025 PDG convention using the unreduced Planck mass.",
+    "theoryIds": [
+      "inflationary-cosmology"
+    ],
+    "sourceIds": [
+      "pdg-inflation-2025-reviewed"
+    ],
+    "tags": [
+      "inflation",
+      "slow-roll",
+      "scalar field"
+    ],
+    "formulaType": "approximation",
+    "assumptions": [
+      "Canonical single scalar field with potential V(φ), minimal coupling to gravity and near-spatial-flatness after sufficient inflation.",
+      "Use PDG 2025 unreduced Planck mass M_P=G_N^{-1/2}; do not substitute the reduced mass without converting factors of 8π.",
+      "ε_V ≪ 1 and |η_V| ≪ 1 are conditions for the potential slow-roll approximation, not universal requirements for every inflationary model.",
+      "Assume potential V>0 and sufficiently smooth differentiable V(φ); field acceleration is neglected compared with Hubble friction in slow-roll evolution.",
+      "ε_H=-Ḣ/H² and ε_V coincide only at leading slow-roll order; multi-field, noncanonical or sharp-feature scenarios require separate treatment."
+    ],
+    "variables": [
+      "ε_V: potential slope slow-roll parameter",
+      "η_V: potential curvature slow-roll parameter",
+      "M_P: unreduced Planck mass G_N^{-1/2}",
+      "V(φ): canonical inflaton potential",
+      "V',V'': derivatives with respect to φ"
+    ],
+    "regime": "Single-field canonical, potential-dominated slow-roll inflation; not a general identity for arbitrary inflationary dynamics or a direct experimental measurement.",
+    "units": "Natural units c=ħ=1; φ and M_P have mass dimension 1, V mass dimension 4; ε and η dimensionless.",
+    "theoryRelationship": "Source-located approximations specifying the slow-roll regime of a restricted inflationary model, not a defining equation for all inflation.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-16",
+    "curationBatch": "astro-first-equations-2026-10-16",
+    "sourceLocations": [
+      {
+        "sourceId": "pdg-inflation-2025-reviewed",
+        "locator": "Inflation review Section 23.2.1, Eq. (23.15), printed p. 4 (PDF p. 4), with assumptions in Eqs. (23.11)–(23.14); unreduced M_P convention explicitly stated on printed p. 1, footnote 1.",
+        "url": "https://pdg.lbl.gov/2025/reviews/rpp2025-rev-inflation.pdf#page=4"
+      }
+    ]
+  },
+  {
+    "id": "quintessence-canonical-fluid-2008",
+    "name": "Canonical quintessence density, pressure and equation of state",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "\\begin{aligned}\\rho_\\phi&=\\tfrac12\\dot\\phi^2+V(\\phi),\\\\p_\\phi&=\\tfrac12\\dot\\phi^2-V(\\phi),\\\\w_\\phi&=\\frac{\\tfrac12\\dot\\phi^2-V(\\phi)}{\\tfrac12\\dot\\phi^2+V(\\phi)}\\end{aligned}",
+    "plain": "rho_phi=phi_dot^2/2 + V(phi); p_phi=phi_dot^2/2 - V(phi); w_phi=p_phi/rho_phi",
+    "description": "Energy density, pressure and equation-of-state parameter for a spatially homogeneous, minimally coupled canonical scalar quintessence field.",
+    "theoryIds": [
+      "quintessence"
+    ],
+    "sourceIds": [
+      "frieman-turner-huterer-2008-reviewed"
+    ],
+    "tags": [
+      "quintessence",
+      "dark energy",
+      "equation of state"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [
+      "One real canonical minimally coupled scalar field with L=+1/2 ∂^μ φ∂_μ φ−V(φ), adopting mostly-minus metric convention.",
+      "Spatially homogeneous background φ(t), isotropic FLRW metric and stress tensor of a perfect fluid.",
+      "Positive scalar-field energy density ρ_φ>0 to define w_φ; for V≥0 and real φ̇, −1≤w_φ≤1; different-sign/noncanonical models are not covered.",
+      "Approach w≈−1 only if the kinetic contribution is much smaller than the positive potential; the formulas do not assume or prove a particular scalar potential.",
+      "No claim that quintessence is experimentally preferred to ΛCDM or automatically solves vacuum-energy naturalness."
+    ],
+    "variables": [
+      "φ(t): homogeneous scalar field",
+      "φ̇: derivative of scalar with respect to proper cosmological time",
+      "V(φ): scalar-field potential",
+      "ρ_φ: scalar energy density",
+      "p_φ: scalar pressure",
+      "w_φ=p_φ/ρ_φ: equation-of-state parameter"
+    ],
+    "regime": "Homogeneous canonical, minimally coupled single-field quintessence at the cosmological background level; excludes phantom wrong-sign kinetic models, noncanonical k-essence and general modified gravity.",
+    "units": "Natural units c=ħ=1, scalar φ mass dimension 1, φ̇ dimension 2, V, ρ_φ and p_φ dimension 4; w_φ dimensionless.",
+    "theoryRelationship": "Canonical scalar dark-energy fluid representation in the explicitly assumed homogeneous kinetic/potential model, not a universal dark-energy equation.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-16",
+    "curationBatch": "astro-first-equations-2026-10-16",
+    "sourceLocations": [
+      {
+        "sourceId": "frieman-turner-huterer-2008-reviewed",
+        "locator": "Frieman, Turner and Huterer (2008), Section 5.1.2 Scalar Fields, Eqs. (18)–(20), printed p. 21 (PDF page 21): ρ, p and w for homogeneous canonical field; Eq. (19) scalar equation of motion; reviewed via Fermilab author manuscript.",
+        "url": "https://lss.fnal.gov/archive/2008/pub/fermilab-pub-08-613-a.pdf#page=21"
+      }
+    ]
+  }
+];
+ const names=new Set(window.QI_FORMULAS.formulas.map(f=>f.id));
+ for(const f of additions){if(names.has(f.id))throw new Error("Astroparticle formula already exists: "+f.id);names.add(f.id);window.QI_FORMULAS.formulas.push(f);}
+})();

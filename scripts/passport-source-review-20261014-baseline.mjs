@@ -2,6 +2,7 @@
 // New runtime records must match the audited after-state exactly before this helper
 // reconstructs any older immutable release view. Never loaded by the app.
 import fs from 'node:fs';
+import {priorAstroSources,priorAstroCoverage} from './astro-formulas-20261016-baseline.mjs';
 import {restoreQecFormula} from './qec-source-review-20261016-baseline.mjs';
 import {restoreYangMillsFormula,priorYangMillsSources} from './yang-mills-source-review-20261016-baseline.mjs';
 import assert from 'node:assert/strict';
@@ -23,6 +24,7 @@ export function restorePassportFormula(formula){
 }
 
 export function priorPassportSources(current){
+  current=priorAstroSources(current);
   current=priorYangMillsSources(current);
   const expected=passportSourceReview.addedSourceRecord;
   const matches=current.filter(x=>x.id===expected.id);
@@ -50,7 +52,7 @@ export function priorHeldPassports(current){
 
 export function priorPassportCoverage(current){
   // The 2026-10-16 release must be removed before evaluating an older release census.
-  const x={...current};
+  const x=priorAstroCoverage(current);
   x.passports-=1; // Yang-Mills Passport
   x.sources-=1; // modern non-Abelian lecture source
   x.explicitFormulaMetadata-=2; // two Yang-Mills formula reviews
