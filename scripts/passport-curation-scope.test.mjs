@@ -14,7 +14,7 @@ const theories=new Map(w.QI_DATA.theories.map(x=>[x.id,x]));
 const sources=new Map(w.QI_DATA.sources.map(x=>[x.id,x]));
 const formulas=new Map(w.QI_FORMULAS.formulas.map(x=>[x.id,x]));
 const currentPassports=w.QI_PASSPORTS.records;
-const existing=new Set(priorHeldPassports(currentPassports).map(x=>x.theoryId));
+const existing=new Set(priorHeldPassports(currentPassports.filter(p=>p.theoryId!=='quantum-error-correction')).map(x=>x.theoryId));
 const current=new Set(currentPassports.map(x=>x.theoryId));
 
 test('historical six-Passport scope reconstructs the post-nuclear 25-Passport checkpoint',()=>{
@@ -29,7 +29,7 @@ test('historical six-Passport scope reconstructs the post-nuclear 25-Passport ch
     assert.equal(t.category,candidate.domain,candidate.theoryId);
     if(['nuclear-shell-model','in-medium-srg'].includes(candidate.theoryId))assert.ok(existing.has(candidate.theoryId),candidate.theoryId+' nuclear release missing');
     else assert.ok(!existing.has(candidate.theoryId),candidate.theoryId+' was not source-reviewed at the historical checkpoint');
-    assert.equal(current.has(candidate.theoryId),['qed','gksl','nuclear-shell-model','in-medium-srg'].includes(candidate.theoryId),candidate.theoryId+' current disposition');
+    assert.equal(current.has(candidate.theoryId),['qed','gksl','quantum-error-correction','nuclear-shell-model','in-medium-srg'].includes(candidate.theoryId),candidate.theoryId+' current disposition');
     assert.equal(candidate.sourceLocationStatus,'not-yet-reviewed');
     assert.ok(candidate.reviewQuestions.length>=3);
     for(const id of candidate.compareWith)assert.ok(theories.has(id),'missing comparison theory '+id);
