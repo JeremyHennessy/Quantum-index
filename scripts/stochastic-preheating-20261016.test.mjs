@@ -24,14 +24,15 @@ test('append-only source and formula changes preserve exact accepted 410-formula
  assert.equal(priorFollowupSources(w.QI_DATA.sources).length,556);
  assert.equal(priorDarkMatterFormulas(w.QI_FORMULAS.formulas).length,408);
  assert.equal(priorAstroFormulas(w.QI_FORMULAS.formulas).length,405);
- const latest=priorMondStarobinskyCoverage(JSON.parse(fs.readFileSync('docs/coverage.json','utf8')));
+ const latestRaw=JSON.parse(fs.readFileSync('docs/coverage.json','utf8'));
+ const latest=priorMondStarobinskyCoverage(latestRaw);
  assert.equal(latest.theories,481);assert.equal(latest.passports,29);
  assert.equal(latest.relations,610);assert.equal(latest.evidenceRecords,16);
  assert.equal(latest.sources,558);assert.equal(latest.formulas,413);
  assert.equal(latest.formulaCategories,30);assert.equal(latest.formulaBearing,279);
  assert.equal(latest.formulaGaps,156);assert.equal(latest.explicitFormulaMetadata,164);
  assert.equal(latest.baselineFormulaMetadata,249);
- const previous=priorFollowupCoverage(latest);
+ const previous=priorFollowupCoverage(latestRaw);
  assert.equal(previous.sources,556);assert.equal(previous.formulas,410);
  assert.equal(previous.formulaBearing,277);assert.equal(previous.formulaGaps,158);
  assert.equal(previous.explicitFormulaMetadata,161);
