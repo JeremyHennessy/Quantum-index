@@ -30,7 +30,7 @@ export function priorPassportSources(current){
 
 export function priorHeldPassports(current){
   // QEC was added after the October 14 checkpoint; its own test guards the addition.
-  assert.equal(current.filter(p=>p.theoryId==='quantum-error-correction').length,1,'one post-Oct14 QEC Passport expected');
+  assert.ok(current.filter(p=>p.theoryId==='quantum-error-correction').length<=1,'duplicate QEC Passport in historical reconstruction');
   current=current.filter(p=>p.theoryId!=='quantum-error-correction');
   const expected=new Map(passportSourceReview.addedPassportRecords.map(p=>[p.theoryId,p]));
   assert.equal(expected.size,2,'two held Passports were reviewed');
