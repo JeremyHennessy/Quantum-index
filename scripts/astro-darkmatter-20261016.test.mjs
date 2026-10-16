@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import {preDarkMatterBytes,priorDarkMatterFormulas,priorDarkMatterSources,priorDarkMatterCoverage,darkMatterFormulaIds,darkMatterSourceIds} from './astro-darkmatter-20261016-baseline.mjs';
 import {priorAstroFormulas,priorAstroCoverage} from './astro-formulas-20261016-baseline.mjs';
+import {priorFollowupCoverage} from './astro-stochastic-preheating-20261016-baseline.mjs';
 
 const sandbox={window:{}};vm.createContext(sandbox);
 for(const f of ['theories.js','formulas.js','formula-audit.js','developments.js','evidence.js','questions.js','problems.js','passports.js'])
@@ -20,16 +21,17 @@ test('two dark-matter formulas and two bibliography records follow exact immutab
  assert.equal(w.QI_DATA.relations.length,610);
  assert.equal(w.QI_EVIDENCE.records.length,16);
  assert.equal(w.QI_PASSPORTS.records.length,29);
- const c=JSON.parse(fs.readFileSync('docs/coverage.json','utf8'));
+ const latest=JSON.parse(fs.readFileSync('docs/coverage.json','utf8'));
+ const c=priorFollowupCoverage(latest);
  assert.equal(c.formulas,410);assert.equal(c.sources,556);
  assert.equal(c.formulaCategories,30);assert.equal(c.formulaBearing,277);
  assert.equal(c.formulaGaps,158);assert.equal(c.explicitFormulaMetadata,161);
  assert.equal(c.baselineFormulaMetadata,249);
- const previous=priorDarkMatterCoverage(c);
+ const previous=priorDarkMatterCoverage(latest);
  assert.equal(previous.formulas,408);assert.equal(previous.sources,554);
  assert.equal(previous.formulaBearing,275);assert.equal(previous.formulaGaps,160);
  assert.equal(previous.explicitFormulaMetadata,159);
- const earlier=priorAstroCoverage(c);
+ const earlier=priorAstroCoverage(latest);
  assert.equal(earlier.formulas,405);assert.equal(earlier.formulaBearing,272);
  assert.equal(earlier.formulaGaps,163);
 });
