@@ -21,6 +21,12 @@ Updated 16 October 2026. This is the single continuation entry point; dated rele
 Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.
 <!-- coverage:end -->
 
+## 2026-10-16 Astroparticle formulas — candidate source review
+
+Three **new** source-reviewed equations are appended to existing entries, with full mathematical conventions and no changes to prior equation strings: `lambda-cdm-redshift-expansion` (ΛCDM component-resolved background E(z)), `inflation-potential-slow-roll-2025` (single-canonical-field PDG unreduced-Planck potential slow-roll), and `quintessence-canonical-fluid-2008` (homogeneous canonical field ρ, p and w). Primary existing theory IDs are `lambda-cdm`, `inflationary-cosmology`, and `quintessence`. Source locations were inspected directly in 2025 PDG reviews and the Fermilab-hosted Frieman–Turner–Huterer 2008 review. The ΛCDM redshift formula is explicitly flagged as a reviewer's component-wise derived combination, not a verbatim PDG equation.
+
+Candidate metrics: **408** formulas, **30** formula categories, **275** formula-linked theory entries, **160** documented formula gaps, **554** registered sources, **159 explicit / 249 baseline** formula metadata, Passports **29** unchanged. No other scientific entities, existing equation bytes, graph relationships, Evidence or UI elements are changed. See [ASTROPARTICLE_FORMULA_SOURCE_REVIEW_2026-10-16.md](../research/ASTROPARTICLE_FORMULA_SOURCE_REVIEW_2026-10-16.md). Exact-head CI, desktop/WebKit and subsequent main/hosted acceptance are required; this is candidate documentation, not a deployment assertion.
+
 ## 2026-10-16 Yang–Mills source-qualification candidate
 
 Two existing formula expressions (`yang-mills-field`, `yang-mills-lagrangian`) have source-reviewed **metadata only**; mathematical strings and formula identities are unchanged. Independent comparison of Yang–Mills (1954), printed p. 193 Eqs. (4), (7), (9), (11), with university QFT Lecture 15 pp. 9–11 established the exact index-orientation and covariant-derivative sign mapping. In modern D=partial−igA notation the nonlinear component term is **+g f A A**; with the original A=2b normalization F_modern=−F_original. Neither sign is presented without its conventions. One comparison-ready Yang–Mills Passport is added with no empirical Evidence claim or unproven mass-gap assertion.
