@@ -29,3 +29,5 @@ Work on branches from the live `main` head. Keep batches independent, reversible
 - **Next scientific decision:** independently qualify `yang-mills` and `quantum-error-correction` held Passports using original sources; otherwise hold them and proceed with independently verifiable astroparticle equations.
 
 - **16 October / QEC candidate:** independently inspected Knill–Laflamme original theorem, Eqs. (19)–(20), printed p. 13, and prepared a bounded QEC Passport and original-source formula metadata. This is still subject to PR, merged-main and hosted verification. Yang–Mills stays held.
+
+- **16 October / Yang–Mills candidate:** QEC merged as PR #80 `a85f22e6`; original 1954 Yang–Mills printed p. 193 and independent university QFT lecture pp. 9–11 directly reviewed. Prepared single Passport + two explicit formula metadata qualifications, preserving mathematical strings and approved UI. Proposed figures 29 Passports, 551 bibliography sources, 156 explicit metadata; source and CI acceptance must precede merge. See `research/YANG_MILLS_SOURCE_REVIEW_2026-10-16.md`.
