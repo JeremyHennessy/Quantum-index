@@ -1,5 +1,5 @@
 {
-  "reviewedAt": "2026-09-29",
+  "reviewedAt": "2026-10-16",
   "newestEntityOriginYear": 2023,
   "newestDevelopmentYear": 2026,
   "developmentEvents": 16,
@@ -134,6 +134,8 @@
   ],
   "staleLiteratureReviewIds": [],
   "staleLiteratureReviewCount": 0,
+  "documentedLiteratureSweepCount": 0,
+  "unknownLiteratureReviewCount": 481,
   "recentCandidatesAwaitingReview": [
     {
       "id": "wavefunction-matching",

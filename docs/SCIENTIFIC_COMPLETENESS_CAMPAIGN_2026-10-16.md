@@ -1,0 +1,29 @@
+# Quantum Index — scientific completeness campaign
+
+**Authorized:** 16 October 2026. **Intake main:** `3c2c260fd1f69d885afd04fa21df455424f0f037`. Current authoritative head must be rechecked before each new branch. The historical 14 October hosted/browser acceptance and existing scientific records are approved regression baselines, not permission for an unrelated redesign.
+
+## Aim and evidence gates
+
+Deepen the existing 481-entry sourced catalog into a dependable scientific atlas. Treat an entity, a formula, a directed relationship, and an empirical result as **separate claims** with separate acceptance evidence. A citation attached to an entry does not verify all its statements. Mathematical render success does not verify physical correctness. Published theoretical results do not count as experimental observations.
+
+Snapshot at intake (generated, not a quality score): 481 entries, 405 equations, 163 documented theory-level formula gaps, 252 baseline formula metadata, 610 relationships (125 source-backed, 485 editorial), 27 Passports, 16 mixed-type Evidence records, 60 Research Questions, 550 bibliography records.
+
+### Ordered scientific releases
+
+1. **Provenance/freshness honesty** (this branch). Do not modify `theories.js` or renderer merely to hide weak freshness semantics. `lastReviewed` was populated by citation attachment; count only separately documented `literatureSweep` records (dated, scoped, registered source IDs), classifying absent sweep evidence as *unknown*, not stale.
+2. **Held formal Passports**: `yang-mills` and `quantum-error-correction`. Read original primary sources and equation pages, reconcile derivative / curvature signs for Yang–Mills, and original Knill–Laflamme recovery conditions and source IDs for QEC. Preserve QED/GKSL review, never merge the old overlapping unpublished four-Passport branch blindly. Passports require applicability/limitations/comparators and no unsupported experimental claims.
+3. **Astroparticle equation wave**: the current 26-entry category has 25 documented gaps and no formula-linked theory. Candidate exact IDs include `lambda-cdm`, `inflationary-cosmology`, `stochastic-inflation`, `quintessence`, `wimp-dark-matter`, `fuzzy-dark-matter`, `leptogenesis`; review source-specific equations before addition. Preserve distinctions among classical cosmology, particle models, and quantum formalisms. Aim for 8–10 meaningful first representatives, not decorative coverage.
+4. **Next coherent formula waves**: the current `Quantum field theory` and `Quantum many-body & condensed matter` categories have 26 documented gaps each; `Quantum gravity & spacetime` has 40. Reconcile linked existing formulas first. Prioritize canonical frameworks with precise regimes; keep genuinely conceptual theories or theorem-first entries appropriately classified rather than invent equations.
+5. **Equation metadata / evidence / provenance**: review baseline metadata in source-bounded batches (252 outstanding at intake), build empirical constraints with quantities/uncertainties/model boundaries, and promote only directional relationships backed by claim-specific sources. Deliberate editorial overlaps are legitimate and should remain labeled editorial.
+6. **Exhaustiveness**: resolve new named candidates via ADD / ALIAS / SUBTYPE / RELATION ONLY / FORMULA ONLY / ALREADY COVERED / REJECT, maintaining provenance and exact-year semantics. Do not confuse recent developments with theory origin years.
+
+## Source review acceptance checklist
+
+Every accepted mathematical change records the exact source and section/equation/printed-page locator; notation, normalization, units, assumptions, regime, approximation order and model-family limits; tested linked IDs; and whether the record is primary, pedagogical, or review provenance. For novel empirical Evidence also record what the work does not establish. Do not invent source, data, precision or conclusion.
+
+Work on branches from the live `main` head. Keep batches independent, reversible and small, preserve all prior approved UI/workspace behavior, generated metrics, archived historical review ledgers, and release fingerprints. Require `npm test`, `npm run validate`, full Chromium/WebKit and review of any affected math rendering before merging. Verify branch CI on its exact head, then separately verify merged main and hosted behavior where changed.
+
+## Progress and next decision
+
+- **16 October / phase 1:** generated freshness report corrected to distinguish *unknown literature sweep status* from *zero stale reviews among actual documented sweeps*, while keeping all original theory/formula/graph/Passport/Evidence data and UI unchanged. Source-attachment dates remain as historical catalog metadata. This statement describes branch intent; publication is subject to PR CI and merge verification.
+- **Next scientific decision:** independently qualify `yang-mills` and `quantum-error-correction` held Passports using original sources; otherwise hold them and proceed with independently verifiable astroparticle equations.
