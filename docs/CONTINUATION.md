@@ -12,14 +12,20 @@ Updated 16 October 2026. This is the single continuation entry point; dated rele
 - **352** primary-sourced; **129** review-sourced; **0** catalogued-only entries
 - **610** relationships: **125** source-backed; **485** editorial
 - **41** thought trees
-- **413** formulas across **30** categories
-- **279** entries with linked formulas; **156** documented formula gaps
+- **415** formulas across **30** categories
+- **281** entries with linked formulas; **154** documented formula gaps
 - Other audit classes: **11** interpretations, **16** conceptual, **18** theorem-first, **1** thought experiment
-- Formula metadata: **164** explicitly reviewed; **249** baseline records
+- Formula metadata: **166** explicitly reviewed; **249** baseline records
 - **16** reviewed DevelopmentEvents through **2026**
 
 Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.
 <!-- coverage:end -->
+
+## 2026-10-16 MOND and Starobinsky R² — dependent scientific candidate
+
+Two mathematically explicit first representatives are appended for `mond` and `starobinsky-inflation`, with **no new bibliography** because the original Milgrom (1983) and De Felice–Tsujikawa (2010) sources already exist. Milgrom's original *Astrophysical Journal* printed p. 366, Eq. (1) and immediately following limiting μ behavior supply an effective nonrelativistic working relation, **not** a finished N-body or covariant theory. The 2010 *Living Reviews* Section 3.1 Eq. (3.6) supports the metric Starobinsky `f(R)=R+R²/(6M²)` model function as a specific curvature action choice, **not** a claim of experimentally unique inflation.
+
+**Release dependency:** this candidate descends from the still-verifying PR #84 branch. It must not merge ahead of PR #84, and must be reconciled to the accepted main Git tree with its own Node, generated coverage, Chromium/WebKit and hosted acceptance. Cumulative *candidate-only* metrics: **415 formulas, 281 formula-linked theories, 154 documented formula gaps, 166 explicit / 249 baseline metadata**; **558** bibliography records, **481** theories, **29** Passports, **610** relationships and **16** Evidence items unchanged. See [MOND_STAROBINSKY_SOURCE_REVIEW_2026-10-16.md](../research/MOND_STAROBINSKY_SOURCE_REVIEW_2026-10-16.md).
 
 ## 2026-10-16 Stochastic-inflation and preheating formula wave — acceptance candidate
 

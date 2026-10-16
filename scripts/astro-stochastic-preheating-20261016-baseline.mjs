@@ -2,6 +2,7 @@
 // New formula identities and bibliography are removed from previous snapshots only
 // after exact Git blob and metadata checks. Never used by the browser application.
 import fs from 'node:fs';
+import {priorMondStarobinskyFormulas,priorMondStarobinskyCoverage} from './mond-starobinsky-20261016-baseline.mjs';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 export const followupFormulaIds=[
@@ -38,6 +39,7 @@ export function preFollowupBytes(path){
  return exact;
 }
 export function priorFollowupFormulas(current){
+ current=priorMondStarobinskyFormulas(current);
  const expected=[
   ['stochastic-inflation-efold-langevin','stochastic-inflation','vennin-starobinsky-stochastic-2015','approximation'],
   ['stochastic-inflation-ito-fokker-planck','stochastic-inflation','vennin-starobinsky-stochastic-2015','canonical'],
@@ -70,7 +72,7 @@ export function priorFollowupSources(current){
  return current.filter(s=>!followupSourceIds.includes(s.id));
 }
 export function priorFollowupCoverage(metrics){
- const x={...metrics};
+ const x=priorMondStarobinskyCoverage(metrics);
  x.formulas-=3;x.sources-=2;x.formulaBearing-=2;x.formulaGaps+=2;
  x.explicitFormulaMetadata-=3;
  return x;

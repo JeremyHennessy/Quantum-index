@@ -8,6 +8,7 @@ import {
 } from './astro-stochastic-preheating-20261016-baseline.mjs';
 import {priorDarkMatterFormulas,priorDarkMatterSources} from './astro-darkmatter-20261016-baseline.mjs';
 import {priorAstroFormulas} from './astro-formulas-20261016-baseline.mjs';
+import {priorMondStarobinskyCoverage} from './mond-starobinsky-20261016-baseline.mjs';
 const ctx={window:{}};vm.createContext(ctx);
 for(const file of ['theories.js','developments.js','formulas.js','formula-audit.js','evidence.js','questions.js','problems.js','passports.js']) {
  vm.runInContext(fs.readFileSync(file,'utf8'),ctx,{filename:file});
@@ -23,7 +24,7 @@ test('append-only source and formula changes preserve exact accepted 410-formula
  assert.equal(priorFollowupSources(w.QI_DATA.sources).length,556);
  assert.equal(priorDarkMatterFormulas(w.QI_FORMULAS.formulas).length,408);
  assert.equal(priorAstroFormulas(w.QI_FORMULAS.formulas).length,405);
- const latest=JSON.parse(fs.readFileSync('docs/coverage.json','utf8'));
+ const latest=priorMondStarobinskyCoverage(JSON.parse(fs.readFileSync('docs/coverage.json','utf8')));
  assert.equal(latest.theories,481);assert.equal(latest.passports,29);
  assert.equal(latest.relations,610);assert.equal(latest.evidenceRecords,16);
  assert.equal(latest.sources,558);assert.equal(latest.formulas,413);

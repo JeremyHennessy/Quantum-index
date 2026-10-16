@@ -14,10 +14,10 @@ Quantum Index indexes source-backed theories, formulations, interpretations, res
 - **352** primary-sourced; **129** review-sourced; **0** catalogued-only entries
 - **610** relationships: **125** source-backed; **485** editorial
 - **41** thought trees
-- **413** formulas across **30** categories
-- **279** entries with linked formulas; **156** documented formula gaps
+- **415** formulas across **30** categories
+- **281** entries with linked formulas; **154** documented formula gaps
 - Other audit classes: **11** interpretations, **16** conceptual, **18** theorem-first, **1** thought experiment
-- Formula metadata: **164** explicitly reviewed; **249** baseline records
+- Formula metadata: **166** explicitly reviewed; **249** baseline records
 - **16** reviewed DevelopmentEvents through **2026**
 
 Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.
