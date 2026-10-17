@@ -9668,3 +9668,106 @@ const batch=[
 const known=new Set(window.QI_FORMULAS.formulas.map(f=>f.id));
 for(const row of batch){if(known.has(row.id))throw new Error("Duplicate scientific formula "+row.id);known.add(row.id);window.QI_FORMULAS.formulas.push(row);}
 })();
+
+// 2026-10-16 MOND and Starobinsky exact-source first representatives.
+(()=>{
+ const items=[
+  {
+    "id": "mond-low-acceleration-effective-inertia",
+    "name": "Milgrom modified-inertia working equation and limiting interpolation",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "m_g\\,\\mu\\!\\left(\\frac{|\\mathbf a|}{a_0}\\right)\\mathbf a=\\mathbf F,\\quad \\mu(x\\gg1)\\simeq1,\\ \\mu(x\\ll1)\\simeq x",
+    "plain": "m_g mu(|a|/a0) a_vec = F_vec, mu(x>>1)≈1, mu(x<<1)≈x",
+    "description": "Milgrom's original 1983 modified-inertia effective working formula for nonrelativistic test bodies under an externally specified static force field, together with its high- and low-acceleration interpolation limits.",
+    "theoryIds": [
+      "mond"
+    ],
+    "sourceIds": [
+      "milgrom-mond-1983"
+    ],
+    "tags": [
+      "MOND",
+      "modified Newtonian dynamics",
+      "galaxy rotation",
+      "low acceleration"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "Interpreted strictly as Milgrom (1983) Eq. (1), an effective phenomenological *working formula*, not a complete many-body or relativistic theory.",
+      "m_g is gravitational mass; F is an externally specified static force field coupling conventionally to the body; a is the acceleration in a presumed fundamental reference frame and |a| its magnitude.",
+      "μ(x) approaches unity for x much larger than one and x for x much smaller than one; no unique interpolation function is selected between these asymptotic limits.",
+      "The acceleration constant a_0 has dimensions of acceleration; Eq. (1) concerns the motion of a test body or a center-of-mass approximation in a static mean field, not arbitrary internal composite-particle dynamics.",
+      "Milgrom explicitly warns of external-field/composite-system limitations; do not assume the formula is always derivable from a gravitational potential or that it completes covariant gravity."
+    ],
+    "variables": [
+      "m_g: passive gravitational mass of the body",
+      "μ(x): dimensionless interpolation function with specified low/high-acceleration limiting behavior",
+      "a: vector acceleration of the tested body and |a| its magnitude",
+      "F: externally given conventional static force vector",
+      "a_0: phenomenological acceleration scale"
+    ],
+    "regime": "Low-acceleration nonrelativistic effective MOND modified-inertia model for a test body in a static external field with an assumed preferred frame; not a complete covariant gravity theory, general N-body law or independent evidence for/against dark-matter particle hypotheses.",
+    "units": "SI form: m_g in kg; |a| and a_0 in m/s²; F in newtons; μ dimensionless. No natural-unit normalization is assumed.",
+    "theoryRelationship": "Milgrom's source Eq. (1) is a phenomenological defining relation and *limited effective formula*, not a demonstrated universal MOND dynamical action.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-16",
+    "curationBatch": "astro-mond-starobinsky-firstformula-2026-10-16",
+    "sourceLocations": [
+      {
+        "sourceId": "milgrom-mond-1983",
+        "locator": "M. Milgrom, Astrophys. J. 270 (1983) 365–370, Eq. (1), printed p. 366, PDF page 2: m_g μ(a/a0) a = F and the μ(x≫1)≈1, μ(x≪1)≈x limits. Same printed p. 366 Sec. II explicitly calls Eq. (1) a limited effective working formula, not a completed theory.",
+        "url": "https://adsabs.harvard.edu/pdf/1983ApJ...270..365M#page=2"
+      }
+    ]
+  },
+  {
+    "id": "starobinsky-r2-model-function",
+    "name": "Starobinsky metric R-squared inflation model function",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "f(R)=R+\\frac{R^2}{6M^2}",
+    "plain": "f(R) = R + R^2/(6 M^2)",
+    "description": "The standard Starobinsky inflation model's metric f(R) function combining Einstein–Hilbert curvature and a positive quadratic R² correction, in the modern 2010 f(R)-review notation.",
+    "theoryIds": [
+      "starobinsky-inflation"
+    ],
+    "sourceIds": [
+      "fr-review-2010"
+    ],
+    "tags": [
+      "Starobinsky inflation",
+      "R² gravity",
+      "f(R) inflation",
+      "modified gravity"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "Metric f(R) model in four spacetime dimensions with an Einstein–Hilbert linear R term and an R²/(6M²) correction in the same convention as De Felice & Tsujikawa (2010), Sec. 3.1 Eq. (3.6).",
+      "The model is f(R)=R+R²/(6M²) with M>0 of mass dimension one; R is Ricci scalar with mass dimension two in natural units. A generic f(R) does not automatically coincide with this particular model.",
+      "An action formulation normally has S=(M_Pl,reduced²/2)∫d⁴x√−g f(R) (and any specified matter sector); the formula here indexes only f(R), not a newly derived full quantum action.",
+      "The model is a theoretical inflationary mechanism; parameter fitting, scalaron dynamics, reheating, perturbation observables and constraints require their own models and evidence.",
+      "The presented modern f(R) normalization is sourced to a 2010 authoritative review; do not misattribute Eq. (3.6) as a literal transcription of Starobinsky's original 1980 notation."
+    ],
+    "variables": [
+      "f(R): chosen curvature function in a metric f(R) gravitational action",
+      "R: Ricci curvature scalar",
+      "M: characteristic positive scalaron/inflation mass scale",
+      "M_Pl,reduced: (8πG)^(-1/2) in c=ħ=1 units when embedding f(R) into the action"
+    ],
+    "regime": "Classical metric curvature functional defining the R+R² Starobinsky inflation model; not proof of quantum gravity, unique explanation for primordial inflation or direct empirical confirmation.",
+    "units": "Natural units c=ħ=1: R and M² carry mass dimension 2, f(R) mass dimension 2; coefficient 1/(6M²) has mass dimension −2.",
+    "theoryRelationship": "Model-defining curvature function, a specific n=2 instance of metric f(R) gravity; the linear R term provides an exit from inflation in the reviewed model.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-16",
+    "curationBatch": "astro-mond-starobinsky-firstformula-2026-10-16",
+    "sourceLocations": [
+      {
+        "sourceId": "fr-review-2010",
+        "locator": "A. De Felice and S. Tsujikawa, Living Reviews in Relativity 13 (2010), Section 3.1 Inflationary Dynamics, Eq. (3.6): f(R)=R+R²/(6M²), where M has mass dimension one; immediately following text on inflation exit with linear curvature term.",
+        "url": "https://link.springer.com/article/10.12942/lrr-2010-3"
+      }
+    ]
+  }
+];
+ const prior=new Set(window.QI_FORMULAS.formulas.map(f=>f.id));
+ for(const f of items){if(prior.has(f.id))throw new Error('Formula identity already present: '+f.id);prior.add(f.id);window.QI_FORMULAS.formulas.push(f);}
+})();
