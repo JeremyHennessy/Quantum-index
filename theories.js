@@ -2937,3 +2937,27 @@ const batch=[
 const known=new Set(window.QI_DATA.sources.map(s=>s.id));
 for(const row of batch){if(known.has(row.id))throw new Error("Duplicate source "+row.id);known.add(row.id);window.QI_DATA.sources.push(row);}
 })();
+
+// 2026-10-17 four cosmology subfield gap closures — bibliography only.
+(()=>{
+ const records=[
+  {
+    "id": "kamenshchik-moschella-pasquier-2001",
+    "title": "An alternative to quintessence",
+    "authors": "A. Yu. Kamenshchik, U. Moschella, V. Pasquier",
+    "year": 2001,
+    "type": "primary source",
+    "url": "https://doi.org/10.1016/S0370-2693(01)00571-8"
+  },
+  {
+    "id": "davidson-nardi-nir-leptogenesis-2008",
+    "title": "Leptogenesis",
+    "authors": "Sacha Davidson, Enrico Nardi, Yosef Nir",
+    "year": 2008,
+    "type": "authoritative review",
+    "url": "https://doi.org/10.1016/j.physrep.2008.06.002"
+  }
+];
+ const existing=new Set(window.QI_DATA.sources.map(s=>s.id));
+ for(const s of records){if(existing.has(s.id))throw new Error('Duplicate cosmology citation '+s.id);existing.add(s.id);window.QI_DATA.sources.push(s);}
+})();
