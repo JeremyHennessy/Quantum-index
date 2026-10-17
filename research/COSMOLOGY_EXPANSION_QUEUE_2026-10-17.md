@@ -2,9 +2,9 @@
 
 ## Category census
 
-The current approved main at campaign intake `e2cea285d1e49c1a9ac0ff7e9207a9c9cb162526` has **26** distinct indexed `Astroparticle physics & cosmology` entries and **8** formula-bearing, **17** documented formula gaps, and **1** primarily conceptual (Sakharov conditions). The proposed four-formula release closes four documented existing-entry gaps, reaching **12 formula-bearing / 13 gaps / 1 conceptual**. This is *representative mathematical coverage*, not scientific accuracy or exhaustiveness. The full 481-entry catalog and cross-category source links must be checked before adding new identities.
+The current approved main at campaign intake `e2cea285d1e49c1a9ac0ff7e9207a9c9cb162526` has **26** distinct indexed `Astroparticle physics & cosmology` entries and **9** formula-bearing, **16** documented formula gaps and **1** primarily conceptual entry (Sakharov conditions). Four first equations would move the category to **13 formula-bearing / 12 gaps / 1 conceptual**. This is *representative mathematical coverage*, not scientific accuracy or exhaustiveness. The full 481-entry catalog and cross-category source links must be checked before adding new identities.
 
-## Existing category gaps after proposed release
+## Existing 12 category gaps after proposed release
 
 - **Tensor–vector–scalar gravity (TeVeS):** source-specific multi-field action and matter coupling, normalization/gauge conventions.
 - **Self-interacting dark matter:** source-scoped Yukawa potential, transfer cross section and velocity regime; do not treat observed bounds as universal constants.

@@ -44,7 +44,7 @@ test('exact sources and formula-audit classification match four distinct existin
  const gaps=w.QI_FORMULA_AUDIT.entries.filter(x=>all.some(t=>t.id===x.theoryId)&&x.classification==='formula-bearing-gap');
  const conceptual=w.QI_FORMULA_AUDIT.entries.filter(x=>all.some(t=>t.id===x.theoryId)&&x.classification==='primarily conceptual');
  // Sakharov conditions are a conceptual first-class entry, not a documented formula gap.
- assert.equal(all.length,26);assert.equal(covered.length,12);assert.equal(gaps.length,13);
+ assert.equal(all.length,26);assert.equal(covered.length,13);assert.equal(gaps.length,12);
  assert.deepEqual(Array.from(conceptual.map(x=>x.theoryId)),['sakharov-baryogenesis']);
  assert.equal(covered.length+gaps.length+conceptual.length,26);
  assert.equal(new Set(cosmologyCoveredTheoryIds).size,4);
