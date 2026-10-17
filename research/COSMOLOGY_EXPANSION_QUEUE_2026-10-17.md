@@ -2,14 +2,14 @@
 
 ## Category census
 
-The current approved main at campaign intake `e2cea285d1e49c1a9ac0ff7e9207a9c9cb162526` has **26** distinct indexed `Astroparticle physics & cosmology` entries and **9** linked to at least one formula. The proposed four-formula release closes four documented existing-entry gaps, reaching **13 linked / 13 gaps**. This is *representative mathematical coverage*, not scientific accuracy or exhaustiveness. The full 481-entry catalog and cross-category source links must be checked before adding new identities.
+The current approved main at campaign intake `e2cea285d1e49c1a9ac0ff7e9207a9c9cb162526` has **26** distinct indexed `Astroparticle physics & cosmology` entries and **8** formula-bearing, **17** documented formula gaps, and **1** primarily conceptual (Sakharov conditions). The proposed four-formula release closes four documented existing-entry gaps, reaching **12 formula-bearing / 13 gaps / 1 conceptual**. This is *representative mathematical coverage*, not scientific accuracy or exhaustiveness. The full 481-entry catalog and cross-category source links must be checked before adding new identities.
 
 ## Existing category gaps after proposed release
 
 - **Tensor–vector–scalar gravity (TeVeS):** source-specific multi-field action and matter coupling, normalization/gauge conventions.
 - **Self-interacting dark matter:** source-scoped Yukawa potential, transfer cross section and velocity regime; do not treat observed bounds as universal constants.
 - **Primordial-black-hole dark matter:** collapse fraction, mass function and threshold statistics with explicitly Gaussian/non-Gaussian assumptions; distinct from late Hawking evaporation.
-- **Sakharov baryogenesis conditions:** verify whether a mathematical representative makes sense at all; theorem/condition-first may be the honest classification.
+- **Sakharov baryogenesis conditions (already primarily conceptual, not one of the 13 formula gaps):** a source-review may determine whether a formal statement adds value; do not force an equation.
 - **Cosmic strings and defects:** world-sheet action or tension/deficit relation, microscopic string vs field-theory defect.
 - **Sterile-neutrino dark matter:** specific oscillation-based production regime and mixing constraints, not an observed particle.
 - **Dark photon / kinetic mixing:** U(1) kinetic-mixing model with gauge-field normalization and optional mass.
