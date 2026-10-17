@@ -2,6 +2,7 @@
 // Never loaded in the UI. Protect exact existing 413-formula data blob before stripping
 // this new append; historical count projections must not conceal unrelated edits.
 import fs from 'node:fs';
+import {priorCosmologyFormulas,priorCosmologyCoverage} from './cosmology-four-gaps-20261017-baseline.mjs';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 export const newRepresentativeIds=['mond-low-acceleration-effective-inertia','starobinsky-r2-model-function'];
@@ -21,6 +22,7 @@ export function beforeMondStarobinskyBytes(){
  return prior;
 }
 export function priorMondStarobinskyFormulas(items){
+ items=priorCosmologyFormulas(items);
  const expected=[
  ['mond-low-acceleration-effective-inertia','mond','milgrom-mond-1983'],
  ['starobinsky-r2-model-function','starobinsky-inflation','fr-review-2010']
@@ -39,7 +41,7 @@ export function priorMondStarobinskyFormulas(items){
  return items.filter(f=>!newRepresentativeIds.includes(f.id));
 }
 export function priorMondStarobinskyCoverage(metrics){
- const x={...metrics};
+ const x=priorCosmologyCoverage(metrics);
  x.formulas-=2;x.formulaBearing-=2;x.formulaGaps+=2;x.explicitFormulaMetadata-=2;
  return x;
 }
