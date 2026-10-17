@@ -2,6 +2,7 @@
 // New runtime records must match the audited after-state exactly before this helper
 // reconstructs any older immutable release view. Never loaded by the app.
 import fs from 'node:fs';
+import {priorCosmologySources} from './cosmology-four-gaps-20261017-baseline.mjs';
 import {priorAstroSources,priorAstroCoverage} from './astro-formulas-20261016-baseline.mjs';
 import {restoreQecFormula} from './qec-source-review-20261016-baseline.mjs';
 import {restoreYangMillsFormula,priorYangMillsSources} from './yang-mills-source-review-20261016-baseline.mjs';
@@ -24,6 +25,7 @@ export function restorePassportFormula(formula){
 }
 
 export function priorPassportSources(current){
+  current=priorCosmologySources(current);
   current=priorAstroSources(current);
   current=priorYangMillsSources(current);
   const expected=passportSourceReview.addedSourceRecord;

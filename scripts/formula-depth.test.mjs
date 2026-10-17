@@ -8,6 +8,7 @@ import {priorAstroFormulas,astroFormulaIds} from './astro-formulas-20261016-base
 import {darkMatterFormulaIds} from './astro-darkmatter-20261016-baseline.mjs';
 import {followupCoveredTheoryIds} from './astro-stochastic-preheating-20261016-baseline.mjs';
 import {newlyCoveredTheoryIds} from './mond-starobinsky-20261016-baseline.mjs';
+import {cosmologyCoveredTheoryIds} from './cosmology-four-gaps-20261017-baseline.mjs';
 
 function load(){
   const sandbox={window:{}};
@@ -38,7 +39,7 @@ test('formula-depth pilot adds five reviewed representatives with four documente
     assert.ok(audit.formulaIds.includes(formulaId),theoryId);
   }
   // Reconstruct the historical gap count after removing the three later astrophysics closures.
-  assert.equal(w.QI_FORMULA_AUDIT.entries.filter(e=>e.classification==='formula-bearing-gap').length+newlyCoveredTheoryIds.length+followupCoveredTheoryIds.length+darkMatterFormulaIds.length+astroFormulaIds.length+multidomainReview.closedGapTheoryIds.length,165);
+  assert.equal(w.QI_FORMULA_AUDIT.entries.filter(e=>e.classification==='formula-bearing-gap').length+cosmologyCoveredTheoryIds.length+newlyCoveredTheoryIds.length+followupCoveredTheoryIds.length+darkMatterFormulaIds.length+astroFormulaIds.length+multidomainReview.closedGapTheoryIds.length,165);
   assert.equal(priorAstroFormulas(w.QI_FORMULAS.formulas).map(restorePassportFormula).filter(f=>f.metadataReview==='explicit'&&f.id!=='knill-laflamme').length-multidomainReview.addedFormulaIds.length,147);
 });
 
