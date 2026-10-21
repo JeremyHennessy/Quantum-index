@@ -10,9 +10,11 @@ for(const edit of ledger.collections.formulas.changes){
   await expect(card.locator('mjx-container')).toHaveCount(1,{timeout:30000});
   await expect(card.locator('[data-mml-node="merror"], [fill="red"], [stroke="red"]')).toHaveCount(0);
   for(const loc of edit.after.sourceLocations)await expect(card.locator('a[href="'+loc.url+'"]')).toHaveCount(edit.after.sourceLocations.filter(l=>l.url===loc.url).length);
+  const scrollChecks=await card.locator('.formula-equation, mjx-container').evaluateAll(els=>els.filter(el=>el.scrollWidth>el.clientWidth+1).map(el=>{const max=el.scrollWidth-el.clientWidth;el.scrollLeft=max;const reached=Math.abs(el.scrollLeft-max)<=2;el.scrollLeft=0;return {overflow:getComputedStyle(el).overflowX,reached};}));
+  for(const check of scrollChecks){expect(['auto','scroll']).toContain(check.overflow);expect(check.reached).toBeTruthy();}
   expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
   await card.scrollIntoViewIfNeeded();
-  if(['teves-physical-metric','third-quantization-free-superspace-action','eft-inflation-unitary-gauge-action'].includes(edit.id)){const path=info.outputPath(edit.id+'.png');await card.screenshot({path});await info.attach(edit.id,{path,contentType:'image/png'});}
+  if(['teves-physical-metric','third-quantization-free-superspace-action','eft-inflation-unitary-gauge-action'].includes(edit.id)){const path=info.outputPath(edit.id+'.png');await card.screenshot({path,style:'.topbar{visibility:hidden!important}'});await info.attach(edit.id,{path,contentType:'image/png'});await card.locator('.formula-equation, mjx-container').evaluateAll(els=>els.forEach(el=>{el.scrollLeft=el.scrollWidth-el.clientWidth;}));const endPath=info.outputPath(edit.id+'-right-edge.png');await card.screenshot({path:endPath,style:'.topbar{visibility:hidden!important}'});await info.attach(edit.id+'-right-edge',{path:endPath,contentType:'image/png'});}
   expect(errors).toEqual([]);
  });
 }
