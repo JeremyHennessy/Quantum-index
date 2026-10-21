@@ -1,3 +1,4 @@
+import {projectPreMapInteractions} from './map-interactions-baseline.mjs';
 import {readPreStateChannelFile} from './state-channel-20261021-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -36,9 +37,9 @@ test('accepted release projection fails closed for undeclared bytes',()=>{
 });
 
 test('browser CI budget change preserves the full workflow and rejects unrelated mutations',()=>{
- const file='.github/workflows/validate.yml',current=fs.readFileSync(file),prior=readPreOpenSystemFile(file);
+ const file='.github/workflows/validate.yml',raw=fs.readFileSync(file),current=projectPreMapInteractions(raw,file),prior=readPreOpenSystemFile(file);
  assert.ok(current.includes('    timeout-minutes: 35\n'));assert.ok(prior.includes('    timeout-minutes: 25\n'));
  assert.equal(current.toString().replace('    timeout-minutes: 35\n','    timeout-minutes: 25\n'),prior.toString());
- assert.throws(()=>projectPreOpenSystem(Buffer.concat([current,Buffer.from('undeclared')]),file));
- assert.throws(()=>projectPreOpenSystem(Buffer.from(current.toString().replace('npm run test:browser','echo skipped')),file));
+ assert.throws(()=>projectPreOpenSystem(Buffer.concat([raw,Buffer.from('undeclared')]),file));
+ assert.throws(()=>projectPreOpenSystem(Buffer.from(raw.toString().replace('npm run test:browser','echo skipped')),file));
 });

@@ -11,14 +11,24 @@ test('network nodes select inline and explicit details preserve map context',asy
   const quiet=prior.length===positions.length&&positions.every((p,i)=>Math.hypot(p[0]-prior[i][0],p[1]-prior[i][1])<.25);
   stable=quiet?stable+1:0;prior=positions;return stable;
  },{timeout:15000,intervals:[250]}).toBeGreaterThanOrEqual(3);
- // Zoom around visible background near the center, not a corner that ejects the nodes.
- const point=await graph.evaluate(el=>{
-  const r=el.getBoundingClientRect();
-  for(const dy of [0,30,-30,60,-60])for(const dx of [0,30,-30,60,-60]){
-   const x=r.left+r.width/2+dx,y=r.top+r.height/2+dy,hit=document.elementFromPoint(x,y);
-   if(hit&&el.contains(hit)&&!hit.closest('.node'))return {x,y};
+ // Anchor the gesture beside a visible node. The center of a sparse graph can
+ // be empty; zooming that gap legitimately pushes every node off the canvas.
+ const target=await graph.evaluate(el=>{
+  const canvas=el.getBoundingClientRect();
+  for(const [index,node]of [...el.querySelectorAll('.node')].entries()){
+   const r=node.querySelector('circle').getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
+   if(!node.contains(document.elementFromPoint(cx,cy)))continue;
+   for(const [dx,dy]of [[30,0],[-30,0],[0,30],[0,-30]]){
+    const x=cx+dx,y=cy+dy,hit=document.elementFromPoint(x,y);
+    // Predict the doubled circle bounds around this real gesture focal point.
+    const left=2*r.left-x,right=2*r.right-x,top=2*r.top-y,bottom=2*r.bottom-y;
+    if(hit&&el.contains(hit)&&!hit.closest('.node')&&
+       left>Math.max(canvas.left,0)+8&&right<Math.min(canvas.right,innerWidth)-8&&
+       top>Math.max(canvas.top,0)+8&&bottom<Math.min(canvas.bottom,innerHeight)-8)
+     return {point:{x,y},selected:{index,id:node.__data__.id,name:node.__data__.name}};
+   }
   }return null;
- });expect(point).not.toBeNull();
+ });expect(target).not.toBeNull();const {point,selected}=target;
  if(info.project.name==='webkit'){
   await page.touchscreen.tap(point.x,point.y);await page.touchscreen.tap(point.x,point.y);
   await expect.poll(()=>graph.evaluate(el=>el.__zoom.k)).toBe(2);
@@ -27,19 +37,14 @@ test('network nodes select inline and explicit details preserve map context',asy
   await expect.poll(()=>graph.evaluate(el=>el.__zoom.k)).toBeGreaterThan(1);
  }
  const transform=await graph.evaluate(el=>({x:el.__zoom.x,y:el.__zoom.y,k:el.__zoom.k}));
- // Choose an actually reachable circle after zoom. A clipped SVG group's bounding box
- // can extend outside the canvas, so forcing a click on its center is not a user action.
- const selected=await graph.evaluate(el=>{
-  const canvas=el.getBoundingClientRect();
-  return [...el.querySelectorAll('.node')].map((n,index)=>{
-   const r=n.querySelector('circle').getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;
-   const hit=document.elementFromPoint(x,y);
-   return r.left>canvas.left&&r.right<canvas.right&&r.top>canvas.top&&r.bottom<canvas.bottom&&
-    r.left>0&&r.right<innerWidth&&r.top>0&&r.bottom<innerHeight&&hit&&n.contains(hit)
-    ? {index,id:n.__data__.id,name:n.__data__.name}:null;
-  }).find(Boolean)||null;
- });expect(selected).not.toBeNull();
  const node=graph.locator('.node').nth(selected.index),circle=node.locator('circle');
+ // Confirm actual postgesture visibility, not merely the geometric prediction.
+ await expect.poll(()=>circle.evaluate(el=>{
+  const r=el.getBoundingClientRect(),canvas=el.closest('svg').getBoundingClientRect();
+  return r.left>canvas.left&&r.right<canvas.right&&r.top>canvas.top&&r.bottom<canvas.bottom&&
+   r.left>0&&r.right<innerWidth&&r.top>0&&r.bottom<innerHeight&&
+   el.closest('.node').contains(document.elementFromPoint(r.left+r.width/2,r.top+r.height/2));
+ })).toBe(true);
  await expect(circle).toBeInViewport();
  if(info.project.name==='webkit')await circle.tap();else await circle.click();
  await expect(page.locator('#mapView')).toHaveClass(/active/);await expect(page.locator('#detailPanel .detail-title')).toHaveText(selected.name);await expect(node).toHaveAttribute('aria-pressed','true');

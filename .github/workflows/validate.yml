@@ -70,7 +70,29 @@ jobs:
           grep -q 'id="timelineEventType"' index.html
           grep -q 'function renderThoughtTreeGraph' app.js
 
+  map-diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci --ignore-scripts
+      - run: npx playwright install --with-deps chromium webkit
+      - name: Exercise map gestures before the full catalog suite
+        run: npx playwright test tests/browser/map-interactions.spec.mjs --repeat-each=2 --retries=0
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: map-diagnostic-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14
+
   browser:
+    needs: map-diagnostic
     runs-on: ubuntu-latest
     # Full-catalog MathJax checks plus per-record Chromium/WebKit provenance tests.
     timeout-minutes: 35
