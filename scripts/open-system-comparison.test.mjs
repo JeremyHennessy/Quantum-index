@@ -32,3 +32,11 @@ test('accepted release projection fails closed for undeclared bytes',()=>{
  const ledger=JSON.parse(fs.readFileSync('research/OPEN_SYSTEM_INTEGRITY_2026-10-21.json'));
  for(const file of Object.keys(ledger.files)){assert.ok(readPreOpenSystemFile(file).length);assert.throws(()=>projectPreOpenSystem(Buffer.concat([fs.readFileSync(file),Buffer.from('undeclared')]),file));}
 });
+
+test('browser CI budget change preserves the full workflow and rejects unrelated mutations',()=>{
+ const file='.github/workflows/validate.yml',current=fs.readFileSync(file),prior=readPreOpenSystemFile(file);
+ assert.ok(current.includes('    timeout-minutes: 35\n'));assert.ok(prior.includes('    timeout-minutes: 25\n'));
+ assert.equal(current.toString().replace('    timeout-minutes: 35\n','    timeout-minutes: 25\n'),prior.toString());
+ assert.throws(()=>projectPreOpenSystem(Buffer.concat([current,Buffer.from('undeclared')]),file));
+ assert.throws(()=>projectPreOpenSystem(Buffer.from(current.toString().replace('npm run test:browser','echo skipped')),file));
+});
