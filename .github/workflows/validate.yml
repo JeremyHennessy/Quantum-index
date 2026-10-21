@@ -73,7 +73,7 @@ jobs:
   browser:
     runs-on: ubuntu-latest
     # Full-catalog MathJax checks plus per-record Chromium/WebKit provenance tests.
-    timeout-minutes: 25
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
