@@ -2,18 +2,47 @@ import {test,expect} from '@playwright/test';
 
 test('network nodes select inline and explicit details preserve map context',async({page},info)=>{
  await page.goto('/#/map?search=Planck&evidence=sourced');
- const node=page.locator('#network .node').first();await expect(node).toBeVisible();
- const selected=await node.evaluate(el=>({id:el.__data__.id,name:el.__data__.name}));
- const graph=page.locator('#network');await graph.evaluate(el=>{el.dataset.keep='same';});
- await graph.scrollIntoViewIfNeeded();const bounds=await graph.boundingBox();
+ const graph=page.locator('#network');await expect(graph.locator('.node').first()).toBeVisible();
+ await graph.evaluate(el=>{el.dataset.keep='same';});await graph.scrollIntoViewIfNeeded();
+ // Let the real force layout settle, without stopping or repositioning it in test code.
+ let prior=[],stable=0;
+ await expect.poll(async()=>{
+  const positions=await graph.locator('.node').evaluateAll(nodes=>nodes.map(n=>[n.__data__.x,n.__data__.y]));
+  const quiet=prior.length===positions.length&&positions.every((p,i)=>Math.hypot(p[0]-prior[i][0],p[1]-prior[i][1])<.25);
+  stable=quiet?stable+1:0;prior=positions;return stable;
+ },{timeout:15000,intervals:[250]}).toBeGreaterThanOrEqual(3);
+ // Zoom around visible background near the center, not a corner that ejects the nodes.
+ const point=await graph.evaluate(el=>{
+  const r=el.getBoundingClientRect();
+  for(const dy of [0,30,-30,60,-60])for(const dx of [0,30,-30,60,-60]){
+   const x=r.left+r.width/2+dx,y=r.top+r.height/2+dy,hit=document.elementFromPoint(x,y);
+   if(hit&&el.contains(hit)&&!hit.closest('.node'))return {x,y};
+  }return null;
+ });expect(point).not.toBeNull();
  if(info.project.name==='webkit'){
-  // Mobile WebKit has no mouse-wheel API; exercise D3's real double-tap gesture instead.
-  await page.touchscreen.tap(bounds.x+20,bounds.y+20);await page.touchscreen.tap(bounds.x+20,bounds.y+20);
- }else{await page.mouse.move(bounds.x+bounds.width/2,bounds.y+bounds.height/2);await page.mouse.wheel(0,-180);}
- if(info.project.name==='webkit')await expect.poll(()=>graph.evaluate(el=>el.__zoom.k)).toBe(2);
- else await expect.poll(()=>graph.evaluate(el=>el.__zoom.k)).toBeGreaterThan(1);
+  await page.touchscreen.tap(point.x,point.y);await page.touchscreen.tap(point.x,point.y);
+  await expect.poll(()=>graph.evaluate(el=>el.__zoom.k)).toBe(2);
+ }else{
+  await page.mouse.move(point.x,point.y);await page.mouse.wheel(0,-180);
+  await expect.poll(()=>graph.evaluate(el=>el.__zoom.k)).toBeGreaterThan(1);
+ }
  const transform=await graph.evaluate(el=>({x:el.__zoom.x,y:el.__zoom.y,k:el.__zoom.k}));
- await node.click({force:true});await expect(page.locator('#mapView')).toHaveClass(/active/);await expect(page.locator('#detailPanel .detail-title')).toHaveText(selected.name);await expect(node).toHaveAttribute('aria-pressed','true');
+ // Choose an actually reachable circle after zoom. A clipped SVG group's bounding box
+ // can extend outside the canvas, so forcing a click on its center is not a user action.
+ const selected=await graph.evaluate(el=>{
+  const canvas=el.getBoundingClientRect();
+  return [...el.querySelectorAll('.node')].map((n,index)=>{
+   const r=n.querySelector('circle').getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;
+   const hit=document.elementFromPoint(x,y);
+   return r.left>canvas.left&&r.right<canvas.right&&r.top>canvas.top&&r.bottom<canvas.bottom&&
+    r.left>0&&r.right<innerWidth&&r.top>0&&r.bottom<innerHeight&&hit&&n.contains(hit)
+    ? {index,id:n.__data__.id,name:n.__data__.name}:null;
+  }).find(Boolean)||null;
+ });expect(selected).not.toBeNull();
+ const node=graph.locator('.node').nth(selected.index),circle=node.locator('circle');
+ await expect(circle).toBeInViewport();
+ if(info.project.name==='webkit')await circle.tap();else await circle.click();
+ await expect(page.locator('#mapView')).toHaveClass(/active/);await expect(page.locator('#detailPanel .detail-title')).toHaveText(selected.name);await expect(node).toHaveAttribute('aria-pressed','true');
  expect(await graph.evaluate(el=>({x:el.__zoom.x,y:el.__zoom.y,k:el.__zoom.k}))).toEqual(transform);await expect(graph).toHaveAttribute('data-keep','same');await expect(page.locator('#search')).toHaveValue('Planck');
  await node.press('Enter');await expect(page.locator('#mapView')).toHaveClass(/active/);await expect(page.locator('#detailPanel .full-theory-link')).toHaveText('Open full details');
  await page.locator('#detailPanel .full-theory-link').click();await expect(page.locator('#theoryView')).toHaveClass(/active/);await expect(page.locator('#theoryDetail .detail-title')).toHaveText(selected.name);
