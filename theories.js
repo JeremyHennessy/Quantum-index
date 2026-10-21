@@ -3424,3 +3424,23 @@ window.QI_DATA.sources.push({
   entry.core='A perturbative relaxation tensor governs density-matrix evolution and can retain coherences and frequency couplings that are discarded by the full secular approximation.';
   entry.sources.push('davidovic-redfield-2020');
 })();
+
+// Modern exposition sources; not historical-original equation audits.
+window.QI_DATA.sources.push(...[
+  {
+    "id": "watrous-tqi-2018",
+    "title": "The Theory of Quantum Information (2018 pre-publication draft)",
+    "authors": "John Watrous",
+    "year": 2018,
+    "type": "authoritative author-hosted textbook draft",
+    "url": "https://cs.uwaterloo.ca/~watrous/TQI/TQI.pdf"
+  },
+  {
+    "id": "preskill-shannon-2025",
+    "title": "Quantum Information, Chapter 10: Quantum Shannon Theory",
+    "authors": "John Preskill",
+    "year": 2025,
+    "type": "authoritative author-hosted textbook draft",
+    "url": "https://www.preskill.caltech.edu/ph219/chap10_6A_2025.pdf"
+  }
+]);

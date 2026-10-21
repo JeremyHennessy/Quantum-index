@@ -1,0 +1,18 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';
+import {loadRuntime} from './category-trust-census.mjs';import {readPreStateChannelFile,projectPreStateChannel} from './state-channel-20261021-baseline.mjs';
+const w=loadRuntime(),b={window:{}};vm.createContext(b);for(const f of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','passports.js'])vm.runInContext(readPreStateChannelFile(f,'utf8'),b);
+const old=b.window,audit=JSON.parse(fs.readFileSync('research/STATE_CHANNEL_SOURCE_AUDIT_2026-10-21.json')),plain=x=>JSON.parse(JSON.stringify(x));
+test('twelve reviewed metadata patches preserve every equation, identity and unrelated record',()=>{
+ assert.equal(audit.patches.length,12);assert.equal(new Set(audit.patches.map(p=>p.id)).size,12);
+ for(const f of old.QI_FORMULAS.formulas){const now=w.QI_FORMULAS.formulas.find(n=>n.id===f.id),patch=audit.patches.find(p=>p.id===f.id);assert.ok(now);assert.deepEqual(plain(now),plain(patch?{...f,...patch}:f));if(patch){assert.equal(f.metadataReview,'baseline-audit-v1');for(const k of ['latex','plain','formulaType','theoryIds'])assert.deepEqual(plain(now[k]),plain(f[k]));}}
+ for(const preserved of audit.preserved){const f=w.QI_FORMULAS.formulas.find(f=>f.id===preserved.id);for(const[k,v]of Object.entries(preserved))assert.deepEqual(plain(f[k]),plain(v));}
+ for(const k of ['QI_FORMULA_AUDIT','QI_PASSPORTS','QI_PROFILES','QI_EVIDENCE','QI_PROBLEMS','QI_QUESTIONS','QI_DEVELOPMENTS'])assert.deepEqual(plain(w[k]),plain(old[k]),k);
+ for(const k of Object.keys(old.QI_DATA))if(k!=='sources')assert.deepEqual(plain(w.QI_DATA[k]),plain(old.QI_DATA[k]));
+ const added=new Set(audit.sources.map(s=>s.id));assert.deepEqual(plain(w.QI_DATA.sources.filter(s=>!added.has(s.id))),plain(old.QI_DATA.sources));for(const source of audit.sources)assert.deepEqual(plain(w.QI_DATA.sources.find(s=>s.id===source.id)),plain(source));assert.equal(w.QI_DATA.sources.length,old.QI_DATA.sources.length+2);
+ assert.equal(w.QI_DATA.theories.length,483);assert.equal(w.QI_FORMULAS.formulas.length,457);assert.equal(w.QI_FORMULAS.formulas.filter(f=>f.metadataReview==='explicit').length,239);assert.equal(w.QI_FORMULAS.formulas.filter(f=>f.metadataReview==='baseline-audit-v1').length,218);assert.equal(w.QI_FORMULA_AUDIT.entries.filter(e=>e.classification==='formula-bearing-gap').length,114);
+});
+test('source qualifiers and normalized conventions remain explicit and exactly located',()=>{
+ const sources=new Set(w.QI_DATA.sources.map(s=>s.id));for(const p of audit.patches){assert.equal(p.metadataReview,'explicit');assert.match(p.theoryRelationship,/authoritative expositions/);for(const loc of p.sourceLocations){assert.ok(sources.has(loc.sourceId));assert.ok(p.sourceIds.includes(loc.sourceId));assert.match(loc.url,/^https:\/\//);assert.ok(loc.locator.length>20);}}
+ const get=id=>JSON.stringify(audit.patches.find(p=>p.id===id));assert.match(get('fidelity'),/squared/i);assert.match(get('trace-distance'),/half|1\/2/i);assert.match(get('choi'),/unnormalized/i);assert.match(get('choi'),/2\.2\.2/);assert.match(audit.sources.find(s=>s.id==='watrous-tqi-2018').title,/pre-publication draft/);
+});
+test('state/channel historical reconstruction fails closed against undeclared bytes',()=>{const l=JSON.parse(fs.readFileSync('research/STATE_CHANNEL_INTEGRITY_2026-10-21.json'));for(const f of Object.keys(l.files)){assert.ok(readPreStateChannelFile(f).length);assert.throws(()=>projectPreStateChannel(Buffer.concat([fs.readFileSync(f),Buffer.from('undeclared')]),f));}});
