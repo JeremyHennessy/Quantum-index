@@ -1,3 +1,4 @@
+import {beforeLocatorRenderer} from './formula-locator-renderer-20261021-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -15,7 +16,7 @@ test('QED/GKSL append to the exact approved 25-Passport bytes and preserves scie
  const bytes=fs.readFileSync('passports.js'),needle=Buffer.from(ledger.appendMarker),at=bytes.indexOf(needle);
  assert.ok(at>0);assert.equal(bytes.indexOf(needle,at+needle.length),-1);
  assert.equal(hash(bytes.subarray(0,at)),ledger.previousPassportSha256);
- for(const [file,digest] of Object.entries(ledger.protectedFileSha256))assert.equal(hash(fs.readFileSync(file)),digest,file);
+ for(const [file,digest] of Object.entries(ledger.protectedFileSha256))assert.equal(hash(beforeLocatorRenderer(fs.readFileSync(file),file)),digest,file);
  assert.deepEqual(ledger.acceptedAppendOnlyPassportTheoryIds,['qed','gksl']);
  assert.equal(w.QI_PASSPORTS.records.filter(p=>!['quantum-error-correction','yang-mills'].includes(p.theoryId)).length,27);
  assert.equal(priorGkslPassports(w.QI_PASSPORTS.records.filter(p=>!['quantum-error-correction','yang-mills'].includes(p.theoryId))).length,25);

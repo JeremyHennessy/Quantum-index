@@ -8,18 +8,24 @@ Updated 16 October 2026. This is the single continuation entry point; dated rele
 - **59** cited reading profiles and **5** learning paths
 - **29** Theory Passports, **5** scientific Problems, **16** Evidence records and **60** structured Research Questions
 - **481** theory/framework entities across **14** categories
-- **558** bibliography records
+- **560** bibliography records
 - **352** primary-sourced; **129** review-sourced; **0** catalogued-only entries
 - **610** relationships: **125** source-backed; **485** editorial
 - **41** thought trees
-- **415** formulas across **30** categories
-- **281** entries with linked formulas; **154** documented formula gaps
+- **419** formulas across **30** categories
+- **285** entries with linked formulas; **150** documented formula gaps
 - Other audit classes: **11** interpretations, **16** conceptual, **18** theorem-first, **1** thought experiment
-- Formula metadata: **166** explicitly reviewed; **249** baseline records
+- Formula metadata: **170** explicitly reviewed; **249** baseline records
 - **16** reviewed DevelopmentEvents through **2026**
 
 Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.
 <!-- coverage:end -->
+
+## 2026-10-17 Cosmology gap closure candidate: dark energy, dark matter production, leptogenesis
+
+Four new, distinct, source-located equations now address currently uncovered existing theory entries: `k-essence` (factorized pressure, density and effective scalar sound speed), `chaplygin-gas` (original fluid equation of state and conserved FLRW background), `freeze-in-dark-matter` (parent-decay FIMP production collision term) and `leptogenesis` (heavy-neutrino flavour-dependent CP decay asymmetry). Already registered original sources for k-essence and FIMP freeze-in are reused; two new bibliography records qualify the original Chaplygin 2001 paper and Davidson–Nardi–Nir 2008 leptogenesis review. The mathematical equation locations were independently inspected and every claim is scoped to its source's assumptions. No new experimental Evidence is invented.
+
+**Candidate metrics:** 419 formulas, 285 formula-linked theories, 150 documented formula gaps, 560 bibliography records, 170 explicitly reviewed / 249 baseline formula metadata, 481 theory entities, 29 Passports and 610 directed relations. Earlier scientific/data files are protected with exact Git blob prefixes. The 21 October repair exposes every exact source locator instead of only the first locator per source; an exact before/after renderer projection preserves immutable historical checks. CSS, workspace and historical ledgers are unchanged. This batch remains **unmerged pending exact-head scientific and browser validation, followed by merged-main and hosted checks**. See [source review](../research/COSMOLOGY_SOURCE_REVIEW_2026-10-17.md) and [remaining cosmology gaps and expansion queue](../research/COSMOLOGY_EXPANSION_QUEUE_2026-10-17.md).
 
 ## 2026-10-16 MOND and Starobinsky R² — dependent scientific candidate
 

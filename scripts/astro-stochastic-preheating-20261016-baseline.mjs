@@ -2,6 +2,7 @@
 // New formula identities and bibliography are removed from previous snapshots only
 // after exact Git blob and metadata checks. Never used by the browser application.
 import fs from 'node:fs';
+import {priorCosmologySources} from './cosmology-four-gaps-20261017-baseline.mjs';
 import {priorMondStarobinskyFormulas,priorMondStarobinskyCoverage} from './mond-starobinsky-20261016-baseline.mjs';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
@@ -60,6 +61,7 @@ export function priorFollowupFormulas(current){
  return current.filter(f=>!followupFormulaIds.includes(f.id));
 }
 export function priorFollowupSources(current){
+ current=priorCosmologySources(current); // Remove precisely verified post-October-16 sources.
  for(const [id,title] of [
   ['vennin-starobinsky-stochastic-2015','Correlation Functions in Stochastic Inflation'],
   ['kofman-linde-starobinsky-reheating-1997','Towards the Theory of Reheating After Inflation']

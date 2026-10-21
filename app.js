@@ -624,8 +624,11 @@
       }).join("");
       const sourcesHtml=f.sourceIds.map(id=>{
         const s=sourceById.get(id);
-        const location=f.sourceLocations?.find(location=>location.sourceId===id);
-        return s?`<a class="formula-source" href="${esc(location?.url || s.url)}" target="_blank" rel="noreferrer">${esc(s.authors)} · ${esc(s.year)}${location?` · ${esc(location.locator)}`:""}</a>`:"";
+        if(!s) return "";
+        const locations=(f.sourceLocations||[]).filter(location=>location.sourceId===id);
+        // A source may support distinct equations on several pages. Keep every
+        // exact locator discoverable instead of silently showing only the first.
+        return (locations.length?locations:[null]).map(location=>`<a class="formula-source" href="${esc(location?.url || s.url)}" target="_blank" rel="noreferrer">${esc(s.authors)} · ${esc(s.year)}${location?` · ${esc(location.locator)}`:""}</a>`).join("");
       }).join("");
       return `
         <article class="formula-card">

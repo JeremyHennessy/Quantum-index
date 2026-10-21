@@ -9771,3 +9771,214 @@ for(const row of batch){if(known.has(row.id))throw new Error("Duplicate scientif
  const prior=new Set(window.QI_FORMULAS.formulas.map(f=>f.id));
  for(const f of items){if(prior.has(f.id))throw new Error('Formula identity already present: '+f.id);prior.add(f.id);window.QI_FORMULAS.formulas.push(f);}
 })();
+
+// 2026-10-17 four source-qualified cosmology mathematical representatives.
+(()=>{
+ const records=[
+  {
+    "id": "kessence-factorized-density-sound-speed",
+    "name": "Factorizable k-essence density and effective sound speed",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "\\begin{aligned}p(\\phi,X)&=K(\\phi)\\tilde p(X),\\\\ \\rho_\\phi&=K(\\phi)\\left(2X\\tilde p_{,X}-\\tilde p\\right),\\\\ c_s^2&=\\frac{\\tilde p_{,X}}{\\tilde p_{,X}+2X\\tilde p_{,XX}}\\end{aligned}",
+    "plain": "p=K(phi) p_tilde(X); rho_phi=K(phi)[2X p_tilde_X - p_tilde]; c_s^2=p_tilde_X/(p_tilde_X+2X p_tilde_XX)",
+    "description": "Pressure, homogeneous energy density, and perturbative effective sound-speed squared for the original paper's factorizable single-field k-essence subclass.",
+    "theoryIds": [
+      "k-essence"
+    ],
+    "sourceIds": [
+      "wave4-kessence-2000"
+    ],
+    "tags": [
+      "k-essence",
+      "noncanonical kinetic term",
+      "sound speed",
+      "dark energy"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [
+      "Use the original factorizable k-essence subclass p(phi,X)=K(phi) p_tilde(X) with K(phi)>0, rather than claiming arbitrary nonseparable p(phi,X) has this structure.",
+      "Metric signature (+---), X=+1/2 g^{mu nu} partial_mu phi partial_nu phi, giving X=phi_dot^2/2 for a spatially homogeneous scalar.",
+      "Energy density rho_phi=2X p_{,X}-p follows from the scalar stress tensor; the c_s^2 formula refers to the coefficient governing scalar perturbations, not automatically the thermodynamic adiabatic sound speed.",
+      "Require nonzero denominator p_tilde_X+2X p_tilde_XX to define c_s^2; energy-density positivity and acceptable perturbative stability are extra physical restrictions, not guaranteed by the algebra.",
+      "The original article adopts 8 pi G/3=1 for the background cosmological equations; the local stress-energy identities themselves do not require that gravitational unit choice."
+    ],
+    "variables": [
+      "phi: real k-essence scalar field",
+      "X=1/2 g^{mu nu} partial_mu phi partial_nu phi: scalar kinetic invariant",
+      "K(phi): strictly positive field-dependent factor",
+      "p_tilde(X): differentiable dimensionful kinetic function",
+      "p: effective field pressure (scalar Lagrangian density)",
+      "rho_phi: scalar-field energy density",
+      "c_s^2: scalar perturbation propagation speed squared",
+      "p_tilde_X, p_tilde_XX: first and second derivatives with respect to X"
+    ],
+    "regime": "Factorizable, minimally coupled single-scalar k-essence backgrounds, with linearized perturbation sound speed; no universal attractor, gradient stability, causality, or observational dark-energy preference follows from the displayed expressions.",
+    "units": "In c=hbar=1 and a canonical mass-dimension-one scalar convention: X has mass dimension 4; K p_tilde, p and rho mass dimension 4; c_s^2 dimensionless. Other field rescalings redistribute units between K and p_tilde.",
+    "theoryRelationship": "Original Eq. (3)–(7) defining quantities for a factorizable noncanonical k-essence model, with a model-specific effective sound speed rather than canonical quintessence c_s^2=1.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-17",
+    "curationBatch": "cosmology-source-depth-2026-10-17",
+    "sourceLocations": [
+      {
+        "sourceId": "wave4-kessence-2000",
+        "locator": "Armendariz-Picon, Mukhanov & Steinhardt, arXiv:astro-ph/0006373v1, Sec. II Eqs. (2)–(3), printed p. 2 (PDF page 2): X and p=K(phi)p_tilde(X).",
+        "url": "https://arxiv.org/pdf/astro-ph/0006373v1#page=2"
+      },
+      {
+        "sourceId": "wave4-kessence-2000",
+        "locator": "Same original article, Sec. II Eqs. (4)–(7), printed p. 3 (PDF page 3): energy density, equation of state and c_s^2; Eq. (11)–(12) require additional positivity/stability conditions.",
+        "url": "https://arxiv.org/pdf/astro-ph/0006373v1#page=3"
+      }
+    ]
+  },
+  {
+    "id": "chaplygin-fluid-eos-and-scaling-2001",
+    "name": "Original Chaplygin-gas equation of state and density evolution",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "p=-\\frac{A}{\\rho},\\qquad \\rho(a)=\\sqrt{A+\\frac{B}{a^6}}",
+    "plain": "p=-A/rho; rho(a)=sqrt(A+B/a^6)",
+    "description": "The original 2001 Chaplygin perfect-fluid equation of state and its separately conserved FRW background density solution.",
+    "theoryIds": [
+      "chaplygin-gas"
+    ],
+    "sourceIds": [
+      "kamenshchik-moschella-pasquier-2001"
+    ],
+    "tags": [
+      "Chaplygin gas",
+      "cosmic acceleration",
+      "unified dark sector",
+      "fluid equation of state"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [
+      "One homogeneous/isotropic FRW perfect fluid with comoving pressure p and positive energy density rho; no exchanges with other components in its local continuity equation.",
+      "Positive constant A and integration constant B>0 select the original expanding dust-like to vacuum-like branch; B<0 involves a different domain and cannot be assumed identical.",
+      "Energy conservation d(rho a^3)=-p d(a^3) with p=-A/rho yields rho^2=A+B/a^6; normalization of dimensionless scale factor a must remain consistent.",
+      "This is the alpha=1 original Chaplygin equation of state, not the generalized p=-A/rho^alpha family, tachyon models, or an established observed unified dark sector.",
+      "Small scale factor gives rho approximately sqrt(B)/a^3; large scale factor yields rho approaching sqrt(A), as stated in the original model."
+    ],
+    "variables": [
+      "p: comoving perfect-fluid pressure",
+      "rho: positive perfect-fluid energy density",
+      "A: positive constant with dimensions (energy density)^2",
+      "B: integration constant with dimensions rho^2 a^6",
+      "a: dimensionless FRW scale factor"
+    ],
+    "regime": "Original alpha=1 noninteracting Chaplygin perfect fluid on homogeneous FRW background with A>0 and B>0; linear cosmological perturbations, clustering behavior and observational viability require separate source-backed analysis.",
+    "units": "In c=1 with dimensionless a: p and rho mass dimension 4, A and B mass dimension 8; p=-A/rho and rho(a) both have energy-density dimensions.",
+    "theoryRelationship": "Original negative-inverse-density equation of state and conservation-derived interpolation, not independent evidence for dark energy.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-17",
+    "curationBatch": "cosmology-source-depth-2026-10-17",
+    "sourceLocations": [
+      {
+        "sourceId": "kamenshchik-moschella-pasquier-2001",
+        "locator": "Kamenshchik, Moschella & Pasquier, arXiv:gr-qc/0103004v2, printed p. 2 (PDF page 2), Eqs. (1), (4), (5): p=-A/rho, d(rho a^3)=-p d(a^3), rho=sqrt(A+B/a^6).",
+        "url": "https://arxiv.org/pdf/gr-qc/0103004v2#page=2"
+      }
+    ]
+  },
+  {
+    "id": "freeze-in-decay-fimp-boltzmann-2010",
+    "name": "Decay-driven freeze-in FIMP production kernel",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "\\dot n_X+3Hn_X\\simeq\\frac{g_{B_1}m_{B_1}^{2}\\Gamma_{B_1}}{2\\pi^{2}}\\,T\\,K_1\\!\\left(\\frac{m_{B_1}}{T}\\right)",
+    "plain": "dn_X/dt + 3H n_X ≈ g_B1 m_B1^2 Gamma_B1 T K1(m_B1/T)/(2 pi^2)",
+    "description": "Source-specific Maxwell–Boltzmann collision term for feebly coupled dark-state X produced by equilibrium bath-particle B1 decays B1 -> B2 X.",
+    "theoryIds": [
+      "freeze-in-dark-matter"
+    ],
+    "sourceIds": [
+      "freeze-in-2010"
+    ],
+    "tags": [
+      "freeze-in",
+      "FIMP",
+      "Boltzmann equation",
+      "decay production"
+    ],
+    "formulaType": "approximation",
+    "assumptions": [
+      "An equilibrium thermal bath contains a heavier parent B1 with m_B1>m_B2+m_X, and the rare two-body decay B1→B2+X is kinematically allowed.",
+      "The dark FIMP X has initially negligible occupation (f_X≈0); inverse reactions and backreaction on the equilibrium bath are neglected, unlike the corresponding WIMP freeze-out equation.",
+      "Parent B1 follows a Maxwell–Boltzmann equilibrium distribution and Pauli-blocking/Bose-stimulation factors are neglected; the decay width Gamma_B1 is evaluated in the parent rest frame.",
+      "Homogeneous FLRW number-density dilution supplies the 3H n_X term, while g_B1 counts parent internal degrees of freedom consistently with its rest-frame width.",
+      "This simplified direct decay channel does not represent ultraviolet-dominated freeze-in, coannihilations, multibody decays, inverse decay-driven production or all possible FIMP production models."
+    ],
+    "variables": [
+      "n_X: physical number density of FIMP X",
+      "H: Hubble rate",
+      "g_B1: internal degeneracy of thermal parent B1",
+      "m_B1: parent particle rest mass",
+      "Gamma_B1: partial B1→B2+X decay width at rest",
+      "T: bath temperature",
+      "K_1(x): modified Bessel function of the second kind of order 1"
+    ],
+    "regime": "Leading-order direct two-body decay freeze-in for rare FIMP X produced by an equilibrium B1 thermal parent in a homogeneous expanding background, with negligible inverse production.",
+    "units": "Natural units c=hbar=k_B=1: n_X mass^3, H and Gamma mass, m and T mass; RHS and d n_X/dt mass^4, K_1 dimensionless.",
+    "theoryRelationship": "The original Hall et al. Eq. (6.6) collision kernel for a specific decay-driven thermal freeze-in channel, not a universal FIMP relic-density formula.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-17",
+    "curationBatch": "cosmology-source-depth-2026-10-17",
+    "sourceLocations": [
+      {
+        "sourceId": "freeze-in-2010",
+        "locator": "Hall, Jedamzik, March-Russell & West, arXiv:0911.1120, Sec. 6.1 direct freeze-in, printed p. 21 (PDF page 22), Eqs. (6.1), (6.3)–(6.6): equilibrium-parent decay kernel g_B1 m_B1^2 Gamma_B1 T K_1(m_B1/T)/(2 pi^2).",
+        "url": "https://arxiv.org/pdf/0911.1120#page=22"
+      }
+    ]
+  },
+  {
+    "id": "leptogenesis-flavoured-decay-cp-asymmetry",
+    "name": "Flavour-resolved thermal leptogenesis decay CP asymmetry",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "\\epsilon_{\\alpha\\alpha}=\\frac{\\Gamma(N_1\\to\\phi\\ell_\\alpha)-\\Gamma(N_1\\to\\bar\\phi\\,\\bar\\ell_\\alpha)}{\\sum_{\\beta}\\left[\\Gamma(N_1\\to\\phi\\ell_\\beta)+\\Gamma(N_1\\to\\bar\\phi\\,\\bar\\ell_\\beta)\\right]}",
+    "plain": "epsilon_aa=[Gamma(N1->phi l_a)-Gamma(N1->anti_phi anti_l_a)]/sum_beta[Gamma(N1->phi l_beta)+Gamma(N1->anti_phi anti_l_beta)]",
+    "description": "Lepton-flavour-specific CP asymmetry in decays of a heavy Majorana singlet neutrino N1, normalized by its summed lepton and antilepton decay rates.",
+    "theoryIds": [
+      "leptogenesis"
+    ],
+    "sourceIds": [
+      "davidson-nardi-nir-leptogenesis-2008"
+    ],
+    "tags": [
+      "leptogenesis",
+      "CP asymmetry",
+      "heavy Majorana neutrinos",
+      "flavour"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "Type-I seesaw-like thermal leptogenesis example with unstable heavy Majorana singlet neutrino N1 coupled to Standard Model Higgs phi and lepton doublets l_alpha.",
+      "Gamma in the numerator denotes the partial decay width into one explicitly identified flavour alpha and its CP-conjugate final state; the denominator sums all available lepton flavours and their conjugates, not only flavour alpha.",
+      "The displayed sign convention follows Davidson–Nardi–Nir Eq. (4.2); exchanging numerator decay order flips epsilon without changing physics if the rest of a baryogenesis calculation is changed consistently.",
+      "Nonzero epsilon is one ingredient, not sufficient for an observed baryon asymmetry: out-of-equilibrium production, washout efficiency and sphaleron conversion are distinct requirements.",
+      "The expression is a decay-rate definition, not a loop-level prediction of epsilon from Yukawa couplings, nor a general formula for resonant/flavoured/density-matrix transport in all leptogenesis variants."
+    ],
+    "variables": [
+      "epsilon_alphaalpha: dimensionless flavour alpha decay CP asymmetry",
+      "N1: heavy unstable Majorana singlet neutrino",
+      "phi, bar_phi: Higgs state and charge-conjugate state",
+      "l_alpha, bar_l_alpha: lepton doublet of flavour alpha and its CP conjugate",
+      "Gamma: channel-specific partial decay width",
+      "beta: index summed over available lepton flavours"
+    ],
+    "regime": "Flavour-resolved CP asymmetry for heavy-Majorana-neutrino decays in a seesaw-motivated leptogenesis mechanism; generation of final baryon abundance requires kinetic transport and sphaleron conversion.",
+    "units": "All Gamma decay widths have dimensions inverse time or mass in c=hbar=1; epsilon is dimensionless and bounded in magnitude by 1 for nonnegative widths.",
+    "theoryRelationship": "Explicit CP-violating decay asymmetry definition from Davidson–Nardi–Nir Eq. (4.2), not observational proof of a neutrino-mass model or successful baryogenesis.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-17",
+    "curationBatch": "cosmology-source-depth-2026-10-17",
+    "sourceLocations": [
+      {
+        "sourceId": "davidson-nardi-nir-leptogenesis-2008",
+        "locator": "Davidson, Nardi & Nir, arXiv:0802.2962v3, Sec. 4.1, Eq. (4.2), printed p. 20 (PDF page 20), flavour alpha asymmetry normalized to summed lepton+antilepton N1 decay rates; Sec. 4.2 separately treats efficiency and out-of-equilibrium kinetics.",
+        "url": "https://arxiv.org/pdf/0802.2962v3#page=20"
+      }
+    ]
+  }
+];
+ const existing=new Set(window.QI_FORMULAS.formulas.map(f=>f.id));
+ for(const f of records){if(existing.has(f.id))throw new Error('Duplicate cosmology formula '+f.id);existing.add(f.id);window.QI_FORMULAS.formulas.push(f);}
+})();
