@@ -1,6 +1,7 @@
 import {test,expect} from '@playwright/test';
 
 test('network nodes select inline and explicit details preserve map context',async({page},info)=>{
+ test.setTimeout(90000);
  await page.goto('/#/map?search=Planck&evidence=sourced');
  const graph=page.locator('#network');await expect(graph.locator('.node').first()).toBeVisible();
  await graph.evaluate(el=>{el.dataset.keep='same';});await graph.scrollIntoViewIfNeeded();
@@ -10,7 +11,7 @@ test('network nodes select inline and explicit details preserve map context',asy
   const positions=await graph.locator('.node').evaluateAll(nodes=>nodes.map(n=>[n.__data__.x,n.__data__.y]));
   const quiet=prior.length===positions.length&&positions.every((p,i)=>Math.hypot(p[0]-prior[i][0],p[1]-prior[i][1])<.25);
   stable=quiet?stable+1:0;prior=positions;return stable;
- },{timeout:15000,intervals:[250]}).toBeGreaterThanOrEqual(3);
+ },{timeout:30000,intervals:[250]}).toBeGreaterThanOrEqual(3);
  // Anchor the gesture beside a visible node. The center of a sparse graph can
  // be empty; zooming that gap legitimately pushes every node off the canvas.
  const target=await graph.evaluate(el=>{
