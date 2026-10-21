@@ -3444,3 +3444,14 @@ window.QI_DATA.sources.push(...[
     "url": "https://www.preskill.caltech.edu/ph219/chap10_6A_2025.pdf"
   }
 ]);
+
+// Inspected version of the primary negativity paper. Existing Watrous source reused.
+window.QI_DATA.sources.push({
+  "id": "vidal-werner-negativity-2002",
+  "title": "A computable measure of entanglement",
+  "authors": "G. Vidal and R. F. Werner",
+  "year": 2002,
+  "type": "primary paper; inspected author arXiv v1 dated 2001-02-22",
+  "url": "https://arxiv.org/pdf/quant-ph/0102117v1",
+  "doi": "10.1103/PhysRevA.65.032314"
+});
