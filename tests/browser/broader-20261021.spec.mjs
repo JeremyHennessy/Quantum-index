@@ -14,7 +14,7 @@ for(const edit of ledger.collections.formulas.changes){
   for(const check of scrollChecks){expect(['auto','scroll']).toContain(check.overflow);expect(check.reached).toBeTruthy();}
   expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
   await card.scrollIntoViewIfNeeded();
-  if(['horndeski-covariant-action','ckm-original-km-parametrization','heom-drude-infinite-hierarchy'].includes(edit.id)){const path=info.outputPath(edit.id+'.png');await card.screenshot({path,style:'.topbar{visibility:hidden!important}'});await info.attach(edit.id,{path,contentType:'image/png'});await card.locator('.formula-equation, mjx-container').evaluateAll(els=>els.forEach(el=>{el.scrollLeft=el.scrollWidth-el.clientWidth;}));const endPath=info.outputPath(edit.id+'-right-edge.png');await card.screenshot({path:endPath,style:'.topbar{visibility:hidden!important}'});await info.attach(edit.id+'-right-edge',{path:endPath,contentType:'image/png'});}
+  if(['horndeski-covariant-action','ckm-original-km-parametrization','heom-drude-infinite-hierarchy','tegr-curvature-torsion-boundary-identity'].includes(edit.id)){const path=info.outputPath(edit.id+'.png');await card.screenshot({path,style:'.topbar{visibility:hidden!important}'});await info.attach(edit.id,{path,contentType:'image/png'});await card.locator('.formula-equation, mjx-container').evaluateAll(els=>els.forEach(el=>{el.scrollLeft=el.scrollWidth-el.clientWidth;}));const endPath=info.outputPath(edit.id+'-right-edge.png');await card.screenshot({path:endPath,style:'.topbar{visibility:hidden!important}'});await info.attach(edit.id+'-right-edge',{path:endPath,contentType:'image/png'});}
   expect(errors).toEqual([]);
  });
 }
