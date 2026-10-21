@@ -1336,3 +1336,368 @@ window.QI_PASSPORTS.records.push(...[
   "reviewedAt": "2026-10-16"
 });
 })();
+
+// 2026-10-21 source-qualified completion campaign.
+window.QI_PASSPORTS.records.push(...[
+  {
+    "theoryId": "inflationary-cosmology",
+    "problemIds": [
+      "inflation-mechanism"
+    ],
+    "entityType": "Early-universe dynamical framework",
+    "scientificStatus": "Successful model-building framework; the mechanism and microscopic inflaton remain unconfirmed.",
+    "coreIdea": "A period of accelerated expansion shrinks the comoving Hubble radius and can prepare the conditions for the hot Big Bang.",
+    "degreesOfFreedom": "Background geometry and model-dependent matter; the displayed representative is one canonical scalar.",
+    "assumptions": [
+      "For the displayed slow-roll parameters: minimal coupling, one canonical field, smooth positive potential and potential-dominated evolution.",
+      "Inflation means accelerated expansion; potential slow roll is a useful sufficient regime, not its definition.",
+      "The hot-Big-Bang connection requires an end to acceleration and subsequent energy transfer; accelerated expansion alone does not specify reheating."
+    ],
+    "mathematicalStructure": "Einstein–scalar dynamics; epsilon_H = -Hdot/H² < 1 during inflation. Potential epsilon_V and eta_V approximate the background only under slow roll.",
+    "formulaIds": [
+      "inflation-potential-slow-roll-2025"
+    ],
+    "regime": "Semiclassical expanding cosmology below a specified effective-theory cutoff.",
+    "predictionsConsequences": [
+      "Enough expansion suppresses spatial curvature; observable predictions require a perturbation mechanism and an exit into reheating.",
+      "The canonical slow-roll regime ties the potential slope and curvature to the evolution that controls primordial spectra."
+    ],
+    "evidenceIds": [
+      "ev-planck-inflation-2018",
+      "ev-bicep-keck-bk18-2021"
+    ],
+    "evidenceSummary": "CMB scalar spectra and tensor limits constrain specified inflationary models, not inflation independently of their perturbation and post-inflation histories.",
+    "whatEvidenceDoesNotEstablish": "Neither a unique potential nor an initial-state prescription or ultraviolet completion is identified.",
+    "limitations": [
+      "The number of observable e-folds depends on reheating.",
+      "Slow-roll expressions fail outside their assumptions."
+    ],
+    "comparisonFrameworks": [
+      "inflationary-fluctuations",
+      "starobinsky-inflation",
+      "hybrid-inflation",
+      "warm-inflation"
+    ],
+    "usefulDiscriminators": [
+      "Compare tilt, tensors and non-Gaussianity at the same pivot and with matched reheating assumptions."
+    ],
+    "unresolvedQuestions": [
+      "What drives accelerated expansion and ends it?"
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "pdg-inflation-2025-reviewed",
+      "guth-inflation-1981"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "pdg-inflation-2025-reviewed",
+        "locator": "Sections 23.1–23.2; equations (23.11)–(23.16), PDF p. 4.",
+        "url": "https://pdg.lbl.gov/2025/reviews/rpp2025-rev-inflation.pdf#page=4"
+      }
+    ],
+    "sourceVersion": "Source-located completion review, 2026-10-21; historical origins retained separately from modern conventions.",
+    "reviewedAt": "2026-10-21"
+  },
+  {
+    "theoryId": "inflationary-fluctuations",
+    "problemIds": [
+      "inflation-mechanism",
+      "primordial-quantum-classical"
+    ],
+    "entityType": "Quantum perturbation-generation mechanism",
+    "scientificStatus": "Well-developed semiclassical calculation; compatible observations do not uniquely establish quantum origin.",
+    "coreIdea": "Quantized scalar and tensor perturbations evolve from sub-Hubble initial fluctuations to primordial spectra.",
+    "degreesOfFreedom": "Gauge-invariant scalar mode and two tensor polarizations on an inflationary background.",
+    "assumptions": [
+      "The linked leading spectra assume a canonical single field, slow roll and the usual short-wavelength vacuum.",
+      "Conservation outside the Hubble radius requires adiabatic attractor evolution; entropy modes or non-attractor phases need separate transfer.",
+      "The displayed scalar mode equation assumes spatially flat FLRW and linear perturbations; its general mode evolution need not be restricted to slow roll."
+    ],
+    "mathematicalStructure": "The Mukhanov–Sasaki mode equation evolves canonical perturbations; scalar amplitude, tilt and tensor ratio connect solutions to observations.",
+    "formulaIds": [
+      "slow-roll-power",
+      "mukhanov-sasaki",
+      "scalar-index",
+      "tensor-ratio"
+    ],
+    "regime": "Linear perturbations of a semiclassical background; leading slow-roll spectra are a restricted limit.",
+    "predictionsConsequences": [
+      "Predicts model-dependent scalar and tensor correlations, with departures controlled by background evolution and initial conditions.",
+      "For the stated canonical single-field slow-roll limit, the tensor-to-scalar ratio is approximately sixteen times the leading slow-roll parameter."
+    ],
+    "evidenceIds": [
+      "ev-planck-inflation-2018",
+      "ev-bicep-keck-bk18-2021"
+    ],
+    "evidenceSummary": "Observed scalar spectra and tensor upper limits test this restricted generation mechanism through a cosmological transfer model.",
+    "whatEvidenceDoesNotEstablish": "Spectra do not by themselves establish a collapse interpretation, a unique quantum-to-classical account or a specific inflation potential.",
+    "limitations": [
+      "Strong interactions, noncanonical sound speed and multiple fields change the displayed relations.",
+      "The linear calculation and its vacuum prescription do not supply a complete theory of quantum gravity."
+    ],
+    "comparisonFrameworks": [
+      "inflationary-cosmology",
+      "stochastic-inflation",
+      "decoherence"
+    ],
+    "usefulDiscriminators": [
+      "Tensor amplitude, non-Gaussianity, isocurvature and running jointly distinguish mechanisms."
+    ],
+    "unresolvedQuestions": [
+      "Which observables can separate generation mechanisms after transfer and reheating uncertainties?"
+    ],
+    "questionIds": [
+      "rq-inflationary-fluctuations"
+    ],
+    "developmentIds": [],
+    "sourceIds": [
+      "pdg-inflation-2025-reviewed",
+      "guth-pi-1982"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "pdg-inflation-2025-reviewed",
+        "locator": "Sections 23.3.2–23.3.3, equations (23.38), (23.41)–(23.51), PDF pp. 8–10.",
+        "url": "https://pdg.lbl.gov/2025/reviews/rpp2025-rev-inflation.pdf#page=9"
+      }
+    ],
+    "sourceVersion": "Source-located completion review, 2026-10-21; historical origins retained separately from modern conventions.",
+    "reviewedAt": "2026-10-21"
+  },
+  {
+    "theoryId": "starobinsky-inflation",
+    "problemIds": [
+      "inflation-mechanism"
+    ],
+    "entityType": "Specific metric modified-gravity inflation model",
+    "scientificStatus": "Viable model class, not a uniquely observed origin of inflation.",
+    "coreIdea": "A positive quadratic-curvature term supports an early accelerated stage; the linear curvature term permits its end.",
+    "degreesOfFreedom": "Metric gravitational degrees of freedom including one extra scalar mode, often called the scalaron.",
+    "assumptions": [
+      "Four-dimensional metric f(R) gravity; M is positive and has mass dimension one.",
+      "The displayed function is modern notation, not a literal transcription of the 1980 paper.",
+      "Use the metric variational formulation and specify matter couplings separately; the displayed inflationary background does not assume a matter fluid is dynamically dominant."
+    ],
+    "mathematicalStructure": "f(R) = R + R²/(6M²), inserted into a gravitational action with its stated overall normalization.",
+    "formulaIds": [
+      "starobinsky-r2-model-function"
+    ],
+    "regime": "Early-universe curvature regime of the specified effective gravity model.",
+    "predictionsConsequences": [
+      "The scalaron dynamics provide inflation and a subsequent oscillatory stage.",
+      "In the model without a matter source, the curvature obeys a damped oscillator equation after inclusion of the linear R term."
+    ],
+    "evidenceIds": [
+      "ev-planck-inflation-2018",
+      "ev-bicep-keck-bk18-2021"
+    ],
+    "evidenceSummary": "CMB tilt and tensor limits test its predictions once the reheating-dependent scale mapping is specified.",
+    "whatEvidenceDoesNotEstablish": "Agreement does not distinguish R² inflation uniquely from other models with similar primordial spectra.",
+    "limitations": [
+      "Additional curvature operators, matter couplings and reheating modify the inference.",
+      "The action function by itself does not specify the initial state of perturbations or a thermalized particle population."
+    ],
+    "comparisonFrameworks": [
+      "inflationary-cosmology",
+      "reheating-preheating"
+    ],
+    "usefulDiscriminators": [
+      "Use the joint scalar/tensor predictions and a specified reheating history, not model labels alone."
+    ],
+    "unresolvedQuestions": [
+      "What fixes the curvature scale and matter couplings?"
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "fr-review-2010",
+      "wave4-starobinsky-1980"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "fr-review-2010",
+        "locator": "Section 3.1, equations (3.6)–(3.8), including the explanation of inflation ending.",
+        "url": "https://link.springer.com/article/10.12942/lrr-2010-3"
+      }
+    ],
+    "sourceVersion": "Source-located completion review, 2026-10-21; historical origins retained separately from modern conventions.",
+    "reviewedAt": "2026-10-21"
+  },
+  {
+    "theoryId": "quintessence",
+    "problemIds": [
+      "dark-energy-expansion"
+    ],
+    "entityType": "Canonical dynamical dark-energy model class",
+    "scientificStatus": "Active hypothesis; no canonical quintessence field has been identified.",
+    "coreIdea": "A slowly evolving canonical scalar can supply negative pressure at late times.",
+    "degreesOfFreedom": "A scalar field coupled to an expanding geometry and ordinary matter.",
+    "assumptions": [
+      "Homogeneous canonical scalar with minimal gravitational coupling.",
+      "The range -1 ≤ w ≤ 1 requires positive energy density and nonnegative potential.",
+      "The scalar is treated as a dynamical field rather than a fitted equation-of-state function; a chosen potential and initial conditions must satisfy its field equation."
+    ],
+    "mathematicalStructure": "Energy density and pressure follow from kinetic and potential energy; the Klein–Gordon equation determines evolution.",
+    "formulaIds": [
+      "quintessence-canonical-fluid-2008"
+    ],
+    "regime": "Classical homogeneous dark-energy background; perturbations require additional evolution equations.",
+    "predictionsConsequences": [
+      "Slow kinetic evolution approaches w = -1; different potentials yield different expansion histories.",
+      "The canonical positive-energy model cannot produce w below -1 without leaving its stated assumptions."
+    ],
+    "evidenceIds": [
+      "ev-desi-dr2-2025"
+    ],
+    "evidenceSummary": "DESI BAO combined with other data constrains expansion histories; preferences for evolution depend on the data combination and parametrization.",
+    "whatEvidenceDoesNotEstablish": "A phenomenological evolving-w fit neither identifies a canonical scalar nor establishes that every fitted history can be realized by quintessence.",
+    "limitations": [
+      "Canonical positive-energy fields do not cross below w = -1.",
+      "Background degeneracies and potential tuning remain."
+    ],
+    "comparisonFrameworks": [
+      "lambda-cdm",
+      "k-essence",
+      "phantom-dark-energy"
+    ],
+    "usefulDiscriminators": [
+      "Test expansion and growth together, checking whether the inferred history stays inside the canonical-field domain."
+    ],
+    "unresolvedQuestions": [
+      "Which potential and initial conditions produce viable late acceleration?"
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "frieman-turner-huterer-2008-reviewed",
+      "ratra-peebles-1988"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "frieman-turner-huterer-2008-reviewed",
+        "locator": "Section 5.1.2, equations (18)–(20), PDF p. 21; subsequent discussion p. 22.",
+        "url": "https://lss.fnal.gov/archive/2008/pub/fermilab-pub-08-613-a.pdf#page=21"
+      }
+    ],
+    "sourceVersion": "Source-located completion review, 2026-10-21; historical origins retained separately from modern conventions.",
+    "reviewedAt": "2026-10-21"
+  },
+  {
+    "theoryId": "stochastic-inflation",
+    "problemIds": [
+      "inflation-mechanism"
+    ],
+    "entityType": "Coarse-grained effective stochastic framework",
+    "scientificStatus": "Controlled in specified approximations; not a separate observation of stochastic inflation.",
+    "coreIdea": "Modes entering the long-wavelength sector induce stochastic forcing in its effective dynamics.",
+    "degreesOfFreedom": "A coarse-grained inflaton and its probability distribution, after separating short and long wavelengths.",
+    "assumptions": [
+      "Displayed equations use one canonical field at leading slow-roll order and e-fold time N = ln a.",
+      "Gaussian white noise has zero mean and delta correlation in N; the Fokker–Planck equation uses the Itô prescription.",
+      "Specify initial data and boundary conditions for the probability distribution; the displayed equation does not by itself select absorbing boundaries or volume weighting."
+    ],
+    "mathematicalStructure": "A Langevin equation and its Fokker–Planck counterpart describe drift and diffusion.",
+    "formulaIds": [
+      "stochastic-inflation-efold-langevin",
+      "stochastic-inflation-ito-fokker-planck"
+    ],
+    "regime": "Long-wavelength effective dynamics; validity depends on coarse graining and the slow-roll/noise approximation.",
+    "predictionsConsequences": [
+      "Can compute stochastic corrections and first-passage statistics for specified potentials and boundaries.",
+      "The corresponding Fokker–Planck equation tracks probability flow from classical drift and quantum-induced diffusion."
+    ],
+    "evidenceIds": [],
+    "evidenceSummary": "No dedicated empirical detection is claimed; successful primordial-spectrum fits do not uniquely select this approximation.",
+    "whatEvidenceDoesNotEstablish": "The equations alone do not establish eternal inflation, a multiverse measure or a fundamental collapse law.",
+    "limitations": [
+      "Time choices, boundaries and stochastic prescriptions must be specified.",
+      "A volume-weighted distribution is not automatically a normalized probability."
+    ],
+    "comparisonFrameworks": [
+      "inflationary-fluctuations",
+      "eternal-inflation"
+    ],
+    "usefulDiscriminators": [
+      "Compare with perturbative predictions within the shared validity domain."
+    ],
+    "unresolvedQuestions": [
+      "Where do non-Markovian effects or departure from slow roll invalidate the leading equations?"
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "sourceIds": [
+      "vennin-starobinsky-stochastic-2015",
+      "starobinsky-stochastic-1986"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "vennin-starobinsky-stochastic-2015",
+        "locator": "arXiv:1506.04732v4: introduction equation (1.1), PDF p. 3; section 2 equation (2.3) and notes 5–6, PDF p. 4.",
+        "url": "https://arxiv.org/pdf/1506.04732v4#page=3"
+      }
+    ],
+    "sourceVersion": "Source-located completion review, 2026-10-21; historical origins retained separately from modern conventions.",
+    "reviewedAt": "2026-10-21"
+  },
+  {
+    "theoryId": "reheating-preheating",
+    "problemIds": [
+      "inflation-mechanism",
+      "quantum-thermalization"
+    ],
+    "entityType": "Post-inflation energy-transfer framework",
+    "scientificStatus": "Necessary bridge in inflationary cosmologies; detailed mechanisms remain model dependent.",
+    "coreIdea": "Inflationary energy is transferred into particles; resonant preheating and later equilibration are distinct stages.",
+    "degreesOfFreedom": "An inflaton condensate, produced field modes and subsequently interacting particle distributions.",
+    "assumptions": [
+      "Displayed mode equation assumes a quadratic inflaton potential and a two-scalar interaction proportional to phi² chi².",
+      "The early calculation is linear in the produced modes and uses an expanding homogeneous background.",
+      "The full frequency includes expansion and any retained mass or curvature terms; neglecting them requires a separate comparison of scales."
+    ],
+    "mathematicalStructure": "Rescaled daughter modes obey a time-dependent oscillator equation; expansion, effective masses and curvature enter its frequency.",
+    "formulaIds": [
+      "preheating-rescaled-chi-mode-1997"
+    ],
+    "regime": "Initial particle production before nonlinear backreaction and rescattering dominate.",
+    "predictionsConsequences": [
+      "Nonadiabatic oscillations can amplify occupation numbers much faster than perturbative decay alone.",
+      "Rescattering and backreaction alter the later evolution, so the early linear mode calculation does not determine thermal equilibration."
+    ],
+    "evidenceIds": [],
+    "evidenceSummary": "The hot-Big-Bang history constrains viable scenarios indirectly; no particular resonance interaction is identified here.",
+    "whatEvidenceDoesNotEstablish": "Growth of occupation numbers is not proof of thermal equilibrium or of a measured reheating temperature.",
+    "limitations": [
+      "Backreaction, rescattering and number-changing interactions require additional treatment.",
+      "A fixed Mathieu-band picture need not describe broad resonance in an expanding universe."
+    ],
+    "comparisonFrameworks": [
+      "inflationary-cosmology",
+      "starobinsky-inflation"
+    ],
+    "usefulDiscriminators": [
+      "Track energy transfer, distributions and equilibration separately for the same interaction."
+    ],
+    "unresolvedQuestions": [
+      "Which interactions govern the transition from resonant production to equilibrium?"
+    ],
+    "questionIds": [
+      "rq-reheating-preheating"
+    ],
+    "developmentIds": [],
+    "sourceIds": [
+      "kofman-linde-starobinsky-reheating-1997",
+      "kofman-reheating-1994"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "kofman-linde-starobinsky-reheating-1997",
+        "locator": "arXiv:hep-ph/9704452v2: section VI equations (38)–(39), PDF p. 12; subsequent resonance and backreaction analysis.",
+        "url": "https://arxiv.org/pdf/hep-ph/9704452v2#page=12"
+      }
+    ],
+    "sourceVersion": "Source-located completion review, 2026-10-21; historical origins retained separately from modern conventions.",
+    "reviewedAt": "2026-10-21"
+  }
+]);

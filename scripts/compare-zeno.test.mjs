@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 import {beforeLocatorRenderer} from './formula-locator-renderer-20261021-baseline.mjs';
 import {bellReview,restoreBellFormula} from './bell-metadata-baseline.mjs';
 import {priorDepthFormulas} from './multidomain-depth-baseline.mjs';
@@ -9,11 +10,11 @@ import {createHash} from 'node:crypto';
 import {JSDOM,VirtualConsole} from 'jsdom';
 const files=['theories.js','developments.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','evidence.js','passports.js','workspace.js'];
 const sandbox={window:{}};vm.createContext(sandbox);
-for(const f of files)vm.runInContext(fs.readFileSync(f,'utf8'),sandbox,{filename:f});
+for(const f of files)vm.runInContext(readPreCampaignFile(f,'utf8'),sandbox,{filename:f});
 const w=sandbox.window;
-const lattice=JSON.parse(fs.readFileSync('docs/LATTICE_CURATION_2026-10-07.json','utf8'));
-const ledger=JSON.parse(fs.readFileSync('docs/COMPARE_ZENO_2026-10-07.json','utf8'));
-const amo=JSON.parse(fs.readFileSync('docs/AMO_STEERING_2026-10-07.json','utf8'));
+const lattice=JSON.parse(readPreCampaignFile('docs/LATTICE_CURATION_2026-10-07.json','utf8'));
+const ledger=JSON.parse(readPreCampaignFile('docs/COMPARE_ZENO_2026-10-07.json','utf8'));
+const amo=JSON.parse(readPreCampaignFile('docs/AMO_STEERING_2026-10-07.json','utf8'));
 const canonical=v=>Array.isArray(v)?v.map(canonical):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,canonical(v[k])])):v;
 const hash=v=>createHash('sha256').update(v).digest('hex');
 test('Compare extension preserves all prior 481 theory and 392 formula records',()=>{
@@ -24,7 +25,7 @@ test('Compare extension preserves all prior 481 theory and 392 formula records',
  }
  assert.deepEqual(Object.keys(ledger.updatedFiles),['app.js']);
  assert.equal(lattice.previousFiles['app.js'],ledger.updatedFiles['app.js']);
- assert.equal(hash(beforeLocatorRenderer(fs.readFileSync('app.js'),'app.js')),lattice.updatedFiles['app.js']);
+ assert.equal(hash(beforeLocatorRenderer(readPreCampaignFile('app.js'),'app.js')),lattice.updatedFiles['app.js']);
 });
 test('Zeno representative resolves the deferred gap with exact protocol and source version',()=>{
  const f=w.QI_FORMULAS.formulas.find(f=>f.id==='zeno-repeated-survival');
@@ -60,10 +61,10 @@ test('Zeno finite-N probability, energy variance and fixed-time limit agree in a
 });
 function browser(hash,mutate){
  const errors=[],console=new VirtualConsole();console.on('jsdomError',e=>errors.push(e.message));
- const dom=new JSDOM(fs.readFileSync('index.html','utf8'),{url:'https://example.test/Quantum-index/'+hash,runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:console});
+ const dom=new JSDOM(readPreCampaignFile('index.html','utf8'),{url:'https://example.test/Quantum-index/'+hash,runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:console});
  const w=dom.window;w.HTMLElement.prototype.scrollIntoView=function(){};w.MathJax={typesetPromise:()=>Promise.resolve(),typesetClear:()=>{}};
- w.eval(fs.readFileSync('node_modules/d3/dist/d3.min.js','utf8'));
- for(const f of files)w.eval(fs.readFileSync(f,'utf8'));mutate?.(w);w.eval(fs.readFileSync('app.js','utf8'));
+ w.eval(readPreCampaignFile('node_modules/d3/dist/d3.min.js','utf8'));
+ for(const f of files)w.eval(readPreCampaignFile(f,'utf8'));mutate?.(w);w.eval(readPreCampaignFile('app.js','utf8'));
  return {dom,w,d:w.document,errors};
 }
 test('Compare exposes Passport fields and linked evidence while retaining cited profiles and fallback',()=>{

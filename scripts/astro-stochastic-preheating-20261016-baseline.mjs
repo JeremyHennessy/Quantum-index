@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 // Read-only historical source/formula projection for the 16 October stochastic/preheating wave.
 // New formula identities and bibliography are removed from previous snapshots only
 // after exact Git blob and metadata checks. Never used by the browser application.
@@ -27,7 +28,7 @@ const markers={
 const hash=bytes=>createHash('sha1').update(Buffer.from('blob '+bytes.length+'\0')).update(bytes).digest('hex');
 export function preFollowupBytes(path){
  assert.ok(originalBlobs[path],path+' not part of this science batch');
- const file=fs.readFileSync(new URL('../'+path,import.meta.url));
+ const file=readPreCampaignFile(new URL('../'+path,import.meta.url));
  const marker=Buffer.from(markers[path]),index=file.indexOf(marker);
  assert.ok(index>0,'missing release marker '+path);
  assert.equal(file.indexOf(marker,index+marker.length),-1,'duplicate release marker '+path);

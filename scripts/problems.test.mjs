@@ -15,8 +15,8 @@ const developments=new Set(sandbox.window.QI_DEVELOPMENTS.events.map(x=>x.id));
 const sources=new Set(sandbox.window.QI_DATA.sources.map(x=>x.id));
 const questionIds=new Set(questions.map(x=>x.id));
 
-test('five pilot Problems resolve all linked records',()=>{
-  assert.deepEqual(Array.from(problems,p=>p.id),['black-hole-information','measurement-problem','quantum-gravity','quantum-thermalization','dark-matter']);
+test('nine scientific Problems resolve all linked records',()=>{
+  assert.deepEqual(Array.from(problems,p=>p.id),['black-hole-information','measurement-problem','quantum-gravity','quantum-thermalization','dark-matter','inflation-mechanism','baryon-asymmetry','dark-energy-expansion','primordial-quantum-classical']);
   for(const p of problems){
     assert.ok(p.shortQuestion.length>20,p.id);
     assert.ok(p.whyItMatters.length>80,p.id);

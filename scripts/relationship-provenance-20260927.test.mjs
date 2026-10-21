@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -6,7 +7,7 @@ import {priorNewRelations} from './relation-promotions-20261008-baseline.mjs';
 
 const sandbox={window:{}};
 vm.createContext(sandbox);
-vm.runInContext(fs.readFileSync('theories.js','utf8'),sandbox);
+vm.runInContext(readPreCampaignFile('theories.js','utf8'),sandbox);
 const relations=sandbox.window.QI_DATA.relations;
 const sourceIds=new Set(sandbox.window.QI_DATA.sources.map(s=>s.id));
 

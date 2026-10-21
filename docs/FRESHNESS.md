@@ -8,8 +8,8 @@ This report separates **entity origin dates** from **later scientific developmen
 - Newest reviewed DevelopmentEvent year: **2026**
 - Reviewed DevelopmentEvents: **16**
 - Recent identity candidates still awaiting/deferred review: **3**
-- Entries with a documented literature sweep (review date, scope and source IDs): **0 / 481**
-- Entries without qualifying sweep provenance (unknown, not necessarily stale): **481**
+- Entries with a documented literature sweep (review date, scope and source IDs): **0 / 483**
+- Entries without qualifying sweep provenance (unknown, not necessarily stale): **483**
 - Outdated documented literature sweeps (before 2024): **0 of 0**
 
 ## Literature-sweep provenance rule

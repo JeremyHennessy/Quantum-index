@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 // 17 October 2026 four cosmology source-qualified first-formula representatives.
 // Test-only historical projection, never loaded in the UI. The exact original
 // Git blobs are checked before projecting any older approved checkpoint.
@@ -24,7 +25,7 @@ const approvedGitBlobSha={
 const gitBlob=bytes=>createHash('sha1').update(Buffer.from('blob '+bytes.length+'\0')).update(bytes).digest('hex');
 export function beforeCosmologyBytes(path){
  assert.ok(approvedGitBlobSha[path],path+' is not protected in this release');
- const file=fs.readFileSync(new URL('../'+path,import.meta.url));
+ const file=readPreCampaignFile(new URL('../'+path,import.meta.url));
  const marker=Buffer.from(markers[path]),index=file.indexOf(marker);
  assert.ok(index>0,path+': source/formula append boundary missing');
  assert.equal(file.indexOf(marker,index+marker.length),-1,path+': duplicate append marker');

@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -8,7 +9,7 @@ import {priorDepthFormulas,priorDepthPassports,priorDepthCoverage,verifyDepthFil
 import {priorNuclearPassports} from './nuclear-passports-20261011-baseline.mjs';
 import {priorRelations,priorSources,verifyFileTransition} from './relation-review-baseline.mjs';
 const c={window:{}};vm.createContext(c);
-for(const file of ['theories.js','developments.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','evidence.js','passports.js','workspace.js'])vm.runInContext(fs.readFileSync(file,'utf8'),c);
+for(const file of ['theories.js','developments.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','evidence.js','passports.js','workspace.js'])vm.runInContext(readPreCampaignFile(file,'utf8'),c);
 const w=c.window,get=id=>w.QI_FORMULAS.formulas.find(f=>f.id===id);
 const near=(a,b,e=1e-11)=>assert.ok(Math.abs(a-b)<e,`${a} != ${b}`);
 const ids=['bell-factorization','chsh-classical','chsh-tsirelson','bell-state'];
@@ -29,7 +30,7 @@ test('Bell review changes exactly four metadata records, preserving every equati
   for(const key of ['id','name','latex','plain','theoryIds','category','tags'])assert.deepEqual(JSON.parse(JSON.stringify(f[key])),before[key],`${id}/${key}`);
   const fields=[...new Set([...Object.keys(f),...Object.keys(before)])].filter(k=>JSON.stringify(f[k])!==JSON.stringify(before[k])).sort();assert.deepEqual(fields,ledger.formulaEdits[id].changedFields);
  }
- const coverage=priorDepthCoverage(JSON.parse(fs.readFileSync('docs/coverage.json')));
+ const coverage=priorDepthCoverage(JSON.parse(readPreCampaignFile('docs/coverage.json')));
  for(const [key,value] of Object.entries(ledger.expected))assert.equal(key==='passports'?priorDepthPassports(priorNuclearPassports(w.QI_PASSPORTS.records)).length:coverage[key],value+(key==='sources'?1:0),key);
 });
 

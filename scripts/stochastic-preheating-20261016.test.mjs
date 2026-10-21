@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -11,7 +12,7 @@ import {priorAstroFormulas} from './astro-formulas-20261016-baseline.mjs';
 import {priorMondStarobinskyCoverage} from './mond-starobinsky-20261016-baseline.mjs';
 const ctx={window:{}};vm.createContext(ctx);
 for(const file of ['theories.js','developments.js','formulas.js','formula-audit.js','evidence.js','questions.js','problems.js','passports.js']) {
- vm.runInContext(fs.readFileSync(file,'utf8'),ctx,{filename:file});
+ vm.runInContext(readPreCampaignFile(file,'utf8'),ctx,{filename:file});
 }
 const w=ctx.window;
 const near=(a,b,tol=1e-11)=>assert.ok(Number.isFinite(a)&&Number.isFinite(b)&&Math.abs(a-b)<tol,a+' != '+b);
@@ -24,7 +25,7 @@ test('append-only source and formula changes preserve exact accepted 410-formula
  assert.equal(priorFollowupSources(w.QI_DATA.sources).length,556);
  assert.equal(priorDarkMatterFormulas(w.QI_FORMULAS.formulas).length,408);
  assert.equal(priorAstroFormulas(w.QI_FORMULAS.formulas).length,405);
- const latestRaw=JSON.parse(fs.readFileSync('docs/coverage.json','utf8'));
+ const latestRaw=JSON.parse(readPreCampaignFile('docs/coverage.json','utf8'));
  const latest=priorMondStarobinskyCoverage(latestRaw);
  assert.equal(latest.theories,481);assert.equal(latest.passports,29);
  assert.equal(latest.relations,610);assert.equal(latest.evidenceRecords,16);

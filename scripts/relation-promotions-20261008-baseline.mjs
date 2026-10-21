@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 // Test-only bridge: reconstruct the exact pre-2026-10-08 relationship state.
 // This does not change runtime or weaken the 2026-09-26/27/10-07 release fingerprints.
 import fs from 'node:fs';
@@ -5,7 +6,7 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {stripPassportReviewAppend} from './passport-source-review-20261014-baseline.mjs';
 
-export const promotionLedger=JSON.parse(fs.readFileSync(new URL('../docs/RELATION_PROMOTIONS_2026-10-08.json',import.meta.url),'utf8'));
+export const promotionLedger=JSON.parse(readPreCampaignFile(new URL('../docs/RELATION_PROMOTIONS_2026-10-08.json',import.meta.url),'utf8'));
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const canonical=x=>Array.isArray(x)?x.map(canonical):x&&typeof x==='object'?Object.fromEntries(Object.keys(x).sort().map(k=>[k,canonical(x[k])])):x;
 const sig=x=>hash(JSON.stringify(canonical(x)));

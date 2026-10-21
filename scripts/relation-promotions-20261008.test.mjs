@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -11,7 +12,7 @@ import {priorPassportSources,stripPassportReviewAppend} from './passport-source-
 const sandbox={window:{}};
 vm.createContext(sandbox);
 for(const file of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','passports.js'])
-  vm.runInContext(fs.readFileSync(file,'utf8'),sandbox,{filename:file});
+  vm.runInContext(readPreCampaignFile(file,'utf8'),sandbox,{filename:file});
 const data=sandbox.window.QI_DATA;
 const key=x=>[x.from,x.to,x.type].join('|');
 const hash=x=>createHash('sha256').update(x).digest('hex');
@@ -44,8 +45,8 @@ test('new batch changes only three declared editorial edges and preserves all 61
 });
 
 test('immutable old scientific release is reconstructed and all earlier fingerprints remain authoritative',()=>{
-  assert.equal(hash(stripNewTheoryAppend(fs.readFileSync('theories.js'))),promotionLedger.fileTransition.beforeSha256);
-  assert.equal(hash(stripPassportReviewAppend(fs.readFileSync('theories.js'),'theories.js')),promotionLedger.fileTransition.afterSha256);
+  assert.equal(hash(stripNewTheoryAppend(readPreCampaignFile('theories.js'))),promotionLedger.fileTransition.beforeSha256);
+  assert.equal(hash(stripPassportReviewAppend(readPreCampaignFile('theories.js'),'theories.js')),promotionLedger.fileTransition.afterSha256);
   assert.equal(priorRelations(data.relations).length,610);
   const altered=plain(data.relations);
   altered.find(x=>x.from==='quantum-rabi-model'&&x.to==='jaynes-cummings').evidenceNote+=' unsupported';

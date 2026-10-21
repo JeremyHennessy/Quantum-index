@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 import {bellReview,restoreBellFormula} from './bell-metadata-baseline.mjs';
 import {priorDepthFormulas,priorDepthPassports,priorDepthCoverage,verifyDepthFileSha256} from './multidomain-depth-baseline.mjs';
 import {priorNuclearPassports} from './nuclear-passports-20261011-baseline.mjs';
@@ -9,9 +10,9 @@ import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import {JSDOM,VirtualConsole} from 'jsdom';
 const files=['theories.js','developments.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','evidence.js','passports.js','workspace.js'];
-const c={window:{}};vm.createContext(c);for(const f of files)vm.runInContext(fs.readFileSync(f,'utf8'),c);
-const w=c.window,ledger=JSON.parse(fs.readFileSync('docs/LATTICE_CURATION_2026-10-07.json'));
-const amo=JSON.parse(fs.readFileSync('docs/AMO_STEERING_2026-10-07.json','utf8'));
+const c={window:{}};vm.createContext(c);for(const f of files)vm.runInContext(readPreCampaignFile(f,'utf8'),c);
+const w=c.window,ledger=JSON.parse(readPreCampaignFile('docs/LATTICE_CURATION_2026-10-07.json'));
+const amo=JSON.parse(readPreCampaignFile('docs/AMO_STEERING_2026-10-07.json','utf8'));
 const canonical=v=>Array.isArray(v)?v.map(canonical):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,canonical(v[k])])):v;
 const hash=x=>createHash('sha256').update(x).digest('hex');
 const get=id=>w.QI_FORMULAS.formulas.find(f=>f.id===id);
@@ -33,7 +34,7 @@ test('lattice batch preserves all prior scientific records and protected applica
 });
 
 test('five source-located lattice formulas close only three selected representative gaps',()=>{
- const data=priorDepthCoverage(JSON.parse(fs.readFileSync('docs/coverage.json')));
+ const data=priorDepthCoverage(JSON.parse(readPreCampaignFile('docs/coverage.json')));
  for(const [key,value] of Object.entries(ledger.expected))if(key!=='passports')assert.equal(data[key],(bellReview.expected[key]??amo.expected[key]??value)+(key==='sources'?1:0),key);
  assert.equal(priorDepthPassports(priorNuclearPassports(w.QI_PASSPORTS.records)).length,13+amo.addedPassportTheoryIds.length+bellReview.addedPassportTheoryIds.length);
  assert.equal(new Set(priorDepthPassports(priorNuclearPassports(w.QI_PASSPORTS.records)).map(p=>p.theoryId)).size,13+amo.addedPassportTheoryIds.length+bellReview.addedPassportTheoryIds.length);
@@ -43,7 +44,7 @@ test('five source-located lattice formulas close only three selected representat
   assert.equal(f.sourceLocations.length,1);assert.match(f.sourceLocations[0].url,/v1#page=/);
   assert.doesNotMatch(f.latex,/[\x00-\x08\x0b\x0c\x0e-\x1f]/);
  }
- const old=JSON.parse(fs.readFileSync('docs/COMPARE_ZENO_2026-10-07.json'));
+ const old=JSON.parse(readPreCampaignFile('docs/COMPARE_ZENO_2026-10-07.json'));
  assert.equal(ledger.previousFiles['app.js'],old.updatedFiles['app.js']);
  for(const id of ledger.addedPassportTheoryIds){
   const a=w.QI_FORMULA_AUDIT.entries.find(a=>a.theoryId===id);assert.equal(a.classification,'formula-bearing');
@@ -140,7 +141,7 @@ test('Holstein oscillator displacement and Franck–Condon hopping reproduce the
  assert.match(get('holstein-small-hopping-band').description,/finite-t band is an approximation/);
 });
 
-function pageAt(route){const errs=[],v=new VirtualConsole();v.on('jsdomError',e=>errs.push(e.message));const dom=new JSDOM(fs.readFileSync('index.html','utf8'),{url:'https://example.test/'+route,runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:v});const w=dom.window;w.HTMLElement.prototype.scrollIntoView=function(){};w.MathJax={typesetPromise:()=>Promise.resolve(),typesetClear:()=>{}};w.eval(fs.readFileSync('node_modules/d3/dist/d3.min.js','utf8'));for(const f of files)w.eval(fs.readFileSync(f,'utf8'));w.eval(fs.readFileSync('app.js','utf8'));return {dom,d:w.document,errs};}
+function pageAt(route){const errs=[],v=new VirtualConsole();v.on('jsdomError',e=>errs.push(e.message));const dom=new JSDOM(readPreCampaignFile('index.html','utf8'),{url:'https://example.test/'+route,runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:v});const w=dom.window;w.HTMLElement.prototype.scrollIntoView=function(){};w.MathJax={typesetPromise:()=>Promise.resolve(),typesetClear:()=>{}};w.eval(readPreCampaignFile('node_modules/d3/dist/d3.min.js','utf8'));for(const f of files)w.eval(readPreCampaignFile(f,'utf8'));w.eval(readPreCampaignFile('app.js','utf8'));return {dom,d:w.document,errs};}
 
 test('lattice comparisons and theory pages show individual review dates without rewriting hub dates',()=>{
  const b=pageAt('#/compare?ids=ssh-model,aubry-andre,holstein-model,hawking-radiation');

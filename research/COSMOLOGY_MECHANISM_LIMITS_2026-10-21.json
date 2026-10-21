@@ -1,0 +1,260 @@
+{
+  "scope": "12 existing astroparticle/cosmology plus 6 quantum cosmology targets, excluding PR86 k-essence/Chaplygin/FIMP/leptogenesis",
+  "count": 18,
+  "familyCompletionClaim": false,
+  "formulaHolds": [],
+  "mechanismLimits": [
+    {
+      "theoryId": "self-interacting-dark-matter",
+      "formulaId": "sidm-local-mean-free-path",
+      "status": "source-qualified representative only",
+      "formulaType": "defining",
+      "scopeRemaining": "Historical fixed-density normalization, not current cross-section bounds or halo simulations.",
+      "sourceLocations": [
+        {
+          "sourceId": "spergel-steinhardt-2000",
+          "locator": "Spergel & Steinhardt, Eq. (1), printed p. 2, paragraph beginning \u201cTo be more specific\u201d. arXiv:astro-ph/9909386v2, PDF page 2.",
+          "url": "https://arxiv.org/pdf/astro-ph/9909386v2#page=2"
+        }
+      ]
+    },
+    {
+      "theoryId": "hybrid-inflation",
+      "formulaId": "hybrid-inflation-linde-potential",
+      "status": "source-qualified representative only",
+      "formulaType": "defining",
+      "scopeRemaining": "Original potential only; waterfall dynamics, reheating and observational fit remain.",
+      "sourceLocations": [
+        {
+          "sourceId": "linde-hybrid-inflation-1994",
+          "locator": "Linde, Hybrid Inflation, Sec. 2, Eq. (1), printed p. 3 and the immediately following waterfall discussion. arXiv:astro-ph/9307002v3, PDF page 3.",
+          "url": "https://arxiv.org/pdf/astro-ph/9307002v3#page=3"
+        }
+      ]
+    },
+    {
+      "theoryId": "warm-inflation",
+      "formulaId": "warm-inflation-overdamped-drift",
+      "status": "source-qualified representative only",
+      "formulaType": "approximation",
+      "scopeRemaining": "Overdamped mean field only; microscopic dissipation, stochastic noise and radiation/perturbation dynamics remain.",
+      "sourceLocations": [
+        {
+          "sourceId": "wave4-warm-berera-1995",
+          "locator": "Berera, Warm Inflation, Eq. (2) and following averaging paragraph; validity conditions Eqs. (4)-(5), printed p. 3. arXiv:astro-ph/9509049v1, PDF page 3.",
+          "url": "https://arxiv.org/pdf/astro-ph/9509049v1#page=3"
+        }
+      ]
+    },
+    {
+      "theoryId": "phantom-dark-energy",
+      "formulaId": "phantom-scalar-stress-energy",
+      "status": "source-qualified representative only",
+      "formulaType": "defining",
+      "scopeRemaining": "Classical wrong-sign toy stress-energy only; quantum ghost instability explicitly unresolved.",
+      "sourceLocations": [
+        {
+          "sourceId": "wave5-phantom-2002",
+          "locator": "Caldwell, A Phantom Menace?, unnumbered equations in paragraph beginning \u201cWe describe the system of gravitation\u201d, PDF p. 4. arXiv:astro-ph/9908168v2, PDF page 4.",
+          "url": "https://arxiv.org/pdf/astro-ph/9908168v2#page=4"
+        }
+      ]
+    },
+    {
+      "theoryId": "teves",
+      "formulaId": "teves-physical-metric",
+      "status": "source-qualified representative only",
+      "formulaType": "defining",
+      "scopeRemaining": "Matter metric definition only; field dynamics, stability and modern viability remain.",
+      "sourceLocations": [
+        {
+          "sourceId": "bekenstein-teves-2004",
+          "locator": "Bekenstein, Sec. III, Eq. (22), printed p. 9; vector normalization Eq. (20) on PDF p. 8. arXiv:astro-ph/0403694v6, PDF page 9.",
+          "url": "https://arxiv.org/pdf/astro-ph/0403694v6#page=9"
+        }
+      ]
+    },
+    {
+      "theoryId": "sterile-neutrino-dark-matter",
+      "formulaId": "sterile-neutrino-vacuum-seesaw-mixing",
+      "status": "source-qualified representative only",
+      "formulaType": "approximation",
+      "scopeRemaining": "Vacuum seesaw mixing ONLY; production, medium effects, abundance and constraints not qualified. Historical DW production normalization not used.",
+      "sourceLocations": [
+        {
+          "sourceId": "dodelson-widrow-1994",
+          "locator": "Dodelson & Widrow, immediately after Eq. (1), paragraph beginning \u201cIn vacuum\u201d, printed p. 4. Source writes theta_M=mu/M in the stated limit. arXiv:hep-ph/9303287v1, PDF page 4.",
+          "url": "https://arxiv.org/pdf/hep-ph/9303287v1#page=4"
+        }
+      ]
+    },
+    {
+      "theoryId": "primordial-black-hole-dark-matter",
+      "formulaId": "pbh-near-critical-mass-scaling",
+      "status": "source-qualified representative only",
+      "formulaType": "approximation",
+      "scopeRemaining": "Formation critical scaling only; abundance, evaporation and observational viability remain model-dependent.",
+      "sourceLocations": [
+        {
+          "sourceId": "niemeyer-jedamzik-pbh-critical-1998",
+          "locator": "Niemeyer & Jedamzik, Eq. (1), PDF p. 1; radiation-fluid application and gamma approximately 0.356 discussed on PDF p. 2. arXiv:astro-ph/9709072v2, PDF page 1.",
+          "url": "https://arxiv.org/pdf/astro-ph/9709072v2#page=1"
+        }
+      ]
+    },
+    {
+      "theoryId": "dark-photon",
+      "formulaId": "dark-photon-induced-em-current",
+      "status": "source-qualified representative only",
+      "formulaType": "defining",
+      "scopeRemaining": "Massive portal current coupling only; dark-matter production/abundance not supplied.",
+      "sourceLocations": [
+        {
+          "sourceId": "bjorken-dark-gauge-forces-2009",
+          "locator": "Bjorken, Essig, Schuster & Toro, Sec. II.A, paragraph immediately after Eq. (3), PDF p. 3, unnumbered field-redefinition-induced current coupling. arXiv:0906.0580v1, PDF page 3.",
+          "url": "https://arxiv.org/pdf/0906.0580v1#page=3"
+        }
+      ]
+    },
+    {
+      "theoryId": "affleck-dine-baryogenesis",
+      "formulaId": "affleck-dine-inflationary-potential",
+      "status": "source-qualified representative only",
+      "formulaType": "defining",
+      "scopeRemaining": "Specific high-H inflationary flat-direction potential only; charge evolution, reheating, washout and final yield not supplied.",
+      "sourceLocations": [
+        {
+          "sourceId": "dine-randall-thomas-ad-1996",
+          "locator": "Dine, Randall & Thomas, Sec. 4.1 \u201cThe Inflationary Epoch\u201d, Eq. (18), printed p. 20 (PDF p. 21). arXiv:hep-ph/9507453v1, PDF page 21.",
+          "url": "https://arxiv.org/pdf/hep-ph/9507453v1#page=21"
+        }
+      ]
+    },
+    {
+      "theoryId": "asymmetric-dark-matter",
+      "formulaId": "asymmetric-dm-density-scaling",
+      "status": "source-qualified representative only",
+      "formulaType": "approximation",
+      "scopeRemaining": "Approximate asymmetry-density scaling only; transfer operators and chemical/annihilation kinetics remain.",
+      "sourceLocations": [
+        {
+          "sourceId": "asymmetric-dm-2009",
+          "locator": "Kaplan, Luty & Zurek, Introduction, final paragraph of printed p. 1 (PDF p. 2), unnumbered n_DM and Omega_DM scaling; annihilation condition summarized on next page. arXiv:0901.4117v1, PDF page 2.",
+          "url": "https://arxiv.org/pdf/0901.4117v1#page=2"
+        }
+      ]
+    },
+    {
+      "theoryId": "cosmic-strings",
+      "formulaId": "cosmic-string-vos-length-evolution",
+      "status": "source-qualified representative only",
+      "formulaType": "defining",
+      "scopeRemaining": "One VOS length equation only; velocity closure, calibration, loop spectra and observational predictions remain.",
+      "sourceLocations": [
+        {
+          "sourceId": "martins-shellard-vos-2002",
+          "locator": "Martins & Shellard, Sec. II.A, Eq. (2.3), printed/PDF p. 2; rho_inf definition and loop-loss convention precede it. arXiv:hep-ph/0003298v1, PDF page 2.",
+          "url": "https://arxiv.org/pdf/hep-ph/0003298v1#page=2"
+        }
+      ]
+    },
+    {
+      "theoryId": "matter-bounce",
+      "formulaId": "matter-contraction-canonical-mode",
+      "status": "source-qualified representative only",
+      "formulaType": "canonical",
+      "scopeRemaining": "Canonical scalar pre-bounce modes only; not pressureless-fluid modes, stable bounce or anisotropy control.",
+      "sourceLocations": [
+        {
+          "sourceId": "finelli-brandenberger-contracting-2002",
+          "locator": "Finelli & Brandenberger, Sec. II, Eq. (14) specialized at p=2/3; definitions Eqs. (7)-(8),(13), PDF p. 3 and explicit p=2/3 discussion on p. 4. arXiv:hep-th/0112249v2, PDF page 3.",
+          "url": "https://arxiv.org/pdf/hep-th/0112249v2#page=3"
+        }
+      ]
+    },
+    {
+      "theoryId": "group-field-cosmology",
+      "formulaId": "gft-condensate-mean-field",
+      "status": "source-qualified representative only",
+      "formulaType": "approximation",
+      "scopeRemaining": "Specific Riemannian coherent mean field only; kernel/state/correlation and continuum reconstruction remain.",
+      "sourceLocations": [
+        {
+          "sourceId": "group-field-cosmology-2013",
+          "locator": "Gielen, Oriti & Sindoni, \u201cEffective cosmological dynamics\u201d, Eq. (18), PDF p. 3; action Eq. (16), coherent-state ansatz Eq. (13). arXiv:1303.3576v3, PDF page 3.",
+          "url": "https://arxiv.org/pdf/1303.3576v3#page=3"
+        }
+      ]
+    },
+    {
+      "theoryId": "spin-foam-cosmology",
+      "formulaId": "spinfoam-dipole-transition-amplitude",
+      "status": "source-qualified representative only",
+      "formulaType": "approximation",
+      "scopeRemaining": "Euclidean dipole single-vertex large-volume amplitude only; no full Lorentzian interacting cosmology.",
+      "sourceLocations": [
+        {
+          "sourceId": "spin-foam-cosmology-2010",
+          "locator": "Bianchi, Rovelli & Vidotto, Eq. (37), PDF p. 5; z mapping Eq. (20), boundary orientation footnote 4, and explicit truncation/Euclidean caveats Sec. V PDF p. 6. arXiv:1003.3483v1, PDF page 5.",
+          "url": "https://arxiv.org/pdf/1003.3483v1#page=5"
+        }
+      ]
+    },
+    {
+      "theoryId": "ekpyrotic-cosmology",
+      "formulaId": "ekpyrotic-multifield-scaling",
+      "status": "source-qualified representative only",
+      "formulaType": "defining",
+      "scopeRemaining": "Multifield scaling saddle only; initial preparation, entropy conversion and bounce remain.",
+      "sourceLocations": [
+        {
+          "sourceId": "koyama-wands-ekpyrotic-2007",
+          "locator": "Koyama & Wands, Sec. 2, Eq. (2) PDF p. 2 and Eq. (3) PDF p. 3; instability discussed in abstract and phase-space analysis. arXiv:hep-th/0703040v2, PDF page 3.",
+          "url": "https://arxiv.org/pdf/hep-th/0703040v2#page=3"
+        }
+      ]
+    },
+    {
+      "theoryId": "cyclic-cosmology",
+      "formulaId": "cyclic-cutoff-exponential-potential",
+      "status": "source-qualified representative only",
+      "formulaType": "defining",
+      "scopeRemaining": "Illustrative cutoff potential only; cycle matching and nonsingular completion remain.",
+      "sourceLocations": [
+        {
+          "sourceId": "steinhardt-turok-cyclic-2002",
+          "locator": "Steinhardt & Turok, Eq. (6) and immediately following cutoff-function/units paragraph, printed/PDF p. 5; potential requirements on p. 4. arXiv:hep-th/0111030v2, PDF page 5.",
+          "url": "https://arxiv.org/pdf/hep-th/0111030v2#page=5"
+        }
+      ]
+    },
+    {
+      "theoryId": "string-gas-cosmology",
+      "formulaId": "string-gas-hagedorn-heat-capacity",
+      "status": "source-qualified representative only",
+      "formulaType": "approximation",
+      "scopeRemaining": "Near-Hagedorn compact-string thermodynamics only; dilaton/background and spectrum transfer remain.",
+      "sourceLocations": [
+        {
+          "sourceId": "nayeri-brandenberger-vafa-hagedorn-2006",
+          "locator": "Nayeri, Brandenberger & Vafa, \u201cComputation of the Spectrum\u201d, Eq. (9), PDF p. 3; compactness assumptions and gravitational-transfer caveats on pp. 3-4. arXiv:hep-th/0511140v2, PDF page 3.",
+          "url": "https://arxiv.org/pdf/hep-th/0511140v2#page=3"
+        }
+      ]
+    },
+    {
+      "theoryId": "third-quantization",
+      "formulaId": "third-quantization-free-superspace-action",
+      "status": "source-qualified representative only",
+      "formulaType": "schematic",
+      "scopeRemaining": "Formal free action only, explicitly constraint-incomplete; BRST, measure, interaction and quantum completion remain.",
+      "sourceLocations": [
+        {
+          "sourceId": "giddings-strominger-third-1989",
+          "locator": "Giddings & Strominger, HUTP-88/A036 (June 1988 preprint of 1989 paper), Sec. 4, Eq. (4.1), printed p. 12, KEK scan PDF p. 6 right-hand page. Constraint-incompleteness warning and BRST extension Eq. (4.2) are printed p. 13, PDF p. 8 left-hand page. Scan page order is not monotonic.",
+          "url": "https://lib-extopc.kek.jp/preprints/PDF/1988/8809/8809012.pdf#page=6"
+        }
+      ]
+    }
+  ]
+}

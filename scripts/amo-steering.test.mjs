@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 import {bellReview,restoreBellFormula} from './bell-metadata-baseline.mjs';
 import {priorNuclearPassports} from './nuclear-passports-20261011-baseline.mjs';
 import {priorDepthFormulas,priorDepthPassports,priorDepthCoverage,verifyDepthFileSha256} from './multidomain-depth-baseline.mjs';
@@ -9,8 +10,8 @@ import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import {JSDOM,VirtualConsole} from 'jsdom';
 const files=['theories.js','developments.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','evidence.js','passports.js','workspace.js'];
-const c={window:{}};vm.createContext(c);for(const f of files)vm.runInContext(fs.readFileSync(f,'utf8'),c);
-const w=c.window,ledger=JSON.parse(fs.readFileSync('docs/AMO_STEERING_2026-10-07.json','utf8'));
+const c={window:{}};vm.createContext(c);for(const f of files)vm.runInContext(readPreCampaignFile(f,'utf8'),c);
+const w=c.window,ledger=JSON.parse(readPreCampaignFile('docs/AMO_STEERING_2026-10-07.json','utf8'));
 const canonical=v=>Array.isArray(v)?v.map(canonical):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,canonical(v[k])])):v;
 const hash=x=>createHash('sha256').update(x).digest('hex');
 const get=id=>w.QI_FORMULAS.formulas.find(f=>f.id===id);
@@ -29,7 +30,7 @@ test('AMO/steering preserves every previous scientific record and the entire app
   else verifyDepthFileSha256(file,bellReview.updatedFiles[file]||expected);
  }
  assert.equal(w.QI_PASSPORTS.reviewedAt,'2026-09-29');
- const coverage=priorDepthCoverage(JSON.parse(fs.readFileSync('docs/coverage.json','utf8')));
+ const coverage=priorDepthCoverage(JSON.parse(readPreCampaignFile('docs/coverage.json','utf8')));
  for(const [key,value] of Object.entries(ledger.expected))assert.equal(key==='passports'?priorDepthPassports(priorNuclearPassports(w.QI_PASSPORTS.records)).length:coverage[key],(bellReview.expected[key]??value)+(key==='sources'?1:0),key);
 });
 
@@ -64,8 +65,8 @@ test('unbroadened real-q Fano profile fixes half-width scaling, zero, mirror sym
 });
 
 test('Gaussian Fano convolution agrees with independent quadrature including q=0 and plus/minus one',()=>{
- assert.equal(hash(fs.readFileSync(ledger.numericFixture)),ledger.numericFixtureSha256);
- const fixture=JSON.parse(fs.readFileSync(ledger.numericFixture,'utf8'));
+ assert.equal(hash(readPreCampaignFile(ledger.numericFixture)),ledger.numericFixtureSha256);
+ const fixture=JSON.parse(readPreCampaignFile(ledger.numericFixture,'utf8'));
  // Integrate the original profile, not the closed expression. Standard normal t maps E' = E+s*t.
  function integral(x,y,q,N=24000){const lo=-12,h=24/N;let acc=0;for(let i=0;i<=N;i++){const t=lo+h*i,eps=(-x+t/Math.sqrt(2))/y;const v=Math.exp(-t*t/2)/Math.sqrt(2*Math.PI)*fano(eps,q);acc+=(i===0||i===N?1:i%2?4:2)*v;}return acc*h/3;}
  for(const f of fixture.cases){
@@ -142,8 +143,8 @@ test('Werner singlet matched-sign correlations yield the stated sufficient witne
 
 test('new Passports render in the unchanged comparison and theory-detail views with scoped sources',()=>{
  for(const route of ['#/compare?ids=fano-resonance,quantum-steering,hawking-radiation,ssh-model','#/theory/quantum-steering']){
-  const errs=[],v=new VirtualConsole();v.on('jsdomError',e=>errs.push(e.message));const dom=new JSDOM(fs.readFileSync('index.html','utf8'),{url:'https://example.test/'+route,runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:v});
-  try{const win=dom.window;win.HTMLElement.prototype.scrollIntoView=function(){};win.MathJax={typesetPromise:()=>Promise.resolve(),typesetClear:()=>{}};win.eval(fs.readFileSync('node_modules/d3/dist/d3.min.js','utf8'));for(const f of files)win.eval(fs.readFileSync(f,'utf8'));win.eval(fs.readFileSync('app.js','utf8'));const d=win.document;
+  const errs=[],v=new VirtualConsole();v.on('jsdomError',e=>errs.push(e.message));const dom=new JSDOM(readPreCampaignFile('index.html','utf8'),{url:'https://example.test/'+route,runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:v});
+  try{const win=dom.window;win.HTMLElement.prototype.scrollIntoView=function(){};win.MathJax={typesetPromise:()=>Promise.resolve(),typesetClear:()=>{}};win.eval(readPreCampaignFile('node_modules/d3/dist/d3.min.js','utf8'));for(const f of files)win.eval(readPreCampaignFile(f,'utf8'));win.eval(readPreCampaignFile('app.js','utf8'));const d=win.document;
    if(route.startsWith('#/compare')){const r=d.querySelector('#comparisonResults');assert.equal(r.querySelectorAll('table').length,1);for(const id of ledger.addedPassportTheoryIds)assert.match(r.querySelector(`[data-comparison-passport="${id}"]`).textContent,/2026-10-07/);assert.match(r.querySelector('[data-comparison-passport="hawking-radiation"]').textContent,/2026-09-29/);}
    else{assert.match(d.querySelector('.passport').textContent,/detection loophole/);assert.match(d.querySelector('.passport').textContent,/no-signalling|signalling/);}assert.deepEqual(errs,[]);
   }finally{dom.window.close();}

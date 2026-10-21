@@ -1,0 +1,77 @@
+[
+  {
+    "candidate": "Effective field theory of inflation",
+    "decision": "ADD",
+    "id": "effective-field-theory-of-inflation",
+    "priority": 1,
+    "reason": "Distinct symmetry-based low-energy framework. 2007 is the first preprint year; journal publication is 2008.",
+    "dependencies": [
+      "inflationary-fluctuations"
+    ]
+  },
+  {
+    "candidate": "Transient scalar early dark energy",
+    "decision": "ADD",
+    "id": "transient-scalar-early-dark-energy",
+    "priority": 2,
+    "reason": "Distinct transient pre-recombination model family; use 2016 precursor, not 2018 as invention of all EDE. Generic tracking EDE existed earlier. Historical proposal plus countervailing dated likelihood analysis; no present consensus claim.",
+    "dependencies": [
+      "lambda-cdm",
+      "quintessence"
+    ]
+  },
+  {
+    "candidate": "Generic early dark energy / tracking EDE",
+    "decision": "HOLD",
+    "priority": 4,
+    "reason": "Do not alias all EDE to transient scalar EDE. Doran–Robbers2006 and earlier tracking literature require a separate family-level historical boundary before adding a broad node.",
+    "primarySource": "https://arxiv.org/abs/astro-ph/0601544"
+  },
+  {
+    "candidate": "Cosmological perturbation / Einstein–Boltzmann framework",
+    "decision": "RELATION-ONLY",
+    "priority": 1,
+    "reason": "The inflationary initial-perturbation formulas are already covered, but post-inflation transfer physics is not identical to Mukhanov–Sasaki dynamics. First add a sourced learning-path dependency from initial fluctuations through linear metric/fluid/kinetic evolution to CMB/LSS; hold a new catalog node until a gauge- and species-qualified formula is reviewed.",
+    "primarySource": "https://arxiv.org/abs/astro-ph/9506072",
+    "scope": "Ma–Bertschinger1995 treats linear scalar perturbations in synchronous and conformal Newtonian gauges; not nonlinear structure or all vector/tensor sectors."
+  },
+  {
+    "candidate": "Primordial non-Gaussianity",
+    "decision": "FORMULA-ONLY",
+    "priority": 3,
+    "reason": "Observable/correlation class, not one theory. Add convention-qualified bispectrum definitions to inflationary-fluctuations/EFT before a duplicate theory label. Formula not supplied here because normalization/template source review remains.",
+    "dependencies": [
+      "inflationary-fluctuations",
+      "effective-field-theory-of-inflation"
+    ]
+  },
+  {
+    "candidate": "Cosmological collider physics",
+    "decision": "HOLD",
+    "priority": 4,
+    "reason": "A genuine theoretical signature framework, not merely an alias of non-Gaussianity; prioritize perturbation transfer and bispectrum conventions first. No empirical particle discovery. Full spin/mass/regime-qualified squeezed-limit formula and evidence hooks remain to be reviewed.",
+    "primarySource": "https://arxiv.org/abs/1503.08043",
+    "dependencies": [
+      "effective-field-theory-of-inflation",
+      "inflationary-fluctuations"
+    ]
+  },
+  {
+    "candidate": "Dark-matter identity Problem",
+    "decision": "ALREADY-COVERED",
+    "priority": 1,
+    "reason": "Existing dark-matter Problem already links particle candidates, LZ and cosmological context; append BBN baryon-budget context, never duplicate."
+  },
+  {
+    "candidate": "BAO expansion history and dark-matter direct searches",
+    "decision": "ALREADY-COVERED",
+    "priority": 1,
+    "reason": "Reuse existing DESI DR2 and LZ records; preserve their source-specific constraints and no broad null-result exclusion."
+  },
+  {
+    "candidate": "Cosmological neutrino-mass limits",
+    "decision": "ADD",
+    "priority": 1,
+    "reason": "Added dated ev-planck-bao-neutrino-mass-2018 from Planck VI Eq. (61b), explicitly conditional on Lambda-CDM extension, three degenerate thermal species, datasets and analysis priors; separate from KATRIN effective mass, not a current universal bound."
+  }
+]
