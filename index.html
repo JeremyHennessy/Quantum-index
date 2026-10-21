@@ -6,7 +6,7 @@
   <meta name="description" content="Quantum Index — a source-aware map of fundamental physics, equations, evidence and open questions." />
   <title>Quantum Index</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="./styles.css?v=dffefcf49538d123" />
+  <link rel="stylesheet" href="./styles.css?v=2c053050733e9418" />
 </head>
 <body>
   <header class="topbar">
@@ -111,7 +111,7 @@
           <svg id="network" role="img" aria-label="Interactive network of quantum theories"></svg>
           <p class="hint">Drag nodes. Scroll to zoom. Select a node for lineage, status, overlaps and related ideas.</p>
         </div>
-        <aside id="detailPanel" class="card detail-panel"></aside>
+        <aside id="detailPanel" class="card detail-panel" aria-label="Selected network idea"></aside>
       </div>
     </section>
 
@@ -163,7 +163,14 @@
               <p id="treeGraphMeta" class="muted"></p>
             </div>
           </div>
-          <div class="thought-tree-scroll"><svg id="thoughtTreeGraph" role="img" aria-label="Chronological thought-tree relationship graph"></svg></div>
+          <div class="tree-zoom-controls" role="group" aria-label="Progression map zoom">
+            <button id="treeZoomOut" class="ghost" type="button" aria-label="Zoom out progression map">−</button>
+            <output id="treeZoomStatus" aria-live="polite">100%</output>
+            <button id="treeZoomIn" class="ghost" type="button" aria-label="Zoom in progression map">+</button>
+            <button id="treeZoomFit" class="ghost" type="button">Reset to fit</button>
+          </div>
+          <p id="treeZoomHelp" class="hint">Zoom with + and −, then drag the background or scroll to pan. Focus the map for arrow keys, +/− and 0 to fit. Select a node to inspect it below; Open full details opens its page.</p>
+          <div id="treeGraphViewport" class="thought-tree-scroll" tabindex="0" role="region" aria-label="Scrollable progression map" aria-describedby="treeZoomHelp"><svg id="thoughtTreeGraph" role="img" aria-label="Chronological thought-tree relationship graph"></svg></div>
           <p class="hint">Horizontal position is chronological. Rows show primary catalog category. Arrows appear only for relationships explicitly stored in the index.</p>
           <div class="selected-lineage-panel">
             <p class="eyebrow">SELECTED LINEAGE</p>
@@ -323,6 +330,6 @@
   <script src="./workspace.js?v=de553a16db91ad46"></script>
   <script src="./sourced-paths.js?v=ca3c8c04c5a9fc65"></script>
   <script src="./research-navigation.js?v=90ca00fac77c3e12"></script>
-  <script src="./app.js?v=72992b2f13c5a2c2"></script>
+  <script src="./app.js?v=e4e9133277c04629"></script>
 </body>
 </html>
