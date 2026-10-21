@@ -305,7 +305,8 @@
 
   <script>
     window.MathJax = {
-      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+      loader: { load: ['[tex]/boldsymbol'] },
+      tex: { packages: { '[+]': ['boldsymbol'] }, inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
       svg: { fontCache: 'global' }
     };
   </script>

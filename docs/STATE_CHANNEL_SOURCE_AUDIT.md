@@ -24,3 +24,7 @@ All locators and these convention translations were independently checked. Origi
 Explicit metadata: 227 → 239. Baseline metadata: 230 → 218. Formulas remain 457; theory/framework entries remain 483; representative-formula gaps remain 114. No new Passport, Evidence or Problem record is added.
 
 Current-runtime tests permit only the twelve exact metadata patches and two bibliography records. Every other scientific record is unchanged. Historical byte projections fail closed against undeclared changes. Browser tests exercise all twelve cards and exact source locators in Chromium and 320px WebKit; this is emulation, not physical-device testing.
+
+The new rendering checks exposed a pre-existing red, unresolved `\boldsymbol` command on the Bloch-sphere card in both browsers. MathJax now explicitly preloads its official boldsymbol extension before typesetting, rather than relying on demand loading during repeated grid renders. The original LaTeX is unchanged. See [MathJax 3.2 extension configuration](https://docs.mathjax.org/en/v3.2/input/tex/extensions/boldsymbol.html).
+
+On 320px screens, long equations use the existing horizontal math scroller; the fidelity test checks that its right edge is reachable and captures both ends. This is not a claim that the complete equation fits at once.
