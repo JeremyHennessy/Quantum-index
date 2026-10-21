@@ -5,8 +5,13 @@ test('network nodes select inline and explicit details preserve map context',asy
  const node=page.locator('#network .node').first();await expect(node).toBeVisible();
  const selected=await node.evaluate(el=>({id:el.__data__.id,name:el.__data__.name}));
  const graph=page.locator('#network');await graph.evaluate(el=>{el.dataset.keep='same';});
- await graph.scrollIntoViewIfNeeded();const bounds=await graph.boundingBox();await page.mouse.move(bounds.x+bounds.width/2,bounds.y+bounds.height/2);await page.mouse.wheel(0,-180);
- await expect.poll(()=>graph.evaluate(el=>el.__zoom.k)).toBeGreaterThan(1);
+ await graph.scrollIntoViewIfNeeded();const bounds=await graph.boundingBox();
+ if(info.project.name==='webkit'){
+  // Mobile WebKit has no mouse-wheel API; exercise D3's real double-tap gesture instead.
+  await page.touchscreen.tap(bounds.x+20,bounds.y+20);await page.touchscreen.tap(bounds.x+20,bounds.y+20);
+ }else{await page.mouse.move(bounds.x+bounds.width/2,bounds.y+bounds.height/2);await page.mouse.wheel(0,-180);}
+ if(info.project.name==='webkit')await expect.poll(()=>graph.evaluate(el=>el.__zoom.k)).toBe(2);
+ else await expect.poll(()=>graph.evaluate(el=>el.__zoom.k)).toBeGreaterThan(1);
  const transform=await graph.evaluate(el=>({x:el.__zoom.x,y:el.__zoom.y,k:el.__zoom.k}));
  await node.click({force:true});await expect(page.locator('#mapView')).toHaveClass(/active/);await expect(page.locator('#detailPanel .detail-title')).toHaveText(selected.name);await expect(node).toHaveAttribute('aria-pressed','true');
  expect(await graph.evaluate(el=>({x:el.__zoom.x,y:el.__zoom.y,k:el.__zoom.k}))).toEqual(transform);await expect(graph).toHaveAttribute('data-keep','same');await expect(page.locator('#search')).toHaveValue('Planck');
@@ -32,7 +37,7 @@ test('progression zoom pan fit and keyboard selection preserve branch context',a
  const node=graph.locator('.tree-graph-node').first(),selected=await node.evaluate(el=>({id:el.__data__.id,name:el.__data__.name}));await node.focus();await node.press(' ');
  await expect(page.locator('#lineageView')).toHaveClass(/active/);await expect(page.locator('#lineageTitle')).toHaveText(selected.name);await expect(node).toHaveAttribute('aria-pressed','true');await expect(status).toHaveText('125%');
  await page.locator('#lineageDetail .full-theory-link').click();await expect(page.locator('#theoryView')).toHaveClass(/active/);await page.locator('#backToView').click();await expect(page.locator('#treeGraphTitle')).toHaveText('Beyond standard quantum mechanics');await expect(status).toHaveText('125%');
- await viewport.evaluate(el=>{el.scrollLeft=0;el.scrollTop=0;});await viewport.scrollIntoViewIfNeeded();await page.screenshot({path:info.outputPath('progression-zoom-controls.png')});
+ await viewport.evaluate(el=>{el.scrollLeft=0;el.scrollTop=0;});await viewport.scrollIntoViewIfNeeded();await page.locator('.thought-tree-card').screenshot({path:info.outputPath('progression-zoom-controls.png'),style:'.topbar{visibility:hidden!important}'});
  await page.getByRole('button',{name:'Reset to fit',exact:true}).click();expect(await viewport.evaluate(el=>el.scrollWidth-el.clientWidth)).toBeLessThanOrEqual(2);
  const fitted=parseInt(await status.textContent());await viewport.focus();await viewport.press('+');expect(parseInt(await status.textContent())).toBeGreaterThan(fitted);await viewport.press('0');expect(await viewport.evaluate(el=>el.scrollLeft)).toBe(0);
  expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);
