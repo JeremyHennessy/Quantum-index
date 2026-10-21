@@ -1,10 +1,12 @@
+import {readPreStateChannelFile} from './state-channel-20261021-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import {loadRuntime} from './category-trust-census.mjs';
 import {readPreOpenSystemFile,projectPreOpenSystem} from './open-system-20261021-baseline.mjs';
-const w=loadRuntime(),before={window:{}};vm.createContext(before);
+const accepted={window:{}};vm.createContext(accepted);for(const f of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','passports.js'])vm.runInContext(readPreStateChannelFile(f,'utf8'),accepted);
+const w=accepted.window,before={window:{}};vm.createContext(before);
 for(const f of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','passports.js'])vm.runInContext(readPreOpenSystemFile(f,'utf8'),before);
 const old=before.window,plain=x=>JSON.parse(JSON.stringify(x));
 test('open-system comparison preserves scientific records, workspace and all earlier profiles and paths',()=>{

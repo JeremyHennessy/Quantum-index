@@ -14,7 +14,7 @@ Quantum Index is a source-aware map of quantum theory and adjacent fundamental p
 ## Current build
 
 <!-- coverage:start -->
-The census remains **open**. The current catalog contains **483 entries**, **614 typed relationships**, **41 thought trees**, and **597 bibliography records** across **14 categories**. Provenance is attached to all entries: **354 primary-sourced** and **129 review-sourced**. The formula atlas contains **457 entries** across **30 categories**; **114** theory entries remain documented formula gaps. Research depth currently includes **62** reading profiles, **35** Theory Passports, **9** scientific Problems, **21** Evidence records and **60** structured Research Questions. The reviewed development timeline contains **16** events through **2026**. Counts are generated from runtime data, separately from scientific review.
+The census remains **open**. The current catalog contains **483 entries**, **614 typed relationships**, **41 thought trees**, and **599 bibliography records** across **14 categories**. Provenance is attached to all entries: **354 primary-sourced** and **129 review-sourced**. The formula atlas contains **457 entries** across **30 categories**; **114** theory entries remain documented formula gaps. Research depth currently includes **62** reading profiles, **35** Theory Passports, **9** scientific Problems, **21** Evidence records and **60** structured Research Questions. The reviewed development timeline contains **16** events through **2026**. Counts are generated from runtime data, separately from scientific review.
 <!-- coverage:end -->
 
 Static app:

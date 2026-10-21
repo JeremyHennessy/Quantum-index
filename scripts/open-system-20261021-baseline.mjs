@@ -1,3 +1,4 @@
+import {projectPreStateChannel} from './state-channel-20261021-baseline.mjs';
 // Test-only exact-byte projection to the accepted a11db4e5 release.
 // Current-runtime tests load normal files and assert this batch's allowed changes.
 import fs from 'node:fs';
@@ -9,6 +10,7 @@ const root=fileURLToPath(new URL('../',import.meta.url));
 const ledger=JSON.parse(fs.readFileSync(new URL('../research/OPEN_SYSTEM_INTEGRITY_2026-10-21.json',import.meta.url)));
 const hash=b=>createHash('sha256').update(b).digest('hex');
 export function projectPreOpenSystem(bytes,relative){
+ bytes=projectPreStateChannel(bytes,relative);
  // CI budget recovery: only the exact reviewed 25-to-35 minute change is reversible.
  if(relative==='.github/workflows/validate.yml'){
   assert.equal(hash(bytes),'f00b61a8e4fbc5dac7a8fcbd81461c0092c6177c25a2678528b897a2fb4892d8',relative+': undeclared CI budget mutation');

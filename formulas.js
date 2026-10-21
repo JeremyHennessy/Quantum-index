@@ -12531,3 +12531,343 @@ for(const patch of [
 ];
   for(const patch of patches) { const matches=window.QI_FORMULAS.formulas.filter(f=>f.id===patch.id); if(matches.length!==1) throw new Error("Missing unique foundation formula "+patch.id); Object.assign(matches[0],patch); }
 })();
+
+// Reviewed state/channel metadata only; preserve every equation and theory association.
+(() => {
+ const patches=[
+  {
+    "id": "pure-density",
+    "assumptions": [
+      "psi is a normalized vector in a finite-dimensional Hilbert space."
+    ],
+    "variables": [
+      "rho: density operator; psi: unit state vector; bra is the adjoint of ket."
+    ],
+    "units": "Dimensionless.",
+    "regime": "Rank-one orthogonal projector; rho squared equals rho. A mixed state is not represented by one such projector.",
+    "sourceIds": [
+      "vonneumann-probability-1927",
+      "preskill-ph229-chapter2"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "preskill-ph229-chapter2",
+        "locator": "Sec. 2.3.1, printed/PDF p. 18, pure-state projector and idempotence immediately before Eq. (2.60).",
+        "url": "https://www.preskill.caltech.edu/ph229/notes/chap2.pdf#page=18"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "quantum-state-channel-source-audit-2026-10-21",
+    "theoryRelationship": "Modern mathematical statement checked against authoritative expositions. Previously linked historical or application references remain provenance; this audit does not claim inspection of their original equations."
+  },
+  {
+    "id": "mixed-density",
+    "assumptions": [
+      "p_i are nonnegative and sum to one; each psi_i has unit norm; finite ensemble in a finite-dimensional space."
+    ],
+    "variables": [
+      "p_i: classical preparation probabilities; psi_i: normalized ensemble states, not necessarily orthogonal."
+    ],
+    "units": "Dimensionless.",
+    "regime": "Ensemble decompositions are nonunique. The displayed sum may also be pure if all occupied vectors represent the same ray; having several terms alone does not imply mixedness.",
+    "sourceIds": [
+      "vonneumann-probability-1927",
+      "preskill-ph229-chapter2"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "preskill-ph229-chapter2",
+        "locator": "Sec. 2.3.1 Eq. (2.60), p. 18 (spectral ensemble); Sec. 2.5.2 Eq. (2.98) and following discussion, pp. 28–30 (general nonunique ensembles).",
+        "url": "https://www.preskill.caltech.edu/ph229/notes/chap2.pdf#page=28"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "quantum-state-channel-source-audit-2026-10-21",
+    "theoryRelationship": "Modern mathematical statement checked against authoritative expositions. Previously linked historical or application references remain provenance; this audit does not claim inspection of their original equations."
+  },
+  {
+    "id": "purity",
+    "assumptions": [
+      "rho is positive semidefinite with trace one on a finite-dimensional Hilbert space of dimension d."
+    ],
+    "variables": [
+      "gamma: purity; Tr: operator trace; d: Hilbert-space dimension."
+    ],
+    "units": "Dimensionless.",
+    "regime": "1/d <= gamma <= 1. Equality at one characterizes pure states; the minimum is attained by I/d. Purity is not a thermodynamic entropy.",
+    "sourceIds": [
+      "vonneumann-probability-1927",
+      "schumacher-1995",
+      "preskill-ph229-chapter2"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "preskill-ph229-chapter2",
+        "locator": "Sec. 2.3.1, p. 18, discussion following Eq. (2.60): Tr(rho squared) equals the sum of squared eigenvalues. The finite-dimension lower bound follows by Cauchy–Schwarz.",
+        "url": "https://www.preskill.caltech.edu/ph229/notes/chap2.pdf#page=18"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "quantum-state-channel-source-audit-2026-10-21",
+    "theoryRelationship": "Modern mathematical statement checked against authoritative expositions. Previously linked historical or application references remain provenance; this audit does not claim inspection of their original equations."
+  },
+  {
+    "id": "bloch-sphere",
+    "assumptions": [
+      "One qubit: rho is a positive trace-one 2 by 2 matrix."
+    ],
+    "variables": [
+      "r: real three-component Bloch vector; sigma: standard Pauli matrices with eigenvalues plus/minus one; I: 2 by 2 identity."
+    ],
+    "units": "Dimensionless.",
+    "regime": "The full state space is the closed Bloch ball, not just its boundary. |r|=1 gives pure states; |r|<1 gives mixed states. This parametrization does not describe arbitrary higher-dimensional states.",
+    "sourceIds": [
+      "schumacher-1995",
+      "preskill-ph229-chapter2"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "preskill-ph229-chapter2",
+        "locator": "Sec. 2.3.2, Eq. (2.62) and positivity/pure-state discussion, printed/PDF p. 19; source P is renamed r.",
+        "url": "https://www.preskill.caltech.edu/ph229/notes/chap2.pdf#page=19"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "quantum-state-channel-source-audit-2026-10-21",
+    "theoryRelationship": "Modern mathematical statement checked against authoritative expositions. Previously linked historical or application references remain provenance; this audit does not claim inspection of their original equations."
+  },
+  {
+    "id": "schmidt",
+    "assumptions": [
+      "Normalized pure state of a finite-dimensional bipartite tensor-product Hilbert space."
+    ],
+    "variables": [
+      "lambda_i: nonnegative eigenvalues of either reduced density matrix, summing to one; sqrt(lambda_i): Schmidt coefficients; i_A and i_B: paired orthonormal vectors."
+    ],
+    "units": "Dimensionless.",
+    "regime": "Only nonzero terms need be retained. Degeneracies allow nonunique Schmidt bases; this is not a generic decomposition of mixed states or a simultaneous Schmidt decomposition of three subsystems.",
+    "sourceIds": [
+      "schumacher-1995",
+      "preskill-ph229-chapter2"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "preskill-ph229-chapter2",
+        "locator": "Sec. 2.4, Eqs. (2.83)–(2.89), pp. 23–24; Eq. (2.88) is the displayed decomposition with p_i renamed lambda_i. Degeneracy discussion pp. 24–25.",
+        "url": "https://www.preskill.caltech.edu/ph229/notes/chap2.pdf#page=24"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "quantum-state-channel-source-audit-2026-10-21",
+    "theoryRelationship": "Modern mathematical statement checked against authoritative expositions. Previously linked historical or application references remain provenance; this audit does not claim inspection of their original equations."
+  },
+  {
+    "id": "von-neumann-entropy",
+    "assumptions": [
+      "rho is a positive trace-one density operator in finite dimension; logarithm is defined spectrally with 0 log 0 interpreted as zero."
+    ],
+    "variables": [
+      "S: von Neumann entropy; log: logarithm of the density operator."
+    ],
+    "units": "Base-2 logarithm gives bits; natural logarithm gives nats. No Boltzmann constant is included.",
+    "regime": "Entropy vanishes for pure states and is at most log(d). This expression alone is not a claim of thermal equilibrium or a thermodynamic entropy in joules per kelvin.",
+    "sourceIds": [
+      "schumacher-1995",
+      "quantum-thermo-review",
+      "preskill-shannon-2025"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "preskill-shannon-2025",
+        "locator": "Sec. 10.2, Eqs. (10.59)–(10.62), printed p. 14 / PDF p. 20; logarithm base-2 convention at printed p. 3 / PDF p. 9.",
+        "url": "https://www.preskill.caltech.edu/ph219/chap10_6A_2025.pdf#page=20"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "quantum-state-channel-source-audit-2026-10-21",
+    "theoryRelationship": "Modern mathematical statement checked against authoritative expositions. Previously linked historical or application references remain provenance; this audit does not claim inspection of their original equations."
+  },
+  {
+    "id": "entanglement-entropy",
+    "assumptions": [
+      "Normalized bipartite pure state; finite-dimensional tensor-product subsystems; rho_A is obtained by tracing over B."
+    ],
+    "variables": [
+      "S_A: entropy of reduced state rho_A; Tr_B: partial trace over B."
+    ],
+    "units": "Base-2 logarithms give bits (ebits for pure-state entanglement); natural logarithms give nats.",
+    "regime": "For pure AB, S_A=S_B quantifies bipartite entanglement. For a mixed joint state the marginal entropy alone is not an entanglement measure; classical mixing can make it nonzero.",
+    "sourceIds": [
+      "schumacher-1995",
+      "van-raamsdonk-2010",
+      "preskill-ph229-chapter2",
+      "preskill-shannon-2025"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "preskill-ph229-chapter2",
+        "locator": "Sec. 2.3.1, Eq. (2.59), printed/PDF p. 17, partial trace; Sec. 2.4 Eqs. (2.88)–(2.89), p. 24, common nonzero marginal spectrum.",
+        "url": "https://www.preskill.caltech.edu/ph229/notes/chap2.pdf#page=17"
+      },
+      {
+        "sourceId": "preskill-shannon-2025",
+        "locator": "Sec. 10.4, Eq. (10.171), printed p. 33 / PDF p. 39, pure-state entanglement entropy.",
+        "url": "https://www.preskill.caltech.edu/ph219/chap10_6A_2025.pdf#page=39"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "quantum-state-channel-source-audit-2026-10-21",
+    "theoryRelationship": "Modern mathematical statement checked against authoritative expositions. Previously linked historical or application references remain provenance; this audit does not claim inspection of their original equations."
+  },
+  {
+    "id": "fidelity",
+    "assumptions": [
+      "rho and sigma are positive trace-one density operators on the same finite-dimensional Hilbert space; square roots are positive operator square roots."
+    ],
+    "variables": [
+      "F: squared fidelity used here; Tr: trace; rho and sigma: states being compared."
+    ],
+    "units": "Dimensionless, between zero and one.",
+    "regime": "This record uses squared fidelity. Watrous uses root fidelity f, so the displayed F=f squared; his Eq. (3.65) is squared after exchanging its symmetric arguments. For pure states this gives squared overlap. Do not interchange root and squared conventions in bounds.",
+    "sourceIds": [
+      "schumacher-1995",
+      "watrous-tqi-2018"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "watrous-tqi-2018",
+        "locator": "Sec. 3.2, Definition 3.11, Eqs. (3.64)–(3.65), printed p. 139 / PDF p. 147; symmetry and normalization in Proposition 3.12, printed p. 140 / PDF p. 148. Explicit convention conversion, not a verbatim equation match.",
+        "url": "https://cs.uwaterloo.ca/~watrous/TQI/TQI.pdf#page=147"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "quantum-state-channel-source-audit-2026-10-21",
+    "theoryRelationship": "Modern mathematical statement checked against authoritative expositions. Previously linked historical or application references remain provenance; this audit does not claim inspection of their original equations."
+  },
+  {
+    "id": "trace-distance",
+    "assumptions": [
+      "rho and sigma are density operators on the same finite-dimensional Hilbert space."
+    ],
+    "variables": [
+      "D: half trace-norm distance; ||X||_1=Tr sqrt(X dagger X)."
+    ],
+    "units": "Dimensionless, between zero and one.",
+    "regime": "For equal prior probabilities, optimal single-copy discrimination succeeds with probability (1+D)/2. Watrous calls the full norm trace distance; the app deliberately retains the common half-norm convention.",
+    "sourceIds": [
+      "schumacher-1995",
+      "watrous-tqi-2018"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "watrous-tqi-2018",
+        "locator": "Sec. 1.1.3, trace norm and trace-distance terminology, printed p. 34 / PDF p. 42; Theorem 3.4 (Holevo–Helstrom), printed p. 128 / PDF p. 136, supplies the operational normalization for equal priors.",
+        "url": "https://cs.uwaterloo.ca/~watrous/TQI/TQI.pdf#page=42"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "quantum-state-channel-source-audit-2026-10-21",
+    "theoryRelationship": "Modern mathematical statement checked against authoritative expositions. Previously linked historical or application references remain provenance; this audit does not claim inspection of their original equations."
+  },
+  {
+    "id": "kraus-map",
+    "assumptions": [
+      "Finite-dimensional completely positive linear map; for a deterministic quantum channel require sum K_k dagger K_k = I."
+    ],
+    "variables": [
+      "E: map on operators; K_k: Kraus operators from input to output Hilbert space; dagger: adjoint."
+    ],
+    "units": "Dimensionless map and Kraus operators for normalized finite-system states.",
+    "regime": "The sum establishes complete positivity, not trace preservation by itself. Kraus representations are nonunique. A selected measurement outcome is generally trace-decreasing and needs probability normalization for its conditional state.",
+    "sourceIds": [
+      "breuer-petruccione-2007",
+      "preskill-ph229-chapter3",
+      "watrous-tqi-2018"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "preskill-ph229-chapter3",
+        "locator": "Sec. 3.2.1, Eqs. (3.68)–(3.70), printed/PDF p. 17; finite-system operator sum and completeness.",
+        "url": "https://www.preskill.caltech.edu/ph229/notes/chap3.pdf#page=17"
+      },
+      {
+        "sourceId": "watrous-tqi-2018",
+        "locator": "Corollary 2.27, Eq. (2.129), printed p. 89 / PDF p. 97: finite-dimensional channel characterization including differing input/output spaces.",
+        "url": "https://cs.uwaterloo.ca/~watrous/TQI/TQI.pdf#page=97"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "quantum-state-channel-source-audit-2026-10-21",
+    "theoryRelationship": "Modern mathematical statement checked against authoritative expositions. Previously linked historical or application references remain provenance; this audit does not claim inspection of their original equations."
+  },
+  {
+    "id": "kraus-completeness",
+    "assumptions": [
+      "K_k is a Kraus family for a completely positive linear map in finite dimension; equality is on the input space."
+    ],
+    "variables": [
+      "K_k: input-to-output operators; I: identity on the input Hilbert space."
+    ],
+    "units": "Dimensionless.",
+    "regime": "Equivalent to trace preservation for the operator-sum map. A probabilistic operation instead permits sum K_k dagger K_k <= I. Do not confuse this condition with unitality, which concerns sum K_k K_k dagger.",
+    "sourceIds": [
+      "breuer-petruccione-2007",
+      "preskill-ph229-chapter3",
+      "watrous-tqi-2018"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "preskill-ph229-chapter3",
+        "locator": "Sec. 3.2.1 Eq. (3.70), printed/PDF p. 17.",
+        "url": "https://www.preskill.caltech.edu/ph229/notes/chap3.pdf#page=17"
+      },
+      {
+        "sourceId": "watrous-tqi-2018",
+        "locator": "Corollary 2.27, Eq. (2.129), printed p. 89 / PDF p. 97, channel criterion.",
+        "url": "https://cs.uwaterloo.ca/~watrous/TQI/TQI.pdf#page=97"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "quantum-state-channel-source-audit-2026-10-21",
+    "theoryRelationship": "Modern mathematical statement checked against authoritative expositions. Previously linked historical or application references remain provenance; this audit does not claim inspection of their original equations."
+  },
+  {
+    "id": "choi",
+    "assumptions": [
+      "Finite-dimensional channel E from input A to output B; a fixed orthonormal basis on A and its reference copy R is chosen."
+    ],
+    "variables": [
+      "Phi=sum_i |i>_R tensor |i>_A is UNNORMALIZED; J_E acts on R tensor B; I is the identity superoperator on R; d_A is input dimension."
+    ],
+    "units": "Dimensionless; for a trace-preserving channel Tr J_E=d_A, not one.",
+    "regime": "With this convention J_E is positive and Tr_B J_E=I_R. Using a unit-normalized Phi instead divides J_E and its partial trace by d_A. Watrous orders output before reference; the app orders reference before output, related by a tensor-factor swap.",
+    "sourceIds": [
+      "quantum-supermaps-2008",
+      "watrous-tqi-2018"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "watrous-tqi-2018",
+        "locator": "Sec. 2.2.2, Eqs. (2.64)–(2.66), printed p. 78 / PDF p. 86 (unnormalized vec(I), output-first); Corollary 2.27, printed p. 89 / PDF p. 97 (positivity and trace condition). Explicit swap to reference-first ordering.",
+        "url": "https://cs.uwaterloo.ca/~watrous/TQI/TQI.pdf#page=86"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "quantum-state-channel-source-audit-2026-10-21",
+    "theoryRelationship": "Modern mathematical statement checked against authoritative expositions. Previously linked historical or application references remain provenance; this audit does not claim inspection of their original equations."
+  }
+];
+ for(const patch of patches){const matches=window.QI_FORMULAS.formulas.filter(f=>f.id===patch.id);if(matches.length!==1||matches[0].metadataReview!=="baseline-audit-v1")throw new Error("State/channel audit baseline changed: "+patch.id);Object.assign(matches[0],patch);}
+})();
