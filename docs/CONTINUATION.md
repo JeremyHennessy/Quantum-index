@@ -2,6 +2,8 @@
 
 Updated 16 October 2026. This is the single continuation entry point; dated release/research notes remain the audit trail. Runtime counts below are generated and checked by CI.
 
+**Separate future-product proposal (linked 21 October 2026, not a shipped release):** [Academic & Research Edition roadmap](ACADEMIC_PRODUCT_ROADMAP_2026-10-21.md). This is a non-binding backlog for a source-reviewed learning module, academic reference workflows and possible future pilot. The scientific delivery priorities, approved UI/workspace baseline and current release evidence gates in this document remain authoritative and unchanged.
+
 ## Current inventory (generated; not a scientific quality score)
 
 <!-- coverage:start -->
