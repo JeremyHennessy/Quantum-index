@@ -20,6 +20,7 @@ jobs:
       - name: Check JavaScript syntax
         run: |
           node --check app.js
+          node --check analytics.js
           node --check theories.js
           node --check formulas.js
           node --check formula-audit.js
@@ -46,6 +47,7 @@ jobs:
       - name: Verify static entry point
         run: |
           test -f index.html
+          test -f analytics.js
           test -f styles.css
           test -f developments.js
           test -f questions.js
@@ -59,6 +61,7 @@ jobs:
           grep -q './evidence.js' index.html
           grep -q './passports.js' index.html
           grep -q './app.js' index.html
+          grep -q './analytics.js' index.html
           grep -q './formulas.js' index.html
           grep -q './formula-audit.js' index.html
           grep -q './profiles.js' index.html
@@ -91,8 +94,29 @@ jobs:
             test-results/
           retention-days: 14
 
+  qa-diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci --ignore-scripts
+      - run: npx playwright install --with-deps chromium webkit
+      - name: Exercise files filters and analytics before the full catalog suite
+        run: npx playwright test tests/browser/workspace-files.spec.mjs tests/browser/filter-controls.spec.mjs tests/browser/analytics.spec.mjs tests/browser/branch-return.spec.mjs --retries=0
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: qa-diagnostic-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14
+
   browser:
-    needs: map-diagnostic
+    needs: [map-diagnostic, qa-diagnostic]
     runs-on: ubuntu-latest
     # Full-catalog MathJax checks plus per-record Chromium/WebKit provenance tests.
     timeout-minutes: 35
@@ -139,7 +163,7 @@ jobs:
       - name: Package the tested revision
         run: |
           mkdir _site
-          cp index.html styles.css theories.js formulas.js formula-audit.js developments.js questions.js problems.js evidence.js passports.js profiles.js workspace.js sourced-paths.js research-navigation.js app.js _site/
+          cp index.html styles.css theories.js formulas.js formula-audit.js developments.js questions.js problems.js evidence.js passports.js profiles.js workspace.js sourced-paths.js research-navigation.js app.js analytics.js _site/
           cp -R docs _site/docs
           printf '%s\n' "$GITHUB_SHA" > _site/revision.txt
       - uses: actions/upload-pages-artifact@v3
