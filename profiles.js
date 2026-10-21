@@ -3034,3 +3034,122 @@ Object.assign(window.QI_PROFILES.profiles,{
     "prerequisites": []
   }
 });
+
+
+// Editorial study sequence with explicit source locations; not a proof chain.
+window.QI_PROFILES.learningPaths.push({
+  "id": "primordial-to-cosmic-structure",
+  "title": "From primordial fluctuations to cosmic structure",
+  "goal": "Connect candidate primordial fluctuations to transfer physics, CMB and large-scale-structure observations, then distinguish measurements from conditional model constraints.",
+  "prerequisites": "Fourier modes and power spectra; introductory quantum fields and homogeneous expanding cosmology.",
+  "steps": [
+    {
+      "theoryId": "inflationary-cosmology",
+      "why": "Begin with the proposed accelerated background and the assumptions needed to connect it to the hot Big Bang."
+    },
+    {
+      "theoryId": "inflationary-fluctuations",
+      "why": "Read the sourced scalar-mode and power-spectrum formulas. Distinguish their assumed initial state from an observation of that state."
+    },
+    {
+      "theoryId": "reheating-preheating",
+      "why": "Identify the model-dependent transition to the thermal era. This is a pedagogical checkpoint, not a claim that resonant preheating is required or observed."
+    },
+    {
+      "theoryId": "lambda-cdm",
+      "why": "Use the transfer primer to connect primordial initial conditions to the late-time background and linear observables; then open the existing Planck, BK18 and DESI Evidence records."
+    }
+  ],
+  "comparison": [
+    "inflationary-cosmology",
+    "lambda-cdm"
+  ],
+  "primer": {
+    "title": "The bridge: initial conditions, transfer and inference",
+    "reviewedAt": "2026-10-21",
+    "paragraphs": [
+      {
+        "text": "Separate the stages: inflationary dynamics specifies a candidate primordial spectrum; transfer physics predicts later sky and matter statistics; a likelihood compares those predictions with data. This is a study sequence, not a proof that one inflationary mechanism occurred.",
+        "sourceIds": [
+          "planck-inflation-2018"
+        ]
+      },
+      {
+        "text": "The existing Mukhanov–Sasaki and slow-roll formulas concern initial scalar perturbations, not the full subsequent plasma evolution. Their canonical single-field, Einstein-gravity, spatially flat assumptions and the adiabatic super-Hubble conservation condition must remain explicit.",
+        "sourceIds": [
+          "pdg-inflation-2025-reviewed"
+        ]
+      },
+      {
+        "text": "The missing transfer layer is explained here without adding a new theory node. Ma–Bertschinger evolves linear scalar perturbations in flat backgrounds using synchronous or conformal Newtonian gauge: CDM and baryons as fluids, photons and massless/massive neutrinos kinetically. Their isentropic super-horizon initial conditions are an assumption, not all possible initial states. Density contrasts require a specified gauge; observable anisotropies cannot depend on that coordinate choice.",
+        "sourceIds": [
+          "ma-bertschinger-perturbations-1995"
+        ]
+      },
+      {
+        "text": "Photons scatter before recombination and then propagate to us. Line-of-sight integration combines the evolving source with geometrical projection to predict CMB multipoles. Matter transfer instead describes species-dependent density evolution. Linear transfer is not a complete nonlinear galaxy-formation model; galaxy clustering needs additional observational and modeling treatment.",
+        "sourceIds": [
+          "ma-bertschinger-perturbations-1995",
+          "seljak-zaldarriaga-line-of-sight-1996",
+          "desi-dr2-cosmology-2025"
+        ]
+      },
+      {
+        "text": "Planck primordial-spectrum constraints are inferred from temperature, polarization and lensing data under specified models. BK18 provides a tensor upper limit with foreground modeling, not a primordial-wave detection. Neither identifies the inflaton or demonstrates primordial quantum coherence. The scalar transfer discussion does not by itself calculate tensor B modes.",
+        "sourceIds": [
+          "planck-inflation-2018",
+          "bicep-keck-bk18-2021",
+          "seljak-zaldarriaga-line-of-sight-1996"
+        ]
+      },
+      {
+        "text": "DESI DR2 BAO measures distance ratios relative to the sound horizon; absolute distances require a calibration. It is not a direct image of the inflaton. Keep BAO-only results distinct from CMB/supernova combinations and their parameterization-dependent dark-energy constraints. These dated records are not claims to be the latest available limits.",
+        "sourceIds": [
+          "desi-dr2-cosmology-2025"
+        ]
+      }
+    ],
+    "sourceLocator": "PDG Inflation §23.3.3; Ma–Bertschinger §§2–7, especially Eqs. (88)–(90); Seljak–Zaldarriaga §2.2, Eqs. (12)–(16). Observational records retain their own likelihood and dataset qualifications.",
+    "sourceLocations": [
+      {
+        "sourceId": "pdg-inflation-2025-reviewed",
+        "locator": "Section 23.3.3, equations (23.41)–(23.48), PDF page 9: canonical scalar mode and adiabatic super-Hubble curvature spectrum.",
+        "url": "https://pdg.lbl.gov/2025/reviews/rpp2025-rev-inflation.pdf#page=9"
+      },
+      {
+        "sourceId": "ma-bertschinger-perturbations-1995",
+        "locator": "Sections 2–3 (gauges), 4–5 (Einstein, fluid and Boltzmann evolution), 6 equations (88)–(90) (initial spectrum and photon transfer), 7 (isentropic super-horizon initial conditions).",
+        "url": "https://arxiv.org/html/astro-ph/9506072v1"
+      },
+      {
+        "sourceId": "seljak-zaldarriaga-line-of-sight-1996",
+        "locator": "Section 2.2, equations (12)–(16): scalar and tensor line-of-sight source integrals; Section 3: numerical scope.",
+        "url": "https://arxiv.org/html/astro-ph/9603033v1"
+      },
+      {
+        "sourceId": "planck-inflation-2018",
+        "locator": "Abstract; model-qualified scalar-spectrum and inflationary constraints.",
+        "url": "https://arxiv.org/abs/1807.06211v2"
+      },
+      {
+        "sourceId": "bicep-keck-bk18-2021",
+        "locator": "Abstract: lensed-Lambda-CDM+r+dust+synchrotron+noise likelihood; r_0.05 < 0.036 at 95% confidence.",
+        "url": "https://arxiv.org/abs/2110.00483v1"
+      },
+      {
+        "sourceId": "desi-dr2-cosmology-2025",
+        "locator": "Section I, equations (1)–(5) and surrounding paragraphs: sound horizon and directly constrained distance ratios; abstract and Sections V–VII: conditional cosmological fits.",
+        "url": "https://arxiv.org/html/2503.14738v3#S1"
+      }
+    ]
+  },
+  "relatedEvidenceIds": [
+    "ev-planck-inflation-2018",
+    "ev-bicep-keck-bk18-2021",
+    "ev-desi-dr2-2025"
+  ],
+  "relatedProblemIds": [
+    "inflation-mechanism",
+    "primordial-quantum-classical"
+  ]
+});

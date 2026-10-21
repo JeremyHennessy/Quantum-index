@@ -5,10 +5,10 @@ Fifty-nine profiles in `profiles.js` cover historical foundations, quantum formu
 The Compare tab accepts any two to four catalog entries. Three presets provide starting points. Each selector can search names, aliases and tags while retaining its current selection. Uncurated entries retain their catalog summaries, bibliography and formula coverage with an explicit missing-profile message. Selection is stored in the URL; theory links preserve the comparison return URL across reloads. Invalid IDs and duplicates are discarded; at most four valid IDs are retained.
 
 <!-- coverage:start -->
-- **59** cited reading profiles and **5** guided learning paths
+- **59** cited reading profiles and **6** guided learning paths
 - **35** Theory Passports available to the comparison workflow
-- **483** catalog entries; **457** formula records; **590** bibliography records
-- **613** typed relationships, including **128** source-backed edges
+- **483** catalog entries; **457** formula records; **596** bibliography records
+- **614** typed relationships, including **130** source-backed edges
 
 These counts are generated from runtime data; older release notes retain their historical snapshots.
 <!-- coverage:end -->

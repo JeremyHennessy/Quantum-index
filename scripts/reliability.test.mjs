@@ -6,7 +6,7 @@ import {JSDOM,VirtualConsole} from 'jsdom';
 
 const sandbox={window:{}};
 vm.createContext(sandbox);
-for(const file of ['theories.js','formulas.js','formula-audit.js','profiles.js','workspace.js']) vm.runInContext(fs.readFileSync(file,'utf8'),sandbox);
+for(const file of ['theories.js','formulas.js','formula-audit.js','passports.js','profiles.js','workspace.js']) vm.runInContext(fs.readFileSync(file,'utf8'),sandbox);
 const {theories}=sandbox.window.QI_DATA;
 const {formulas}=sandbox.window.QI_FORMULAS;
 const audit=sandbox.window.QI_FORMULA_AUDIT.entries;
@@ -43,7 +43,7 @@ before(()=>{
   w.HTMLElement.prototype.scrollIntoView=function(){};
   w.MathJax={typesetPromise:()=>Promise.resolve(),typesetClear:()=>{}};
   w.eval(fs.readFileSync('node_modules/d3/dist/d3.min.js','utf8'));
-  for(const file of ['theories.js','formulas.js','formula-audit.js','profiles.js','workspace.js','app.js']) w.eval(fs.readFileSync(file,'utf8'));
+  for(const file of ['theories.js','formulas.js','formula-audit.js','passports.js','profiles.js','workspace.js','app.js']) w.eval(fs.readFileSync(file,'utf8'));
 });
 after(()=>dom?.window.close());
 async function change(action){
@@ -115,7 +115,7 @@ test('permanent links load on a fresh page and malformed or missing IDs are hand
   const fw=fresh.window;fw.HTMLElement.prototype.scrollIntoView=function(){};
   fw.MathJax={typesetPromise:()=>Promise.resolve(),typesetClear:()=>{}};
   fw.eval(fs.readFileSync('node_modules/d3/dist/d3.min.js','utf8'));
-  for(const file of ['theories.js','formulas.js','formula-audit.js','profiles.js','workspace.js','app.js']) fw.eval(fs.readFileSync(file,'utf8'));
+  for(const file of ['theories.js','formulas.js','formula-audit.js','passports.js','profiles.js','workspace.js','app.js']) fw.eval(fs.readFileSync(file,'utf8'));
   assert.equal(fw.document.querySelector('.view.active').id,'theoryView');
   assert.equal(fw.document.querySelector('#theoryDetail .detail-title').textContent,'Operator product expansion');
   fresh.window.close();
@@ -328,7 +328,7 @@ test('fresh comparison and detail loads restore shareable selections',()=>{
       fw.HTMLElement.prototype.scrollIntoView=function(){};
       fw.MathJax={typesetPromise:()=>Promise.resolve(),typesetClear:()=>{}};
       fw.eval(fs.readFileSync('node_modules/d3/dist/d3.min.js','utf8'));
-      for(const file of ['theories.js','formulas.js','formula-audit.js','profiles.js','workspace.js','app.js']) fw.eval(fs.readFileSync(file,'utf8'));
+      for(const file of ['theories.js','formulas.js','formula-audit.js','passports.js','profiles.js','workspace.js','app.js']) fw.eval(fs.readFileSync(file,'utf8'));
       if(hash.startsWith('#/compare')) {
         assert.equal(fw.document.querySelector('#compareSlot0').value,'unruh');
         assert.equal(fw.document.querySelector('#compareSlot1').value,'hawking-radiation');
@@ -339,7 +339,7 @@ test('fresh comparison and detail loads restore shareable selections',()=>{
 
 test('learning paths support ordered steps, deep links and return navigation',async()=>{
   await route('#/learn');
-  assert.equal(d.querySelectorAll('.learning-path').length,5);
+  assert.equal(d.querySelectorAll('.learning-path').length,6);
   await route('#/learn?path=gravity-time');
   assert.equal(d.querySelectorAll('.learning-path').length,1);
   await change(()=>d.querySelector('.learning-steps a').click());
@@ -350,7 +350,7 @@ test('learning paths support ordered steps, deep links and return navigation',as
   await change(()=>d.querySelector('#backToView').click());
   assert.equal(d.querySelectorAll('.learning-steps li').length,5);
   await route('#/learn?path=does-not-exist');
-  assert.equal(d.querySelectorAll('.learning-path').length,5);
+  assert.equal(d.querySelectorAll('.learning-path').length,6);
 });
 
 test('prerequisites, connections and formula detours retain learning and comparison context',async()=>{
@@ -416,8 +416,8 @@ test('graph nodes and thought-tree nodes open details using Enter and Space',asy
   await change(()=>tree.dispatchEvent(new w.KeyboardEvent('keydown',{key:' ',bubbles:true})));assert.equal(active(),'theoryView');
 });
 
-test('all learning steps have profiles and the five reviewed math gaps have explicit outcomes',()=>{
-  for(const path of w.QI_PROFILES.learningPaths)for(const step of path.steps)assert.ok(w.QI_PROFILES.profiles[step.theoryId],step.theoryId);
+test('all learning steps have profiles or curated Passports and the five reviewed math gaps have explicit outcomes',()=>{
+  for(const path of w.QI_PROFILES.learningPaths)for(const step of path.steps)assert.ok(w.QI_PROFILES.profiles[step.theoryId]||w.QI_PASSPORTS.records.some(p=>p.theoryId===step.theoryId),step.theoryId);
   for(const id of ['qft-curved-spacetime','jt-gravity','replica-wormholes'])assert.ok(audit.find(a=>a.theoryId===id).formulaIds.length);
   for(const [id,classification] of [['amps-firewall','theorem'],['black-hole-complementarity','primarily conceptual']]){const a=audit.find(a=>a.theoryId===id);assert.equal(a.classification,classification);assert.ok(a.reviewEvidence.sourceIds.length);}
   const review=JSON.parse(fs.readFileSync('docs/RELATION_REVIEW_2026-09-26.json','utf8'));
@@ -431,7 +431,7 @@ test('fresh formula and prerequisite detour URLs restore the original return des
   const detail='#/theory/qft-curved-spacetime?from=formula&returnTo='+encodeURIComponent(formula);
   for(const [hash,selector,expected] of [[formula,'#formulaReturn a',comparison],[detail,'#backToView',formula],['#/theory/qft-curved-spacetime?from=learn&path=gravity-time','#backToView','#/learn?path=gravity-time']]){
     const fresh=new JSDOM(fs.readFileSync('index.html','utf8'),{url:'https://example.test/'+hash,runScripts:'outside-only',pretendToBeVisual:true});
-    try{const fw=fresh.window;fw.HTMLElement.prototype.scrollIntoView=function(){};fw.MathJax={typesetPromise:()=>Promise.resolve(),typesetClear:()=>{}};fw.eval(fs.readFileSync('node_modules/d3/dist/d3.min.js','utf8'));for(const f of ['theories.js','formulas.js','formula-audit.js','profiles.js','workspace.js','app.js'])fw.eval(fs.readFileSync(f,'utf8'));assert.equal(fw.document.querySelector(selector).hash,expected);}finally{fresh.window.close();}
+    try{const fw=fresh.window;fw.HTMLElement.prototype.scrollIntoView=function(){};fw.MathJax={typesetPromise:()=>Promise.resolve(),typesetClear:()=>{}};fw.eval(fs.readFileSync('node_modules/d3/dist/d3.min.js','utf8'));for(const f of ['theories.js','formulas.js','formula-audit.js','passports.js','profiles.js','workspace.js','app.js'])fw.eval(fs.readFileSync(f,'utf8'));assert.equal(fw.document.querySelector(selector).hash,expected);}finally{fresh.window.close();}
   }
 });
 
@@ -503,7 +503,7 @@ test('shared read markers count in both new paths and survive a fresh page load'
       const fw=fresh.window;fw.HTMLElement.prototype.scrollIntoView=function(){};fw.MathJax={typesetPromise:()=>Promise.resolve(),typesetClear:()=>{}};
       fw.localStorage.setItem('quantum-index-workspace-v1',w.QI_WORKSPACE.exportText());
       fw.eval(fs.readFileSync('node_modules/d3/dist/d3.min.js','utf8'));
-      for(const f of ['theories.js','formulas.js','formula-audit.js','profiles.js','workspace.js','app.js'])fw.eval(fs.readFileSync(f,'utf8'));
+      for(const f of ['theories.js','formulas.js','formula-audit.js','passports.js','profiles.js','workspace.js','app.js'])fw.eval(fs.readFileSync(f,'utf8'));
       const card=fw.document.querySelector('[data-learning-path="quantum-information"]');
       assert.equal(card.querySelector('progress').value,1);
       assert.equal(card.querySelector('[data-resume-path]').hash,'#/theory/quantum-information?from=learn&path=quantum-information');

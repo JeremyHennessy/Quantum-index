@@ -5,23 +5,23 @@ Updated 21 October 2026. This is the single continuation entry point; dated rele
 ## Current inventory (generated; not a scientific quality score)
 
 <!-- coverage:start -->
-- **59** cited reading profiles and **5** learning paths
+- **59** cited reading profiles and **6** learning paths
 - **35** Theory Passports, **9** scientific Problems, **21** Evidence records and **60** structured Research Questions
 - **483** theory/framework entities across **14** categories
-- **590** bibliography records
+- **596** bibliography records
 - **354** primary-sourced; **129** review-sourced; **0** catalogued-only entries
-- **613** relationships: **128** source-backed; **485** editorial
+- **614** relationships: **130** source-backed; **484** editorial
 - **41** thought trees
 - **457** formulas across **30** categories
 - **323** entries with linked formulas; **114** documented formula gaps
 - Other audit classes: **11** interpretations, **16** conceptual, **18** theorem-first, **1** thought experiment
-- Formula metadata: **212** explicitly reviewed; **245** baseline records
+- Formula metadata: **227** explicitly reviewed; **230** baseline records
 - **16** reviewed DevelopmentEvents through **2026**
 
 Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.
 <!-- coverage:end -->
 
-## Active completion campaign: 21 October 2026
+## Accepted release baseline: 21 October 2026
 
 - Earlier releases through PR85, including QEC and Yang–Mills source-qualified Passports, are already accepted. They are not pending additions.
 - PR86 recovery preserves its four source-qualified formulas and repairs formula cards to expose every exact citation locator. Its exact-head CI, main and hosted acceptance are tracked separately from the follow-on campaign.
@@ -33,9 +33,17 @@ Source attachment and formula presence are structural coverage measures, not ver
 
 ## Broader completion block
 
-Tracked in [PR90](https://github.com/JeremyHennessy/Quantum-index/pull/90), with publication gated separately below. Eighteen existing QFT/neutrino, open-system, many-body and classical-gravity entries now have source-qualified representative equations. Fifteen foundational formulas receive conventional scope/unit clarifications while retaining baseline review status; their exact source-depth audit remains outstanding. See [broader source review](../research/BROADER_SOURCE_REVIEW_2026-10-21.md) and [metadata scope manifest](../research/BROADER_METADATA_SCOPE_2026-10-21.json). No new empirical discoveries or theory-completion claims are inferred from these additions.
+[PR90](https://github.com/JeremyHennessy/Quantum-index/pull/90) is accepted, not pending. It merged at `3530ab3f8a3f2b7ce94109951de862bc2937925d` after 181 Node and 184 Chromium/WebKit tests on the exact candidate. Merged-main validation run 39544792420 and Pages run 39544791900 succeeded; nine served application/data files were checked against the accepted release. Eighteen existing entries received source-qualified representative equations; fifteen foundation records received scope clarifications while retaining baseline review status at that dated checkpoint. Those historical receipts remain unchanged.
 
-The documented-path tooling remains CLI-only; no new path UI is claimed. The separate academic-roadmap PR87 is not part of this implementation campaign and remains under separate ownership.
+## Current implementation: inspectable research navigation and foundational source audit
+
+This follow-on implementation audits those fifteen foundation records against four inspected authoritative lecture-note references. It preserves their IDs, equations and theory links, distinguishes retained historical provenance from newly inspected sources, and promotes only the reviewed metadata to explicit status. This is equation-level documentation, not primary-original-source verification or empirical validation.
+
+The atlas still has 457 formulas and 114 representative-formula gaps. This release adds no theory, formula or Evidence records. It adds a sixth editorial learning path, from primordial fluctuations through transfer physics to conditional CMB and large-scale-structure inference, reusing existing Evidence and Problems. Two explicitly qualified directed relations are documented; the study-step order does not generate graph edges.
+
+Network now offers a source-backed directed-path search using the same pure engine as the CLI. It respects stored direction, shows every source locator, excludes editorial fallback and reports bounded no-path or zero-edge results honestly. Coverage adds factual record-level provenance, formula-review, Passport, Evidence and relationship inspection. Neither tool awards a scientific validity score or treats a path as proof.
+
+Release verification requires independent review, current-runtime and historical-integrity tests, exact-head Chromium/WebKit checks, merged-main CI, Pages deployment and served-file verification. Consult the implementation pull request’s acceptance receipt for exact commits, run results and hosted verification; these instructions do not assert publication of an unverified revision. Dated historical ledgers remain unchanged. The separate academic-roadmap PR87 remains untouched and is not part of this release.
 
 Subsequent scientific priorities are the remaining documented formula gaps, exact source-depth review of baseline metadata, qualified observational updates and deferred framework dispositions. Exploratory hypotheses belong in a separate research record until evidence supports catalog inclusion.
 

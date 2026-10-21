@@ -1,10 +1,11 @@
+import {readPreNavigationFile} from './navigation-20261021-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {beforeLocatorRenderer} from './formula-locator-renderer-20261021-baseline.mjs';
 
 test('locator renderer historical projection rejects undeclared changes and is idempotent',()=>{
- const current=fs.readFileSync('app.js');
+ const current=readPreNavigationFile('app.js');
  const prior=beforeLocatorRenderer(current,'app.js');
  assert.notDeepEqual(prior,current);
  assert.deepEqual(beforeLocatorRenderer(prior,'app.js'),prior);

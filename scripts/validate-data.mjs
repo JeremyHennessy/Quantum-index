@@ -18,6 +18,7 @@ const formulaData = sandbox.window.QI_FORMULAS;
 const formulaAuditCode = fs.readFileSync("formula-audit.js","utf8");
 vm.runInContext(formulaAuditCode, sandbox);
 const formulaAudit = sandbox.window.QI_FORMULA_AUDIT;
+for(const file of ["questions.js","problems.js","passports.js"])vm.runInContext(fs.readFileSync(file,"utf8"),sandbox);
 
 if (!data || !Array.isArray(data.theories) || !Array.isArray(data.relations) || !Array.isArray(data.trees) || !Array.isArray(data.sources)) {
   throw new Error("QI_DATA schema missing");
@@ -196,11 +197,22 @@ console.log('Validated 59 cited research profiles and comparison presets.');
 for(const path of research.learningPaths){
   if(!path.id||!path.title||!path.goal||!path.prerequisites||path.steps.length<2)throw new Error('Invalid learning path');
   if(new Set(path.steps.map(s=>s.theoryId)).size!==path.steps.length)throw new Error('Duplicate path step');
-  for(const step of path.steps)if(!unique.has(step.theoryId)||!research.profiles[step.theoryId]||!step.why)throw new Error('Invalid learning step');
+  for(const step of path.steps)if(!unique.has(step.theoryId)||(!research.profiles[step.theoryId]&&!sandbox.window.QI_PASSPORTS.records.some(p=>p.theoryId===step.theoryId))||!step.why)throw new Error('Invalid learning step');
   if(path.comparison.length<2||path.comparison.length>4||path.comparison.some(id=>!unique.has(id)))throw new Error('Invalid path comparison');
 }
-if(research.learningPaths.length!==5 || new Set(research.learningPaths.map(p=>p.id)).size!==5)throw new Error('Expected five distinct learning paths');
+if(research.learningPaths.length!==6 || new Set(research.learningPaths.map(p=>p.id)).size!==6)throw new Error('Expected six distinct learning paths');
 
 const primer=research.learningPaths.find(p=>p.id==='gravity-time').primer;
 if(!primer?.equation || !primer.sourceLocator || primer.paragraphs.length!==3)throw new Error('Missing gravity and time primer');
 for(const claim of primer.paragraphs)if(!claim.text || !claim.sourceIds.length || claim.sourceIds.some(id=>!uniqueSources.has(id)))throw new Error('Invalid primer citation');
+
+// All optional learning references are resolved against the same runtime catalog.
+for(const path of research.learningPaths){
+ for(const id of path.relatedEvidenceIds||[])if(!sandbox.window.QI_EVIDENCE.records.some(e=>e.id===id))throw new Error('Invalid learning Evidence reference '+id);
+ for(const id of path.relatedProblemIds||[])if(!sandbox.window.QI_PROBLEMS.problems.some(p=>p.id===id))throw new Error('Invalid learning Problem reference '+id);
+ if(path.primer){
+  for(const claim of path.primer.paragraphs)if(!claim.text||!claim.sourceIds.length||claim.sourceIds.some(id=>!uniqueSources.has(id)))throw new Error('Invalid learning primer claim');
+  for(const loc of path.primer.sourceLocations||[])if(!uniqueSources.has(loc.sourceId)||!loc.locator||!/^https:\/\//.test(loc.url))throw new Error('Invalid learning primer source locator');
+ }
+}
+for(const rel of data.relations)for(const loc of rel.sourceLocations||[])if(!rel.sourceIds.includes(loc.sourceId)||!loc.locator||!/^https:\/\//.test(loc.url))throw new Error('Invalid relationship source locator');
