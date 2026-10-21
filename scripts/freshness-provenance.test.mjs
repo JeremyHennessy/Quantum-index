@@ -17,7 +17,7 @@ test('citation attachment and the historical lastReviewed field never qualify as
   assert.equal(report.unknownLiteratureReviewCount,theories.length-documented);
   assert.equal(report.staleLiteratureReviewCount,report.staleLiteratureReviewIds.length);
   assert.equal(documented,0,'no literatureSweep evidence exists yet; do not promote catalog dates');
-  assert.equal(report.unknownLiteratureReviewCount,481);
+  assert.equal(report.unknownLiteratureReviewCount,theories.length);
 });
 
 test('a literature sweep requires a real review date, declared scope and resolving sources',()=>{

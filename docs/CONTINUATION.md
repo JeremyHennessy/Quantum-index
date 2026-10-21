@@ -1,25 +1,38 @@
 # Quantum Index — current continuation plan
 
-Updated 16 October 2026. This is the single continuation entry point; dated release/research notes remain the audit trail. Runtime counts below are generated and checked by CI.
+Updated 21 October 2026. This is the single continuation entry point; dated release/research notes remain the audit trail. Runtime counts below are generated and checked by CI.
 
 ## Current inventory (generated; not a scientific quality score)
 
 <!-- coverage:start -->
 - **59** cited reading profiles and **5** learning paths
-- **29** Theory Passports, **5** scientific Problems, **16** Evidence records and **60** structured Research Questions
-- **481** theory/framework entities across **14** categories
-- **560** bibliography records
-- **352** primary-sourced; **129** review-sourced; **0** catalogued-only entries
-- **610** relationships: **125** source-backed; **485** editorial
+- **35** Theory Passports, **9** scientific Problems, **21** Evidence records and **60** structured Research Questions
+- **483** theory/framework entities across **14** categories
+- **578** bibliography records
+- **354** primary-sourced; **129** review-sourced; **0** catalogued-only entries
+- **613** relationships: **128** source-backed; **485** editorial
 - **41** thought trees
-- **419** formulas across **30** categories
-- **285** entries with linked formulas; **150** documented formula gaps
+- **439** formulas across **30** categories
+- **305** entries with linked formulas; **132** documented formula gaps
 - Other audit classes: **11** interpretations, **16** conceptual, **18** theorem-first, **1** thought experiment
-- Formula metadata: **170** explicitly reviewed; **249** baseline records
+- Formula metadata: **194** explicitly reviewed; **245** baseline records
 - **16** reviewed DevelopmentEvents through **2026**
 
 Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.
 <!-- coverage:end -->
+
+## Active completion campaign: 21 October 2026
+
+- Earlier releases through PR85, including QEC and Yang–Mills source-qualified Passports, are already accepted. They are not pending additions.
+- PR86 recovery preserves its four source-qualified formulas and repairs formula cards to expose every exact citation locator. Its exact-head CI, main and hosted acceptance are tracked separately from the follow-on campaign.
+- The follow-on campaign integrates six cosmology Passports, model-specific equation representatives, four explicit perturbation metadata reviews, linked empirical constraints and scientific Problems. Evidence retains its dataset dates, confidence levels, model assumptions and explicit nonclaims.
+- EFT of inflation and transient scalar early dark energy are distinct, source-qualified additions, not evidence of empirical completion. Generic early dark energy has an earlier history; the transient scalar entry does not claim to originate that whole family.
+- Candidate dispositions and dependencies are recorded in [CAMPAIGN_CANDIDATE_DISPOSITIONS_2026-10-21.json](../research/CAMPAIGN_CANDIDATE_DISPOSITIONS_2026-10-21.json). Deferred frameworks are not silently counted as shipped.
+- Release acceptance requires independent scientific review, current-runtime schema/reference tests, exact historical-prefix and record guards, Node regressions, Chromium/WebKit MathJax and responsive checks, then main/deployment verification. This candidate is not declared published merely because it exists locally.
+
+## Historical release notes
+
+The dated notes below preserve the original candidate receipts. Their pending-language describes the state at authorship, not the active queue; consult the current status above.
 
 ## 2026-10-17 Cosmology gap closure candidate: dark energy, dark matter production, leptogenesis
 

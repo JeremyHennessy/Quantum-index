@@ -1,3 +1,5 @@
+import {readFileSync} from 'node:fs';
+const coverage=JSON.parse(readFileSync(new URL('../../docs/coverage.json',import.meta.url),'utf8'));
 import {test,expect} from '@playwright/test';
 
 // A new Passport, not a new comparison component or storage format.
@@ -35,7 +37,7 @@ test('four existing Bell equations show reviewed definitions, source locations a
   return {failures,formulaCount:QI_FORMULAS.formulas.length,latex:Object.fromEntries(fs.map(f=>[f.id,f.latex]))};
  });
  // Eight separately reviewed astroparticle, dark-matter, stochastic and preheating equations are additive to the earlier 405-formula checkpoint.
- expect(result.formulaCount).toBe(419);expect(result.failures).toEqual([]);
+ expect(result.formulaCount).toBe(coverage.formulas);expect(result.failures).toEqual([]);
  expect(result.latex).toEqual({'bell-factorization':String.raw`P(a,b|x,y,\lambda)=P(a|x,\lambda)P(b|y,\lambda)`,'chsh-classical':String.raw`|S|\le2`,'chsh-tsirelson':String.raw`|S|\le2\sqrt2`,'bell-state':String.raw`|\Phi^+\rangle=\frac{|00\rangle+|11\rangle}{\sqrt2}`});
  const byTitle=title=>cards.filter({has:page.getByRole('heading',{name:title,exact:true})});
  await expect(byTitle('Bell-local factorization')).toContainText('q(lambda|x,y)=q(lambda)');

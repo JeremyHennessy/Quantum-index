@@ -2961,3 +2961,248 @@ for(const row of batch){if(known.has(row.id))throw new Error("Duplicate source "
  const existing=new Set(window.QI_DATA.sources.map(s=>s.id));
  for(const s of records){if(existing.has(s.id))throw new Error('Duplicate cosmology citation '+s.id);existing.add(s.id);window.QI_DATA.sources.push(s);}
 })();
+
+// 2026-10-21 source-qualified completion campaign.
+window.QI_DATA.sources.push(...[
+  {
+    "id": "planck-inflation-2018",
+    "title": "Planck 2018 results. X. Constraints on inflation",
+    "authors": "Planck Collaboration",
+    "year": 2020,
+    "type": "primary source",
+    "url": "https://doi.org/10.1051/0004-6361/201833887"
+  },
+  {
+    "id": "bicep-keck-bk18-2021",
+    "title": "BICEP/Keck XIII: Improved Constraints on Primordial Gravitational Waves using Planck, WMAP, and BICEP/Keck Observations through the 2018 Observing Season",
+    "authors": "BICEP/Keck Collaboration",
+    "year": 2021,
+    "type": "primary source",
+    "url": "https://doi.org/10.1103/PhysRevLett.127.151301"
+  },
+  {
+    "id": "cooke-deuterium-2018",
+    "title": "One percent determination of the primordial deuterium abundance",
+    "authors": "Ryan J. Cooke, Max Pettini, Charles C. Steidel",
+    "year": 2018,
+    "type": "primary source",
+    "url": "https://doi.org/10.3847/1538-4357/aaab53"
+  },
+  {
+    "id": "katrin-mass-2025",
+    "title": "Direct neutrino-mass measurement based on 259 days of KATRIN data",
+    "authors": "KATRIN Collaboration",
+    "year": 2025,
+    "type": "primary source",
+    "url": "https://doi.org/10.1126/science.adq9592"
+  },
+  {
+    "id": "cheung-inflation-eft-2008",
+    "title": "The Effective Field Theory of Inflation",
+    "authors": "Clifford Cheung, Paolo Creminelli, A. Liam Fitzpatrick, Jared Kaplan, Leonardo Senatore",
+    "year": 2008,
+    "type": "primary source",
+    "url": "https://doi.org/10.1088/1126-6708/2008/03/014"
+  },
+  {
+    "id": "poulin-early-dark-energy-2019",
+    "title": "Early Dark Energy Can Resolve The Hubble Tension",
+    "authors": "Vivian Poulin, Tristan L. Smith, Tanvi Karwal, Marc Kamionkowski",
+    "year": 2019,
+    "type": "primary source",
+    "url": "https://doi.org/10.1103/PhysRevLett.122.221301"
+  },
+  {
+    "id": "hill-early-dark-energy-2020",
+    "title": "Early Dark Energy Does Not Restore Cosmological Concordance",
+    "authors": "J. Colin Hill, Evan McDonough, Michael W. Toomey, Stephon Alexander",
+    "year": 2020,
+    "type": "primary source",
+    "url": "https://doi.org/10.1103/PhysRevD.102.043507"
+  },
+  {
+    "id": "doran-robbers-ede-2006",
+    "title": "Early Dark Energy Cosmologies",
+    "authors": "Michael Doran, Georg Robbers",
+    "year": 2006,
+    "type": "primary source",
+    "url": "https://doi.org/10.1088/1475-7516/2006/06/026"
+  },
+  {
+    "id": "karwal-kamionkowski-ede-2016",
+    "title": "Dark energy at early times, the Hubble parameter, and the string axiverse",
+    "authors": "Tanvi Karwal, Marc Kamionkowski",
+    "year": 2016,
+    "type": "primary source",
+    "url": "https://doi.org/10.1103/PhysRevD.94.103523"
+  },
+  {
+    "id": "kiefer-polarski-starobinsky-1998",
+    "title": "Quantum-to-classical transition for fluctuations in the early Universe",
+    "authors": "Claus Kiefer, David Polarski, Alexei A. Starobinsky",
+    "year": 1998,
+    "type": "primary source",
+    "url": "https://doi.org/10.1142/S0218271898000292"
+  },
+  {
+    "id": "linde-hybrid-inflation-1994",
+    "title": "Hybrid Inflation",
+    "authors": "Andrei Linde",
+    "year": 1994,
+    "type": "primary source",
+    "url": "https://doi.org/10.1103/PhysRevD.49.748"
+  },
+  {
+    "id": "niemeyer-jedamzik-pbh-critical-1998",
+    "title": "Near-Critical Gravitational Collapse and the Initial Mass Function of Primordial Black Holes",
+    "authors": "Jens C. Niemeyer, Karsten Jedamzik",
+    "year": 1998,
+    "type": "primary source",
+    "url": "https://doi.org/10.1103/PhysRevLett.80.5481"
+  },
+  {
+    "id": "bjorken-dark-gauge-forces-2009",
+    "title": "New Fixed-Target Experiments to Search for Dark Gauge Forces",
+    "authors": "James D. Bjorken, Rouven Essig, Philip Schuster, Natalia Toro",
+    "year": 2009,
+    "type": "primary source",
+    "url": "https://doi.org/10.1103/PhysRevD.80.075018"
+  },
+  {
+    "id": "dine-randall-thomas-ad-1996",
+    "title": "Baryogenesis from Flat Directions of the Supersymmetric Standard Model",
+    "authors": "Michael Dine, Lisa Randall, Scott Thomas",
+    "year": 1996,
+    "type": "primary source",
+    "url": "https://arxiv.org/abs/hep-ph/9507453"
+  },
+  {
+    "id": "martins-shellard-vos-2002",
+    "title": "Extending the Velocity-dependent One-scale String Evolution Model",
+    "authors": "C. J. A. P. Martins, E. P. S. Shellard",
+    "year": 2002,
+    "type": "primary source",
+    "url": "https://doi.org/10.1103/PhysRevD.65.043514"
+  },
+  {
+    "id": "finelli-brandenberger-contracting-2002",
+    "title": "On the Generation of a Scale-Invariant Spectrum of Adiabatic Fluctuations in Cosmological Models with a Contracting Phase",
+    "authors": "Fabio Finelli, Robert Brandenberger",
+    "year": 2002,
+    "type": "primary source",
+    "url": "https://doi.org/10.1103/PhysRevD.65.103522"
+  },
+  {
+    "id": "koyama-wands-ekpyrotic-2007",
+    "title": "Ekpyrotic collapse with multiple fields",
+    "authors": "Kazuya Koyama, David Wands",
+    "year": 2007,
+    "type": "primary source",
+    "url": "https://arxiv.org/abs/hep-th/0703040"
+  },
+  {
+    "id": "nayeri-brandenberger-vafa-hagedorn-2006",
+    "title": "Producing a Scale-Invariant Spectrum of Perturbations in a Hagedorn Phase of String Cosmology",
+    "authors": "Ali Nayeri, Robert H. Brandenberger, Cumrun Vafa",
+    "year": 2006,
+    "type": "primary source",
+    "url": "https://arxiv.org/abs/hep-th/0511140"
+  }
+]);
+window.QI_DATA.theories.push(...[
+  {
+    "id": "effective-field-theory-of-inflation",
+    "name": "Effective field theory of inflation",
+    "year": 2007,
+    "era": "2000–2014",
+    "category": "Astroparticle physics & cosmology",
+    "status": "active research",
+    "summary": "A symmetry-organized low-energy description of single-clock inflationary fluctuations, not a unique inflaton potential.",
+    "core": "Unitary-gauge operators encode broken time-reparameterization symmetry; restoring the Goldstone mode relates fluctuation propagation and interactions.",
+    "tags": [
+      "inflation",
+      "effective field theory",
+      "Goldstone mode",
+      "primordial correlations"
+    ],
+    "aliases": [
+      "EFT of inflation",
+      "EFToI"
+    ],
+    "kind": "effective framework",
+    "provenance": "primary-sourced",
+    "sources": [
+      "cheung-inflation-eft-2008"
+    ],
+    "lastReviewed": "2026-10-21"
+  },
+  {
+    "id": "transient-scalar-early-dark-energy",
+    "name": "Transient scalar early dark energy",
+    "year": 2016,
+    "era": "2015–present",
+    "category": "Astroparticle physics & cosmology",
+    "status": "active research",
+    "summary": "A proposed temporary pre-recombination energy component that changes the sound horizon; it is not an established solution of expansion tensions.",
+    "core": "A scalar initially remains frozen, then evolves and dilutes. This entry covers the transient scalar family studied by Karwal–Kamionkowski and Poulin et al., not all earlier tracking-EDE parameterizations.",
+    "tags": [
+      "early dark energy",
+      "sound horizon",
+      "scalar field",
+      "Hubble tension"
+    ],
+    "aliases": [
+      "Transient EDE",
+      "Axion-like early dark energy"
+    ],
+    "kind": "cosmological model family",
+    "provenance": "primary-sourced",
+    "sources": [
+      "karwal-kamionkowski-ede-2016",
+      "poulin-early-dark-energy-2019",
+      "hill-early-dark-energy-2020",
+      "doran-robbers-ede-2006"
+    ],
+    "lastReviewed": "2026-10-21"
+  }
+]);
+window.QI_DATA.relations.push(...[
+  {
+    "to": "inflationary-fluctuations",
+    "type": "overlaps",
+    "note": "",
+    "sourceIds": [
+      "cheung-inflation-eft-2008"
+    ],
+    "evidenceType": "formal mathematical relation",
+    "confidence": "high",
+    "evidenceNote": "EFT organizes single-clock fluctuation operators; it does not replace the observational evidence for their initial conditions.",
+    "from": "effective-field-theory-of-inflation"
+  },
+  {
+    "to": "quintessence",
+    "type": "overlaps",
+    "note": "",
+    "sourceIds": [
+      "poulin-early-dark-energy-2019",
+      "karwal-kamionkowski-ede-2016"
+    ],
+    "evidenceType": "formal mathematical relation",
+    "confidence": "high",
+    "evidenceNote": "Both can use canonical scalar dynamics, but transient early energy density and late-time acceleration have distinct roles and histories.",
+    "from": "transient-scalar-early-dark-energy"
+  },
+  {
+    "to": "lambda-cdm",
+    "type": "overlaps",
+    "note": "",
+    "sourceIds": [
+      "poulin-early-dark-energy-2019",
+      "hill-early-dark-energy-2020"
+    ],
+    "evidenceType": "formal mathematical relation",
+    "confidence": "high",
+    "evidenceNote": "The transient component is tested as an extension of the baseline expansion model, not its empirically established replacement.",
+    "from": "transient-scalar-early-dark-energy"
+  }
+]);

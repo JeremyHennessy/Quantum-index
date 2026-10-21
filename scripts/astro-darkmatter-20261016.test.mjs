@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -8,7 +9,7 @@ import {priorFollowupCoverage} from './astro-stochastic-preheating-20261016-base
 
 const sandbox={window:{}};vm.createContext(sandbox);
 for(const f of ['theories.js','formulas.js','formula-audit.js','developments.js','evidence.js','questions.js','problems.js','passports.js'])
- vm.runInContext(fs.readFileSync(f,'utf8'),sandbox,{filename:f});
+ vm.runInContext(readPreCampaignFile(f,'utf8'),sandbox,{filename:f});
 const w=sandbox.window,near=(a,b,tol=1e-12)=>assert.ok(Math.abs(a-b)<tol, a+' differs from '+b);
 test('two dark-matter formulas and two bibliography records follow exact immutable parent Git blobs',()=>{
  assert.equal(darkMatterFormulaIds.length,2);assert.equal(darkMatterSourceIds.length,2);
@@ -21,7 +22,7 @@ test('two dark-matter formulas and two bibliography records follow exact immutab
  assert.equal(w.QI_DATA.relations.length,610);
  assert.equal(w.QI_EVIDENCE.records.length,16);
  assert.equal(w.QI_PASSPORTS.records.length,29);
- const latest=JSON.parse(fs.readFileSync('docs/coverage.json','utf8'));
+ const latest=JSON.parse(readPreCampaignFile('docs/coverage.json','utf8'));
  const c=priorFollowupCoverage(latest);
  assert.equal(c.formulas,410);assert.equal(c.sources,556);
  assert.equal(c.formulaCategories,30);assert.equal(c.formulaBearing,277);

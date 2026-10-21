@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 // Test-only historical reconstruction of source-qualified first MOND / R² representatives.
 // Never loaded in the UI. Protect exact existing 413-formula data blob before stripping
 // this new append; historical count projections must not conceal unrelated edits.
@@ -11,7 +12,7 @@ const approvedBlob='05c1e6139e2ed101b8a04d88510866bab454e632';
 const marker='// 2026-10-16 MOND and Starobinsky exact-source first representatives.';
 const blobHash=b=>createHash('sha1').update(Buffer.from('blob '+b.length+'\0')).update(b).digest('hex');
 export function beforeMondStarobinskyBytes(){
- const bytes=fs.readFileSync(new URL('../formulas.js',import.meta.url));
+ const bytes=readPreCampaignFile(new URL('../formulas.js',import.meta.url));
  const needle=Buffer.from(marker),start=bytes.indexOf(needle);
  assert.ok(start>0,'MOND/R2 append marker missing');
  assert.equal(bytes.indexOf(needle,start+needle.length),-1,'duplicate MOND/R2 marker');

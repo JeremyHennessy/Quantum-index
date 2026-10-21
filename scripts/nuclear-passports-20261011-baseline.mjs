@@ -1,10 +1,11 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 // Test-only historical view: the 2026-10-11 nuclear records are additive after all
 // 2026-10-07 and 2026-10-08 immutable checkpoints. Never loaded by the app.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {priorHeldPassports} from './passport-source-review-20261014-baseline.mjs';
 
-const ledger=JSON.parse(fs.readFileSync(new URL('../research/PASSPORT_SOURCE_REVIEW_2026-10-11.json',import.meta.url),'utf8'));
+const ledger=JSON.parse(readPreCampaignFile(new URL('../research/PASSPORT_SOURCE_REVIEW_2026-10-11.json',import.meta.url),'utf8'));
 const ids=ledger.acceptedAppendOnlyPassportTheoryIds;
 const declared=new Set(ids);
 

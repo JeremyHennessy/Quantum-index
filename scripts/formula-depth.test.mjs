@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -13,7 +14,7 @@ import {cosmologyCoveredTheoryIds} from './cosmology-four-gaps-20261017-baseline
 function load(){
   const sandbox={window:{}};
   vm.createContext(sandbox);
-  for(const file of ['theories.js','formulas.js','formula-audit.js']) vm.runInContext(fs.readFileSync(file,'utf8'),sandbox);
+  for(const file of ['theories.js','formulas.js','formula-audit.js']) vm.runInContext(readPreCampaignFile(file,'utf8'),sandbox);
   return sandbox.window;
 }
 

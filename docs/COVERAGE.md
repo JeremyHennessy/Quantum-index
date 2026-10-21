@@ -8,16 +8,16 @@ Quantum Index indexes source-backed theories, formulations, interpretations, res
 
 <!-- coverage:start -->
 - **59** cited reading profiles and **5** learning paths
-- **29** Theory Passports, **5** scientific Problems, **16** Evidence records and **60** structured Research Questions
-- **481** theory/framework entities across **14** categories
-- **560** bibliography records
-- **352** primary-sourced; **129** review-sourced; **0** catalogued-only entries
-- **610** relationships: **125** source-backed; **485** editorial
+- **35** Theory Passports, **9** scientific Problems, **21** Evidence records and **60** structured Research Questions
+- **483** theory/framework entities across **14** categories
+- **578** bibliography records
+- **354** primary-sourced; **129** review-sourced; **0** catalogued-only entries
+- **613** relationships: **128** source-backed; **485** editorial
 - **41** thought trees
-- **419** formulas across **30** categories
-- **285** entries with linked formulas; **150** documented formula gaps
+- **439** formulas across **30** categories
+- **305** entries with linked formulas; **132** documented formula gaps
 - Other audit classes: **11** interpretations, **16** conceptual, **18** theorem-first, **1** thought experiment
-- Formula metadata: **170** explicitly reviewed; **249** baseline records
+- Formula metadata: **194** explicitly reviewed; **245** baseline records
 - **16** reviewed DevelopmentEvents through **2026**
 
 Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.

@@ -1,14 +1,15 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import {priorHeldPassports} from './passport-source-review-20261014-baseline.mjs';
 
-const plan=JSON.parse(fs.readFileSync('research/PASSPORT_CURATION_QUEUE_2026-10-08.json','utf8'));
+const plan=JSON.parse(readPreCampaignFile('research/PASSPORT_CURATION_QUEUE_2026-10-08.json','utf8'));
 const sandbox={window:{}};
 vm.createContext(sandbox);
 for(const file of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','passports.js'])
-  vm.runInContext(fs.readFileSync(file,'utf8'),sandbox,{filename:file});
+  vm.runInContext(readPreCampaignFile(file,'utf8'),sandbox,{filename:file});
 const w=sandbox.window;
 const theories=new Map(w.QI_DATA.theories.map(x=>[x.id,x]));
 const sources=new Map(w.QI_DATA.sources.map(x=>[x.id,x]));

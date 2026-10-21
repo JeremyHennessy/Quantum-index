@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 // Immutable prerelease records for the 16 October astroparticle formula wave.
 // Test-only: reconstruct earlier checkpoints only AFTER checking the accepted
 // pre-astro data blob bytes; never used by application runtime.
@@ -18,7 +19,7 @@ const originalBlob={
 const gitHash=buf=>createHash('sha1').update(Buffer.from('blob '+buf.length+'\0')).update(buf).digest('hex');
 export function beforeAstroBytes(path){
  assert.ok(markers[path],'Not an astroparticle-scoped data file: '+path);
- const buf=fs.readFileSync(new URL('../'+path,import.meta.url));
+ const buf=readPreCampaignFile(new URL('../'+path,import.meta.url));
  const needle=Buffer.from(markers[path]),at=buf.indexOf(needle);
  assert.ok(at>0,path+': source/formula append marker missing');
  assert.equal(buf.indexOf(needle,at+needle.length),-1,path+': duplicate append');

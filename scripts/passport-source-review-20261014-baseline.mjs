@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 // Test-only bridge for the 2026-10-14 four-Passport source review.
 // New runtime records must match the audited after-state exactly before this helper
 // reconstructs any older immutable release view. Never loaded by the app.
@@ -9,7 +10,7 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {spawnSync} from 'node:child_process';
 
-export const passportSourceReview=JSON.parse(fs.readFileSync(new URL('../research/PASSPORT_SOURCE_REVIEW_2026-10-14.json',import.meta.url),'utf8'));
+export const passportSourceReview=JSON.parse(readPreCampaignFile(new URL('../research/PASSPORT_SOURCE_REVIEW_2026-10-14.json',import.meta.url),'utf8'));
 const canonical=x=>Array.isArray(x)?x.map(canonical):x&&typeof x==='object'?Object.fromEntries(Object.keys(x).sort().map(k=>[k,canonical(x[k])])):x;
 export const passportFingerprint=x=>createHash('sha256').update(JSON.stringify(canonical(x))).digest('hex');
 

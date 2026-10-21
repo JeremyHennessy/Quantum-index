@@ -536,3 +536,290 @@ window.QI_PROBLEMS = {
     }
   ]
 };
+
+// 2026-10-21 source-qualified completion campaign.
+window.QI_PROBLEMS.problems.push(...[
+  {
+    "id": "inflation-mechanism",
+    "name": "Inflationary mechanism and initial conditions",
+    "shortQuestion": "What dynamics, initial state and exit history generated the primordial perturbations?",
+    "whyItMatters": "Different inflationary dynamics can produce similar scalar spectra, so reconstructing the early Universe requires connecting observations to initial conditions, fluctuation dynamics and reheating.",
+    "establishedBackground": [
+      "CMB measurements constrain perturbation statistics; they do not identify an inflaton.",
+      "The BK18 tensor result is an upper limit, not a rejection of every inflationary scenario."
+    ],
+    "approachGroups": [
+      {
+        "name": "Background dynamics",
+        "description": "Compare potential-driven and curvature-driven inflationary backgrounds rather than treating inflation as one potential.",
+        "theoryIds": [
+          "inflationary-cosmology",
+          "starobinsky-inflation"
+        ]
+      },
+      {
+        "name": "Primordial fluctuation predictions",
+        "description": "Relate background dynamics to scalar and tensor statistics; matching those statistics does not identify a unique microscopic model.",
+        "theoryIds": [
+          "inflationary-fluctuations",
+          "effective-field-theory-of-inflation"
+        ]
+      },
+      {
+        "name": "Stochastic evolution and initial conditions",
+        "description": "Study coarse-grained field evolution and its domain of validity separately from an observational reconstruction of initial conditions.",
+        "theoryIds": [
+          "stochastic-inflation"
+        ]
+      },
+      {
+        "name": "Exit and thermal-history reconstruction",
+        "description": "Relate inflationary predictions to the subsequent reheating history rather than assuming instantaneous conversion to a thermal bath.",
+        "theoryIds": [
+          "reheating-preheating"
+        ]
+      }
+    ],
+    "keyAssumptions": [
+      "Likelihood, foreground and late-time cosmology affect inference.",
+      "Predictions depend on initial state and reheating history."
+    ],
+    "formulaIds": [
+      "slow-roll-power",
+      "scalar-index",
+      "tensor-ratio"
+    ],
+    "evidenceIds": [
+      "ev-planck-inflation-2018",
+      "ev-bicep-keck-bk18-2021"
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "developmentContext": "Evidence dates identify particular analyses, not a claim to exhaust all later measurements.",
+    "sourceIds": [
+      "planck-inflation-2018",
+      "bicep-keck-bk18-2021",
+      "cheung-inflation-eft-2008",
+      "starobinsky-stochastic-1986"
+    ],
+    "currentStatus": "The linked CMB analyses restrict primordial spectra and tensor amplitudes, but do not establish a unique inflationary mechanism, initial quantum state or reheating history.",
+    "openIssues": [
+      "Identify discriminating tensor, isocurvature or higher-correlation signals.",
+      "Test sensitivity to initial conditions and reheating rather than fitting only a spectral tilt.",
+      "Determine when the single-clock EFT and stochastic approximations remain controlled for a proposed background."
+    ]
+  },
+  {
+    "id": "baryon-asymmetry",
+    "name": "Origin of the baryon asymmetry",
+    "shortQuestion": "Which dynamical process produced the cosmic matter–antimatter imbalance?",
+    "whyItMatters": "Light-element and cosmic-background observations constrain the surviving baryon abundance, but identifying its dynamical origin would connect cosmology with otherwise inaccessible particle interactions.",
+    "establishedBackground": [
+      "BBN connects light-element abundances to the baryon density.",
+      "Sakharov conditions organize conventional dynamical baryogenesis proposals."
+    ],
+    "approachGroups": [
+      {
+        "name": "Consistency conditions",
+        "description": "Sakharov conditions organize conventional dynamical baryogenesis; they are requirements, not a calculation of the final abundance.",
+        "theoryIds": [
+          "sakharov-baryogenesis"
+        ]
+      },
+      {
+        "name": "Scalar-condensate baryogenesis",
+        "description": "Affleck–Dine dynamics is a distinct scalar-field route, not an alias of heavy-neutrino decay.",
+        "theoryIds": [
+          "affleck-dine-baryogenesis"
+        ]
+      },
+      {
+        "name": "Lepton-asymmetry generation and conversion",
+        "description": "Leptogenesis must connect production, washout and electroweak conversion to the surviving baryon abundance.",
+        "theoryIds": [
+          "leptogenesis"
+        ]
+      },
+      {
+        "name": "Neutrino-mass model interface",
+        "description": "Seesaw models can supply particle content for leptogenesis, but neutrino masses alone do not demonstrate successful baryogenesis.",
+        "theoryIds": [
+          "seesaw-mechanism",
+          "leptogenesis"
+        ]
+      }
+    ],
+    "keyAssumptions": [
+      "Standard thermal-history assumptions enter BBN inference.",
+      "A CP asymmetry alone is insufficient; transport and washout matter."
+    ],
+    "formulaIds": [
+      "leptogenesis-flavoured-decay-cp-asymmetry"
+    ],
+    "evidenceIds": [
+      "ev-primordial-deuterium-2018"
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "developmentContext": "Evidence dates identify particular analyses, not a claim to exhaust all later measurements.",
+    "sourceIds": [
+      "sakharov-1967",
+      "davidson-nardi-nir-leptogenesis-2008",
+      "cooke-deuterium-2018",
+      "affleck-dine-1985",
+      "minkowski-seesaw-1977"
+    ],
+    "currentStatus": "The observed baryon abundance is not a detection of leptogenesis or any particular baryogenesis model.",
+    "openIssues": [
+      "Determine viable CP violation and out-of-equilibrium dynamics.",
+      "Connect the final abundance to independently testable particle parameters.",
+      "Separate evidence for neutrino mixing or mass from evidence for the CP-violating dynamics and cosmological history needed by leptogenesis."
+    ]
+  },
+  {
+    "id": "dark-energy-expansion",
+    "name": "Dark energy and expansion-history tensions",
+    "shortQuestion": "Are expansion-history discrepancies due to systematics, model assumptions, or new cosmic dynamics?",
+    "whyItMatters": "Determining whether expansion-history discrepancies reflect calibration, statistical or astrophysical systematics, or new dynamics is essential before interpreting a fitted equation of state as fundamental physics.",
+    "establishedBackground": [
+      "BAO distances are interpreted with a sound-horizon calibration and cosmological model.",
+      "A cosmological constant and dynamical alternatives must be compared using explicit dataset combinations."
+    ],
+    "approachGroups": [
+      {
+        "name": "Baseline and calibration",
+        "description": "Use Lambda-CDM as an explicit comparison model, keeping sound-horizon calibration distinct from directly measured angular or redshift separations.",
+        "theoryIds": [
+          "lambda-cdm"
+        ]
+      },
+      {
+        "name": "Canonical late-time scalar dynamics",
+        "description": "Quintessence provides time-dependent late-time dynamics without making every departure from a cosmological constant evidence for a particular scalar potential.",
+        "theoryIds": [
+          "quintessence"
+        ]
+      },
+      {
+        "name": "Alternative late-time dynamics",
+        "description": "Noncanonical kinetic models and phantom phenomenology have different assumptions and stability questions; they are not interchangeable best-fit equation-of-state labels.",
+        "theoryIds": [
+          "k-essence",
+          "phantom-dark-energy"
+        ]
+      },
+      {
+        "name": "Early-time modifications",
+        "description": "A transient pre-recombination component changes the sound-horizon calibration, unlike a solely late-time acceleration model.",
+        "theoryIds": [
+          "transient-scalar-early-dark-energy"
+        ]
+      }
+    ],
+    "keyAssumptions": [
+      "Keep early-time H0 inference distinct from late-time distance calibration.",
+      "Dataset choices, covariances and priors can alter apparent preference."
+    ],
+    "formulaIds": [
+      "lambda-cdm-redshift-expansion",
+      "quintessence-canonical-fluid-2008"
+    ],
+    "evidenceIds": [
+      "ev-desi-dr2-2025"
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "developmentContext": "Evidence dates identify particular analyses, not a claim to exhaust all later measurements.",
+    "sourceIds": [
+      "planck-cosmology-2020",
+      "desi-dr2-cosmology-2025",
+      "poulin-early-dark-energy-2019",
+      "hill-early-dark-energy-2020",
+      "ratra-peebles-1988",
+      "wave5-phantom-2002"
+    ],
+    "currentStatus": "No particular dynamical field or universal resolution of expansion tensions is established by these linked records.",
+    "openIssues": [
+      "Test cross-dataset consistency without selecting only favorable combinations.",
+      "Distinguish early-dark-energy hypotheses from late-time equation-of-state evolution.",
+      "Check stability and perturbation evolution as well as background-distance fits when evaluating a proposed dynamical component."
+    ]
+  },
+  {
+    "id": "primordial-quantum-classical",
+    "name": "Quantum-to-classical primordial perturbations",
+    "shortQuestion": "How do quantum primordial fluctuations yield effectively classical cosmological records?",
+    "whyItMatters": "Cosmological predictions use quantum initial fluctuations and effectively classical records; explaining that connection requires distinguishing calculable reduced-state dynamics from claims about definite outcomes.",
+    "establishedBackground": [
+      "Inflationary mode evolution can produce strongly squeezed states.",
+      "Environmental decoherence can suppress accessible interference without selecting a unique interpretation."
+    ],
+    "approachGroups": [
+      {
+        "name": "Quantum mode evolution",
+        "description": "Track the primordial fluctuation state and its correlation functions before replacing it by an effective classical description.",
+        "theoryIds": [
+          "inflationary-fluctuations"
+        ]
+      },
+      {
+        "name": "Squeezing and classical-statistical limits",
+        "description": "Strongly squeezed states can reproduce particular classical stochastic statistics; this does not by itself select a definite-outcome interpretation.",
+        "theoryIds": [
+          "inflationary-fluctuations"
+        ]
+      },
+      {
+        "name": "Environmental decoherence",
+        "description": "Trace explicitly identified environmental degrees of freedom and test suppression of interference in the chosen subsystem.",
+        "theoryIds": [
+          "decoherence"
+        ]
+      },
+      {
+        "name": "Coarse-grained stochastic dynamics",
+        "description": "Treat stochastic inflation as a controlled effective description where justified, not an observational proof of fundamental collapse.",
+        "theoryIds": [
+          "stochastic-inflation"
+        ]
+      }
+    ],
+    "keyAssumptions": [
+      "Specify the subsystem, environment and coarse graining.",
+      "Do not identify a classical stochastic representation with proof of fundamental collapse."
+    ],
+    "formulaIds": [
+      "mukhanov-sasaki",
+      "slow-roll-power"
+    ],
+    "evidenceIds": [
+      "ev-planck-inflation-2018"
+    ],
+    "questionIds": [],
+    "developmentIds": [],
+    "developmentContext": "Evidence dates identify particular analyses, not a claim to exhaust all later measurements.",
+    "sourceIds": [
+      "kiefer-polarski-starobinsky-1998",
+      "planck-inflation-2018",
+      "guth-pi-1982",
+      "zurek-decoherence",
+      "starobinsky-stochastic-1986"
+    ],
+    "currentStatus": "Squeezing/decoherence provide a theoretical route to effective classicality; the cited CMB data do not directly establish that route.",
+    "openIssues": [
+      "Identify observables sensitive to genuinely quantum correlations.",
+      "Separate decoherence calculations from the broader measurement problem.",
+      "Quantify sensitivity to subsystem choice, coarse-graining scale and environment instead of assuming one universal classicalization prescription."
+    ]
+  }
+]);
+(()=>{const row=window.QI_PROBLEMS.problems.find(r=>r.id==="dark-matter");if(!row)throw new Error("Missing patched record");for(const [key,values] of Object.entries({
+  "evidenceIds": [
+    "ev-primordial-deuterium-2018",
+    "ev-planck-bao-neutrino-mass-2018"
+  ],
+  "sourceIds": [
+    "cooke-deuterium-2018"
+  ]
+}))row[key]=[...new Set([...(row[key]||[]),...values])];})();
+window.QI_PROBLEMS.scope="Nine linked scientific problems organize existing and source-qualified additions without claiming resolution.";

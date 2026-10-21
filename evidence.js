@@ -734,3 +734,185 @@ window.QI_EVIDENCE.records.push(...[
     "evidenceStatus": "solar-system parameter constraint"
   }
 ]);
+
+// 2026-10-21 source-qualified completion campaign.
+window.QI_EVIDENCE.records.push(...[
+  {
+    "id": "ev-planck-inflation-2018",
+    "title": "Planck 2018 primordial-spectrum constraints",
+    "date": "2018-07-17",
+    "type": "observational constraint",
+    "result": "Planck temperature, polarization and lensing analysis finds scalar spectral index n_s = 0.9649 ± 0.0042 (68% confidence) within its fitted cosmological model.",
+    "relatedTheoryIds": [
+      "inflationary-cosmology",
+      "inflationary-fluctuations",
+      "starobinsky-inflation"
+    ],
+    "relatedProblemIds": [
+      "inflation-mechanism",
+      "primordial-quantum-classical"
+    ],
+    "relatedClaimIds": [],
+    "constrains": [
+      "The primordial scalar spectrum and allowed inflationary parameter regions, conditional on the specified likelihood and cosmological assumptions."
+    ],
+    "doesNotEstablish": [
+      "Identification of the inflaton, its potential or initial state.",
+      "A direct observation of primordial quantum coherence or proof of a measurement interpretation."
+    ],
+    "sourceIds": [
+      "planck-inflation-2018"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "planck-inflation-2018",
+        "locator": "Planck 2018 X, abstract; Sections 3–4 and conclusions; n_s from Planck TT,TE,EE+lowE+lensing.",
+        "url": "https://arxiv.org/abs/1807.06211"
+      }
+    ],
+    "reviewedAt": "2026-10-21",
+    "evidenceStatus": "model-dependent observational constraint"
+  },
+  {
+    "id": "ev-bicep-keck-bk18-2021",
+    "title": "BK18 primordial tensor upper limit",
+    "date": "2021-10-01",
+    "type": "observational constraint",
+    "result": "BICEP/Keck data through 2018, combined with WMAP and Planck frequency maps, give r_0.05 < 0.036 at 95% confidence under the fitted lensed-Lambda-CDM plus tensors and foreground model.",
+    "relatedTheoryIds": [
+      "inflationary-cosmology",
+      "inflationary-fluctuations",
+      "starobinsky-inflation"
+    ],
+    "relatedProblemIds": [
+      "inflation-mechanism"
+    ],
+    "relatedClaimIds": [],
+    "constrains": [
+      "Tensor-to-scalar power ratio at pivot k = 0.05 Mpc^-1 with dust and synchrotron marginalization."
+    ],
+    "doesNotEstablish": [
+      "A detection of primordial gravitational waves.",
+      "Exclusion of inflation as a whole; smaller tensor amplitudes remain possible."
+    ],
+    "sourceIds": [
+      "bicep-keck-bk18-2021"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "bicep-keck-bk18-2021",
+        "locator": "Abstract and main parameter-constraint result, Phys. Rev. Lett. 127, 151301 (2021).",
+        "url": "https://arxiv.org/abs/2110.00483"
+      }
+    ],
+    "reviewedAt": "2026-10-21",
+    "evidenceStatus": "upper limit, not detection"
+  },
+  {
+    "id": "ev-primordial-deuterium-2018",
+    "title": "Primordial deuterium abundance and BBN consistency",
+    "date": "2018-03-26",
+    "type": "observational result",
+    "result": "Seven high-precision absorption-system measurements yield primordial D/H = (2.527 ± 0.030) × 10^-5. Converting this abundance into a baryon density requires a BBN reaction network and nuclear rates.",
+    "relatedTheoryIds": [
+      "lambda-cdm",
+      "sakharov-baryogenesis"
+    ],
+    "relatedProblemIds": [
+      "baryon-asymmetry",
+      "dark-matter"
+    ],
+    "relatedClaimIds": [],
+    "constrains": [
+      "Primordial baryon density and early thermal history under standard nucleosynthesis assumptions."
+    ],
+    "doesNotEstablish": [
+      "Which baryogenesis mechanism produced the baryon excess.",
+      "Resolution of the lithium-abundance discrepancy or identification of dark matter."
+    ],
+    "sourceIds": [
+      "cooke-deuterium-2018"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "cooke-deuterium-2018",
+        "locator": "Abstract, precision-sample combined abundance; arXiv:1710.11129v3, published ApJ 855, 102.",
+        "url": "https://arxiv.org/abs/1710.11129v3"
+      }
+    ],
+    "reviewedAt": "2026-10-21",
+    "evidenceStatus": "abundance measurement with model-dependent BBN inference"
+  },
+  {
+    "id": "ev-katrin-mass-2025",
+    "title": "KATRIN direct neutrino-mass upper limit",
+    "date": "2025-04-10",
+    "type": "experimental constraint",
+    "result": "The 259-day KATRIN tritium-endpoint analysis reports an effective electron-antineutrino mass below 0.45 eV at 90% confidence.",
+    "relatedTheoryIds": [
+      "neutrino-mixing",
+      "seesaw-mechanism"
+    ],
+    "relatedProblemIds": [],
+    "relatedClaimIds": [],
+    "constrains": [
+      "The beta-decay effective mass under the fitted endpoint spectrum, backgrounds and systematic uncertainties."
+    ],
+    "doesNotEstablish": [
+      "The cosmological sum of neutrino masses, a mass ordering, or a Majorana nature.",
+      "Exclusion of all sterile-neutrino dark-matter models or proof of leptogenesis."
+    ],
+    "sourceIds": [
+      "katrin-mass-2025"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "katrin-mass-2025",
+        "locator": "Abstract and reported mass bound, Science 388, 180–185 (2025); arXiv:2406.13516. Date field is the journal online-publication date; first preprint was 2024-06-19.",
+        "url": "https://arxiv.org/abs/2406.13516"
+      }
+    ],
+    "reviewedAt": "2026-10-21",
+    "evidenceStatus": "upper limit, not mass detection"
+  },
+  {
+    "id": "ev-planck-bao-neutrino-mass-2018",
+    "title": "Planck plus BAO neutrino-mass constraint",
+    "date": "2018-07-17",
+    "type": "observational constraint",
+    "result": "Planck TT,TE,EE+lowE+lensing+BAO yields sum m_nu < 0.12 eV (95% confidence) in its Lambda-CDM plus neutrino-mass analysis.",
+    "relatedTheoryIds": [
+      "lambda-cdm",
+      "neutrino-mixing"
+    ],
+    "relatedProblemIds": [
+      "dark-matter"
+    ],
+    "relatedClaimIds": [],
+    "constrains": [
+      "The sum of three active-neutrino masses under the analysis model, datasets and parameter priors.",
+      "The calculation uses degenerate masses, a Fermi–Dirac distribution and zero chemical potential."
+    ],
+    "doesNotEstablish": [
+      "A direct laboratory mass measurement or a model-independent cosmological bound.",
+      "Exclusion of every nonstandard neutrino population or proof of the mass ordering."
+    ],
+    "sourceIds": [
+      "planck-cosmology-2020"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "planck-cosmology-2020",
+        "locator": "Planck 2018 VI, Section 7.5.1, HTML Eq. (61b), corresponding to v4 PDF Eq. (63b), PDF p. 48; statistical/parameter conventions in Section 2.1. Published A&A 641 A6 (2020).",
+        "url": "https://arxiv.org/html/1807.06209v4#S7.SS5.SSS1"
+      }
+    ],
+    "reviewedAt": "2026-10-21",
+    "evidenceStatus": "model-dependent upper limit"
+  }
+]);
+(()=>{const row=window.QI_EVIDENCE.records.find(r=>r.id==="ev-desi-dr2-2025");if(!row)throw new Error("Missing patched record");for(const [key,values] of Object.entries({
+  "relatedProblemIds": [
+    "dark-energy-expansion"
+  ]
+}))row[key]=[...new Set([...(row[key]||[]),...values])];})();

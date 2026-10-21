@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 import {bellReview,restoreBellFormula} from './bell-metadata-baseline.mjs';
 import {priorDepthFormulas,priorDepthEvidence,verifyDepthFileSha256} from './multidomain-depth-baseline.mjs';
 import test from 'node:test';
@@ -7,13 +8,13 @@ import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 const files=['theories.js','developments.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','evidence.js','passports.js'];
 const sandbox={window:{}};vm.createContext(sandbox);
-for(const f of files)vm.runInContext(fs.readFileSync(f,'utf8'),sandbox,{filename:f});
+for(const f of files)vm.runInContext(readPreCampaignFile(f,'utf8'),sandbox,{filename:f});
 const w=sandbox.window;
-const ledger=JSON.parse(fs.readFileSync('docs/RECONCILIATION_2026-10-07.json','utf8'));
-const lattice=JSON.parse(fs.readFileSync('docs/LATTICE_CURATION_2026-10-07.json','utf8'));
-const followup=JSON.parse(fs.readFileSync('docs/COMPARE_ZENO_2026-10-07.json','utf8'));
+const ledger=JSON.parse(readPreCampaignFile('docs/RECONCILIATION_2026-10-07.json','utf8'));
+const lattice=JSON.parse(readPreCampaignFile('docs/LATTICE_CURATION_2026-10-07.json','utf8'));
+const followup=JSON.parse(readPreCampaignFile('docs/COMPARE_ZENO_2026-10-07.json','utf8'));
 const hash=v=>createHash('sha256').update(v).digest('hex');
-const amo=JSON.parse(fs.readFileSync('docs/AMO_STEERING_2026-10-07.json','utf8'));
+const amo=JSON.parse(readPreCampaignFile('docs/AMO_STEERING_2026-10-07.json','utf8'));
 const canonical=v=>Array.isArray(v)?v.map(canonical):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,canonical(v[k])])):v;
 const newFormulaIds=['configuration-ensemble-hamiltonian','cq-backreaction-decoherence-diffusion','cq-decoherence-diffusion-tradeoff'];
 
@@ -57,7 +58,7 @@ test('all scientific-layer references resolve and generated source count equals 
  function walk(v){if(!v||typeof v!=='object')return;for(const [key,value] of Object.entries(v)){if(links[key])for(const id of value)assert.ok(links[key].has(id),`${key}: ${id}`);else walk(value);}}
  for(const data of [w.QI_EVIDENCE,w.QI_DEVELOPMENTS,w.QI_PROBLEMS,w.QI_QUESTIONS,w.QI_PASSPORTS,w.QI_FORMULAS])walk(data);
  for(const [ids,records] of [[sources,w.QI_DATA.sources],[evidence,w.QI_EVIDENCE.records],[events,w.QI_DEVELOPMENTS.events],[questions,w.QI_QUESTIONS.questions]])assert.equal(ids.size,records.length);
- assert.equal(JSON.parse(fs.readFileSync('docs/coverage.json')).sources,sources.size);
+ assert.equal(JSON.parse(readPreCampaignFile('docs/coverage.json')).sources,sources.size);
  for(const id of ['hensen-bell-2015','donadi-collapse-2021','superk-atmospheric-1998',...ledger.uniqueSourcesRetained])assert.ok(sources.has(id),id);
  const aliases=ledger.sourceAliases;
  for(const old of Object.keys(aliases))assert.ok(!sources.has(old)&&!evidence.has(old)&&!events.has(old),old);

@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -6,13 +7,13 @@ import {beforeMondStarobinskyBytes,priorMondStarobinskyFormulas,priorMondStarobi
 import {priorCosmologyCoverage} from './cosmology-four-gaps-20261017-baseline.mjs';
 const ctx={window:{}};vm.createContext(ctx);
 for(const path of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','passports.js'])
- vm.runInContext(fs.readFileSync(path,'utf8'),ctx,{filename:path});
+ vm.runInContext(readPreCampaignFile(path,'utf8'),ctx,{filename:path});
 const w=ctx.window,near=(a,b,tol=1e-10)=>assert.ok(Number.isFinite(a)&&Number.isFinite(b)&&Math.abs(a-b)<tol,String(a)+' != '+String(b));
 test('the MOND and Starobinsky first formulas preserve exact previous Git blob and registered bibliography',()=>{
  assert.ok(beforeMondStarobinskyBytes().length>0);
  assert.equal(newRepresentativeIds.length,2);assert.deepEqual(newlyCoveredTheoryIds,['mond','starobinsky-inflation']);
  assert.equal(priorMondStarobinskyFormulas(w.QI_FORMULAS.formulas).length,413);
- const latestRaw=JSON.parse(fs.readFileSync('docs/coverage.json','utf8'));
+ const latestRaw=JSON.parse(readPreCampaignFile('docs/coverage.json','utf8'));
  const latest=priorCosmologyCoverage(latestRaw);
  assert.equal(latest.theories,481);assert.equal(latest.passports,29);assert.equal(latest.relations,610);
  assert.equal(latest.evidenceRecords,16);assert.equal(latest.sources,558);

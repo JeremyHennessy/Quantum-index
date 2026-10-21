@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 // Test-only checkpoint reconstruction of the 2026-10-16 QEC formula review.
 // Original October 14 bytes are checked against their approved Git blob SHA before
 // reconstructing any historical formula. Never loaded by the application.
@@ -10,7 +11,7 @@ const marker='// 2026-10-16 QEC original-source qualification.';
 function blobSha(bytes){
  return createHash('sha1').update(Buffer.from('blob '+bytes.length+'\0')).update(bytes).digest('hex');
 }
-const file=fs.readFileSync(new URL('../formulas.js',import.meta.url));
+const file=readPreCampaignFile(new URL('../formulas.js',import.meta.url));
 const at=file.indexOf(Buffer.from(marker));
 assert.ok(at>0,'QEC append marker absent');
 assert.equal(file.indexOf(Buffer.from(marker),at+marker.length),-1,'duplicate QEC append');

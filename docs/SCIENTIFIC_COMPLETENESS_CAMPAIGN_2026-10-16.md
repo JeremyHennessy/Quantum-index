@@ -2,6 +2,10 @@
 
 **Authorized:** 16 October 2026. **Intake main:** `3c2c260fd1f69d885afd04fa21df455424f0f037`. Current authoritative head must be rechecked before each new branch. The historical 14 October hosted/browser acceptance and existing scientific records are approved regression baselines, not permission for an unrelated redesign.
 
+## Current status: 21 October 2026
+
+This document records the original 16 October intake and ordered plan. It is not the active pending-work list. Yang–Mills and QEC Passports and the subsequent astroparticle releases through PR85 were accepted on main before this campaign resumed. See [CONTINUATION.md](CONTINUATION.md) for the current release gates, qualified additions and remaining holds. Historical candidate language below is retained as an audit trail, not a claim that those merged releases remain pending.
+
 ## Aim and evidence gates
 
 Deepen the existing 481-entry sourced catalog into a dependable scientific atlas. Treat an entity, a formula, a directed relationship, and an empirical result as **separate claims** with separate acceptance evidence. A citation attached to an entry does not verify all its statements. Mathematical render success does not verify physical correctness. Published theoretical results do not count as experimental observations.

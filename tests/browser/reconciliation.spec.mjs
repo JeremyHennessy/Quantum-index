@@ -1,3 +1,5 @@
+import {readFileSync} from 'node:fs';
+const coverage=JSON.parse(readFileSync(new URL('../../docs/coverage.json',import.meta.url),'utf8'));
 import {test,expect} from '@playwright/test';
 
 test('reconciled gravity formulas render real math and retain desktop/mobile containment',async({page},testInfo)=>{
@@ -14,7 +16,7 @@ test('reconciled gravity formulas render real math and retain desktop/mobile con
   return {failures,total:QI_FORMULAS.formulas.length,latex:QI_FORMULAS.formulas.find(f=>f.id==='cq-decoherence-diffusion-tradeoff').latex};
  });
  // The original 405-formula checkpoint remains preserved; current total includes eight new source-reviewed astro representatives.
- expect(results.total).toBe(419);expect(results.failures).toEqual([]);expect(results.latex).toBe(String.raw`4D_2\succeq D_0^{-1}`);
+ expect(results.total).toBe(coverage.formulas);expect(results.failures).toEqual([]);expect(results.latex).toBe(String.raw`4D_2\succeq D_0^{-1}`);
  await expect(page.locator('#formulaGrid')).toContainText('support');
  await expect(page.locator('#formulaGrid mjx-container').first()).toBeVisible();
  for(const width of [1280,320]){

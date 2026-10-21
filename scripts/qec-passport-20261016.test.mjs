@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -6,14 +7,14 @@ import {createHash} from 'node:crypto';
 import {restoreQecFormula} from './qec-source-review-20261016-baseline.mjs';
 import {priorAstroFormulas} from './astro-formulas-20261016-baseline.mjs';
 const w={window:{}};vm.createContext(w);
-for(const file of ['theories.js','formulas.js','formula-audit.js','developments.js','evidence.js','questions.js','problems.js','passports.js'])vm.runInContext(fs.readFileSync(file,'utf8'),w,{filename:file});
+for(const file of ['theories.js','formulas.js','formula-audit.js','developments.js','evidence.js','questions.js','problems.js','passports.js'])vm.runInContext(readPreCampaignFile(file,'utf8'),w,{filename:file});
 const data=w.window;
 const shaBlob=bytes=>createHash('sha1').update(Buffer.from('blob '+bytes.length+'\0')).update(bytes).digest('hex');
 test('QEC review preserves exact pre-candidate formula and Passport files before append markers',()=>{
   for(const [path,marker,sha] of [
     ['formulas.js','// 2026-10-16 QEC original-source qualification.','85b049b3cad6584774f40fba465ec7b038fde422'],
     ['passports.js','// 2026-10-16 QEC original-source-reviewed Passport.','d5b39d32c993f88ccf6a59dd7f582ebb97273d0f']
-  ]){const bytes=fs.readFileSync(path),i=bytes.indexOf(Buffer.from(marker));assert.ok(i>0,path);{const prefix=bytes.subarray(0,i),accepted=[prefix];
+  ]){const bytes=readPreCampaignFile(path),i=bytes.indexOf(Buffer.from(marker));assert.ok(i>0,path);{const prefix=bytes.subarray(0,i),accepted=[prefix];
     for(let j=1;j<=4&&prefix.length>=j;j++)if(prefix.subarray(prefix.length-j).every(byte=>byte===10||byte===13))accepted.push(prefix.subarray(0,prefix.length-j));
     assert.ok(accepted.some(bytes=>shaBlob(bytes)===sha),path+': original record bytes modified')}}
   assert.equal(data.QI_DATA.theories.length,481);

@@ -1,13 +1,14 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import {priorNewRelations,promotionLedger} from './relation-promotions-20261008-baseline.mjs';
 
-const ledger=JSON.parse(fs.readFileSync('research/RELATION_SOURCE_REVIEW_2026-10-08.json','utf8'));
+const ledger=JSON.parse(readPreCampaignFile('research/RELATION_SOURCE_REVIEW_2026-10-08.json','utf8'));
 const sandbox={window:{}};
 vm.createContext(sandbox);
-vm.runInContext(fs.readFileSync('theories.js','utf8'),sandbox);
+vm.runInContext(readPreCampaignFile('theories.js','utf8'),sandbox);
 const {theories,relations,sources}=sandbox.window.QI_DATA;
 const previousRelations=priorNewRelations(relations);
 const key=x=>[x.from,x.to,x.type].join('|');

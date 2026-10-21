@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -7,11 +8,11 @@ import {priorAstroCoverage,priorAstroSources,priorAstroFormulas} from './astro-f
 
 const sandbox={window:{}};vm.createContext(sandbox);
 for(const p of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','questions.js','problems.js','passports.js'])
- vm.runInContext(fs.readFileSync(p,'utf8'),sandbox,{filename:p});
+ vm.runInContext(readPreCampaignFile(p,'utf8'),sandbox,{filename:p});
 const w=sandbox.window;
 test('source review is append-only and retains exact pre-Yang-Mills source/formula/Passport bytes',()=>{
  for(const path of ['theories.js','formulas.js','passports.js'])assert.ok(beforeYangMillsBytes(path).length>0);
- const c=priorAstroCoverage(JSON.parse(fs.readFileSync('docs/coverage.json','utf8')));
+ const c=priorAstroCoverage(JSON.parse(readPreCampaignFile('docs/coverage.json','utf8')));
  assert.equal(c.theories,481);assert.equal(c.formulas,405);assert.equal(c.formulaGaps,163);
  assert.equal(c.relations,610);assert.equal(c.sources,551);assert.equal(c.passports,29);
  assert.equal(c.explicitFormulaMetadata,156);assert.equal(c.baselineFormulaMetadata,249);

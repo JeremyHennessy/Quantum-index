@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -5,14 +6,14 @@ import vm from 'node:vm';
 import {beforeCosmologyBytes,cosmologyFormulaIds,cosmologyCoveredTheoryIds,priorCosmologyFormulas,priorCosmologySources,priorCosmologyCoverage} from './cosmology-four-gaps-20261017-baseline.mjs';
 
 const c={window:{}};vm.createContext(c);
-for(const f of ['theories.js','formulas.js','formula-audit.js','developments.js','evidence.js','questions.js','problems.js','passports.js'])vm.runInContext(fs.readFileSync(f,'utf8'),c,{filename:f});
+for(const f of ['theories.js','formulas.js','formula-audit.js','developments.js','evidence.js','questions.js','problems.js','passports.js'])vm.runInContext(readPreCampaignFile(f,'utf8'),c,{filename:f});
 const w=c.window,near=(a,b,e=1e-10)=>assert.ok(Number.isFinite(a)&&Number.isFinite(b)&&Math.abs(a-b)<e,a+' != '+b);
 
 test('four cosmology records append to exact accepted scientific Git blobs with generated counts',()=>{
  assert.ok(beforeCosmologyBytes('theories.js').length>0);
  assert.ok(beforeCosmologyBytes('formulas.js').length>0);
  assert.equal(new Set(cosmologyFormulaIds).size,4);
- const latest=JSON.parse(fs.readFileSync('docs/coverage.json','utf8'));
+ const latest=JSON.parse(readPreCampaignFile('docs/coverage.json','utf8'));
  for(const [key,value] of Object.entries({theories:481,sources:560,formulas:419,formulaCategories:30,formulaBearing:285,formulaGaps:150,explicitFormulaMetadata:170,baselineFormulaMetadata:249,passports:29,relations:610,evidenceRecords:16}))assert.equal(latest[key],value,key);
  const old=priorCosmologyCoverage(latest);
  for(const [key,value] of Object.entries({sources:558,formulas:415,formulaBearing:281,formulaGaps:154,explicitFormulaMetadata:166,baselineFormulaMetadata:249}))assert.equal(old[key],value,key);

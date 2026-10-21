@@ -9982,3 +9982,1155 @@ for(const row of batch){if(known.has(row.id))throw new Error("Duplicate scientif
  const existing=new Set(window.QI_FORMULAS.formulas.map(f=>f.id));
  for(const f of records){if(existing.has(f.id))throw new Error('Duplicate cosmology formula '+f.id);existing.add(f.id);window.QI_FORMULAS.formulas.push(f);}
 })();
+
+// 2026-10-21 source-qualified completion campaign.
+window.QI_FORMULAS.formulas.push(...[
+  {
+    "id": "sidm-local-mean-free-path",
+    "name": "SIDM local mean-free-path cross section",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "\\sigma_{XX}=8.1\\times10^{-25}\\,\\mathrm{cm}^{2}\\left(\\frac{m_x}{\\mathrm{GeV}}\\right)\\left(\\frac{\\lambda}{1\\,\\mathrm{Mpc}}\\right)^{-1}",
+    "plain": "sigma_XX = 8.1e-25 cm^2 (m_x/GeV) (lambda/1 Mpc)^(-1)",
+    "description": "Elastic self-scattering cross section corresponding to the original proposal's fixed local dark-matter density.",
+    "theoryIds": [
+      "self-interacting-dark-matter"
+    ],
+    "sourceIds": [
+      "spergel-steinhardt-2000"
+    ],
+    "tags": [
+      "self-interacting-dark-matter",
+      "representative equation"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "Uses the source's local mass density 0.4 GeV/cm^3 and the dilute-particle mean-free-path relation lambda=1/(n_x sigma_XX).",
+      "Cold, nondissipative, elastic same-species scattering; negligible annihilation in the original example.",
+      "The coefficient and quoted mean-free-path interval are historical illustrative assumptions, not current observational bounds or a universal preferred SIDM cross section.",
+      "For velocity-dependent or anisotropic scattering, distinguish total, transfer and viscosity cross sections; do not substitute them silently."
+    ],
+    "variables": [
+      "sigma_XX: total elastic self-scattering cross section in cm^2",
+      "m_x: particle rest mass expressed in GeV with c=1",
+      "lambda: local mean free path expressed in Mpc"
+    ],
+    "regime": "Dilute local halo under the fixed density convention; not a full halo-evolution model.",
+    "units": "Cross section has area units; displayed mass and length ratios are dimensionless.",
+    "theoryRelationship": "Elastic self-scattering cross section corresponding to the original proposal's fixed local dark-matter density. This is one model-level relation, not completion or empirical confirmation of the theory family.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-qualified-equations-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "spergel-steinhardt-2000",
+        "locator": "Spergel & Steinhardt, Eq. (1), printed p. 2, paragraph beginning “To be more specific”. arXiv:astro-ph/9909386v2, PDF page 2.",
+        "url": "https://arxiv.org/pdf/astro-ph/9909386v2#page=2"
+      }
+    ]
+  },
+  {
+    "id": "hybrid-inflation-linde-potential",
+    "name": "Original two-field hybrid-inflation potential",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "V(\\sigma,\\phi)=\\frac{(M^2-\\lambda\\sigma^2)^2}{4\\lambda}+\\frac{m^2\\phi^2}{2}+\\frac{g^2\\phi^2\\sigma^2}{2}",
+    "plain": "V=(M^2-lambda sigma^2)^2/(4lambda)+m^2 phi^2/2+g^2 phi^2 sigma^2/2",
+    "description": "Linde's specific two-field potential whose waterfall instability occurs when the sigma-direction mass squared changes sign.",
+    "theoryIds": [
+      "hybrid-inflation"
+    ],
+    "sourceIds": [
+      "linde-hybrid-inflation-1994"
+    ],
+    "tags": [
+      "hybrid-inflation",
+      "representative equation"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "Canonical scalar-field example in Einstein gravity; lambda>0, g^2>0, positive mass scales M and m.",
+      "Along sigma=0, m_sigma^2=g^2 phi^2-M^2; the stable inflationary valley requires |phi|>M/g, and loss of stability triggers a possible waterfall.",
+      "Inflation and rapid completion require suitable initial conditions and parameter hierarchies; the potential alone does not establish sufficient e-folds or observational agreement.",
+      "The original text interprets sigma as a nonnegative Higgs radial degree of freedom to avoid treating its two signs as separate physical vacua."
+    ],
+    "variables": [
+      "phi: inflaton scalar field",
+      "sigma: waterfall/Higgs radial scalar field",
+      "M,m: mass parameters",
+      "lambda,g: dimensionless scalar couplings",
+      "V: potential energy density"
+    ],
+    "regime": "Original canonical two-field hybrid-inflation example, not every hybrid or supersymmetric variant.",
+    "units": "c=hbar=1; fields and M,m have mass dimension 1, V dimension 4.",
+    "theoryRelationship": "Linde's specific two-field potential whose waterfall instability occurs when the sigma-direction mass squared changes sign. This is one model-level relation, not completion or empirical confirmation of the theory family.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-qualified-equations-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "linde-hybrid-inflation-1994",
+        "locator": "Linde, Hybrid Inflation, Sec. 2, Eq. (1), printed p. 3 and the immediately following waterfall discussion. arXiv:astro-ph/9307002v3, PDF page 3.",
+        "url": "https://arxiv.org/pdf/astro-ph/9307002v3#page=3"
+      }
+    ]
+  },
+  {
+    "id": "warm-inflation-overdamped-drift",
+    "name": "Warm-inflation overdamped mean-field drift",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "(3H+\\Gamma_\\phi)\\dot\\phi+V_{,\\phi}(\\phi,T)\\simeq0",
+    "plain": "(3H+Gamma_phi) phi_dot + partial_phi V(phi,T) approx 0",
+    "description": "Thermally averaged overdamped inflaton drift after neglecting acceleration and small fluctuations in Berera's warm-inflation example.",
+    "theoryIds": [
+      "warm-inflation"
+    ],
+    "sourceIds": [
+      "wave4-warm-berera-1995"
+    ],
+    "tags": [
+      "warm-inflation",
+      "representative equation"
+    ],
+    "formulaType": "approximation",
+    "assumptions": [
+      "Source Eq. (2) first places the expression inside a thermal average; the next paragraph removes brackets when the mean field is much larger than its fluctuations and defines Gamma_phi as the averaged dissipation coefficient.",
+      "Requires potential dominance phi_dot^2/2 much less than V and negligible acceleration compared with (3H+Gamma_phi)phi_dot, source Eqs. (4)-(5).",
+      "Homogeneous coarse-grained mean field in a thermal bath, Gamma_phi>=0; omits stochastic noise and does not assert that a Markovian local coefficient exists for every microscopic model.",
+      "Do not mistake this slow-roll equation for the full second-order equation or an independently complete radiation/temperature evolution system."
+    ],
+    "variables": [
+      "phi: homogeneous thermally averaged scalar field",
+      "H: Hubble expansion rate",
+      "Gamma_phi: averaged dissipative friction rate",
+      "T: bath temperature",
+      "V_,phi: derivative of the finite-temperature effective potential with respect to phi",
+      "dot: cosmic-time derivative"
+    ],
+    "regime": "Thermal mean-field slow roll in the illustrative warm-inflation regime.",
+    "units": "c=hbar=k_B=1; H and Gamma_phi have mass dimension 1, phi dimension 1, all equation terms dimension 3.",
+    "theoryRelationship": "Thermally averaged overdamped inflaton drift after neglecting acceleration and small fluctuations in Berera's warm-inflation example. This is one model-level relation, not completion or empirical confirmation of the theory family.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-qualified-equations-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "wave4-warm-berera-1995",
+        "locator": "Berera, Warm Inflation, Eq. (2) and following averaging paragraph; validity conditions Eqs. (4)-(5), printed p. 3. arXiv:astro-ph/9509049v1, PDF page 3.",
+        "url": "https://arxiv.org/pdf/astro-ph/9509049v1#page=3"
+      }
+    ]
+  },
+  {
+    "id": "phantom-scalar-stress-energy",
+    "name": "Wrong-sign scalar phantom stress-energy",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "\\rho_\\phi=-\\tfrac12\\dot\\phi^2+V(\\phi),\\qquad p_\\phi=-\\tfrac12\\dot\\phi^2-V(\\phi)",
+    "plain": "rho_phi=-phi_dot^2/2+V; p_phi=-phi_dot^2/2-V",
+    "description": "Homogeneous energy density and pressure of Caldwell's wrong-sign scalar toy model.",
+    "theoryIds": [
+      "phantom-dark-energy"
+    ],
+    "sourceIds": [
+      "wave5-phantom-2002"
+    ],
+    "tags": [
+      "phantom-dark-energy",
+      "representative equation"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "Metric signature (+---) and scalar Lagrangian L_phi=-g^{mu nu}partial_mu phi partial_nu phi/2-V, exactly the source convention.",
+      "Homogeneous minimally coupled scalar in an expanding cosmological background; no spatial-gradient contribution in this display.",
+      "Positive energy requires V>phi_dot^2/2; for nonzero phi_dot this gives w=p/rho<-1, while phi_dot=0 gives w=-1.",
+      "Wrong-sign kinetic energy is a ghost at the quantum level; this phenomenological toy model is not claimed to be a stable ultraviolet-complete dark-energy theory."
+    ],
+    "variables": [
+      "rho_phi: scalar energy density",
+      "p_phi: scalar isotropic pressure",
+      "phi: homogeneous scalar field",
+      "V: scalar potential",
+      "dot: cosmic-time derivative"
+    ],
+    "regime": "Classical homogeneous phantom toy model, not a stability result or evidence for w<-1.",
+    "units": "c=hbar=1; field dimension 1, dot(phi) dimension 2, rho,p,V dimension 4.",
+    "theoryRelationship": "Homogeneous energy density and pressure of Caldwell's wrong-sign scalar toy model. This is one model-level relation, not completion or empirical confirmation of the theory family.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-qualified-equations-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "wave5-phantom-2002",
+        "locator": "Caldwell, A Phantom Menace?, unnumbered equations in paragraph beginning “We describe the system of gravitation”, PDF p. 4. arXiv:astro-ph/9908168v2, PDF page 4.",
+        "url": "https://arxiv.org/pdf/astro-ph/9908168v2#page=4"
+      }
+    ]
+  },
+  {
+    "id": "teves-physical-metric",
+    "name": "TeVeS physical-to-Einstein metric relation",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "\\widetilde g_{\\alpha\\beta}=e^{-2\\phi}g_{\\alpha\\beta}-2U_\\alpha U_\\beta\\sinh(2\\phi)",
+    "plain": "g_tilde_ab=exp(-2phi) g_ab-2 U_a U_b sinh(2phi)",
+    "description": "Disformal relation defining the matter-coupled physical metric in Bekenstein's original TeVeS construction.",
+    "theoryIds": [
+      "teves"
+    ],
+    "sourceIds": [
+      "bekenstein-teves-2004"
+    ],
+    "tags": [
+      "teves",
+      "representative equation"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "Einstein metric g has signature (-+++); the timelike vector obeys g^{alpha beta}U_alpha U_beta=-1.",
+      "U_alpha is lowered with g, not with the physical metric; phi is dimensionless.",
+      "Matter minimally couples to g_tilde; gravitational scalar/vector/tensor dynamics require the separate action and field equations.",
+      "This structural definition does not establish cosmological viability, stability or agreement with later multimessenger constraints."
+    ],
+    "variables": [
+      "g_alpha_beta: Einstein-frame metric",
+      "g_tilde_alpha_beta: physical matter metric",
+      "U_alpha: covariant unit timelike vector with normalization defined using g",
+      "phi: dimensionless TeVeS scalar"
+    ],
+    "regime": "Original tensor-vector-scalar gravitational model.",
+    "units": "Dimensionless metric components in coordinates of common length units; phi and unit-vector components are dimensionless under this convention.",
+    "theoryRelationship": "Disformal relation defining the matter-coupled physical metric in Bekenstein's original TeVeS construction. This is one model-level relation, not completion or empirical confirmation of the theory family.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-qualified-equations-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "bekenstein-teves-2004",
+        "locator": "Bekenstein, Sec. III, Eq. (22), printed p. 9; vector normalization Eq. (20) on PDF p. 8. arXiv:astro-ph/0403694v6, PDF page 9.",
+        "url": "https://arxiv.org/pdf/astro-ph/0403694v6#page=9"
+      }
+    ]
+  },
+  {
+    "id": "sterile-neutrino-vacuum-seesaw-mixing",
+    "name": "Sterile-neutrino vacuum seesaw mixing limit",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "\\theta_{\\mathrm{vac}}\\simeq\\frac{\\mu}{M}\\qquad (\\mu\\ll M)",
+    "plain": "theta_vac approx mu/M for mu much less than M",
+    "description": "Small vacuum active-sterile mixing in the one-generation mass model used by Dodelson and Widrow.",
+    "theoryIds": [
+      "sterile-neutrino-dark-matter"
+    ],
+    "sourceIds": [
+      "dodelson-widrow-1994"
+    ],
+    "tags": [
+      "sterile-neutrino-dark-matter",
+      "representative equation"
+    ],
+    "formulaType": "approximation",
+    "assumptions": [
+      "One active and one sterile neutrino, Dirac mixing mass mu and right-handed Majorana mass M; no active Majorana mass in the source setup.",
+      "Leading order in mu/M; theta_vac labels the source's theta_M specifically evaluated in vacuum, not the finite-temperature mixing angle.",
+      "This does not supply a relic abundance, production kernel, resonant conversion result, or current viability bound for sterile-neutrino dark matter.",
+      "Do not use the paper's historical cosmological normalization or keV mass preferences as current constraints."
+    ],
+    "variables": [
+      "theta_vac: dimensionless vacuum mixing angle",
+      "mu: active-sterile Dirac mass",
+      "M: sterile Majorana mass"
+    ],
+    "regime": "Vacuum one-generation seesaw hierarchy; not in-medium oscillation kinetics.",
+    "units": "mu and M share mass units; theta is dimensionless (radians).",
+    "theoryRelationship": "Small vacuum active-sterile mixing in the one-generation mass model used by Dodelson and Widrow. This is one model-level relation, not completion or empirical confirmation of the theory family.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-qualified-equations-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "dodelson-widrow-1994",
+        "locator": "Dodelson & Widrow, immediately after Eq. (1), paragraph beginning “In vacuum”, printed p. 4. Source writes theta_M=mu/M in the stated limit. arXiv:hep-ph/9303287v1, PDF page 4.",
+        "url": "https://arxiv.org/pdf/hep-ph/9303287v1#page=4"
+      }
+    ]
+  },
+  {
+    "id": "pbh-near-critical-mass-scaling",
+    "name": "Primordial-black-hole near-critical mass scaling",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "M_{\\mathrm{BH}}=K(\\delta-\\delta_c)^\\gamma\\qquad (\\delta>\\delta_c)",
+    "plain": "M_BH=K(delta-delta_c)^gamma near threshold",
+    "description": "Near-threshold collapse scaling applied to the primordial-black-hole initial mass function.",
+    "theoryIds": [
+      "primordial-black-hole-dark-matter"
+    ],
+    "sourceIds": [
+      "niemeyer-jedamzik-pbh-critical-1998"
+    ],
+    "tags": [
+      "primordial-black-hole-dark-matter",
+      "representative equation"
+    ],
+    "formulaType": "approximation",
+    "assumptions": [
+      "Applies only near the black-hole-formation threshold for a fixed family of initial perturbation profiles and equation of state.",
+      "delta is the source's dimensionless control parameter/density contrast; its slicing, smoothing and profile convention must accompany numerical threshold values.",
+      "K carries mass units and depends on the profile and horizon scale; it is not a universal dimensionless constant.",
+      "The radiation-fluid critical exponent is approximately 0.356 in the cited calculation, not a universal exponent for every matter model.",
+      "This is a formation scaling law, not a claim that PBHs supply all dark matter, nor a present-day abundance/constraint calculation."
+    ],
+    "variables": [
+      "M_BH: formed black-hole mass",
+      "K: positive mass normalization for the chosen perturbation family",
+      "delta: dimensionless collapse control parameter",
+      "delta_c: family-dependent threshold",
+      "gamma: critical scaling exponent"
+    ],
+    "regime": "Classical near-critical radiation-fluid collapse; not evaporation or arbitrary far-supercritical overdensities.",
+    "units": "M_BH and K have mass units; delta, delta_c and gamma are dimensionless.",
+    "theoryRelationship": "Near-threshold collapse scaling applied to the primordial-black-hole initial mass function. This is one model-level relation, not completion or empirical confirmation of the theory family.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-qualified-equations-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "niemeyer-jedamzik-pbh-critical-1998",
+        "locator": "Niemeyer & Jedamzik, Eq. (1), PDF p. 1; radiation-fluid application and gamma approximately 0.356 discussed on PDF p. 2. arXiv:astro-ph/9709072v2, PDF page 1.",
+        "url": "https://arxiv.org/pdf/astro-ph/9709072v2#page=1"
+      }
+    ]
+  },
+  {
+    "id": "dark-photon-induced-em-current",
+    "name": "Dark-photon induced electromagnetic-current coupling",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "\\mathcal L_{\\mathrm{int}}\\supset\\epsilon e A^\\prime_\\mu J^\\mu_{\\mathrm{EM}},\\qquad\\epsilon=\\epsilon_Y\\cos\\theta_W",
+    "plain": "L_int contains epsilon e A_prime_mu J_EM^mu; epsilon=epsilon_Y cos(theta_W)",
+    "description": "Low-energy electromagnetic-current coupling induced by hypercharge kinetic mixing for a massive dark photon.",
+    "theoryIds": [
+      "dark-photon"
+    ],
+    "sourceIds": [
+      "bjorken-dark-gauge-forces-2009"
+    ],
+    "tags": [
+      "dark-photon",
+      "representative equation"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "Uses the authors' field-redefinition and sign convention A_mu -> A_mu+epsilon A_prime_mu; flipping A_prime changes the displayed coupling sign without changing observables.",
+      "Small kinetic mixing, massive extra U(1) gauge boson, and low energies where Z-mixing effects are suppressed.",
+      "J_EM is normalized so the ordinary photon interaction is e A_mu J_EM^mu; electric charge is not included twice in J_EM.",
+      "This coupling alone does not specify a dark-matter abundance or require the vector itself to constitute dark matter; massless limits and hidden-sector millicharges need separate treatment."
+    ],
+    "variables": [
+      "epsilon: low-energy dimensionless kinetic-mixing parameter",
+      "epsilon_Y: source's hypercharge-mixing parameter",
+      "theta_W: weak mixing angle",
+      "e: electromagnetic gauge coupling",
+      "A_prime_mu: massive dark U(1) vector",
+      "J_EM^mu: electromagnetic current with charges in units of e"
+    ],
+    "regime": "Low-energy massive-dark-photon portal in the perturbatively small-mixing approximation.",
+    "units": "c=hbar=1; e and epsilon dimensionless, vector dimension 1, current dimension 3, L_int dimension 4.",
+    "theoryRelationship": "Low-energy electromagnetic-current coupling induced by hypercharge kinetic mixing for a massive dark photon. This is one model-level relation, not completion or empirical confirmation of the theory family.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-qualified-equations-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "bjorken-dark-gauge-forces-2009",
+        "locator": "Bjorken, Essig, Schuster & Toro, Sec. II.A, paragraph immediately after Eq. (3), PDF p. 3, unnumbered field-redefinition-induced current coupling. arXiv:0906.0580v1, PDF page 3.",
+        "url": "https://arxiv.org/pdf/0906.0580v1#page=3"
+      }
+    ]
+  },
+  {
+    "id": "affleck-dine-inflationary-potential",
+    "name": "Affleck–Dine inflationary flat-direction potential",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "V(\\phi)=-cH_I^2|\\phi|^2+\\left(\\frac{a\\lambda H_I\\phi^n}{nM^{n-3}}+\\mathrm{h.c.}\\right)+\\frac{|\\lambda|^2|\\phi|^{2n-2}}{M^{2n-6}}",
+    "plain": "V=-c H_I^2 |phi|^2+[a lambda H_I phi^n/(n M^(n-3))+h.c.]+|lambda|^2 |phi|^(2n-2)/M^(2n-6)",
+    "description": "Inflationary potential for a supersymmetric Affleck–Dine flat direction with a negative Hubble-induced mass and a nonrenormalizable lifting operator.",
+    "theoryIds": [
+      "affleck-dine-baryogenesis"
+    ],
+    "sourceIds": [
+      "dine-randall-thomas-ad-1996"
+    ],
+    "tags": [
+      "affleck-dine-baryogenesis",
+      "representative equation"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "The specific negative-mass scenario of Dine–Randall–Thomas Sec. 4.1: c>0 and H_I nearly constant during inflation.",
+      "H_I much greater than gravitino mass, so low-energy hidden-sector soft terms are neglected here.",
+      "Complex flat-direction scalar phi, n>3 integer, cutoff M, dimensionless coupling lambda and complex Hubble-induced A-term coefficient a.",
+      "The phase-sensitive A term is one ingredient of charge generation; later evolution, decay/reheating and washout are needed for a baryon-to-entropy prediction.",
+      "Potential is an effective description below its cutoff and not applicable to every Affleck–Dine realization."
+    ],
+    "variables": [
+      "phi: complex flat-direction field, mass dimension 1",
+      "H_I: inflationary Hubble rate",
+      "M: heavy mass/cutoff scale",
+      "n: nonrenormalizable superpotential operator degree",
+      "c: positive Hubble-mass coefficient",
+      "a,lambda: dimensionless complex couplings",
+      "h.c.: Hermitian conjugate of the preceding term"
+    ],
+    "regime": "High-Hubble-scale inflationary flat-direction example, before low-energy soft terms become important.",
+    "units": "c=hbar=1; each term has mass dimension 4; n>3.",
+    "theoryRelationship": "Inflationary potential for a supersymmetric Affleck–Dine flat direction with a negative Hubble-induced mass and a nonrenormalizable lifting operator. This is one model-level relation, not completion or empirical confirmation of the theory family.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-qualified-equations-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "dine-randall-thomas-ad-1996",
+        "locator": "Dine, Randall & Thomas, Sec. 4.1 “The Inflationary Epoch”, Eq. (18), printed p. 20 (PDF p. 21). arXiv:hep-ph/9507453v1, PDF page 21.",
+        "url": "https://arxiv.org/pdf/hep-ph/9507453v1#page=21"
+      }
+    ]
+  },
+  {
+    "id": "asymmetric-dm-density-scaling",
+    "name": "Asymmetric-dark-matter density scaling",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "\\Omega_{\\mathrm{DM}}\\sim\\frac{m_{\\mathrm{DM}}}{m_B}\\Omega_B\\qquad (n_{\\mathrm{DM}}\\sim n_B)",
+    "plain": "Omega_DM approximately of order (m_DM/m_B) Omega_B when n_DM is of order n_B",
+    "description": "Order-of-magnitude density scaling when dark and baryon asymmetries have comparable number densities.",
+    "theoryIds": [
+      "asymmetric-dark-matter"
+    ],
+    "sourceIds": [
+      "asymmetric-dm-2009"
+    ],
+    "tags": [
+      "asymmetric-dark-matter",
+      "representative equation"
+    ],
+    "formulaType": "approximation",
+    "assumptions": [
+      "Nonrelativistic relics with efficient depletion of the symmetric particle-antiparticle component.",
+      "A model-dependent transfer mechanism relates surviving dark and baryon asymmetries; n_DM~n_B is an assumption, not an exact conservation law.",
+      "The displayed relation is approximate: charge assignments, chemical equilibrium, decoupling, sphalerons and residual symmetric populations change the ratio.",
+      "Does not impose a universal 5 GeV dark-matter mass or repeat the historical paper's observational density values as current measurements."
+    ],
+    "variables": [
+      "Omega_DM,Omega_B: present dark-matter and baryon density fractions relative to the same critical density",
+      "m_DM: stable dark-particle mass",
+      "m_B: representative baryon mass",
+      "n_DM,n_B: surviving number densities"
+    ],
+    "regime": "Asymmetry-dominated nonrelativistic relic populations with comparable number asymmetries.",
+    "units": "Density fractions and mass ratio dimensionless.",
+    "theoryRelationship": "Order-of-magnitude density scaling when dark and baryon asymmetries have comparable number densities. This is one model-level relation, not completion or empirical confirmation of the theory family.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-qualified-equations-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "asymmetric-dm-2009",
+        "locator": "Kaplan, Luty & Zurek, Introduction, final paragraph of printed p. 1 (PDF p. 2), unnumbered n_DM and Omega_DM scaling; annihilation condition summarized on next page. arXiv:0901.4117v1, PDF page 2.",
+        "url": "https://arxiv.org/pdf/0901.4117v1#page=2"
+      }
+    ]
+  },
+  {
+    "id": "cosmic-string-vos-length-evolution",
+    "name": "Cosmic-string VOS correlation-length evolution",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "2\\frac{dL}{dt}=2HL(1+v_\\infty^2)+\\frac{L}{\\ell_f}v_\\infty^2+\\widetilde c\\,v_\\infty",
+    "plain": "2 dL/dt=2 H L(1+v_inf^2)+(L/ell_f)v_inf^2+c_tilde v_inf",
+    "description": "Phenomenological long-string correlation-length evolution in the velocity-dependent one-scale model.",
+    "theoryIds": [
+      "cosmic-strings"
+    ],
+    "sourceIds": [
+      "martins-shellard-vos-2002"
+    ],
+    "tags": [
+      "cosmic-strings",
+      "representative equation"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "Averaged long-string network in spatially flat FRW, with rho_inf=mu/L^2.",
+      "v_inf is energy-weighted RMS string speed, not a single segment velocity; units c=1.",
+      "ell_f is the background-friction damping length; c_tilde is a calibrated loop-chopping efficiency.",
+      "This length equation must be paired with the velocity equation and a momentum-parameter prescription for predictive evolution.",
+      "This version omits the later-added radiation-backreaction term and does not automatically cover currents, multiple tensions, junctions or a detailed loop distribution."
+    ],
+    "variables": [
+      "L: physical long-string correlation length",
+      "t: cosmic time",
+      "H: Hubble rate",
+      "v_inf: dimensionless long-string RMS speed",
+      "ell_f: friction damping length",
+      "c_tilde: dimensionless loop-chopping efficiency",
+      "mu: string energy per unit length"
+    ],
+    "regime": "Coarse-grained long-string network model, not microscopic field equations or a direct detection claim.",
+    "units": "c=1; time and length have identical units; every displayed term is a speed/dimensionless.",
+    "theoryRelationship": "Phenomenological long-string correlation-length evolution in the velocity-dependent one-scale model. This is one model-level relation, not completion or empirical confirmation of the theory family.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-qualified-equations-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "martins-shellard-vos-2002",
+        "locator": "Martins & Shellard, Sec. II.A, Eq. (2.3), printed/PDF p. 2; rho_inf definition and loop-loss convention precede it. arXiv:hep-ph/0003298v1, PDF page 2.",
+        "url": "https://arxiv.org/pdf/hep-ph/0003298v1#page=2"
+      }
+    ]
+  },
+  {
+    "id": "matter-contraction-canonical-mode",
+    "name": "Canonical curvature mode during matter-like contraction",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "v_k^{\\prime\\prime}+\\left(k^2-\\frac{2}{\\eta^2}\\right)v_k=0,\\qquad a(t)\\propto(-t)^{2/3}",
+    "plain": "v_k double-prime+(k^2-2/eta^2)v_k=0; a proportional to (-t)^(2/3)",
+    "description": "Canonical scalar curvature-mode equation specialized to the matter-like contracting background of Finelli and Brandenberger.",
+    "theoryIds": [
+      "matter-bounce"
+    ],
+    "sourceIds": [
+      "finelli-brandenberger-contracting-2002"
+    ],
+    "tags": [
+      "matter-bounce",
+      "representative equation"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [
+      "Explicit specialization of source Eq. (14) at p=2/3, giving p(2p-1)/(p-1)^2=2.",
+      "Spatially flat Einstein gravity with one canonical scalar and the exponential-potential power-law background; negative cosmic time approaches the putative bounce at t=0.",
+      "v=z zeta with z=a phi_dot/H; primes are conformal-time derivatives and k is comoving wavenumber.",
+      "Matter-like means the scalar background has w=0; this is not the perturbation equation of a pressureless fluid with sound speed zero.",
+      "Sub-Hubble vacuum initial conditions plus this background give scale-invariant growing pre-bounce curvature modes; transfer through a stable nonsingular bounce, anisotropy control and phenomenological viability remain separate unresolved model choices."
+    ],
+    "variables": [
+      "v_k: Fourier mode of canonically normalized scalar perturbation",
+      "eta: conformal time, d eta=dt/a",
+      "k: comoving inverse wavelength",
+      "a: scale factor",
+      "t: cosmic time, t<0 on contracting branch",
+      "zeta: comoving curvature perturbation",
+      "z=a phi_dot/H: background normalization"
+    ],
+    "regime": "Linear adiabatic modes before the bounce in a canonical scalar w=0 contracting solution.",
+    "units": "c=hbar=1; a dimensionless, eta has length dimension, k inverse length; v double-prime and k^2 v have matching dimensions regardless of Fourier normalization.",
+    "theoryRelationship": "Canonical scalar curvature-mode equation specialized to the matter-like contracting background of Finelli and Brandenberger. This is one model-level relation, not completion or empirical confirmation of the theory family.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-qualified-equations-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "finelli-brandenberger-contracting-2002",
+        "locator": "Finelli & Brandenberger, Sec. II, Eq. (14) specialized at p=2/3; definitions Eqs. (7)-(8),(13), PDF p. 3 and explicit p=2/3 discussion on p. 4. arXiv:hep-th/0112249v2, PDF page 3.",
+        "url": "https://arxiv.org/pdf/hep-th/0112249v2#page=3"
+      }
+    ]
+  },
+  {
+    "id": "gft-condensate-mean-field",
+    "name": "Group-field condensate mean-field equation",
+    "category": "Quantum gravity & cosmology",
+    "latex": "\\int d^4g^\\prime\\,K(g_I,g_I^\\prime)\\sigma(g_I^\\prime)+\\lambda\\left.\\frac{\\delta V}{\\delta\\bar\\varphi(g_I)}\\right|_{\\varphi=\\sigma}=0",
+    "plain": "integral d^4g_prime K(g_I,g_I_prime) sigma(g_I_prime) + lambda [functional derivative of V with respect to conjugate_varphi(g_I), evaluated at varphi=sigma] = 0",
+    "description": "Nonlinear group-field-theory condensate equation for the specific single-particle coherent-state ansatz.",
+    "theoryIds": [
+      "group-field-cosmology"
+    ],
+    "sourceIds": [
+      "group-field-cosmology-2013"
+    ],
+    "tags": [
+      "group-field-cosmology",
+      "representative equation"
+    ],
+    "formulaType": "approximation",
+    "assumptions": [
+      "Source action has quadratic kernel K plus interaction lambda V; sigma is the coherent condensate wavefunction, not a spacetime scalar inflaton.",
+      "This record follows the source's Riemannian four-argument SO(4) construction with simplicity/gauge restrictions, not an arbitrary Lorentzian noncompact-group generalization.",
+      "I labels four group arguments and d^4g is product Haar measure, not integration over four-dimensional spacetime.",
+      "Uses the single-particle coherent condensate Eq. (13) and its gauge/homogeneity invariances; this is a mean-field truncation with neglected higher correlations.",
+      "A choice of GFT kernel, interactions, quantum state and reconstruction is necessary before obtaining a cosmological Friedmann equation.",
+      "Does not assert the emergent semiclassical limit, observational validity or universality of a bounce across all GFT models."
+    ],
+    "variables": [
+      "g_I,g_I_prime: quadruples of group elements",
+      "K: chosen quadratic GFT kinetic kernel",
+      "sigma: collective condensate wavefunction",
+      "varphi,bar_varphi: complex GFT field and conjugate",
+      "lambda: GFT interaction coupling",
+      "V: GFT interaction functional, not a local scalar potential",
+      "d^4g_prime: product of four invariant group measures"
+    ],
+    "regime": "Coherent mean-field group-field cosmology ansatz; not the exact full many-body quantum dynamics.",
+    "units": "Group coordinates and normalized Haar measures are dimensionless; K, lambda and V inherit the chosen GFT action normalization. Both terms have identical field-equation units; there is no model-independent SI length/time assignment for sigma.",
+    "theoryRelationship": "Nonlinear group-field-theory condensate equation for the specific single-particle coherent-state ansatz. This is one model-level relation, not completion or empirical confirmation of the theory family.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-qualified-equations-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "group-field-cosmology-2013",
+        "locator": "Gielen, Oriti & Sindoni, “Effective cosmological dynamics”, Eq. (18), PDF p. 3; action Eq. (16), coherent-state ansatz Eq. (13). arXiv:1303.3576v3, PDF page 3.",
+        "url": "https://arxiv.org/pdf/1303.3576v3#page=3"
+      }
+    ]
+  },
+  {
+    "id": "spinfoam-dipole-transition-amplitude",
+    "name": "Euclidean dipole spinfoam cosmology amplitude",
+    "category": "Quantum gravity & cosmology",
+    "latex": "W(z_i,z_f)\\simeq N^2z_i z_f\\exp\\!\\left[-\\frac{z_i^2+z_f^2}{2t\\hbar}\\right]",
+    "plain": "W(z_i,z_f) approx N^2 z_i z_f exp[-(z_i^2+z_f^2)/(2 t hbar)]",
+    "description": "Approximate homogeneous-isotropic transition amplitude in the Euclidean dipole, single-vertex, large-volume construction.",
+    "theoryIds": [
+      "spin-foam-cosmology"
+    ],
+    "sourceIds": [
+      "spin-foam-cosmology-2010"
+    ],
+    "tags": [
+      "spin-foam-cosmology",
+      "representative equation"
+    ],
+    "formulaType": "approximation",
+    "assumptions": [
+      "Three essential truncations: fixed dipole graph, first single-vertex term of the spinfoam expansion, and large volume.",
+      "Uses Euclidean rather than physical Lorentzian spinfoam dynamics, no matter sector, and the paper's coherent-boundary normalization.",
+      "z=alpha c+i beta p labels intrinsic/extrinsic geometry; t is heat-kernel width parameter, NOT cosmic time.",
+      "Both boundary labels appear holomorphically because of the source boundary-orientation convention; reversing the final orientation changes z_f to -conjugate(z_f).",
+      "The leading amplitude factorizes and should not be promoted to a generic connected transition amplitude, a complete quantum cosmology or a proven bounce."
+    ],
+    "variables": [
+      "z_i,z_f: complex homogeneous-isotropic coherent boundary labels",
+      "c,p: isotropic connection/triad variables",
+      "alpha,beta: constants mapping c,p to dimensionless boundary labels",
+      "t: heat-kernel width parameter",
+      "hbar: Planck constant",
+      "N: source's normalization constant"
+    ],
+    "regime": "Euclidean, matter-free, fixed-graph, leading-vertex, large-volume approximation.",
+    "units": "z is dimensionless and t hbar is dimensionless in the heat-kernel convention; N depends on normalization. W is an amplitude, not a probability.",
+    "theoryRelationship": "Approximate homogeneous-isotropic transition amplitude in the Euclidean dipole, single-vertex, large-volume construction. This is one model-level relation, not completion or empirical confirmation of the theory family.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-qualified-equations-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "spin-foam-cosmology-2010",
+        "locator": "Bianchi, Rovelli & Vidotto, Eq. (37), PDF p. 5; z mapping Eq. (20), boundary orientation footnote 4, and explicit truncation/Euclidean caveats Sec. V PDF p. 6. arXiv:1003.3483v1, PDF page 5.",
+        "url": "https://arxiv.org/pdf/1003.3483v1#page=5"
+      }
+    ]
+  },
+  {
+    "id": "ekpyrotic-multifield-scaling",
+    "name": "Multifield ekpyrotic scaling solution",
+    "category": "Quantum gravity & cosmology",
+    "latex": "a(t)\\propto(-t)^p,\\qquad p=\\sum_i\\frac{2}{c_i^2},\\qquad V=-\\sum_i V_i e^{-c_i\\phi_i}",
+    "plain": "a proportional to (-t)^p; p=sum_i 2/c_i^2; V=-sum_i V_i exp(-c_i phi_i)",
+    "description": "Assisted contracting scaling solution for canonical fields with negative exponential potentials.",
+    "theoryIds": [
+      "ekpyrotic-cosmology"
+    ],
+    "sourceIds": [
+      "koyama-wands-ekpyrotic-2007"
+    ],
+    "tags": [
+      "ekpyrotic-cosmology",
+      "representative equation"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "Spatially flat four-dimensional Einstein gravity, canonical scalars, V_i>0 and reduced Planck units 8 pi G=1.",
+      "Contracting branch t<0; the ekpyrotic regime requires 0<p<1/3, corresponding to w>1 for the scaling background.",
+      "All participating fields follow the specific joint scaling trajectory; arbitrary initial conditions need not realize it.",
+      "The multifield trajectory is a saddle with an unstable entropy direction, not a stable attractor.",
+      "Nearly scale-invariant entropy perturbations require steep potentials and conversion to curvature perturbations; neither conversion nor a nonsingular bounce is fixed by this relation."
+    ],
+    "variables": [
+      "a: scale factor",
+      "t: cosmic time approaching zero from below",
+      "p: power-law contraction exponent",
+      "phi_i: canonical scalar fields in reduced Planck units",
+      "c_i: dimensionless exponential slopes",
+      "V_i: positive potential amplitudes"
+    ],
+    "regime": "Multifield negative-exponential scaling solution during ekpyrotic contraction.",
+    "units": "8 pi G=c=hbar=1; phi_i is measured in reduced Planck units, c_i and p dimensionless; V_i are energy-density amplitudes. Restoring units replaces c_i phi_i by c_i phi_i/M_Pl.",
+    "theoryRelationship": "Assisted contracting scaling solution for canonical fields with negative exponential potentials. This is one model-level relation, not completion or empirical confirmation of the theory family.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-qualified-equations-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "koyama-wands-ekpyrotic-2007",
+        "locator": "Koyama & Wands, Sec. 2, Eq. (2) PDF p. 2 and Eq. (3) PDF p. 3; instability discussed in abstract and phase-space analysis. arXiv:hep-th/0703040v2, PDF page 3.",
+        "url": "https://arxiv.org/pdf/hep-th/0703040v2#page=3"
+      }
+    ]
+  },
+  {
+    "id": "cyclic-cutoff-exponential-potential",
+    "name": "Cyclic-model cutoff exponential potential",
+    "category": "Quantum gravity & cosmology",
+    "latex": "V(\\phi)=V_0\\left(1-e^{-c\\phi}\\right)F(\\phi)",
+    "plain": "V(phi)=V0[1-exp(-c phi)]F(phi)",
+    "description": "Illustrative scalar potential combining a positive plateau with a negative region and a suppressed far-negative-field tail in the original cyclic proposal.",
+    "theoryIds": [
+      "cyclic-cosmology"
+    ],
+    "sourceIds": [
+      "steinhardt-turok-cyclic-2002"
+    ],
+    "tags": [
+      "cyclic-cosmology",
+      "representative equation"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "Source uses reduced Planck units 8 pi G=1 from Eq. (6) onward.",
+      "V0>0; c is a positive slope parameter and F is chosen so that the full V tends to zero as phi tends to minus infinity.",
+      "F is nearly unity to the right of the potential minimum; its far-negative tail must suppress the exponential, not merely tend to zero at an unspecified slow rate.",
+      "The source's historical c and dark-energy density choices are illustrative, not current fits.",
+      "This potential does not by itself produce a complete cycle: matter coupling, crunch/bang matching and stable nonsingular completion are independent assumptions."
+    ],
+    "variables": [
+      "phi: scalar measured in reduced Planck units",
+      "V0: positive plateau energy density",
+      "c: dimensionless exponential slope",
+      "F: dimensionless model-chosen cutoff function"
+    ],
+    "regime": "Four-dimensional illustrative cyclic scalar effective potential, not a completed singularity-resolution mechanism.",
+    "units": "8 pi G=c_light=hbar=1; c phi dimensionless and V0,V have energy-density units on restoration of Planck scales.",
+    "theoryRelationship": "Illustrative scalar potential combining a positive plateau with a negative region and a suppressed far-negative-field tail in the original cyclic proposal. This is one model-level relation, not completion or empirical confirmation of the theory family.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-qualified-equations-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "steinhardt-turok-cyclic-2002",
+        "locator": "Steinhardt & Turok, Eq. (6) and immediately following cutoff-function/units paragraph, printed/PDF p. 5; potential requirements on p. 4. arXiv:hep-th/0111030v2, PDF page 5.",
+        "url": "https://arxiv.org/pdf/hep-th/0111030v2#page=5"
+      }
+    ]
+  },
+  {
+    "id": "string-gas-hagedorn-heat-capacity",
+    "name": "Compact string-gas near-Hagedorn heat capacity",
+    "category": "Quantum gravity & cosmology",
+    "latex": "C_V\\simeq\\frac{R^2}{\\alpha^{\\prime\\,3/2}T}\\frac{1}{1-T/T_H}",
+    "plain": "C_V approx R^2/[alpha_prime^(3/2) T (1-T/T_H)]",
+    "description": "Near-Hagedorn closed-string heat-capacity scaling used in the thermal-fluctuation string-gas scenario.",
+    "theoryIds": [
+      "string-gas-cosmology"
+    ],
+    "sourceIds": [
+      "nayeri-brandenberger-vafa-hagedorn-2006"
+    ],
+    "tags": [
+      "string-gas-cosmology",
+      "representative equation"
+    ],
+    "formulaType": "approximation",
+    "assumptions": [
+      "Gas of weakly coupled closed strings, three large toroidal dimensions and six small compact dimensions; all dimensions compact for the cited positive-heat-capacity result.",
+      "Temperature approaches the Hagedorn temperature from below; thermal equilibrium and the finite-volume string-thermodynamic regime are assumed.",
+      "R is the size scale of the large compact region; alpha_prime=l_s^2.",
+      "This is an approximate thermodynamic relation, not a generic point-particle heat capacity.",
+      "Converting thermal fluctuations to observable curvature spectra requires additional dilaton/background and perturbation-transfer assumptions which the source explicitly discusses; this relation alone does not establish a viable cosmology."
+    ],
+    "variables": [
+      "C_V: heat capacity at fixed volume",
+      "R: length scale of the large compact region",
+      "alpha_prime: inverse string tension parameter, equal to l_s^2",
+      "l_s: string length",
+      "T: temperature below T_H",
+      "T_H: Hagedorn temperature"
+    ],
+    "regime": "Weak-coupling compact closed-string thermodynamics near the Hagedorn regime.",
+    "units": "c=hbar=k_B=1; R and l_s have length units, T inverse length, so C_V is dimensionless.",
+    "theoryRelationship": "Near-Hagedorn closed-string heat-capacity scaling used in the thermal-fluctuation string-gas scenario. This is one model-level relation, not completion or empirical confirmation of the theory family.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-qualified-equations-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "nayeri-brandenberger-vafa-hagedorn-2006",
+        "locator": "Nayeri, Brandenberger & Vafa, “Computation of the Spectrum”, Eq. (9), PDF p. 3; compactness assumptions and gravitational-transfer caveats on pp. 3-4. arXiv:hep-th/0511140v2, PDF page 3.",
+        "url": "https://arxiv.org/pdf/hep-th/0511140v2#page=3"
+      }
+    ]
+  },
+  {
+    "id": "third-quantization-free-superspace-action",
+    "name": "Formal free third-quantized superspace action",
+    "category": "Quantum gravity & cosmology",
+    "latex": "S_2=-\\frac12\\int\\mathcal D{}^3g\\,\\Phi[{}^3g]\\,\\Box_{\\mathrm{sup}}\\Phi[{}^3g]",
+    "plain": "S2 = -1/2 integral D(3g) Phi[3g] Box_sup Phi[3g]",
+    "description": "Formal quadratic superspace-field action in the Giddings–Strominger third-quantization proposal.",
+    "theoryIds": [
+      "third-quantization"
+    ],
+    "sourceIds": [
+      "giddings-strominger-third-1989"
+    ],
+    "tags": [
+      "third quantization",
+      "superspace",
+      "formal action"
+    ],
+    "formulaType": "schematic",
+    "assumptions": [
+      "Follows the original formal Euclidean sum-over-four-geometries interpretation with fixed spatial topology S^3 at a boundary and an implicit ultraviolet cutoff.",
+      "Phi is a field on the configuration space of spatial geometries, not an ordinary spacetime matter field; Box_sup labels the source's Wheeler–DeWitt superspace operator, not the spacetime d’Alembertian.",
+      "The authors explicitly state that Eq. (4.1) is incomplete: its equation of motion implements only an integrated constraint, not all local gravitational constraints. Their BRST/ghost extension begins in Eq. (4.2).",
+      "This is the free quadratic term only. Topology-changing interactions, measure/gauge choices and quantum corrections are additional ingredients, not supplied by this display.",
+      "The formal functional integral is not established as a mathematically well-defined complete quantum-gravity theory; no observed baby universes or solution of the cosmological-constant problem is inferred."
+    ],
+    "variables": [
+      "S2: formal quadratic third-quantized action",
+      "3g: spatial three-metric, serving as a superspace coordinate",
+      "D(3g): formal functional measure over spatial geometries with gauge treatment required",
+      "Phi[3g]: real superspace field creating/annihilating single-universe states in the proposed interpretation",
+      "Box_sup: source Wheeler–DeWitt superspace operator"
+    ],
+    "regime": "Formal free superspace-field construction before full constraint/BRST and interacting completion.",
+    "units": "Natural action convention hbar=1. Functional measure, field and operator normalizations are formal; their combined normalization makes S2 dimensionless. No universal local spacetime engineering dimension for Phi is asserted.",
+    "theoryRelationship": "Source-specific historical free-action proposal, explicitly schematic and constraint-incomplete; not model-family completion or an empirically verified multiverse mechanism.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-qualified-equations-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "giddings-strominger-third-1989",
+        "locator": "Giddings & Strominger, HUTP-88/A036 (June 1988 preprint of 1989 paper), Sec. 4, Eq. (4.1), printed p. 12, KEK scan PDF p. 6 right-hand page. Constraint-incompleteness warning and BRST extension Eq. (4.2) are printed p. 13, PDF p. 8 left-hand page. Scan page order is not monotonic.",
+        "url": "https://lib-extopc.kek.jp/preprints/PDF/1988/8809/8809012.pdf#page=6"
+      }
+    ]
+  },
+  {
+    "id": "inflation-eft-sound-speed",
+    "name": "EFT inflation scalar sound speed",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "c_s^{-2}=1-\\frac{2M_2^4}{M_{\\rm Pl}^{2}\\dot H}",
+    "plain": "c_s^(-2) = 1 - 2 M_2^4/(M_Pl^2 Hdot)",
+    "description": "Scalar propagation speed in the leading two-derivative Goldstone action.",
+    "theoryIds": [
+      "effective-field-theory-of-inflation"
+    ],
+    "sourceIds": [
+      "cheung-inflation-eft-2008"
+    ],
+    "tags": [
+      "inflation",
+      "sound speed",
+      "EFT"
+    ],
+    "formulaType": "derived identity",
+    "assumptions": [
+      "Single clock; spatially flat FLRW background.",
+      "Decoupling regime with slowly varying coefficients; omit higher-spatial-derivative dispersion.",
+      "Hdot < 0 and a positive time-kinetic coefficient; predictions require energies below the EFT cutoff."
+    ],
+    "variables": [
+      "c_s: dimensionless scalar speed relative to light",
+      "M_2^4: coefficient of (delta g^00)^2/2, not a particle mass measurement",
+      "M_Pl: reduced Planck mass",
+      "Hdot: cosmic-time derivative of the Hubble rate"
+    ],
+    "regime": "Leading quadratic Goldstone sector, not every multifield or higher-derivative model.",
+    "units": "c = hbar = 1; M_2^4 and M_Pl^2 Hdot both have mass dimension four.",
+    "theoryRelationship": "Ratio of gradient and time-kinetic coefficients; not an observed sound-speed value.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-evidence-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "cheung-inflation-eft-2008",
+        "locator": "Cheung et al., arXiv:0709.0293v2, Section 4.2, Eqs. (37)–(38), printed p. 12 (PDF p. 12); decoupling restrictions in Section 3.",
+        "url": "https://arxiv.org/pdf/0709.0293v2#page=12"
+      }
+    ]
+  },
+  {
+    "id": "transient-ede-axionlike-potential",
+    "name": "Representative axion-like early-dark-energy potential",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "V(\\phi)=V_0[1-\\cos(\\phi/f)]^n,\\qquad \\langle w_\\phi\\rangle\\simeq\\frac{n-1}{n+1}",
+    "plain": "V(phi) = V0 [1 - cos(phi/f)]^n; averaged w_phi approximately (n - 1)/(n + 1)",
+    "description": "Representative potential and late oscillation average, not a universal EDE law.",
+    "theoryIds": [
+      "transient-scalar-early-dark-energy"
+    ],
+    "sourceIds": [
+      "poulin-early-dark-energy-2019"
+    ],
+    "tags": [
+      "EDE",
+      "scalar field",
+      "oscillation average"
+    ],
+    "formulaType": "approximation",
+    "assumptions": [
+      "Canonical homogeneous scalar; V0 > 0 and n > 0.",
+      "The equation-of-state average requires rapid small-amplitude oscillations near a minimum, where V is proportional to phi^(2n).",
+      "The average is invalid during freezing, onset of rolling or anharmonic large-amplitude evolution.",
+      "n = 2 gives radiation-like dilution; n > 2 dilutes faster. Perturbations require separate evolution."
+    ],
+    "variables": [
+      "phi: scalar field",
+      "f: field scale",
+      "V0: positive potential-energy normalization",
+      "n: potential exponent",
+      "w_phi: scalar pressure divided by scalar energy density, averaged over oscillations"
+    ],
+    "regime": "Oscillating scalar subtype; no statement about generic tracking EDE or late-time quintessence.",
+    "units": "c = hbar = 1; phi and f have mass dimension one, V0 has dimension four, w is dimensionless.",
+    "theoryRelationship": "Potential specified up to normalization in Poulin et al.; the averaged w describes an asymptotic regime, not proof of fit to all cosmological data.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-evidence-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "poulin-early-dark-energy-2019",
+        "locator": "Poulin et al., arXiv:1811.04083v2, Model paragraph beginning “Our first model”, printed p. 1 continuing p. 2; unnumbered potential and w_n immediately before Eq. (1).",
+        "url": "https://arxiv.org/pdf/1811.04083v2#page=1"
+      }
+    ]
+  }
+]);
+for(const reviewed of [
+  {
+    "id": "slow-roll-power",
+    "name": "Inflationary curvature power spectrum",
+    "category": "Quantum gravity & cosmology",
+    "latex": "\\mathcal P_{\\mathcal R}\\simeq\\frac{H^2}{8\\pi^2\\epsilon M_{\\rm Pl}^2}",
+    "plain": "P_R ~ H^2/(8 pi^2 epsilon M_Pl^2)",
+    "description": "Leading slow-roll scalar curvature-perturbation spectrum in natural units.",
+    "theoryIds": [
+      "inflationary-fluctuations"
+    ],
+    "sourceIds": [
+      "guth-pi-1982",
+      "pdg-inflation-2025-reviewed"
+    ],
+    "tags": [
+      "inflation"
+    ],
+    "formulaType": "approximation",
+    "assumptions": [
+      "Canonical minimally coupled single scalar in an approximately spatially flat background; leading slow roll, unit scalar sound speed and the usual adiabatic short-wavelength vacuum.",
+      "The displayed M_Pl is the REDUCED Planck mass (8πG)^(-1/2). PDG uses unreduced M_P = G^(-1/2); its equation (23.48) becomes this expression only after M_P² = 8π M_Pl².",
+      "Here epsilon denotes epsilon_H = -Hdot/H²; at the retained order epsilon_H ≈ epsilon_V. Evaluate the background at Hubble exit k = aH.",
+      "Identifying the late conserved curvature spectrum requires an adiabatic attractor and no subsequent entropy-to-curvature transfer. The curvature normalization is ill-defined in the exact epsilon = 0 limit."
+    ],
+    "variables": [
+      "P_R: dimensionless scalar curvature power per logarithmic wavenumber",
+      "H: Hubble rate at exit",
+      "epsilon: Hubble slow-roll parameter at leading order",
+      "M_Pl: reduced Planck mass"
+    ],
+    "regime": "Leading single-field slow-roll scalar spectrum, not a formula for arbitrary inflation or non-attractor evolution.",
+    "units": "c = ħ = 1; H and M_Pl have mass dimension one; epsilon and P_R are dimensionless.",
+    "theoryRelationship": "Observed scalar spectra constrain this conditional prediction; the expression alone does not establish a unique quantum origin.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-passport-completion-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "pdg-inflation-2025-reviewed",
+        "locator": "Section 23.3.3 equation (23.48), PDF p. 9; convention conversion from p. 1 footnote 1 and epsilon definitions (23.11),(23.15) p. 4. Equation uses P_zeta, agreeing in power with P_R for the stated super-Hubble adiabatic limit.",
+        "url": "https://pdg.lbl.gov/2025/reviews/rpp2025-rev-inflation.pdf#page=9"
+      }
+    ]
+  },
+  {
+    "id": "mukhanov-sasaki",
+    "name": "Mukhanov–Sasaki equation",
+    "category": "Quantum gravity & cosmology",
+    "latex": "v_k''+\\left(k^2-\\frac{z''}{z}\\right)v_k=0",
+    "plain": "v_k'' + (k^2-z''/z)v_k = 0",
+    "description": "Mode equation for scalar cosmological perturbations in single-field inflation.",
+    "theoryIds": [
+      "inflationary-fluctuations"
+    ],
+    "sourceIds": [
+      "quantum-cosmology-review",
+      "pdg-inflation-2025-reviewed"
+    ],
+    "tags": [
+      "inflation"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [
+      "Linear scalar perturbations of a canonical minimally coupled single-field spatially flat FLRW background; the equation itself does not require slow roll.",
+      "Primes in this equation denote derivatives with respect to conformal time, not field derivatives. k is comoving wavenumber.",
+      "z = a phidot/H and v = aQ, where Q is the gauge-invariant field perturbation on spatially flat slices. PDG uses R = -HQ/phidot; an overall curvature-sign convention does not change this mode equation.",
+      "Use a regular background interval with a well-defined z and z second derivative divided by z; field turning points require care. Noncanonical or multiple-field systems have modified equations."
+    ],
+    "variables": [
+      "v_k: canonical scalar Fourier mode",
+      "k: comoving wavenumber",
+      "z: a phidot/H",
+      "a: scale factor (called R in the source background notation)",
+      "prime: conformal-time derivative"
+    ],
+    "regime": "Exact linear mode equation for the stated canonical single-field spatially flat FLRW system; quantum predictions additionally require a state and mode normalization.",
+    "units": "c = ħ = 1 with dimensionless a; k and inverse conformal time have mass dimension one, so k² and z second derivative/z have mass dimension two.",
+    "theoryRelationship": "Dynamical equation underlying the inflationary scalar spectrum, not a measured spectrum by itself.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-passport-completion-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "pdg-inflation-2025-reviewed",
+        "locator": "Section 23.3.3 equations (23.41)–(23.43), PDF p. 9; Q and curvature sign in (23.27)–(23.28), PDF pp. 6–7.",
+        "url": "https://pdg.lbl.gov/2025/reviews/rpp2025-rev-inflation.pdf#page=9"
+      }
+    ]
+  },
+  {
+    "id": "scalar-index",
+    "name": "Scalar spectral index",
+    "category": "Quantum gravity & cosmology",
+    "latex": "n_s-1=\\frac{d\\ln\\mathcal P_{\\mathcal R}}{d\\ln k}\\approx-6\\epsilon+2\\eta",
+    "plain": "n_s-1 = d ln P_R/d ln k ~ -6 epsilon +2 eta",
+    "description": "Leading slow-roll expression for the scalar spectral tilt.",
+    "theoryIds": [
+      "inflationary-fluctuations"
+    ],
+    "sourceIds": [
+      "quantum-cosmology-review",
+      "pdg-inflation-2025-reviewed"
+    ],
+    "tags": [
+      "inflation"
+    ],
+    "formulaType": "approximation",
+    "assumptions": [
+      "The logarithmic derivative defines the tilt; its final approximate equality is first-order canonical single-field potential slow roll.",
+      "Here epsilon means epsilon_V and eta means eta_V, not a Hubble-flow eta parameter. In reduced-mass notation epsilon_V = M_Pl²(Vprime/V)²/2 and eta_V = M_Pl²Vsecond/V.",
+      "Use the standard short-wavelength vacuum and an adiabatic attractor; evaluate parameters when the stated comoving pivot exits k = aH. Higher-order terms and subsequent transfer can modify the result."
+    ],
+    "variables": [
+      "n_s: scalar spectral index",
+      "P_R: dimensionless curvature power",
+      "k: comoving wavenumber",
+      "epsilon: potential slope parameter epsilon_V",
+      "eta: potential curvature parameter eta_V"
+    ],
+    "regime": "First-order canonical single-field slow roll; the definition remains meaningful when that approximation fails.",
+    "units": "c = ħ = 1; index, slow-roll parameters and logarithmic derivative dimensionless.",
+    "theoryRelationship": "Connects a restricted potential model to scale dependence, not a unique reconstruction of the potential.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-passport-completion-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "pdg-inflation-2025-reviewed",
+        "locator": "Section 23.3.3 equation (23.51), PDF p. 10, with potential definitions (23.15), PDF p. 4; convert unreduced M_P² = 8π M_Pl².",
+        "url": "https://pdg.lbl.gov/2025/reviews/rpp2025-rev-inflation.pdf#page=10"
+      }
+    ]
+  },
+  {
+    "id": "tensor-ratio",
+    "name": "Tensor-to-scalar ratio",
+    "category": "Quantum gravity & cosmology",
+    "latex": "r\\equiv\\frac{\\mathcal P_T}{\\mathcal P_{\\mathcal R}}\\approx16\\epsilon",
+    "plain": "r = P_T/P_R ~16 epsilon",
+    "description": "Leading single-field slow-roll tensor-to-scalar ratio.",
+    "theoryIds": [
+      "inflationary-fluctuations"
+    ],
+    "sourceIds": [
+      "quantum-cosmology-review",
+      "pdg-inflation-2025-reviewed"
+    ],
+    "tags": [
+      "inflation"
+    ],
+    "formulaType": "approximation",
+    "assumptions": [
+      "P_T includes both tensor polarizations and numerator and denominator are evaluated at the same pivot.",
+      "The approximate equality assumes canonical minimally coupled single-field slow roll, scalar sound speed one, standard vacuum and no late entropy-to-curvature transfer.",
+      "Here epsilon can be epsilon_H or epsilon_V only to the retained leading slow-roll order; the distinction matters beyond that order."
+    ],
+    "variables": [
+      "r: tensor-to-scalar power ratio at a stated pivot",
+      "P_T: dimensionless total tensor power",
+      "P_R: dimensionless scalar curvature power",
+      "epsilon: leading slow-roll parameter"
+    ],
+    "regime": "Leading-order single-field slow-roll relation; not a universal tensor/scalar identity beyond the defining ratio.",
+    "units": "Both spectra, r and epsilon are dimensionless.",
+    "theoryRelationship": "An observational upper bound constrains this conditional relation; a null tensor detection does not rule out all inflation.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "cosmology-passport-completion-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "pdg-inflation-2025-reviewed",
+        "locator": "Section 23.3.3 equation (23.49), PDF p. 10, following tensor spectrum (23.38) and scalar spectrum (23.48); polarization decomposition in section 23.3.2.",
+        "url": "https://pdg.lbl.gov/2025/reviews/rpp2025-rev-inflation.pdf#page=10"
+      }
+    ]
+  },
+  {
+    "id": "preheating-rescaled-chi-mode-1997",
+    "name": "Oscillating-inflaton preheating rescaled boson-mode equation",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "\\begin{aligned}\\ddot X_k+\\omega_k^2X_k&=0,\\quad X_k=a^{3/2}\\chi_k,\\\\\\omega_k^2&=\\frac{k^2}{a^2}+g^2\\Phi^2\\sin^2(mt)+\\Delta\\end{aligned}",
+    "plain": "X_k'' + omega_k² X_k=0; X_k=a^(3/2) chi_k; omega_k²=k²/a² +g² Phi² sin²(mt)+Delta",
+    "description": "Rescaled scalar daughter-field mode equation for a massive sinusoidally oscillating inflaton coupled quadratically to a second scalar in an expanding universe.",
+    "theoryIds": [
+      "reheating-preheating"
+    ],
+    "sourceIds": [
+      "kofman-linde-starobinsky-reheating-1997"
+    ],
+    "tags": [
+      "preheating",
+      "reheating",
+      "mode amplification",
+      "resonance"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [
+      "Two real scalar fields in a spatially flat FLRW background: homogeneous oscillating inflaton phi(t) approximately Phi(t) sin(mt) and spectator daughter field chi with interaction -g² phi² chi²/2.",
+      "The daughter Fourier mode chi_k experiences cosmological expansion a(t); X_k=a^(3/2) chi_k eliminates its leading 3H time-friction term.",
+      "The effective potential is quadratic m²phi²/2 near the inflaton minimum; the inflaton mass m and amplitude Phi(t) define oscillations.",
+      "Delta is the residual mass/expansion/curvature term m_chi²-(3/4)(dot a/a)²-(3/2)(ddot a/a)-xi R as defined in the source; the formula does not assume Delta=0 universally.",
+      "Linear initial-stage daughter-field mode treatment: nonlinear backreaction, daughter scattering, rescattering and thermalization are not represented by the displayed oscillator equation.",
+      "A static Mathieu equation with fixed resonance parameter is not generally valid for expanding-universe broad resonance; the source explicitly distinguishes stochastic-resonance regimes."
+    ],
+    "variables": [
+      "X_k=a^(3/2)chi_k: friction-rescaled daughter scalar Fourier mode",
+      "k: comoving Fourier momentum",
+      "a(t): FLRW scale factor",
+      "Phi(t): oscillating inflaton amplitude",
+      "m: inflaton oscillation mass",
+      "g: scalar coupling",
+      "Delta: residual mass/curvature/expansion contribution",
+      "omega_k²: effective time-dependent squared frequency"
+    ],
+    "regime": "Linearized daughter-scalar-mode production for a massive near-sinusoidally oscillating homogeneous inflaton in FLRW spacetime, with specified quadratic interaction; not a complete account of nonlinear reheating, backreaction or thermalization.",
+    "units": "Natural units c=hbar=1; k/a, m, g Phi, sqrt(|Delta|) dimension mass; omega_k² and Delta dimension mass²; t inverse mass.",
+    "theoryRelationship": "Original source-specific linear mode amplification equation with expansion; do not equate with universal reheating dynamics or non-expanding static Mathieu-resonance bands.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-16",
+    "curationBatch": "astro-stochastic-preheating-2026-10-16",
+    "sourceLocations": [
+      {
+        "sourceId": "kofman-linde-starobinsky-reheating-1997",
+        "locator": "Kofman, Linde and Starobinsky, arXiv:hep-ph/9704452v2, Sec. VI, Eq. (38) and Eq. (39), printed p. 12 (PDF page 12); Delta definition immediately under (39). Sec. V, printed pp. 12–13 discusses expanding-universe stochastic resonance beyond a static Mathieu approximation.",
+        "url": "https://arxiv.org/pdf/hep-ph/9704452v2#page=12"
+      }
+    ]
+  }
+]){ const i=window.QI_FORMULAS.formulas.findIndex(f=>f.id===reviewed.id); if(i<0)throw new Error("Missing reviewed formula "+reviewed.id); window.QI_FORMULAS.formulas[i]=reviewed; }

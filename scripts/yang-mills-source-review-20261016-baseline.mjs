@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 // Historical Yang–Mills source-review reconstruction. Test-only, never browser loaded.
 // Each production source blob is protected by the exact prior approved main Git SHA.
 import fs from 'node:fs';
@@ -17,7 +18,7 @@ export const beforeBlob={
 };
 const blobHash=buf=>createHash('sha1').update(Buffer.from('blob '+buf.length+'\0')).update(buf).digest('hex');
 export function beforeYangMillsBytes(path){
- const current=fs.readFileSync(new URL('../'+path,import.meta.url));
+ const current=readPreCampaignFile(new URL('../'+path,import.meta.url));
  const marker=Buffer.from(yangMillsMarker[path]||'');
  assert.ok(marker.length,path+': missing marker declaration');
  const at=current.indexOf(marker);

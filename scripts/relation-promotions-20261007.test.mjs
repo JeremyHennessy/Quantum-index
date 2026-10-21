@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -6,9 +7,9 @@ import {createHash} from 'node:crypto';
 import {multidomainReview,priorDepthSources,verifyDepthFileSha256} from './multidomain-depth-baseline.mjs';
 import {priorNewRelations} from './relation-promotions-20261008-baseline.mjs';
 import {priorPassportSources} from './passport-source-review-20261014-baseline.mjs';
-const ledger=JSON.parse(fs.readFileSync('docs/RELATION_PROMOTIONS_2026-10-07.json','utf8'));
+const ledger=JSON.parse(readPreCampaignFile('docs/RELATION_PROMOTIONS_2026-10-07.json','utf8'));
 const sandbox={window:{}};vm.createContext(sandbox);
-for(const file of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js']) vm.runInContext(fs.readFileSync(file,'utf8'),sandbox);
+for(const file of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js']) vm.runInContext(readPreCampaignFile(file,'utf8'),sandbox);
 const data=sandbox.window.QI_DATA;
 const stable = o => JSON.stringify(o);
 const digest = o => createHash('sha256').update(stable(o)).digest('hex');

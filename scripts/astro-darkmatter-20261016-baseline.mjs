@@ -1,3 +1,4 @@
+import {readPreCampaignFile} from './campaign-20261021-baseline.mjs';
 // Read-only bridge for the source-reviewed dark-matter equation wave of 16 Oct 2026.
 // Never loaded by app. Older approved records must exactly match their original Git blobs.
 import fs from 'node:fs';
@@ -17,7 +18,7 @@ const approvedGitBlobs={
 const gitBlob=bytes=>createHash('sha1').update(Buffer.from('blob '+bytes.length+'\0')).update(bytes).digest('hex');
 export function preDarkMatterBytes(path){
  assert.ok(markers[path],'unexpected protected path: '+path);
- const all=fs.readFileSync(new URL('../'+path,import.meta.url));
+ const all=readPreCampaignFile(new URL('../'+path,import.meta.url));
  const marker=Buffer.from(markers[path]),p=all.indexOf(marker);
  assert.ok(p>0,path+': missing source-scoped append boundary');
  assert.equal(all.indexOf(marker,p+marker.length),-1,path+': duplicate boundary');
