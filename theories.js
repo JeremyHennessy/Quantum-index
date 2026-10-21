@@ -3306,3 +3306,103 @@ window.QI_DATA.sources.push(...[
     "url": "https://arxiv.org/pdf/gr-qc/0606062v1"
   }
 ]);
+
+
+// Source-qualified cosmology navigation; editorial learning order is not a graph.
+(() => {
+  const sources = [
+  {
+    "id": "ma-bertschinger-perturbations-1995",
+    "title": "Cosmological Perturbation Theory in the Synchronous and Conformal Newtonian Gauges",
+    "authors": "Chung-Pei Ma and Edmund Bertschinger",
+    "year": 1995,
+    "type": "primary source",
+    "url": "https://arxiv.org/abs/astro-ph/9506072"
+  },
+  {
+    "id": "seljak-zaldarriaga-line-of-sight-1996",
+    "title": "A Line of Sight Approach to Cosmic Microwave Background Anisotropies",
+    "authors": "Uroš Seljak and Matias Zaldarriaga",
+    "year": 1996,
+    "type": "primary source",
+    "url": "https://arxiv.org/abs/astro-ph/9603033"
+  }
+];
+  for (const source of sources) { if(window.QI_DATA.sources.some(s=>s.id===source.id)) throw new Error("Duplicate navigation source "+source.id); window.QI_DATA.sources.push(source); }
+  const changes = [
+  {
+    "operation": "update-existing",
+    "match": {
+      "from": "inflationary-cosmology",
+      "to": "inflationary-fluctuations",
+      "type": "supports"
+    },
+    "record": {
+      "from": "inflationary-cosmology",
+      "to": "inflationary-fluctuations",
+      "type": "supports",
+      "note": "A theoretical perturbation-generation mechanism, not observational confirmation.",
+      "sourceIds": [
+        "guth-pi-1982",
+        "pdg-inflation-2025-reviewed"
+      ],
+      "evidenceType": "formal mathematical relation",
+      "confidence": "high",
+      "evidenceNote": "Guth–Pi calculates density perturbations from quantum-field fluctuations in a specific new-inflation model (its amplitude was too large); the reviewed canonical single-field calculation provides the broader qualified route. Direction means background dynamics supplies a setting for fluctuation generation, not that every inflation model has identical predictions.",
+      "sourceLocations": [
+        {
+          "sourceId": "guth-pi-1982",
+          "locator": "Abstract: calculation in the new-inflation scenario and excessive predicted amplitude.",
+          "url": "https://doi.org/10.1103/PhysRevLett.49.1110"
+        },
+        {
+          "sourceId": "pdg-inflation-2025-reviewed",
+          "locator": "Section 23.3.3, equations (23.41)–(23.48), PDF page 9: canonical scalar mode and adiabatic super-Hubble curvature spectrum.",
+          "url": "https://pdg.lbl.gov/2025/reviews/rpp2025-rev-inflation.pdf#page=9"
+        }
+      ]
+    }
+  },
+  {
+    "operation": "add-if-absent",
+    "record": {
+      "from": "inflationary-fluctuations",
+      "to": "lambda-cdm",
+      "type": "supports",
+      "note": "Conditional initial-spectrum input to structure predictions; not proof of inflation.",
+      "sourceIds": [
+        "pdg-inflation-2025-reviewed",
+        "ma-bertschinger-perturbations-1995",
+        "seljak-zaldarriaga-line-of-sight-1996",
+        "planck-inflation-2018"
+      ],
+      "evidenceType": "formal mathematical relation",
+      "confidence": "medium",
+      "evidenceNote": "Source-grounded synthesis: A candidate primordial spectrum supplies initial statistical input for linear Einstein–Boltzmann evolution and projection in a specified cosmological model. The direction records this conditional input-to-prediction role, not logical entailment of Lambda-CDM, historical descent, or empirical confirmation of an inflationary mechanism. Post-inflation transfer is not identical to Mukhanov–Sasaki dynamics.",
+      "sourceLocations": [
+        {
+          "sourceId": "pdg-inflation-2025-reviewed",
+          "locator": "Section 23.3.3, equations (23.41)–(23.48), PDF page 9: canonical scalar mode and adiabatic super-Hubble curvature spectrum.",
+          "url": "https://pdg.lbl.gov/2025/reviews/rpp2025-rev-inflation.pdf#page=9"
+        },
+        {
+          "sourceId": "ma-bertschinger-perturbations-1995",
+          "locator": "Sections 2–3 (gauges), 4–5 (Einstein, fluid and Boltzmann evolution), 6 equations (88)–(90) (initial spectrum and photon transfer), 7 (isentropic super-horizon initial conditions).",
+          "url": "https://arxiv.org/html/astro-ph/9506072v1"
+        },
+        {
+          "sourceId": "seljak-zaldarriaga-line-of-sight-1996",
+          "locator": "Section 2.2, equations (12)–(16): scalar and tensor line-of-sight source integrals; Section 3: numerical scope.",
+          "url": "https://arxiv.org/html/astro-ph/9603033v1"
+        },
+        {
+          "sourceId": "planck-inflation-2018",
+          "locator": "Abstract; model-qualified scalar-spectrum and inflationary constraints.",
+          "url": "https://arxiv.org/abs/1807.06211v2"
+        }
+      ]
+    }
+  }
+];
+  for (const change of changes) { const r=change.record; const found=window.QI_DATA.relations.filter(e=>e.from===r.from&&e.to===r.to&&e.type===r.type); if(change.operation==="update-existing") { if(found.length!==1) throw new Error("Missing unique navigation relation"); Object.assign(found[0],r); } else { if(found.length) throw new Error("Duplicate navigation relation"); window.QI_DATA.relations.push(r); } }
+})();

@@ -12077,3 +12077,457 @@ for(const patch of [
     "regime": "Not a generic reduced open-system equation: tracing out an environment may introduce dissipative and memory terms."
   }
 ]){const row=window.QI_FORMULAS.formulas.find(f=>f.id===patch.id);if(!row)throw new Error("Missing baseline formula "+patch.id);Object.assign(row,patch);}
+
+
+// Foundational equation metadata audited against inspected authoritative references.
+// Original historical citations remain provenance, not newly inspected originals.
+(() => {
+  const sources = [
+  {
+    "id": "adams-mit-804-lecture2-2013",
+    "title": "8.04 Quantum Mechanics, Lecture 2: Experimental Facts of Life",
+    "authors": "Allan Adams (MIT OpenCourseWare)",
+    "year": 2013,
+    "type": "authoritative lecture notes",
+    "url": "https://ocw.mit.edu/courses/8-04-quantum-physics-i-spring-2013/220bfdfab6ca1826045b587d03dc9624_MIT8_04S13_Lec02.pdf"
+  },
+  {
+    "id": "tong-qm-lecture-notes",
+    "title": "Quantum Mechanics — Cambridge lecture notes",
+    "authors": "David Tong",
+    "year": "living course notes",
+    "type": "authoritative lecture notes",
+    "url": "https://www.damtp.cam.ac.uk/user/tong/qm/qm.pdf"
+  },
+  {
+    "id": "preskill-ph229-chapter2",
+    "title": "Quantum Information and Computation, Chapter 2: Foundations I: States and Ensembles",
+    "authors": "John Preskill",
+    "year": "course notes; inspected 2026-10-21",
+    "type": "authoritative lecture notes",
+    "url": "https://www.preskill.caltech.edu/ph229/notes/chap2.pdf"
+  },
+  {
+    "id": "preskill-ph229-chapter3",
+    "title": "Quantum Information and Computation, Chapter 3: Foundations II: Measurement and Evolution",
+    "authors": "John Preskill",
+    "year": "course notes; inspected 2026-10-21",
+    "type": "authoritative lecture notes",
+    "url": "https://www.preskill.caltech.edu/ph229/notes/chap3.pdf"
+  }
+];
+  for (const source of sources) { if(!window.QI_DATA) continue; if(window.QI_DATA.sources.some(s=>s.id===source.id)) throw new Error("Duplicate foundation source "+source.id); window.QI_DATA.sources.push(source); }
+  const patches = [
+  {
+    "id": "planck-relation",
+    "assumptions": [
+      "A photon of definite frequency, or an energy increment of one radiation mode; this is not a claim that an arbitrary multimode state has a single frequency."
+    ],
+    "variables": [
+      "E: energy quantum; h: Planck constant; nu: cyclic frequency; hbar=h/(2 pi); omega=2 pi nu."
+    ],
+    "units": "SI: E in joules, h and hbar in joule seconds, nu in hertz, omega in radians per second.",
+    "regime": "Radiation energy quantum; zero-point energy is not included.",
+    "sourceIds": [
+      "planck-1901",
+      "einstein-light-1905",
+      "adams-mit-804-lecture2-2013"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "adams-mit-804-lecture2-2013",
+        "locator": "Lecture 2, printed/PDF p. 3, photoelectric-effect discussion: E=h nu and h=2 pi hbar; omega=2 pi nu is the stated frequency-convention conversion.",
+        "url": "https://ocw.mit.edu/courses/8-04-quantum-physics-i-spring-2013/220bfdfab6ca1826045b587d03dc9624_MIT8_04S13_Lec02.pdf#page=3"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "foundational-source-audit-2026-10-21",
+    "theoryRelationship": "Modern equation checked against authoritative lecture notes; retained historical references are provenance, not a claim that their original equations were inspected."
+  },
+  {
+    "id": "photon-momentum",
+    "assumptions": [
+      "Free photon in vacuum; lambda is vacuum wavelength and p is momentum magnitude."
+    ],
+    "variables": [
+      "p: nonnegative photon momentum magnitude; lambda: wavelength; k=2 pi/lambda: wave-number magnitude."
+    ],
+    "units": "SI: p in kg m/s, lambda in m, k in inverse m.",
+    "regime": "Do not apply without qualification to canonical versus kinetic momentum of light inside a material.",
+    "sourceIds": [
+      "einstein-light-1905",
+      "adams-mit-804-lecture2-2013"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "adams-mit-804-lecture2-2013",
+        "locator": "Lecture 2, printed/PDF p. 3, final full paragraph: p=h/lambda from E=cp and lambda nu=c; hbar k uses k=2 pi/lambda.",
+        "url": "https://ocw.mit.edu/courses/8-04-quantum-physics-i-spring-2013/220bfdfab6ca1826045b587d03dc9624_MIT8_04S13_Lec02.pdf#page=3"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "foundational-source-audit-2026-10-21",
+    "theoryRelationship": "Modern equation checked against authoritative lecture notes; retained historical references are provenance, not a claim that their original equations were inspected."
+  },
+  {
+    "id": "de-broglie",
+    "assumptions": [
+      "Free-particle momentum eigenmode; a narrow momentum wave packet has only an approximate representative wavelength. The inspected derivation is nonrelativistic."
+    ],
+    "variables": [
+      "lambda: wavelength; p: magnitude of momentum; h: Planck constant."
+    ],
+    "units": "SI: wavelength in m and momentum in kg m/s.",
+    "regime": "The wavelength uses momentum magnitude, lambda=h/|p_vector|. A localized wave packet has a wavelength distribution; zero momentum is the infinite-wavelength limit. The relation also has a relativistic extension, not audited here.",
+    "sourceIds": [
+      "debroglie-1925",
+      "tong-qm-lecture-notes"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "tong-qm-lecture-notes",
+        "locator": "Sec. 2.1, printed p. 21 (PDF p. 24), Eqs. (2.7)–(2.8) and following unnumbered wavelength relation; p in this record is the momentum magnitude.",
+        "url": "https://www.damtp.cam.ac.uk/user/tong/qm/qm.pdf#page=24"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "foundational-source-audit-2026-10-21",
+    "theoryRelationship": "Modern equation checked against authoritative lecture notes; retained historical references are provenance, not a claim that their original equations were inspected."
+  },
+  {
+    "id": "tdse",
+    "assumptions": [
+      "Closed nonrelativistic quantum system with a self-adjoint Hamiltonian on the relevant state domain."
+    ],
+    "variables": [
+      "Psi(r,t): position-space state amplitude; H: Hamiltonian; t: time; hbar: reduced Planck constant."
+    ],
+    "units": "H has energy units; both sides have energy times wavefunction units. In 3D single-particle normalization, Psi has units m^(-3/2).",
+    "regime": "First-order time evolution; for spin or many particles the state and coordinates must be extended. Not a general relativistic field equation.",
+    "sourceIds": [
+      "schrodinger-1926",
+      "tong-qm-lecture-notes",
+      "preskill-ph229-chapter2"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "tong-qm-lecture-notes",
+        "locator": "Sec. 1.2, Eq. (1.1), printed p. 9 (PDF p. 12); Sec. 1.2.1, Eq. (1.2), printed p. 10, specifies the nonrelativistic position-space Hamiltonian.",
+        "url": "https://www.damtp.cam.ac.uk/user/tong/qm/qm.pdf#page=12"
+      },
+      {
+        "sourceId": "preskill-ph229-chapter2",
+        "locator": "Sec. 2.1, dynamics axiom and Eq. (2.8), printed/PDF p. 3: self-adjoint Hamiltonian; source uses hbar=1 convention.",
+        "url": "https://www.preskill.caltech.edu/ph229/notes/chap2.pdf#page=3"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "foundational-source-audit-2026-10-21",
+    "theoryRelationship": "Modern equation checked against authoritative lecture notes; retained historical references are provenance, not a claim that their original equations were inspected."
+  },
+  {
+    "id": "tise",
+    "assumptions": [
+      "Time-independent self-adjoint Hamiltonian; an ordinary normalizable eigenstate psi_n belongs to D(H). Generalized continuum eigenfunctions instead require a distributional interpretation."
+    ],
+    "variables": [
+      "psi_n: energy eigenstate; E_n: corresponding energy eigenvalue; H: Hamiltonian."
+    ],
+    "units": "H and E_n have energy units.",
+    "regime": "Spectral eigenvalue problem; continuum eigenstates may require generalized normalization, and the displayed discrete subscript does not imply every spectrum is discrete.",
+    "sourceIds": [
+      "schrodinger-1926",
+      "tong-qm-lecture-notes"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "tong-qm-lecture-notes",
+        "locator": "Chapter 2 opening, Eq. (2.3), printed p. 19 (PDF p. 22); stationary-state discussion on p. 20 and free-particle continuum on pp. 20–21.",
+        "url": "https://www.damtp.cam.ac.uk/user/tong/qm/qm.pdf#page=22"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "foundational-source-audit-2026-10-21",
+    "theoryRelationship": "Modern equation checked against authoritative lecture notes; retained historical references are provenance, not a claim that their original equations were inspected."
+  },
+  {
+    "id": "born-probability",
+    "assumptions": [
+      "Normalized pure state in a position representation; any internal components must be summed in the norm."
+    ],
+    "variables": [
+      "P(r,t): probability density, not probability at one exact point; Psi: wavefunction."
+    ],
+    "units": "For 3D position, P has inverse-volume units and Psi has inverse-square-root-volume units.",
+    "regime": "Probability for a region is the integral of P over that region.",
+    "sourceIds": [
+      "born-probability-1926",
+      "tong-qm-lecture-notes"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "tong-qm-lecture-notes",
+        "locator": "Sec. 1.1, unnumbered Born probability-density equation, printed p. 4 (PDF p. 7); following paragraph distinguishes density from probability in a volume.",
+        "url": "https://www.damtp.cam.ac.uk/user/tong/qm/qm.pdf#page=7"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "foundational-source-audit-2026-10-21",
+    "theoryRelationship": "Modern equation checked against authoritative lecture notes; retained historical references are provenance, not a claim that their original equations were inspected."
+  },
+  {
+    "id": "born-projector",
+    "assumptions": [
+      "Normalized pure state and orthogonal projector P_a=P_a dagger=P_a squared for the measurement event."
+    ],
+    "variables": [
+      "psi: unit state vector; P_a: projector onto the event subspace; p(a): outcome probability."
+    ],
+    "units": "p(a) and the projector are dimensionless.",
+    "regime": "Projective measurement, including degenerate eigenspaces; a general measurement uses positive POVM effects rather than necessarily projectors.",
+    "sourceIds": [
+      "born-probability-1926",
+      "vonneumann-probability-1927",
+      "preskill-ph229-chapter2"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "preskill-ph229-chapter2",
+        "locator": "Sec. 2.1, Eqs. (2.5)–(2.6), printed/PDF p. 3: orthogonal spectral projector and event probability; normalized state is Eq. (2.1) on p. 2.",
+        "url": "https://www.preskill.caltech.edu/ph229/notes/chap2.pdf#page=3"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "foundational-source-audit-2026-10-21",
+    "theoryRelationship": "Modern equation checked against authoritative lecture notes; retained historical references are provenance, not a claim that their original equations were inspected."
+  },
+  {
+    "id": "trace-born",
+    "assumptions": [
+      "rho is a positive trace-class operator with trace one; each E_a is a bounded positive effect with 0<=E_a<=I, and the effects sum to identity (discrete outcomes)."
+    ],
+    "variables": [
+      "rho: density operator; E_a: POVM effect; p(a): event probability."
+    ],
+    "units": "All quantities are dimensionless.",
+    "regime": "Pure or mixed states and discrete generalized measurements; continuous outcomes require a POVM measure. Effects specify probabilities but do not uniquely specify the post-measurement state.",
+    "sourceIds": [
+      "vonneumann-probability-1927",
+      "schumacher-1995",
+      "preskill-ph229-chapter3"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "preskill-ph229-chapter3",
+        "locator": "Sec. 3.1.2, Eqs. (3.19)–(3.21), printed/PDF p. 6, and positivity/completeness explanation on p. 7; source F_a is this record's E_a.",
+        "url": "https://www.preskill.caltech.edu/ph229/notes/chap3.pdf#page=6"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "foundational-source-audit-2026-10-21",
+    "theoryRelationship": "Modern equation checked against authoritative lecture notes; retained historical references are provenance, not a claim that their original equations were inspected."
+  },
+  {
+    "id": "expectation",
+    "assumptions": [
+      "For the displayed equality chain, psi is normalized and rho=|psi><psi|. For an arbitrary mixed rho, use only <A>=Tr(rho A), not a single-ket expectation.",
+      "A is self-adjoint and the expectation exists; for an unbounded A, use states in the required operator/form domain and a finite absolute first moment."
+    ],
+    "variables": [
+      "A: observable; rho: density operator; psi: state; angle brackets: ensemble expectation."
+    ],
+    "units": "The expectation has the same units as A.",
+    "regime": "The trace expression applies to normalized pure or mixed density operators. The single-ket equality is the pure-state specialization; an ensemble average need not be an observed eigenvalue in an individual trial.",
+    "sourceIds": [
+      "vonneumann-probability-1927",
+      "tong-qm-lecture-notes",
+      "preskill-ph229-chapter2"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "tong-qm-lecture-notes",
+        "locator": "Sec. 3.3.1, Eq. (3.13), printed p. 79 (PDF p. 82): normalized pure-state expectation.",
+        "url": "https://www.damtp.cam.ac.uk/user/tong/qm/qm.pdf#page=82"
+      },
+      {
+        "sourceId": "preskill-ph229-chapter2",
+        "locator": "Sec. 2.3.1, printed/PDF p. 18, pure-state projector paragraph and Eqs. (2.60)–(2.61): density-operator expectation and ensemble formula.",
+        "url": "https://www.preskill.caltech.edu/ph229/notes/chap2.pdf#page=18"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "foundational-source-audit-2026-10-21",
+    "theoryRelationship": "Modern equation checked against authoritative lecture notes; retained historical references are provenance, not a claim that their original equations were inspected."
+  },
+  {
+    "id": "normalization",
+    "assumptions": [
+      "Square-integrable single-particle wavefunction on all 3D position space; include internal-state norm if present."
+    ],
+    "variables": [
+      "Psi(r,t): wavefunction; d^3r: position-volume element."
+    ],
+    "units": "Psi has units length^(-3/2); the integral is dimensionless.",
+    "regime": "Not ordinary normalization of ideal position or momentum eigenkets, which use delta-function normalization.",
+    "sourceIds": [
+      "schrodinger-1926",
+      "born-probability-1926",
+      "tong-qm-lecture-notes"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "tong-qm-lecture-notes",
+        "locator": "Sec. 1.1.1, first unnumbered normalization equation, printed p. 6 (PDF p. 9); nonnormalizable plane-wave caveat in Sec. 2.1, pp. 21–22.",
+        "url": "https://www.damtp.cam.ac.uk/user/tong/qm/qm.pdf#page=9"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "foundational-source-audit-2026-10-21",
+    "theoryRelationship": "Modern equation checked against authoritative lecture notes; retained historical references are provenance, not a claim that their original equations were inspected.",
+    "formulaType": "defining"
+  },
+  {
+    "id": "canonical-commutator",
+    "assumptions": [
+      "Cartesian position and canonical momentum on a common suitable dense domain, for example Schwartz functions on R; the identity operator on the right-hand side is implicit."
+    ],
+    "variables": [
+      "x: one coordinate operator; p: its canonical momentum; i: imaginary unit; hbar: reduced Planck constant."
+    ],
+    "units": "Both sides have action units.",
+    "regime": "For multiple Cartesian coordinates, [x_i,p_j]=i hbar delta_ij; this is not the algebra of arbitrary angular or compact coordinates.",
+    "sourceIds": [
+      "dirac-1925",
+      "tong-qm-lecture-notes"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "tong-qm-lecture-notes",
+        "locator": "Sec. 3.4, Eq. (3.17), printed p. 81 (PDF p. 84); position-representation proof and finite-matrix obstruction on p. 82.",
+        "url": "https://www.damtp.cam.ac.uk/user/tong/qm/qm.pdf#page=84"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "foundational-source-audit-2026-10-21",
+    "theoryRelationship": "Modern equation checked against authoritative lecture notes; retained historical references are provenance, not a claim that their original equations were inspected."
+  },
+  {
+    "id": "general-commutator",
+    "assumptions": [
+      "AB and BA must both be defined on the chosen common domain; no commutativity, boundedness or self-adjointness is implied by this definition."
+    ],
+    "variables": [
+      "A,B: linear operators; [A,B]: their commutator."
+    ],
+    "units": "Commutator units are the product of the units of A and B.",
+    "regime": "Algebraic definition, not an independent dynamical law.",
+    "sourceIds": [
+      "heisenberg-1925",
+      "tong-qm-lecture-notes"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "tong-qm-lecture-notes",
+        "locator": "Sec. 3.4, Eqs. (3.15)–(3.16), printed p. 81 (PDF p. 84): operator commutator and action on wavefunctions.",
+        "url": "https://www.damtp.cam.ac.uk/user/tong/qm/qm.pdf#page=84"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "foundational-source-audit-2026-10-21",
+    "theoryRelationship": "Modern equation checked against authoritative lecture notes; retained historical references are provenance, not a claim that their original equations were inspected."
+  },
+  {
+    "id": "xp-uncertainty",
+    "assumptions": [
+      "A normalized state with canonical x and p, finite variances and sufficient common-domain regularity; this is a sufficient domain restriction for the displayed operator derivation."
+    ],
+    "variables": [
+      "Delta x and Delta p: standard deviations in the same quantum state, not instrumental errors."
+    ],
+    "units": "The product has action units.",
+    "regime": "State-preparation variance bound; it is not a general measurement-disturbance relation.",
+    "sourceIds": [
+      "heisenberg-uncertainty-1927",
+      "tong-qm-lecture-notes"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "tong-qm-lecture-notes",
+        "locator": "Sec. 3.4.1, Eqs. (3.19)–(3.21), printed p. 85 (PDF p. 88); variance definition on p. 84 and proof on p. 86.",
+        "url": "https://www.damtp.cam.ac.uk/user/tong/qm/qm.pdf#page=88"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "foundational-source-audit-2026-10-21",
+    "theoryRelationship": "Modern equation checked against authoritative lecture notes; retained historical references are provenance, not a claim that their original equations were inspected.",
+    "formulaType": "exact"
+  },
+  {
+    "id": "unitary-evolution",
+    "assumptions": [
+      "Closed-system evolution generated by a self-adjoint time-independent Hamiltonian for the displayed exponential."
+    ],
+    "variables": [
+      "U(t,t0): unitary propagator; H: Hamiltonian; t0: initial time; psi: state vector."
+    ],
+    "units": "H(t-t0)/hbar is dimensionless.",
+    "regime": "For time-independent self-adjoint H, the unitary exponential acts on the Hilbert space; the strong Schrodinger derivative requires an initial state in D(H). A time-dependent H generally requires a time-ordered propagator under suitable existence assumptions.",
+    "sourceIds": [
+      "dirac-transformation-1927",
+      "preskill-ph229-chapter2"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "preskill-ph229-chapter2",
+        "locator": "Sec. 2.1, Eq. (2.10) and following unnumbered exponential, printed/PDF p. 4; source sets initial time to zero and uses hbar=1; self-adjoint generator on p. 3.",
+        "url": "https://www.preskill.caltech.edu/ph229/notes/chap2.pdf#page=4"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "foundational-source-audit-2026-10-21",
+    "theoryRelationship": "Modern equation checked against authoritative lecture notes; retained historical references are provenance, not a claim that their original equations were inspected."
+  },
+  {
+    "id": "von-neumann-eq",
+    "assumptions": [
+      "Closed-system unitary evolution (or the full system plus environment), with a self-adjoint Hamiltonian and a positive trace-one density operator.",
+      "The differential equation requires differentiability and a defined commutator; finite dimension suffices. For unbounded H, require the relevant products and derivative on a suitable domain rather than assuming every trace-class rho is differentiable."
+    ],
+    "variables": [
+      "rho: density operator; H: Hamiltonian; [H,rho]: commutator."
+    ],
+    "units": "Both sides have energy units because rho is dimensionless.",
+    "regime": "Not a generic reduced open-system equation: tracing out an environment may introduce dissipative and memory terms.",
+    "sourceIds": [
+      "vonneumann-probability-1927",
+      "preskill-ph229-chapter3"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "preskill-ph229-chapter3",
+        "locator": "Sec. 3.5.2, Eq. (3.144), printed/PDF p. 41; hbar restored from the source's natural-unit convention. Eqs. (3.145) and (3.148) distinguish closed-unitary and reduced-system evolution.",
+        "url": "https://www.preskill.caltech.edu/ph229/notes/chap3.pdf#page=41"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "foundational-source-audit-2026-10-21",
+    "theoryRelationship": "Modern equation checked against authoritative lecture notes; retained historical references are provenance, not a claim that their original equations were inspected."
+  }
+];
+  for(const patch of patches) { const matches=window.QI_FORMULAS.formulas.filter(f=>f.id===patch.id); if(matches.length!==1) throw new Error("Missing unique foundation formula "+patch.id); Object.assign(matches[0],patch); }
+})();

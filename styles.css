@@ -584,3 +584,16 @@ html{scrollbar-color:#a8c4ce #edf3f6}
 .passport-developments{border-top:1px solid #dce6ea;margin-top:12px;padding-top:10px}
 .passport-developments p{font-size:10px;color:#526d7a;margin:5px 0}
 @media(max-width:720px){.passport-grid,.passport-columns{grid-template-columns:1fr}.passport-grid .passport-wide{grid-column:auto}.passport-head{display:block}.passport-head .badge{display:inline-flex;margin-top:8px}}
+
+/* Inspectable research tools preserve the network and existing workspace layout. */
+#documentedNavigation,#recordTrust{margin-bottom:1.25rem;overflow-wrap:anywhere}
+.research-controls{display:flex;flex-wrap:wrap;align-items:end;gap:1rem;margin:1rem 0}
+.research-controls label{display:grid;gap:.4rem;flex:1 1 15rem;min-width:0}
+.research-controls select{width:100%;max-width:100%;min-width:0}
+.research-controls button{min-height:44px}
+.research-edges{padding-left:1.5rem}
+.research-edge{padding:.8rem 0;border-bottom:1px solid var(--line,#d9e0ec);overflow-wrap:anywhere}
+.research-edge h4{margin:.4rem 0}
+.trust-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:1rem}
+.trust-summary div{min-width:0}.trust-summary dt{font-weight:700}.trust-summary dd{margin:.35rem 0}
+#recordTrust summary{cursor:pointer;padding:.8rem 0;min-height:44px}
