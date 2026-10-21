@@ -8,14 +8,14 @@ Updated 21 October 2026. This is the single continuation entry point; dated rele
 - **59** cited reading profiles and **5** learning paths
 - **35** Theory Passports, **9** scientific Problems, **21** Evidence records and **60** structured Research Questions
 - **483** theory/framework entities across **14** categories
-- **578** bibliography records
+- **590** bibliography records
 - **354** primary-sourced; **129** review-sourced; **0** catalogued-only entries
 - **613** relationships: **128** source-backed; **485** editorial
 - **41** thought trees
-- **439** formulas across **30** categories
-- **305** entries with linked formulas; **132** documented formula gaps
+- **457** formulas across **30** categories
+- **323** entries with linked formulas; **114** documented formula gaps
 - Other audit classes: **11** interpretations, **16** conceptual, **18** theorem-first, **1** thought experiment
-- Formula metadata: **194** explicitly reviewed; **245** baseline records
+- Formula metadata: **212** explicitly reviewed; **245** baseline records
 - **16** reviewed DevelopmentEvents through **2026**
 
 Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.
@@ -25,10 +25,19 @@ Source attachment and formula presence are structural coverage measures, not ver
 
 - Earlier releases through PR85, including QEC and Yang–Mills source-qualified Passports, are already accepted. They are not pending additions.
 - PR86 recovery preserves its four source-qualified formulas and repairs formula cards to expose every exact citation locator. Its exact-head CI, main and hosted acceptance are tracked separately from the follow-on campaign.
-- The follow-on campaign integrates six cosmology Passports, model-specific equation representatives, four explicit perturbation metadata reviews, linked empirical constraints and scientific Problems. Evidence retains its dataset dates, confidence levels, model assumptions and explicit nonclaims.
+- PR86 recovery is accepted: PR and merged-main validation/browser gates passed; Pages deployment and served application/scientific-file hashes were verified at merge commit `649aa3cf46a640029b4dcbd7fee9dd875b31f6c1`.
+- The cosmology block is accepted in [PR89](https://github.com/JeremyHennessy/Quantum-index/pull/89). It integrates six cosmology Passports, model-specific equation representatives, four explicit perturbation metadata reviews, linked empirical constraints and scientific Problems. Evidence retains its dataset dates, confidence levels, model assumptions and explicit nonclaims. Exact-head and merged-main checks, Pages deployment and served-file hashes passed at merge `9bae6d90fe2b1163d65926f6d01635cb0428ba75`.
 - EFT of inflation and transient scalar early dark energy are distinct, source-qualified additions, not evidence of empirical completion. Generic early dark energy has an earlier history; the transient scalar entry does not claim to originate that whole family.
 - Candidate dispositions and dependencies are recorded in [CAMPAIGN_CANDIDATE_DISPOSITIONS_2026-10-21.json](../research/CAMPAIGN_CANDIDATE_DISPOSITIONS_2026-10-21.json). Deferred frameworks are not silently counted as shipped.
 - Release acceptance requires independent scientific review, current-runtime schema/reference tests, exact historical-prefix and record guards, Node regressions, Chromium/WebKit MathJax and responsive checks, then main/deployment verification. This candidate is not declared published merely because it exists locally.
+
+## Broader completion block
+
+Tracked in [PR90](https://github.com/JeremyHennessy/Quantum-index/pull/90), with publication gated separately below. Eighteen existing QFT/neutrino, open-system, many-body and classical-gravity entries now have source-qualified representative equations. Fifteen foundational formulas receive conventional scope/unit clarifications while retaining baseline review status; their exact source-depth audit remains outstanding. See [broader source review](../research/BROADER_SOURCE_REVIEW_2026-10-21.md) and [metadata scope manifest](../research/BROADER_METADATA_SCOPE_2026-10-21.json). No new empirical discoveries or theory-completion claims are inferred from these additions.
+
+The documented-path tooling remains CLI-only; no new path UI is claimed. The separate academic-roadmap PR87 is not part of this implementation campaign and remains under separate ownership.
+
+Subsequent scientific priorities are the remaining documented formula gaps, exact source-depth review of baseline metadata, qualified observational updates and deferred framework dispositions. Exploratory hypotheses belong in a separate research record until evidence supports catalog inclusion.
 
 ## Historical release notes
 

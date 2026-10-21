@@ -1,3 +1,4 @@
+import {readPreBroaderFile} from './broader-20261021-baseline.mjs';
 // Explicit historical-file projection for dated checkpoint suites only.
 // Generic schema, catalog, navigation and campaign tests use the full runtime.
 import fs from 'node:fs';
@@ -12,8 +13,8 @@ export function readPreCampaignFile(file,options){
  const absolute=file instanceof URL?fileURLToPath(file):path.resolve(file);
  const relative=path.relative(root,absolute);
  const entry=ledger.files[relative];
- if(!entry)return fs.readFileSync(file,options);
- const bytes=fs.readFileSync(file);
+ if(!entry)return readPreBroaderFile(file,options);
+ const bytes=readPreBroaderFile(file);
  assert.equal(hash(bytes),entry.afterSha256,relative+': undeclared campaign file mutation');
  const before=entry.beforeText===undefined?bytes.subarray(0,entry.beforeLength):Buffer.from(entry.beforeText);
  assert.equal(hash(before),entry.beforeSha256,relative+': immutable pre-campaign bytes');

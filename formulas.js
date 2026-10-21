@@ -11134,3 +11134,946 @@ for(const reviewed of [
     ]
   }
 ]){ const i=window.QI_FORMULAS.formulas.findIndex(f=>f.id===reviewed.id); if(i<0)throw new Error("Missing reviewed formula "+reviewed.id); window.QI_FORMULAS.formulas[i]=reviewed; }
+
+// 2026-10-21 broader source-qualified representatives and scoped baseline clarifications.
+window.QI_FORMULAS.formulas.push(...[
+  {
+    "formulaType": "approximation",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "broader-source-depth-2026-10-21",
+    "id": "higgs-abelian-vector-mass",
+    "name": "Abelian Higgs linearized vector mass",
+    "category": "Quantum field theory",
+    "latex": "\\partial_\\mu B^\\mu=0,\\qquad\\partial_\\nu G^{\\mu\\nu}+e^2\\varphi_0^2B^\\mu=0,\\qquad m_B^2=e^2\\varphi_0^2",
+    "plain": "The linearized Abelian gauge field has mass squared equal to e squared times the scalar vacuum amplitude squared.",
+    "description": "The original Abelian example exhibits a massive vector mode after expanding about a symmetry-breaking scalar vacuum. This is not the full electroweak mass formula.",
+    "theoryIds": [
+      "higgs-mechanism"
+    ],
+    "sourceIds": [
+      "higgs-1964"
+    ],
+    "tags": [
+      "Higgs",
+      "gauge boson mass",
+      "Abelian model",
+      "linearization"
+    ],
+    "assumptions": [
+      "Four-dimensional flat spacetime with metric signature (-,+,+,+).",
+      "Two real scalar fields with potential V(phi_1^2+phi_2^2), vacuum phi_1=0 and phi_2=phi_0 nonzero, V prime(phi_0^2)=0 and V double-prime(phi_0^2)>0.",
+      "Retain terms linear in scalar and vector perturbations; classical/tree-level bare mass, not a radiatively corrected pole mass."
+    ],
+    "variables": [
+      "B_mu = A_mu - partial_mu(delta phi_1)/(e phi_0): gauge-invariant linearized vector variable.",
+      "G_mu_nu = partial_mu B_nu - partial_nu B_mu: vector field strength.",
+      "e: dimensionless Abelian gauge coupling; phi_0: scalar vacuum amplitude; m_B: nonnegative bare vector mass."
+    ],
+    "regime": "Small fluctuations around a stable nonzero Abelian scalar vacuum with e phi_0 nonzero; the B-variable definition is singular at e phi_0=0, although the original field equations have a massless decoupling limit.",
+    "units": "Natural units hbar=c=1. B_mu, phi_0 and m_B have mass dimension 1; partial_mu has mass dimension 1; G_mu_nu has mass dimension 2.",
+    "theoryRelationship": "Representative linearized realization of the mechanism; not a claim that all gauge bosons acquire mass or that this Abelian model is the Standard Model.",
+    "sourceLocations": [
+      {
+        "sourceId": "higgs-1964",
+        "locator": "PRL 13 (1964), printed p. 508 (PDF page 1): Eq. (3) defines B and G; Eq. (4) gives the transverse massive-vector equation; immediately following text identifies bare mass e phi_0. Equation (1) and surrounding text fix the metric and vacuum assumptions.",
+        "url": "https://indico.cern.ch/event/1665363/contributions/7001521/attachments/3244096/5787835/Higgs.pdf#page=1"
+      }
+    ]
+  },
+  {
+    "formulaType": "defining",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "broader-source-depth-2026-10-21",
+    "id": "horndeski-covariant-action",
+    "name": "Four-function Horndeski action",
+    "category": "Quantum gravity & cosmology",
+    "latex": "S=\\int d^4x\\sqrt{-g}\\sum_{i=2}^{5}\\mathcal L_i,\\quad\\mathcal L_2=K,\\quad\\mathcal L_3=-G_3\\Box\\phi,\\quad\\mathcal L_4=G_4R+G_{4X}[(\\Box\\phi)^2-(\\nabla_\\mu\\nabla_\\nu\\phi)^2],\\quad\\mathcal L_5=G_5G_{\\mu\\nu}\\nabla^\\mu\\nabla^\\nu\\phi-\\frac{G_{5X}}6[(\\Box\\phi)^3-3\\Box\\phi(\\nabla_\\mu\\nabla_\\nu\\phi)^2+2(\\nabla_\\mu\\nabla_\\nu\\phi)^3]",
+    "plain": "Four free functions of a scalar field and its kinetic invariant combine curvature and scalar derivatives so that the field equations remain second order.",
+    "description": "The generalized-Galileon form of the four-dimensional Horndeski scalar–metric action, equivalent to the original formulation up to integrations by parts. It defines a family rather than one phenomenological model.",
+    "theoryIds": [
+      "horndeski-gravity"
+    ],
+    "sourceIds": [
+      "kobayashi-yamaguchi-yokoyama-2011"
+    ],
+    "tags": [
+      "Horndeski",
+      "scalar tensor",
+      "covariant action",
+      "second order"
+    ],
+    "assumptions": [
+      "Four-dimensional local scalar–metric theory with one scalar and a torsion-free Levi-Civita connection.",
+      "X=-g^{mu nu}(partial_mu phi)(partial_nu phi)/2; every K and G_i is a function of (phi,X).",
+      "Boundary terms are neglected under suitable boundary conditions; second-order equations do not by themselves guarantee stability or observational viability."
+    ],
+    "variables": [
+      "g_mu_nu: spacetime metric with signature (-,+,+,+); g: its determinant; R: Ricci scalar; G_mu_nu: Einstein tensor.",
+      "phi: scalar field; X: kinetic invariant; Box phi = g^{mu nu} nabla_mu nabla_nu phi.",
+      "G_iX = partial G_i / partial X; K,G_3,G_4,G_5: arbitrary sufficiently differentiable functions.",
+      "(nabla nabla phi)^2 = nabla_mu nabla_nu phi nabla^mu nabla^nu phi; the cubic abbreviation denotes the cyclic contraction nabla_mu nabla_nu phi nabla^nu nabla^lambda phi nabla_lambda nabla^mu phi."
+    ],
+    "regime": "Classical covariant single-scalar metric theory. Includes GR with a minimally coupled canonical scalar for K=X-V, G_3=G_5=0, G_4=M_Pl^2/2; excludes beyond-Horndeski/DHOST extensions with higher-order equations.",
+    "units": "Natural units hbar=c=1. With scalar mass dimension 1, X has dimension 4, K dimension 4, G_3 dimension 1, G_4 dimension 2 and G_5 dimension -1, so every L_i has dimension 4 and S is dimensionless.",
+    "theoryRelationship": "Defining representative form of the Horndeski family; no inflationary background, screening solution, stability condition, or observational constraint is imposed by this action alone.",
+    "sourceLocations": [
+      {
+        "sourceId": "kobayashi-yamaguchi-yokoyama-2011",
+        "locator": "arXiv:1105.5723v4, section 2, Eq. (2.1)–(2.2) printed/PDF p. 2 and Eq. (2.3)–(2.5) printed/PDF p. 3; Appendix A establishes equivalence with Horndeski.",
+        "url": "https://arxiv.org/pdf/1105.5723v4#page=3"
+      }
+    ]
+  },
+  {
+    "id": "ckm-original-km-parametrization",
+    "name": "Original Kobayashi–Maskawa mixing matrix",
+    "category": "Quantum field theory",
+    "latex": "V_{\\rm KM}=\\begin{pmatrix}c_1&-s_1c_3&-s_1s_3\\\\s_1c_2&c_1c_2c_3-s_2s_3e^{i\\delta}&c_1c_2s_3+s_2c_3e^{i\\delta}\\\\s_1s_2&c_1s_2c_3+c_2s_3e^{i\\delta}&c_1s_2s_3-c_2c_3e^{i\\delta}\\end{pmatrix},\\quad c_i=\\cos\\theta_i,\\ s_i=\\sin\\theta_i",
+    "plain": "A unitary three-generation quark mixing matrix contains three rotation angles and one phase that can generate CP violation.",
+    "description": "The original KM parametrization, using the corrected Eq. (13) printed in the source erratum. Its angle and phase conventions are not the later standard PDG convention.",
+    "theoryIds": [
+      "ckm-mixing"
+    ],
+    "sourceIds": [
+      "wave3-ckm-1973"
+    ],
+    "tags": [
+      "CKM",
+      "quark mixing",
+      "CP violation",
+      "KM convention"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [
+      "Exactly three up-type and three down-type quarks, with unitary mixing among them in the charged weak current.",
+      "Unphysical quark-field rephasings have been removed; theta_1, theta_2, theta_3 and delta are real.",
+      "A complex phase alone is not sufficient for observable CP violation in all limits: vanishing mixing angles or appropriate mass degeneracies can remove its physical effect."
+    ],
+    "variables": [
+      "V_KM: dimensionless quark mixing matrix in the original Kobayashi–Maskawa convention.",
+      "theta_i: three mixing angles; c_i and s_i: their cosines and sines; delta: CP phase in this convention.",
+      "Rows and columns label up-type and down-type mass eigenstates respectively; generation naming is modern rather than the source six-plet notation."
+    ],
+    "regime": "Three-generation charged-current quark mixing. Additional quarks can make an observed 3 by 3 submatrix nonunitary; this formula does not cover such extensions.",
+    "units": "Every matrix entry and angle is dimensionless; angles are in radians.",
+    "theoryRelationship": "An explicit parametrization of the unitary mixing structure, not an independent dynamical equation or a numerical fit.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "broader-source-depth-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "wave3-ckm-1973",
+        "locator": "Progress of Theoretical Physics 49 (1973), printed p. 657, PDF page 6: corrected Eq. (13) in the Errata block at the bottom of the page. The uncorrected main-text matrix has typographical errors and is not used.",
+        "url": "https://www2.yukawa.kyoto-u.ac.jp/ptpwww/Contents/pdf49-2/492-km.pdf#page=6"
+      }
+    ]
+  },
+  {
+    "formulaType": "approximation",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "broader-source-depth-2026-10-21",
+    "id": "type-i-seesaw-leading-light-mass",
+    "name": "Type-I seesaw effective light-neutrino mass",
+    "category": "Quantum field theory",
+    "latex": "m_\\nu\\simeq-m_D M_R^{-1}m_D^{T}",
+    "plain": "Integrating out heavy singlet Majorana neutrinos generates a suppressed light-neutrino mass matrix.",
+    "description": "Leading tree-level type-I seesaw relation, with the transpose rather than Hermitian conjugate required for the symmetric Majorana mass matrix.",
+    "theoryIds": [
+      "seesaw-mechanism"
+    ],
+    "sourceIds": [
+      "akhmedov-seesaw-2000"
+    ],
+    "tags": [
+      "neutrino mass",
+      "type I seesaw",
+      "Majorana",
+      "effective theory"
+    ],
+    "assumptions": [
+      "No direct left-handed Majorana mass term, as in the minimal model without a scalar triplet.",
+      "Invertible symmetric heavy Majorana mass matrix M_R, with heavy–light mixing norm ||m_D M_R^{-1}|| much smaller than one.",
+      "Tree-level matching below heavy-neutrino thresholds; radiative corrections and higher-order heavy–light mixing are neglected."
+    ],
+    "variables": [
+      "m_nu: complex symmetric effective light-neutrino Majorana mass matrix (m_L in the cited paper).",
+      "m_D: Dirac mass matrix, with active-flavour index on rows and heavy-singlet index on columns.",
+      "M_R: symmetric heavy-singlet Majorana mass matrix; superscript T denotes transpose, not complex conjugation."
+    ],
+    "regime": "Minimal type-I hierarchy. Not the inverse/type-II/type-III seesaw, and not an exact formula for arbitrary heavy–light mixing.",
+    "units": "All three mass matrices have mass dimension 1 in hbar=c=1 units.",
+    "theoryRelationship": "Representative leading effective mass relation. The cited paper makes additional flavour assumptions for its phenomenology, but its hierarchical Dirac spectrum and alignment are not required for this general matching formula.",
+    "sourceLocations": [
+      {
+        "sourceId": "akhmedov-seesaw-2000",
+        "locator": "arXiv:hep-ph/0001041v1, printed/PDF p. 1, Introduction, Eq. (1), with m_L renamed m_nu. Approximate equality makes explicit the leading seesaw expansion; the paper prints equality for its effective mass matrix.",
+        "url": "https://arxiv.org/pdf/hep-ph/0001041v1#page=1"
+      }
+    ]
+  },
+  {
+    "formulaType": "defining",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "broader-source-depth-2026-10-21",
+    "id": "landau-quasiparticle-energy-variation",
+    "name": "Landau quasiparticle energy variation",
+    "category": "Quantum many-body & condensed matter",
+    "latex": "\\delta\\epsilon(\\mathbf p)=\\operatorname{Tr}_{\\sigma^{\\prime}}\\int f(\\mathbf p,\\mathbf p^{\\prime})\\,\\delta n(\\mathbf p^{\\prime})\\,\\frac{d^3p^{\\prime}}{(2\\pi)^3}",
+    "plain": "A small occupation change shifts quasiparticle energies through the Landau interaction function.",
+    "description": "Linear response of quasiparticle energy to the occupation distribution. The spin trace is kept in the original operator form; f is a quasiparticle interaction, not a microscopic bare interaction.",
+    "theoryIds": [
+      "fermi-liquid"
+    ],
+    "sourceIds": [
+      "landau-fermi-liquid-1959"
+    ],
+    "tags": [
+      "Fermi liquid",
+      "quasiparticles",
+      "Landau interaction"
+    ],
+    "assumptions": [
+      "Normal, non-superfluid Fermi liquid with well-defined quasiparticles near the Fermi surface.",
+      "Small changes in occupations; interaction function is evaluated in the reference state."
+    ],
+    "variables": [
+      "delta epsilon(p): quasiparticle energy change, an operator in the untraced spin indices.",
+      "f(p,p prime): Landau interaction function with spin indices implicit; delta n(p prime): change of the quasiparticle occupation matrix.",
+      "Tr_sigma_prime: trace over the second quasiparticle spin indices."
+    ],
+    "regime": "Low-energy normal Fermi-liquid response; not valid as a quasiparticle description in generic one-dimensional Luttinger liquids or across a superfluid gap.",
+    "units": "Source uses hbar=1 and d tau=d^3p/(2 pi)^3. Restoring hbar replaces the denominator by (2 pi hbar)^3; f has dimensions energy times volume, so the integral is an energy.",
+    "theoryRelationship": "Defining phenomenological interaction response, not a theorem that every interacting Fermi system is a Fermi liquid.",
+    "sourceLocations": [
+      {
+        "sourceId": "landau-fermi-liquid-1959",
+        "locator": "Soviet Physics JETP 8 (1959), printed p. 70, PDF page 1, Eq. (1) and the following measure definition d tau=d^3p/(2 pi)^3, hbar=1. Sp_sigma_prime is rewritten as Tr_sigma_prime.",
+        "url": "https://jetp.ras.ru/cgi-bin/dn/e_008_01_0070.pdf#page=1"
+      }
+    ]
+  },
+  {
+    "id": "nakajima-zwanzig-memory-kernel",
+    "name": "Nakajima–Zwanzig projected memory equation",
+    "category": "Open quantum systems",
+    "latex": "\\frac{d}{dt}\\mathcal P\\rho(t)=\\int_0^t ds\\,\\mathcal K(t,s)\\mathcal P\\rho(s),\\qquad\\mathcal K(t,s)=\\mathcal P\\mathcal L(t)\\mathcal T\\exp\\!\\left[\\int_s^t du\\,\\mathcal Q\\mathcal L(u)\\right]\\mathcal Q\\mathcal L(s)\\mathcal P",
+    "plain": "The projected state evolves through a memory kernel integrating its history.",
+    "description": "Exact homogeneous interaction-picture equation under the stated projection and initial-state conditions; not its second-order truncation.",
+    "theoryIds": [
+      "nakajima-zwanzig"
+    ],
+    "sourceIds": [
+      "fischer-breuer-projection-2007"
+    ],
+    "tags": [
+      "memory kernel",
+      "projection",
+      "non-Markovian"
+    ],
+    "formulaType": "exact",
+    "assumptions": [
+      "Fixed projection P squared=P; Q=I-P.",
+      "P rho(0)=rho(0) and P L(t) P=0; otherwise initial-correlation and instantaneous projected terms must be retained."
+    ],
+    "variables": [
+      "rho: full density operator; P: relevant-state projection; Q: complementary projection.",
+      "L(t)A=-i[H_I(t),A] in hbar=1 units; T: chronological ordering; K: memory superoperator."
+    ],
+    "regime": "Exact before approximating the kernel. A factorizing projection requires a compatible initially uncorrelated state for the homogeneous form.",
+    "units": "hbar=1; L has inverse-time units and K inverse-time-squared units.",
+    "theoryRelationship": "Representative exact projection identity, distinct from a Born or Markov approximation.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "broader-source-depth-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "fischer-breuer-projection-2007",
+        "locator": "arXiv:0708.0410v2, printed/PDF p.2, section II.B, Eqs.(2)–(5) and initial-state caveat following Eq.(4).",
+        "url": "https://arxiv.org/pdf/0708.0410v2#page=2"
+      }
+    ]
+  },
+  {
+    "formulaType": "canonical",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "broader-source-depth-2026-10-21",
+    "id": "msw-two-flavour-matter-mixing",
+    "name": "Two-flavour matter mixing and MSW resonance",
+    "category": "Quantum field theory",
+    "latex": "A=\\frac{\\Delta m^2}{4E}\\cos2\\theta_v-\\frac{G_F N_e}{\\sqrt2},\\quad B=\\frac{\\Delta m^2}{4E}\\sin2\\theta_v,\\quad\\sin^2(2\\theta_m)=\\frac{B^2}{A^2+B^2},\\quad A_{\\rm res}=0",
+    "plain": "Matter modifies the mixing angle; the resonance is maximal effective mixing when the diagonal splitting vanishes and the off-diagonal mixing remains nonzero.",
+    "description": "Instantaneous two-active-flavour mixing for electron-neutrino conversion to a muon or tau flavour combination. This local resonance condition is not by itself a full conversion-probability formula.",
+    "theoryIds": [
+      "msw-effect"
+    ],
+    "sourceIds": [
+      "akhmedov-parametric-neutrinos-1998"
+    ],
+    "tags": [
+      "neutrino oscillations",
+      "MSW",
+      "matter potential"
+    ],
+    "assumptions": [
+      "Ultrarelativistic coherent two-flavour propagation with standard weak forward scattering in ordinary unpolarized matter.",
+      "The common identity part of the flavour Hamiltonian has been removed; its remaining matrix is [[-A,B],[B,A]].",
+      "N_e is electron number density; for antineutrinos change N_e to -N_e. Resonant mixing requires B nonzero and a physically attainable density."
+    ],
+    "variables": [
+      "Delta m^2=m_2^2-m_1^2: signed vacuum splitting; E: neutrino energy; theta_v: vacuum mixing angle; theta_m: local matter mixing angle.",
+      "G_F: Fermi constant; N_e: electron number density; A,B: Hamiltonian coefficients with energy units."
+    ],
+    "regime": "Local two-active-flavour reduction. Nonadiabatic profiles require solving the propagation equation; sterile channels have different effective densities, and genuine three-flavour effects are not included.",
+    "units": "Natural units hbar=c=1: G_F has mass dimension -2 and N_e dimension 3, so A,B have dimension 1; mixing-angle expressions are dimensionless.",
+    "theoryRelationship": "Representative matter-mixing relation, distinct from the additional adiabatic-following assumptions needed for the usual solar MSW conversion picture.",
+    "sourceLocations": [
+      {
+        "sourceId": "akhmedov-parametric-neutrinos-1998",
+        "locator": "arXiv:hep-ph/9805272v3, printed/PDF p.3 Eqs.(1)–(3), p.4 Eq.(4) and immediately following resonance statement. Squared mixing-angle form is the algebraic square of Eq.(4); select N=N_e from Eq.(3).",
+        "url": "https://arxiv.org/pdf/hep-ph/9805272v3#page=3"
+      }
+    ]
+  },
+  {
+    "formulaType": "approximation",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "broader-source-depth-2026-10-21",
+    "id": "redfield-single-channel-generator",
+    "name": "Nonsecular single-channel Redfield equation",
+    "category": "Open quantum systems",
+    "latex": "\\dot\\rho=-i[H_0,\\rho]-AA_f^\\dagger\\rho-\\rho A_fA+A_f^\\dagger\\rho A+A\\rho A_f,\\qquad A_f=\\int_0^\\infty d\\tau\\,C(-\\tau)A(-\\tau)",
+    "plain": "A bath-filtered system operator determines weak-coupling dissipation without imposing a secular approximation.",
+    "description": "The asymptotic-coefficient Redfield generator in a one-Hermitian-channel convention. This is the source Redfield equation, not the paper’s proposed completely positive GAME modification.",
+    "theoryIds": [
+      "bloch-redfield"
+    ],
+    "sourceIds": [
+      "davidovic-redfield-2020"
+    ],
+    "tags": [
+      "Redfield",
+      "weak coupling",
+      "nonsecular",
+      "master equation"
+    ],
+    "assumptions": [
+      "H_tot=H_0+H_B+A tensor B with Hermitian coupling operators; take the bath mean of B to vanish or absorb it into H_0.",
+      "Born weak-coupling and short bath-correlation-time Markov approximation; bath remains in a stationary thermal state.",
+      "Integrals are extended to infinity; no secular approximation is imposed."
+    ],
+    "variables": [
+      "rho: reduced system density operator in the Schrodinger picture; H_0: system Hamiltonian.",
+      "A(-tau)=exp(-i H_0 tau) A exp(i H_0 tau); A_f: bath-filtered operator.",
+      "C(t)=Tr_B[rho_B B(t)B(0)]: stationary bath correlation; B(t)=exp(i H_B t)B exp(-i H_B t)."
+    ],
+    "regime": "Weak-coupling Markov regime; nonsecular Redfield evolution need not preserve positivity or complete positivity, especially outside its validity regime.",
+    "units": "hbar=1. Choose A dimensionless and B with energy units; C has energy squared units, A_f energy units, and every right-hand term inverse-time units.",
+    "theoryRelationship": "Representative approximate generator, not a universal exact open-system evolution law and not automatically of Lindblad form.",
+    "sourceLocations": [
+      {
+        "sourceId": "davidovic-redfield-2020",
+        "locator": "arXiv:2003.09063v4, printed/PDF p.3, section2 Eq.(1) and bath-correlation paragraph; section3 Eqs.(4)–(5) for the Redfield generator and A_f.",
+        "url": "https://arxiv.org/pdf/2003.09063v4#page=3"
+      }
+    ]
+  },
+  {
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "broader-source-depth-2026-10-21",
+    "formulaType": "defining",
+    "id": "caldeira-leggett-counterterm-hamiltonian",
+    "name": "Caldeira–Leggett oscillator-bath Hamiltonian",
+    "category": "Open quantum systems",
+    "latex": "H=\\frac{p^2}{2M}+U(q)+\\sum_j\\left[\\frac{p_j^2}{2m_j}+\\frac{m_j\\omega_j^2}{2}\\left(x_j-\\frac{c_jq}{m_j\\omega_j^2}\\right)^2\\right]",
+    "plain": "A system coordinate couples linearly to harmonic bath oscillators, with the potential counterterm retained.",
+    "description": "Coordinate-coupled Brownian specialization of the oscillator-bath model. Completing the square makes the counterterm convention explicit.",
+    "theoryIds": [
+      "caldeira-leggett"
+    ],
+    "sourceIds": [
+      "tanimura-heom-review-2020"
+    ],
+    "tags": [
+      "quantum Brownian motion",
+      "oscillator bath",
+      "counterterm"
+    ],
+    "assumptions": [
+      "Canonical system and bath coordinate–momentum pairs; positive bath masses and frequencies.",
+      "Choose a single bath and system coupling V=q. The displayed U is the potential before bath-induced static renormalization; the counterterm cancels that shift."
+    ],
+    "variables": [
+      "q,p,M,U: system coordinate, momentum, mass and potential.",
+      "x_j,p_j,m_j,omega_j: bath oscillator coordinates, momenta, masses and angular frequencies; c_j: bilinear coupling constants."
+    ],
+    "regime": "A defining microscopic model. A dissipative continuum limit needs a specified spectral density and initial bath state; the high-temperature Markov master equation requires additional approximations.",
+    "units": "SI: q,x_j in m, masses in kg, frequencies in s^(-1), c_j in kg/s^2; every Hamiltonian term is an energy.",
+    "theoryRelationship": "Representative linear-coordinate oscillator-bath model, not the Caldeira–Leggett approximate master equation.",
+    "sourceLocations": [
+      {
+        "sourceId": "tanimura-heom-review-2020",
+        "locator": "arXiv:2006.05501v2, printed/PDF pp.2–3: section II Eqs.(1)–(2), with the Brownian specialization and explicit counterterm in the paragraph beginning “A notable example”. Complete the oscillator square and set one bath with V=q.",
+        "url": "https://arxiv.org/pdf/2006.05501v2#page=3"
+      }
+    ]
+  },
+  {
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "broader-source-depth-2026-10-21",
+    "formulaType": "exact",
+    "id": "heom-drude-infinite-hierarchy",
+    "name": "Drude-bath infinite HEOM hierarchy",
+    "category": "Open quantum systems",
+    "latex": "\\dot\\rho_{\\mathbf n}=-i[H_S,\\rho_{\\mathbf n}]-\\sum_{k=0}^{\\infty}n_k\\nu_k\\rho_{\\mathbf n}-i\\left[V,\\sum_{k=0}^{\\infty}\\rho_{\\mathbf n+\\mathbf e_k}\\right]-i\\sum_{k=0}^{\\infty}n_k\\left(c_kV\\rho_{\\mathbf n-\\mathbf e_k}-c_k^*\\rho_{\\mathbf n-\\mathbf e_k}V\\right)",
+    "plain": "Auxiliary density operators couple neighboring tiers to retain Gaussian bath memory.",
+    "description": "Unscaled infinite hierarchy for a single Drude oscillator bath, rewriting the source separate Drude and Matsubara indices as one multi-index and using hbar=1. No finite cutoff correction is present in this infinite limit.",
+    "theoryIds": [
+      "heom"
+    ],
+    "sourceIds": [
+      "tanimura-heom-correlated-2014"
+    ],
+    "tags": [
+      "HEOM",
+      "Drude bath",
+      "auxiliary density operators",
+      "non-Markovian"
+    ],
+    "assumptions": [
+      "H_tot=H_S+H_B−V sum_j alpha_j x_j with Hermitian V; Gaussian harmonic bath at inverse temperature beta.",
+      "Source spectral convention J(omega)=eta gamma^2 omega/[pi(gamma^2+omega^2)].",
+      "Infinite exponential expansion and untruncated hierarchy. A numerical implementation must establish convergence in both Matsubara terms and hierarchy depth; finite cutoffs are not automatically exact."
+    ],
+    "variables": [
+      "rho_0: physical reduced density operator; rho_n: unscaled auxiliary operators; n_k: nonnegative tier occupations; e_k: unit multi-index.",
+      "nu_0=gamma; nu_k=2 pi k/beta for k>=1; gamma: bath decay rate.",
+      "c_0=(eta gamma^2/2)[cot(beta gamma/2)−i]; c_k=2 eta gamma^2 nu_k/[beta(nu_k^2−gamma^2)] for k>=1. At coincident poles, take the combined analytic limit rather than evaluate divergent pieces separately.",
+      "H_S: system Hamiltonian; V: dimensionless coupling operator; eta: bath coupling parameter; beta=1/(k_B T)."
+    ],
+    "regime": "Gaussian Drude environment without Born, Markov or secular truncation. Factorized initial states use zero higher ADOs; correlated preparation requires compatible nonzero initial ADOs.",
+    "units": "hbar=1, dimensionless V and eta. H_S,gamma,nu_k have energy dimension1; c_k dimension2. In this unscaled convention a tier-N ADO has energy dimension N, so every term has dimension N+1.",
+    "theoryRelationship": "Representative exact infinite hierarchy for the specified bath, not every HEOM decomposition or a guarantee for a finite numerical truncation.",
+    "sourceLocations": [
+      {
+        "sourceId": "tanimura-heom-correlated-2014",
+        "locator": "arXiv:1407.1811v2, Eq.(40) printed/PDF p.14; relaxation definitions Eqs.(33),(35),(37) p.13 and Drude correlation coefficients earlier in section III. Set hbar=1, K→infinity so Xi→0, combine the source n and j_k into n_0,n_k, and combine commutator/anticommutator lowering terms using complex c_0.",
+        "url": "https://arxiv.org/pdf/1407.1811v2#page=14"
+      }
+    ]
+  },
+  {
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "broader-source-depth-2026-10-21",
+    "formulaType": "approximation",
+    "id": "ginzburg-landau-static-order-parameter",
+    "name": "Static Ginzburg–Landau order-parameter equation",
+    "category": "Quantum many-body & condensed matter",
+    "latex": "-\\frac{\\hbar^2}{2m_*}\\mathbf D^2\\Psi+\\alpha\\Psi+\\beta|\\Psi|^2\\Psi=0,\\qquad\\mathbf D=\\nabla+i\\frac{e_*}{\\hbar c}\\mathbf A",
+    "plain": "The superconducting order parameter balances gradient, quadratic and quartic free-energy terms.",
+    "description": "Isotropic static specialization of the review anisotropic Ginzburg–Landau equation, using Gaussian electromagnetic units and a positive pair-charge magnitude.",
+    "theoryIds": [
+      "ginzburg-landau-superconductivity"
+    ],
+    "sourceIds": [
+      "wave4-gl-review-2010"
+    ],
+    "tags": [
+      "Ginzburg Landau",
+      "superconductivity",
+      "order parameter"
+    ],
+    "assumptions": [
+      "Local single-component order parameter close enough to a continuous transition for a quartic gradient expansion; beta>0.",
+      "Isotropic effective mass m_*; Gaussian electromagnetic convention, e_*>0 is the pair-charge magnitude, physical Cooper-pair charge −e_*.",
+      "Static extremum with suitable boundary conditions; magnetic response additionally requires Maxwell/supercurrent equation."
+    ],
+    "variables": [
+      "Psi: order parameter, normalized so |Psi|^2 is pair density; alpha: quadratic coefficient, negative in the uniform superconducting phase; beta: quartic coefficient.",
+      "m_*: pair effective mass; e_*: pair-charge magnitude; A: vector potential; c: speed of light."
+    ],
+    "regime": "Mesoscopic mean-field/phenomenological static GL model near T_c; not a microscopic pairing theory or a time-dependent equation.",
+    "units": "Gaussian electromagnetic units. Psi has dimension length^(-3/2), alpha energy, beta energy times volume; e_* A/c has momentum units.",
+    "theoryRelationship": "Representative equilibrium equation from varying a GL free energy, with source a prime renamed alpha and b prime renamed beta; not a claim that all superconductors have a scalar isotropic order parameter.",
+    "sourceLocations": [
+      {
+        "sourceId": "wave4-gl-review-2010",
+        "locator": "Author preprint arXiv:0905.4224v1, printed/PDF p.4, Eqs.(7),(9),(10), setting m_c*=m* and combining planar/z derivatives. Gaussian flux convention Phi_0=hc/e_* appears Eq.(1), p.2. Coefficients renamed to avoid conflating source beta-like notation with inverse temperature.",
+        "url": "https://arxiv.org/pdf/0905.4224v1#page=4"
+      }
+    ]
+  },
+  {
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "broader-source-depth-2026-10-21",
+    "formulaType": "derived identity",
+    "id": "tegr-curvature-torsion-boundary-identity",
+    "name": "TEGR curvature–torsion boundary identity",
+    "category": "Quantum gravity & cosmology",
+    "latex": "\\mathring R=-T+2\\mathring\\nabla_\\mu T_\\nu{}^{\\nu\\mu},\\qquad S_{\\rm TEGR}=-\\frac1{2\\kappa^2}\\int d^4x\\sqrt{-g}\\,T",
+    "plain": "The torsion scalar reproduces the Einstein–Hilbert action up to a divergence in metric teleparallel geometry.",
+    "description": "The metric-teleparallel identity and TEGR gravitational action in the cited review sign convention. The over-ring denotes the Levi-Civita connection, not the flat teleparallel connection.",
+    "theoryIds": [
+      "teleparallel-gravity"
+    ],
+    "sourceIds": [
+      "wave3-teleparallel-review-2023"
+    ],
+    "tags": [
+      "TEGR",
+      "torsion",
+      "boundary term",
+      "equivalent gravity"
+    ],
+    "assumptions": [
+      "Four-dimensional metric-compatible teleparallel connection with vanishing curvature and generally nonzero torsion.",
+      "Review signature (+,−,−,−), with connection last index the differentiation index and T^rho_mu_nu=Gamma^rho_nu_mu−Gamma^rho_mu_nu.",
+      "Appropriate boundary treatment when comparing actions; boundary terms cannot simply be discarded in all variational or charge calculations."
+    ],
+    "variables": [
+      "R with over-ring: Levi-Civita Ricci scalar; T^rho_mu_nu: teleparallel torsion; T: scalar defined as S_rho^mu_nu T^rho_mu_nu/2 using review Eq.(1.6).",
+      "S_rho^mu_nu=K^mu_nu_rho−delta_rho^mu T_sigma^sigma_nu+delta_rho^nu T_sigma^sigma_mu; K: contortion, teleparallel minus Levi-Civita connection.",
+      "kappa^2=8 pi G in c=1 units; g: metric determinant."
+    ],
+    "regime": "Classical TEGR equivalence for the metric equations. Replacing T by a nonlinear f(T) generally breaks the simple equivalence, and symmetric teleparallel gravity uses nonmetricity Q instead.",
+    "units": "hbar=c=1: R and T have mass dimension2, kappa^2 dimension−2, and the gravitational action is dimensionless.",
+    "theoryRelationship": "Geometric identity plus representative TEGR action; not an empirical demonstration of torsion or a formula for every teleparallel modification.",
+    "sourceLocations": [
+      {
+        "sourceId": "wave3-teleparallel-review-2023",
+        "locator": "arXiv:2106.13793v4, printed p.18 / PDF p.25, Eqs.(2.49),(2.51),(2.52); signature and connection conventions printed pp.6–7 / PDF pp.13–14; torsion/contortion/superpotential/scalar Eq.(1.6), printed p.7 / PDF p.14.",
+        "url": "https://arxiv.org/pdf/2106.13793v4#page=25"
+      }
+    ]
+  },
+  {
+    "id": "brans-dicke-trace-sourced-scalar",
+    "name": "Brans–Dicke trace-sourced scalar equation",
+    "category": "Quantum gravity & cosmology",
+    "latex": "\\Box\\phi=\\frac{8\\pi}{(3+2\\omega)c^4}\\,T",
+    "plain": "The matter stress-energy trace sources the Brans–Dicke scalar.",
+    "description": "Potential-free Brans–Dicke representative within the broader scalar–tensor family.",
+    "theoryIds": [
+      "scalar-tensor-gravity"
+    ],
+    "sourceIds": [
+      "brans-dicke-1961"
+    ],
+    "tags": [
+      "Brans Dicke",
+      "scalar tensor",
+      "matter trace"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [
+      "Constant dimensionless omega, 3+2 omega nonzero; no scalar potential.",
+      "Matter minimally couples to the Jordan-frame metric, not explicitly to phi.",
+      "Signature (−,+,+,+); torsion-free metric connection."
+    ],
+    "variables": [
+      "phi: inverse-gravitational-coupling scalar; omega: Brans–Dicke parameter.",
+      "Box phi = nabla_mu nabla^mu phi; T=g_mu_nu T^mu_nu, equal to −energy density+3 pressure for a perfect fluid."
+    ],
+    "regime": "Classical potential-free Brans–Dicke model; not every scalar–tensor theory. Traceless matter has no direct source here, but boundary conditions can still support scalar variation.",
+    "units": "SI: phi has inverse-G units kg s^2/m^3; T has energy-density units; coordinates use x^0=ct.",
+    "theoryRelationship": "Representative field equation, not a universal scalar–tensor identity.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "broader-source-depth-2026-10-21",
+    "sourceLocations": [
+      {
+        "sourceId": "brans-dicke-1961",
+        "locator": "Physical Review124(1961), printed p.930/PDFp.6, Eq.(13); d’Alembertian Eq.(10),p.929; perfect-fluid trace Eqs.(14)–(15),p.930.",
+        "url": "https://pages.jh.edu/rrynasi1/PhysicalPrinciples/literature/Brans%2BDicke1961MachsPrinciple%2BARelativisticTheoryOfGravitation.pdf#page=6"
+      }
+    ]
+  },
+  {
+    "formulaType": "derived identity",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "broader-source-depth-2026-10-21",
+    "id": "gim-two-generation-neutral-current",
+    "name": "Two-generation GIM flavour-diagonal neutral current",
+    "category": "Quantum field theory",
+    "latex": "U=\\begin{pmatrix}\\cos\\theta&\\sin\\theta\\\\-\\sin\\theta&\\cos\\theta\\end{pmatrix},\\quad C=\\begin{pmatrix}0&U\\\\0&0\\end{pmatrix},\\quad [C,C^\\dagger]=\\begin{pmatrix}UU^T&0\\\\0&-U^TU\\end{pmatrix}=\\begin{pmatrix}I_2&0\\\\0&-I_2\\end{pmatrix}",
+    "plain": "Orthogonal mixing of two complete quark generations makes the weak neutral-current generator diagonal in flavour.",
+    "description": "The historical four-quark construction exhibits absence of tree-level flavour-changing neutral currents; it does not assert vanishing loop amplitudes for unequal quark masses.",
+    "theoryIds": [
+      "gim-mechanism"
+    ],
+    "sourceIds": [
+      "maiani-gim-review-2013"
+    ],
+    "tags": [
+      "GIM",
+      "Cabibbo mixing",
+      "neutral currents"
+    ],
+    "assumptions": [
+      "Historical two-generation real Cabibbo mixing with complete (u,d) and (c,s) weak doublets.",
+      "The block matrix uses the source ordering (u,c,d,s); C acts on the left-chiral flavour space.",
+      "No CP-violating phase in this two-generation construction; transpose and adjoint agree for U."
+    ],
+    "variables": [
+      "theta: Cabibbo angle; U: real orthogonal 2 by 2 charged-current mixing matrix.",
+      "C: dimensionless weak raising generator in the four-quark flavour space; dagger: Hermitian conjugation; I_2: identity."
+    ],
+    "regime": "Tree-level weak-isospin structure of the historical four-quark model. Higher-order FCNC can survive mass splitting; this is not a three-generation loop-rate formula.",
+    "units": "All matrices and angles are dimensionless.",
+    "theoryRelationship": "Representative algebraic basis for GIM suppression, not a numerical rare-decay prediction.",
+    "sourceLocations": [
+      {
+        "sourceId": "maiani-gim-review-2013",
+        "locator": "arXiv:1303.6154v1, PDF p.5 Section 4 Eqs.(14)–(16); explicit I_2 notation replaces the source block identity symbol 1. PDF pp.4–5 explains equal-mass loop cancellation separately.",
+        "url": "https://arxiv.org/pdf/1303.6154v1#page=5"
+      }
+    ]
+  },
+  {
+    "formulaType": "approximation",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "broader-source-depth-2026-10-21",
+    "id": "luttinger-boson-phase-density-hamiltonian",
+    "name": "Luttinger phase-density Hamiltonian",
+    "category": "Quantum many-body & condensed matter",
+    "latex": "H_{\\rm LL}^{\\alpha}=\\frac{\\hbar u}{2}\\int dx\\left[\\frac{\\mathcal K}{\\pi}(\\partial_x\\theta_\\alpha)^2+\\frac{\\pi}{\\mathcal K}n_\\alpha^2\\right],\\qquad[n_\\alpha(x),\\theta_\\beta(x^{\\prime})]=i\\delta(x-x^{\\prime})\\delta_{\\alpha\\beta}",
+    "plain": "Long-wavelength phase gradients and density fluctuations form a quadratic sound-mode theory.",
+    "description": "Single-chain Hamiltonian from the source coupled-chain setup, before adding interchain tunnelling. The source distinguishes the single-chain parameter script K from the antisymmetric-sector parameter K=script K/2.",
+    "theoryIds": [
+      "luttinger-liquid"
+    ],
+    "sourceIds": [
+      "foini-giamarchi-luttinger-2015"
+    ],
+    "tags": [
+      "Luttinger liquid",
+      "hydrodynamics",
+      "bosonization"
+    ],
+    "assumptions": [
+      "Low-energy, long-wavelength gapless one-dimensional bosonic fluid; stable positive u and script K.",
+      "n_alpha is the fluctuation of linear number density, not total density.",
+      "This is the isolated-chain quadratic term, not the full sine-Gordon Hamiltonian with tunnelling."
+    ],
+    "variables": [
+      "u: sound velocity; script K: dimensionless single-chain Luttinger parameter; hbar: reduced Planck constant.",
+      "theta_alpha: dimensionless phase; n_alpha: density fluctuation with inverse-length units; x: chain coordinate; alpha,beta: chain labels."
+    ],
+    "regime": "Continuum hydrodynamic regime below the microscopic cutoff. Irrelevant nonlinear terms, commensurate gaps, and interchain coupling are not part of this displayed Hamiltonian.",
+    "units": "SI-compatible with explicit hbar: hbar u has energy times length; integral of squared gradients or densities has inverse length, yielding energy.",
+    "theoryRelationship": "Representative bosonic realization of Luttinger-liquid theory; does not equate the microscopic interaction with the phenomenological Luttinger parameter.",
+    "sourceLocations": [
+      {
+        "sourceId": "foini-giamarchi-luttinger-2015",
+        "locator": "Physical Review A 91, 023627 (2015), printed p.023627-2 / PDF p.2 Eq.(2) and following canonical-commutator paragraph. Gradient rewritten as partial_x in one dimension.",
+        "url": "https://giamarchi.unige.ch/wp-content/php_code/publications/pdf/Foini-2015-1.pdf#page=2"
+      }
+    ]
+  },
+  {
+    "formulaType": "limit",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "broader-source-depth-2026-10-21",
+    "id": "bkt-universal-stiffness-jump",
+    "name": "BKT universal stiffness jump",
+    "category": "Quantum many-body & condensed matter",
+    "latex": "J_s(T_{\\rm BKT}^{-})=\\frac{2k_B T_{\\rm BKT}}{\\pi}",
+    "plain": "The thermodynamic stiffness immediately below vortex unbinding has a universal ratio to temperature.",
+    "description": "Nelson–Kosterlitz jump expressed with an energy-valued renormalized phase stiffness, not a three-dimensional mass density.",
+    "theoryIds": [
+      "bkt-transition"
+    ],
+    "sourceIds": [
+      "maccari-bkt-disorder-2018"
+    ],
+    "tags": [
+      "BKT",
+      "universal jump",
+      "vortices"
+    ],
+    "assumptions": [
+      "Two-dimensional short-range XY / U(1) phase model in the BKT universality class with logarithmic vortex interactions.",
+      "J_s is the long-distance renormalized helicity modulus in the thermodynamic limit, not the bare microscopic coupling.",
+      "Use the low-temperature-side limit; finite samples require finite-size corrections."
+    ],
+    "variables": [
+      "J_s: energy-valued two-dimensional superfluid phase stiffness",
+      "T_BKT: transition temperature",
+      "k_B: Boltzmann constant."
+    ],
+    "regime": "Thermodynamic BKT critical point. Finite size, non-BKT interactions, and experimental rounding do not obey this as an exact finite-sample crossing rule.",
+    "units": "J_s and k_B T both have energy units. Source sets k_B=1.",
+    "theoryRelationship": "Representative universal consequence of vortex unbinding, not a formula for T_BKT from a bare coupling alone.",
+    "sourceLocations": [
+      {
+        "sourceId": "maccari-bkt-disorder-2018",
+        "locator": "arXiv:1802.03315v1, PDF p.2 Eq.(3), repeated p.4 Eq.(8); p.4 Eq.(9) distinguishes finite-size stiffness from its thermodynamic limit. k_B is restored from the source temperature-as-energy convention; minus specifies the ordered-side limit.",
+        "url": "https://arxiv.org/pdf/1802.03315v1#page=2"
+      }
+    ]
+  },
+  {
+    "formulaType": "defining",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "broader-source-depth-2026-10-21",
+    "id": "anderson-single-impurity-hamiltonian",
+    "name": "Single-impurity Anderson Hamiltonian",
+    "category": "Quantum many-body & condensed matter",
+    "latex": "H_{\\rm AM}=\\sum_\\sigma\\epsilon_d d_\\sigma^\\dagger d_\\sigma+U n_{d\\uparrow}n_{d\\downarrow}+\\sum_{k\\sigma}\\epsilon_{k\\sigma}c_{k\\sigma}^\\dagger c_{k\\sigma}+\\sum_{k\\sigma}(V_kd_\\sigma^\\dagger c_{k\\sigma}+V_k^*c_{k\\sigma}^\\dagger d_\\sigma)",
+    "plain": "A correlated localized orbital exchanges electrons with a noninteracting conduction bath.",
+    "description": "The bare single-orbital Anderson model balances hybridization and local double-occupancy repulsion. This is not the source renormalized quasiparticle Hamiltonian.",
+    "theoryIds": [
+      "anderson-impurity"
+    ],
+    "sourceIds": [
+      "hewson-oguri-meyer-impurity-2004"
+    ],
+    "tags": [
+      "Anderson model",
+      "impurity",
+      "hybridization"
+    ],
+    "assumptions": [
+      "One localized spin-degenerate orbital with local interaction U, coupled by spin-conserving hopping to a noninteracting bath.",
+      "Operators obey canonical fermion anticommutation and n_dsigma=d_sigma dagger d_sigma.",
+      "No wide-flat-band approximation is needed for this Hamiltonian; the source imposes it only for constant hybridization width."
+    ],
+    "variables": [
+      "d_sigma: impurity electron annihilation operator; c_ksigma: bath electron annihilation operator; sigma: spin; k: bath mode.",
+      "epsilon_d, epsilon_ksigma: orbital energies relative to a common reference; U: on-site interaction energy; V_k: complex hybridization amplitude."
+    ],
+    "regime": "Single-orbital quantum impurity model, including mixed-valence and local-moment regimes. Additional orbitals, bath interactions, phonons, or explicit bias require extensions.",
+    "units": "All epsilon, U and V parameters have energy units; mode operators and occupancies are dimensionless.",
+    "theoryRelationship": "Defining representative model Hamiltonian; displaying it is not an exact solution or an assertion that every parameter choice is in the Kondo regime.",
+    "sourceLocations": [
+      {
+        "sourceId": "hewson-oguri-meyer-impurity-2004",
+        "locator": "arXiv:cond-mat/0312484v2, PDF p.1 Section 1 Eq.(1) and immediately adjacent definitions; distinguish the later renormalized Eq.(4).",
+        "url": "https://arxiv.org/pdf/cond-mat/0312484v2#page=1"
+      }
+    ]
+  },
+  {
+    "formulaType": "canonical",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "broader-source-depth-2026-10-21",
+    "id": "einstein-cartan-sciama-kibble-equations",
+    "name": "Einstein–Cartan curvature and torsion equations",
+    "category": "Quantum gravity & cosmology",
+    "latex": "R_{\\mu\\nu}-\\frac12g_{\\mu\\nu}R=8\\pi t_{\\mu\\nu},\\qquad Q^\\rho{}_{\\mu\\nu}+\\delta^\\rho_\\mu Q^\\sigma{}_{\\nu\\sigma}-\\delta^\\rho_\\nu Q^\\sigma{}_{\\mu\\sigma}=8\\pi s^\\rho{}_{\\mu\\nu}",
+    "plain": "Energy-momentum sources curvature, while intrinsic spin sources algebraic torsion.",
+    "description": "Sciama–Kibble equations in Trautman’s metric-compatible Riemann–Cartan conventions and geometrized units. The curvature is that of the full connection, not the torsion-free Levi-Civita connection.",
+    "theoryIds": [
+      "einstein-cartan"
+    ],
+    "sourceIds": [
+      "trautman-einstein-cartan-2006"
+    ],
+    "tags": [
+      "Einstein–Cartan",
+      "torsion",
+      "spin"
+    ],
+    "assumptions": [
+      "Four-dimensional classical metric-compatible Einstein–Cartan theory with matter energy-momentum and intrinsic spin.",
+      "Follow the source metric signature (1,3), torsion convention Q^rho_munu=Gamma^rho_munu-Gamma^rho_numu in a holonomic frame, and source curvature convention.",
+      "The Hilbert-type gravity action yields algebraic torsion; no additional propagating-torsion kinetic terms are included."
+    ],
+    "variables": [
+      "g_munu: metric; R_munu,R: Ricci tensor and scalar of the full metric-compatible connection; t_munu: generally asymmetric energy-momentum tensor.",
+      "Q^rho_munu: torsion tensor; s^rho_munu: intrinsic spin density in the source index order; delta: Kronecker tensor."
+    ],
+    "regime": "Classical Einstein–Cartan field theory. Spin-free regions have vanishing torsion in this minimal theory; no quantum-gravity completion or observational confirmation of torsion follows.",
+    "units": "Source geometrized units G=c=1, with mass and energy measured as length and hbar having length squared. In length-valued coordinates curvature and t have inverse-length-squared units; torsion and spin density have inverse-length units.",
+    "theoryRelationship": "Representative classical extension of general relativity coupling intrinsic spin to torsion, not a quantization of gravity.",
+    "sourceLocations": [
+      {
+        "sourceId": "trautman-einstein-cartan-2006",
+        "locator": "arXiv:gr-qc/0606062v1, PDF p.5 Eqs.(23)–(24); p.1 Notation gives G=c=1 and signature (1,3); p.3 defines torsion and curvature; p.4 imposes metricity before Eq.(22).",
+        "url": "https://arxiv.org/pdf/gr-qc/0606062v1#page=5"
+      }
+    ]
+  }
+]);
+for(const patch of [
+  {
+    "id": "planck-relation",
+    "assumptions": [
+      "Single photon or single-mode energy quantum; not the total energy of a multimode state."
+    ],
+    "variables": [
+      "E: energy quantum; h: Planck constant; nu: cyclic frequency; hbar=h/(2 pi); omega=2 pi nu."
+    ],
+    "units": "SI: E in joules, h and hbar in joule seconds, nu in hertz, omega in radians per second.",
+    "regime": "Radiation energy quantum; zero-point energy is not included."
+  },
+  {
+    "id": "photon-momentum",
+    "assumptions": [
+      "Free photon in vacuum; lambda is vacuum wavelength and p is momentum magnitude."
+    ],
+    "variables": [
+      "p: nonnegative photon momentum magnitude; lambda: wavelength; k=2 pi/lambda: wave-number magnitude."
+    ],
+    "units": "SI: p in kg m/s, lambda in m, k in inverse m.",
+    "regime": "Do not apply without qualification to canonical versus kinetic momentum of light inside a material."
+  },
+  {
+    "id": "de-broglie",
+    "assumptions": [
+      "Momentum eigenmode or locally narrow momentum distribution."
+    ],
+    "variables": [
+      "lambda: wavelength; p: magnitude of momentum; h: Planck constant."
+    ],
+    "units": "SI: wavelength in m and momentum in kg m/s.",
+    "regime": "A localized wave packet generally contains a range of wavelengths; p=0 gives an infinite wavelength limit."
+  },
+  {
+    "id": "tdse",
+    "assumptions": [
+      "Closed nonrelativistic quantum system with a self-adjoint Hamiltonian on the relevant state domain."
+    ],
+    "variables": [
+      "Psi(r,t): position-space state amplitude; H: Hamiltonian; t: time; hbar: reduced Planck constant."
+    ],
+    "units": "H has energy units; both sides have energy times wavefunction units. In 3D single-particle normalization, Psi has units m^(-3/2).",
+    "regime": "First-order time evolution; for spin or many particles the state and coordinates must be extended. Not a general relativistic field equation."
+  },
+  {
+    "id": "tise",
+    "assumptions": [
+      "Time-independent Hamiltonian; psi_n belongs to its operator domain."
+    ],
+    "variables": [
+      "psi_n: energy eigenstate; E_n: corresponding energy eigenvalue; H: Hamiltonian."
+    ],
+    "units": "H and E_n have energy units.",
+    "regime": "Spectral eigenvalue problem; continuum eigenstates may require generalized normalization, and the displayed discrete subscript does not imply every spectrum is discrete."
+  },
+  {
+    "id": "born-probability",
+    "assumptions": [
+      "Normalized pure state in a position representation; any internal components must be summed in the norm."
+    ],
+    "variables": [
+      "P(r,t): probability density, not probability at one exact point; Psi: wavefunction."
+    ],
+    "units": "For 3D position, P has inverse-volume units and Psi has inverse-square-root-volume units.",
+    "regime": "Probability for a region is the integral of P over that region."
+  },
+  {
+    "id": "born-projector",
+    "assumptions": [
+      "Normalized pure state and orthogonal projector P_a=P_a dagger=P_a squared for the measurement event."
+    ],
+    "variables": [
+      "psi: unit state vector; P_a: projector onto the event subspace; p(a): outcome probability."
+    ],
+    "units": "p(a) and the projector are dimensionless.",
+    "regime": "Projective measurement, including degenerate eigenspaces; a general measurement uses positive POVM effects rather than necessarily projectors."
+  },
+  {
+    "id": "trace-born",
+    "assumptions": [
+      "rho is positive, trace one; each E_a is a positive measurement effect and the effects sum to identity."
+    ],
+    "variables": [
+      "rho: density operator; E_a: POVM effect; p(a): event probability."
+    ],
+    "units": "All quantities are dimensionless.",
+    "regime": "Applies to pure or mixed states and generalized measurements; the effect does not alone determine the post-measurement state."
+  },
+  {
+    "id": "expectation",
+    "assumptions": [
+      "Normalized pure state for the bra-ket expression; rho positive and trace one for the trace expression.",
+      "The observable is self-adjoint and the state has a finite expectation on its appropriate domain."
+    ],
+    "variables": [
+      "A: observable; rho: density operator; psi: state; angle brackets: ensemble expectation."
+    ],
+    "units": "The expectation has the same units as A.",
+    "regime": "The pure-state and density-operator expressions agree when rho is the pure-state projector; an expectation need not be an eigenvalue observed in one trial."
+  },
+  {
+    "id": "normalization",
+    "assumptions": [
+      "Square-integrable single-particle wavefunction on all 3D position space; include internal-state norm if present."
+    ],
+    "variables": [
+      "Psi(r,t): wavefunction; d^3r: position-volume element."
+    ],
+    "units": "Psi has units length^(-3/2); the integral is dimensionless.",
+    "regime": "Not ordinary normalization of ideal position or momentum eigenkets, which use delta-function normalization."
+  },
+  {
+    "id": "canonical-commutator",
+    "assumptions": [
+      "Cartesian position and its canonical conjugate momentum on a common suitable dense domain."
+    ],
+    "variables": [
+      "x: one coordinate operator; p: its canonical momentum; i: imaginary unit; hbar: reduced Planck constant."
+    ],
+    "units": "Both sides have action units.",
+    "regime": "For multiple Cartesian coordinates, [x_i,p_j]=i hbar delta_ij; this is not the algebra of arbitrary angular or compact coordinates."
+  },
+  {
+    "id": "general-commutator",
+    "assumptions": [
+      "The products AB and BA are defined on the common domain of interest."
+    ],
+    "variables": [
+      "A,B: linear operators; [A,B]: their commutator."
+    ],
+    "units": "Commutator units are the product of the units of A and B.",
+    "regime": "Algebraic definition, not an independent dynamical law."
+  },
+  {
+    "id": "xp-uncertainty",
+    "assumptions": [
+      "Canonical x and p with finite variances and sufficient common-domain regularity."
+    ],
+    "variables": [
+      "Delta x and Delta p: standard deviations in the same quantum state, not instrumental errors."
+    ],
+    "units": "The product has action units.",
+    "regime": "State-preparation variance bound; it is not a general measurement-disturbance relation."
+  },
+  {
+    "id": "unitary-evolution",
+    "assumptions": [
+      "Closed-system evolution generated by a self-adjoint time-independent Hamiltonian for the displayed exponential."
+    ],
+    "variables": [
+      "U(t,t0): unitary propagator; H: Hamiltonian; t0: initial time; psi: state vector."
+    ],
+    "units": "H(t-t0)/hbar is dimensionless.",
+    "regime": "For noncommuting Hamiltonians at different times, replace the simple exponential by the time-ordered propagator."
+  },
+  {
+    "id": "von-neumann-eq",
+    "assumptions": [
+      "Closed-system unitary evolution, or the full system including environment; H is self-adjoint."
+    ],
+    "variables": [
+      "rho: density operator; H: Hamiltonian; [H,rho]: commutator."
+    ],
+    "units": "Both sides have energy units because rho is dimensionless.",
+    "regime": "Not a generic reduced open-system equation: tracing out an environment may introduce dissipative and memory terms."
+  }
+]){const row=window.QI_FORMULAS.formulas.find(f=>f.id===patch.id);if(!row)throw new Error("Missing baseline formula "+patch.id);Object.assign(row,patch);}
