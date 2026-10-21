@@ -1,6 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';
-import {loadRuntime} from './category-trust-census.mjs';import {readPreStateChannelFile,projectPreStateChannel} from './state-channel-20261021-baseline.mjs';
-const w=loadRuntime(),b={window:{}};vm.createContext(b);for(const f of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','passports.js'])vm.runInContext(readPreStateChannelFile(f,'utf8'),b);
+import {readPreInformationFile} from './information-baseline.mjs';import {readPreStateChannelFile,projectPreStateChannel} from './state-channel-20261021-baseline.mjs';
+const previous={window:{}};vm.createContext(previous);for(const f of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','passports.js'])vm.runInContext(readPreInformationFile(f,'utf8'),previous);
+const w=previous.window,b={window:{}};vm.createContext(b);for(const f of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','passports.js'])vm.runInContext(readPreStateChannelFile(f,'utf8'),b);
 const old=b.window,audit=JSON.parse(fs.readFileSync('research/STATE_CHANNEL_SOURCE_AUDIT_2026-10-21.json')),plain=x=>JSON.parse(JSON.stringify(x));
 test('twelve reviewed metadata patches preserve every equation, identity and unrelated record',()=>{
  assert.equal(audit.patches.length,12);assert.equal(new Set(audit.patches.map(p=>p.id)).size,12);

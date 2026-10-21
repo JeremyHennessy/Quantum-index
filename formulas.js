@@ -12871,3 +12871,247 @@ for(const patch of [
 ];
  for(const patch of patches){const matches=window.QI_FORMULAS.formulas.filter(f=>f.id===patch.id);if(matches.length!==1||matches[0].metadataReview!=="baseline-audit-v1")throw new Error("State/channel audit baseline changed: "+patch.id);Object.assign(matches[0],patch);}
 })();
+
+// Source-qualified information and entanglement conventions; equations unchanged.
+(function(){
+ const patches=[
+  {
+    "id": "relative-entropy",
+    "assumptions": [
+      "rho and sigma are density operators on the same finite-dimensional Hilbert space.",
+      "The displayed finite trace expression requires support(rho) contained in support(sigma); otherwise the relative entropy is +infinity. Zero eigenvalue terms use 0 log 0 = 0."
+    ],
+    "variables": [
+      "rho, sigma: normalized positive semidefinite operators; log: operator logarithm on the relevant support."
+    ],
+    "units": "Dimensionless information: bits for base-2 logarithms (Watrous convention); nats for natural logarithms. Use one base consistently; S here has no k_B factor.",
+    "regime": "Not a symmetric metric. The source defines the support extension explicitly; no commutativity assumption is needed.",
+    "sourceIds": [
+      "resource-rmp-2019",
+      "watrous-tqi-2018"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "watrous-tqi-2018",
+        "locator": "Definition 5.18, Eq. (5.85), printed p. 266 / PDF p. 274; Eqs. (5.86)\u2013(5.89), printed p. 267 / PDF p. 275, support interpretation.",
+        "url": "https://cs.uwaterloo.ca/~watrous/TQI/TQI.pdf#page=274"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "quantum-information-source-audit-2026-10-21",
+    "theoryRelationship": "Modern mathematical statement checked against an authoritative author-hosted 2018 pre-publication textbook draft. Prior historical/application source links remain provenance, not claims of original-paper equation inspection."
+  },
+  {
+    "id": "mutual-information",
+    "assumptions": [
+      "rho_AB is a finite-dimensional bipartite density operator; rho_A and rho_B are its partial traces."
+    ],
+    "variables": [
+      "S: von Neumann entropy; A,B: subsystems; rho_AB: joint state."
+    ],
+    "units": "Dimensionless information: bits for base-2 logarithms (Watrous convention); nats for natural logarithms. Use one base consistently; S here has no k_B factor.",
+    "regime": "Measures total correlations, including classical correlations, rather than entanglement alone. Source H is the displayed S; source X,Y are A,B.",
+    "sourceIds": [
+      "schumacher-1995",
+      "watrous-tqi-2018"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "watrous-tqi-2018",
+        "locator": "Sec. 5.2.1, Eq. (5.91), printed p. 267 / PDF p. 275.",
+        "url": "https://cs.uwaterloo.ca/~watrous/TQI/TQI.pdf#page=275"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "quantum-information-source-audit-2026-10-21",
+    "theoryRelationship": "Modern mathematical statement checked against an authoritative author-hosted 2018 pre-publication textbook draft. Prior historical/application source links remain provenance, not claims of original-paper equation inspection."
+  },
+  {
+    "id": "holevo",
+    "assumptions": [
+      "The finite ensemble has p_x >= 0, sum p_x = 1, and normalized density operators rho_x on a common finite-dimensional space."
+    ],
+    "variables": [
+      "x: classical label; p_x: preparation probability; rho_x: conditional state; S: von Neumann entropy."
+    ],
+    "units": "Dimensionless information: bits for base-2 logarithms (Watrous convention); nats for natural logarithms. Use one base consistently; S here has no k_B factor.",
+    "regime": "The Holevo quantity is an upper bound on accessible classical information, not generally an attainable measurement information. Source H is S and a is x.",
+    "sourceIds": [
+      "schumacher-1995",
+      "watrous-tqi-2018"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "watrous-tqi-2018",
+        "locator": "Sec. 5.3.3, Eqs. (5.258)\u2013(5.260), printed p. 297 / PDF p. 305; Theorem 5.49 (Holevo bound), printed p. 299 / PDF p. 307.",
+        "url": "https://cs.uwaterloo.ca/~watrous/TQI/TQI.pdf#page=305"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "quantum-information-source-audit-2026-10-21",
+    "theoryRelationship": "Modern mathematical statement checked against an authoritative author-hosted 2018 pre-publication textbook draft. Prior historical/application source links remain provenance, not claims of original-paper equation inspection."
+  },
+  {
+    "id": "coherent-information",
+    "assumptions": [
+      "rho_AB is a normalized finite-dimensional bipartite state; rho_B = Tr_A rho_AB."
+    ],
+    "variables": [
+      "A: reference subsystem; B: receiving subsystem; S: von Neumann entropy."
+    ],
+    "units": "Dimensionless information: bits for base-2 logarithms (Watrous convention); nats for natural logarithms. Use one base consistently; S here has no k_B factor.",
+    "regime": "Directed quantity -S(A|B), which can be negative. For channel interpretation A purifies the channel input and B is its output. This single-state quantity is not by itself the regularized quantum capacity. Source X maps to A and Y to B; tensor reordering leaves entropy unchanged.",
+    "sourceIds": [
+      "schumacher-1995",
+      "watrous-tqi-2018"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "watrous-tqi-2018",
+        "locator": "Definition 8.14, Eq. (8.39), printed p. 474 / PDF p. 482; Eq. (8.41) and following H(Y)-H(Y,X) statement, printed p. 475 / PDF p. 483; conditional entropy Eq. (5.90), printed p. 267 / PDF p. 275.",
+        "url": "https://cs.uwaterloo.ca/~watrous/TQI/TQI.pdf#page=482"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "quantum-information-source-audit-2026-10-21",
+    "theoryRelationship": "Modern mathematical statement checked against an authoritative author-hosted 2018 pre-publication textbook draft. Prior historical/application source links remain provenance, not claims of original-paper equation inspection."
+  },
+  {
+    "id": "ssa",
+    "assumptions": [
+      "rho_ABC is a normalized density operator on a finite-dimensional tripartite tensor-product space; all entropies use its corresponding reduced states."
+    ],
+    "variables": [
+      "S(X): von Neumann entropy of subsystem X; juxtaposition denotes joint subsystems."
+    ],
+    "units": "Dimensionless information: bits for base-2 logarithms (Watrous convention); nats for natural logarithms. Use one base consistently; S here has no k_B factor.",
+    "regime": "Strong-subadditivity inequality, not a general equality. The preserved coarse formulaType does not override this. Source X=A, Y=C, Z=B yields the displayed ordering.",
+    "sourceIds": [
+      "schumacher-1995",
+      "watrous-tqi-2018"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "watrous-tqi-2018",
+        "locator": "Theorem 5.36, Eq. (5.180), printed p. 281 / PDF p. 289; register relabeling X=A, Y=C, Z=B.",
+        "url": "https://cs.uwaterloo.ca/~watrous/TQI/TQI.pdf#page=289"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "quantum-information-source-audit-2026-10-21",
+    "theoryRelationship": "Modern mathematical statement checked against an authoritative author-hosted 2018 pre-publication textbook draft. Prior historical/application source links remain provenance, not claims of original-paper equation inspection."
+  },
+  {
+    "id": "data-processing",
+    "assumptions": [
+      "rho and sigma are finite-dimensional density operators on the same input space; E is a completely positive trace-preserving linear map.",
+      "Relative entropy uses the +infinity extension when support inclusion fails."
+    ],
+    "variables": [
+      "E: quantum channel applied to both states; D: quantum relative entropy with a common logarithm base."
+    ],
+    "units": "Dimensionless information: bits for base-2 logarithms (Watrous convention); nats for natural logarithms. Use one base consistently; S here has no k_B factor.",
+    "regime": "Monotonicity inequality, not a general equality. The preserved coarse formulaType does not override this. This is the deterministic-channel statement, not unrestricted conditioning on a postselected outcome.",
+    "sourceIds": [
+      "resource-rmp-2019",
+      "watrous-tqi-2018"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "watrous-tqi-2018",
+        "locator": "Theorem 5.35, Eq. (5.174), printed p. 280 / PDF p. 288; Definition 5.18 for support extension.",
+        "url": "https://cs.uwaterloo.ca/~watrous/TQI/TQI.pdf#page=288"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "quantum-information-source-audit-2026-10-21",
+    "theoryRelationship": "Modern mathematical statement checked against an authoritative author-hosted 2018 pre-publication textbook draft. Prior historical/application source links remain provenance, not claims of original-paper equation inspection."
+  },
+  {
+    "id": "negativity",
+    "assumptions": [
+      "rho is a normalized density operator on a finite-dimensional bipartite Hilbert space; T_B is transposition on B in a fixed local orthonormal basis."
+    ],
+    "variables": [
+      "||X||_1: trace norm, Tr sqrt(X dagger X); T_B: partial transpose, not physical time reversal."
+    ],
+    "units": "Dimensionless.",
+    "regime": "Nonnegative and zero for PPT states, including possible PPT-entangled states; zero does not establish separability in general. Source transposes A instead: rho^(T_B)=(rho^(T_A))^T, and full transposition preserves singular values, so both choices give the same norm.",
+    "sourceIds": [
+      "resource-rmp-2019",
+      "vidal-werner-negativity-2002"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "vidal-werner-negativity-2002",
+        "locator": "Sec. I, Eq. (1), p. 1; partial-transpose definition Sec. II, Eq. (3), p. 2. Author arXiv v1 (22 February 2001), not a claimed inspection of the 2002 journal typesetting.",
+        "url": "https://arxiv.org/pdf/quant-ph/0102117v1#page=1"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "quantum-information-source-audit-2026-10-21",
+    "theoryRelationship": "Definition checked in the authors\u2019 arXiv manuscript; the A/B partial-transpose convention conversion is explicit. Prior source links remain provenance."
+  },
+  {
+    "id": "log-negativity",
+    "assumptions": [
+      "rho is a normalized finite-dimensional bipartite density operator; partial transposition uses a fixed local basis."
+    ],
+    "variables": [
+      "||X||_1: trace norm; T_B: transpose on B; log_2: base-two logarithm."
+    ],
+    "units": "Dimensionless, base-two logarithmic scale.",
+    "regime": "Equals log_2(2 N + 1); vanishes for every PPT state and therefore does not detect all entanglement. Source T_A converts to T_B by full transposition, which preserves the trace norm. No claim of convexity is made.",
+    "sourceIds": [
+      "resource-rmp-2019",
+      "vidal-werner-negativity-2002"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "vidal-werner-negativity-2002",
+        "locator": "Sec. I, Eq. (2), p. 1; Eq. (1) for the negativity relation; author arXiv v1 (22 February 2001).",
+        "url": "https://arxiv.org/pdf/quant-ph/0102117v1#page=1"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "quantum-information-source-audit-2026-10-21",
+    "theoryRelationship": "Definition checked in the authors\u2019 arXiv manuscript; the A/B partial-transpose convention conversion is explicit. Prior source links remain provenance."
+  },
+  {
+    "id": "diamond-norm",
+    "assumptions": [
+      "Phi is a Hermiticity-preserving linear map between finite-dimensional operator spaces, in particular a difference of two channels with common input/output spaces.",
+      "rho ranges over normalized density operators on input A tensor reference R, with dim(R)=dim(A); I is the identity superoperator on R."
+    ],
+    "variables": [
+      "||X||_1: trace norm; Phi: channel difference (not itself generally a channel); rho: joint input-reference state."
+    ],
+    "units": "Dimensionless; unhalved norm.",
+    "regime": "Source Theorem 3.51 gives a maximum over pure joint states. Convexity of the trace norm bounds every mixed-state value by a convex combination of pure-state values; pure states are included, proving equality with the displayed density-state supremum. The unrestricted-map diamond norm is NOT generally given by this state-only expression. No factor of 1/2 is included.",
+    "sourceIds": [
+      "quantum-supermaps-2008",
+      "watrous-tqi-2018"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "watrous-tqi-2018",
+        "locator": "Theorem 3.51, Eq. (3.291), printed p. 176 / PDF p. 184; Definition 3.43, Eq. (3.256), printed p. 170 / PDF p. 178, completely bounded trace norm notation.",
+        "url": "https://cs.uwaterloo.ca/~watrous/TQI/TQI.pdf#page=184"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-21",
+    "curationBatch": "quantum-information-source-audit-2026-10-21",
+    "theoryRelationship": "Modern mathematical statement checked against an authoritative author-hosted 2018 pre-publication textbook draft. Prior historical/application source links remain provenance, not claims of original-paper equation inspection."
+  }
+];
+ for(const patch of patches){const matches=window.QI_FORMULAS.formulas.filter(f=>f.id===patch.id);if(matches.length!==1||matches[0].metadataReview!=="baseline-audit-v1")throw new Error("Information audit baseline changed: "+patch.id);Object.assign(matches[0],patch);}
+})();
