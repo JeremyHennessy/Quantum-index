@@ -27,6 +27,8 @@
   const learningPaths = window.QI_PROFILES?.learningPaths || [];
   const profileFields = [["problem","Problem addressed"],["scope","Scope and mathematical approach"],["assumptions","Assumptions"],["predictions","Results and predictions"],["evidence","Evidence in the cited work"],["limitations","Limitations"],["questions","Questions to investigate"]];
   const state = { search:"", category:"", kind:"", status:"", era:"", sourcedOnly:false, evidence:"", selected:null, selectedTree:0, view:"explore", returnView:"explore" };
+  const treeViewports=new Map();
+  let treeGraphSize={width:920,height:430};
   const formulaState = { search:"", category:"", theory:"", type:"", review:"" };
   const timelineState = { layer:"all", eventType:"" };
   const questionState = { search:"", disposition:"", category:"" };
@@ -115,6 +117,7 @@
       if(timelineState.eventType)params.set('eventType',timelineState.eventType);
     }
     if(['map','lineage'].includes(view)&&state.evidence)params.set('evidence',state.evidence);
+    if(view==='map'&&state.selected)params.set('theory',state.selected);
     if(view==='lineage'){params.set('tree',trees[state.selectedTree].name);if(state.selected)params.set('theory',state.selected);}
     if(view==='formula'){for(const key of ['search','category','theory','type','review'])if(formulaState[key])params.set(key,formulaState[key]);const back=safeReturn(new URLSearchParams(location.hash.split('?').slice(1).join('?')).get('returnTo'));if(back)params.set('returnTo',back);}
     return '#/'+view+(params.size?'?'+params:'');
@@ -146,6 +149,8 @@
     renderLineage();
     d3.selectAll(".node").classed("selected",d=>d.id===id);
     d3.selectAll(".tree-graph-node").classed("selected",d=>d.id===id);
+    d3.selectAll(".node, .tree-graph-node").attr("aria-pressed",d=>String(d.id===id));
+    if(!switchLineage && ['map','lineage'].includes(state.view)){rememberFilters();return;}
     const from=state.view==="theory"?state.returnView:state.view;
     navigate(switchLineage ? `#/lineage?theory=${encodeURIComponent(id)}` : theoryLink(id,from));
   }
@@ -200,6 +205,7 @@
     panel.innerHTML=`
       <p class="eyebrow">${esc(t.category)}</p>
       <h3 class="detail-title">${esc(t.name)}</h3>
+      ${panel.id==="detailPanel"?`<a class="ghost link-button full-theory-link" href="${theoryLink(t.id,"map")}">Open full details</a>`:""}
       ${t.aliases.length?`<div class="aliases">Also: ${t.aliases.map(esc).join(", ")}</div>`:""}
       <div class="badge-row">
         <span class="badge">${esc(t.year)}</span>
@@ -392,11 +398,11 @@
     const links=relations.filter(r=>evidenceMatches(r)&&ids.has(r.from)&&ids.has(r.to)).map(r=>({source:r.from,target:r.to,type:r.type,evidenceType:r.evidenceType,confidence:r.confidence,sourceIds:r.sourceIds}));
     const svg=d3.select("#network"), el=$("#network"), width=el.clientWidth||900, height=el.clientHeight||590;
     svg.selectAll("*").remove(); svg.attr("viewBox",[0,0,width,height]);
-    const root=svg.append("g");
+    const root=svg.append("g").attr("transform",d3.zoomTransform(el));
     svg.call(d3.zoom().scaleExtent([.25,3]).on("zoom",e=>root.attr("transform",e.transform)));
     const link=root.append("g").selectAll("line").data(links).join("line").attr("class","link").attr("stroke-width",d=>d.type==="overlaps"?1:1.4).attr("stroke-opacity",d=>d.confidence==="high"?.7:d.confidence==="medium"?.52:.3);
     link.append("title").text(d=>`${relationLabels[d.type]||d.type} · ${d.evidenceType} · ${d.confidence}`);
-    const node=root.append("g").selectAll("g").data(nodes,d=>d.id).join("g").attr("class",d=>"node"+(d.id===state.selected?" selected":"")).attr("tabindex",0).attr("role","button").attr("aria-label",d=>`Open ${d.name}`).on("keydown",(e,d)=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selectTheory(d.id);}}).on("click",(e,d)=>{e.stopPropagation();selectTheory(d.id);});
+    const node=root.append("g").selectAll("g").data(nodes,d=>d.id).join("g").attr("class",d=>"node"+(d.id===state.selected?" selected":"")).attr("tabindex",0).attr("role","button").attr("aria-label",d=>`Select ${d.name}`).attr("aria-pressed",d=>String(d.id===state.selected)).on("keydown",(e,d)=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selectTheory(d.id);}}).on("click",(e,d)=>{e.stopPropagation();selectTheory(d.id);});
     node.append("circle").attr("r",d=>d.status.includes("established")?9:7).attr("fill",d=>categoryColors.get(d.category)||"#94a3b8");
     node.append("text").attr("class","node-label").attr("y",17).text(d=>d.name.length>26?d.name.slice(0,24)+"…":d.name);
     node.append("title").text(d=>`${d.name} · ${d.year}\n${d.summary}`);
@@ -478,6 +484,45 @@
     renderThoughtTreeGraph();
   }
 
+  function treeViewport(){
+    if(!treeViewports.has(state.selectedTree))treeViewports.set(state.selectedTree,{scale:1,left:0,top:0});
+    return treeViewports.get(state.selectedTree);
+  }
+  function applyTreeViewport(){
+    const viewport=treeViewport(),scroll=$("#treeGraphViewport"),svg=$("#thoughtTreeGraph");
+    svg.style.width=(treeGraphSize.width*viewport.scale)+"px";svg.style.height=(treeGraphSize.height*viewport.scale)+"px";
+    if(scroll.clientWidth){scroll.scrollLeft=viewport.left;scroll.scrollTop=viewport.top;}
+    $("#treeZoomStatus").textContent=Math.round(viewport.scale*100)+"%";
+    $("#treeZoomOut").disabled=viewport.scale<=.05;$("#treeZoomIn").disabled=viewport.scale>=3;
+  }
+  function zoomTree(factor,fit=false){
+    const viewport=treeViewport(),scroll=$("#treeGraphViewport"),old=viewport.scale;
+    const next=Math.max(.05,Math.min(3,fit?Math.min((scroll.clientWidth||900)/treeGraphSize.width,(scroll.clientHeight||430)/treeGraphSize.height):old*factor));
+    viewport.left=fit?0:(scroll.scrollLeft+scroll.clientWidth/2)*next/old-scroll.clientWidth/2;
+    viewport.top=fit?0:(scroll.scrollTop+scroll.clientHeight/2)*next/old-scroll.clientHeight/2;
+    viewport.scale=next;applyTreeViewport();viewport.left=scroll.scrollLeft;viewport.top=scroll.scrollTop;
+  }
+  function bindTreeViewport(){
+    const scroll=$("#treeGraphViewport");
+    $("#treeZoomIn").onclick=()=>zoomTree(1.25);$("#treeZoomOut").onclick=()=>zoomTree(.8);$("#treeZoomFit").onclick=()=>zoomTree(1,true);
+    scroll.addEventListener('scroll',()=>{if(state.view!=='lineage'||!scroll.clientWidth)return;const viewport=treeViewport();viewport.left=scroll.scrollLeft;viewport.top=scroll.scrollTop;});
+    scroll.addEventListener('keydown',event=>{
+      if(event.target!==scroll)return;
+      if(['+','=','-','0'].includes(event.key)){event.preventDefault();zoomTree(event.key==='-'?.8:1.25,event.key==='0');}
+      const delta={ArrowLeft:[-80,0],ArrowRight:[80,0],ArrowUp:[0,-80],ArrowDown:[0,80]}[event.key];
+      if(delta){event.preventDefault();scroll.scrollLeft+=delta[0];scroll.scrollTop+=delta[1];}
+    });
+    let pan=null;
+    scroll.addEventListener('pointerdown',event=>{
+      if(event.pointerType!=='mouse'||event.button!==0||event.target.closest('.tree-graph-node'))return;
+      pan={id:event.pointerId,x:event.clientX,y:event.clientY,left:scroll.scrollLeft,top:scroll.scrollTop};
+      scroll.setPointerCapture(event.pointerId);scroll.classList.add('panning');event.preventDefault();
+    });
+    scroll.addEventListener('pointermove',event=>{if(!pan||pan.id!==event.pointerId)return;scroll.scrollLeft=pan.left+pan.x-event.clientX;scroll.scrollTop=pan.top+pan.y-event.clientY;});
+    const end=()=>{pan=null;scroll.classList.remove('panning');};
+    scroll.addEventListener('pointerup',end);scroll.addEventListener('pointercancel',end);scroll.addEventListener('lostpointercapture',end);
+  }
+
   function renderThoughtTreeGraph(){
     const tree=trees[state.selectedTree]||trees[0];
     const svg=d3.select("#thoughtTreeGraph");
@@ -487,7 +532,7 @@
     const nodes=tree.nodes.map(id=>byId.get(id)).filter(Boolean).map(t=>({...t}));
     const ids=new Set(nodes.map(n=>n.id));
     const links=relations.filter(r=>evidenceMatches(r)&&ids.has(r.from)&&ids.has(r.to)).map(r=>({...r,source:r.from,target:r.to}));
-    const width=Math.max(920,Math.min(1500,nodes.length*68));
+    const width=Math.max(1100,Math.min(2100,nodes.length*80));
     const categories=[...new Set(nodes.map(n=>n.category))];
     const height=Math.max(430,categories.length*82+120);
     const years=nodes.map(n=>Number(n.year)).filter(Number.isFinite);
@@ -510,6 +555,7 @@
     const nodeById=new Map(nodes.map(n=>[n.id,n]));
     const resolvedLinks=links.map(l=>({...l,source:nodeById.get(l.from),target:nodeById.get(l.to)})).filter(l=>l.source&&l.target);
 
+    treeGraphSize={width,height};
     svg.selectAll("*").remove();
     svg.attr("viewBox",`0 0 ${width} ${height}`).attr("preserveAspectRatio","xMinYMin meet");
     const defs=svg.append("defs");
@@ -544,12 +590,13 @@
     const node=nodeLayer.selectAll("g").data(nodes,d=>d.id).join("g")
       .attr("class",d=>"tree-graph-node"+(d.id===state.selected?" selected":""))
       .attr("transform",d=>`translate(${d.x},${d.y})`)
-      .attr("tabindex",0).attr("role","button").attr("aria-label",d=>`Open ${d.name}`).on("keydown",(e,d)=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selectTheory(d.id);}}).on("click",(e,d)=>{e.stopPropagation();selectTheory(d.id);});
+      .attr("tabindex",0).attr("role","button").attr("aria-label",d=>`Select ${d.name}`).attr("aria-pressed",d=>String(d.id===state.selected)).on("keydown",(e,d)=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selectTheory(d.id);}}).on("click",(e,d)=>{e.stopPropagation();selectTheory(d.id);});
     node.append("circle").attr("r",d=>d.status.includes("established")?8:6.5).attr("fill",d=>categoryColors.get(d.category)||"#94a3b8");
     node.append("text").attr("class","tree-graph-label").attr("y",-12).text(d=>d.name.length>24?d.name.slice(0,22)+"…":d.name);
     node.append("text").attr("class","tree-graph-year").attr("y",19).text(d=>d.year);
     node.append("title").text(d=>`${d.name} · ${d.year}\n${d.summary}`);
 
+    applyTreeViewport();
     $("#treeGraphMeta").textContent=`${nodes.length} ideas · ${resolvedLinks.length} typed links · ${minYear}–${maxYear}`;
   }
 
@@ -577,6 +624,7 @@
     const chips=arr=>arr.length?arr.map(x=>`<a class="lineage-chip" href="${theoryLink(x.id,"lineage")}">${esc(x.year)} · ${esc(x.name)}</a>`).join(""):'<span class="muted">No typed entries yet.</span>';
     $("#lineageDetail").innerHTML=`
       <p class="muted">${esc(t.summary)}</p>
+      <a class="ghost link-button full-theory-link" href="${theoryLink(t.id,"lineage")}">Open full details</a>
       <div class="lineage-block"><h4>Upstream ideas</h4>${chips(a)}</div>
       <div class="lineage-block"><h4>Downstream progression</h4>${chips(d)}</div>
       <div class="lineage-block"><h4>Rivals / overlaps</h4>${chips(lateral)}</div>`;
@@ -964,5 +1012,5 @@
     $("#search").value="";$("#categoryFilter").value="";$("#kindFilter").value="";$("#statusFilter").value="";$("#eraFilter").value="";$("#sourcedOnly").checked=false;$("#timelineLayer").value="all";$("#timelineEventType").value="";$("#questionSearch").value="";$("#questionDisposition").value="";$("#questionCategory").value="";if(["map","catalog","timeline"].includes(state.view))rememberFilters();renderAll();
   });
   window.addEventListener("resize",()=>{if(state.view==="map")renderGraph();});
-  renderTrees();renderAll();applyRoute();
+  bindTreeViewport();renderTrees();renderAll();applyRoute();
 })();

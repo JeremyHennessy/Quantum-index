@@ -79,16 +79,18 @@ test('timeline cards open theory details rather than updating a hidden panel',as
   assert.equal(d.querySelector('#backToView').getAttribute('href'),'#/timeline');
 });
 
-test('network and thought-tree nodes open the same accessible detail view',async()=>{
+test('network and thought-tree selections stay beside their maps with explicit full details',async()=>{
   await route('#/map');
   const node=[...d.querySelectorAll('#network .node')].find(el=>el.__data__.id==='planck-quanta');
-  await change(()=>node.dispatchEvent(new w.MouseEvent('click',{bubbles:true})));
-  assert.equal(active(),'theoryView');assert.equal(title(),'Planck energy quanta');
+  node.dispatchEvent(new w.MouseEvent('click',{bubbles:true}));
+  assert.equal(active(),'mapView');assert.equal(d.querySelector('#detailPanel .detail-title').textContent,'Planck energy quanta');
+  await change(()=>d.querySelector('#detailPanel .full-theory-link').click());assert.equal(active(),'theoryView');assert.equal(title(),'Planck energy quanta');
   await route('#/lineage');
   const treeNode=d.querySelector('#thoughtTreeGraph .tree-graph-node');
   const expected=treeNode.__data__.name;
-  await change(()=>treeNode.dispatchEvent(new w.MouseEvent('click',{bubbles:true})));
-  assert.equal(active(),'theoryView');assert.equal(title(),expected);
+  treeNode.dispatchEvent(new w.MouseEvent('click',{bubbles:true}));
+  assert.equal(active(),'lineageView');assert.equal(d.querySelector('#lineageTitle').textContent,expected);
+  await change(()=>d.querySelector('#lineageDetail .full-theory-link').click());assert.equal(active(),'theoryView');assert.equal(title(),expected);
 });
 
 test('theory-to-formula navigation shows the reconciled equation and returns to visible details',async()=>{
@@ -407,13 +409,13 @@ test('workspace UI saves literal notes, progress, bookmarks and comparisons acro
   d.querySelector('[data-remove-comparison]').click();assert.equal(w.QI_WORKSPACE.data.comparisons.length,0);
 });
 
-test('graph nodes and thought-tree nodes open details using Enter and Space',async()=>{
+test('graph nodes and thought-tree nodes select inline using Enter and Space',async()=>{
   await route('#/map');d.querySelector('#resetView').click();
   const node=d.querySelector('.node');assert.equal(node.getAttribute('tabindex'),'0');assert.equal(node.getAttribute('role'),'button');
-  await change(()=>node.dispatchEvent(new w.KeyboardEvent('keydown',{key:'Enter',bubbles:true})));assert.equal(active(),'theoryView');
+  node.dispatchEvent(new w.KeyboardEvent('keydown',{key:'Enter',bubbles:true}));assert.equal(active(),'mapView');assert.equal(node.getAttribute('aria-pressed'),'true');
   await route('#/lineage');
   const tree=d.querySelector('.tree-graph-node');assert.equal(tree.getAttribute('tabindex'),'0');
-  await change(()=>tree.dispatchEvent(new w.KeyboardEvent('keydown',{key:' ',bubbles:true})));assert.equal(active(),'theoryView');
+  tree.dispatchEvent(new w.KeyboardEvent('keydown',{key:' ',bubbles:true}));assert.equal(active(),'lineageView');assert.equal(tree.getAttribute('aria-pressed'),'true');
 });
 
 test('all learning steps have profiles or curated Passports and the five reviewed math gaps have explicit outcomes',()=>{
@@ -563,4 +565,14 @@ test('URL filters restore catalog, formula review, evidence and selected tree st
  await route('#/formula?search=entropy&review=explicit');assert.equal(d.querySelector('#formulaSearch').value,'entropy');assert.equal(d.querySelector('#formulaReview').value,'explicit');assert.ok([...d.querySelectorAll('.formula-card .reviewed')].every(x=>x.textContent==='Metadata explicitly reviewed'));
  const tree=w.QI_DATA.trees[2];await route('#/lineage?tree='+encodeURIComponent(tree.name)+'&evidence=sourced');assert.equal(d.querySelector('#treeGraphTitle').textContent,tree.name);assert.ok([...d.querySelectorAll('.tree-links path')].every(x=>x.__data__.sourceIds.length));
  await route('#/coverage');assert.equal(active(),'coverageView');assert.match(d.querySelector('#coverageContent').textContent,/The census is open/);
+});
+
+test('progression map has bounded accessible zoom and separate branch state',async()=>{
+ await route('#/lineage');const viewport=d.querySelector('#treeGraphViewport'),graph=d.querySelector('#thoughtTreeGraph'),status=d.querySelector('#treeZoomStatus');
+ const initial=parseFloat(graph.style.width);d.querySelector('#treeZoomIn').click();assert.ok(parseFloat(graph.style.width)>initial);assert.equal(status.textContent,'125%');
+ const wheel=new w.WheelEvent('wheel',{deltaY:120,bubbles:true,cancelable:true});viewport.dispatchEvent(wheel);assert.equal(wheel.defaultPrevented,false);
+ viewport.dispatchEvent(new w.KeyboardEvent('keydown',{key:'-',bubbles:true,cancelable:true}));assert.equal(status.textContent,'100%');
+ d.querySelector('#treeZoomIn').click();const selected=d.querySelector('.tree-choice.active').dataset.treeIndex;
+ d.querySelectorAll('.tree-choice')[1].click();assert.equal(status.textContent,'100%');d.querySelector('[data-tree-index="'+selected+'"]').click();assert.equal(status.textContent,'125%');
+ d.querySelector('#treeZoomFit').click();assert.ok(parseInt(status.textContent)<=100);assert.equal(viewport.getAttribute('tabindex'),'0');
 });

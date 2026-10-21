@@ -43,8 +43,14 @@ main{width:min(1540px,94vw);margin:auto;padding:34px 0 80px}.hero{display:grid;g
 .tree-choice small{display:block;margin-top:4px;color:var(--muted);font-size:9px}
 .thought-tree-card{min-width:0;overflow:hidden}
 .thought-tree-head{padding-bottom:8px}
-.thought-tree-scroll{width:100%;overflow-x:auto;border:1px solid #1f3441;border-radius:14px;background:#08131c}
-#thoughtTreeGraph{display:block;width:100%;min-width:900px;height:auto;min-height:430px}
+.thought-tree-scroll{width:100%;height:clamp(350px,55vh,560px);overflow:auto;cursor:grab;border:1px solid #1f3441;border-radius:14px;background:#08131c}
+#thoughtTreeGraph{display:block;max-width:none;min-width:0;min-height:0}
+.thought-tree-scroll.panning{cursor:grabbing;user-select:none}
+.tree-zoom-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0}
+.tree-zoom-controls button{min-width:44px;min-height:44px}
+.tree-zoom-controls output{min-width:4ch;text-align:center}
+.tree-zoom-controls button:disabled{opacity:.45;cursor:default}
+.thought-tree-scroll:focus-visible,.tree-graph-node:focus-visible,.node:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .tree-grid line{stroke:#243845;stroke-width:1;stroke-dasharray:3 5}
 .tree-grid text{fill:#718995;font-size:9px;text-transform:uppercase;letter-spacing:.04em}
 .tree-year-axis line{stroke:#1d303c;stroke-width:1}
@@ -54,8 +60,8 @@ main{width:min(1540px,94vw);margin:auto;padding:34px 0 80px}.hero{display:grid;g
 .tree-graph-node circle{stroke:#071018;stroke-width:2.5}
 .tree-graph-node:hover circle{stroke:#bde9fa;stroke-width:3}
 .tree-graph-node.selected circle{stroke:#fff;stroke-width:3.5}
-.tree-graph-label{fill:#e4eef2;font-size:9px;text-anchor:middle;pointer-events:none}
-.tree-graph-year{fill:#71909f;font-size:8px;text-anchor:middle;pointer-events:none}
+.tree-graph-label{fill:#e4eef2;font-size:13px;text-anchor:middle;pointer-events:none}
+.tree-graph-year{fill:#71909f;font-size:11px;text-anchor:middle;pointer-events:none}
 .selected-lineage-panel{border-top:1px solid var(--line);margin-top:12px;padding-top:18px}
 @media(max-width:1050px){.thought-tree-card{min-height:unset}.tree-selector-card{position:static}}
 
