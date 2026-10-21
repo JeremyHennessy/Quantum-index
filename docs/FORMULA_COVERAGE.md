@@ -5,10 +5,10 @@ _Last audited: 2026-09-22_
 ## Current formula corpus
 
 <!-- coverage:start -->
-- **439** formula entries across **30** categories
-- **305** theory entries with linked formulas
-- **132** documented formula gaps
-- **194** formulas with explicit metadata review; **245** with baseline metadata
+- **457** formula entries across **30** categories
+- **323** theory entries with linked formulas
+- **114** documented formula gaps
+- **212** formulas with explicit metadata review; **245** with baseline metadata
 
 | Formula category | Entries |
 |---|---:|
@@ -25,15 +25,15 @@ _Last audited: 2026-09-22_
 | Many-body response | 2 |
 | Mathematical structures | 3 |
 | Nuclear quantum theory | 9 |
-| Open quantum systems | 7 |
+| Open quantum systems | 11 |
 | Perturbation theory | 5 |
 | Phase-space quantum mechanics | 3 |
 | Quantum chemistry & electronic structure | 26 |
 | Quantum error correction | 10 |
-| Quantum field theory | 47 |
-| Quantum gravity & cosmology | 69 |
+| Quantum field theory | 52 |
+| Quantum gravity & cosmology | 73 |
 | Quantum information | 40 |
-| Quantum many-body & condensed matter | 50 |
+| Quantum many-body & condensed matter | 55 |
 | Quantum metrology | 7 |
 | Quantum optics & AMO | 30 |
 | Quantum spacetime | 1 |

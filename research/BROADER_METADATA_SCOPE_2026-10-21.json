@@ -1,0 +1,175 @@
+{
+  "scope": "Scope-only metadata clarifications, not source-equation audits. Preserve existing formulaType, sourceIds, sourceLocations, metadataReview, reviewedAt and curationBatch. Do not set metadataReview explicit on the basis of this file.",
+  "updates": [
+    {
+      "id": "planck-relation",
+      "assumptions": [
+        "Single photon or single-mode energy quantum; not the total energy of a multimode state."
+      ],
+      "variables": [
+        "E: energy quantum; h: Planck constant; nu: cyclic frequency; hbar=h/(2 pi); omega=2 pi nu."
+      ],
+      "units": "SI: E in joules, h and hbar in joule seconds, nu in hertz, omega in radians per second.",
+      "regime": "Radiation energy quantum; zero-point energy is not included."
+    },
+    {
+      "id": "photon-momentum",
+      "assumptions": [
+        "Free photon in vacuum; lambda is vacuum wavelength and p is momentum magnitude."
+      ],
+      "variables": [
+        "p: nonnegative photon momentum magnitude; lambda: wavelength; k=2 pi/lambda: wave-number magnitude."
+      ],
+      "units": "SI: p in kg m/s, lambda in m, k in inverse m.",
+      "regime": "Do not apply without qualification to canonical versus kinetic momentum of light inside a material."
+    },
+    {
+      "id": "de-broglie",
+      "assumptions": [
+        "Momentum eigenmode or locally narrow momentum distribution."
+      ],
+      "variables": [
+        "lambda: wavelength; p: magnitude of momentum; h: Planck constant."
+      ],
+      "units": "SI: wavelength in m and momentum in kg m/s.",
+      "regime": "A localized wave packet generally contains a range of wavelengths; p=0 gives an infinite wavelength limit."
+    },
+    {
+      "id": "tdse",
+      "assumptions": [
+        "Closed nonrelativistic quantum system with a self-adjoint Hamiltonian on the relevant state domain."
+      ],
+      "variables": [
+        "Psi(r,t): position-space state amplitude; H: Hamiltonian; t: time; hbar: reduced Planck constant."
+      ],
+      "units": "H has energy units; both sides have energy times wavefunction units. In 3D single-particle normalization, Psi has units m^(-3/2).",
+      "regime": "First-order time evolution; for spin or many particles the state and coordinates must be extended. Not a general relativistic field equation."
+    },
+    {
+      "id": "tise",
+      "assumptions": [
+        "Time-independent Hamiltonian; psi_n belongs to its operator domain."
+      ],
+      "variables": [
+        "psi_n: energy eigenstate; E_n: corresponding energy eigenvalue; H: Hamiltonian."
+      ],
+      "units": "H and E_n have energy units.",
+      "regime": "Spectral eigenvalue problem; continuum eigenstates may require generalized normalization, and the displayed discrete subscript does not imply every spectrum is discrete."
+    },
+    {
+      "id": "born-probability",
+      "assumptions": [
+        "Normalized pure state in a position representation; any internal components must be summed in the norm."
+      ],
+      "variables": [
+        "P(r,t): probability density, not probability at one exact point; Psi: wavefunction."
+      ],
+      "units": "For 3D position, P has inverse-volume units and Psi has inverse-square-root-volume units.",
+      "regime": "Probability for a region is the integral of P over that region."
+    },
+    {
+      "id": "born-projector",
+      "assumptions": [
+        "Normalized pure state and orthogonal projector P_a=P_a dagger=P_a squared for the measurement event."
+      ],
+      "variables": [
+        "psi: unit state vector; P_a: projector onto the event subspace; p(a): outcome probability."
+      ],
+      "units": "p(a) and the projector are dimensionless.",
+      "regime": "Projective measurement, including degenerate eigenspaces; a general measurement uses positive POVM effects rather than necessarily projectors."
+    },
+    {
+      "id": "trace-born",
+      "assumptions": [
+        "rho is positive, trace one; each E_a is a positive measurement effect and the effects sum to identity."
+      ],
+      "variables": [
+        "rho: density operator; E_a: POVM effect; p(a): event probability."
+      ],
+      "units": "All quantities are dimensionless.",
+      "regime": "Applies to pure or mixed states and generalized measurements; the effect does not alone determine the post-measurement state."
+    },
+    {
+      "id": "expectation",
+      "assumptions": [
+        "Normalized pure state for the bra-ket expression; rho positive and trace one for the trace expression.",
+        "The observable is self-adjoint and the state has a finite expectation on its appropriate domain."
+      ],
+      "variables": [
+        "A: observable; rho: density operator; psi: state; angle brackets: ensemble expectation."
+      ],
+      "units": "The expectation has the same units as A.",
+      "regime": "The pure-state and density-operator expressions agree when rho is the pure-state projector; an expectation need not be an eigenvalue observed in one trial."
+    },
+    {
+      "id": "normalization",
+      "assumptions": [
+        "Square-integrable single-particle wavefunction on all 3D position space; include internal-state norm if present."
+      ],
+      "variables": [
+        "Psi(r,t): wavefunction; d^3r: position-volume element."
+      ],
+      "units": "Psi has units length^(-3/2); the integral is dimensionless.",
+      "regime": "Not ordinary normalization of ideal position or momentum eigenkets, which use delta-function normalization."
+    },
+    {
+      "id": "canonical-commutator",
+      "assumptions": [
+        "Cartesian position and its canonical conjugate momentum on a common suitable dense domain."
+      ],
+      "variables": [
+        "x: one coordinate operator; p: its canonical momentum; i: imaginary unit; hbar: reduced Planck constant."
+      ],
+      "units": "Both sides have action units.",
+      "regime": "For multiple Cartesian coordinates, [x_i,p_j]=i hbar delta_ij; this is not the algebra of arbitrary angular or compact coordinates."
+    },
+    {
+      "id": "general-commutator",
+      "assumptions": [
+        "The products AB and BA are defined on the common domain of interest."
+      ],
+      "variables": [
+        "A,B: linear operators; [A,B]: their commutator."
+      ],
+      "units": "Commutator units are the product of the units of A and B.",
+      "regime": "Algebraic definition, not an independent dynamical law."
+    },
+    {
+      "id": "xp-uncertainty",
+      "assumptions": [
+        "Canonical x and p with finite variances and sufficient common-domain regularity."
+      ],
+      "variables": [
+        "Delta x and Delta p: standard deviations in the same quantum state, not instrumental errors."
+      ],
+      "units": "The product has action units.",
+      "regime": "State-preparation variance bound; it is not a general measurement-disturbance relation."
+    },
+    {
+      "id": "unitary-evolution",
+      "assumptions": [
+        "Closed-system evolution generated by a self-adjoint time-independent Hamiltonian for the displayed exponential."
+      ],
+      "variables": [
+        "U(t,t0): unitary propagator; H: Hamiltonian; t0: initial time; psi: state vector."
+      ],
+      "units": "H(t-t0)/hbar is dimensionless.",
+      "regime": "For noncommuting Hamiltonians at different times, replace the simple exponential by the time-ordered propagator."
+    },
+    {
+      "id": "von-neumann-eq",
+      "assumptions": [
+        "Closed-system unitary evolution, or the full system including environment; H is self-adjoint."
+      ],
+      "variables": [
+        "rho: density operator; H: Hamiltonian; [H,rho]: commutator."
+      ],
+      "units": "Both sides have energy units because rho is dimensionless.",
+      "regime": "Not a generic reduced open-system equation: tracing out an environment may introduce dissipative and memory terms."
+    }
+  ],
+  "notes": [
+    "All 15 existing IDs and formulas inspected in current checkout. These are conventional semantic clarifications; historical source equation locators were not inspected and are not claimed.",
+    "The current baseline sourceIds may be historical provenance rather than exact support for every modern notation/generalization. A separate inspected-source pass is needed before upgrading explicit source review."
+  ]
+}

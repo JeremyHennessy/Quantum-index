@@ -3206,3 +3206,103 @@ window.QI_DATA.relations.push(...[
     "from": "transient-scalar-early-dark-energy"
   }
 ]);
+
+// 2026-10-21 broader source-qualified representatives and scoped baseline clarifications.
+window.QI_DATA.sources.push(...[
+  {
+    "id": "kobayashi-yamaguchi-yokoyama-2011",
+    "title": "Generalized G-inflation: Inflation with the most general second-order field equations",
+    "year": 2011,
+    "url": "https://arxiv.org/abs/1105.5723",
+    "authors": "Tsutomu Kobayashi, Masahide Yamaguchi and Junichi Yokoyama",
+    "type": "primary source"
+  },
+  {
+    "id": "akhmedov-seesaw-2000",
+    "title": "Seesaw mechanism and the neutrino mass matrix",
+    "authors": "E. Kh. Akhmedov",
+    "year": 2000,
+    "type": "primary source",
+    "url": "https://arxiv.org/abs/hep-ph/0001041"
+  },
+  {
+    "id": "fischer-breuer-projection-2007",
+    "title": "Correlated projection operator approach to non-Markovian dynamics in spin baths",
+    "authors": "Jan Fischer and Heinz-Peter Breuer",
+    "year": 2007,
+    "type": "primary source",
+    "url": "https://arxiv.org/abs/0708.0410"
+  },
+  {
+    "id": "akhmedov-parametric-neutrinos-1998",
+    "title": "Parametric resonance of neutrino oscillations and passage of solar and atmospheric neutrinos through the earth",
+    "authors": "E. Kh. Akhmedov",
+    "year": 1998,
+    "type": "primary source",
+    "url": "https://arxiv.org/abs/hep-ph/9805272"
+  },
+  {
+    "id": "davidovic-redfield-2020",
+    "title": "Completely Positive, Simple, and Possibly Highly Accurate Approximation of the Redfield Equation",
+    "authors": "Dragomir Davidović",
+    "year": 2020,
+    "type": "primary source",
+    "url": "https://doi.org/10.22331/q-2020-09-21-326"
+  },
+  {
+    "id": "tanimura-heom-review-2020",
+    "title": "Perspective: Numerically exact approach to open quantum dynamics: The hierarchical equations of motion (HEOM)",
+    "authors": "Yoshitaka Tanimura",
+    "year": 2020,
+    "type": "authoritative review",
+    "url": "https://arxiv.org/abs/2006.05501"
+  },
+  {
+    "id": "tanimura-heom-correlated-2014",
+    "title": "Reduced hierarchical equations of motion in real and imaginary time: Correlated initial states and thermodynamic quantities",
+    "authors": "Yoshitaka Tanimura",
+    "year": 2014,
+    "type": "primary source",
+    "url": "https://arxiv.org/abs/1407.1811"
+  },
+  {
+    "id": "maiani-gim-review-2013",
+    "title": "The GIM Mechanism: origin, predictions and recent uses",
+    "authors": "Luciano Maiani",
+    "year": 2013,
+    "type": "authoritative review",
+    "url": "https://arxiv.org/pdf/1303.6154v1"
+  },
+  {
+    "id": "foini-giamarchi-luttinger-2015",
+    "title": "Nonequilibrium dynamics of coupled Luttinger liquids",
+    "authors": "L. Foini and T. Giamarchi",
+    "year": 2015,
+    "type": "primary source",
+    "url": "https://giamarchi.unige.ch/wp-content/php_code/publications/pdf/Foini-2015-1.pdf"
+  },
+  {
+    "id": "maccari-bkt-disorder-2018",
+    "title": "BKT universality class in the presence of correlated disorder",
+    "authors": "Ilaria Maccari, Claudio Castellani and Lara Benfatto",
+    "year": 2018,
+    "type": "primary source",
+    "url": "https://arxiv.org/pdf/1802.03315v1"
+  },
+  {
+    "id": "hewson-oguri-meyer-impurity-2004",
+    "title": "Renormalized Parameters for Impurity Models",
+    "authors": "A. C. Hewson, A. Oguri and D. Meyer",
+    "year": 2004,
+    "type": "primary source",
+    "url": "https://arxiv.org/pdf/cond-mat/0312484v2"
+  },
+  {
+    "id": "trautman-einstein-cartan-2006",
+    "title": "Einstein–Cartan Theory",
+    "authors": "Andrzej Trautman",
+    "year": 2006,
+    "type": "authoritative review",
+    "url": "https://arxiv.org/pdf/gr-qc/0606062v1"
+  }
+]);

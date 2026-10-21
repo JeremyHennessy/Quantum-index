@@ -1,0 +1,36 @@
+{
+  "baseCommit": "113dce5951e13a9a2dd3ad342a428fe320f39ece",
+  "files": {
+    "theories.js": {
+      "beforeSha256": "e3bb88c132aee2045332fd62a39d1ae9b4c48f560141ad4d5335a782b2559a06",
+      "afterSha256": "142ab8a4ea982c6566571375d86e39e9b5d36a25b90d002284910b1adb28a144",
+      "beforeLength": 499825
+    },
+    "formulas.js": {
+      "beforeSha256": "f4770b44c6f53d17dc09e265939f5c72152e75b9d4693d100e15028455babf78",
+      "afterSha256": "35ce63f940d48377320b191d6f1476f4d2b57e6a9a54c45e733c0b7f3e6f0f04",
+      "beforeLength": 495137
+    },
+    "passports.js": {
+      "beforeSha256": "703c3fb0a9ee99d83edd602c2d427c2ab8dad310c3af7d8c69f6b984c1fe62fb",
+      "afterSha256": "703c3fb0a9ee99d83edd602c2d427c2ab8dad310c3af7d8c69f6b984c1fe62fb",
+      "beforeLength": 96530
+    },
+    "evidence.js": {
+      "beforeSha256": "c1a70f71a1151202a3cb4af82952dd0a82f378e93c36fbc94c875f8b999faf94",
+      "afterSha256": "c1a70f71a1151202a3cb4af82952dd0a82f378e93c36fbc94c875f8b999faf94",
+      "beforeLength": 40892
+    },
+    "problems.js": {
+      "beforeSha256": "eaea3217c4092cac7b2793fdbb3423cf843180492ed74c30fa55efd03b39ee5c",
+      "afterSha256": "eaea3217c4092cac7b2793fdbb3423cf843180492ed74c30fa55efd03b39ee5c",
+      "beforeLength": 41425
+    },
+    "docs/coverage.json": {
+      "beforeSha256": "33b35c7e2dee7e1e6c6318f7a14ea7a4c044812e60b6a68f885e8d091ef6bc60",
+      "afterSha256": "ded4b8c353976cf1e45468067795e6f698ddc5c77c27351d9c731d87befb826c",
+      "beforeLength": 739,
+      "beforeText": "{\n  \"theories\": 483,\n  \"researchProfiles\": 59,\n  \"learningPaths\": 5,\n  \"passports\": 35,\n  \"problems\": 9,\n  \"evidenceRecords\": 21,\n  \"researchQuestions\": 60,\n  \"categories\": 14,\n  \"sources\": 578,\n  \"primarySourced\": 354,\n  \"reviewSourced\": 129,\n  \"cataloguedOnly\": 0,\n  \"relations\": 613,\n  \"sourcedRelations\": 128,\n  \"editorialRelations\": 485,\n  \"highConfidenceRelations\": 104,\n  \"mediumConfidenceRelations\": 24,\n  \"trees\": 41,\n  \"formulas\": 439,\n  \"formulaCategories\": 30,\n  \"formulaBearing\": 305,\n  \"formulaGaps\": 132,\n  \"interpretations\": 11,\n  \"conceptual\": 16,\n  \"theorems\": 18,\n  \"thoughtExperiments\": 1,\n  \"explicitFormulaMetadata\": 194,\n  \"baselineFormulaMetadata\": 245,\n  \"developmentEvents\": 16,\n  \"newestDevelopmentYear\": 2026\n}\n"
+    }
+  }
+}
