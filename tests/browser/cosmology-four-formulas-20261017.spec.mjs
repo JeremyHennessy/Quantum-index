@@ -14,6 +14,10 @@ test('four source-reviewed cosmology models have exact provenance, MathJax and u
   await expect(grid.locator('.formula-card')).toHaveCount(1);
   await expect(grid).toContainText(item.title);
   await expect(grid.locator('a[href="'+item.url+'"]')).toBeVisible();
+  if(item.theory==='k-essence'){
+   await expect(grid.locator('a[href="https://arxiv.org/pdf/astro-ph/0006373v1#page=2"]')).toBeVisible();
+   await expect(grid.locator('.formula-source')).toHaveCount(2);
+  }
   await expect(grid.locator('mjx-container')).toHaveCount(1,{timeout:30000});
   await expect(grid.locator('mjx-container [data-mml-node="merror"], mjx-container [fill="red"], mjx-container [stroke="red"]')).toHaveCount(0);
  }

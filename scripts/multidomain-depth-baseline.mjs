@@ -1,3 +1,4 @@
+import {beforeLocatorRenderer} from './formula-locator-renderer-20261021-baseline.mjs';
 // Test-only bridge for immutable checkpoints that predate the 2026-10-08 multidomain additions.
 // It removes only identifiers declared in the reviewed ledger and asserts each addition exists exactly once.
 import fs from 'node:fs';
@@ -38,7 +39,7 @@ function gitBlob(input){
   return out.stdout.toString().trim();
 }
 export function verifyDepthFile(path,expectedBlobSha){
-  const currentBytes=stripPassportReviewAppend(fs.readFileSync(path),path);
+  const currentBytes=stripPassportReviewAppend(beforeLocatorRenderer(fs.readFileSync(path),path),path);
   const marker=multidomainReview.appendedMarkers[path];
   if(!marker){
     if(path==='theories.js'){
@@ -59,7 +60,7 @@ export function verifyDepthFile(path,expectedBlobSha){
 }
 
 export function verifyDepthFileSha256(path,expectedSha256){
-  const currentBytes=stripPassportReviewAppend(fs.readFileSync(path),path);
+  const currentBytes=stripPassportReviewAppend(beforeLocatorRenderer(fs.readFileSync(path),path),path);
   const marker=multidomainReview.appendedMarkers[path],bytes=path==='theories.js'?stripNewTheoryAppend(currentBytes):currentBytes;
   const digest=buf=>createHash('sha256').update(buf).digest('hex');
   if(!marker){assert.equal(digest(bytes),expectedSha256,path);return;}

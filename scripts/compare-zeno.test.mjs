@@ -1,3 +1,4 @@
+import {beforeLocatorRenderer} from './formula-locator-renderer-20261021-baseline.mjs';
 import {bellReview,restoreBellFormula} from './bell-metadata-baseline.mjs';
 import {priorDepthFormulas} from './multidomain-depth-baseline.mjs';
 import test from 'node:test';
@@ -23,7 +24,7 @@ test('Compare extension preserves all prior 481 theory and 392 formula records',
  }
  assert.deepEqual(Object.keys(ledger.updatedFiles),['app.js']);
  assert.equal(lattice.previousFiles['app.js'],ledger.updatedFiles['app.js']);
- assert.equal(hash(fs.readFileSync('app.js')),lattice.updatedFiles['app.js']);
+ assert.equal(hash(beforeLocatorRenderer(fs.readFileSync('app.js'),'app.js')),lattice.updatedFiles['app.js']);
 });
 test('Zeno representative resolves the deferred gap with exact protocol and source version',()=>{
  const f=w.QI_FORMULAS.formulas.find(f=>f.id==='zeno-repeated-survival');

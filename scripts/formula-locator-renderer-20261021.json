@@ -1,0 +1,7 @@
+{
+  "description": "Exact 2026-10-21 source locator rendering repair; historical ledgers remain immutable.",
+  "beforeSha256": "d7802b604a9016d591664da37d010aeef4d6a01dc8a8bc036ae876feb0fa1110",
+  "afterSha256": "5dfea1fd032ae2b9c85fae650ef9ed17f715c43d8b9305dc0b74880227c98a20",
+  "before": "        const location=f.sourceLocations?.find(location=>location.sourceId===id);\n        return s?`<a class=\"formula-source\" href=\"${esc(location?.url || s.url)}\" target=\"_blank\" rel=\"noreferrer\">${esc(s.authors)} \u00b7 ${esc(s.year)}${location?` \u00b7 ${esc(location.locator)}`:\"\"}</a>`:\"\";",
+  "after": "        if(!s) return \"\";\n        const locations=(f.sourceLocations||[]).filter(location=>location.sourceId===id);\n        // A source may support distinct equations on several pages. Keep every\n        // exact locator discoverable instead of silently showing only the first.\n        return (locations.length?locations:[null]).map(location=>`<a class=\"formula-source\" href=\"${esc(location?.url || s.url)}\" target=\"_blank\" rel=\"noreferrer\">${esc(s.authors)} \u00b7 ${esc(s.year)}${location?` \u00b7 ${esc(location.locator)}`:\"\"}</a>`).join(\"\");"
+}

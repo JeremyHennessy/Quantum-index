@@ -9960,7 +9960,7 @@ for(const row of batch){if(known.has(row.id))throw new Error("Duplicate scientif
       "epsilon_alphaalpha: dimensionless flavour alpha decay CP asymmetry",
       "N1: heavy unstable Majorana singlet neutrino",
       "phi, bar_phi: Higgs state and charge-conjugate state",
-      "l_alpha, bar_l_alpha: charged flavour alpha lepton state and its CP conjugate",
+      "l_alpha, bar_l_alpha: lepton doublet of flavour alpha and its CP conjugate",
       "Gamma: channel-specific partial decay width",
       "beta: index summed over available lepton flavours"
     ],
