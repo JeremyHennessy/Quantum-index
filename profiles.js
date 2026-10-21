@@ -3153,3 +3153,253 @@ window.QI_PROFILES.learningPaths.push({
     "primordial-quantum-classical"
   ]
 });
+
+// Open-system comparison: existing entries, not new theory nodes.
+Object.assign(window.QI_PROFILES.profiles, {
+  "nakajima-zwanzig": {
+    "reviewedAt": "2026-10-21",
+    "problem": {
+      "text": "How can eliminated environmental degrees of freedom retain memory?",
+      "sourceIds": [
+        "fischer-breuer-projection-2007"
+      ]
+    },
+    "scope": {
+      "text": "An exact projection identity before the memory kernel is approximated.",
+      "sourceIds": [
+        "fischer-breuer-projection-2007"
+      ]
+    },
+    "assumptions": {
+      "text": "The displayed homogeneous equation requires P rho(0)=rho(0) and P L(t) P=0; other preparations require additional terms.",
+      "sourceIds": [
+        "fischer-breuer-projection-2007"
+      ]
+    },
+    "predictions": {
+      "text": "The kernel propagates the projected state using its earlier values.",
+      "sourceIds": [
+        "fischer-breuer-projection-2007"
+      ]
+    },
+    "evidence": {
+      "text": "The source derives the identity and compares perturbative solutions for a spin-bath model; this is not experimental validation.",
+      "sourceIds": [
+        "fischer-breuer-projection-2007"
+      ]
+    },
+    "limitations": {
+      "text": "Computing the exact kernel remains difficult. Truncating it changes an identity into an approximation; retaining memory alone does not guarantee accuracy.",
+      "sourceIds": [
+        "fischer-breuer-projection-2007"
+      ]
+    },
+    "questions": {
+      "text": "Which projection and kernel order are adequate for the chosen bath and preparation?",
+      "sourceIds": [
+        "fischer-breuer-projection-2007"
+      ]
+    },
+    "prerequisites": [
+      "open-quantum-systems"
+    ]
+  },
+  "bloch-redfield": {
+    "reviewedAt": "2026-10-21",
+    "problem": {
+      "text": "How can weak environmental coupling change populations and coherences?",
+      "sourceIds": [
+        "davidovic-redfield-2020"
+      ]
+    },
+    "scope": {
+      "text": "Perturbative reduced dynamics; the catalog formula uses asymptotic coefficients and retains nonsecular frequency couplings.",
+      "sourceIds": [
+        "davidovic-redfield-2020"
+      ]
+    },
+    "assumptions": {
+      "text": "Weak coupling and bath correlations decaying faster than interaction-picture relaxation justify the Born–Markov treatment.",
+      "sourceIds": [
+        "davidovic-redfield-2020"
+      ]
+    },
+    "predictions": {
+      "text": "The generator predicts model-dependent relaxation and coherence dynamics.",
+      "sourceIds": [
+        "davidovic-redfield-2020"
+      ]
+    },
+    "evidence": {
+      "text": "The cited paper compares master-equation approximations, not a universal experimental validation.",
+      "sourceIds": [
+        "davidovic-redfield-2020"
+      ]
+    },
+    "limitations": {
+      "text": "Positivity is not guaranteed. Negative density-matrix eigenvalues are unphysical; their interpretation depends on the approximation and time regime.",
+      "sourceIds": [
+        "davidovic-redfield-2020"
+      ]
+    },
+    "questions": {
+      "text": "Do retained coherences and initial transients matter at the desired accuracy?",
+      "sourceIds": [
+        "davidovic-redfield-2020"
+      ]
+    },
+    "prerequisites": [
+      "open-quantum-systems"
+    ]
+  },
+  "heom": {
+    "reviewedAt": "2026-10-21",
+    "problem": {
+      "text": "How can reduced dynamics retain environmental memory beyond weak coupling?",
+      "sourceIds": [
+        "tanimura-heom-review-2020"
+      ]
+    },
+    "scope": {
+      "text": "A hierarchy of auxiliary operators for specified bath correlation decompositions.",
+      "sourceIds": [
+        "tanimura-heom-review-2020"
+      ]
+    },
+    "assumptions": {
+      "text": "The catalog representative uses a Gaussian harmonic Drude bath and compatible initial auxiliary operators.",
+      "sourceIds": [
+        "tanimura-heom-review-2020"
+      ]
+    },
+    "predictions": {
+      "text": "Converged hierarchy solutions determine reduced-state dynamics for the specified model.",
+      "sourceIds": [
+        "tanimura-heom-review-2020"
+      ]
+    },
+    "evidence": {
+      "text": "The review compares against analytical model results; numerical agreement is not evidence that every physical bath has this form.",
+      "sourceIds": [
+        "tanimura-heom-review-2020"
+      ]
+    },
+    "limitations": {
+      "text": "A finite hierarchy is not automatically exact. Check bath-expansion terms, hierarchy depth and numerical resolution; difficult low-temperature or strong-coupling regimes can be costly.",
+      "sourceIds": [
+        "tanimura-heom-review-2020"
+      ]
+    },
+    "questions": {
+      "text": "Are the target observables stable as each independent cutoff is increased?",
+      "sourceIds": [
+        "tanimura-heom-review-2020"
+      ]
+    },
+    "prerequisites": [
+      "open-quantum-systems"
+    ]
+  }
+});
+window.QI_PROFILES.learningPaths.push({
+  "id": "open-system-methods",
+  "title": "Choosing an open-system method",
+  "goal": "Compare mathematical guarantees, physical approximations and numerical convergence without treating them as the same claim.",
+  "prerequisites": "Density matrices, partial traces, Hamiltonian evolution and basic numerical error analysis.",
+  "steps": [
+    {
+      "theoryId": "gksl",
+      "why": "Separate a generator theorem from the accuracy of a reservoir model."
+    },
+    {
+      "theoryId": "nakajima-zwanzig",
+      "why": "Distinguish the exact memory identity from a tractable kernel approximation."
+    },
+    {
+      "theoryId": "bloch-redfield",
+      "why": "Identify weak-coupling, coefficient and secular approximations separately."
+    },
+    {
+      "theoryId": "heom",
+      "why": "Distinguish the infinite hierarchy from a converged finite calculation."
+    }
+  ],
+  "comparison": [
+    "gksl",
+    "nakajima-zwanzig",
+    "bloch-redfield",
+    "heom"
+  ],
+  "primer": {
+    "title": "Four methods, three different kinds of guarantee",
+    "reviewedAt": "2026-10-21",
+    "paragraphs": [
+      {
+        "text": "GKSL is a structural characterization of bounded, time-homogeneous completely positive trace-preserving semigroup generators, not an error estimate for a microscopic reservoir. Its theorem does not determine physical rates. Full secularization is one microscopic route to this structure, not a universal requirement for a completely positive model.",
+        "sourceIds": [
+          "lindblad-1976",
+          "davidovic-redfield-2020"
+        ]
+      },
+      {
+        "text": "Nakajima–Zwanzig is exact before kernel approximation. Its homogeneous catalog expression assumes a compatible initial state and vanishing instantaneous projected term. A second-order memory kernel is a distinct approximation. Time-local does not by itself mean memoryless: a time-dependent TCL generator can encode memory.",
+        "sourceIds": [
+          "fischer-breuer-projection-2007"
+        ]
+      },
+      {
+        "text": "Redfield separates weak-coupling and short-memory assumptions from full secularization. Time-dependent and asymptotic coefficients are different approximations; the existing catalog formula is the latter. Secular averaging additionally discards different-frequency terms and needs an appropriate frequency/time-scale separation, especially near degeneracy.",
+        "sourceIds": [
+          "hartmann-strunz-accuracy-2019"
+        ]
+      },
+      {
+        "text": "Complete positivity and approximation accuracy are separate tests. Hartmann–Strunz finds that time-dependent Redfield can outperform fully secular dynamics for its two-spin Lorentzian model. This is not a universal ranking or permission to treat negative probabilities as physical. A positive state alone cannot establish a small dynamical error.",
+        "sourceIds": [
+          "hartmann-strunz-accuracy-2019"
+        ]
+      },
+      {
+        "text": "HEOM avoids Born and Markov truncations for the specified harmonic Gaussian bath, but the infinite formal hierarchy differs from a finite calculation. Independently converge correlation-expansion terms and hierarchy depth, then integration accuracy. Record the bath, temperature, initial preparation, observables, time interval and tolerance; auxiliary operators are not separate physical density matrices.",
+        "sourceIds": [
+          "tanimura-heom-review-2020"
+        ]
+      },
+      {
+        "text": "Practical comparison checklist (editorial): fix one microscopic model and preparation; compare observables or states against an independently converged reference; scan the relevant coupling, memory and near-degeneracy regimes; test trace, Hermiticity and positivity separately from error. No method wins merely by being labeled exact, Markovian or completely positive.",
+        "sourceIds": [
+          "hartmann-strunz-accuracy-2019"
+        ]
+      }
+    ],
+    "sourceLocator": "Source-qualified comparison; the reading order and checklist are editorial, not a derivation chain or a new research result.",
+    "sourceLocations": [
+      {
+        "sourceId": "lindblad-1976",
+        "locator": "Section 1, pp. 120–121 (norm continuity); Section 4, Theorem 2, Eqs. (4.2)–(4.3), p. 127 (generator structure).",
+        "url": "https://doi.org/10.1007/BF01608499"
+      },
+      {
+        "sourceId": "fischer-breuer-projection-2007",
+        "locator": "arXiv:0708.0410v2, Sections II.2–II.3, Eqs. (3)–(9): exact memory kernel, initial-state caveat, second-order NZ and TCL equations.",
+        "url": "https://arxiv.org/html/0708.0410v2#S2.SS2"
+      },
+      {
+        "sourceId": "davidovic-redfield-2020",
+        "locator": "arXiv:2003.09063v4, Sections 1–3, Eqs. (1), (4)–(5); Sections 3.2 and 4 distinguish full secularization from the alternative completely positive GAME approximation.",
+        "url": "https://arxiv.org/html/2003.09063v4#S3"
+      },
+      {
+        "sourceId": "hartmann-strunz-accuracy-2019",
+        "locator": "arXiv:1906.02583v3, Sections III.2.1–III.2.3, Eqs. (7)–(19); Sections IV.1 and IV.5, Fig. 9; Section V. Model-specific accuracy comparison, not a universal guarantee.",
+        "url": "https://arxiv.org/html/1906.02583v3#S3.SS2.SSS1"
+      },
+      {
+        "sourceId": "tanimura-heom-review-2020",
+        "locator": "arXiv:2006.05501v2, Sections II, III.2, III.4 and III.6–III.7: model, auxiliary operators, truncation, correlated preparation and numerical techniques; Section IV: analytical tests.",
+        "url": "https://arxiv.org/html/2006.05501v2#S3.SS4"
+      }
+    ]
+  }
+});
+window.QI_PROFILES.comparisons.push({name:"Open-system methods",theoryIds:["gksl","nakajima-zwanzig","bloch-redfield","heom"]});

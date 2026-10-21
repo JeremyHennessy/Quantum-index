@@ -283,7 +283,7 @@ test('comparison renders four cited profiles and preserves selection through the
   await route('#/compare?ids='+ids);
   assert.equal(active(),'compareView');
   assert.equal(d.querySelectorAll('.comparison-table thead th').length,5);
-  assert.equal(d.querySelectorAll('#profileCollection a').length,59);
+  assert.equal(d.querySelectorAll('#profileCollection a').length,62);
   assert.ok(d.querySelectorAll('.comparison-table .profile-citations a').length>=28);
   const link=d.querySelector('.comparison-table thead a');
   assert.ok(link.hash.includes('compare='+ids));
@@ -339,7 +339,7 @@ test('fresh comparison and detail loads restore shareable selections',()=>{
 
 test('learning paths support ordered steps, deep links and return navigation',async()=>{
   await route('#/learn');
-  assert.equal(d.querySelectorAll('.learning-path').length,6);
+  assert.equal(d.querySelectorAll('.learning-path').length,7);
   await route('#/learn?path=gravity-time');
   assert.equal(d.querySelectorAll('.learning-path').length,1);
   await change(()=>d.querySelector('.learning-steps a').click());
@@ -350,7 +350,7 @@ test('learning paths support ordered steps, deep links and return navigation',as
   await change(()=>d.querySelector('#backToView').click());
   assert.equal(d.querySelectorAll('.learning-steps li').length,5);
   await route('#/learn?path=does-not-exist');
-  assert.equal(d.querySelectorAll('.learning-path').length,6);
+  assert.equal(d.querySelectorAll('.learning-path').length,7);
 });
 
 test('prerequisites, connections and formula detours retain learning and comparison context',async()=>{

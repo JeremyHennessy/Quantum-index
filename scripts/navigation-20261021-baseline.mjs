@@ -1,3 +1,4 @@
+import {projectPreOpenSystem} from './open-system-20261021-baseline.mjs';
 // Test-only exact-byte reconstruction of the accepted 3530ab3 release.
 // Current-runtime tests do not use this historical projection.
 import fs from 'node:fs';
@@ -9,6 +10,7 @@ const root=fileURLToPath(new URL('../',import.meta.url));
 const ledger=JSON.parse(fs.readFileSync(new URL('../research/NAVIGATION_INTEGRITY_2026-10-21.json',import.meta.url)));
 const hash=b=>createHash('sha256').update(b).digest('hex');
 export function projectPreNavigation(bytes,relative){
+ bytes=projectPreOpenSystem(bytes,relative);
  const entry=ledger.files[relative];if(!entry)return bytes;
  assert.equal(hash(bytes),entry.afterSha256,relative+': undeclared navigation mutation');
  const before=entry.beforeText===undefined?bytes.subarray(0,entry.beforeLength):Buffer.from(entry.beforeText);
