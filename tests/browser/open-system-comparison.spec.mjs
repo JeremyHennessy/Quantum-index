@@ -1,0 +1,27 @@
+import {test,expect} from '@playwright/test';
+test('open-system route compares four populated profiles and preserves navigation and workspace',async({page},info)=>{
+ if(info.project.name==='webkit')await page.setViewportSize({width:320,height:700});
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('/#/learn?path=open-system-methods');
+ const card=page.locator('[data-learning-path="open-system-methods"]');
+ await expect(card.locator('.learning-steps>li')).toHaveCount(4);
+ await expect(card.locator('.primer-locators a')).toHaveCount(5);
+ for(const text of ['not a universal requirement','not a universal ranking','Independently converge','not a derivation chain'])await expect(card).toContainText(text);
+ const before=await page.evaluate(()=>JSON.stringify(localStorage));
+ await card.getByRole('link',{name:'Compare key entries'}).click();
+ await expect(page.locator('#comparisonResults thead th')).toHaveCount(5);
+ await expect(page.locator('#comparisonResults')).not.toContainText('Detailed profile not yet curated');
+ await expect(page.locator('#comparisonResults')).toContainText('Positivity is not guaranteed');
+ await expect(page.locator('#comparisonResults')).toContainText('A finite hierarchy is not automatically exact');
+ await page.locator('#comparisonResults thead a').filter({hasText:'Redfield'}).click();
+ await expect(page.locator('#theoryDetail')).toContainText('not a universal requirement');
+ await page.locator('#backToView').click();await expect(page).toHaveURL(/compare\?ids=/);
+ await page.goBack();await expect(page.locator('#theoryDetail')).toContainText('full secular approximation');
+ await page.goto('/#/learn?path=open-system-methods');await page.reload();await expect(card).toBeVisible();
+ expect(await page.evaluate(()=>JSON.stringify(localStorage))).toEqual(before);
+ expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
+ const shot=info.outputPath('open-system-methods.png');await card.screenshot({path:shot,style:'.topbar{visibility:hidden!important}'});await info.attach('Source-qualified open-system comparison',{path:shot,contentType:'image/png'});
+ await page.goto('/#/map?pathFrom=renormalization-group&pathTo=functional-rg&maxHops=1');
+ await expect(page.locator('.research-edge h4').first()).not.toHaveText(/^\d+\./);
+ expect(errors).toEqual([]);
+});

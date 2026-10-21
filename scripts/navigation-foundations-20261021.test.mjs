@@ -1,6 +1,8 @@
+import {readPreOpenSystemFile} from './open-system-20261021-baseline.mjs';
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';
 import {loadRuntime} from './category-trust-census.mjs';import {readPreNavigationFile,projectPreNavigation} from './navigation-20261021-baseline.mjs';import {shortestDocumentedPath} from './sourced-paths.mjs';
-const w=loadRuntime(),previous={window:{}};vm.createContext(previous);for(const f of ['theories.js','formulas.js','formula-audit.js','developments.js','evidence.js','questions.js','problems.js','passports.js','profiles.js'])vm.runInContext(readPreNavigationFile(f,'utf8'),previous);
+const accepted={window:{}};vm.createContext(accepted);for(const f of ['theories.js','formulas.js','formula-audit.js','developments.js','evidence.js','questions.js','problems.js','passports.js','profiles.js'])vm.runInContext(readPreOpenSystemFile(f,'utf8'),accepted);
+const w=accepted.window,previous={window:{}};vm.createContext(previous);for(const f of ['theories.js','formulas.js','formula-audit.js','developments.js','evidence.js','questions.js','problems.js','passports.js','profiles.js'])vm.runInContext(readPreNavigationFile(f,'utf8'),previous);
 const audit=JSON.parse(fs.readFileSync('research/FOUNDATION_SOURCE_AUDIT_2026-10-21.json'));
 const stable=x=>JSON.parse(JSON.stringify(x));
 test('exact fifteen foundation promotions preserve all equations, IDs and theory links',()=>{

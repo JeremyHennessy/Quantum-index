@@ -5,10 +5,10 @@ Updated 21 October 2026. This is the single continuation entry point; dated rele
 ## Current inventory (generated; not a scientific quality score)
 
 <!-- coverage:start -->
-- **59** cited reading profiles and **6** learning paths
+- **62** cited reading profiles and **7** learning paths
 - **35** Theory Passports, **9** scientific Problems, **21** Evidence records and **60** structured Research Questions
 - **483** theory/framework entities across **14** categories
-- **596** bibliography records
+- **597** bibliography records
 - **354** primary-sourced; **129** review-sourced; **0** catalogued-only entries
 - **614** relationships: **130** source-backed; **484** editorial
 - **41** thought trees

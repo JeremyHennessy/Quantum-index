@@ -13,6 +13,7 @@ test('browser renderer preserves exact cited directed edge and no fallback',()=>
  const source=d.window.QI_DATA.relations.find(r=>r.from==='renormalization-group'&&r.to==='functional-rg');
  for(const id of source.sourceIds)assert.match(result.textContent,new RegExp(id));
  assert.ok(result.textContent.includes(source.evidenceNote));assert.ok(result.textContent.includes(source.type));
+ assert.ok(result.querySelector('ol.research-edges'));assert.doesNotMatch(result.querySelector('.research-edge h4').textContent,/^\d+\./);
  d.window.close();
  for(const [query,expected]of [['pathFrom=qed&pathTo=aqft&maxHops=1',/No documented directed path within 1 edges/],['pathFrom=bell&pathTo=bell',/zero edges/],['pathFrom=absent&pathTo=bell',/Unknown or missing/],['pathFrom=bell&pathTo=qed&maxHops=999',/Unsupported edge limit/]]){const x=setup('#/map?'+query);assert.match(x.window.document.querySelector('#documentedPathResult').textContent,expected);x.window.close();}
 });

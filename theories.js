@@ -3406,3 +3406,21 @@ window.QI_DATA.sources.push(...[
 ];
   for (const change of changes) { const r=change.record; const found=window.QI_DATA.relations.filter(e=>e.from===r.from&&e.to===r.to&&e.type===r.type); if(change.operation==="update-existing") { if(found.length!==1) throw new Error("Missing unique navigation relation"); Object.assign(found[0],r); } else { if(found.length) throw new Error("Duplicate navigation relation"); window.QI_DATA.relations.push(r); } }
 })();
+
+// Source for a scoped comparison, not evidence of a new result.
+window.QI_DATA.sources.push({
+  "id": "hartmann-strunz-accuracy-2019",
+  "title": "Accuracy Assessment of Perturbative Master Equations – Embracing Non-Positivity",
+  "authors": "Richard Hartmann and Walter T. Strunz",
+  "year": 2019,
+  "type": "primary source",
+  "url": "https://arxiv.org/abs/1906.02583v3"
+});
+
+// Correct a too-strong secularization claim using the reviewed comparison source.
+(() => {
+  const entry=window.QI_DATA.theories.find(t=>t.id==='bloch-redfield');
+  entry.summary='Bloch–Redfield theory derives weak-coupling reduced dynamics from system–bath correlation functions while retaining nonsecular frequency couplings. Full secularization is one route to GKSL form, not a universal requirement for complete positivity.';
+  entry.core='A perturbative relaxation tensor governs density-matrix evolution and can retain coherences and frequency couplings that are discarded by the full secular approximation.';
+  entry.sources.push('davidovic-redfield-2020');
+})();
