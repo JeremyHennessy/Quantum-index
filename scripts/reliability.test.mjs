@@ -576,3 +576,11 @@ test('progression map has bounded accessible zoom and separate branch state',asy
  d.querySelectorAll('.tree-choice')[1].click();assert.equal(status.textContent,'100%');d.querySelector('[data-tree-index="'+selected+'"]').click();assert.equal(status.textContent,'125%');
  d.querySelector('#treeZoomFit').click();assert.ok(parseInt(status.textContent)<=100);assert.equal(viewport.getAttribute('tabindex'),'0');
 });
+
+test('switching thought-tree branch refreshes selected theory detail return context',async()=>{
+ await route('#/lineage?theory=planck-quanta');const target=w.QI_DATA.trees[1];
+ d.querySelector('[data-tree-index="1"]').click();assert.equal(d.querySelector('#treeGraphTitle').textContent,target.name);assert.equal(d.querySelector('#lineageTitle').textContent,'Planck energy quanta');
+ const details=d.querySelector('#lineageDetail .full-theory-link').getAttribute('href'),params=new URLSearchParams(details.split('?').slice(1).join('?'));
+ const backParams=new URLSearchParams(params.get('returnTo').split('?').slice(1).join('?'));assert.equal(backParams.get('tree'),target.name);assert.equal(backParams.get('theory'),'planck-quanta');
+ await route(details);await route(d.querySelector('#backToView').getAttribute('href'));assert.equal(d.querySelector('#treeGraphTitle').textContent,target.name);assert.equal(d.querySelector('#lineageTitle').textContent,'Planck energy quanta');
+});

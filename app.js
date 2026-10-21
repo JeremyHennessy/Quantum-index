@@ -479,7 +479,7 @@
       </button>`).join("");
     $("#thoughtTrees").querySelectorAll("[data-tree-index]").forEach(el=>el.addEventListener("click",()=>{
       state.selectedTree=Number(el.dataset.treeIndex);
-      rememberFilters();renderTrees();
+      rememberFilters();renderTrees();renderLineage();
     }));
     renderThoughtTreeGraph();
   }
