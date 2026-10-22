@@ -1,0 +1,211 @@
+{
+  "status": "New reconstructed local three-card candidate; not published or exact-byte recovery",
+  "baselineCommit": "9470364ff5f4e3f1e4a0e05a1ace8cd852b2f160",
+  "patches": [
+    {
+      "id": "gkp-stabilizers",
+      "assumptions": [
+        "One oscillator with canonical quadratures [q,p]=i; the ideal square-lattice qubit code is the simultaneous +1 generalized eigenspace of S_q and S_p.",
+        "Exact ideal stabilizer relations concern distributional, non-normalizable codewords, not normalizable finite-energy approximations."
+      ],
+      "variables": [
+        "q,p: canonical quadrature operators; S_q=exp(i2sqrt(pi)q) shifts p by +2sqrt(pi), while S_p=exp(-i2sqrt(pi)p) shifts q by +2sqrt(pi). Subscripts label the quadrature in the exponent, not the shifted coordinate."
+      ],
+      "units": "Dimensionless oscillator quadratures with [q,p]=i (hbar=1); n=2 and alpha=sqrt(pi) in the source. Coefficients and displacement bounds must be rescaled if a different quadrature commutator is used.",
+      "regime": "The Weyl relation gives S_q S_p=exp(i4pi) S_p S_q=S_p S_q. For ideal syndrome recovery, the central sufficient displacement window is |Delta q|<sqrt(pi)/2 and |Delta p|<sqrt(pi)/2, with both inequalities strict. Half-open modular intervals only choose representatives at boundary ties; they do not guarantee correction of both opposite endpoint errors. This is not an if-and-only-if claim that every larger shift fails.",
+      "sourceIds": [
+        "gkp-2001"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "gkp-2001",
+          "locator": "Author manuscript arXiv quant-ph/0008040v3 (13 May 2001), Sec. IV, Eq. (21), printed/PDF p. 4; specialize n=2, alpha=sqrt(pi). Canonical commutator and Weyl identity immediately preceding Eq. (23), printed/PDF p. 5.",
+          "url": "https://arxiv.org/pdf/quant-ph/0008040v3#page=4"
+        },
+        {
+          "sourceId": "gkp-2001",
+          "locator": "Sec. IV, Eq. (24), printed/PDF p. 5: strict correctable shift bounds; Sec. V, printed/PDF p. 6, paragraph after Eq. (36): modular syndrome recovery. Boundary-tie qualification is an explicit algebraic consequence, not a quoted source theorem.",
+          "url": "https://arxiv.org/pdf/quant-ph/0008040v3#page=5"
+        }
+      ],
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-22",
+      "curationBatch": "quantum-gkp-source-audit-2026-10-22",
+      "theoryRelationship": "Existing stabilizer equation checked by direct specialization of the authors' versioned primary manuscript; no equation change. Finite-energy preparations are approximations discussed separately in Sec. V. The existing DOI source remains provenance; these locators refer to the arXiv manuscript, not journal pagination."
+    },
+    {
+      "id": "gkp-logicals",
+      "assumptions": [
+        "One oscillator with [q,p]=i; logical action is restricted to the ideal square-GKP qubit code fixed by S_q=exp(i2sqrt(pi)q) and S_p=exp(-i2sqrt(pi)p).",
+        "The displayed oscillator displacement operators are unitary; they act as Pauli operators on the ideal code, not as involutions on the entire oscillator Hilbert space."
+      ],
+      "variables": [
+        "Z_L: +sqrt(pi) momentum displacement; X_L: +sqrt(pi) position displacement. The logical basis is |j_L> proportional to sum_s |q=(2s+j)sqrt(pi)>, j=0,1."
+      ],
+      "units": "Dimensionless oscillator quadratures with [q,p]=i (hbar=1); n=2 and alpha=sqrt(pi) in the source. Coefficients and displacement bounds must be rescaled if a different quadrature commutator is used.",
+      "regime": "Z_L X_L=-X_L Z_L by the Weyl phase exp(i pi). Each logical operator commutes with both stabilizer generators, since the cross phases are exp(i2pi)=1. Z_L^2=S_q and X_L^2=S_p, so their squares are identity only on the ideal code. In the formal comb basis, Z_L|j_L>=(-1)^j|j_L> and X_L exchanges |0_L> and |1_L>. Normalizable finite-energy approximations are not exact codewords.",
+      "sourceIds": [
+        "gkp-2001"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "gkp-2001",
+          "locator": "Author manuscript arXiv quant-ph/0008040v3 (13 May 2001), Sec. IV, Eq. (22), printed/PDF p. 4; Eqs. (23), (26), printed/PDF p. 5. Set n=2 and alpha=sqrt(pi); Eq. (23) then has omega=-1.",
+          "url": "https://arxiv.org/pdf/quant-ph/0008040v3#page=5"
+        },
+        {
+          "sourceId": "gkp-2001",
+          "locator": "Sec. IV, Eq. (21), printed/PDF p. 4, and Eq. (27), printed/PDF p. 5: stabilizer powers and the formal logical basis. Logical-stabilizer commutation follows explicitly from the stated Weyl relation.",
+          "url": "https://arxiv.org/pdf/quant-ph/0008040v3#page=4"
+        }
+      ],
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-22",
+      "curationBatch": "quantum-gkp-source-audit-2026-10-22",
+      "theoryRelationship": "Existing logical-Pauli equation checked in the authors' versioned primary manuscript, with anticommutation, code-subspace restriction and stabilizer powers made explicit. No equation change; no claim that these are finite-energy exact codewords."
+    },
+    {
+      "id": "gkp-comb",
+      "assumptions": [
+        "One oscillator with [q,p]=i; choose the square qubit code n=2, alpha=sqrt(pi), and logical-zero label j=0 in the source.",
+        "Position eigenkets and the infinite equal-weight sum are generalized states/distributions, not normalizable vectors in the oscillator Hilbert space."
+      ],
+      "variables": [
+        "s: any integer; |q=q0>: generalized position eigenket. The proportionality sign denotes a formal common amplitude, not an omitted finite normalization constant."
+      ],
+      "units": "Dimensionless oscillator quadratures with [q,p]=i (hbar=1); n=2 and alpha=sqrt(pi) in the source. Coefficients and displacement bounds must be rescaled if a different quadrature commutator is used.",
+      "regime": "The comb has period 2sqrt(pi) and obeys S_q|0_L>=S_p|0_L>=Z_L|0_L>=|0_L> distributionally. A +sqrt(pi) position shift gives the logical-one comb, rather than the same codeword. The ideal comb is a non-normalizable, formal infinite-energy limit. Finite-width peaks with a decaying envelope, as in Sec. V Eq. (31), are normalizable approximate codewords and must not be substituted into the displayed exact ideal relation without qualification.",
+      "sourceIds": [
+        "gkp-2001"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "gkp-2001",
+          "locator": "Author manuscript arXiv quant-ph/0008040v3 (13 May 2001), Sec. IV, Eq. (27), printed/PDF p. 5, first line with n=2, alpha=sqrt(pi), j=0; Fig. 1 and the paragraph after Eq. (27) identify the ideal comb and non-normalizability.",
+          "url": "https://arxiv.org/pdf/quant-ph/0008040v3#page=5"
+        },
+        {
+          "sourceId": "gkp-2001",
+          "locator": "Sec. V opening paragraphs and Eqs. (30)-(31), printed/PDF p. 6: finite-width Gaussian peaks and envelope define approximate, normalizable codewords, not the exact ideal comb.",
+          "url": "https://arxiv.org/pdf/quant-ph/0008040v3#page=6"
+        }
+      ],
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-22",
+      "curationBatch": "quantum-gkp-source-audit-2026-10-22",
+      "theoryRelationship": "Existing ideal logical-zero equation checked by direct specialization of the authors' primary manuscript. The generalized-state interpretation and finite-energy limitation are explicit; no normalization or equation change is introduced."
+    }
+  ],
+  "before": [
+    {
+      "id": "gkp-stabilizers",
+      "name": "Ideal square-GKP stabilizers",
+      "category": "Quantum error correction",
+      "latex": "S_q=e^{i2\\sqrt\\pi\\hat q},\\qquad S_p=e^{-i2\\sqrt\\pi\\hat p}",
+      "plain": "S_q=exp(i2sqrt(pi) q), S_p=exp(-i2sqrt(pi) p)",
+      "description": "Canonical stabilizers of the ideal square-lattice GKP code in units with [q,p]=i.",
+      "theoryIds": [
+        "gkp-code",
+        "continuous-variable-qi"
+      ],
+      "sourceIds": [
+        "gkp-2001"
+      ],
+      "tags": [
+        "GKP"
+      ],
+      "formulaType": "defining",
+      "assumptions": [],
+      "variables": [],
+      "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+      "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+      "theoryRelationship": "canonical representative",
+      "metadataReview": "baseline-audit-v1"
+    },
+    {
+      "id": "gkp-logicals",
+      "name": "Ideal square-GKP logical Paulis",
+      "category": "Quantum error correction",
+      "latex": "Z_L=e^{i\\sqrt\\pi\\hat q},\\qquad X_L=e^{-i\\sqrt\\pi\\hat p}",
+      "plain": "Z_L=exp(i sqrt(pi) q), X_L=exp(-i sqrt(pi) p)",
+      "description": "Displacement operators implementing logical Pauli operations in the ideal square GKP code.",
+      "theoryIds": [
+        "gkp-code"
+      ],
+      "sourceIds": [
+        "gkp-2001"
+      ],
+      "tags": [
+        "GKP"
+      ],
+      "formulaType": "defining",
+      "assumptions": [],
+      "variables": [],
+      "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+      "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+      "theoryRelationship": "canonical representative",
+      "metadataReview": "baseline-audit-v1"
+    },
+    {
+      "id": "gkp-comb",
+      "name": "Ideal GKP logical-zero comb",
+      "category": "Quantum error correction",
+      "latex": "|0_L\\rangle\\propto\\sum_{s\\in\\mathbb Z}|q=2s\\sqrt\\pi\\rangle",
+      "plain": "|0_L> proportional sum_s |q=2s sqrt(pi)>",
+      "description": "Idealized infinite-energy position-space comb representation of a GKP logical codeword.",
+      "theoryIds": [
+        "gkp-code"
+      ],
+      "sourceIds": [
+        "gkp-2001"
+      ],
+      "tags": [
+        "GKP"
+      ],
+      "formulaType": "canonical",
+      "assumptions": [],
+      "variables": [],
+      "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+      "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+      "theoryRelationship": "canonical representative",
+      "metadataReview": "baseline-audit-v1"
+    }
+  ],
+  "source": {
+    "existingSourceId": "gkp-2001",
+    "title": "Encoding a qubit in an oscillator",
+    "authors": [
+      "Daniel Gottesman",
+      "Alexei Kitaev",
+      "John Preskill"
+    ],
+    "bibliographyUrl": "https://doi.org/10.1103/PhysRevA.64.012310",
+    "inspectedUrl": "https://arxiv.org/pdf/quant-ph/0008040v3",
+    "version": "v3, 13 May 2001",
+    "retrievedAt": "2026-10-22",
+    "sha256": "0af3317f2d02b5f7983cb08368551d66ad03d299a84ef6654c034bb78a70c735",
+    "bytes": 418755,
+    "pdfPages": 22,
+    "inspectedRenderedPages": [
+      4,
+      5,
+      6
+    ],
+    "pagination": "Printed page number equals one-based PDF page number for inspected pages.",
+    "byteProvenanceCaveat": "Current arXiv-served PDF identifies manuscript v3 dated 13 May 2001; PDF technical metadata reports Ghostscript regeneration on 26 November 2024. The hash identifies retrieved bytes, not an asserted 2001 byte-for-byte original.",
+    "sourceRecordPolicy": "Retain existing gkp-2001 DOI record and sourceIds unchanged; sourceLocations point explicitly to inspected author-manuscript pages."
+  },
+  "mathematicalChangesNeeded": [],
+  "counts": {
+    "before": {
+      "total": 457,
+      "explicit": 248,
+      "baseline": 209
+    },
+    "candidateOnly": {
+      "total": 457,
+      "explicit": 251,
+      "baseline": 206
+    }
+  }
+}

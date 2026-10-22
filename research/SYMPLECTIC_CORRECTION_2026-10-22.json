@@ -1,0 +1,81 @@
+{
+  "patch": {
+    "id": "cv-symplectic-eigen",
+    "latex": "\\operatorname{spec}(i\\Omega V)=\\{-\\nu_1,+\\nu_1,\\ldots,-\\nu_n,+\\nu_n\\},\\qquad \\nu_j>0",
+    "plain": "The ordinary eigenvalues of i Omega V are -nu_1, +nu_1, ..., -nu_n, +nu_n, counted with multiplicity; each nu_j is positive.",
+    "assumptions": [
+      "V is a finite 2n by 2n real symmetric strictly positive-definite matrix, with n a positive integer; for a covariance matrix its second moments are finite.",
+      "Omega is the standard nonsingular canonical symplectic form, the direct sum of n blocks [[0,1],[-1,0]], in the same quadrature ordering as V. A simultaneous permutation to grouped position/momentum ordering is equivalent.",
+      "The positive numbers nu_j are the Williamson symplectic eigenvalues, counted with multiplicity. Repeated values represent separate modes and must not be deduplicated.",
+      "spec denotes the ordinary eigenvalue multiset of i Omega V, not the singular values or the eigenvalues of its standard operator modulus. i Omega V is generally not Hermitian.",
+      "The spectral identity holds for every such positive-definite V; being a physical quantum covariance additionally requires the uncertainty condition in the stated normalization."
+    ],
+    "variables": [
+      "V: real symmetric covariance matrix, V_jk = (1/2) <{Delta R_j, Delta R_k}>, when applied to quantum quadratures R.",
+      "Omega: dimensionless canonical antisymmetric form; Omega^T = -Omega and Omega^2 = -I.",
+      "nu_j: positive Williamson symplectic eigenvalues; j = 1, ..., n and n is the number of canonical modes.",
+      "i: imaginary unit; spec: ordinary spectrum with algebraic multiplicities; hbar: the constant in [R_j,R_k] = i hbar Omega_jk."
+    ],
+    "regime": "Finite-dimensional covariance-level identity. i Omega V is similar to the Hermitian matrix i V^(1/2) Omega V^(1/2), so its eigenvalues are real and paired with opposite signs. The identity does not require Gaussianity and does not by itself establish physicality. No extension to singular or indefinite V, or to a noncanonical commutator matrix, is asserted.",
+    "units": "Use compatible quadrature units and the same ordering and normalization for V and Omega. For [R_j,R_k] = i hbar Omega_jk and the symmetrized covariance defined above, physicality requires V + i(hbar/2) Omega >= 0, equivalently nu_j >= hbar/2. In the inspected Weedbrook arXiv v1 convention hbar = 2 and vacuum covariance is I, so the bound is nu_j >= 1; it is not a convention-independent numerical bound.",
+    "sourceIds": [
+      "weedbrook-cv-2012",
+      "bhatia-jain-symplectic-2018"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "bhatia-jain-symplectic-2018",
+        "locator": "arXiv:1803.04647v1, printed/PDF p. 8, final paragraph on the page within Section 2: paired eigenvalues of the Hermitian matrix i A^(1/2) J A^(1/2). J and Williamson eigenvalues are defined on printed/PDF pp. 1-2, Eqs. (1)-(2).",
+        "url": "https://arxiv.org/pdf/1803.04647v1#page=8"
+      },
+      {
+        "sourceId": "weedbrook-cv-2012",
+        "locator": "Inspected arXiv:1110.3234v1, not the final journal text: printed/PDF p. 9, Sec. II.C.1, Eq. (44) for Williamson form and Eq. (45) for its hbar = 2 physicality bound. The intervening Hermitian/operator-modulus claim is not relied upon.",
+        "url": "https://arxiv.org/pdf/1110.3234v1#page=9"
+      },
+      {
+        "sourceId": "weedbrook-cv-2012",
+        "locator": "Inspected arXiv:1110.3234v1: printed/PDF p. 6, Eqs. (15) and (17), covariance definition and uncertainty condition; canonical ordering/form and commutator appear on p. 5, Eqs. (2), (5), (7); normalization is stated on p. 4, Sec. I.D.",
+        "url": "https://arxiv.org/pdf/1110.3234v1#page=6"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-22",
+    "curationBatch": "cv-symplectic-spectrum-correction-2026-10-22",
+    "theoryRelationship": "Standard covariance-matrix identity reconstructed from the inspected Bhatia-Jain arXiv posting and an explicit similarity transformation. The retained Weedbrook reference supplies inspected arXiv-v1 Williamson and normalization context, not support for its adjacent operator-modulus/Hermitian claim. This review does not claim inspection of the final journal text, new mathematics, or experimental validation."
+  },
+  "additionalSource": {
+    "id": "bhatia-jain-symplectic-2018",
+    "title": "On symplectic eigenvalues of positive definite matrices (arXiv:1803.04647v1, 2018 posting)",
+    "authors": "Rajendra Bhatia and Tanvi Jain",
+    "year": 2018,
+    "type": "primary source",
+    "url": "https://arxiv.org/abs/1803.04647v1"
+  },
+  "baselineCommit": "9470364ff5f4e3f1e4a0e05a1ace8cd852b2f160",
+  "reconstruction": "New candidate reconstructed after loss of previous local artifacts; not a byte recovery of the lost candidate.",
+  "before": {
+    "id": "cv-symplectic-eigen",
+    "name": "Symplectic eigenvalues",
+    "category": "Continuous-variable quantum information",
+    "latex": "\\operatorname{spec}|i\\Omega V|=\\{\\nu_1,\\nu_1,\\ldots,\\nu_n,\\nu_n\\}",
+    "plain": "eigenvalues of |i Omega V| occur in pairs nu_i",
+    "description": "Symplectic spectrum used to characterize Gaussian states.",
+    "theoryIds": [
+      "continuous-variable-qi"
+    ],
+    "sourceIds": [
+      "weedbrook-cv-2012"
+    ],
+    "tags": [
+      "Gaussian states"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [],
+    "variables": [],
+    "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+    "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+    "theoryRelationship": "canonical representative",
+    "metadataReview": "baseline-audit-v1"
+  }
+}

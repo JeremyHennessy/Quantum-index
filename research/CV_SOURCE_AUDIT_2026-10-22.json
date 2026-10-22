@@ -1,0 +1,323 @@
+{
+  "status": "New reconstructed local five-card convention review; not published or exact-byte recovery",
+  "baselineCommit": "9470364ff5f4e3f1e4a0e05a1ace8cd852b2f160",
+  "patches": [
+    {
+      "id": "cv-covariance",
+      "assumptions": [
+        "A finite number n of canonical bosonic modes and a positive trace-one density operator rho; all quadrature second moments are finite.",
+        "R is the ordered vector of Hermitian quadrature operators (q_1, p_1, ..., q_n, p_n); the same ordering is used for V and the canonical symplectic form Omega.",
+        "Expectations mean Tr(rho A), Delta R_i = R_i - <R_i>, and {A,B} = AB + BA; the formula uses symmetrized, centered moments.",
+        "No Gaussian-state assumption is needed. The first two moments determine the entire state only after a Gaussian-state assumption is supplied."
+      ],
+      "variables": [
+        "V: finite 2n by 2n real symmetric covariance matrix; V_ii is Var(R_i).",
+        "R_i and R_j: canonical quadrature operators, not commuting phase-space coordinate values.",
+        "rho: the bosonic density operator; angle brackets: quantum expectation; i,j = 1,...,2n."
+      ],
+      "regime": "Exact second-moment definition for Gaussian and non-Gaussian states with finite second moments. It is not a full state description for a general non-Gaussian state and does not cover divergent-moment idealizations.",
+      "units": "V_ij has the product units of R_i and R_j. Fix [R_i,R_j] = i hbar Omega_ij in compatible quadrature units. The inspected review uses hbar = 2 and vacuum covariance I; dividing every quadrature by sqrt(2) gives hbar = 1 and vacuum covariance I/2, and divides V by 2.",
+      "sourceLocations": [
+        {
+          "sourceId": "weedbrook-cv-2012",
+          "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 6, Sec. II.A.1, Eqs. (15)-(16), with the following paragraph distinguishing general moments from Gaussian-state completeness. This is the manuscript version, not a claim of final-journal-text inspection.",
+          "url": "https://arxiv.org/pdf/1110.3234v1#page=6"
+        },
+        {
+          "sourceId": "weedbrook-cv-2012",
+          "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 5, Sec. II.A, Eqs. (2), (5)-(7), for canonical ordering, form and commutator; the expectation convention is Eq. (14). This is the manuscript version, not a claim of final-journal-text inspection.",
+          "url": "https://arxiv.org/pdf/1110.3234v1#page=5"
+        }
+      ],
+      "theoryRelationship": "An exact definition supported by the inspected Weedbrook review, not a new primary result. General-state applicability and the Gaussian-only completeness of first and second moments are kept distinct.",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-22",
+      "curationBatch": "cv-five-source-metadata-2026-10-22"
+    },
+    {
+      "id": "cv-uncertainty",
+      "assumptions": [
+        "V_ij = (1/2)<{Delta R_i,Delta R_j}> is the finite real symmetric covariance of n canonical bosonic modes in a positive trace-one state.",
+        "The Hermitian quadratures obey [R_i,R_j] = i hbar Omega_ij, with hbar > 0 and Omega the real direct sum of n blocks [[0,1],[-1,0]], in the same ordering as V.",
+        "The inequality means positive semidefiniteness of the Hermitian matrix V + i(hbar/2)Omega, not entrywise nonnegativity.",
+        "Gaussianity is unnecessary for necessity. Conversely, a finite real symmetric V satisfying this condition is realizable as the covariance of a Gaussian state; the condition alone does not validate a proposed arbitrary non-Gaussian operator or Wigner function."
+      ],
+      "variables": [
+        "V: symmetrized quadrature covariance; Omega: dimensionless canonical antisymmetric form.",
+        "hbar: positive commutator scale in the chosen compatible quadrature units; i: imaginary unit.",
+        ">= 0: Hermitian positive-semidefinite order, including equality at uncertainty saturation."
+      ],
+      "regime": "Exact covariance-level uncertainty relation for Gaussian and non-Gaussian physical states with finite second moments. For one mode it includes Var(q) Var(p) - Cov(q,p)^2 >= hbar^2/4. Covariance admissibility is not a complete characterization of general non-Gaussian states.",
+      "units": "The card restores arbitrary hbar to the inspected review equation V + i Omega >= 0, which uses [R_i,R_j] = 2i Omega_ij. For hbar = 1 the condition is V + i Omega/2 >= 0 and the vacuum has V = I/2; for hbar = 2 the vacuum has V = I.",
+      "sourceLocations": [
+        {
+          "sourceId": "weedbrook-cv-2012",
+          "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 6, Sec. II.A.1, Eqs. (15)-(18), especially Eq. (17) in the hbar = 2 convention. This is the manuscript version, not a claim of final-journal-text inspection.",
+          "url": "https://arxiv.org/pdf/1110.3234v1#page=6"
+        },
+        {
+          "sourceId": "weedbrook-cv-2012",
+          "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 4, Sec. I.D, vacuum-variance and hbar normalization; the commutator is on p. 5, Eq. (7). This is the manuscript version, not a claim of final-journal-text inspection.",
+          "url": "https://arxiv.org/pdf/1110.3234v1#page=4"
+        },
+        {
+          "sourceId": "weedbrook-cv-2012",
+          "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 9, Sec. II.C.1, Eqs. (44)-(45) and (48)-(49), for Williamson covariance form, the physicality bound and construction from thermal states. The intervening operator-modulus/Hermitian claim is not relied upon. This is the manuscript version, not a claim of final-journal-text inspection.",
+          "url": "https://arxiv.org/pdf/1110.3234v1#page=9"
+        }
+      ],
+      "theoryRelationship": "Standard matrix uncertainty relation supported by the inspected Weedbrook review with an explicit quadrature rescaling to restore hbar. It is not a new primary result, a test of Gaussianity, or a claim of complete physical-state validation.",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-22",
+      "curationBatch": "cv-five-source-metadata-2026-10-22"
+    },
+    {
+      "id": "cv-symplectic",
+      "assumptions": [
+        "S is a finite 2n by 2n real matrix acting on a column vector of Hermitian quadrature operators R; n is a positive integer.",
+        "Omega is the nonsingular canonical form, the direct sum of n blocks [[0,1],[-1,0]], and R obeys [R_i,R_j] = i hbar Omega_ij.",
+        "The same quadrature ordering and normalization are used before and after the transformation; T denotes ordinary matrix transpose.",
+        "A real displacement d may be added in R -> SR + d without changing commutators. Gaussianity of the input state is not required for this algebraic condition."
+      ],
+      "variables": [
+        "S: real linear transformation of 2n canonical quadratures; Omega: real canonical antisymmetric form.",
+        "S^T: ordinary transpose, not complex conjugate transpose; R: quadrature-operator column vector.",
+        "n: finite mode count; hbar: fixed commutator scale; d: optional real displacement vector."
+      ],
+      "regime": "Exact finite-mode canonical condition. Such transformations, with displacements, describe Gaussian unitaries; those unitaries can act on non-Gaussian inputs too. A general noisy Gaussian channel need not have a symplectic linear part and is not specified by this equation.",
+      "units": "S is expressed in a fixed compatible quadrature basis. The scalar hbar cancels from the commutator-preservation condition; a change of ordering must transform Omega at the same time. A rescaling between hbar = 2 and hbar = 1 is a convention change, not a symplectic map at fixed Omega and hbar.",
+      "sourceLocations": [
+        {
+          "sourceId": "weedbrook-cv-2012",
+          "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 6, Sec. II.A.2, Eqs. (23)-(25); the paragraph before Eq. (24) explicitly specifies a real 2N by 2N matrix. This is the manuscript version, not a claim of final-journal-text inspection.",
+          "url": "https://arxiv.org/pdf/1110.3234v1#page=6"
+        },
+        {
+          "sourceId": "weedbrook-cv-2012",
+          "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 5, Sec. II.A, Eqs. (2), (5) and (7), for the canonical form, ordering and commutator. This is the manuscript version, not a claim of final-journal-text inspection.",
+          "url": "https://arxiv.org/pdf/1110.3234v1#page=5"
+        }
+      ],
+      "theoryRelationship": "Canonical commutator-preservation condition supported by the inspected Weedbrook review. The equation is algebraic and is not limited to Gaussian input states, although it underlies the review's Gaussian-unitary description.",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-22",
+      "curationBatch": "cv-five-source-metadata-2026-10-22"
+    },
+    {
+      "id": "gaussian-wigner",
+      "assumptions": [
+        "n is a finite positive integer and R is a real 2n-dimensional phase-space coordinate, not the operator vector appearing in the covariance definition.",
+        "The state is Gaussian, d is its real mean vector, and V is its finite real symmetric strictly positive-definite symmetrized covariance; V^(-1) and sqrt(det V) are well-defined.",
+        "To describe a quantum state, V must also satisfy V + i(hbar/2)Omega >= 0 in the declared canonical convention. Positive definiteness and a normalized Gaussian density alone do not ensure quantum physicality.",
+        "W is normalized with respect to the real quadrature measure d^(2n)R; changing to complex amplitudes or another scaled coordinate system requires the appropriate Jacobian."
+      ],
+      "variables": [
+        "R: 2n real phase-space coordinates; d: mean quadrature vector; n: number of modes, so phase-space dimension is 2n.",
+        "V: symmetrized quadrature covariance in the same coordinates; det V: determinant; V^(-1): inverse.",
+        "W(R): Wigner density per unit d^(2n)R; T: ordinary transpose; Omega and hbar: canonical commutator form and scale."
+      ],
+      "regime": "Exact for Gaussian quantum states, not a Gaussian approximation to arbitrary states. The formula integrates to one and reproduces d and V. Singular ideal infinite-squeezing limits are excluded. Nonnegativity of this density is not, on its own, a quantum-physicality test.",
+      "units": "The denominator is (2 pi)^n because the integration space has 2n real dimensions. W has reciprocal phase-space-volume units. The expression keeps the same form under a consistent quadrature-coordinate change with V and d transformed and W given the density Jacobian. For one mode the vacuum is exp[-(q^2+p^2)]/pi at hbar = 1 and exp[-(q^2+p^2)/2]/(2 pi) in the review's hbar = 2 coordinates.",
+      "sourceLocations": [
+        {
+          "sourceId": "weedbrook-cv-2012",
+          "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 6, Sec. II.A.1, Eq. (20) for the Gaussian Wigner density, Eqs. (15) and (17) for covariance and physicality. This is the manuscript version, not a claim of final-journal-text inspection.",
+          "url": "https://arxiv.org/pdf/1110.3234v1#page=6"
+        },
+        {
+          "sourceId": "weedbrook-cv-2012",
+          "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 5, Sec. II.A.1, Eq. (13) and its following paragraph, for the real 2N-dimensional phase space and unit normalization. This is the manuscript version, not a claim of final-journal-text inspection.",
+          "url": "https://arxiv.org/pdf/1110.3234v1#page=5"
+        },
+        {
+          "sourceId": "weedbrook-cv-2012",
+          "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 7, Sec. II.B.1, opening paragraph: vacuum covariance I in the review's hbar = 2 convention. This is the manuscript version, not a claim of final-journal-text inspection.",
+          "url": "https://arxiv.org/pdf/1110.3234v1#page=7"
+        }
+      ],
+      "theoryRelationship": "The modern Gaussian formula and its normalization are checked against the inspected Weedbrook review. The existing Wigner (1932) primary-source link remains historical provenance for the phase-space framework; its full text was not inspected in this pass and is not claimed as the exact locator for this formula.",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-22",
+      "curationBatch": "cv-five-source-metadata-2026-10-22"
+    },
+    {
+      "id": "rotated-quadrature",
+      "assumptions": [
+        "a and a-dagger are a single bosonic mode's annihilation and creation operators, with [a,a-dagger] = 1 and the vacuum defined by a|0> = 0.",
+        "theta is real, measured in radians relative to a chosen local-oscillator phase; the displayed phase convention is X_theta = q cos(theta) + p sin(theta).",
+        "q = (a + a-dagger)/sqrt(2) and p = (a - a-dagger)/(i sqrt(2)), so [q,p] = i. The displayed 1/sqrt(2) is not the review's unscaled hbar = 2 quadrature convention.",
+        "No Gaussian-state assumption is needed for the operator definition. Finite second moments are required only when using its variance; ideal balanced homodyne identifies a calibrated signal proportional to this quadrature, not a complete finite-power/noisy-detector model."
+      ],
+      "variables": [
+        "X_theta: Hermitian rotated dimensionless quadrature; X_0 = q and X_(pi/2) = p.",
+        "a: bosonic annihilation operator; a-dagger: its adjoint; theta: real relative phase in radians; i: imaginary unit.",
+        "q and p: hbar = 1 normalized quadratures; the orthogonal partner is X_(theta + pi/2)."
+      ],
+      "regime": "Exact single-mode operator identity, valid for Gaussian and non-Gaussian states. It obeys [X_theta,X_phi] = i sin(phi-theta); hence [X_theta,X_(theta+pi/2)] = i and the vacuum variance is 1/2 at every phase.",
+      "units": "The card uses dimensionless hbar = 1 quadratures. Write the review's variables as q_W = a + a-dagger and p_W = i(a-dagger-a): q = q_W/sqrt(2), p = p_W/sqrt(2), and X_theta = (q_W cos(theta) + p_W sin(theta))/sqrt(2). Thus the review's unit vacuum variance becomes 1/2 here. In compatible variables with [Q,P] = i hbar, the corresponding quadrature is sqrt(hbar) X_theta.",
+      "sourceLocations": [
+        {
+          "sourceId": "weedbrook-cv-2012",
+          "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 5, Sec. II.A, Eq. (6) for the hbar = 2 quadratures and Eq. (7) for their commutator. The card is derived by the explicit 1/sqrt(2) rescaling, not copied in the review's normalization. This is the manuscript version, not a claim of final-journal-text inspection.",
+          "url": "https://arxiv.org/pdf/1110.3234v1#page=5"
+        },
+        {
+          "sourceId": "weedbrook-cv-2012",
+          "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 7, Sec. II.B.4, Eq. (34), first row, for q_W cos(theta) + p_W sin(theta); the opening Sec. II.B.1 paragraph gives unit vacuum variance. The preceding annihilation-operator phase-sign sentence is not relied upon. This is the manuscript version, not a claim of final-journal-text inspection.",
+          "url": "https://arxiv.org/pdf/1110.3234v1#page=7"
+        },
+        {
+          "sourceId": "weedbrook-cv-2012",
+          "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 12, Sec. II.E.1, Eq. (63) and the balanced-homodyne/local-oscillator discussion for the measurement context. This is the manuscript version, not a claim of final-journal-text inspection.",
+          "url": "https://arxiv.org/pdf/1110.3234v1#page=12"
+        }
+      ],
+      "theoryRelationship": "Derived from inspected Weedbrook review quadrature definitions and rotation matrix using an explicit normalization conversion. The existing Glauber (1963) primary-source link is retained as optical-coherence context; its full text was not inspected in this pass and is not claimed to contain this exact normalized formula.",
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-22",
+      "curationBatch": "cv-five-source-metadata-2026-10-22"
+    }
+  ],
+  "before": [
+    {
+      "id": "cv-covariance",
+      "name": "Continuous-variable covariance matrix",
+      "category": "Continuous-variable quantum information",
+      "latex": "V_{ij}=\\frac12\\langle\\{R_i-\\langle R_i\\rangle,R_j-\\langle R_j\\rangle\\}\\rangle",
+      "plain": "V_ij = 1/2 <{Delta R_i, Delta R_j}>",
+      "description": "Second-moment matrix of canonical quadratures for a bosonic state.",
+      "theoryIds": [
+        "continuous-variable-qi"
+      ],
+      "sourceIds": [
+        "weedbrook-cv-2012"
+      ],
+      "tags": [
+        "Gaussian states"
+      ],
+      "formulaType": "defining",
+      "assumptions": [],
+      "variables": [],
+      "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+      "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+      "theoryRelationship": "canonical representative",
+      "metadataReview": "baseline-audit-v1"
+    },
+    {
+      "id": "cv-uncertainty",
+      "name": "Robertson\u2013Schr\u00f6dinger matrix uncertainty",
+      "category": "Continuous-variable quantum information",
+      "latex": "V+\\frac{i\\hbar}{2}\\Omega\\ge0",
+      "plain": "V + i hbar Omega/2 >= 0",
+      "description": "Physical covariance matrices satisfy a matrix uncertainty condition set by the symplectic form.",
+      "theoryIds": [
+        "continuous-variable-qi"
+      ],
+      "sourceIds": [
+        "weedbrook-cv-2012"
+      ],
+      "tags": [
+        "symplectic"
+      ],
+      "formulaType": "defining",
+      "assumptions": [],
+      "variables": [],
+      "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+      "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+      "theoryRelationship": "canonical representative",
+      "metadataReview": "baseline-audit-v1"
+    },
+    {
+      "id": "cv-symplectic",
+      "name": "Canonical symplectic transformation",
+      "category": "Continuous-variable quantum information",
+      "latex": "S\\Omega S^T=\\Omega",
+      "plain": "S Omega S^T = Omega",
+      "description": "Defines a real symplectic transformation preserving canonical commutators.",
+      "theoryIds": [
+        "continuous-variable-qi"
+      ],
+      "sourceIds": [
+        "weedbrook-cv-2012"
+      ],
+      "tags": [
+        "symplectic"
+      ],
+      "formulaType": "defining",
+      "assumptions": [],
+      "variables": [],
+      "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+      "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+      "theoryRelationship": "canonical representative",
+      "metadataReview": "baseline-audit-v1"
+    },
+    {
+      "id": "gaussian-wigner",
+      "name": "Gaussian-state Wigner function",
+      "category": "Continuous-variable quantum information",
+      "latex": "W(R)=\\frac{\\exp[-\\frac12(R-d)^TV^{-1}(R-d)]}{(2\\pi)^n\\sqrt{\\det V}}",
+      "plain": "W(R)=normal Gaussian with covariance V",
+      "description": "Phase-space form of an n-mode Gaussian state, up to quadrature convention.",
+      "theoryIds": [
+        "continuous-variable-qi",
+        "phase-space-qm"
+      ],
+      "sourceIds": [
+        "weedbrook-cv-2012",
+        "wigner-1932"
+      ],
+      "tags": [
+        "Gaussian states"
+      ],
+      "formulaType": "defining",
+      "assumptions": [],
+      "variables": [],
+      "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+      "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+      "theoryRelationship": "canonical representative",
+      "metadataReview": "baseline-audit-v1"
+    },
+    {
+      "id": "rotated-quadrature",
+      "name": "Rotated field quadrature",
+      "category": "Continuous-variable quantum information",
+      "latex": "X_\\theta=\\frac{ae^{-i\\theta}+a^{\\dagger}e^{i\\theta}}{\\sqrt2}",
+      "plain": "X_theta=(a e^-itheta+a\u2020 e^itheta)/sqrt2",
+      "description": "Quadrature measured in phase-sensitive homodyne detection.",
+      "theoryIds": [
+        "continuous-variable-qi",
+        "quantum-optical-coherence"
+      ],
+      "sourceIds": [
+        "weedbrook-cv-2012",
+        "glauber-coherence-1963"
+      ],
+      "tags": [
+        "homodyne"
+      ],
+      "formulaType": "canonical",
+      "assumptions": [],
+      "variables": [],
+      "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+      "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+      "theoryRelationship": "canonical representative",
+      "metadataReview": "baseline-audit-v1"
+    }
+  ],
+  "sourceEvidence": {
+    "sourceId": "weedbrook-cv-2012",
+    "classification": "authoritative review, not primary discovery source",
+    "version": "arXiv:1110.3234v1",
+    "pdfSha256": "ae4c33e7f1655387e0f3f9be3fa57aeaf06af4b5b8cb53377ce2cebb32ce54fb",
+    "verifiedPdfPages": [
+      4,
+      5,
+      6,
+      7,
+      9,
+      12
+    ],
+    "journalTextInspected": false
+  },
+  "requiredEquationChanges": []
+}

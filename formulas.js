@@ -13115,3 +13115,747 @@ for(const patch of [
 ];
  for(const patch of patches){const matches=window.QI_FORMULAS.formulas.filter(f=>f.id===patch.id);if(matches.length!==1||matches[0].metadataReview!=="baseline-audit-v1")throw new Error("Information audit baseline changed: "+patch.id);Object.assign(matches[0],patch);}
 })();
+
+// Explicit signed-pair symplectic-spectrum correction, 2026-10-22.
+(()=>{const before={
+  "id": "cv-symplectic-eigen",
+  "name": "Symplectic eigenvalues",
+  "category": "Continuous-variable quantum information",
+  "latex": "\\operatorname{spec}|i\\Omega V|=\\{\\nu_1,\\nu_1,\\ldots,\\nu_n,\\nu_n\\}",
+  "plain": "eigenvalues of |i Omega V| occur in pairs nu_i",
+  "description": "Symplectic spectrum used to characterize Gaussian states.",
+  "theoryIds": [
+    "continuous-variable-qi"
+  ],
+  "sourceIds": [
+    "weedbrook-cv-2012"
+  ],
+  "tags": [
+    "Gaussian states"
+  ],
+  "formulaType": "canonical",
+  "assumptions": [],
+  "variables": [],
+  "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+  "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+  "theoryRelationship": "canonical representative",
+  "metadataReview": "baseline-audit-v1"
+},patch={
+  "id": "cv-symplectic-eigen",
+  "latex": "\\operatorname{spec}(i\\Omega V)=\\{-\\nu_1,+\\nu_1,\\ldots,-\\nu_n,+\\nu_n\\},\\qquad \\nu_j>0",
+  "plain": "The ordinary eigenvalues of i Omega V are -nu_1, +nu_1, ..., -nu_n, +nu_n, counted with multiplicity; each nu_j is positive.",
+  "assumptions": [
+    "V is a finite 2n by 2n real symmetric strictly positive-definite matrix, with n a positive integer; for a covariance matrix its second moments are finite.",
+    "Omega is the standard nonsingular canonical symplectic form, the direct sum of n blocks [[0,1],[-1,0]], in the same quadrature ordering as V. A simultaneous permutation to grouped position/momentum ordering is equivalent.",
+    "The positive numbers nu_j are the Williamson symplectic eigenvalues, counted with multiplicity. Repeated values represent separate modes and must not be deduplicated.",
+    "spec denotes the ordinary eigenvalue multiset of i Omega V, not the singular values or the eigenvalues of its standard operator modulus. i Omega V is generally not Hermitian.",
+    "The spectral identity holds for every such positive-definite V; being a physical quantum covariance additionally requires the uncertainty condition in the stated normalization."
+  ],
+  "variables": [
+    "V: real symmetric covariance matrix, V_jk = (1/2) <{Delta R_j, Delta R_k}>, when applied to quantum quadratures R.",
+    "Omega: dimensionless canonical antisymmetric form; Omega^T = -Omega and Omega^2 = -I.",
+    "nu_j: positive Williamson symplectic eigenvalues; j = 1, ..., n and n is the number of canonical modes.",
+    "i: imaginary unit; spec: ordinary spectrum with algebraic multiplicities; hbar: the constant in [R_j,R_k] = i hbar Omega_jk."
+  ],
+  "regime": "Finite-dimensional covariance-level identity. i Omega V is similar to the Hermitian matrix i V^(1/2) Omega V^(1/2), so its eigenvalues are real and paired with opposite signs. The identity does not require Gaussianity and does not by itself establish physicality. No extension to singular or indefinite V, or to a noncanonical commutator matrix, is asserted.",
+  "units": "Use compatible quadrature units and the same ordering and normalization for V and Omega. For [R_j,R_k] = i hbar Omega_jk and the symmetrized covariance defined above, physicality requires V + i(hbar/2) Omega >= 0, equivalently nu_j >= hbar/2. In the inspected Weedbrook arXiv v1 convention hbar = 2 and vacuum covariance is I, so the bound is nu_j >= 1; it is not a convention-independent numerical bound.",
+  "sourceIds": [
+    "weedbrook-cv-2012",
+    "bhatia-jain-symplectic-2018"
+  ],
+  "sourceLocations": [
+    {
+      "sourceId": "bhatia-jain-symplectic-2018",
+      "locator": "arXiv:1803.04647v1, printed/PDF p. 8, final paragraph on the page within Section 2: paired eigenvalues of the Hermitian matrix i A^(1/2) J A^(1/2). J and Williamson eigenvalues are defined on printed/PDF pp. 1-2, Eqs. (1)-(2).",
+      "url": "https://arxiv.org/pdf/1803.04647v1#page=8"
+    },
+    {
+      "sourceId": "weedbrook-cv-2012",
+      "locator": "Inspected arXiv:1110.3234v1, not the final journal text: printed/PDF p. 9, Sec. II.C.1, Eq. (44) for Williamson form and Eq. (45) for its hbar = 2 physicality bound. The intervening Hermitian/operator-modulus claim is not relied upon.",
+      "url": "https://arxiv.org/pdf/1110.3234v1#page=9"
+    },
+    {
+      "sourceId": "weedbrook-cv-2012",
+      "locator": "Inspected arXiv:1110.3234v1: printed/PDF p. 6, Eqs. (15) and (17), covariance definition and uncertainty condition; canonical ordering/form and commutator appear on p. 5, Eqs. (2), (5), (7); normalization is stated on p. 4, Sec. I.D.",
+      "url": "https://arxiv.org/pdf/1110.3234v1#page=6"
+    }
+  ],
+  "metadataReview": "explicit",
+  "reviewedAt": "2026-10-22",
+  "curationBatch": "cv-symplectic-spectrum-correction-2026-10-22",
+  "theoryRelationship": "Standard covariance-matrix identity reconstructed from the inspected Bhatia-Jain arXiv posting and an explicit similarity transformation. The retained Weedbrook reference supplies inspected arXiv-v1 Williamson and normalization context, not support for its adjacent operator-modulus/Hermitian claim. This review does not claim inspection of the final journal text, new mathematics, or experimental validation."
+};const matches=window.QI_FORMULAS.formulas.filter(f=>f.id===before.id);if(matches.length!==1||JSON.stringify(matches[0])!==JSON.stringify(before))throw new Error("Symplectic correction baseline changed");Object.assign(matches[0],patch);})();
+
+// Five primary-source stabilizer metadata audits, reconstructed 2026-10-22.
+(()=>{const before=[
+  {
+    "id": "stabilizer-condition",
+    "name": "Stabilizer-state condition",
+    "category": "Quantum error correction",
+    "latex": "g_i|\\psi\\rangle=|\\psi\\rangle\\quad\\forall g_i\\in\\mathcal S",
+    "plain": "g_i |psi> = |psi>",
+    "description": "A stabilizer state or code lies in the simultaneous +1 eigenspace of its stabilizer generators.",
+    "theoryIds": [
+      "stabilizer-formalism",
+      "quantum-error-correction"
+    ],
+    "sourceIds": [
+      "gottesman-stabilizer-1997"
+    ],
+    "tags": [
+      "stabilizer"
+    ],
+    "formulaType": "defining",
+    "assumptions": [],
+    "variables": [],
+    "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+    "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+    "theoryRelationship": "canonical representative",
+    "metadataReview": "baseline-audit-v1"
+  },
+  {
+    "id": "stabilizer-commute",
+    "name": "Stabilizer-generator commutation",
+    "category": "Quantum error correction",
+    "latex": "[g_i,g_j]=0",
+    "plain": "[g_i,g_j]=0",
+    "description": "Independent stabilizer generators must mutually commute so they can define a common eigenspace.",
+    "theoryIds": [
+      "stabilizer-formalism"
+    ],
+    "sourceIds": [
+      "gottesman-stabilizer-1997"
+    ],
+    "tags": [
+      "stabilizer"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [],
+    "variables": [],
+    "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+    "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+    "theoryRelationship": "canonical representative",
+    "metadataReview": "baseline-audit-v1"
+  },
+  {
+    "id": "stabilizer-projector",
+    "name": "Stabilizer-code projector",
+    "category": "Quantum error correction",
+    "latex": "P=\\prod_{i=1}^{r}\\frac{I+g_i}{2}",
+    "plain": "P = product_i (I+g_i)/2",
+    "description": "Projector onto the common +1 eigenspace of r independent commuting stabilizer generators.",
+    "theoryIds": [
+      "stabilizer-formalism",
+      "quantum-error-correction"
+    ],
+    "sourceIds": [
+      "gottesman-stabilizer-1997"
+    ],
+    "tags": [
+      "projector"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [],
+    "variables": [],
+    "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+    "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+    "theoryRelationship": "canonical representative",
+    "metadataReview": "baseline-audit-v1"
+  },
+  {
+    "id": "stabilizer-dimension",
+    "name": "Stabilizer-code dimension",
+    "category": "Quantum error correction",
+    "latex": "k=n-r",
+    "plain": "k = n-r",
+    "description": "An n-qubit stabilizer code with r independent stabilizer generators encodes k logical qubits.",
+    "theoryIds": [
+      "stabilizer-formalism",
+      "quantum-error-correction"
+    ],
+    "sourceIds": [
+      "gottesman-stabilizer-1997"
+    ],
+    "tags": [
+      "logical qubits"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [],
+    "variables": [],
+    "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+    "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+    "theoryRelationship": "canonical representative",
+    "metadataReview": "baseline-audit-v1"
+  },
+  {
+    "id": "logical-anticommute",
+    "name": "Logical Pauli anticommutation",
+    "category": "Quantum error correction",
+    "latex": "X_LZ_L=-Z_LX_L",
+    "plain": "X_L Z_L = - Z_L X_L",
+    "description": "Logical X and Z operators intersecting once obey Pauli anticommutation.",
+    "theoryIds": [
+      "surface-code",
+      "toric-code",
+      "stabilizer-formalism"
+    ],
+    "sourceIds": [
+      "dennis-surface-2002",
+      "gottesman-stabilizer-1997"
+    ],
+    "tags": [
+      "logical operators"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [],
+    "variables": [],
+    "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+    "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+    "theoryRelationship": "canonical representative",
+    "metadataReview": "baseline-audit-v1"
+  }
+],patches=[
+  {
+    "id": "stabilizer-condition",
+    "assumptions": [
+      "Finite-dimensional n-qubit Pauli stabilizer code; each chosen generator is a signed Hermitian Pauli operator with g_i^2=I.",
+      "The generators commute and their generated group S excludes -I, so the simultaneous +1 eigenspace is nonzero.",
+      "The state vector is a nonzero code vector. Fixing any generating set is equivalent to fixing every group element; the displayed quantifier ranges over all of S."
+    ],
+    "variables": [
+      "S: Abelian subgroup of the n-qubit Pauli group excluding -I; g_i: an element or selected generator of S.",
+      "|psi>: vector in the common +1 eigenspace; r: number of independent generators if a generating set is counted."
+    ],
+    "regime": "Defines the code subspace. A unique pure stabilizer state up to phase requires r=n independent generators; r<n describes an encoded subspace rather than a unique state. No claim about arbitrary non-Pauli observables is made.",
+    "units": "Dimensionless finite-qubit operator relations; n, r, and k are integer counts where used.",
+    "sourceLocations": [
+      {
+        "sourceId": "gottesman-stabilizer-1997",
+        "locator": "arXiv:quant-ph/9705052v1, Sec. 3.2, printed p. 18 / PDF p. 26: Abelian stabilizer, fixed code space, excluded phases, and |S|=2^(n-k), dim(T)=2^k. The Pauli/Hermitian discussion continues on printed p. 19 / PDF p. 27.",
+        "url": "https://arxiv.org/pdf/quant-ph/9705052v1#page=26"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-22",
+    "curationBatch": "stabilizer-primary-source-audit-reconstructed-2026-10-22",
+    "theoryRelationship": "Direct stabilizer fixed-space definition checked in the original thesis; state-versus-code distinction follows its dimension statement.",
+    "sourceIds": [
+      "gottesman-stabilizer-1997"
+    ]
+  },
+  {
+    "id": "stabilizer-commute",
+    "assumptions": [
+      "Finite-dimensional n-qubit Pauli stabilizer code; each chosen generator is a signed Hermitian Pauli operator with g_i^2=I.",
+      "The generators commute and their generated group S excludes -I, so the simultaneous +1 eigenspace is nonzero.",
+      "This is the commuting-generator condition for an ordinary Pauli stabilizer, not the potentially noncommuting gauge generators of a subsystem code.",
+      "Commutation alone does not guarantee a nonempty +1 space: the additional exclusion of -I is essential."
+    ],
+    "variables": [
+      "[g_i,g_j]=g_i g_j-g_j g_i: commutator; i,j label stabilizer generators."
+    ],
+    "regime": "Within the Pauli group, two elements either commute or anticommute. Anticommuting invertible generators cannot share a nonzero +1 eigenvector. This is not a general assertion that arbitrary noncommuting matrices cannot share eigenvectors; independence is relevant to counting constraints, not to commutation itself.",
+    "units": "Dimensionless finite-qubit operator relations; n, r, and k are integer counts where used.",
+    "sourceLocations": [
+      {
+        "sourceId": "gottesman-stabilizer-1997",
+        "locator": "arXiv:quant-ph/9705052v1, Sec. 3.2, printed p. 18 / PDF p. 26: Abelian stabilizer, fixed code space, excluded phases, and |S|=2^(n-k), dim(T)=2^k. The Pauli/Hermitian discussion continues on printed p. 19 / PDF p. 27.",
+        "url": "https://arxiv.org/pdf/quant-ph/9705052v1#page=26"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-22",
+    "curationBatch": "stabilizer-primary-source-audit-reconstructed-2026-10-22",
+    "theoryRelationship": "Pauli-specific Abelian stabilizer requirement; broader simultaneous-eigenvector generalizations are deliberately excluded.",
+    "sourceIds": [
+      "gottesman-stabilizer-1997"
+    ]
+  },
+  {
+    "id": "stabilizer-projector",
+    "assumptions": [
+      "Finite-dimensional n-qubit Pauli stabilizer code; each chosen generator is a signed Hermitian Pauli operator with g_i^2=I.",
+      "The generators commute and their generated group S excludes -I, so the simultaneous +1 eigenspace is nonzero.",
+      "The displayed list contains r independent stabilizer generators; 0<=r<=n.",
+      "Each factor (I+g_i)/2 is the orthogonal projector onto its +1 eigenspace; mutual commutation makes their product an orthogonal projector."
+    ],
+    "variables": [
+      "P: orthogonal projector onto the code space, with P^2=P=P^dagger.",
+      "I: identity on the 2^n-dimensional physical Hilbert space; r: independent-generator count."
+    ],
+    "regime": "Normalized derivation from the source, not a verbatim displayed equation: expanding the product gives P=2^(-r) sum_{g in S} g. Its rank is 2^(n-r). A redundant consistent generator leaves the projector valid, but raw list length must not be substituted for the independent rank in the dimension formula. The empty product for r=0 is I.",
+    "units": "Dimensionless finite-qubit operator relations; n, r, and k are integer counts where used.",
+    "sourceLocations": [
+      {
+        "sourceId": "gottesman-stabilizer-1997",
+        "locator": "arXiv:quant-ph/9705052v1, Sec. 3.2, printed p. 18 / PDF p. 26: Abelian stabilizer, fixed code space, excluded phases, and |S|=2^(n-k), dim(T)=2^k. The Pauli/Hermitian discussion continues on printed p. 19 / PDF p. 27.",
+        "url": "https://arxiv.org/pdf/quant-ph/9705052v1#page=26"
+      },
+      {
+        "sourceId": "gottesman-stabilizer-1997",
+        "locator": "arXiv:quant-ph/9705052v1, Sec. 4.2, printed p. 33 / PDF p. 41, Eqs. (4.7)-(4.9): unnormalized stabilizer sum equals the product of (I+M_i) and maps into the fixed code space. The factors 1/2 and orthogonal-projector interpretation here are derived explicitly.",
+        "url": "https://arxiv.org/pdf/quant-ph/9705052v1#page=41"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-22",
+    "curationBatch": "stabilizer-primary-source-audit-reconstructed-2026-10-22",
+    "theoryRelationship": "Explicitly normalized algebraic consequence of primary-source stabilizer sum/product and fixed-space statements; no claim that the thesis prints the normalized formula verbatim.",
+    "sourceIds": [
+      "gottesman-stabilizer-1997"
+    ]
+  },
+  {
+    "id": "stabilizer-dimension",
+    "assumptions": [
+      "Finite-dimensional n-qubit Pauli stabilizer code; each chosen generator is a signed Hermitian Pauli operator with g_i^2=I.",
+      "The generators commute and their generated group S excludes -I, so the simultaneous +1 eigenspace is nonzero.",
+      "r is the rank of an independent generating set, not the number of checks in a possibly redundant list; 0<=r<=n.",
+      "k is the number of logical qubits. The complex Hilbert-space dimension of the code is 2^k=2^(n-r), not k."
+    ],
+    "variables": [
+      "n: number of physical qubits; r: independent stabilizer-generator count; k: number of encoded logical qubits."
+    ],
+    "regime": "Finite binary Pauli stabilizer codes. The exclusion of -I prevents a zero code space. Redundant constraints must be removed when counting r; the relation is not a dimension formula for arbitrary commuting operators or subsystem gauge-generator lists.",
+    "units": "Dimensionless finite-qubit operator relations; n, r, and k are integer counts where used.",
+    "sourceLocations": [
+      {
+        "sourceId": "gottesman-stabilizer-1997",
+        "locator": "arXiv:quant-ph/9705052v1, Sec. 3.2, printed p. 18 / PDF p. 26: Abelian stabilizer, fixed code space, excluded phases, and |S|=2^(n-k), dim(T)=2^k. The Pauli/Hermitian discussion continues on printed p. 19 / PDF p. 27.",
+        "url": "https://arxiv.org/pdf/quant-ph/9705052v1#page=26"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-22",
+    "curationBatch": "stabilizer-primary-source-audit-reconstructed-2026-10-22",
+    "theoryRelationship": "Rewriting the original thesis relation |S|=2^(n-k) with |S|=2^r; no added formula or new scientific claim.",
+    "sourceIds": [
+      "gottesman-stabilizer-1997"
+    ]
+  },
+  {
+    "id": "logical-anticommute",
+    "assumptions": [
+      "Finite-dimensional n-qubit Pauli stabilizer code; each chosen generator is a signed Hermitian Pauli operator with g_i^2=I.",
+      "The generators commute and their generated group S excludes -I, so the simultaneous +1 eigenspace is nonzero.",
+      "At least one logical qubit is encoded. X_L and Z_L are a complementary pair for the same logical qubit, chosen as Pauli representatives commuting with S and acting nontrivially on the code.",
+      "For toric/surface-code string representatives, the sign is determined by odd parity of shared physical qubits carrying anticommuting Pauli factors. A single transverse primal/dual crossing is the standard toric example, not an assertion about arbitrary drawn curves."
+    ],
+    "variables": [
+      "X_L, Z_L: encoded Pauli X and Z for one chosen logical qubit; L is a logical label.",
+      "N(S)/S: logical Pauli classes, with overall phases handled consistently; multiplication by a stabilizer does not change the encoded action."
+    ],
+    "regime": "The same-logical-qubit pair anticommutes; a canonical choice on different logical qubits commutes. The algebraic relation holds beyond topological codes. Geometric crossing language applies only when the chosen code and physical string supports justify it; even overlap parity gives commutation.",
+    "units": "Dimensionless finite-qubit operator relations; n, r, and k are integer counts where used.",
+    "sourceLocations": [
+      {
+        "sourceId": "gottesman-stabilizer-1997",
+        "locator": "arXiv:quant-ph/9705052v1, Sec. 3.2, printed p. 20 / PDF p. 28, Eqs. (3.10)-(3.13): encoded Pauli commutation across distinct logical labels and anticommutation for a matched pair; normalizer and code-preserving action on printed p. 19 / PDF p. 27.",
+        "url": "https://arxiv.org/pdf/quant-ph/9705052v1#page=28"
+      },
+      {
+        "sourceId": "dennis-surface-2002",
+        "locator": "arXiv:quant-ph/0110143v1 (2001 manuscript underlying the existing 2002 journal source), Sec. III.A, printed/PDF p. 4, Eqs. (1)-(5) and following parity argument: physical Pauli factors and cancellation of two anticommutation signs.",
+        "url": "https://arxiv.org/pdf/quant-ph/0110143v1#page=4"
+      },
+      {
+        "sourceId": "dennis-surface-2002",
+        "locator": "arXiv:quant-ph/0110143v1, Sec. III.A, printed/PDF pp. 5-6, especially Fig. 3 on p. 6: complementary nontrivial primal/dual cycles representing the two logical Pauli pairs. Odd-overlap sign is the explicit Pauli-algebra consequence, not quoted as a separately numbered formula.",
+        "url": "https://arxiv.org/pdf/quant-ph/0110143v1#page=6"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-22",
+    "curationBatch": "stabilizer-primary-source-audit-reconstructed-2026-10-22",
+    "theoryRelationship": "Matched encoded-Pauli algebra checked directly in Gottesman; toric geometric illustration checked in the original Dennis et al. manuscript, with the parity consequence labeled as a derivation.",
+    "sourceIds": [
+      "dennis-surface-2002",
+      "gottesman-stabilizer-1997"
+    ]
+  }
+];for(const p of patches){const expected=before.find(f=>f.id===p.id),matches=window.QI_FORMULAS.formulas.filter(f=>f.id===p.id);if(matches.length!==1||JSON.stringify(matches[0])!==JSON.stringify(expected))throw new Error("Stabilizer audit baseline changed: "+p.id);Object.assign(matches[0],p);}})();
+
+// Three existing ideal square-GKP formulas: source-qualified metadata only.
+(function(){const patches=[
+  {
+    "id": "gkp-stabilizers",
+    "assumptions": [
+      "One oscillator with canonical quadratures [q,p]=i; the ideal square-lattice qubit code is the simultaneous +1 generalized eigenspace of S_q and S_p.",
+      "Exact ideal stabilizer relations concern distributional, non-normalizable codewords, not normalizable finite-energy approximations."
+    ],
+    "variables": [
+      "q,p: canonical quadrature operators; S_q=exp(i2sqrt(pi)q) shifts p by +2sqrt(pi), while S_p=exp(-i2sqrt(pi)p) shifts q by +2sqrt(pi). Subscripts label the quadrature in the exponent, not the shifted coordinate."
+    ],
+    "units": "Dimensionless oscillator quadratures with [q,p]=i (hbar=1); n=2 and alpha=sqrt(pi) in the source. Coefficients and displacement bounds must be rescaled if a different quadrature commutator is used.",
+    "regime": "The Weyl relation gives S_q S_p=exp(i4pi) S_p S_q=S_p S_q. For ideal syndrome recovery, the central sufficient displacement window is |Delta q|<sqrt(pi)/2 and |Delta p|<sqrt(pi)/2, with both inequalities strict. Half-open modular intervals only choose representatives at boundary ties; they do not guarantee correction of both opposite endpoint errors. This is not an if-and-only-if claim that every larger shift fails.",
+    "sourceIds": [
+      "gkp-2001"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "gkp-2001",
+        "locator": "Author manuscript arXiv quant-ph/0008040v3 (13 May 2001), Sec. IV, Eq. (21), printed/PDF p. 4; specialize n=2, alpha=sqrt(pi). Canonical commutator and Weyl identity immediately preceding Eq. (23), printed/PDF p. 5.",
+        "url": "https://arxiv.org/pdf/quant-ph/0008040v3#page=4"
+      },
+      {
+        "sourceId": "gkp-2001",
+        "locator": "Sec. IV, Eq. (24), printed/PDF p. 5: strict correctable shift bounds; Sec. V, printed/PDF p. 6, paragraph after Eq. (36): modular syndrome recovery. Boundary-tie qualification is an explicit algebraic consequence, not a quoted source theorem.",
+        "url": "https://arxiv.org/pdf/quant-ph/0008040v3#page=5"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-22",
+    "curationBatch": "quantum-gkp-source-audit-2026-10-22",
+    "theoryRelationship": "Existing stabilizer equation checked by direct specialization of the authors' versioned primary manuscript; no equation change. Finite-energy preparations are approximations discussed separately in Sec. V. The existing DOI source remains provenance; these locators refer to the arXiv manuscript, not journal pagination."
+  },
+  {
+    "id": "gkp-logicals",
+    "assumptions": [
+      "One oscillator with [q,p]=i; logical action is restricted to the ideal square-GKP qubit code fixed by S_q=exp(i2sqrt(pi)q) and S_p=exp(-i2sqrt(pi)p).",
+      "The displayed oscillator displacement operators are unitary; they act as Pauli operators on the ideal code, not as involutions on the entire oscillator Hilbert space."
+    ],
+    "variables": [
+      "Z_L: +sqrt(pi) momentum displacement; X_L: +sqrt(pi) position displacement. The logical basis is |j_L> proportional to sum_s |q=(2s+j)sqrt(pi)>, j=0,1."
+    ],
+    "units": "Dimensionless oscillator quadratures with [q,p]=i (hbar=1); n=2 and alpha=sqrt(pi) in the source. Coefficients and displacement bounds must be rescaled if a different quadrature commutator is used.",
+    "regime": "Z_L X_L=-X_L Z_L by the Weyl phase exp(i pi). Each logical operator commutes with both stabilizer generators, since the cross phases are exp(i2pi)=1. Z_L^2=S_q and X_L^2=S_p, so their squares are identity only on the ideal code. In the formal comb basis, Z_L|j_L>=(-1)^j|j_L> and X_L exchanges |0_L> and |1_L>. Normalizable finite-energy approximations are not exact codewords.",
+    "sourceIds": [
+      "gkp-2001"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "gkp-2001",
+        "locator": "Author manuscript arXiv quant-ph/0008040v3 (13 May 2001), Sec. IV, Eq. (22), printed/PDF p. 4; Eqs. (23), (26), printed/PDF p. 5. Set n=2 and alpha=sqrt(pi); Eq. (23) then has omega=-1.",
+        "url": "https://arxiv.org/pdf/quant-ph/0008040v3#page=5"
+      },
+      {
+        "sourceId": "gkp-2001",
+        "locator": "Sec. IV, Eq. (21), printed/PDF p. 4, and Eq. (27), printed/PDF p. 5: stabilizer powers and the formal logical basis. Logical-stabilizer commutation follows explicitly from the stated Weyl relation.",
+        "url": "https://arxiv.org/pdf/quant-ph/0008040v3#page=4"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-22",
+    "curationBatch": "quantum-gkp-source-audit-2026-10-22",
+    "theoryRelationship": "Existing logical-Pauli equation checked in the authors' versioned primary manuscript, with anticommutation, code-subspace restriction and stabilizer powers made explicit. No equation change; no claim that these are finite-energy exact codewords."
+  },
+  {
+    "id": "gkp-comb",
+    "assumptions": [
+      "One oscillator with [q,p]=i; choose the square qubit code n=2, alpha=sqrt(pi), and logical-zero label j=0 in the source.",
+      "Position eigenkets and the infinite equal-weight sum are generalized states/distributions, not normalizable vectors in the oscillator Hilbert space."
+    ],
+    "variables": [
+      "s: any integer; |q=q0>: generalized position eigenket. The proportionality sign denotes a formal common amplitude, not an omitted finite normalization constant."
+    ],
+    "units": "Dimensionless oscillator quadratures with [q,p]=i (hbar=1); n=2 and alpha=sqrt(pi) in the source. Coefficients and displacement bounds must be rescaled if a different quadrature commutator is used.",
+    "regime": "The comb has period 2sqrt(pi) and obeys S_q|0_L>=S_p|0_L>=Z_L|0_L>=|0_L> distributionally. A +sqrt(pi) position shift gives the logical-one comb, rather than the same codeword. The ideal comb is a non-normalizable, formal infinite-energy limit. Finite-width peaks with a decaying envelope, as in Sec. V Eq. (31), are normalizable approximate codewords and must not be substituted into the displayed exact ideal relation without qualification.",
+    "sourceIds": [
+      "gkp-2001"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "gkp-2001",
+        "locator": "Author manuscript arXiv quant-ph/0008040v3 (13 May 2001), Sec. IV, Eq. (27), printed/PDF p. 5, first line with n=2, alpha=sqrt(pi), j=0; Fig. 1 and the paragraph after Eq. (27) identify the ideal comb and non-normalizability.",
+        "url": "https://arxiv.org/pdf/quant-ph/0008040v3#page=5"
+      },
+      {
+        "sourceId": "gkp-2001",
+        "locator": "Sec. V opening paragraphs and Eqs. (30)-(31), printed/PDF p. 6: finite-width Gaussian peaks and envelope define approximate, normalizable codewords, not the exact ideal comb.",
+        "url": "https://arxiv.org/pdf/quant-ph/0008040v3#page=6"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-22",
+    "curationBatch": "quantum-gkp-source-audit-2026-10-22",
+    "theoryRelationship": "Existing ideal logical-zero equation checked by direct specialization of the authors' primary manuscript. The generalized-state interpretation and finite-energy limitation are explicit; no normalization or equation change is introduced."
+  }
+]; for(const p of patches){const f=window.QI_FORMULAS.formulas.find(f=>f.id===p.id);if(!f)throw new Error("Unknown GKP formula "+p.id);Object.assign(f,p);}})();
+
+// Five existing continuous-variable formulas: explicit conventions, unchanged equations.
+(function(){const patches=[
+  {
+    "id": "cv-covariance",
+    "assumptions": [
+      "A finite number n of canonical bosonic modes and a positive trace-one density operator rho; all quadrature second moments are finite.",
+      "R is the ordered vector of Hermitian quadrature operators (q_1, p_1, ..., q_n, p_n); the same ordering is used for V and the canonical symplectic form Omega.",
+      "Expectations mean Tr(rho A), Delta R_i = R_i - <R_i>, and {A,B} = AB + BA; the formula uses symmetrized, centered moments.",
+      "No Gaussian-state assumption is needed. The first two moments determine the entire state only after a Gaussian-state assumption is supplied."
+    ],
+    "variables": [
+      "V: finite 2n by 2n real symmetric covariance matrix; V_ii is Var(R_i).",
+      "R_i and R_j: canonical quadrature operators, not commuting phase-space coordinate values.",
+      "rho: the bosonic density operator; angle brackets: quantum expectation; i,j = 1,...,2n."
+    ],
+    "regime": "Exact second-moment definition for Gaussian and non-Gaussian states with finite second moments. It is not a full state description for a general non-Gaussian state and does not cover divergent-moment idealizations.",
+    "units": "V_ij has the product units of R_i and R_j. Fix [R_i,R_j] = i hbar Omega_ij in compatible quadrature units. The inspected review uses hbar = 2 and vacuum covariance I; dividing every quadrature by sqrt(2) gives hbar = 1 and vacuum covariance I/2, and divides V by 2.",
+    "sourceLocations": [
+      {
+        "sourceId": "weedbrook-cv-2012",
+        "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 6, Sec. II.A.1, Eqs. (15)-(16), with the following paragraph distinguishing general moments from Gaussian-state completeness. This is the manuscript version, not a claim of final-journal-text inspection.",
+        "url": "https://arxiv.org/pdf/1110.3234v1#page=6"
+      },
+      {
+        "sourceId": "weedbrook-cv-2012",
+        "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 5, Sec. II.A, Eqs. (2), (5)-(7), for canonical ordering, form and commutator; the expectation convention is Eq. (14). This is the manuscript version, not a claim of final-journal-text inspection.",
+        "url": "https://arxiv.org/pdf/1110.3234v1#page=5"
+      }
+    ],
+    "theoryRelationship": "An exact definition supported by the inspected Weedbrook review, not a new primary result. General-state applicability and the Gaussian-only completeness of first and second moments are kept distinct.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-22",
+    "curationBatch": "cv-five-source-metadata-2026-10-22"
+  },
+  {
+    "id": "cv-uncertainty",
+    "assumptions": [
+      "V_ij = (1/2)<{Delta R_i,Delta R_j}> is the finite real symmetric covariance of n canonical bosonic modes in a positive trace-one state.",
+      "The Hermitian quadratures obey [R_i,R_j] = i hbar Omega_ij, with hbar > 0 and Omega the real direct sum of n blocks [[0,1],[-1,0]], in the same ordering as V.",
+      "The inequality means positive semidefiniteness of the Hermitian matrix V + i(hbar/2)Omega, not entrywise nonnegativity.",
+      "Gaussianity is unnecessary for necessity. Conversely, a finite real symmetric V satisfying this condition is realizable as the covariance of a Gaussian state; the condition alone does not validate a proposed arbitrary non-Gaussian operator or Wigner function."
+    ],
+    "variables": [
+      "V: symmetrized quadrature covariance; Omega: dimensionless canonical antisymmetric form.",
+      "hbar: positive commutator scale in the chosen compatible quadrature units; i: imaginary unit.",
+      ">= 0: Hermitian positive-semidefinite order, including equality at uncertainty saturation."
+    ],
+    "regime": "Exact covariance-level uncertainty relation for Gaussian and non-Gaussian physical states with finite second moments. For one mode it includes Var(q) Var(p) - Cov(q,p)^2 >= hbar^2/4. Covariance admissibility is not a complete characterization of general non-Gaussian states.",
+    "units": "The card restores arbitrary hbar to the inspected review equation V + i Omega >= 0, which uses [R_i,R_j] = 2i Omega_ij. For hbar = 1 the condition is V + i Omega/2 >= 0 and the vacuum has V = I/2; for hbar = 2 the vacuum has V = I.",
+    "sourceLocations": [
+      {
+        "sourceId": "weedbrook-cv-2012",
+        "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 6, Sec. II.A.1, Eqs. (15)-(18), especially Eq. (17) in the hbar = 2 convention. This is the manuscript version, not a claim of final-journal-text inspection.",
+        "url": "https://arxiv.org/pdf/1110.3234v1#page=6"
+      },
+      {
+        "sourceId": "weedbrook-cv-2012",
+        "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 4, Sec. I.D, vacuum-variance and hbar normalization; the commutator is on p. 5, Eq. (7). This is the manuscript version, not a claim of final-journal-text inspection.",
+        "url": "https://arxiv.org/pdf/1110.3234v1#page=4"
+      },
+      {
+        "sourceId": "weedbrook-cv-2012",
+        "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 9, Sec. II.C.1, Eqs. (44)-(45) and (48)-(49), for Williamson covariance form, the physicality bound and construction from thermal states. The intervening operator-modulus/Hermitian claim is not relied upon. This is the manuscript version, not a claim of final-journal-text inspection.",
+        "url": "https://arxiv.org/pdf/1110.3234v1#page=9"
+      }
+    ],
+    "theoryRelationship": "Standard matrix uncertainty relation supported by the inspected Weedbrook review with an explicit quadrature rescaling to restore hbar. It is not a new primary result, a test of Gaussianity, or a claim of complete physical-state validation.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-22",
+    "curationBatch": "cv-five-source-metadata-2026-10-22"
+  },
+  {
+    "id": "cv-symplectic",
+    "assumptions": [
+      "S is a finite 2n by 2n real matrix acting on a column vector of Hermitian quadrature operators R; n is a positive integer.",
+      "Omega is the nonsingular canonical form, the direct sum of n blocks [[0,1],[-1,0]], and R obeys [R_i,R_j] = i hbar Omega_ij.",
+      "The same quadrature ordering and normalization are used before and after the transformation; T denotes ordinary matrix transpose.",
+      "A real displacement d may be added in R -> SR + d without changing commutators. Gaussianity of the input state is not required for this algebraic condition."
+    ],
+    "variables": [
+      "S: real linear transformation of 2n canonical quadratures; Omega: real canonical antisymmetric form.",
+      "S^T: ordinary transpose, not complex conjugate transpose; R: quadrature-operator column vector.",
+      "n: finite mode count; hbar: fixed commutator scale; d: optional real displacement vector."
+    ],
+    "regime": "Exact finite-mode canonical condition. Such transformations, with displacements, describe Gaussian unitaries; those unitaries can act on non-Gaussian inputs too. A general noisy Gaussian channel need not have a symplectic linear part and is not specified by this equation.",
+    "units": "S is expressed in a fixed compatible quadrature basis. The scalar hbar cancels from the commutator-preservation condition; a change of ordering must transform Omega at the same time. A rescaling between hbar = 2 and hbar = 1 is a convention change, not a symplectic map at fixed Omega and hbar.",
+    "sourceLocations": [
+      {
+        "sourceId": "weedbrook-cv-2012",
+        "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 6, Sec. II.A.2, Eqs. (23)-(25); the paragraph before Eq. (24) explicitly specifies a real 2N by 2N matrix. This is the manuscript version, not a claim of final-journal-text inspection.",
+        "url": "https://arxiv.org/pdf/1110.3234v1#page=6"
+      },
+      {
+        "sourceId": "weedbrook-cv-2012",
+        "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 5, Sec. II.A, Eqs. (2), (5) and (7), for the canonical form, ordering and commutator. This is the manuscript version, not a claim of final-journal-text inspection.",
+        "url": "https://arxiv.org/pdf/1110.3234v1#page=5"
+      }
+    ],
+    "theoryRelationship": "Canonical commutator-preservation condition supported by the inspected Weedbrook review. The equation is algebraic and is not limited to Gaussian input states, although it underlies the review's Gaussian-unitary description.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-22",
+    "curationBatch": "cv-five-source-metadata-2026-10-22"
+  },
+  {
+    "id": "gaussian-wigner",
+    "assumptions": [
+      "n is a finite positive integer and R is a real 2n-dimensional phase-space coordinate, not the operator vector appearing in the covariance definition.",
+      "The state is Gaussian, d is its real mean vector, and V is its finite real symmetric strictly positive-definite symmetrized covariance; V^(-1) and sqrt(det V) are well-defined.",
+      "To describe a quantum state, V must also satisfy V + i(hbar/2)Omega >= 0 in the declared canonical convention. Positive definiteness and a normalized Gaussian density alone do not ensure quantum physicality.",
+      "W is normalized with respect to the real quadrature measure d^(2n)R; changing to complex amplitudes or another scaled coordinate system requires the appropriate Jacobian."
+    ],
+    "variables": [
+      "R: 2n real phase-space coordinates; d: mean quadrature vector; n: number of modes, so phase-space dimension is 2n.",
+      "V: symmetrized quadrature covariance in the same coordinates; det V: determinant; V^(-1): inverse.",
+      "W(R): Wigner density per unit d^(2n)R; T: ordinary transpose; Omega and hbar: canonical commutator form and scale."
+    ],
+    "regime": "Exact for Gaussian quantum states, not a Gaussian approximation to arbitrary states. The formula integrates to one and reproduces d and V. Singular ideal infinite-squeezing limits are excluded. Nonnegativity of this density is not, on its own, a quantum-physicality test.",
+    "units": "The denominator is (2 pi)^n because the integration space has 2n real dimensions. W has reciprocal phase-space-volume units. The expression keeps the same form under a consistent quadrature-coordinate change with V and d transformed and W given the density Jacobian. For one mode the vacuum is exp[-(q^2+p^2)]/pi at hbar = 1 and exp[-(q^2+p^2)/2]/(2 pi) in the review's hbar = 2 coordinates.",
+    "sourceLocations": [
+      {
+        "sourceId": "weedbrook-cv-2012",
+        "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 6, Sec. II.A.1, Eq. (20) for the Gaussian Wigner density, Eqs. (15) and (17) for covariance and physicality. This is the manuscript version, not a claim of final-journal-text inspection.",
+        "url": "https://arxiv.org/pdf/1110.3234v1#page=6"
+      },
+      {
+        "sourceId": "weedbrook-cv-2012",
+        "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 5, Sec. II.A.1, Eq. (13) and its following paragraph, for the real 2N-dimensional phase space and unit normalization. This is the manuscript version, not a claim of final-journal-text inspection.",
+        "url": "https://arxiv.org/pdf/1110.3234v1#page=5"
+      },
+      {
+        "sourceId": "weedbrook-cv-2012",
+        "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 7, Sec. II.B.1, opening paragraph: vacuum covariance I in the review's hbar = 2 convention. This is the manuscript version, not a claim of final-journal-text inspection.",
+        "url": "https://arxiv.org/pdf/1110.3234v1#page=7"
+      }
+    ],
+    "theoryRelationship": "The modern Gaussian formula and its normalization are checked against the inspected Weedbrook review. The existing Wigner (1932) primary-source link remains historical provenance for the phase-space framework; its full text was not inspected in this pass and is not claimed as the exact locator for this formula.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-22",
+    "curationBatch": "cv-five-source-metadata-2026-10-22"
+  },
+  {
+    "id": "rotated-quadrature",
+    "assumptions": [
+      "a and a-dagger are a single bosonic mode's annihilation and creation operators, with [a,a-dagger] = 1 and the vacuum defined by a|0> = 0.",
+      "theta is real, measured in radians relative to a chosen local-oscillator phase; the displayed phase convention is X_theta = q cos(theta) + p sin(theta).",
+      "q = (a + a-dagger)/sqrt(2) and p = (a - a-dagger)/(i sqrt(2)), so [q,p] = i. The displayed 1/sqrt(2) is not the review's unscaled hbar = 2 quadrature convention.",
+      "No Gaussian-state assumption is needed for the operator definition. Finite second moments are required only when using its variance; ideal balanced homodyne identifies a calibrated signal proportional to this quadrature, not a complete finite-power/noisy-detector model."
+    ],
+    "variables": [
+      "X_theta: Hermitian rotated dimensionless quadrature; X_0 = q and X_(pi/2) = p.",
+      "a: bosonic annihilation operator; a-dagger: its adjoint; theta: real relative phase in radians; i: imaginary unit.",
+      "q and p: hbar = 1 normalized quadratures; the orthogonal partner is X_(theta + pi/2)."
+    ],
+    "regime": "Exact single-mode operator identity, valid for Gaussian and non-Gaussian states. It obeys [X_theta,X_phi] = i sin(phi-theta); hence [X_theta,X_(theta+pi/2)] = i and the vacuum variance is 1/2 at every phase.",
+    "units": "The card uses dimensionless hbar = 1 quadratures. Write the review's variables as q_W = a + a-dagger and p_W = i(a-dagger-a): q = q_W/sqrt(2), p = p_W/sqrt(2), and X_theta = (q_W cos(theta) + p_W sin(theta))/sqrt(2). Thus the review's unit vacuum variance becomes 1/2 here. In compatible variables with [Q,P] = i hbar, the corresponding quadrature is sqrt(hbar) X_theta.",
+    "sourceLocations": [
+      {
+        "sourceId": "weedbrook-cv-2012",
+        "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 5, Sec. II.A, Eq. (6) for the hbar = 2 quadratures and Eq. (7) for their commutator. The card is derived by the explicit 1/sqrt(2) rescaling, not copied in the review's normalization. This is the manuscript version, not a claim of final-journal-text inspection.",
+        "url": "https://arxiv.org/pdf/1110.3234v1#page=5"
+      },
+      {
+        "sourceId": "weedbrook-cv-2012",
+        "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 7, Sec. II.B.4, Eq. (34), first row, for q_W cos(theta) + p_W sin(theta); the opening Sec. II.B.1 paragraph gives unit vacuum variance. The preceding annihilation-operator phase-sign sentence is not relied upon. This is the manuscript version, not a claim of final-journal-text inspection.",
+        "url": "https://arxiv.org/pdf/1110.3234v1#page=7"
+      },
+      {
+        "sourceId": "weedbrook-cv-2012",
+        "locator": "Inspected arXiv:1110.3234v1, printed/PDF p. 12, Sec. II.E.1, Eq. (63) and the balanced-homodyne/local-oscillator discussion for the measurement context. This is the manuscript version, not a claim of final-journal-text inspection.",
+        "url": "https://arxiv.org/pdf/1110.3234v1#page=12"
+      }
+    ],
+    "theoryRelationship": "Derived from inspected Weedbrook review quadrature definitions and rotation matrix using an explicit normalization conversion. The existing Glauber (1963) primary-source link is retained as optical-coherence context; its full text was not inspected in this pass and is not claimed to contain this exact normalized formula.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-22",
+    "curationBatch": "cv-five-source-metadata-2026-10-22"
+  }
+];for(const p of patches){const f=window.QI_FORMULAS.formulas.find(f=>f.id===p.id);if(!f)throw new Error("Unknown CV formula "+p.id);Object.assign(f,p);}})();
+
+// Existing weak-value equation: repair its direct primary citation, preserving both catalog sources.
+(function(){const p={
+  "id": "weak-value",
+  "sourceIds": [
+    "wave5-weak-1988"
+  ],
+  "assumptions": [
+    "Pure preselection |psi_i> and rank-one pure postselection |psi_f>, represented at the same measurement time in a common picture; any intervening free evolution is absorbed into those states.",
+    "The normalized states have nonzero overlap <psi_f|psi_i>. The displayed quotient is undefined at zero overlap.",
+    "This audited scope uses a Hermitian observable A on a finite-dimensional system. Mixed-state preselection and general postselection effects require a separately stated generalization."
+  ],
+  "variables": [
+    "A: system observable; |psi_i>: preselected state; <psi_f|: bra associated with the selected final state.",
+    "A_w: generally complex transition-amplitude ratio, not an eigenvalue required of an individual ideal projective measurement."
+  ],
+  "units": "A_w has the same physical units as A; the state overlap is dimensionless. A Pauli component sigma_z is dimensionless, whereas S_z=(hbar/2)sigma_z and its weak value have units of angular momentum.",
+  "regime": "An exact definition for the declared pure-state, nonzero-overlap domain. Its leading-order weak-measurement interpretation additionally requires a controlled system-meter expansion after postselection. Near-orthogonal postselection can make A_w large but makes the weak-coupling limit nonuniform; small bare coupling alone does not justify extrapolation. A_w may be complex or, when real, outside A's eigenvalue interval, without changing the eigenvalues available to a strong projective measurement. No universal metrological advantage is asserted.",
+  "sourceLocations": [
+    {
+      "sourceId": "wave5-weak-1988",
+      "locator": "Eq. (6), printed p. 1352 / PDF p. 2, explicitly defines the ratio. Surrounding Eqs. (3)-(5) are operational approximations with additional meter-dependent conditions, distinct from the algebraic ratio on the stated domain. Author-hosted scan of the 1988 PRL publication; psi_in maps to this card's psi_i.",
+      "url": "https://www.tau.ac.il/~yakir/yahp/yh77#page=2"
+    },
+    {
+      "sourceId": "wave5-weak-1988",
+      "locator": "Footnote 4, printed p. 1354 / PDF p. 4, explicitly permits complex weak values. The paragraph after Eq. (6), printed p. 1352, discusses values outside the eigenvalue range.",
+      "url": "https://www.tau.ac.il/~yakir/yahp/yh77#page=4"
+    },
+    {
+      "sourceId": "wave5-weak-1988",
+      "locator": "Eq. (12), printed p. 1353 / PDF p. 3, gives a weakness condition for the paper's specific spin apparatus. This is not asserted to be a universal meter-independent criterion.",
+      "url": "https://www.tau.ac.il/~yakir/yahp/yh77#page=3"
+    }
+  ],
+  "theoryRelationship": "Pure-state weak-value definition checked in Aharonov, Albert and Vaidman (1988), Eq. (6). Aharonov, Bergmann and Lebowitz (1964) provides antecedent pre/postselected probability theory, not this defining quotient; its catalog record and the linked theories are preserved.",
+  "metadataReview": "explicit",
+  "reviewedAt": "2026-10-22",
+  "curationBatch": "weak-value-source-repair-2026-10-22"
+};const f=window.QI_FORMULAS.formulas.find(f=>f.id===p.id);if(!f)throw new Error("Unknown weak-value formula");Object.assign(f,p);})();
+
+// Two existing Bohmian formulas: source-qualified domain and interpretation, unchanged equations.
+(function(){const patches=[
+  {
+    "id": "bohm-guidance",
+    "assumptions": [
+      "A single particle of mass m>0 is described by a complex scalar wavefunction Psi obeying the nonrelativistic Schrodinger equation with a real scalar potential; spinor and electromagnetic vector-potential couplings are outside this displayed form.",
+      "The spatial derivatives and local trajectory are considered in a region where Psi is sufficiently regular and nonzero. The displayed quotient is undefined at a node.",
+      "Locally write Psi=R exp(iS/hbar), with R=|Psi|>0 and a differentiable real phase S. The guidance law is equivalent there to dQ/dt=grad S/m; selecting this law is additional dynamical structure, not a unique consequence of the Schrodinger equation alone."
+    ],
+    "variables": [
+      "Bold Q(t): the actual particle position, with the wavefunction ratio evaluated at x=Q(t); this position is not the scalar quantum potential Q on the companion card.",
+      "Psi(x,t): scalar wavefunction; m: particle mass; hbar: reduced Planck constant; grad: spatial gradient; Im: imaginary part."
+    ],
+    "units": "Both sides have units of velocity. Position Q has units of length; hbar/m has units of length squared per time, and grad Psi/Psi has units of inverse length.",
+    "regime": "Single-particle nonrelativistic scalar-wavefunction guidance without electromagnetic vector potential. An initially normalized Born distribution rho(x,t0)=|Psi(x,t0)|^2 is a separate statistical assumption: under the continuity dynamics and suitable regularity and boundary conditions it is preserved, not selected from arbitrary initial distributions by this equation. Many-particle, spinor and vector-potential forms require separately stated extensions.",
+    "theoryRelationship": "Equivalent local rewrite of the guidance/momentum restriction v=grad S/m in Bohm (1952), not a verbatim numbered quotient equation in the source.",
+    "sourceLocations": [
+      {
+        "sourceId": "bohm-1952-i",
+        "locator": "Sec. 4, printed p. 169 / PDF p. 4, Eqs. (1)-(2): scalar one-particle Schrodinger equation with V(x), and Psi=R exp(iS/hbar). No electromagnetic vector potential appears in this displayed Hamiltonian.",
+        "url": "https://cqi.inf.usi.ch/qic/bohm1.pdf#page=4"
+      },
+      {
+        "sourceId": "bohm-1952-i",
+        "locator": "Sec. 4, printed p. 170 / PDF p. 5: unnumbered v(x)=grad S(x)/m in the left column below Eq. (8), together with the continuity equations (5) and (7). Combining this velocity relation with Eq. (2) gives the card's quotient where Psi is nonzero.",
+        "url": "https://cqi.inf.usi.ch/qic/bohm1.pdf#page=5"
+      },
+      {
+        "sourceId": "bohm-1952-i",
+        "locator": "Sec. 4, printed p. 171 / PDF p. 6: the ensemble-density discussion and the three numbered assumptions at the lower right distinguish the Schrodinger equation, p=grad S, and P=|Psi|^2.",
+        "url": "https://cqi.inf.usi.ch/qic/bohm1.pdf#page=6"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-22",
+    "curationBatch": "bohm-source-metadata-2026-10-22"
+  },
+  {
+    "id": "bohm-quantum-potential",
+    "assumptions": [
+      "A single particle of mass m>0 is described by a complex scalar wavefunction Psi satisfying the nonrelativistic Schrodinger equation with a real scalar potential and no electromagnetic vector potential in this audited scope.",
+      "Use the local polar form Psi=R exp(iS/hbar), with R=|Psi|>0, twice spatially differentiable R, and sufficiently regular real phase S. The displayed division by R excludes nodes.",
+      "This term follows from the real part of the Schrodinger equation. No Born-equilibrium assumption or normalization is needed to form the local ratio; probabilistic ensemble claims require their own statistical assumptions."
+    ],
+    "variables": [
+      "Q: scalar quantum potential, denoted U(x) in Bohm (1952), Eq. (8); it is not the bold particle position Q(t) on the guidance card.",
+      "R(x,t)=|Psi(x,t)|: nonnegative wave amplitude; S(x,t): local phase action; m: particle mass; hbar: reduced Planck constant; nabla squared: spatial Laplacian."
+    ],
+    "units": "Q has units of energy; S has units of action. The amplitude units cancel in (nabla squared R)/R, leaving inverse length squared.",
+    "regime": "The displayed scalar term is exact on smooth nonzero-amplitude regions of the declared single-particle model. It enters the modified Hamilton-Jacobi equation as partial S/partial t+(grad S)^2/(2m)+V+Q=0. At R=0 the quotient is undefined; this does not by itself imply that Q diverges on approach to every node. Many-particle, spinor and vector-potential settings are not audited by this card.",
+    "theoryRelationship": "The source's quantum-mechanical potential U is relabeled Q on this card; the displayed sign and factor match Eq. (8).",
+    "sourceLocations": [
+      {
+        "sourceId": "bohm-1952-i",
+        "locator": "Sec. 4, printed p. 169 / PDF p. 4, Eqs. (1)-(4): one-particle scalar Schrodinger equation, polar decomposition, and the real equation with the amplitude-curvature term.",
+        "url": "https://cqi.inf.usi.ch/qic/bohm1.pdf#page=4"
+      },
+      {
+        "sourceId": "bohm-1952-i",
+        "locator": "Sec. 4, printed p. 170 / PDF p. 5, Eq. (8): U(x)=-(hbar squared/2m)(nabla squared R)/R. The card uses Q for the source's U; Eq. (8a) then uses V+U in the force law.",
+        "url": "https://cqi.inf.usi.ch/qic/bohm1.pdf#page=5"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-22",
+    "curationBatch": "bohm-source-metadata-2026-10-22"
+  }
+];for(const p of patches){const f=window.QI_FORMULAS.formulas.find(f=>f.id===p.id);if(!f)throw new Error("Unknown Bohm formula "+p.id);Object.assign(f,p);}})();

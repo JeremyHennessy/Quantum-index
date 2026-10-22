@@ -1,0 +1,88 @@
+{
+  "status": "Locally integrated citation repair, not published; source-review proposal independently inspected",
+  "baselineCommit": "9470364ff5f4e3f1e4a0e05a1ace8cd852b2f160",
+  "classification": "one-card citation repair plus bounded metadata qualification; not a source-preserving metadata-only audit",
+  "patch": {
+    "id": "weak-value",
+    "sourceIds": [
+      "wave5-weak-1988"
+    ],
+    "assumptions": [
+      "Pure preselection |psi_i> and rank-one pure postselection |psi_f>, represented at the same measurement time in a common picture; any intervening free evolution is absorbed into those states.",
+      "The normalized states have nonzero overlap <psi_f|psi_i>. The displayed quotient is undefined at zero overlap.",
+      "This audited scope uses a Hermitian observable A on a finite-dimensional system. Mixed-state preselection and general postselection effects require a separately stated generalization."
+    ],
+    "variables": [
+      "A: system observable; |psi_i>: preselected state; <psi_f|: bra associated with the selected final state.",
+      "A_w: generally complex transition-amplitude ratio, not an eigenvalue required of an individual ideal projective measurement."
+    ],
+    "units": "A_w has the same physical units as A; the state overlap is dimensionless. A Pauli component sigma_z is dimensionless, whereas S_z=(hbar/2)sigma_z and its weak value have units of angular momentum.",
+    "regime": "An exact definition for the declared pure-state, nonzero-overlap domain. Its leading-order weak-measurement interpretation additionally requires a controlled system-meter expansion after postselection. Near-orthogonal postselection can make A_w large but makes the weak-coupling limit nonuniform; small bare coupling alone does not justify extrapolation. A_w may be complex or, when real, outside A's eigenvalue interval, without changing the eigenvalues available to a strong projective measurement. No universal metrological advantage is asserted.",
+    "sourceLocations": [
+      {
+        "sourceId": "wave5-weak-1988",
+        "locator": "Eq. (6), printed p. 1352 / PDF p. 2, explicitly defines the ratio. Surrounding Eqs. (3)-(5) are operational approximations with additional meter-dependent conditions, distinct from the algebraic ratio on the stated domain. Author-hosted scan of the 1988 PRL publication; psi_in maps to this card's psi_i.",
+        "url": "https://www.tau.ac.il/~yakir/yahp/yh77#page=2"
+      },
+      {
+        "sourceId": "wave5-weak-1988",
+        "locator": "Footnote 4, printed p. 1354 / PDF p. 4, explicitly permits complex weak values. The paragraph after Eq. (6), printed p. 1352, discusses values outside the eigenvalue range.",
+        "url": "https://www.tau.ac.il/~yakir/yahp/yh77#page=4"
+      },
+      {
+        "sourceId": "wave5-weak-1988",
+        "locator": "Eq. (12), printed p. 1353 / PDF p. 3, gives a weakness condition for the paper's specific spin apparatus. This is not asserted to be a universal meter-independent criterion.",
+        "url": "https://www.tau.ac.il/~yakir/yahp/yh77#page=3"
+      }
+    ],
+    "theoryRelationship": "Pure-state weak-value definition checked in Aharonov, Albert and Vaidman (1988), Eq. (6). Aharonov, Bergmann and Lebowitz (1964) provides antecedent pre/postselected probability theory, not this defining quotient; its catalog record and the linked theories are preserved.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-22",
+    "curationBatch": "weak-value-source-repair-2026-10-22"
+  },
+  "before": {
+    "id": "weak-value",
+    "name": "Weak value",
+    "category": "Foundations & interpretations",
+    "latex": "A_w=\\frac{\\langle\\psi_f|\\hat A|\\psi_i\\rangle}{\\langle\\psi_f|\\psi_i\\rangle}",
+    "plain": "Aw = <psif|A|psii>/<psif|psii>",
+    "description": "Pre- and post-selected weak-measurement value.",
+    "theoryIds": [
+      "two-state-vector",
+      "weak-measurement"
+    ],
+    "sourceIds": [
+      "abl-1964"
+    ],
+    "tags": [
+      "weak measurement"
+    ],
+    "formulaType": "canonical",
+    "assumptions": [],
+    "variables": [],
+    "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+    "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+    "theoryRelationship": "canonical representative",
+    "metadataReview": "baseline-audit-v1"
+  },
+  "sourceCatalogChange": "none; both original catalog records and all theory links retained",
+  "sourceProposalSha256": "a3635fb25456c48f1568b54d1d0ce0f9ca672e1176f9389292307bcb1907bf4e",
+  "sourceEvidence": [
+    {
+      "url": "https://www.tau.ac.il/~yakir/yahp/yh77",
+      "sha256": "65579b27612c314476e95824ca266ea31ea899f1e7b7d2800b28b7b6f234e5cb",
+      "pages": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "url": "https://www.tau.ac.il/~yakir/yahp/yh150",
+      "sha256": "cfbdbdfe70383c1adfc56f104bc0e821bdb59f48de211ba2787abafb5f44a501",
+      "pages": [
+        3
+      ]
+    }
+  ]
+}

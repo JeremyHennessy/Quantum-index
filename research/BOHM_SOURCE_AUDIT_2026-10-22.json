@@ -1,0 +1,137 @@
+{
+  "status": "Local two-card source-qualified metadata audit; no equation or source change; not published",
+  "baselineCommit": "9470364ff5f4e3f1e4a0e05a1ace8cd852b2f160",
+  "patches": [
+    {
+      "id": "bohm-guidance",
+      "assumptions": [
+        "A single particle of mass m>0 is described by a complex scalar wavefunction Psi obeying the nonrelativistic Schrodinger equation with a real scalar potential; spinor and electromagnetic vector-potential couplings are outside this displayed form.",
+        "The spatial derivatives and local trajectory are considered in a region where Psi is sufficiently regular and nonzero. The displayed quotient is undefined at a node.",
+        "Locally write Psi=R exp(iS/hbar), with R=|Psi|>0 and a differentiable real phase S. The guidance law is equivalent there to dQ/dt=grad S/m; selecting this law is additional dynamical structure, not a unique consequence of the Schrodinger equation alone."
+      ],
+      "variables": [
+        "Bold Q(t): the actual particle position, with the wavefunction ratio evaluated at x=Q(t); this position is not the scalar quantum potential Q on the companion card.",
+        "Psi(x,t): scalar wavefunction; m: particle mass; hbar: reduced Planck constant; grad: spatial gradient; Im: imaginary part."
+      ],
+      "units": "Both sides have units of velocity. Position Q has units of length; hbar/m has units of length squared per time, and grad Psi/Psi has units of inverse length.",
+      "regime": "Single-particle nonrelativistic scalar-wavefunction guidance without electromagnetic vector potential. An initially normalized Born distribution rho(x,t0)=|Psi(x,t0)|^2 is a separate statistical assumption: under the continuity dynamics and suitable regularity and boundary conditions it is preserved, not selected from arbitrary initial distributions by this equation. Many-particle, spinor and vector-potential forms require separately stated extensions.",
+      "theoryRelationship": "Equivalent local rewrite of the guidance/momentum restriction v=grad S/m in Bohm (1952), not a verbatim numbered quotient equation in the source.",
+      "sourceLocations": [
+        {
+          "sourceId": "bohm-1952-i",
+          "locator": "Sec. 4, printed p. 169 / PDF p. 4, Eqs. (1)-(2): scalar one-particle Schrodinger equation with V(x), and Psi=R exp(iS/hbar). No electromagnetic vector potential appears in this displayed Hamiltonian.",
+          "url": "https://cqi.inf.usi.ch/qic/bohm1.pdf#page=4"
+        },
+        {
+          "sourceId": "bohm-1952-i",
+          "locator": "Sec. 4, printed p. 170 / PDF p. 5: unnumbered v(x)=grad S(x)/m in the left column below Eq. (8), together with the continuity equations (5) and (7). Combining this velocity relation with Eq. (2) gives the card's quotient where Psi is nonzero.",
+          "url": "https://cqi.inf.usi.ch/qic/bohm1.pdf#page=5"
+        },
+        {
+          "sourceId": "bohm-1952-i",
+          "locator": "Sec. 4, printed p. 171 / PDF p. 6: the ensemble-density discussion and the three numbered assumptions at the lower right distinguish the Schrodinger equation, p=grad S, and P=|Psi|^2.",
+          "url": "https://cqi.inf.usi.ch/qic/bohm1.pdf#page=6"
+        }
+      ],
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-22",
+      "curationBatch": "bohm-source-metadata-2026-10-22"
+    },
+    {
+      "id": "bohm-quantum-potential",
+      "assumptions": [
+        "A single particle of mass m>0 is described by a complex scalar wavefunction Psi satisfying the nonrelativistic Schrodinger equation with a real scalar potential and no electromagnetic vector potential in this audited scope.",
+        "Use the local polar form Psi=R exp(iS/hbar), with R=|Psi|>0, twice spatially differentiable R, and sufficiently regular real phase S. The displayed division by R excludes nodes.",
+        "This term follows from the real part of the Schrodinger equation. No Born-equilibrium assumption or normalization is needed to form the local ratio; probabilistic ensemble claims require their own statistical assumptions."
+      ],
+      "variables": [
+        "Q: scalar quantum potential, denoted U(x) in Bohm (1952), Eq. (8); it is not the bold particle position Q(t) on the guidance card.",
+        "R(x,t)=|Psi(x,t)|: nonnegative wave amplitude; S(x,t): local phase action; m: particle mass; hbar: reduced Planck constant; nabla squared: spatial Laplacian."
+      ],
+      "units": "Q has units of energy; S has units of action. The amplitude units cancel in (nabla squared R)/R, leaving inverse length squared.",
+      "regime": "The displayed scalar term is exact on smooth nonzero-amplitude regions of the declared single-particle model. It enters the modified Hamilton-Jacobi equation as partial S/partial t+(grad S)^2/(2m)+V+Q=0. At R=0 the quotient is undefined; this does not by itself imply that Q diverges on approach to every node. Many-particle, spinor and vector-potential settings are not audited by this card.",
+      "theoryRelationship": "The source's quantum-mechanical potential U is relabeled Q on this card; the displayed sign and factor match Eq. (8).",
+      "sourceLocations": [
+        {
+          "sourceId": "bohm-1952-i",
+          "locator": "Sec. 4, printed p. 169 / PDF p. 4, Eqs. (1)-(4): one-particle scalar Schrodinger equation, polar decomposition, and the real equation with the amplitude-curvature term.",
+          "url": "https://cqi.inf.usi.ch/qic/bohm1.pdf#page=4"
+        },
+        {
+          "sourceId": "bohm-1952-i",
+          "locator": "Sec. 4, printed p. 170 / PDF p. 5, Eq. (8): U(x)=-(hbar squared/2m)(nabla squared R)/R. The card uses Q for the source's U; Eq. (8a) then uses V+U in the force law.",
+          "url": "https://cqi.inf.usi.ch/qic/bohm1.pdf#page=5"
+        }
+      ],
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-22",
+      "curationBatch": "bohm-source-metadata-2026-10-22"
+    }
+  ],
+  "before": [
+    {
+      "id": "bohm-guidance",
+      "name": "Bohmian guidance equation",
+      "category": "Foundations & interpretations",
+      "latex": "\\frac{d\\mathbf Q}{dt}=\\frac{\\hbar}{m}\\operatorname{Im}\\frac{\\nabla\\Psi}{\\Psi}(\\mathbf Q,t)",
+      "plain": "dQ/dt = (hbar/m) Im(grad Psi/Psi)",
+      "description": "Guidance law for particle configuration in Bohmian mechanics.",
+      "theoryIds": [
+        "bohmian"
+      ],
+      "sourceIds": [
+        "bohm-1952-i"
+      ],
+      "tags": [
+        "Bohmian"
+      ],
+      "formulaType": "canonical",
+      "assumptions": [],
+      "variables": [],
+      "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+      "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+      "theoryRelationship": "canonical representative",
+      "metadataReview": "baseline-audit-v1"
+    },
+    {
+      "id": "bohm-quantum-potential",
+      "name": "Bohm quantum potential",
+      "category": "Foundations & interpretations",
+      "latex": "Q=-\\frac{\\hbar^2}{2m}\\frac{\\nabla^2R}{R},\\quad \\Psi=Re^{iS/\\hbar}",
+      "plain": "Q = -hbar^2/(2m) nabla^2 R/R",
+      "description": "Quantum potential obtained from polar decomposition of the wavefunction.",
+      "theoryIds": [
+        "bohmian"
+      ],
+      "sourceIds": [
+        "bohm-1952-i"
+      ],
+      "tags": [
+        "quantum potential"
+      ],
+      "formulaType": "canonical",
+      "assumptions": [],
+      "variables": [],
+      "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+      "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+      "theoryRelationship": "canonical representative",
+      "metadataReview": "baseline-audit-v1"
+    }
+  ],
+  "sourceRecommendationSha256": "0686b86875daab33901ed008b49b2800de375742b4305f36e833bce094b03fcd",
+  "recommendationAdaptation": "Omit optional description replacements; all existing descriptions, equations and source IDs retained.",
+  "sourceEvidence": {
+    "sourceId": "bohm-1952-i",
+    "url": "https://cqi.inf.usi.ch/qic/bohm1.pdf",
+    "sha256": "a322064233554b472d486a4b38b80a54e4e85d7b9761f283d8b77ff304f68615",
+    "inspectedPdfPages": [
+      4,
+      5,
+      6,
+      9
+    ],
+    "sourceNotation": "Eq. (8) uses U for the card quantum potential Q. Guidance quotient is a local algebraic rewrite of the polar form and unnumbered phase-gradient velocity, not a verbatim numbered equation.",
+    "excludedClaim": "The two-slit discussion on printed p. 174 is not used to assert universal divergence at every node."
+  },
+  "requiredEquationChanges": []
+}
