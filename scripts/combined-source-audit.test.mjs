@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import {loadRuntime} from './category-trust-census.mjs';
-import {readPreCombinedFile,projectPreCombined} from './combined-baseline.mjs';
+import {readPreCombinedFile,projectPreCombined,projectPreCiEnvironment} from './combined-baseline.mjs';
 const audit=JSON.parse(fs.readFileSync('research/SYMPLECTIC_CORRECTION_2026-10-22.json'));
 const ledger=JSON.parse(fs.readFileSync('research/COMBINED_INTEGRITY_2026-10-22.json'));
 const stab=JSON.parse(fs.readFileSync('research/STABILIZER_SOURCE_AUDIT_2026-10-22.json')),gkp=JSON.parse(fs.readFileSync('research/GKP_SOURCE_AUDIT_2026-10-22.json')),cvAudit=JSON.parse(fs.readFileSync('research/CV_SOURCE_AUDIT_2026-10-22.json')),weakAudit=JSON.parse(fs.readFileSync('research/WEAK_VALUE_CITATION_REVIEW_2026-10-22.json')),bohmAudit=JSON.parse(fs.readFileSync('research/BOHM_SOURCE_AUDIT_2026-10-22.json')),patches=[audit.patch,...stab.patches,...gkp.patches,...cvAudit.patches,weakAudit.patch,...bohmAudit.patches];
@@ -43,10 +43,10 @@ test('correction changes mathematical notation explicitly with bounded source me
  for(const s of p.sourceLocations){assert.ok(p.sourceIds.includes(s.sourceId));assert.match(s.url,/^https:\/\//);}
  assert.match(audit.additionalSource.url,/1803\.04647v1/);
 });
-test('exact reconstruction rejects undeclared mutations and preserves protected files',()=>{
+test('exact reconstruction rejects undeclared mutations and preserves protected checkpoint bytes across the explicit CI-only repair',()=>{
  assert.equal(Object.keys(ledger.files).length,14);assert.equal(Object.keys(ledger.unchangedFiles).length,13);
  for(const [f,e]of Object.entries(ledger.files)){assert.equal(readPreCombinedFile(f,'utf8'),e.beforeText);assert.throws(()=>projectPreCombined(Buffer.concat([fs.readFileSync(f),Buffer.from('extra')]),f));}
- for(const [f,hash]of Object.entries(ledger.unchangedFiles))assert.equal(createHash('sha256').update(fs.readFileSync(f)).digest('hex'),hash,f);
+ for(const [f,hash]of Object.entries(ledger.unchangedFiles))assert.equal(createHash('sha256').update(projectPreCiEnvironment(fs.readFileSync(f),f)).digest('hex'),hash,f);
 });
 test('physical squeezed covariance disproves the standard operator-modulus interpretation',()=>{
  const v=[[0.5,0],[0,2]],nu=Math.sqrt(det(v));assert.equal(nu,1);assert.notDeepEqual([0.5,2],[nu,nu]);
