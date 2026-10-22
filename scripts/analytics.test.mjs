@@ -1,3 +1,4 @@
+import {projectPreCiEnvironment} from './combined-baseline.mjs';
 import {projectPreInformation} from './information-baseline.mjs';
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';
 const source=fs.readFileSync('analytics.js','utf8');
@@ -12,7 +13,7 @@ test('analytics packaging and focused QA gate preserve full suite and permission
  const mapJob=before.match(/  map-diagnostic:\n[\s\S]*?(?=  browser:\n)/)[0];
  const qaJob=mapJob.replace('map-diagnostic:','qa-diagnostic:').replace('Exercise map gestures before the full catalog suite','Exercise files filters and analytics before the full catalog suite').replace('npx playwright test tests/browser/map-interactions.spec.mjs --repeat-each=2 --retries=0','npx playwright test tests/browser/workspace-files.spec.mjs tests/browser/filter-controls.spec.mjs tests/browser/analytics.spec.mjs tests/browser/branch-return.spec.mjs --retries=0').replace('name: map-diagnostic-report','name: qa-diagnostic-report');
  const expected=before.replace('          node --check app.js\n','          node --check app.js\n          node --check analytics.js\n').replace('          test -f index.html\n','          test -f index.html\n          test -f analytics.js\n').replace("          grep -q './app.js' index.html\n","          grep -q './app.js' index.html\n          grep -q './analytics.js' index.html\n").replace('research-navigation.js app.js _site/','research-navigation.js app.js analytics.js _site/').replace('  browser:\n    needs: map-diagnostic\n',qaJob+'  browser:\n    needs: [map-diagnostic, qa-diagnostic]\n');
- assert.equal(raw.toString(),expected);assert.throws(()=>projectPreAnalytics(Buffer.from(raw.toString().replace('npm run test:browser','echo skipped')),file));
+ assert.equal(projectPreCiEnvironment(raw,file).toString(),expected);assert.throws(()=>projectPreAnalytics(Buffer.from(raw.toString().replace('npm run test:browser','echo skipped')),file));
 });
 
 test('branch return correction changes only the missing lineage rerender',()=>{const file='app.js',raw=fs.readFileSync(file),prior=projectPreAnalytics(raw,file).toString();assert.equal(raw.toString(),prior.replace('      rememberFilters();renderTrees();\n','      rememberFilters();renderTrees();renderLineage();\n'));});

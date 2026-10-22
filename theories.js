@@ -3455,3 +3455,13 @@ window.QI_DATA.sources.push({
   "url": "https://arxiv.org/pdf/quant-ph/0102117v1",
   "doi": "10.1103/PhysRevA.65.032314"
 });
+
+// Primary mathematical source for the symplectic-spectrum correction.
+(()=>{const source={
+  "id": "bhatia-jain-symplectic-2018",
+  "title": "On symplectic eigenvalues of positive definite matrices (arXiv:1803.04647v1, 2018 posting)",
+  "authors": "Rajendra Bhatia and Tanvi Jain",
+  "year": 2018,
+  "type": "primary source",
+  "url": "https://arxiv.org/abs/1803.04647v1"
+};if(window.QI_DATA.sources.some(s=>s.id===source.id))throw new Error("Duplicate symplectic source");window.QI_DATA.sources.push(source);})();

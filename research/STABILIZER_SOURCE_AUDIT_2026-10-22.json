@@ -1,0 +1,330 @@
+{
+  "patches": [
+    {
+      "id": "stabilizer-condition",
+      "assumptions": [
+        "Finite-dimensional n-qubit Pauli stabilizer code; each chosen generator is a signed Hermitian Pauli operator with g_i^2=I.",
+        "The generators commute and their generated group S excludes -I, so the simultaneous +1 eigenspace is nonzero.",
+        "The state vector is a nonzero code vector. Fixing any generating set is equivalent to fixing every group element; the displayed quantifier ranges over all of S."
+      ],
+      "variables": [
+        "S: Abelian subgroup of the n-qubit Pauli group excluding -I; g_i: an element or selected generator of S.",
+        "|psi>: vector in the common +1 eigenspace; r: number of independent generators if a generating set is counted."
+      ],
+      "regime": "Defines the code subspace. A unique pure stabilizer state up to phase requires r=n independent generators; r<n describes an encoded subspace rather than a unique state. No claim about arbitrary non-Pauli observables is made.",
+      "units": "Dimensionless finite-qubit operator relations; n, r, and k are integer counts where used.",
+      "sourceLocations": [
+        {
+          "sourceId": "gottesman-stabilizer-1997",
+          "locator": "arXiv:quant-ph/9705052v1, Sec. 3.2, printed p. 18 / PDF p. 26: Abelian stabilizer, fixed code space, excluded phases, and |S|=2^(n-k), dim(T)=2^k. The Pauli/Hermitian discussion continues on printed p. 19 / PDF p. 27.",
+          "url": "https://arxiv.org/pdf/quant-ph/9705052v1#page=26"
+        }
+      ],
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-22",
+      "curationBatch": "stabilizer-primary-source-audit-reconstructed-2026-10-22",
+      "theoryRelationship": "Direct stabilizer fixed-space definition checked in the original thesis; state-versus-code distinction follows its dimension statement.",
+      "sourceIds": [
+        "gottesman-stabilizer-1997"
+      ]
+    },
+    {
+      "id": "stabilizer-commute",
+      "assumptions": [
+        "Finite-dimensional n-qubit Pauli stabilizer code; each chosen generator is a signed Hermitian Pauli operator with g_i^2=I.",
+        "The generators commute and their generated group S excludes -I, so the simultaneous +1 eigenspace is nonzero.",
+        "This is the commuting-generator condition for an ordinary Pauli stabilizer, not the potentially noncommuting gauge generators of a subsystem code.",
+        "Commutation alone does not guarantee a nonempty +1 space: the additional exclusion of -I is essential."
+      ],
+      "variables": [
+        "[g_i,g_j]=g_i g_j-g_j g_i: commutator; i,j label stabilizer generators."
+      ],
+      "regime": "Within the Pauli group, two elements either commute or anticommute. Anticommuting invertible generators cannot share a nonzero +1 eigenvector. This is not a general assertion that arbitrary noncommuting matrices cannot share eigenvectors; independence is relevant to counting constraints, not to commutation itself.",
+      "units": "Dimensionless finite-qubit operator relations; n, r, and k are integer counts where used.",
+      "sourceLocations": [
+        {
+          "sourceId": "gottesman-stabilizer-1997",
+          "locator": "arXiv:quant-ph/9705052v1, Sec. 3.2, printed p. 18 / PDF p. 26: Abelian stabilizer, fixed code space, excluded phases, and |S|=2^(n-k), dim(T)=2^k. The Pauli/Hermitian discussion continues on printed p. 19 / PDF p. 27.",
+          "url": "https://arxiv.org/pdf/quant-ph/9705052v1#page=26"
+        }
+      ],
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-22",
+      "curationBatch": "stabilizer-primary-source-audit-reconstructed-2026-10-22",
+      "theoryRelationship": "Pauli-specific Abelian stabilizer requirement; broader simultaneous-eigenvector generalizations are deliberately excluded.",
+      "sourceIds": [
+        "gottesman-stabilizer-1997"
+      ]
+    },
+    {
+      "id": "stabilizer-projector",
+      "assumptions": [
+        "Finite-dimensional n-qubit Pauli stabilizer code; each chosen generator is a signed Hermitian Pauli operator with g_i^2=I.",
+        "The generators commute and their generated group S excludes -I, so the simultaneous +1 eigenspace is nonzero.",
+        "The displayed list contains r independent stabilizer generators; 0<=r<=n.",
+        "Each factor (I+g_i)/2 is the orthogonal projector onto its +1 eigenspace; mutual commutation makes their product an orthogonal projector."
+      ],
+      "variables": [
+        "P: orthogonal projector onto the code space, with P^2=P=P^dagger.",
+        "I: identity on the 2^n-dimensional physical Hilbert space; r: independent-generator count."
+      ],
+      "regime": "Normalized derivation from the source, not a verbatim displayed equation: expanding the product gives P=2^(-r) sum_{g in S} g. Its rank is 2^(n-r). A redundant consistent generator leaves the projector valid, but raw list length must not be substituted for the independent rank in the dimension formula. The empty product for r=0 is I.",
+      "units": "Dimensionless finite-qubit operator relations; n, r, and k are integer counts where used.",
+      "sourceLocations": [
+        {
+          "sourceId": "gottesman-stabilizer-1997",
+          "locator": "arXiv:quant-ph/9705052v1, Sec. 3.2, printed p. 18 / PDF p. 26: Abelian stabilizer, fixed code space, excluded phases, and |S|=2^(n-k), dim(T)=2^k. The Pauli/Hermitian discussion continues on printed p. 19 / PDF p. 27.",
+          "url": "https://arxiv.org/pdf/quant-ph/9705052v1#page=26"
+        },
+        {
+          "sourceId": "gottesman-stabilizer-1997",
+          "locator": "arXiv:quant-ph/9705052v1, Sec. 4.2, printed p. 33 / PDF p. 41, Eqs. (4.7)-(4.9): unnormalized stabilizer sum equals the product of (I+M_i) and maps into the fixed code space. The factors 1/2 and orthogonal-projector interpretation here are derived explicitly.",
+          "url": "https://arxiv.org/pdf/quant-ph/9705052v1#page=41"
+        }
+      ],
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-22",
+      "curationBatch": "stabilizer-primary-source-audit-reconstructed-2026-10-22",
+      "theoryRelationship": "Explicitly normalized algebraic consequence of primary-source stabilizer sum/product and fixed-space statements; no claim that the thesis prints the normalized formula verbatim.",
+      "sourceIds": [
+        "gottesman-stabilizer-1997"
+      ]
+    },
+    {
+      "id": "stabilizer-dimension",
+      "assumptions": [
+        "Finite-dimensional n-qubit Pauli stabilizer code; each chosen generator is a signed Hermitian Pauli operator with g_i^2=I.",
+        "The generators commute and their generated group S excludes -I, so the simultaneous +1 eigenspace is nonzero.",
+        "r is the rank of an independent generating set, not the number of checks in a possibly redundant list; 0<=r<=n.",
+        "k is the number of logical qubits. The complex Hilbert-space dimension of the code is 2^k=2^(n-r), not k."
+      ],
+      "variables": [
+        "n: number of physical qubits; r: independent stabilizer-generator count; k: number of encoded logical qubits."
+      ],
+      "regime": "Finite binary Pauli stabilizer codes. The exclusion of -I prevents a zero code space. Redundant constraints must be removed when counting r; the relation is not a dimension formula for arbitrary commuting operators or subsystem gauge-generator lists.",
+      "units": "Dimensionless finite-qubit operator relations; n, r, and k are integer counts where used.",
+      "sourceLocations": [
+        {
+          "sourceId": "gottesman-stabilizer-1997",
+          "locator": "arXiv:quant-ph/9705052v1, Sec. 3.2, printed p. 18 / PDF p. 26: Abelian stabilizer, fixed code space, excluded phases, and |S|=2^(n-k), dim(T)=2^k. The Pauli/Hermitian discussion continues on printed p. 19 / PDF p. 27.",
+          "url": "https://arxiv.org/pdf/quant-ph/9705052v1#page=26"
+        }
+      ],
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-22",
+      "curationBatch": "stabilizer-primary-source-audit-reconstructed-2026-10-22",
+      "theoryRelationship": "Rewriting the original thesis relation |S|=2^(n-k) with |S|=2^r; no added formula or new scientific claim.",
+      "sourceIds": [
+        "gottesman-stabilizer-1997"
+      ]
+    },
+    {
+      "id": "logical-anticommute",
+      "assumptions": [
+        "Finite-dimensional n-qubit Pauli stabilizer code; each chosen generator is a signed Hermitian Pauli operator with g_i^2=I.",
+        "The generators commute and their generated group S excludes -I, so the simultaneous +1 eigenspace is nonzero.",
+        "At least one logical qubit is encoded. X_L and Z_L are a complementary pair for the same logical qubit, chosen as Pauli representatives commuting with S and acting nontrivially on the code.",
+        "For toric/surface-code string representatives, the sign is determined by odd parity of shared physical qubits carrying anticommuting Pauli factors. A single transverse primal/dual crossing is the standard toric example, not an assertion about arbitrary drawn curves."
+      ],
+      "variables": [
+        "X_L, Z_L: encoded Pauli X and Z for one chosen logical qubit; L is a logical label.",
+        "N(S)/S: logical Pauli classes, with overall phases handled consistently; multiplication by a stabilizer does not change the encoded action."
+      ],
+      "regime": "The same-logical-qubit pair anticommutes; a canonical choice on different logical qubits commutes. The algebraic relation holds beyond topological codes. Geometric crossing language applies only when the chosen code and physical string supports justify it; even overlap parity gives commutation.",
+      "units": "Dimensionless finite-qubit operator relations; n, r, and k are integer counts where used.",
+      "sourceLocations": [
+        {
+          "sourceId": "gottesman-stabilizer-1997",
+          "locator": "arXiv:quant-ph/9705052v1, Sec. 3.2, printed p. 20 / PDF p. 28, Eqs. (3.10)-(3.13): encoded Pauli commutation across distinct logical labels and anticommutation for a matched pair; normalizer and code-preserving action on printed p. 19 / PDF p. 27.",
+          "url": "https://arxiv.org/pdf/quant-ph/9705052v1#page=28"
+        },
+        {
+          "sourceId": "dennis-surface-2002",
+          "locator": "arXiv:quant-ph/0110143v1 (2001 manuscript underlying the existing 2002 journal source), Sec. III.A, printed/PDF p. 4, Eqs. (1)-(5) and following parity argument: physical Pauli factors and cancellation of two anticommutation signs.",
+          "url": "https://arxiv.org/pdf/quant-ph/0110143v1#page=4"
+        },
+        {
+          "sourceId": "dennis-surface-2002",
+          "locator": "arXiv:quant-ph/0110143v1, Sec. III.A, printed/PDF pp. 5-6, especially Fig. 3 on p. 6: complementary nontrivial primal/dual cycles representing the two logical Pauli pairs. Odd-overlap sign is the explicit Pauli-algebra consequence, not quoted as a separately numbered formula.",
+          "url": "https://arxiv.org/pdf/quant-ph/0110143v1#page=6"
+        }
+      ],
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-22",
+      "curationBatch": "stabilizer-primary-source-audit-reconstructed-2026-10-22",
+      "theoryRelationship": "Matched encoded-Pauli algebra checked directly in Gottesman; toric geometric illustration checked in the original Dennis et al. manuscript, with the parity consequence labeled as a derivation.",
+      "sourceIds": [
+        "dennis-surface-2002",
+        "gottesman-stabilizer-1997"
+      ]
+    }
+  ],
+  "baselineCommit": "9470364ff5f4e3f1e4a0e05a1ace8cd852b2f160",
+  "status": "New reconstructed candidate after loss of earlier local artifacts; not exact-byte recovery or publication.",
+  "before": [
+    {
+      "id": "stabilizer-condition",
+      "name": "Stabilizer-state condition",
+      "category": "Quantum error correction",
+      "latex": "g_i|\\psi\\rangle=|\\psi\\rangle\\quad\\forall g_i\\in\\mathcal S",
+      "plain": "g_i |psi> = |psi>",
+      "description": "A stabilizer state or code lies in the simultaneous +1 eigenspace of its stabilizer generators.",
+      "theoryIds": [
+        "stabilizer-formalism",
+        "quantum-error-correction"
+      ],
+      "sourceIds": [
+        "gottesman-stabilizer-1997"
+      ],
+      "tags": [
+        "stabilizer"
+      ],
+      "formulaType": "defining",
+      "assumptions": [],
+      "variables": [],
+      "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+      "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+      "theoryRelationship": "canonical representative",
+      "metadataReview": "baseline-audit-v1"
+    },
+    {
+      "id": "stabilizer-commute",
+      "name": "Stabilizer-generator commutation",
+      "category": "Quantum error correction",
+      "latex": "[g_i,g_j]=0",
+      "plain": "[g_i,g_j]=0",
+      "description": "Independent stabilizer generators must mutually commute so they can define a common eigenspace.",
+      "theoryIds": [
+        "stabilizer-formalism"
+      ],
+      "sourceIds": [
+        "gottesman-stabilizer-1997"
+      ],
+      "tags": [
+        "stabilizer"
+      ],
+      "formulaType": "canonical",
+      "assumptions": [],
+      "variables": [],
+      "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+      "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+      "theoryRelationship": "canonical representative",
+      "metadataReview": "baseline-audit-v1"
+    },
+    {
+      "id": "stabilizer-projector",
+      "name": "Stabilizer-code projector",
+      "category": "Quantum error correction",
+      "latex": "P=\\prod_{i=1}^{r}\\frac{I+g_i}{2}",
+      "plain": "P = product_i (I+g_i)/2",
+      "description": "Projector onto the common +1 eigenspace of r independent commuting stabilizer generators.",
+      "theoryIds": [
+        "stabilizer-formalism",
+        "quantum-error-correction"
+      ],
+      "sourceIds": [
+        "gottesman-stabilizer-1997"
+      ],
+      "tags": [
+        "projector"
+      ],
+      "formulaType": "canonical",
+      "assumptions": [],
+      "variables": [],
+      "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+      "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+      "theoryRelationship": "canonical representative",
+      "metadataReview": "baseline-audit-v1"
+    },
+    {
+      "id": "stabilizer-dimension",
+      "name": "Stabilizer-code dimension",
+      "category": "Quantum error correction",
+      "latex": "k=n-r",
+      "plain": "k = n-r",
+      "description": "An n-qubit stabilizer code with r independent stabilizer generators encodes k logical qubits.",
+      "theoryIds": [
+        "stabilizer-formalism",
+        "quantum-error-correction"
+      ],
+      "sourceIds": [
+        "gottesman-stabilizer-1997"
+      ],
+      "tags": [
+        "logical qubits"
+      ],
+      "formulaType": "canonical",
+      "assumptions": [],
+      "variables": [],
+      "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+      "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+      "theoryRelationship": "canonical representative",
+      "metadataReview": "baseline-audit-v1"
+    },
+    {
+      "id": "logical-anticommute",
+      "name": "Logical Pauli anticommutation",
+      "category": "Quantum error correction",
+      "latex": "X_LZ_L=-Z_LX_L",
+      "plain": "X_L Z_L = - Z_L X_L",
+      "description": "Logical X and Z operators intersecting once obey Pauli anticommutation.",
+      "theoryIds": [
+        "surface-code",
+        "toric-code",
+        "stabilizer-formalism"
+      ],
+      "sourceIds": [
+        "dennis-surface-2002",
+        "gottesman-stabilizer-1997"
+      ],
+      "tags": [
+        "logical operators"
+      ],
+      "formulaType": "canonical",
+      "assumptions": [],
+      "variables": [],
+      "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+      "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+      "theoryRelationship": "canonical representative",
+      "metadataReview": "baseline-audit-v1"
+    }
+  ],
+  "sources": [
+    {
+      "id": "gottesman-stabilizer-1997",
+      "title": "Stabilizer Codes and Quantum Error Correction",
+      "authors": "Daniel Gottesman",
+      "year": 1997,
+      "type": "primary source",
+      "url": "https://arxiv.org/abs/quant-ph/9705052"
+    },
+    {
+      "id": "dennis-surface-2002",
+      "title": "Topological quantum memory",
+      "authors": "Eric Dennis, Alexei Kitaev, Andrew Landahl, John Preskill",
+      "year": 2002,
+      "type": "primary source",
+      "url": "https://doi.org/10.1063/1.1499754"
+    }
+  ],
+  "sourceRetrievals": [
+    {
+      "url": "https://arxiv.org/pdf/quant-ph/9705052v1",
+      "sha256": "80dcaa0545fd7510b02095b98306d9e24ef67dba766b4f8d2925a7c7e8147e6d",
+      "visuallyCheckedPdfPages": [
+        26,
+        28,
+        41
+      ]
+    },
+    {
+      "url": "https://arxiv.org/pdf/quant-ph/0110143v1",
+      "sha256": "1be59bbc46ec6abd33b1e9bf0ad2e2a5ed905e03337a3f46d89ceaa4e984db59",
+      "visuallyCheckedPdfPages": [
+        4,
+        5,
+        6
+      ]
+    }
+  ]
+}

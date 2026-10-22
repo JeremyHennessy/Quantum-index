@@ -1,5 +1,6 @@
 // Exact reconstruction of accepted 4bdc096 bytes for historical assertions only.
 import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';
+import {projectPreCombined} from './combined-baseline.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),ledger=JSON.parse(fs.readFileSync(new URL('../research/INFORMATION_INTEGRITY_2026-10-21.json',import.meta.url))),hash=b=>createHash('sha256').update(b).digest('hex');
-export function projectPreInformation(bytes,relative){const e=ledger.files[relative];if(!e)return bytes;assert.equal(hash(bytes),e.afterSha256,relative+': undeclared information-audit mutation');const before=Buffer.from(e.beforeText);assert.equal(hash(before),e.beforeSha256,relative+': immutable accepted bytes');return before;}
+export function projectPreInformation(bytes,relative){bytes=projectPreCombined(bytes,relative);const e=ledger.files[relative];if(!e)return bytes;assert.equal(hash(bytes),e.afterSha256,relative+': undeclared information-audit mutation');const before=Buffer.from(e.beforeText);assert.equal(hash(before),e.beforeSha256,relative+': immutable accepted bytes');return before;}
 export function readPreInformationFile(file,options){const relative=path.relative(root,file instanceof URL?fileURLToPath(file):path.resolve(file)),bytes=projectPreInformation(fs.readFileSync(file),relative),enc=typeof options==='string'?options:options?.encoding;return enc?bytes.toString(enc):bytes;}

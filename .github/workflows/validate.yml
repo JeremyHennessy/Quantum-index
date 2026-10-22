@@ -75,6 +75,7 @@ jobs:
 
   map-diagnostic:
     runs-on: ubuntu-latest
+    container: mcr.microsoft.com/playwright/python:v1.63.0-noble@sha256:72bd171a9ffc2b4b59532aaa6210e21014d07093120dc25528870c0b840da1f0
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
@@ -82,7 +83,11 @@ jobs:
         with:
           node-version: "22"
       - run: npm ci --ignore-scripts
-      - run: npx playwright install --with-deps chromium webkit
+      - name: Verify pinned browser environment
+        run: |
+          python3 --version
+          node --version
+          node -e "const p=require('@playwright/test'); if(require('@playwright/test/package.json').version!=='1.63.0') throw Error('Update the pinned CI image with Playwright'); for(const name of ['chromium','webkit']) {const file=p[name].executablePath(); if(!require('node:fs').existsSync(file)) throw Error('Missing preinstalled '+name+': '+file); console.log(name+': '+file);}"
       - name: Exercise map gestures before the full catalog suite
         run: npx playwright test tests/browser/map-interactions.spec.mjs --repeat-each=2 --retries=0
       - uses: actions/upload-artifact@v4
@@ -96,6 +101,7 @@ jobs:
 
   qa-diagnostic:
     runs-on: ubuntu-latest
+    container: mcr.microsoft.com/playwright/python:v1.63.0-noble@sha256:72bd171a9ffc2b4b59532aaa6210e21014d07093120dc25528870c0b840da1f0
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
@@ -103,7 +109,11 @@ jobs:
         with:
           node-version: "22"
       - run: npm ci --ignore-scripts
-      - run: npx playwright install --with-deps chromium webkit
+      - name: Verify pinned browser environment
+        run: |
+          python3 --version
+          node --version
+          node -e "const p=require('@playwright/test'); if(require('@playwright/test/package.json').version!=='1.63.0') throw Error('Update the pinned CI image with Playwright'); for(const name of ['chromium','webkit']) {const file=p[name].executablePath(); if(!require('node:fs').existsSync(file)) throw Error('Missing preinstalled '+name+': '+file); console.log(name+': '+file);}"
       - name: Exercise files filters and analytics before the full catalog suite
         run: npx playwright test tests/browser/workspace-files.spec.mjs tests/browser/filter-controls.spec.mjs tests/browser/analytics.spec.mjs tests/browser/branch-return.spec.mjs --retries=0
       - uses: actions/upload-artifact@v4
@@ -118,6 +128,7 @@ jobs:
   browser:
     needs: [map-diagnostic, qa-diagnostic]
     runs-on: ubuntu-latest
+    container: mcr.microsoft.com/playwright/python:v1.63.0-noble@sha256:72bd171a9ffc2b4b59532aaa6210e21014d07093120dc25528870c0b840da1f0
     # Full-catalog MathJax checks plus per-record Chromium/WebKit provenance tests.
     timeout-minutes: 35
     steps:
@@ -126,7 +137,11 @@ jobs:
         with:
           node-version: "22"
       - run: npm ci --ignore-scripts
-      - run: npx playwright install --with-deps chromium webkit
+      - name: Verify pinned browser environment
+        run: |
+          python3 --version
+          node --version
+          node -e "const p=require('@playwright/test'); if(require('@playwright/test/package.json').version!=='1.63.0') throw Error('Update the pinned CI image with Playwright'); for(const name of ['chromium','webkit']) {const file=p[name].executablePath(); if(!require('node:fs').existsSync(file)) throw Error('Missing preinstalled '+name+': '+file); console.log(name+': '+file);}"
       - run: npm run test:browser
       - uses: actions/upload-artifact@v4
         if: always()
