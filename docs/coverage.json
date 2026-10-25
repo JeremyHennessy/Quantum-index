@@ -7,7 +7,7 @@
   "evidenceRecords": 21,
   "researchQuestions": 60,
   "categories": 14,
-  "sources": 601,
+  "sources": 603,
   "primarySourced": 354,
   "reviewSourced": 129,
   "cataloguedOnly": 0,
@@ -25,8 +25,8 @@
   "conceptual": 16,
   "theorems": 18,
   "thoughtExperiments": 1,
-  "explicitFormulaMetadata": 265,
-  "baselineFormulaMetadata": 192,
+  "explicitFormulaMetadata": 268,
+  "baselineFormulaMetadata": 189,
   "developmentEvents": 16,
   "newestDevelopmentYear": 2026
 }

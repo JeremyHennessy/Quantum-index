@@ -8,18 +8,22 @@ Updated 21 October 2026. This is the single continuation entry point; dated rele
 - **62** cited reading profiles and **7** learning paths
 - **35** Theory Passports, **9** scientific Problems, **21** Evidence records and **60** structured Research Questions
 - **483** theory/framework entities across **14** categories
-- **601** bibliography records
+- **603** bibliography records
 - **354** primary-sourced; **129** review-sourced; **0** catalogued-only entries
 - **614** relationships: **130** source-backed; **484** editorial
 - **41** thought trees
 - **457** formulas across **30** categories
 - **323** entries with linked formulas; **114** documented formula gaps
 - Other audit classes: **11** interpretations, **16** conceptual, **18** theorem-first, **1** thought experiment
-- Formula metadata: **265** explicitly reviewed; **192** baseline records
+- Formula metadata: **268** explicitly reviewed; **189** baseline records
 - **16** reviewed DevelopmentEvents through **2026**
 
 Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.
 <!-- coverage:end -->
+
+## Thermodynamics source audit — 25 October 2026 candidate
+
+Three existing cards (Gibbs state, quantum Jarzynski equality and Landauer bound) receive source-located scope metadata; the Landauer role is corrected from an identity label to a canonical lower-bound inequality. Equations, theory links, graph relationships and empirical Evidence are unchanged. Two primary references are appended. See [the bounded release note](RELEASE_THERMAL_CURATION_2026-10-25.md). This is a draft candidate, not a merged or deployed release; exact-head browser checks and separate merge authorization are still required. Academic-roadmap PR #87 remains separate.
 
 ## Accepted release baseline: 21 October 2026
 
