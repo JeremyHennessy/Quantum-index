@@ -20,7 +20,7 @@ Versioned PDF downloads returned PDF magic and independent hashes listed in the 
 
 ## Independent mathematical spot checks
 
-132 Python assertions passed (reproduce with `python /tmp/quantum-thermal-math-check.py`): Gibbs positivity/normalization and constant-energy-shift invariance; driven two-level TPM Jarzynski checks; partial-swap heat/entropy identity; and three counterexamples/limits.
+132 Python assertions passed (reproduce with `python scripts/thermal-math-check.py`): Gibbs positivity/normalization and constant-energy-shift invariance; driven two-level TPM Jarzynski checks; full-SWAP partial-erasure heat/entropy identity; and three counterexamples/limits.
 
 For H_i = sigma_z, H_f = sigma_x, U = I and beta = 1, the TPM exponential average is 1, while Tr[rho_i exp(-(H_f-H_i))] is about 1.136. This rejects a generic “work is one observable” replacement. A coupled two-qubit Gibbs marginal differs from the bare-zero-Hamiltonian Gibbs state. A biased bit has less than ln 2 entropy. These are bounded algebraic fixtures, not experiments or completeness proofs.
 
