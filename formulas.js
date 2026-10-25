@@ -13859,3 +13859,113 @@ for(const patch of [
     "curationBatch": "bohm-source-metadata-2026-10-22"
   }
 ];for(const p of patches){const f=window.QI_FORMULAS.formulas.find(f=>f.id===p.id);if(!f)throw new Error("Unknown Bohm formula "+p.id);Object.assign(f,p);}})();
+
+// Source-qualified thermodynamics scope; equations and associations are preserved.
+(()=>{const patches=[
+  {
+    "id": "gibbs-state",
+    "assumptions": [
+      "H is a Hermitian Hamiltonian on a finite-dimensional Hilbert space; the canonical ensemble is specified by H and inverse temperature beta.",
+      "This is a state definition, not a claim that arbitrary open-system dynamics equilibrates to it."
+    ],
+    "variables": [
+      "rho_beta: normalized canonical density operator; H: system Hamiltonian.",
+      "beta = 1/(k_B T): inverse energy for the positive-temperature regime; Z: partition function."
+    ],
+    "regime": "Finite-dimensional canonical ensemble at T > 0. Infinite-dimensional use additionally requires a finite partition function; a reduced interacting state need not be the Gibbs state of its bare Hamiltonian.",
+    "units": "H and k_B T have energy units, beta has inverse-energy units, and beta H, Z and rho_beta are dimensionless.",
+    "theoryRelationship": "Canonical state used to initialize the source-qualified quantum work identity; existing review provenance is retained.",
+    "sourceIds": [
+      "quantum-thermo-review",
+      "tasaki-jarzynski-2000"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "tasaki-jarzynski-2000",
+        "locator": "Sec. 2.1, printed/PDF pp. 1–2, Eq. (2.1) and partition function immediately following it.",
+        "url": "https://arxiv.org/pdf/cond-mat/0009244v2#page=2"
+      },
+      {
+        "sourceId": "quantum-thermo-review",
+        "locator": "Sec. II.C, printed/PDF p. 8: weak-coupling condition and discussion that a reduced interacting Gibbs state need not have Gibbs form for the subsystem Hamiltonian.",
+        "url": "https://arxiv.org/pdf/1505.07835v3#page=8"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-25",
+    "curationBatch": "thermal-source-audit-2026-10-25"
+  },
+  {
+    "id": "jarzynski",
+    "assumptions": [
+      "An initially canonical finite-dimensional system undergoes a fixed unitary driving protocol from H_i to H_f; the initial inverse temperature is beta.",
+      "W = E_m^f - E_n^i is work done on the system in the two-projective-energy-measurement distribution, not a generic single-time work observable."
+    ],
+    "variables": [
+      "Angle brackets: average over p(n,m) = exp(-beta E_n^i) |<m_f|U|n_i>|^2 / Z_i.",
+      "Delta F = -(1/beta) ln(Z_f/Z_i): equilibrium free-energy difference at the same beta; the final actual state need not be thermal."
+    ],
+    "regime": "Closed-system quantum work identity under the stated protocol. Arbitrary initial states, feedback-conditioned protocols and arbitrary open channels require separate conditions or modified relations.",
+    "units": "W and Delta F have energy units; beta = 1/(k_B T), so both exponential arguments are dimensionless.",
+    "theoryRelationship": "Tasaki Eq. (2.7) with beta-tilde = beta gives the preserved equation; the existing review supplies the explicit two-measurement work convention.",
+    "sourceIds": [
+      "quantum-thermo-review",
+      "tasaki-jarzynski-2000"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "tasaki-jarzynski-2000",
+        "locator": "Sec. 2.1–2.2, printed/PDF p. 2, Eqs. (2.4)–(2.7); set beta-tilde = beta in Eq. (2.7).",
+        "url": "https://arxiv.org/pdf/cond-mat/0009244v2#page=2"
+      },
+      {
+        "sourceId": "quantum-thermo-review",
+        "locator": "Sec. V.A, printed/PDF p. 21, Eqs. (16)–(20): joint energy-measurement statistics, work, free energy and equality.",
+        "url": "https://arxiv.org/pdf/1505.07835v3#page=21"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-25",
+    "curationBatch": "thermal-source-audit-2026-10-25"
+  },
+  {
+    "id": "landauer",
+    "formulaType": "canonical",
+    "assumptions": [
+      "The ln 2 specialization refers to resetting an initially unbiased classical bit (or maximally mixed qubit) to a fixed pure logical state.",
+      "The reservoir initially has a Gibbs state at T > 0, is uncorrelated with the memory, and memory plus reservoir undergo unitary evolution with all relevant resources included."
+    ],
+    "variables": [
+      "Q: average heat deposited in the reservoir, positive for an increase of its energy.",
+      "k_B: Boltzmann constant; T: initial reservoir temperature; ln 2: one-bit entropy decrease measured in nats."
+    ],
+    "regime": "Lower-bound inequality, not an equality. Biased or incomplete erasure uses the actual entropy decrease instead of ln 2. Exact pure reset from a full-rank state is impossible with a finite-dimensional finite-temperature reservoir; the displayed ideal reset cost is a limiting benchmark, not automatic finite-bath attainability.",
+    "units": "Q and k_B T have energy units. Natural logarithms are used; information entropy is dimensionless here.",
+    "theoryRelationship": "One-bit specialization of the source-qualified entropy-decrease bound; existing review provenance is retained. It is not a universal cost for every logical operation.",
+    "sourceIds": [
+      "quantum-thermo-review",
+      "reeb-wolf-landauer-2014"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "reeb-wolf-landauer-2014",
+        "locator": "Sec. 2.1, printed/PDF pp. 3–5, assumptions (a)–(d) and Eqs. (7)–(8); Theorem 3, p. 9, Eqs. (22)–(23).",
+        "url": "https://arxiv.org/pdf/1306.4352v3#page=9"
+      },
+      {
+        "sourceId": "reeb-wolf-landauer-2014",
+        "locator": "Sec. 3.2–3.3, printed/PDF pp. 10–12, Corollary 4 and Proposition 5; Sec. 6, pp. 21–22, limiting approach.",
+        "url": "https://arxiv.org/pdf/1306.4352v3#page=11"
+      },
+      {
+        "sourceId": "quantum-thermo-review",
+        "locator": "Example 3, printed/PDF p. 16: completely unknown bit, ideal heat-bath limit, and erasure with partial information.",
+        "url": "https://arxiv.org/pdf/1505.07835v3#page=16"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-25",
+    "curationBatch": "thermal-source-audit-2026-10-25"
+  }
+];
+for(const patch of patches){const record=window.QI_FORMULAS.formulas.find(item=>item.id===patch.id);if(!record||record.metadataReview!=="baseline-audit-v1")throw new Error("Unexpected thermodynamics audit baseline: "+patch.id);Object.assign(record,patch);}})();

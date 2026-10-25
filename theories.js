@@ -3465,3 +3465,25 @@ window.QI_DATA.sources.push({
   "type": "primary source",
   "url": "https://arxiv.org/abs/1803.04647v1"
 };if(window.QI_DATA.sources.some(s=>s.id===source.id))throw new Error("Duplicate symplectic source");window.QI_DATA.sources.push(source);})();
+
+// Versioned primary sources for three existing thermodynamics formula cards.
+(()=>{const sources=[
+  {
+    "id": "tasaki-jarzynski-2000",
+    "title": "Jarzynski Relations for Quantum Systems and Some Applications (arXiv:cond-mat/0009244v2)",
+    "authors": "Hal Tasaki",
+    "year": 2000,
+    "type": "primary source",
+    "url": "https://arxiv.org/abs/cond-mat/0009244v2"
+  },
+  {
+    "id": "reeb-wolf-landauer-2014",
+    "title": "An improved Landauer Principle with finite-size corrections (arXiv:1306.4352v3)",
+    "authors": "David Reeb and Michael M. Wolf",
+    "year": 2014,
+    "type": "primary source",
+    "url": "https://arxiv.org/abs/1306.4352v3",
+    "doi": "10.1088/1367-2630/16/10/103011"
+  }
+];
+for(const source of sources){if(window.QI_DATA.sources.some(item=>item.id===source.id))throw new Error("Duplicate thermodynamics source: "+source.id);window.QI_DATA.sources.push(source);}})();

@@ -1,3 +1,4 @@
+import {readPreThermalFile} from './thermal-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -8,7 +9,7 @@ import {readPreCombinedFile,projectPreCombined,projectPreCiEnvironment} from './
 const audit=JSON.parse(fs.readFileSync('research/SYMPLECTIC_CORRECTION_2026-10-22.json'));
 const ledger=JSON.parse(fs.readFileSync('research/COMBINED_INTEGRITY_2026-10-22.json'));
 const stab=JSON.parse(fs.readFileSync('research/STABILIZER_SOURCE_AUDIT_2026-10-22.json')),gkp=JSON.parse(fs.readFileSync('research/GKP_SOURCE_AUDIT_2026-10-22.json')),cvAudit=JSON.parse(fs.readFileSync('research/CV_SOURCE_AUDIT_2026-10-22.json')),weakAudit=JSON.parse(fs.readFileSync('research/WEAK_VALUE_CITATION_REVIEW_2026-10-22.json')),bohmAudit=JSON.parse(fs.readFileSync('research/BOHM_SOURCE_AUDIT_2026-10-22.json')),patches=[audit.patch,...stab.patches,...gkp.patches,...cvAudit.patches,weakAudit.patch,...bohmAudit.patches];
-const current=loadRuntime(), sandbox={window:{}};
+const current=(()=>{const s={window:{}};vm.createContext(s);for(const f of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','passports.js'])vm.runInContext(readPreThermalFile(f,'utf8'),s);return s.window;})(), sandbox={window:{}};
 vm.createContext(sandbox);
 for(const f of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','passports.js']) vm.runInContext(readPreCombinedFile(f,'utf8'),sandbox);
 const old=sandbox.window,plain=x=>JSON.parse(JSON.stringify(x));

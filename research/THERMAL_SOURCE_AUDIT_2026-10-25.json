@@ -1,0 +1,246 @@
+{
+  "baseline": "ea3bcdb95d39cace2dee6afc264f7cd5523a88b6",
+  "reviewedAt": "2026-10-25",
+  "batch": "thermal-source-audit-2026-10-25",
+  "scope": "Three existing metadata records only; all equations, IDs, theory links and original source links preserved. Landauer formulaType deliberately changes from derived identity to canonical because it is an inequality and the schema has no inequality role.",
+  "before": [
+    {
+      "id": "gibbs-state",
+      "name": "Quantum Gibbs state",
+      "category": "Quantum thermodynamics",
+      "latex": "\\rho_\\beta=\\frac{e^{-\\beta H}}{Z},\\quad Z=\\operatorname{Tr}(e^{-\\beta H})",
+      "plain": "rho_beta=e^-betaH/Z",
+      "description": "Thermal equilibrium state at inverse temperature beta.",
+      "theoryIds": [
+        "quantum-thermodynamics",
+        "open-quantum-systems"
+      ],
+      "sourceIds": [
+        "quantum-thermo-review"
+      ],
+      "tags": [
+        "thermal state"
+      ],
+      "formulaType": "defining",
+      "assumptions": [],
+      "variables": [],
+      "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+      "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+      "theoryRelationship": "canonical representative",
+      "metadataReview": "baseline-audit-v1"
+    },
+    {
+      "id": "jarzynski",
+      "name": "Jarzynski equality",
+      "category": "Quantum thermodynamics",
+      "latex": "\\langle e^{-\\beta W}\\rangle=e^{-\\beta\\Delta F}",
+      "plain": "<exp(-beta W)>=exp(-beta Delta F)",
+      "description": "Nonequilibrium work identity that also has quantum formulations.",
+      "theoryIds": [
+        "quantum-thermodynamics",
+        "quantum-fluctuation-relations"
+      ],
+      "sourceIds": [
+        "quantum-thermo-review"
+      ],
+      "tags": [
+        "fluctuation theorem"
+      ],
+      "formulaType": "derived identity",
+      "assumptions": [],
+      "variables": [],
+      "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+      "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+      "theoryRelationship": "canonical representative",
+      "metadataReview": "baseline-audit-v1"
+    },
+    {
+      "id": "landauer",
+      "name": "Landauer bound",
+      "category": "Quantum thermodynamics",
+      "latex": "Q\\ge k_BT\\ln2",
+      "plain": "Q >= k_B T ln 2",
+      "description": "Minimum heat cost associated with erasing one classical bit under standard assumptions.",
+      "theoryIds": [
+        "quantum-thermodynamics",
+        "quantum-information"
+      ],
+      "sourceIds": [
+        "quantum-thermo-review"
+      ],
+      "tags": [
+        "Landauer"
+      ],
+      "formulaType": "derived identity",
+      "assumptions": [],
+      "variables": [],
+      "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+      "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+      "theoryRelationship": "canonical representative",
+      "metadataReview": "baseline-audit-v1"
+    }
+  ],
+  "patches": [
+    {
+      "id": "gibbs-state",
+      "assumptions": [
+        "H is a Hermitian Hamiltonian on a finite-dimensional Hilbert space; the canonical ensemble is specified by H and inverse temperature beta.",
+        "This is a state definition, not a claim that arbitrary open-system dynamics equilibrates to it."
+      ],
+      "variables": [
+        "rho_beta: normalized canonical density operator; H: system Hamiltonian.",
+        "beta = 1/(k_B T): inverse energy for the positive-temperature regime; Z: partition function."
+      ],
+      "regime": "Finite-dimensional canonical ensemble at T > 0. Infinite-dimensional use additionally requires a finite partition function; a reduced interacting state need not be the Gibbs state of its bare Hamiltonian.",
+      "units": "H and k_B T have energy units, beta has inverse-energy units, and beta H, Z and rho_beta are dimensionless.",
+      "theoryRelationship": "Canonical state used to initialize the source-qualified quantum work identity; existing review provenance is retained.",
+      "sourceIds": [
+        "quantum-thermo-review",
+        "tasaki-jarzynski-2000"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "tasaki-jarzynski-2000",
+          "locator": "Sec. 2.1, printed/PDF pp. 1–2, Eq. (2.1) and partition function immediately following it.",
+          "url": "https://arxiv.org/pdf/cond-mat/0009244v2#page=2"
+        },
+        {
+          "sourceId": "quantum-thermo-review",
+          "locator": "Sec. II.C, printed/PDF p. 8: weak-coupling condition and discussion that a reduced interacting Gibbs state need not have Gibbs form for the subsystem Hamiltonian.",
+          "url": "https://arxiv.org/pdf/1505.07835v3#page=8"
+        }
+      ],
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-25",
+      "curationBatch": "thermal-source-audit-2026-10-25"
+    },
+    {
+      "id": "jarzynski",
+      "assumptions": [
+        "An initially canonical finite-dimensional system undergoes a fixed unitary driving protocol from H_i to H_f; the initial inverse temperature is beta.",
+        "W = E_m^f - E_n^i is work done on the system in the two-projective-energy-measurement distribution, not a generic single-time work observable."
+      ],
+      "variables": [
+        "Angle brackets: average over p(n,m) = exp(-beta E_n^i) |<m_f|U|n_i>|^2 / Z_i.",
+        "Delta F = -(1/beta) ln(Z_f/Z_i): equilibrium free-energy difference at the same beta; the final actual state need not be thermal."
+      ],
+      "regime": "Closed-system quantum work identity under the stated protocol. Arbitrary initial states, feedback-conditioned protocols and arbitrary open channels require separate conditions or modified relations.",
+      "units": "W and Delta F have energy units; beta = 1/(k_B T), so both exponential arguments are dimensionless.",
+      "theoryRelationship": "Tasaki Eq. (2.7) with beta-tilde = beta gives the preserved equation; the existing review supplies the explicit two-measurement work convention.",
+      "sourceIds": [
+        "quantum-thermo-review",
+        "tasaki-jarzynski-2000"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "tasaki-jarzynski-2000",
+          "locator": "Sec. 2.1–2.2, printed/PDF p. 2, Eqs. (2.4)–(2.7); set beta-tilde = beta in Eq. (2.7).",
+          "url": "https://arxiv.org/pdf/cond-mat/0009244v2#page=2"
+        },
+        {
+          "sourceId": "quantum-thermo-review",
+          "locator": "Sec. V.A, printed/PDF p. 21, Eqs. (16)–(20): joint energy-measurement statistics, work, free energy and equality.",
+          "url": "https://arxiv.org/pdf/1505.07835v3#page=21"
+        }
+      ],
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-25",
+      "curationBatch": "thermal-source-audit-2026-10-25"
+    },
+    {
+      "id": "landauer",
+      "formulaType": "canonical",
+      "assumptions": [
+        "The ln 2 specialization refers to resetting an initially unbiased classical bit (or maximally mixed qubit) to a fixed pure logical state.",
+        "The reservoir initially has a Gibbs state at T > 0, is uncorrelated with the memory, and memory plus reservoir undergo unitary evolution with all relevant resources included."
+      ],
+      "variables": [
+        "Q: average heat deposited in the reservoir, positive for an increase of its energy.",
+        "k_B: Boltzmann constant; T: initial reservoir temperature; ln 2: one-bit entropy decrease measured in nats."
+      ],
+      "regime": "Lower-bound inequality, not an equality. Biased or incomplete erasure uses the actual entropy decrease instead of ln 2. Exact pure reset from a full-rank state is impossible with a finite-dimensional finite-temperature reservoir; the displayed ideal reset cost is a limiting benchmark, not automatic finite-bath attainability.",
+      "units": "Q and k_B T have energy units. Natural logarithms are used; information entropy is dimensionless here.",
+      "theoryRelationship": "One-bit specialization of the source-qualified entropy-decrease bound; existing review provenance is retained. It is not a universal cost for every logical operation.",
+      "sourceIds": [
+        "quantum-thermo-review",
+        "reeb-wolf-landauer-2014"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "reeb-wolf-landauer-2014",
+          "locator": "Sec. 2.1, printed/PDF pp. 3–5, assumptions (a)–(d) and Eqs. (7)–(8); Theorem 3, p. 9, Eqs. (22)–(23).",
+          "url": "https://arxiv.org/pdf/1306.4352v3#page=9"
+        },
+        {
+          "sourceId": "reeb-wolf-landauer-2014",
+          "locator": "Sec. 3.2–3.3, printed/PDF pp. 10–12, Corollary 4 and Proposition 5; Sec. 6, pp. 21–22, limiting approach.",
+          "url": "https://arxiv.org/pdf/1306.4352v3#page=11"
+        },
+        {
+          "sourceId": "quantum-thermo-review",
+          "locator": "Example 3, printed/PDF p. 16: completely unknown bit, ideal heat-bath limit, and erasure with partial information.",
+          "url": "https://arxiv.org/pdf/1505.07835v3#page=16"
+        }
+      ],
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-25",
+      "curationBatch": "thermal-source-audit-2026-10-25"
+    }
+  ],
+  "sources": [
+    {
+      "id": "tasaki-jarzynski-2000",
+      "title": "Jarzynski Relations for Quantum Systems and Some Applications (arXiv:cond-mat/0009244v2)",
+      "authors": "Hal Tasaki",
+      "year": 2000,
+      "type": "primary source",
+      "url": "https://arxiv.org/abs/cond-mat/0009244v2"
+    },
+    {
+      "id": "reeb-wolf-landauer-2014",
+      "title": "An improved Landauer Principle with finite-size corrections (arXiv:1306.4352v3)",
+      "authors": "David Reeb and Michael M. Wolf",
+      "year": 2014,
+      "type": "primary source",
+      "url": "https://arxiv.org/abs/1306.4352v3",
+      "doi": "10.1088/1367-2630/16/10/103011"
+    }
+  ],
+  "sourceEvidence": [
+    {
+      "sourceId": "tasaki-jarzynski-2000",
+      "url": "https://arxiv.org/pdf/cond-mat/0009244v2",
+      "version": "v2, 2000-09-25",
+      "byteLength": 158006,
+      "sha256": "902309e94ac629ac8affa83b57a9c39d3d3e153735864a2ad67dc90d75a3a5a6",
+      "retrievedAt": "2026-10-25",
+      "contentType": "application/pdf",
+      "inspection": "Versioned PDF text; equations and neighboring assumptions inspected. PDF bytes independently retrieved and hashed; PDFs not bundled."
+    },
+    {
+      "sourceId": "reeb-wolf-landauer-2014",
+      "url": "https://arxiv.org/pdf/1306.4352v3",
+      "version": "v3, 2014-10-11",
+      "byteLength": 666485,
+      "sha256": "18539e266db33cb8934113cfa423d861281b59f3235eb81c8d373d6397db2fba",
+      "retrievedAt": "2026-10-25",
+      "contentType": "application/pdf",
+      "inspection": "Versioned PDF text; equations and neighboring assumptions inspected. PDF bytes independently retrieved and hashed; PDFs not bundled."
+    },
+    {
+      "sourceId": "quantum-thermo-review",
+      "url": "https://arxiv.org/pdf/1505.07835v3",
+      "version": "v3, 2016-08-26",
+      "byteLength": 1536088,
+      "sha256": "055b7441287bccc7ff27a3a76363eac9344e2dd047db5142c6cd5ff4574d2498",
+      "retrievedAt": "2026-10-25",
+      "contentType": "application/pdf",
+      "inspection": "Versioned PDF text; equations and neighboring assumptions inspected. PDF bytes independently retrieved and hashed; PDFs not bundled."
+    }
+  ],
+  "requiredEquationChanges": [],
+  "reviewLimits": [
+    "Only the listed source versions and locators were inspected.",
+    "This is source/metadata curation, not experimental evidence, a discovery, or a complete scientific review of every linked theory."
+  ]
+}
