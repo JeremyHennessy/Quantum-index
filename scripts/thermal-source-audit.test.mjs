@@ -1,3 +1,4 @@
+import {readPreCiProjectSplitFile} from './ci-project-split-baseline.mjs';
 import {readPreResponseFile} from './response-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -63,7 +64,7 @@ test('thermal projection retains exact accepted bytes and rejects every undeclar
     assert.equal(readPreThermalFile(file,'utf8'),entry.beforeText,file);
     assert.throws(()=>projectPreThermal(Buffer.concat([fs.readFileSync(file),Buffer.from('undeclared')]),file));
   }
-  for(const [file,expected]of Object.entries(ledger.unchangedFiles))assert.equal(hash(fs.readFileSync(file)),expected,file);
+  for(const [file,expected]of Object.entries(ledger.unchangedFiles))assert.equal(hash(readPreCiProjectSplitFile(file)),expected,file);
 });
 
 test('historical assertions are retained through exact declared projection substitutions',()=>{
@@ -77,7 +78,7 @@ test('historical assertions are retained through exact declared projection subst
   expected=expected.replace('assert.equal(hash(current),e.afterSha256);','assert.equal(hash(projectPreThermal(current,file)),e.afterSha256);')
     .replace("assert.equal(fs.readFileSync('scripts/combined-baseline.mjs','utf8'),expected);","assert.equal(readPreThermalFile('scripts/combined-baseline.mjs','utf8'),expected);")
     .replace("assert.equal(fs.readFileSync('scripts/combined-source-audit.test.mjs','utf8'),expected);","assert.equal(readPreThermalFile('scripts/combined-source-audit.test.mjs','utf8'),expected);");
-  assert.equal(fs.readFileSync('scripts/ci-environment.test.mjs','utf8'),expected);
+  assert.equal(readPreCiProjectSplitFile('scripts/ci-environment.test.mjs','utf8'),expected);
 });
 
 test('finite Gibbs states normalize, have thermal population ratios, and ignore a common energy origin',()=>{

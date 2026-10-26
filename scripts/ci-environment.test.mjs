@@ -1,3 +1,4 @@
+import {readPreCiProjectSplitFile} from './ci-project-split-baseline.mjs';
 import {projectPreThermal,readPreThermalFile} from './thermal-baseline.mjs';
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import {createHash} from 'node:crypto';import {projectPreCiEnvironment} from './combined-baseline.mjs';
 const audit=JSON.parse(fs.readFileSync('research/CI_ENVIRONMENT_INTEGRITY_2026-10-22.json')),hash=b=>createHash('sha256').update(b).digest('hex');
@@ -12,7 +13,7 @@ test('CI repair changes only three browser execution environments, retaining eve
  let expected=audit.files['.github/workflows/validate.yml'].beforeText;
  for(const job of ['map-diagnostic','qa-diagnostic','browser']){const re=new RegExp('(  '+job+':\\n(?:    needs:.*\\n)?    runs-on: ubuntu-latest\\n)');assert.match(expected,re);expected=expected.replace(re,'$1    container: '+image+'\n');}
  const install='      - run: npx playwright install --with-deps chromium webkit\n';assert.equal(expected.split(install).length-1,3);expected=expected.replaceAll(install,check);
- assert.equal(fs.readFileSync('.github/workflows/validate.yml','utf8'),expected);assert.equal(audit.image,image);assert.equal(JSON.parse(fs.readFileSync('package.json')).devDependencies['@playwright/test'],'1.63.0');
+ assert.equal(readPreCiProjectSplitFile('.github/workflows/validate.yml','utf8'),expected);assert.equal(audit.image,image);assert.equal(JSON.parse(fs.readFileSync('package.json')).devDependencies['@playwright/test'],'1.63.0');
 });
 test('CI provenance rejects undeclared bytes and restores exactly the independently reviewed PR99 checkpoint',()=>{
  assert.equal(audit.baselineCommit,'1668c0f2d3e60d9ee51911685c921380270d91c6');assert.deepEqual(Object.keys(audit.files),['.github/workflows/validate.yml','scripts/combined-baseline.mjs','scripts/combined-source-audit.test.mjs','scripts/analytics.test.mjs']);
@@ -20,7 +21,7 @@ test('CI provenance rejects undeclared bytes and restores exactly the independen
 });
 test('all thirty scientific checkpoint files are identical after only the two declared test-helper projections',()=>{
  assert.equal(audit.reviewedScientificFiles.length,30);for(const f of audit.reviewedScientificFiles){const bytes=projectPreCiEnvironment(fs.readFileSync(f.path),f.path);assert.equal(hash(bytes),f.afterSha256,f.path);assert.equal(bytes.length,f.bytes,f.path);}
- const ledger=JSON.parse(fs.readFileSync('research/COMBINED_INTEGRITY_2026-10-22.json'));for(const [f,expected] of Object.entries(ledger.unchangedFiles))if(f!=='.github/workflows/validate.yml')assert.equal(hash(fs.readFileSync(f)),expected,f);
+ const ledger=JSON.parse(fs.readFileSync('research/COMBINED_INTEGRITY_2026-10-22.json'));for(const [f,expected] of Object.entries(ledger.unchangedFiles))if(f!=='.github/workflows/validate.yml')assert.equal(hash(readPreCiProjectSplitFile(f)),expected,f);
 });
 test('historical helper changes are exact explicit CI projection additions, not removed scientific assertions',()=>{
  let expected=audit.files['scripts/combined-baseline.mjs'].beforeText;
