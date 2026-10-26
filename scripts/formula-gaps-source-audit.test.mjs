@@ -1,3 +1,4 @@
+import {readPreCiProjectSplitFile} from './ci-project-split-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -102,13 +103,13 @@ test('registration fails closed before modifying runtime for duplicate IDs, chan
 test('serial gap, response and thermal projections restore exact checkpoints and reject undeclared or stale input bytes',()=>{
   assert.equal(ledger.baselineCommit,audit.baselineCommit);assert.equal(ledger.baselineTree,audit.baselineTree);
   for(const [file,entry]of Object.entries(ledger.files)){
-    const raw=fs.readFileSync(file);assert.equal(hash(raw),entry.afterSha256,file);
+    const raw=fs.readFileSync(file);assert.equal(hash(readPreCiProjectSplitFile(file)),entry.afterSha256,file);
     assert.equal(hash(readPreFormulaGapsFile(file)),entry.beforeSha256,file);assert.equal(readPreFormulaGapsFile(file,'utf8'),entry.beforeText,file);
-    assert.throws(()=>projectPreFormulaGaps(Buffer.concat([raw,Buffer.from('undeclared')]),file),/undeclared formula-gap integration mutation/);
-    assert.throws(()=>projectPreFormulaGaps(Buffer.from(entry.beforeText),file),/undeclared formula-gap integration mutation/);
+    assert.throws(()=>projectPreFormulaGaps(Buffer.concat([raw,Buffer.from('undeclared')]),file),/undeclared (?:formula-gap integration|CI project-split) mutation/);
+    assert.throws(()=>projectPreFormulaGaps(Buffer.from(entry.beforeText),file),/undeclared (?:formula-gap integration|CI project-split) mutation/);
   }
-  for(const [file,expected]of Object.entries(ledger.unchangedFiles))assert.equal(hash(fs.readFileSync(file)),expected,file);
-  for(const [file,expected]of Object.entries(ledger.newFiles))assert.equal(hash(fs.readFileSync(file)),expected,file);
+  for(const [file,expected]of Object.entries(ledger.unchangedFiles))assert.equal(hash(readPreCiProjectSplitFile(file)),expected,file);
+  for(const [file,expected]of Object.entries(ledger.newFiles))assert.equal(hash(readPreCiProjectSplitFile(file)),expected,file);
   for(const [file,entry]of Object.entries(JSON.parse(fs.readFileSync('research/RESPONSE_INTEGRITY_2026-10-25.json')).files)){
     const raw=fs.readFileSync(file);assert.equal(hash(readPreFormulaGapsFile(file)),entry.afterSha256,file+': PR101');
     assert.equal(projectPreResponse(raw,file).toString(),entry.beforeText,file+': PR100');
@@ -128,7 +129,7 @@ test('all historical response assertions survive exact declared projection subst
   expected="import {readPreFormulaGapsFile} from './formula-gaps-baseline.mjs';\n"+ledger.files['scripts/response-source-audit.test.mjs'].beforeText;
   expected=expected.replace('current=loadRuntime()',"current=(()=>{const s={window:{}};vm.createContext(s);for(const f of files)vm.runInContext(readPreFormulaGapsFile(f,'utf8'),s);return s.window;})()");
   expected=expected.replace('hash(fs.readFileSync(file)),expected,file);','hash(readPreFormulaGapsFile(file)),expected,file);');
-  assert.equal(fs.readFileSync('scripts/response-source-audit.test.mjs','utf8'),expected);
+  assert.equal(readPreCiProjectSplitFile('scripts/response-source-audit.test.mjs','utf8'),expected);
 });
 
 test('existing browser assertions change only exact current totals, not interactions or expectations',()=>{

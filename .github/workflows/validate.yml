@@ -127,6 +127,11 @@ jobs:
 
   browser:
     needs: [map-diagnostic, qa-diagnostic]
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        project: [chromium, webkit]
     runs-on: ubuntu-latest
     container: mcr.microsoft.com/playwright/python:v1.63.0-noble@sha256:72bd171a9ffc2b4b59532aaa6210e21014d07093120dc25528870c0b840da1f0
     # Full-catalog MathJax checks plus per-record Chromium/WebKit provenance tests.
@@ -142,11 +147,11 @@ jobs:
           python3 --version
           node --version
           node -e "const p=require('@playwright/test'); if(require('@playwright/test/package.json').version!=='1.63.0') throw Error('Update the pinned CI image with Playwright'); for(const name of ['chromium','webkit']) {const file=p[name].executablePath(); if(!require('node:fs').existsSync(file)) throw Error('Missing preinstalled '+name+': '+file); console.log(name+': '+file);}"
-      - run: npm run test:browser
+      - run: npm run test:browser -- --project=${{ matrix.project }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: browser-report
+          name: browser-report-${{ matrix.project }}
           path: |
             playwright-report/
             test-results/

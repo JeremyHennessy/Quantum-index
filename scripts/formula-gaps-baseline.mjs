@@ -1,3 +1,4 @@
+import {projectPreCiProjectSplit} from './ci-project-split-baseline.mjs';
 // Exact draft-PR101 checkpoint reconstruction for historical assertions only.
 // Serial boundary: current -> pre-gaps (PR101) -> pre-response (PR100) -> pre-thermal.
 import fs from 'node:fs';
@@ -9,6 +10,7 @@ const root=fileURLToPath(new URL('../',import.meta.url));
 const ledger=JSON.parse(fs.readFileSync(new URL('../research/FORMULA_GAPS_INTEGRITY_2026-10-26.json',import.meta.url)));
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 export function projectPreFormulaGaps(bytes,relative){
+  bytes=projectPreCiProjectSplit(bytes,relative);
   const entry=ledger.files[relative];
   if(!entry)return bytes;
   assert.equal(hash(bytes),entry.afterSha256,relative+': undeclared formula-gap integration mutation');

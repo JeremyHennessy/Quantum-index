@@ -1,3 +1,4 @@
+import {readPreCiProjectSplitFile} from './ci-project-split-baseline.mjs';
 import {readPreFormulaGapsFile} from './formula-gaps-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -88,5 +89,5 @@ test('historical test adaptations retain every prior assertion via two exact sub
   assert.equal(fs.readFileSync('scripts/thermal-baseline.mjs','utf8'),expected);
   expected="import {readPreResponseFile} from './response-baseline.mjs';\n"+ledger.files['scripts/thermal-source-audit.test.mjs'].beforeText;
   expected=expected.replace('const old=before.window,current=loadRuntime(),plain=value=>JSON.parse(JSON.stringify(value));','const old=before.window,current=(()=>{const s={window:{}};vm.createContext(s);for(const f of files)vm.runInContext(readPreResponseFile(f,\'utf8\'),s);return s.window;})(),plain=value=>JSON.parse(JSON.stringify(value));');
-  assert.equal(fs.readFileSync('scripts/thermal-source-audit.test.mjs','utf8'),expected);
+  assert.equal(readPreCiProjectSplitFile('scripts/thermal-source-audit.test.mjs','utf8'),expected);
 });
