@@ -8,22 +8,26 @@ Updated 21 October 2026. This is the single continuation entry point; dated rele
 - **62** cited reading profiles and **7** learning paths
 - **35** Theory Passports, **9** scientific Problems, **21** Evidence records and **60** structured Research Questions
 - **483** theory/framework entities across **14** categories
-- **603** bibliography records
+- **605** bibliography records
 - **354** primary-sourced; **129** review-sourced; **0** catalogued-only entries
 - **614** relationships: **130** source-backed; **484** editorial
 - **41** thought trees
 - **457** formulas across **30** categories
 - **323** entries with linked formulas; **114** documented formula gaps
 - Other audit classes: **11** interpretations, **16** conceptual, **18** theorem-first, **1** thought experiment
-- Formula metadata: **268** explicitly reviewed; **189** baseline records
+- Formula metadata: **271** explicitly reviewed; **186** baseline records
 - **16** reviewed DevelopmentEvents through **2026**
 
 Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.
 <!-- coverage:end -->
 
+## Response metadata audit — 25 October 2026 reconstructed candidate
+
+Separate follow-on work is based on the PR #100 main merge `1ca99e424959e2238448335ccd7b6143c376e94d`, whose tree exactly matches reviewed head `ec083e7b4ee712ee82c12d21434119eb852eac0b`. It does not modify or merge into the PR #100 branch. Three existing Kubo/FDT/Matsubara cards receive source-located conventions and two primary bibliography records. Equations, formula roles and all theory relationships remain unchanged; KMS is not added. The earlier local artifact was unavailable, so this is an explicitly reconstructed candidate with fresh source/math/integration verification, not exact-byte recovery. See [the bounded release note](RELEASE_RESPONSE_CURATION_2026-10-25.md). Draft publication, exact-head browser acceptance and separately authorized release must not be conflated; the second update is not authorized for merge.
+
 ## Thermodynamics source audit — 25 October 2026 candidate
 
-Three existing cards (Gibbs state, quantum Jarzynski equality and Landauer bound) receive source-located scope metadata; the Landauer role is corrected from an identity label to a canonical lower-bound inequality. Equations, theory links, graph relationships and empirical Evidence are unchanged. Two primary references are appended. See [the bounded release note](RELEASE_THERMAL_CURATION_2026-10-25.md). This is a draft candidate, not a merged or deployed release; exact-head browser checks and separate merge authorization are still required. Academic-roadmap PR #87 remains separate.
+Three existing cards (Gibbs state, quantum Jarzynski equality and Landauer bound) received source-located scope metadata; the Landauer role was corrected from an identity label to a canonical lower-bound inequality. Equations, theory links, graph relationships and empirical Evidence are unchanged. Two primary references were appended. See [the bounded release note](RELEASE_THERMAL_CURATION_2026-10-25.md). After exact-head validation and separate release authorization, PR #100 merged as `1ca99e424959e2238448335ccd7b6143c376e94d`. The dated candidate receipt is retained unchanged; main/Pages/hosted acceptance is tracked separately and is not asserted merely by the merge. Academic-roadmap PR #87 remains separate.
 
 ## Accepted release baseline: 21 October 2026
 

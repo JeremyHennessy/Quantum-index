@@ -3487,3 +3487,24 @@ window.QI_DATA.sources.push({
   }
 ];
 for(const source of sources){if(window.QI_DATA.sources.some(item=>item.id===source.id))throw new Error("Duplicate thermodynamics source: "+source.id);window.QI_DATA.sources.push(source);}})();
+
+// UNPUBLISHED reconstructed response bibliography candidate.
+(()=>{const sources=[
+  {
+    "id": "pappalardi-foini-kurchan-fdt-2021",
+    "title": "Quantum bounds and fluctuation-dissipation relations (arXiv:2110.03497v3)",
+    "authors": "Silvia Pappalardi, Laura Foini, Jorge Kurchan",
+    "year": 2021,
+    "type": "primary paper; inspected author manuscript v3",
+    "url": "https://arxiv.org/abs/2110.03497v3",
+    "doi": "10.21468/SciPostPhys.12.4.130"
+  },
+  {
+    "id": "martin-schwinger-many-particle-1959",
+    "title": "Theory of Many-Particle Systems. I",
+    "authors": "Paul C. Martin and Julian Schwinger",
+    "year": 1959,
+    "type": "primary source",
+    "url": "https://doi.org/10.1103/PhysRev.115.1342"
+  }
+];for(const source of sources){if(window.QI_DATA.sources.some(s=>s.id===source.id))throw new Error("Duplicate response source");window.QI_DATA.sources.push(source);}})();

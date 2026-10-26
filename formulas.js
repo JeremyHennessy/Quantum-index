@@ -13969,3 +13969,96 @@ for(const patch of [
   }
 ];
 for(const patch of patches){const record=window.QI_FORMULAS.formulas.find(item=>item.id===patch.id);if(!record||record.metadataReview!=="baseline-audit-v1")throw new Error("Unexpected thermodynamics audit baseline: "+patch.id);Object.assign(record,patch);}})();
+
+// UNPUBLISHED reconstructed response metadata candidate.
+(()=>{const patches=[
+  {
+    "id": "kubo",
+    "assumptions": [
+      "Time-independent Hermitian H0, finite-dimensional Gibbs state rho0 = exp(-beta H0)/Z, and Hermitian observables A and B independent of the applied field.",
+      "The weak perturbation is Hprime(t) = -f(t) B. The retained +i/hbar sign gives delta<A(t)> = integral dtprime chi_AB(t-tprime) f(tprime) to first order; reversing the coupling sign reverses the response."
+    ],
+    "variables": [
+      "A(t) = exp(i H0 t/hbar) A exp(-i H0 t/hbar); brackets denote Tr(rho0 ...). Theta(t) is the causal step function; [A,B] = AB-BA.",
+      "chi_AB(t): retarded response kernel. chi_AB(omega) = integral from -infinity to infinity dt exp(+i omega t) chi_AB(t)."
+    ],
+    "regime": "Hamiltonian linear response about equilibrium; not a nonlinear response or a generic reduced open-system response law. Field-dependent observables can require additional contact terms.",
+    "units": "hbar has energy-times-time units. chi_AB(t) has units [A][B]/(energy*time), chi_AB(omega) has [A][B]/energy, and f has energy/[B].",
+    "theoryRelationship": "Matches the source response R_AB in Eq. (6b), with the explicit negative perturbation-coupling convention. The source is a modern primary research paper, not the original Kubo derivation.",
+    "sourceIds": [
+      "quantum-thermo-review",
+      "pappalardi-foini-kurchan-fdt-2021"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "pappalardi-foini-kurchan-fdt-2021",
+        "locator": "Inspected arXiv:2110.03497v3, Sec. 2, printed/PDF pp. 3-4, Eqs. (5)-(6b) and the Fourier definition after Eq. (7).",
+        "url": "https://arxiv.org/pdf/2110.03497v3#page=4"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-25",
+    "curationBatch": "response-source-audit-2026-10-25"
+  },
+  {
+    "id": "fdt",
+    "assumptions": [
+      "Hermitian A in thermal equilibrium rho0 = exp(-beta H0)/Z at T > 0, with finite moments; delta A = A-<A>. This is the auto-correlation relation, not a generic cross-response formula.",
+      "Use the same Hprime(t) = -f(t) A response and +i omega t Fourier convention as the Kubo card. The spectrum is two-sided and symmetrized, not normally ordered or unsymmetrized."
+    ],
+    "variables": [
+      "S_AA(omega) = (1/2) integral from -infinity to infinity dt exp(+i omega t) <delta A(t) delta A(0) + delta A(0) delta A(t)>. There is no 1/(2 pi) in this forward transform.",
+      "chi_AA(omega): retarded susceptibility; Im denotes its imaginary part. omega: angular frequency; beta = 1/(k_B T)."
+    ],
+    "regime": "Apply the displayed coth form at nonzero frequency, including discrete spectral weights as distributions. At zero frequency use a justified regular limit; a separate elastic delta peak from nondecaying fluctuations is not recovered by naively multiplying coth(0) by zero response. Nonequilibrium states need separate relations.",
+    "units": "S_AA has units [A]^2*time and chi_AA(omega) has [A]^2/energy; multiplication by hbar matches units. hbar*omega/(2*k_B*T) is dimensionless.",
+    "theoryRelationship": "Source Eqs. (6a)-(8b), specialized to A = B = delta A and solved for the symmetrized spectrum away from zero frequency. Source C_AA maps to this card S_AA; source R_AA maps to chi_AA.",
+    "sourceIds": [
+      "quantum-thermo-review",
+      "pappalardi-foini-kurchan-fdt-2021"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "pappalardi-foini-kurchan-fdt-2021",
+        "locator": "Inspected arXiv:2110.03497v3, Sec. 2, printed/PDF p. 4, Eqs. (6a)-(8b), Fourier convention and following A = B specialization.",
+        "url": "https://arxiv.org/pdf/2110.03497v3#page=4"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-25",
+    "curationBatch": "response-source-audit-2026-10-25"
+  },
+  {
+    "id": "matsubara",
+    "assumptions": [
+      "Fermionic finite-mode grand-canonical representative: Hermitian H, conserved particle number N with [H,N]=0, real chemical potential mu, K = H-mu N, and rho = exp(-beta K)/Z.",
+      "T_tau orders later imaginary times to the left and inserts a minus sign for exchanging fermionic operators. The displayed leading minus sign is the chosen modern Green-function convention."
+    ],
+    "variables": [
+      "psi(tau) = exp(tau K) psi exp(-tau K); psi is a fermionic annihilation operator and psi-dagger its adjoint. Brackets denote Tr(rho ...).",
+      "beta = 1/(k_B T); Z = Tr exp(-beta K). tau is imaginary time measured in inverse-energy units."
+    ],
+    "regime": "T > 0 and initially 0 < tau < beta, with antiperiodic extension G(tau+beta)=-G(tau). Equal-time values require one-sided limits. This fermionic representative is not a real-time retarded propagator or a statement of bosonic ordering conventions.",
+    "units": "beta and tau have inverse-energy units; physical imaginary time is hbar*tau. G has the units of psi*psi-dagger, dimensionless for a normalized lattice mode.",
+    "theoryRelationship": "Modern imaginary-time re-expression of the source thermal ordered propagator, not a verbatim historical equation: Martin-Schwinger use a -i propagator prefactor rather than the displayed minus sign.",
+    "sourceIds": [
+      "quantum-thermo-review",
+      "martin-schwinger-many-particle-1959"
+    ],
+    "sourceLocations": [
+      {
+        "sourceId": "martin-schwinger-many-particle-1959",
+        "locator": "Printed p. 1347 (PDF p. 6), Eq. (3.1) and ordering/sign definition; printed p. 1357 (PDF p. 16), Eqs. (5.8)-(5.13), grand generator and boundary conditions.",
+        "url": "https://courses.physics.ucsd.edu/2020/Fall/physics210b/Martin_Greens%20Functions%20for%20Many%20Body.pdf#page=16"
+      },
+      {
+        "sourceId": "martin-schwinger-many-particle-1959",
+        "locator": "Printed pp. 1358-1359 (PDF pp. 17-18), Eqs. (5.17)-(5.18) and thermal substitutions near Eq. (5.32); retain the explicit modern prefactor and imaginary-time mapping.",
+        "url": "https://courses.physics.ucsd.edu/2020/Fall/physics210b/Martin_Greens%20Functions%20for%20Many%20Body.pdf#page=17"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-25",
+    "curationBatch": "response-source-audit-2026-10-25"
+  }
+]; for(const patch of patches){const records=window.QI_FORMULAS.formulas.filter(f=>f.id===patch.id);if(records.length!==1)throw new Error("Missing unique response card");Object.assign(records[0],patch);}})();

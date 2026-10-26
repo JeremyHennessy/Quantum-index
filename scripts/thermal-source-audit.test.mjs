@@ -1,3 +1,4 @@
+import {readPreResponseFile} from './response-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -10,7 +11,7 @@ const ledger=JSON.parse(fs.readFileSync('research/THERMAL_INTEGRITY_2026-10-25.j
 const files=['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','passports.js'];
 const before={window:{}};vm.createContext(before);
 for(const file of files)vm.runInContext(readPreThermalFile(file,'utf8'),before);
-const old=before.window,current=loadRuntime(),plain=value=>JSON.parse(JSON.stringify(value));
+const old=before.window,current=(()=>{const s={window:{}};vm.createContext(s);for(const f of files)vm.runInContext(readPreResponseFile(f,'utf8'),s);return s.window;})(),plain=value=>JSON.parse(JSON.stringify(value));
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const near=(a,b,tolerance=1e-12)=>assert.ok(Math.abs(a-b)<tolerance,`${a} != ${b}`);
 const gibbs=(energies,beta)=>{const weights=energies.map(energy=>Math.exp(-beta*energy)),z=weights.reduce((a,b)=>a+b,0);return {z,p:weights.map(weight=>weight/z)};};

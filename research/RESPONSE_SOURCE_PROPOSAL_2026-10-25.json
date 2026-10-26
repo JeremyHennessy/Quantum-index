@@ -1,0 +1,245 @@
+{
+  "candidateStatus": "reconstructed-unpublished-local-proposal",
+  "afterPendingPullRequest": 100,
+  "reconstruction": {
+    "createdAt": "2026-10-25T21:20:00Z",
+    "provenance": "Original authored proposal-builder content retained in available conversation/tool-call context; scientific strings reconstructed from that content. Original artifact is absent. This is newly materialized and requires fresh validation.",
+    "byteExactRecoveryClaim": false,
+    "earlierValidationReusedAsProof": false
+  },
+  "pendingBaseCommit": "ec083e7b4ee712ee82c12d21434119eb852eac0b",
+  "localCheckoutCommit": "58617fc",
+  "reviewedAt": "2026-10-25",
+  "scope": "Metadata for exactly three existing cards; two bibliography records. All formulas, roles, IDs, names, descriptions, theory links and original source IDs are preserved. KMS addition is deferred. No historical projection/baseline files are changed.",
+  "inputGitBlobs": {
+    "formulas.js": "061163c9e272860b4933cb8e94d84f667ee3ca13",
+    "theories.js": "bc28117b2a410b7ad1816f501997e1554add98f6"
+  },
+  "inputSha256": {
+    "formulas.js": "8dea5ecca16d4201d24b3fc77d8f059009832e3c35836dfba59df94d5a83209d",
+    "theories.js": "9d9a48755560b578a65f27d48294b29e4a78aa0f584c9eed08e741f652135523"
+  },
+  "before": [
+    {
+      "id": "kubo",
+      "name": "Kubo linear-response formula",
+      "category": "Many-body response",
+      "latex": "\\chi_{AB}(t)=\\frac{i}{\\hbar}\\Theta(t)\\langle[A(t),B(0)]\\rangle",
+      "plain": "chi_AB(t)=i Theta(t)<[A(t),B(0)]>/hbar",
+      "description": "Linear response of observable A to a perturbation coupling to B.",
+      "theoryIds": [
+        "quantum-thermodynamics",
+        "hubbard-model"
+      ],
+      "sourceIds": [
+        "quantum-thermo-review"
+      ],
+      "tags": [
+        "Kubo"
+      ],
+      "formulaType": "canonical",
+      "assumptions": [],
+      "variables": [],
+      "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+      "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+      "theoryRelationship": "canonical representative",
+      "metadataReview": "baseline-audit-v1"
+    },
+    {
+      "id": "fdt",
+      "name": "Quantum fluctuation–dissipation relation",
+      "category": "Many-body response",
+      "latex": "S_{AA}(\\omega)=\\hbar\\coth\\!\\left(\\frac{\\hbar\\omega}{2k_BT}\\right)\\operatorname{Im}\\chi_{AA}(\\omega)",
+      "plain": "S(omega)=hbar coth(hbar omega/2kBT) Im chi",
+      "description": "One common symmetrized form relating equilibrium fluctuations and response.",
+      "theoryIds": [
+        "quantum-thermodynamics",
+        "open-quantum-systems"
+      ],
+      "sourceIds": [
+        "quantum-thermo-review"
+      ],
+      "tags": [
+        "fluctuation dissipation"
+      ],
+      "formulaType": "derived identity",
+      "assumptions": [],
+      "variables": [],
+      "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+      "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+      "theoryRelationship": "canonical representative",
+      "metadataReview": "baseline-audit-v1"
+    },
+    {
+      "id": "matsubara",
+      "name": "Matsubara Green function",
+      "category": "Many-body Green functions",
+      "latex": "G(\\tau)=-\\langle\\mathcal T_\\tau\\psi(\\tau)\\psi^{\\dagger}(0)\\rangle",
+      "plain": "G(tau)=-<T_tau psi(tau) psi†(0)>",
+      "description": "Imaginary-time thermal Green function.",
+      "theoryIds": [
+        "quantum-thermodynamics",
+        "hubbard-model",
+        "finite-temperature-qft"
+      ],
+      "sourceIds": [
+        "quantum-thermo-review"
+      ],
+      "tags": [
+        "Matsubara"
+      ],
+      "formulaType": "canonical",
+      "assumptions": [],
+      "variables": [],
+      "regime": "Canonical representative within the linked theory or framework; consult the linked source for detailed domain assumptions.",
+      "units": "Unit convention follows the linked source; constants are shown explicitly where present.",
+      "theoryRelationship": "canonical representative",
+      "metadataReview": "baseline-audit-v1"
+    }
+  ],
+  "patches": [
+    {
+      "id": "kubo",
+      "assumptions": [
+        "Time-independent Hermitian H0, finite-dimensional Gibbs state rho0 = exp(-beta H0)/Z, and Hermitian observables A and B independent of the applied field.",
+        "The weak perturbation is Hprime(t) = -f(t) B. The retained +i/hbar sign gives delta<A(t)> = integral dtprime chi_AB(t-tprime) f(tprime) to first order; reversing the coupling sign reverses the response."
+      ],
+      "variables": [
+        "A(t) = exp(i H0 t/hbar) A exp(-i H0 t/hbar); brackets denote Tr(rho0 ...). Theta(t) is the causal step function; [A,B] = AB-BA.",
+        "chi_AB(t): retarded response kernel. chi_AB(omega) = integral from -infinity to infinity dt exp(+i omega t) chi_AB(t)."
+      ],
+      "regime": "Hamiltonian linear response about equilibrium; not a nonlinear response or a generic reduced open-system response law. Field-dependent observables can require additional contact terms.",
+      "units": "hbar has energy-times-time units. chi_AB(t) has units [A][B]/(energy*time), chi_AB(omega) has [A][B]/energy, and f has energy/[B].",
+      "theoryRelationship": "Matches the source response R_AB in Eq. (6b), with the explicit negative perturbation-coupling convention. The source is a modern primary research paper, not the original Kubo derivation.",
+      "sourceIds": [
+        "quantum-thermo-review",
+        "pappalardi-foini-kurchan-fdt-2021"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "pappalardi-foini-kurchan-fdt-2021",
+          "locator": "Inspected arXiv:2110.03497v3, Sec. 2, printed/PDF pp. 3-4, Eqs. (5)-(6b) and the Fourier definition after Eq. (7).",
+          "url": "https://arxiv.org/pdf/2110.03497v3#page=4"
+        }
+      ],
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-25",
+      "curationBatch": "response-source-audit-2026-10-25"
+    },
+    {
+      "id": "fdt",
+      "assumptions": [
+        "Hermitian A in thermal equilibrium rho0 = exp(-beta H0)/Z at T > 0, with finite moments; delta A = A-<A>. This is the auto-correlation relation, not a generic cross-response formula.",
+        "Use the same Hprime(t) = -f(t) A response and +i omega t Fourier convention as the Kubo card. The spectrum is two-sided and symmetrized, not normally ordered or unsymmetrized."
+      ],
+      "variables": [
+        "S_AA(omega) = (1/2) integral from -infinity to infinity dt exp(+i omega t) <delta A(t) delta A(0) + delta A(0) delta A(t)>. There is no 1/(2 pi) in this forward transform.",
+        "chi_AA(omega): retarded susceptibility; Im denotes its imaginary part. omega: angular frequency; beta = 1/(k_B T)."
+      ],
+      "regime": "Apply the displayed coth form at nonzero frequency, including discrete spectral weights as distributions. At zero frequency use a justified regular limit; a separate elastic delta peak from nondecaying fluctuations is not recovered by naively multiplying coth(0) by zero response. Nonequilibrium states need separate relations.",
+      "units": "S_AA has units [A]^2*time and chi_AA(omega) has [A]^2/energy; multiplication by hbar matches units. hbar*omega/(2*k_B*T) is dimensionless.",
+      "theoryRelationship": "Source Eqs. (6a)-(8b), specialized to A = B = delta A and solved for the symmetrized spectrum away from zero frequency. Source C_AA maps to this card S_AA; source R_AA maps to chi_AA.",
+      "sourceIds": [
+        "quantum-thermo-review",
+        "pappalardi-foini-kurchan-fdt-2021"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "pappalardi-foini-kurchan-fdt-2021",
+          "locator": "Inspected arXiv:2110.03497v3, Sec. 2, printed/PDF p. 4, Eqs. (6a)-(8b), Fourier convention and following A = B specialization.",
+          "url": "https://arxiv.org/pdf/2110.03497v3#page=4"
+        }
+      ],
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-25",
+      "curationBatch": "response-source-audit-2026-10-25"
+    },
+    {
+      "id": "matsubara",
+      "assumptions": [
+        "Fermionic finite-mode grand-canonical representative: Hermitian H, conserved particle number N with [H,N]=0, real chemical potential mu, K = H-mu N, and rho = exp(-beta K)/Z.",
+        "T_tau orders later imaginary times to the left and inserts a minus sign for exchanging fermionic operators. The displayed leading minus sign is the chosen modern Green-function convention."
+      ],
+      "variables": [
+        "psi(tau) = exp(tau K) psi exp(-tau K); psi is a fermionic annihilation operator and psi-dagger its adjoint. Brackets denote Tr(rho ...).",
+        "beta = 1/(k_B T); Z = Tr exp(-beta K). tau is imaginary time measured in inverse-energy units."
+      ],
+      "regime": "T > 0 and initially 0 < tau < beta, with antiperiodic extension G(tau+beta)=-G(tau). Equal-time values require one-sided limits. This fermionic representative is not a real-time retarded propagator or a statement of bosonic ordering conventions.",
+      "units": "beta and tau have inverse-energy units; physical imaginary time is hbar*tau. G has the units of psi*psi-dagger, dimensionless for a normalized lattice mode.",
+      "theoryRelationship": "Modern imaginary-time re-expression of the source thermal ordered propagator, not a verbatim historical equation: Martin-Schwinger use a -i propagator prefactor rather than the displayed minus sign.",
+      "sourceIds": [
+        "quantum-thermo-review",
+        "martin-schwinger-many-particle-1959"
+      ],
+      "sourceLocations": [
+        {
+          "sourceId": "martin-schwinger-many-particle-1959",
+          "locator": "Printed p. 1347 (PDF p. 6), Eq. (3.1) and ordering/sign definition; printed p. 1357 (PDF p. 16), Eqs. (5.8)-(5.13), grand generator and boundary conditions.",
+          "url": "https://courses.physics.ucsd.edu/2020/Fall/physics210b/Martin_Greens%20Functions%20for%20Many%20Body.pdf#page=16"
+        },
+        {
+          "sourceId": "martin-schwinger-many-particle-1959",
+          "locator": "Printed pp. 1358-1359 (PDF pp. 17-18), Eqs. (5.17)-(5.18) and thermal substitutions near Eq. (5.32); retain the explicit modern prefactor and imaginary-time mapping.",
+          "url": "https://courses.physics.ucsd.edu/2020/Fall/physics210b/Martin_Greens%20Functions%20for%20Many%20Body.pdf#page=17"
+        }
+      ],
+      "metadataReview": "explicit",
+      "reviewedAt": "2026-10-25",
+      "curationBatch": "response-source-audit-2026-10-25"
+    }
+  ],
+  "sources": [
+    {
+      "id": "pappalardi-foini-kurchan-fdt-2021",
+      "title": "Quantum bounds and fluctuation-dissipation relations (arXiv:2110.03497v3)",
+      "authors": "Silvia Pappalardi, Laura Foini, Jorge Kurchan",
+      "year": 2021,
+      "type": "primary paper; inspected author manuscript v3",
+      "url": "https://arxiv.org/abs/2110.03497v3",
+      "doi": "10.21468/SciPostPhys.12.4.130"
+    },
+    {
+      "id": "martin-schwinger-many-particle-1959",
+      "title": "Theory of Many-Particle Systems. I",
+      "authors": "Paul C. Martin and Julian Schwinger",
+      "year": 1959,
+      "type": "primary source",
+      "url": "https://doi.org/10.1103/PhysRev.115.1342"
+    }
+  ],
+  "sourceEvidence": [
+    {
+      "sourceId": "pappalardi-foini-kurchan-fdt-2021",
+      "url": "https://arxiv.org/pdf/2110.03497v3",
+      "byteLength": 1497045,
+      "sha256": "311da3b1d92684c4da593a2104831cbd70a078822b388dc6a4d7b65bd46d120a",
+      "contentType": "application/pdf",
+      "inspection": "Earlier page-text/image inspection is retained in available review context. Fresh reconstruction pass re-downloaded the same versioned PDF, verified PDF magic and SHA256, and visually re-inspected PDF p. 4. No final-journal-text inspection claimed.",
+      "revalidatedOn": "2026-10-25"
+    },
+    {
+      "sourceId": "martin-schwinger-many-particle-1959",
+      "url": "https://courses.physics.ucsd.edu/2020/Fall/physics210b/Martin_Greens%20Functions%20for%20Many%20Body.pdf",
+      "byteLength": 2937961,
+      "sha256": "142e8035ca9363694a90ecb212e9e38800459ef5c1b6a11be5640ba82764ee12",
+      "contentType": "application/pdf",
+      "inspection": "Earlier original-paper page inspections are retained in available review context. Fresh reconstruction pass re-downloaded the PDF, verified PDF magic and SHA256, and visually re-inspected PDF pp. 16-17 with an independent reviewer.",
+      "revalidatedOn": "2026-10-25"
+    }
+  ],
+  "equationChanges": [],
+  "expectedCounts": {
+    "theories": 483,
+    "formulas": 457,
+    "formulaGaps": 114,
+    "sources": 605,
+    "explicitMetadata": 271,
+    "baselineMetadata": 186
+  },
+  "reviewLimits": [
+    "No original Kubo-1957, Matsubara-1955 or HHW-1967 full-text inspection is claimed; their attempted publisher/access paths did not yield inspectable documents.",
+    "Finite algebra fixtures do not prove infinite-system analyticity or experimental correctness.",
+    "This proposal does not add a formula to kms-equilibrium or close its formula gap.",
+    "Publication and historical baseline integration are not performed; #100 remains untouched."
+  ]
+}
