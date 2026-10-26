@@ -1,3 +1,4 @@
+import {projectPreResponse} from './response-baseline.mjs';
 // Exact accepted-PR99 reconstruction for dated historical assertions only.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -8,6 +9,7 @@ const root=fileURLToPath(new URL('../',import.meta.url));
 const ledger=JSON.parse(fs.readFileSync(new URL('../research/THERMAL_INTEGRITY_2026-10-25.json',import.meta.url)));
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 export function projectPreThermal(bytes,relative){
+  bytes=projectPreResponse(bytes,relative);
   const entry=ledger.files[relative];
   if(!entry)return bytes;
   assert.equal(hash(bytes),entry.afterSha256,relative+': undeclared thermodynamics-audit mutation');
