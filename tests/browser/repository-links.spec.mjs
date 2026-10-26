@@ -10,7 +10,7 @@ test('all app views omit own-repository links and retain methodology and citatio
  }
  await page.evaluate(()=>{location.hash='#/coverage';});
  const methodology=page.getByRole('link',{name:'Coverage methodology and research backlog'});await expect(methodology).toHaveAttribute('href','./docs/COVERAGE.md');
- const response=await request.get('/docs/COVERAGE.md');expect(response.ok()).toBeTruthy();expect(await response.text()).toContain('271');expect(await response.text()).not.toMatch(ownRepo);
+ const response=await request.get('/docs/COVERAGE.md');expect(response.ok()).toBeTruthy();expect(await response.text()).toContain('274');expect(await response.text()).not.toMatch(ownRepo);
  await page.evaluate(()=>{location.hash='#/theory/wave-mechanics';});await expect(page.locator('#theoryDetail .source-link').first()).toBeVisible();
  const notebook=await page.evaluate(()=>{const next=window.QI_WORKSPACE.data;next.bookmarks=['wave-mechanics'];if(!window.QI_WORKSPACE.save(next))throw new Error(window.QI_WORKSPACE.error);return window.QI_WORKSPACE.exportMarkdown();});expect(notebook).toContain('#/theory/wave-mechanics');expect(notebook).toContain('Catalog sources');expect(notebook).not.toMatch(ownRepo);
  expect(errors).toEqual([]);await page.evaluate(()=>{location.hash='#/coverage';});await expect(methodology).toBeVisible();await page.screenshot({path:info.outputPath('coverage-no-repository-links.png'),fullPage:true});

@@ -14062,3 +14062,187 @@ for(const patch of patches){const record=window.QI_FORMULAS.formulas.find(item=>
     "curationBatch": "response-source-audit-2026-10-25"
   }
 ]; for(const patch of patches){const records=window.QI_FORMULAS.formulas.filter(f=>f.id===patch.id);if(records.length!==1)throw new Error("Missing unique response card");Object.assign(records[0],patch);}})();
+
+// Three source-located representatives, not a claim of exhaustive mathematical coverage.
+(()=>{const formulas=[
+  {
+    "id": "kms-equilibrium-boundary",
+    "name": "KMS thermal-equilibrium boundary condition",
+    "category": "Mathematical structures",
+    "latex": "\\begin{gathered}S_{\\beta\\hbar}=\\{z\\in\\mathbb C:0<\\operatorname{Im}z<\\beta\\hbar\\},\\quad \\forall A,B\\in\\mathcal A\\ \\exists F_{A,B}\\in C_b(\\overline{S_{\\beta\\hbar}})\\cap\\mathcal O(S_{\\beta\\hbar}):\\\\F_{A,B}(t)=\\omega(A\\alpha_t(B)),\\qquad F_{A,B}(t+i\\beta\\hbar)=\\omega(\\alpha_t(B)A),\\quad t\\in\\mathbb R.\\end{gathered}",
+    "plain": "For every A,B there is F_AB continuous and bounded on 0 <= Im z <= beta hbar and analytic inside, with F_AB(t) = omega(A alpha_t(B)) and F_AB(t + i beta hbar) = omega(alpha_t(B) A) for every real t.",
+    "description": "Defines the thermal-equilibrium correlation condition for a specified state, dynamics and positive inverse temperature. Imaginary-time displacement changes operator order; it does not make each unsymmetrized correlator simply periodic.",
+    "formulaType": "defining",
+    "theoryIds": [
+      "kms-equilibrium"
+    ],
+    "sourceIds": [
+      "araki-moriya-equilibrium-2003"
+    ],
+    "tags": [
+      "KMS",
+      "equilibrium",
+      "analytic strip",
+      "operator algebra"
+    ],
+    "assumptions": [
+      "The observable algebra is a unital C*-algebra, omega is a positive normalized linear functional on it, and alpha_t is a one-parameter group of *-automorphisms continuous in norm on each fixed algebra element.",
+      "The dynamics parameter t is physical time. In the finite Hamiltonian realization use alpha_t(B)=exp(+iHt/hbar) B exp(-iHt/hbar), with self-adjoint H; beta=1/(k_B T)>0.",
+      "The analytic-strip condition and both boundary values must hold for all pairs of algebra elements A,B and all real t, not just selected observables.",
+      "The scalar function F_AB is the analytic object. Writing alpha_z(B) for complex z in an infinite system requires B to be an appropriate analytic element; no such operator-valued continuation is assumed for every B."
+    ],
+    "variables": [
+      "omega: state expectation; A,B: bounded algebra elements, not necessarily Hermitian; alpha_t: specified real-time dynamics.",
+      "F_AB: scalar correlation continuation; C_b: bounded continuous functions on the closed strip; O: functions holomorphic in the open strip.",
+      "z: complexified physical time; t: real time; beta: positive inverse energy; hbar: reduced Planck constant."
+    ],
+    "units": "beta has inverse-energy units and hbar has energy-times-time units, so beta hbar, t and z have time units. In a Hamiltonian realization Ht/hbar and beta H are dimensionless. F_AB and both boundary correlators carry the product of the units of A and B.",
+    "regime": "Algebraic equilibrium criterion at finite T>0 relative to the stated dynamics, including settings without a global trace-class Gibbs density operator. The finite-dimensional Gibbs model is an illustration, not a prerequisite for the algebraic definition. This card neither guarantees relaxation from arbitrary states nor asserts a unique equilibrium phase. Time-ordered fermionic Green-function signs and grand-canonical modified dynamics require their own stated conventions.",
+    "theoryRelationship": "A defining representative for the KMS equilibrium-state framework, distinct from the Gibbs-state formula, a response coefficient, and a Matsubara time-ordered Green function. The source uses hbar=1 time units; the displayed beta hbar shift restores physical time.",
+    "sourceLocations": [
+      {
+        "sourceId": "araki-moriya-equilibrium-2003",
+        "locator": "Section 6.1, Definition 6.1(A), printed/PDF p. 41: analytic strip, bounded continuity, and two boundary values. Part (B) separately restricts the operator-valued continuation to entire analytic elements. The displayed card restores hbar in the physical-time parameter.",
+        "url": "https://arxiv.org/pdf/math-ph/0211016v2#page=41"
+      },
+      {
+        "sourceId": "araki-moriya-equilibrium-2003",
+        "locator": "Section 5.1, printed/PDF p. 31: point-norm continuity of the dynamics; Section 5.2, p. 32, Eq. (5.2): generator delta A=i[H,A] in the source's hbar=1 convention.",
+        "url": "https://arxiv.org/pdf/math-ph/0211016v2#page=31"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-26",
+    "curationBatch": "kms-equilibrium-gap-proposal-2026-10-26"
+  },
+  {
+    "id": "finite-quantum-instrument-conditioning",
+    "name": "Finite quantum instrument: outcome and conditional state",
+    "category": "Quantum information",
+    "latex": "\\begin{aligned}p_a&=\\operatorname{Tr}[\\mathcal I_a(\\rho)],\\qquad \\rho_a=\\frac{\\mathcal I_a(\\rho)}{p_a}\\quad(p_a>0),\\\\\\Phi&=\\sum_{a\\in\\Omega}\\mathcal I_a\\ \\text{is trace preserving},\\qquad \\mathcal I_a\\ \\text{is completely positive}.\\end{aligned}",
+    "plain": "p_a = Tr[I_a(rho)]; rho_a = I_a(rho)/p_a only for p_a > 0. Each I_a is completely positive; Phi = sum_{a in Omega} I_a is trace preserving.",
+    "description": "Outcome-resolved state transformation, retaining information absent from a POVM alone or an outcome-forgotten channel.",
+    "formulaType": "defining",
+    "theoryIds": [
+      "quantum-instruments"
+    ],
+    "sourceIds": [
+      "ozawa-finite-instruments-2023",
+      "okamura-ozawa-instruments-2016"
+    ],
+    "tags": [
+      "instrument",
+      "conditional state",
+      "measurement",
+      "complete positivity"
+    ],
+    "assumptions": [
+      "Finite nonempty outcome set Omega; finite-dimensional Hilbert space H; rho >= 0 and Tr(rho)=1. All maps act linearly on operators on the same H.",
+      "Every branch I_a is completely positive and the sum is trace preserving. Individual branches are trace-nonincreasing, not generally trace preserving.",
+      "At p_a=0, I_a(rho)=0 but rho_a is undefined; do not divide by zero or treat the zero operator as a normalized posterior."
+    ],
+    "variables": [
+      "a: recorded outcome label; Omega: all outcomes.",
+      "I_a: outcome operation; p_a: outcome probability; rho_a: conditional density operator; Phi: nonselective channel."
+    ],
+    "units": "States, maps, effects and probabilities are dimensionless in this finite matrix convention; an outcome label may separately denote a dimensionful measured value.",
+    "regime": "Finite-outcome modern CP-instrument representative. No repeatability, projectivity, purity or single-Kraus restriction. Continuous-outcome conditioning and general operator-algebra realization require additional analysis.",
+    "theoryRelationship": "Adds the missing outcome/state pairing, not another unconditional Kraus card. Davies-Lewis 1970 is retained as historical provenance; CP is a later additional condition, not attributed to its unseen original definition.",
+    "sourceLocations": [
+      {
+        "sourceId": "ozawa-finite-instruments-2023",
+        "locator": "arXiv:2110.03219v2, Section 5, Eqs. (53)-(54), printed/PDF p. 20; Section 3.4, p. 8, specifies the null-outcome convention.",
+        "url": "https://arxiv.org/pdf/2110.03219v2#page=20"
+      },
+      {
+        "sourceId": "ozawa-finite-instruments-2023",
+        "locator": "Section 5, Eqs. (57)-(61), printed/PDF p. 21: outcome-indexed Kraus operations, effects, completeness and conditional normalization.",
+        "url": "https://arxiv.org/pdf/2110.03219v2#page=21"
+      },
+      {
+        "sourceId": "okamura-ozawa-instruments-2016",
+        "locator": "arXiv:1501.00239v3, Section III, Definition III.1 and following CP qualification, PDF p. 7; outcome probability/posterior conditions after Eq. (22), p. 8.",
+        "url": "https://arxiv.org/pdf/1501.00239v3#page=7"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-26",
+    "curationBatch": "instrument-gap-proposal-2026-10-26"
+  },
+  {
+    "id": "dglap-spacelike-lo-pdf-evolution",
+    "name": "DGLAP evolution of unpolarized spacelike PDFs (LO)",
+    "category": "Quantum field theory",
+    "latex": "\\begin{aligned}\\frac{\\partial f_i(x,\\mu_F^2)}{\\partial t}&=a_s(\\mu_F^2)\\sum_{j\\in\\{g,q_a,\\bar q_a\\}_{a=1}^{n_f}}\\bigl[P_{ij}^{(0)}\\otimes f_j\\bigr](x,\\mu_F^2),\\\\ [P\\otimes f](x,\\mu_F^2)&=\\int_x^1\\frac{dz}{z}\\,P(z)f(x/z,\\mu_F^2),\\\\ t&=\\ln(\\mu_F^2/\\mu_0^2),\\qquad a_s=\\frac{\\alpha_s}{2\\pi},\\quad \\mu_R=\\mu_F.\\end{aligned}",
+    "plain": "At leading order, d f_i(x,mu_F^2)/dt = a_s(mu_F^2) sum_j [P_ij^(0) convolution f_j](x,mu_F^2), where t=ln(mu_F^2/mu_0^2), a_s=alpha_s/(2 pi), mu_R=mu_F, and [P convolution f](x)=integral_x^1 dz P(z) f(x/z)/z.",
+    "description": "One leading-order scale-evolution representative for unpolarized, collinear parton-number PDFs in a hadron; not a fragmentation or transverse-momentum evolution equation.",
+    "formulaType": "approximation",
+    "theoryIds": [
+      "dglap-evolution"
+    ],
+    "sourceIds": [
+      "salam-rojo-hoppet-2009",
+      "botje-qcdnum-2011"
+    ],
+    "tags": [
+      "DGLAP",
+      "parton distributions",
+      "spacelike",
+      "leading order",
+      "collinear factorization"
+    ],
+    "assumptions": [
+      "Leading-twist collinear QCD description for one hadron. Use a fixed number n_f of active massless quark flavors in a perturbative scale interval, with input PDFs specified at a perturbative reference scale mu_0. No heavy-flavor threshold is crossed by this representative.",
+      "Unpolarized SU(3) QCD only: C_F=4/3, C_A=3, T_R=1/2. Factorization and coupling conventions are MSbar, with mu_R=mu_F. The displayed evolution retains only the O(a_s) kernel; O(a_s^2) and higher terms are omitted. A numerical LO solution would also require a consistently specified LO running coupling and input PDFs; neither is supplied here.",
+      "Distributional endpoint actions and moment manipulations require suitably regular test functions and finite relevant moments. Momentum and valence sum rules are input normalization conditions preserved by the kernels, not constraints automatically imposed on arbitrary input functions.",
+      "P_ij^(0) excludes a_s. A full kernel K_ij=a_s P_ij^(0)+a_s^2 P_ij^(1)+... instead gives df_i/dt=sum_j K_ij convolution f_j, with no additional a_s. QCDNUM calls the full K by P; HOPPET factors one a_s outside P. Never apply both normalizations.",
+      "Kernels are distributions at z=1, not only real-emission functions. Define D(z)=[1/(1-z)]_+ by integral_0^1 dz D(z) phi(z)=integral_0^1 dz [phi(z)-phi(1)]/(1-z) for smooth test functions. At lower limit x>0, the corresponding action adds phi(1) ln(1-x) to the subtracted integral from x to 1.",
+      "With D defined above, P_qq^(0)=C_F[(1+z^2)D+(3/2)delta(1-z)]. Equivalently it is C_F[(1+z^2)/(1-z)]_+ with the plus on the whole fraction and no additional delta term. Moving the plus without adjusting the delta coefficient is incorrect."
+    ],
+    "variables": [
+      "f_i(x,mu_F^2): parton-number density in longitudinal momentum fraction x, not the momentum density F_i=x f_i. The index set is one gluon plus n_f quarks and n_f antiquarks; PDFs are not individually normalized probabilities.",
+      "x: observed hadron momentum fraction, 0<x<1; z: child/parent longitudinal momentum fraction, x<=z<=1. P_ij has child i as its first index and parent j as its second; the parent PDF is evaluated at x/z.",
+      "mu_F: factorization scale; mu_R: renormalization scale; mu_0: fixed positive reference/input scale. t is a dimensionless logarithm, not physical time; differentiating with respect to ln(mu_F), rather than ln(mu_F^2), introduces a factor of two.",
+      "For each flavor a, P_{q_a g}^(0)=P_{qbar_a g}^(0)=T_R[z^2+(1-z)^2], and P_{g q_a}^(0)=P_{g qbar_a}^(0)=C_F[1+(1-z)^2]/z. At LO P_{q_a q_b}^(0)=P_{qbar_a qbar_b}^(0)=delta_ab P_qq^(0), and quark-antiquark entries vanish.",
+      "P_gg^(0)=2 C_A[z D+(1-z)/z+z(1-z)]+[(11 C_A-4 T_R n_f)/6]delta(1-z). D is the plus distribution already defined, not an ordinary reciprocal.",
+      "In a singlet basis Sigma=sum_a(q_a+qbar_a), the Sigma<-g entry is 2 n_f P_{q_a g}^(0). That multiplicity does not belong in an individual-flavor entry.",
+      "For F_i=x f_i, multiplying the displayed equation by x gives dF_i/dt=a_s sum_j integral_x^1 dz P_ij^(0)(z) F_j(x/z): the explicit 1/z measure disappears. Do not substitute F for f in the number-density formula unchanged."
+    ],
+    "regime": "Perturbative, leading-twist unpolarized spacelike collinear PDF evolution with fixed n_f and 0<x<1. Require mu_F and mu_0 well above Lambda_QCD so alpha_s remains perturbative. The LO truncation is not a complete higher-order or scheme-independent phenomenological prediction; enhanced endpoint logarithms may require resummation. This is not time-like fragmentation, polarized evolution, TMD evolution, BFKL evolution in small x, nonlinear saturation, a higher-twist description, or a determination of the nonperturbative input PDFs.",
+    "units": "x, z, t, alpha_s, P_ij^(0) and the density per dimensionless x are dimensionless. mu_F, mu_R, mu_0 and Lambda_QCD have energy units, so the logarithm contains a dimensionless ratio. Both sides have the units of f_i; no physical-time derivative is asserted.",
+    "theoryRelationship": "A single convention-explicit LO spacelike representative closes only the missing representative-formula link. The broader DGLAP entity also mentions fragmentation functions, which need their own kernels and conventions. Existing Altarelli-Parisi 1977 provenance is preserved but its full equations were not inspected for this proposal.",
+    "sourceLocations": [
+      {
+        "sourceId": "salam-rojo-hoppet-2009",
+        "locator": "arXiv:0804.3755v1, Sec. 1, printed/PDF p. 4, Eq. (1) and following paragraph: matrix convolution and child-i/parent-j kernel convention. Printed/PDF p. 6 separately describes the code momentum-density convention.",
+        "url": "https://arxiv.org/pdf/0804.3755v1#page=4"
+      },
+      {
+        "sourceId": "salam-rojo-hoppet-2009",
+        "locator": "arXiv:0804.3755v1, Sec. 2, printed/PDF p. 7, Eqs. (3)-(4): one alpha_s/(2 pi) outside the convolution and splitting-function expansion; printed/PDF p. 8 specifies MSbar unpolarized evolution.",
+        "url": "https://arxiv.org/pdf/0804.3755v1#page=7"
+      },
+      {
+        "sourceId": "botje-qcdnum-2011",
+        "locator": "arXiv:1005.1481v3, Sec. 2.2, printed/PDF pp. 7-9, Eqs. (2.4)-(2.7), (2.14)-(2.15): number-density PDFs, mu_F=mu_R, MSbar, convolution, flavor multiplicity and FULL kernel expansion in a_s=alpha_s/(2 pi).",
+        "url": "https://arxiv.org/pdf/1005.1481v3#page=8"
+      },
+      {
+        "sourceId": "botje-qcdnum-2011",
+        "locator": "arXiv:1005.1481v3, printed/PDF p. 26, Eq. (4.1) and following paragraph: momentum and proton-valence input sum rules and their preservation; the source warns about the unrepresented region below a finite x grid.",
+        "url": "https://arxiv.org/pdf/1005.1481v3#page=26"
+      },
+      {
+        "sourceId": "botje-qcdnum-2011",
+        "locator": "arXiv:1005.1481v3, Appendix A, printed/PDF p. 62, Eqs. (A.2)-(A.5): LO SU(3) kernels and plus prescription. Eq. (A.1) and Eq. (A.6) use momentum PDFs, unlike Sec. 2.2; the proposal explicitly derives the conversion.",
+        "url": "https://arxiv.org/pdf/1005.1481v3#page=62"
+      }
+    ],
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-26",
+    "curationBatch": "dglap-evolution-gap-proposal-2026-10-26"
+  }
+];
+for(const formula of formulas){if(window.QI_FORMULAS.formulas.some(item=>item.id===formula.id))throw new Error("Duplicate formula-gap formula: "+formula.id);
+if(window.QI_FORMULAS.formulas.some(item=>item.theoryIds.some(id=>formula.theoryIds.includes(id))))throw new Error("Unexpected formula-gap baseline: "+formula.id);}
+window.QI_FORMULAS.formulas.push(...formulas);})();
