@@ -7,7 +7,7 @@ The Compare tab accepts any two to four catalog entries. Three presets provide s
 <!-- coverage:start -->
 - **62** cited reading profiles and **7** guided learning paths
 - **35** Theory Passports available to the comparison workflow
-- **483** catalog entries; **457** formula records; **605** bibliography records
+- **483** catalog entries; **460** formula records; **610** bibliography records
 - **614** typed relationships, including **130** source-backed edges
 
 These counts are generated from runtime data; older release notes retain their historical snapshots.

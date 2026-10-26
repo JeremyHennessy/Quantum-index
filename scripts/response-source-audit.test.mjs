@@ -1,3 +1,4 @@
+import {readPreFormulaGapsFile} from './formula-gaps-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -12,7 +13,7 @@ const thermal=JSON.parse(fs.readFileSync('research/THERMAL_INTEGRITY_2026-10-25.
 const files=['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','passports.js'];
 const before={window:{}};vm.createContext(before);
 for(const file of files)vm.runInContext(readPreResponseFile(file,'utf8'),before);
-const old=before.window,current=loadRuntime(),plain=value=>JSON.parse(JSON.stringify(value));
+const old=before.window,current=(()=>{const s={window:{}};vm.createContext(s);for(const f of files)vm.runInContext(readPreFormulaGapsFile(f,'utf8'),s);return s.window;})(),plain=value=>JSON.parse(JSON.stringify(value));
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 
 test('response audit is an exact three-card two-source delta after the unmodified PR100 checkpoint',()=>{
@@ -68,7 +69,7 @@ test('response reconstruction is declared new and snapshots fail closed against 
     assert.equal(readPreResponseFile(file,'utf8'),entry.beforeText,file);
     assert.throws(()=>projectPreResponse(Buffer.concat([fs.readFileSync(file),Buffer.from('undeclared')]),file));
   }
-  for(const [file,expected]of Object.entries(ledger.unchangedFiles))assert.equal(hash(fs.readFileSync(file)),expected,file);
+  for(const [file,expected]of Object.entries(ledger.unchangedFiles))assert.equal(hash(readPreFormulaGapsFile(file)),expected,file);
   for(const file of ['research/THERMAL_INTEGRITY_2026-10-25.json','research/THERMAL_SOURCE_AUDIT_2026-10-25.json','tests/browser/thermal-source-audit.spec.mjs','.github/workflows/validate.yml'])assert.ok(ledger.unchangedFiles[file],file);
 });
 

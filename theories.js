@@ -3508,3 +3508,55 @@ for(const source of sources){if(window.QI_DATA.sources.some(item=>item.id===sour
     "url": "https://doi.org/10.1103/PhysRev.115.1342"
   }
 ];for(const source of sources){if(window.QI_DATA.sources.some(s=>s.id===source.id))throw new Error("Duplicate response source");window.QI_DATA.sources.push(source);}})();
+
+// Source-located KMS, finite CP-instrument and LO spacelike DGLAP additions; historical dates are unchanged.
+(()=>{const sources=[
+  {
+    "id": "araki-moriya-equilibrium-2003",
+    "title": "Equilibrium Statistical Mechanics of Fermion Lattice Systems (inspected arXiv:math-ph/0211016v2)",
+    "authors": "Huzihiro Araki and Hajime Moriya",
+    "year": 2003,
+    "type": "primary source",
+    "url": "https://arxiv.org/pdf/math-ph/0211016v2",
+    "doi": "10.1142/S0129055X03001606"
+  },
+  {
+    "id": "ozawa-finite-instruments-2023",
+    "title": "Quantum Measurement Theory for Systems with Finite Dimensional State Spaces (primary-author chapter; inspected arXiv:2110.03219v2, 2023)",
+    "authors": "Masanao Ozawa",
+    "year": 2023,
+    "type": "primary source",
+    "url": "https://arxiv.org/abs/2110.03219v2"
+  },
+  {
+    "id": "okamura-ozawa-instruments-2016",
+    "title": "Measurement theory in local quantum physics (inspected arXiv:1501.00239v3, 2015; journal publication 2016)",
+    "authors": "Kazuya Okamura and Masanao Ozawa",
+    "year": 2016,
+    "type": "primary source",
+    "url": "https://arxiv.org/abs/1501.00239v3",
+    "doi": "10.1063/1.4935407"
+  },
+  {
+    "id": "salam-rojo-hoppet-2009",
+    "title": "A Higher Order Perturbative Parton Evolution Toolkit (HOPPET) (inspected arXiv:0804.3755v1, 2008; journal publication 2009)",
+    "authors": "Gavin P. Salam and Juan Rojo",
+    "year": 2009,
+    "type": "primary source",
+    "url": "https://arxiv.org/abs/0804.3755v1",
+    "doi": "10.1016/j.cpc.2008.08.010"
+  },
+  {
+    "id": "botje-qcdnum-2011",
+    "title": "QCDNUM: Fast QCD Evolution and Convolution (inspected arXiv:1005.1481v3, 2010; journal publication 2011)",
+    "authors": "M. Botje",
+    "year": 2011,
+    "type": "primary source",
+    "url": "https://arxiv.org/abs/1005.1481v3",
+    "doi": "10.1016/j.cpc.2010.10.020"
+  }
+];
+for(const source of sources)if(window.QI_DATA.sources.some(item=>item.id===source.id))throw new Error("Duplicate formula-gap source: "+source.id);
+const targets=window.QI_DATA.theories.filter(item=>item.id==="quantum-instruments");
+if(targets.length!==1||JSON.stringify(targets[0].sources)!==JSON.stringify(["davies-lewis-1970"]))throw new Error("Unexpected quantum-instruments source baseline");
+window.QI_DATA.sources.push(...sources);targets[0].sources.push("okamura-ozawa-instruments-2016");})();
