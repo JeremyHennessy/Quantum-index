@@ -1,4 +1,5 @@
 // One fail-closed CI-only outer boundary; runtime and browser assertions are unchanged.
+import {projectPreEngagement} from './engagement-baseline.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -8,6 +9,7 @@ const root=fileURLToPath(new URL('../',import.meta.url));
 const ledger=JSON.parse(fs.readFileSync(new URL('../research/CI_PROJECT_SPLIT_INTEGRITY_2026-10-26.json',import.meta.url)));
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 export function projectPreCiProjectSplit(bytes,relative){
+ bytes=projectPreEngagement(bytes,relative);
  const entry=ledger.files[relative];if(!entry)return bytes;
  assert.equal(hash(bytes),entry.afterSha256,relative+': undeclared CI project-split mutation');
  const before=Buffer.from(entry.beforeText);assert.equal(hash(before),entry.beforeSha256,relative+': immutable deployed PR102 checkpoint');return before;

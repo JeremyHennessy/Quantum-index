@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import {createHash} from 'node:crypto';
 import {spawnSync} from 'node:child_process';
 import {projectPreCiProjectSplit,readPreCiProjectSplitFile} from './ci-project-split-baseline.mjs';
+import {projectPreEngagement} from './engagement-baseline.mjs';
 const ledger=JSON.parse(fs.readFileSync('research/CI_PROJECT_SPLIT_INTEGRITY_2026-10-26.json'));
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const matrixExpression='$'+'{{ matrix.project }}';
@@ -20,14 +21,14 @@ test('CI project split preserves all 281 baseline paths and rejects changed or s
  assert.deepEqual(Object.keys(ledger.files),modified);
  assert.equal(Object.keys(ledger.unchangedFiles).length,275);
  for(const [file,entry]of Object.entries(ledger.files)){
-  const raw=fs.readFileSync(file);assert.equal(hash(raw),entry.afterSha256,file);
+  const raw=fs.readFileSync(file);assert.equal(hash(projectPreEngagement(raw,file)),entry.afterSha256,file);
   assert.equal(hash(readPreCiProjectSplitFile(file)),entry.beforeSha256,file);
   assert.equal(readPreCiProjectSplitFile(file,'utf8'),entry.beforeText,file);
-  assert.throws(()=>projectPreCiProjectSplit(Buffer.from(entry.beforeText),file),/undeclared CI project-split mutation/);
-  assert.throws(()=>projectPreCiProjectSplit(Buffer.concat([raw,Buffer.from('undeclared')]),file),/undeclared CI project-split mutation/);
+  assert.throws(()=>projectPreCiProjectSplit(Buffer.from(entry.beforeText),file),/undeclared (?:CI project-split|engagement presentation) mutation/);
+  assert.throws(()=>projectPreCiProjectSplit(Buffer.concat([raw,Buffer.from('undeclared')]),file),/undeclared (?:CI project-split|engagement presentation) mutation/);
  }
- for(const [file,want]of Object.entries(ledger.unchangedFiles))assert.equal(hash(fs.readFileSync(file)),want,file);
- for(const [file,want]of Object.entries(ledger.newFiles))assert.equal(hash(fs.readFileSync(file)),want,file);
+ for(const [file,want]of Object.entries(ledger.unchangedFiles))assert.equal(hash(projectPreEngagement(fs.readFileSync(file),file)),want,file);
+ for(const [file,want]of Object.entries(ledger.newFiles))assert.equal(hash(projectPreEngagement(fs.readFileSync(file),file)),want,file);
 });
 test('only browser project scheduling and artifact names change; package still requires every matrix job',()=>{
  const raw=fs.readFileSync('.github/workflows/validate.yml','utf8');assert.equal(raw,expectedWorkflow());
@@ -76,7 +77,7 @@ test('historical CI and scientific assertions survive only exact explicit reader
   expected=ledger.files[file].beforeText;
   for(const [before,after]of changes){assert.ok(expected.includes(before),file);expected=expected.replaceAll(before,after);}
   expected="import {readPreCiProjectSplitFile} from './ci-project-split-baseline.mjs';\n"+expected;
-  assert.equal(fs.readFileSync(file,'utf8'),expected,file);
+  assert.equal(projectPreEngagement(fs.readFileSync(file),file).toString('utf8'),expected,file);
  }
 });
 function discovery(project){
