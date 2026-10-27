@@ -1,4 +1,4 @@
-name: Isolated Quantum Index collector HTTP smoke
+name: Verify Quantum Index published HTML
 
 on:
   push:
@@ -9,24 +9,23 @@ permissions:
   contents: read
 
 jobs:
-  smoke:
+  verify:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Verify collector without touching the public frontend
+      - name: Verify public GitHub Pages release without generating synthetic visits
         shell: bash
-        env:
-          BASE: https://qi-engagement-collector.jeremy-hennessy-c4e.workers.dev
         run: |
           set -euo pipefail
-          echo "Checking isolated collector health"
-          curl --fail-with-body --silent --show-error --max-time 15 "$BASE/health" > /tmp/qi-health.json
-          python3 -c 'import json; assert json.load(open("/tmp/qi-health.json"))["ok"] is True'
-          echo "Checking an invalid origin cannot submit telemetry"
-          printf '%s' '{"v":1,"sid":"a91710ac-0000-4000-8000-1234567890ab","kind":"view","section":"explore","theoryId":"","dwellMs":0,"inputs":0,"scrolled":0,"webdriver":1}' > /tmp/qi-test.json
-          rejected="$(curl --silent --show-error --max-time 15 -o /tmp/reject.txt -w '%{http_code}' -X POST -H 'Origin: https://example.test' -H 'Content-Type: text/plain' --data-binary @/tmp/qi-test.json "$BASE/event")"
-          test "$rejected" = 403
-          echo "Checking valid test event ingestion"
-          accepted="$(curl --silent --show-error --max-time 15 -o /tmp/accepted.txt -w '%{http_code}' -X POST -H 'Origin: https://quantumindex.site' -H 'Content-Type: text/plain' --data-binary @/tmp/qi-test.json "$BASE/event")"
-          test "$accepted" = 204
-          echo "Collector health, security rejection, and test-event POST passed"
+          URL='https://quantumindex.site/?qi_release=228cd84230d0eaef8325dad4a94dc81ad8cf5a27'
+          curl --fail-with-body --silent --show-error --location --max-time 25 -H 'Cache-Control: no-cache' "$URL" > /tmp/qi-production.html
+          grep -Fq 'id="qi-engagement-tracker"' /tmp/qi-production.html
+          grep -Fq 'qi-engagement-collector.jeremy-hennessy-c4e.workers.dev/event' /tmp/qi-production.html
+          grep -Fq 'Additional route analytics record section and public theory openings' /tmp/qi-production.html
+          echo 'Public index.html includes the route tracker, endpoint, and privacy disclosure'
+          ACTUAL="$(sha256sum /tmp/qi-production.html | cut -d' ' -f1)"
+          EXPECTED='cb44a2d65a2fb3eddb21bc11fc3b1fabcd2399d2a101790a8bd0c8c9e7890f75'
+          echo "Expected release HTML SHA256: $EXPECTED"
+          echo "Published release HTML SHA256: $ACTUAL"
+          test "$ACTUAL" = "$EXPECTED"
+          echo 'Published HTML exactly matches the reviewed repository release artifact'
