@@ -1,0 +1,32 @@
+name: Isolated Quantum Index collector HTTP smoke
+
+on:
+  push:
+    branches:
+      - diagnostic/qi-engagement-http-20261027
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Verify collector without touching the public frontend
+        shell: bash
+        env:
+          BASE: https://qi-engagement-collector.jeremy-hennessy-c4e.workers.dev
+        run: |
+          set -euo pipefail
+          echo "Checking isolated collector health"
+          curl --fail-with-body --silent --show-error --max-time 15 "$BASE/health" > /tmp/qi-health.json
+          python3 -c 'import json; assert json.load(open("/tmp/qi-health.json"))["ok"] is True'
+          echo "Checking an invalid origin cannot submit telemetry"
+          printf '%s' '{"v":1,"sid":"a91710ac-0000-4000-8000-1234567890ab","kind":"view","section":"explore","theoryId":"","dwellMs":0,"inputs":0,"scrolled":0,"webdriver":1}' > /tmp/qi-test.json
+          rejected="$(curl --silent --show-error --max-time 15 -o /tmp/reject.txt -w '%{http_code}' -X POST -H 'Origin: https://example.test' -H 'Content-Type: text/plain' --data-binary @/tmp/qi-test.json "$BASE/event")"
+          test "$rejected" = 403
+          echo "Checking valid test event ingestion"
+          accepted="$(curl --silent --show-error --max-time 15 -o /tmp/accepted.txt -w '%{http_code}' -X POST -H 'Origin: https://quantumindex.site' -H 'Content-Type: text/plain' --data-binary @/tmp/qi-test.json "$BASE/event")"
+          test "$accepted" = 204
+          echo "Collector health, security rejection, and test-event POST passed"
