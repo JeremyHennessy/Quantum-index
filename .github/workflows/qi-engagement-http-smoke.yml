@@ -1,4 +1,4 @@
-name: Verify Quantum Index published HTML
+name: Verify live hash-route telemetry without polluting Web Analytics
 
 on:
   push:
@@ -11,21 +11,60 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
+    container: mcr.microsoft.com/playwright/python:v1.63.0-noble@sha256:72bd171a9ffc2b4b59532aaa6210e21014d07093120dc25528870c0b840da1f0
     steps:
-      - name: Verify public GitHub Pages release without generating synthetic visits
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci --ignore-scripts
+      - name: Run isolated browser-to-Worker end-to-end telemetry diagnostic
         shell: bash
         run: |
           set -euo pipefail
-          URL='https://quantumindex.site/?qi_release=228cd84230d0eaef8325dad4a94dc81ad8cf5a27'
-          curl --fail-with-body --silent --show-error --location --max-time 25 -H 'Cache-Control: no-cache' "$URL" > /tmp/qi-production.html
-          grep -Fq 'id="qi-engagement-tracker"' /tmp/qi-production.html
-          grep -Fq 'qi-engagement-collector.jeremy-hennessy-c4e.workers.dev/event' /tmp/qi-production.html
-          grep -Fq 'Additional route analytics record section and public theory openings' /tmp/qi-production.html
-          echo 'Public index.html includes the route tracker, endpoint, and privacy disclosure'
-          ACTUAL="$(sha256sum /tmp/qi-production.html | cut -d' ' -f1)"
-          EXPECTED='cb44a2d65a2fb3eddb21bc11fc3b1fabcd2399d2a101790a8bd0c8c9e7890f75'
-          echo "Expected release HTML SHA256: $EXPECTED"
-          echo "Published release HTML SHA256: $ACTUAL"
-          test "$ACTUAL" = "$EXPECTED"
-          echo 'Published HTML exactly matches the reviewed repository release artifact'
+          node --input-type=module <<'NODE'
+          import {chromium} from '@playwright/test';
+          const sid='abe9cdd0-0e7e-4fee-8000-910000000001';
+          const browser=await chromium.launch({headless:true});
+          const page=await browser.newPage();
+          const records=[];
+          const blocked=[];
+          await page.addInitScript((fixed)=>{
+            Object.defineProperty(window.crypto,'randomUUID',{configurable:true,value:()=>fixed});
+          },sid);
+          // Suppress standard Cloudflare Web Analytics in the synthetic browser.
+          // Only the isolated anonymous engagement collector may receive events.
+          await page.route(/cloudflareinsights\.com/,route=>{blocked.push(route.request().url());return route.abort();});
+          await page.route('**/cdn-cgi/rum',route=>route.abort());
+          page.on('response',response=>{
+            if(response.url().includes('qi-engagement-collector.')&&response.url().endsWith('/event')){
+              const req=response.request();
+              let body;
+              try{body=JSON.parse(req.postData()||'{}');}catch{body={};}
+              records.push({status:response.status(),body});
+            }
+          });
+          const url='https://quantumindex.site/#/catalog';
+          await page.goto(url,{waitUntil:'domcontentloaded',timeout:30000});
+          await page.waitForTimeout(1500);
+          const active=await page.evaluate(()=>window.__qiEngagementStarted===true);
+          if(!active)throw Error('Published tracker did not initialize');
+          const uuid=await page.evaluate(()=>crypto.randomUUID());
+          if(uuid!==sid)throw Error('Synthetic page-load session was not isolated');
+          await page.evaluate(()=>location.hash='#/theory/planck-quanta');
+          await page.waitForTimeout(1800);
+          await page.evaluate(()=>location.hash='#/map');
+          await page.waitForTimeout(1800);
+          await page.close();
+          await browser.close();
+          const views=records.filter(x=>x.status===204&&x.body.kind==='view');
+          console.log('Collector responses:',records.map(r=>({status:r.status,kind:r.body.kind,section:r.body.section,theoryId:r.body.theoryId})));
+          console.log('Standard RUM blocked:',blocked.length);
+          for(const section of ['catalog','theory','map'])
+            if(!views.some(x=>x.body.section===section&&x.body.sid===sid))
+              throw Error('Missing browser-to-collector stored view for '+section);
+          if(records.some(r=>r.status!==204))
+            throw Error('Collector emitted an unsuccessful browser response');
+          console.log('Verified three live production route navigations, with known isolated test UUID.');
+          NODE
