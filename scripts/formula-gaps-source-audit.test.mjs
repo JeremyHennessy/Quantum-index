@@ -105,8 +105,8 @@ test('serial gap, response and thermal projections restore exact checkpoints and
   for(const [file,entry]of Object.entries(ledger.files)){
     const raw=fs.readFileSync(file);assert.equal(hash(readPreCiProjectSplitFile(file)),entry.afterSha256,file);
     assert.equal(hash(readPreFormulaGapsFile(file)),entry.beforeSha256,file);assert.equal(readPreFormulaGapsFile(file,'utf8'),entry.beforeText,file);
-    assert.throws(()=>projectPreFormulaGaps(Buffer.concat([raw,Buffer.from('undeclared')]),file),/undeclared (?:formula-gap integration|CI project-split) mutation/);
-    assert.throws(()=>projectPreFormulaGaps(Buffer.from(entry.beforeText),file),/undeclared (?:formula-gap integration|CI project-split) mutation/);
+    assert.throws(()=>projectPreFormulaGaps(Buffer.concat([raw,Buffer.from('undeclared')]),file),/undeclared (?:formula-gap integration|CI project-split|engagement presentation) mutation/);
+    assert.throws(()=>projectPreFormulaGaps(Buffer.from(entry.beforeText),file),/undeclared (?:formula-gap integration|CI project-split|engagement presentation) mutation/);
   }
   for(const [file,expected]of Object.entries(ledger.unchangedFiles))assert.equal(hash(readPreCiProjectSplitFile(file)),expected,file);
   for(const [file,expected]of Object.entries(ledger.newFiles))assert.equal(hash(readPreCiProjectSplitFile(file)),expected,file);
