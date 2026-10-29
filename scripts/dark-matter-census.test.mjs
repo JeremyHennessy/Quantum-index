@@ -79,7 +79,7 @@ test('historical ADD set is a small distinct first wave, not an unsupported all-
   for(const stage of ledger.stages) assert.ok(stage.stage && stage.acceptance,stage.stage);
   const docs=fs.readFileSync('docs/DARK_MATTER_CAMPAIGN_2026-10-29.md','utf8');
   assert.match(docs,/no new dark-matter theory/i);
-  assert.match(docs,/full text and exact/i);
+  assert.match(docs,/full texts and exact/i);
   assert.match(docs,/experimental|observational/i);
   assert.match(docs,/browser|Chromium/i);
 });
