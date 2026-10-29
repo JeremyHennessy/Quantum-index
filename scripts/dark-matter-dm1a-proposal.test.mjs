@@ -75,7 +75,7 @@ test('SIMP equation and effective rate have consistent equilibrium, depletion an
   assert.match(B.latex,/n_\\chi\^2-n_\{\\chi,\\mathrm\{eq\}\}\^2/);
   assert.match(R.latex,/\\alpha_\{\\mathrm\{eff\}\}\^3/);
   const collision=(n,neq,k3,k2)=>-(n**3-n*n*neq)*k3-(n*n-neq*neq)*k2;
-  assert.equal(collision(5,5,0.01,0.02),0);
+  assert.ok(collision(5,5,0.01,0.02) === 0, 'equilibrium collision cancellation');
   assert.ok(collision(6,5,0.01,0.02)<0,'above equilibrium should be depleted');
   assert.ok(collision(4,5,0.01,0.02)>0,'below equilibrium should be replenished');
   const rate=(a,m)=>a**3/m**5;
