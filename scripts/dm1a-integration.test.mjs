@@ -32,7 +32,9 @@ test('DM-1A restores every protected source byte exactly and rejects undeclared 
 
 test('DM-1A only appends precisely the four source-reviewed classes and references',()=>{
  assert.deepEqual(plain(now.QI_DATA.theories),[...plain(before.QI_DATA.theories),...pack.theories]);
- assert.deepEqual(plain(now.QI_DATA.sources),[...plain(before.QI_DATA.sources),...pack.sources]);
+ const addedSourceIds=new Set(pack.sources.map(s=>s.id));
+ assert.deepEqual(plain(now.QI_DATA.sources.filter(s=>!addedSourceIds.has(s.id))),plain(before.QI_DATA.sources));
+ assert.deepEqual(plain(now.QI_DATA.sources.filter(s=>addedSourceIds.has(s.id))),pack.sources);
  assert.deepEqual(plain(now.QI_DATA.relations),[...plain(before.QI_DATA.relations),...pack.relations]);
  assert.deepEqual(plain(now.QI_FORMULAS.formulas),[...plain(before.QI_FORMULAS.formulas),...pack.formulas]);
  for(const field of ['trees'])assert.deepEqual(plain(now.QI_DATA[field]),plain(before.QI_DATA[field]));

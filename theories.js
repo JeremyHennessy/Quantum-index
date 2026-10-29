@@ -3658,4 +3658,29 @@ window.QI_DATA.sources.push(...sources);targets[0].sources.push("okamura-ozawa-i
  for(const x of theories)if(theoryIds.has(x.id))throw new Error('DM-1A duplicate theory '+x.id);
  window.QI_DATA.sources.push(...sources);
  window.QI_DATA.theories.push(...theories);
+ const relations=[
+  {
+    "from": "self-interacting-dark-matter",
+    "to": "simp-relic",
+    "type": "overlaps",
+    "note": "SIMP 3-to-2 number-changing freeze-out can coexist with 2-to-2 self-scattering, but the mere existence of self-interactions does not establish the SIMP thermal relic mechanism.",
+    "sourceIds": [],
+    "evidenceType": "editorial relation",
+    "confidence": "editorial",
+    "evidenceNote": "Editorial conceptual intersection. Do not infer a sourced directed historical or equivalence claim."
+  },
+  {
+    "from": "wimp-dark-matter",
+    "to": "elder-relic",
+    "type": "overlaps",
+    "note": "Both are thermal relic paradigms, but a WIMP one-species 2-to-2 annihilation history and an ELDER elastic-decoupling-controlled abundance describe different regimes.",
+    "sourceIds": [],
+    "evidenceType": "editorial relation",
+    "confidence": "editorial",
+    "evidenceNote": "Editorial conceptual overlap only; model-specific thermal history and pair annihilation differ."
+  }
+];
+ const oldRelations=new Set(window.QI_DATA.relations.map(r=>r.from+'|'+r.to+'|'+r.type));
+ for(const r of relations){if(oldRelations.has(r.from+'|'+r.to+'|'+r.type))throw new Error('DM-1A relation collision '+r.from+' → '+r.to);if(r.confidence!=='editorial'||r.sourceIds.length!==0)throw new Error('Unexpected DM-1A relation confidence');}
+ window.QI_DATA.relations.push(...relations);
 })();

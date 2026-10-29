@@ -106,8 +106,8 @@ test('serial gap, response and thermal projections restore exact checkpoints and
   for(const [file,entry]of Object.entries(ledger.files)){
     const raw=fs.readFileSync(file);assert.equal(hash(readPreCiProjectSplitFile(file)),entry.afterSha256,file);
     assert.equal(hash(readPreFormulaGapsFile(file)),entry.beforeSha256,file);assert.equal(readPreFormulaGapsFile(file,'utf8'),entry.beforeText,file);
-    assert.throws(()=>projectPreFormulaGaps(Buffer.concat([raw,Buffer.from('undeclared')]),file),/undeclared (?:formula-gap integration|CI project-split|engagement presentation) mutation/);
-    assert.throws(()=>projectPreFormulaGaps(Buffer.from(entry.beforeText),file),/undeclared (?:formula-gap integration|CI project-split|engagement presentation) mutation/);
+    assert.throws(()=>projectPreFormulaGaps(Buffer.concat([raw,Buffer.from('undeclared')]),file),/undeclared (?:DM-1A integration|formula-gap integration|CI project-split|engagement presentation) mutation/);
+    assert.throws(()=>projectPreFormulaGaps(Buffer.from(entry.beforeText),file),/undeclared (?:DM-1A integration|formula-gap integration|CI project-split|engagement presentation) mutation/);
   }
   for(const [file,expected]of Object.entries(ledger.unchangedFiles))assert.equal(hash(readPreCiProjectSplitFile(file)),expected,file);
   for(const [file,expected]of Object.entries(ledger.newFiles))assert.equal(hash(readPreCiProjectSplitFile(file)),expected,file);
@@ -135,7 +135,7 @@ test('all historical response assertions survive exact declared projection subst
 
 test('existing browser assertions change only exact current totals, not interactions or expectations',()=>{
   let expected=ledger.files['tests/browser/filter-controls.spec.mjs'].beforeText.replace("'0 / 457 formulas'","'0 / 460 formulas'").replace("'457 / 457 formulas'","'460 / 460 formulas'");
-  assert.equal(fs.readFileSync('tests/browser/filter-controls.spec.mjs','utf8'),expected);
+  assert.equal(readPreDm1aFile('tests/browser/filter-controls.spec.mjs','utf8'),expected);
   expected=ledger.files['tests/browser/repository-links.spec.mjs'].beforeText.replace("toContain('271')","toContain('274')");
   assert.equal(fs.readFileSync('tests/browser/repository-links.spec.mjs','utf8'),expected);
 });

@@ -24,8 +24,8 @@ test('CI project split preserves all 281 baseline paths and rejects changed or s
   const raw=fs.readFileSync(file);assert.equal(hash(projectPreEngagement(raw,file)),entry.afterSha256,file);
   assert.equal(hash(readPreCiProjectSplitFile(file)),entry.beforeSha256,file);
   assert.equal(readPreCiProjectSplitFile(file,'utf8'),entry.beforeText,file);
-  assert.throws(()=>projectPreCiProjectSplit(Buffer.from(entry.beforeText),file),/undeclared (?:CI project-split|engagement presentation) mutation/);
-  assert.throws(()=>projectPreCiProjectSplit(Buffer.concat([raw,Buffer.from('undeclared')]),file),/undeclared (?:CI project-split|engagement presentation) mutation/);
+  assert.throws(()=>projectPreCiProjectSplit(Buffer.from(entry.beforeText),file),/undeclared (?:DM-1A integration|CI project-split|engagement presentation) mutation/);
+  assert.throws(()=>projectPreCiProjectSplit(Buffer.concat([raw,Buffer.from('undeclared')]),file),/undeclared (?:DM-1A integration|CI project-split|engagement presentation) mutation/);
  }
  for(const [file,want]of Object.entries(ledger.unchangedFiles))assert.equal(hash(projectPreEngagement(fs.readFileSync(file),file)),want,file);
  for(const [file,want]of Object.entries(ledger.newFiles))assert.equal(hash(projectPreEngagement(fs.readFileSync(file),file)),want,file);
