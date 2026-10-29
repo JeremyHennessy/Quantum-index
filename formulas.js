@@ -14246,3 +14246,194 @@ for(const patch of patches){const record=window.QI_FORMULAS.formulas.find(item=>
 for(const formula of formulas){if(window.QI_FORMULAS.formulas.some(item=>item.id===formula.id))throw new Error("Duplicate formula-gap formula: "+formula.id);
 if(window.QI_FORMULAS.formulas.some(item=>item.theoryIds.some(id=>formula.theoryIds.includes(id))))throw new Error("Unexpected formula-gap baseline: "+formula.id);}
 window.QI_FORMULAS.formulas.push(...formulas);})();
+
+
+// DM-1A: source-reviewed SIMP/ELDER integration, 2026-10-29. Existing records above are unchanged.
+(()=>{
+ const formulas=[
+  {
+    "id": "simp-three-to-two-boltzmann-2014",
+    "name": "SIMP 3-to-2 number-density Boltzmann equation",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "\\frac{dn_\\chi}{dt}+3Hn_\\chi=-(n_\\chi^3-n_\\chi^2 n_{\\chi,\\mathrm{eq}})\\langle\\sigma v^2\\rangle_{3\\to2}-(n_\\chi^2-n_{\\chi,\\mathrm{eq}}^2)\\langle\\sigma v\\rangle_{\\mathrm{ann}}",
+    "plain": "dn_chi/dt + 3H n_chi = -(n_chi^3 - n_chi^2 n_chi,eq)<sigma v^2>_3->2 - (n_chi^2 - n_chi,eq^2)<sigma v>_ann",
+    "description": "The original single-species SIMP number-density balance with dark 3-to-2 self-annihilation, visible-sector pair annihilation/inverse production, and expansion dilution.",
+    "theoryIds": [
+      "simp-relic"
+    ],
+    "sourceIds": [
+      "hochberg-simp-mechanism-2014"
+    ],
+    "tags": [
+      "SIMP",
+      "Boltzmann equation",
+      "3-to-2",
+      "relic"
+    ],
+    "formulaType": "approximation",
+    "assumptions": [
+      "Homogeneous expanding background, one effective dark species χ and a thermally averaged reaction network as in Hochberg et al. (2014).",
+      "Rapid dark 2-to-2 scattering and effective visible-sector kinetic equilibrium permit a common bath temperature and equilibrium density n_eq.",
+      "The 3-to-2 and 2-to-2 processes use the original author's thermal-rate conventions, not a universal reaction network for asymmetric or multiple-species models.",
+      "No detection of a SIMP or universality of the parameterization is implied."
+    ],
+    "variables": [
+      "n_chi: physical dark particle number density",
+      "n_chi,eq: equilibrium number density at the common temperature",
+      "H: Hubble expansion rate",
+      "<sigma v^2>_3->2: thermally averaged 3-to-2 number-changing reaction coefficient",
+      "<sigma v>_ann: thermally averaged pair-annihilation/inverse-production coefficient",
+      "t: cosmological proper time"
+    ],
+    "regime": "Original effectively one-species SIMP thermal 3-to-2 paradigm with kinetic bath equilibrium; model-specific collision terms, chemical potentials and extra coupled species require changes.",
+    "units": "In c=ℏ=k_B=1, n has E^3, H has E, <sigma v^2>_3->2 has E^-5 and <sigma v>_ann has E^-2; all terms have E^4.",
+    "theoryRelationship": "Source-specific canonical collision-balance equation for a SIMP mechanism, not the mathematical definition of all strongly self-interacting dark matter.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-29",
+    "curationBatch": "dark-matter-dm1a-simp-elder-20261029",
+    "sourceLocations": [
+      {
+        "sourceId": "hochberg-simp-mechanism-2014",
+        "locator": "arXiv:1402.5143v2, printed p.4 / PDF page 4, Eq. (21), section 'Solving the Boltzmann equation'; visually checked the n^3−n^2 n_eq and n^2−n_eq^2 terms and both minus signs.",
+        "url": "https://arxiv.org/pdf/1402.5143v2#page=4"
+      }
+    ]
+  },
+  {
+    "id": "simp-effective-three-to-two-rate-2014",
+    "name": "SIMP 3-to-2 thermal-rate parametrization",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "\\langle\\sigma v^2\\rangle_{3\\to2}\\equiv\\frac{\\alpha_{\\mathrm{eff}}^3}{m_{\\mathrm{DM}}^5}",
+    "plain": "<sigma v^2>_3->2 := alpha_eff^3 / m_DM^5",
+    "description": "A dimensionally normalized definition of the effective 3-to-2 thermal rate used in the original SIMP freeze-out estimate.",
+    "theoryIds": [
+      "simp-relic"
+    ],
+    "sourceIds": [
+      "hochberg-simp-mechanism-2014"
+    ],
+    "tags": [
+      "SIMP",
+      "rate",
+      "freeze-out"
+    ],
+    "formulaType": "defining",
+    "assumptions": [
+      "Single effective SIMP mass scale m_DM and dimensionless alpha_eff as defined by the original paper.",
+      "The parameter alpha_eff is not universally constant across temperature, model field content, nonperturbative enhancements or mediator masses.",
+      "Rate normalization is paper-specific; no standard 2-to-2 cross-section interpretation is valid for this 3-to-2 coefficient."
+    ],
+    "variables": [
+      "alpha_eff: effective dimensionless 3-to-2 interaction-strength parameter",
+      "m_DM: dark-matter particle mass",
+      "<sigma v^2>_3->2: thermally averaged 3-to-2 reaction coefficient"
+    ],
+    "regime": "One-mass-scale effective SIMP parametrization, not a derived cross section for arbitrary microscopic dark-sector models.",
+    "units": "Natural units c=ℏ=k_B=1: [<sigma v^2>] = mass^-5, [m_DM] = mass and alpha_eff is dimensionless.",
+    "theoryRelationship": "Defining effective-rate parametrization for the original single-species SIMP freeze-out estimate.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-29",
+    "curationBatch": "dark-matter-dm1a-simp-elder-20261029",
+    "sourceLocations": [
+      {
+        "sourceId": "hochberg-simp-mechanism-2014",
+        "locator": "arXiv:1402.5143v2, printed p.2 / PDF page 2, Eq. (6) immediately after 3-to-2 freeze-out condition Eq. (5); source explicitly describes alpha_eff as effective strength. Original PDF page visually inspected on 29 October 2026.",
+        "url": "https://arxiv.org/pdf/1402.5143v2#page=2"
+      }
+    ]
+  },
+  {
+    "id": "elder-dark-cannibal-entropy-2015",
+    "name": "ELDER separately conserved dark-sector comoving entropy",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "a^3s'_\\chi\\simeq a^3\\frac{m_\\chi n_\\chi}{T'}=\\mathrm{const}",
+    "plain": "a^3 s'_chi ≃ a^3 m_chi n_chi / T' = constant",
+    "description": "Approximate dark-sector comoving entropy during the cannibal epoch after elastic decoupling and before dark 3-to-2 freeze-out.",
+    "theoryIds": [
+      "elder-relic"
+    ],
+    "sourceIds": [
+      "kuflik-elder-2015"
+    ],
+    "tags": [
+      "ELDER",
+      "entropy",
+      "cannibalization"
+    ],
+    "formulaType": "approximation",
+    "assumptions": [
+      "Elastic scattering with visible matter has kinetically decoupled, while number-changing 3-to-2 interactions maintain chemical equilibrium within the nonrelativistic dark sector.",
+      "Separate comoving dark-sector entropy conservation in the specified epoch, not a general equality during visible-dark thermal contact or after chemical freeze-out.",
+      "The expression s'_chi ≈ m_chi n_chi/T' neglects subleading nonrelativistic thermodynamic terms."
+    ],
+    "variables": [
+      "a: FLRW scale factor",
+      "s'_chi: dark-sector entropy density",
+      "n_chi: physical dark number density",
+      "m_chi: particle mass",
+      "T': dark-sector temperature, different from visible-sector temperature T"
+    ],
+    "regime": "Nonrelativistic cannibalization between ELDER kinetic decoupling and 3-to-2 chemical freeze-out.",
+    "units": "Entropy density s' is volume^-1; a^3 s' is comoving entropy (for a dimensionless scale factor). Set k_B=1 consistently.",
+    "theoryRelationship": "Source-scoped thermodynamic approximation underlying the ELDER dark-sector temperature evolution.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-29",
+    "curationBatch": "dark-matter-dm1a-simp-elder-20261029",
+    "sourceLocations": [
+      {
+        "sourceId": "kuflik-elder-2015",
+        "locator": "arXiv:1512.04545v1, printed p.2 / PDF page 2, Eq. (1), first displayed equality; the second proportionality in Eq. (1) depends on additional cosmological approximations. Original PDF page visually inspected on 29 October 2026.",
+        "url": "https://arxiv.org/pdf/1512.04545v1#page=2"
+      }
+    ]
+  },
+  {
+    "id": "elder-cannibal-temperature-2015",
+    "name": "ELDER approximate cannibal-epoch temperature",
+    "category": "Astroparticle physics & cosmology",
+    "latex": "T'\\simeq\\frac{T_d}{1+3x_d^{-1}\\ln(T_d/T)}",
+    "plain": "T' ≃ T_d / [1 + (3 / x_d) ln(T_d / T)], x_d := m_chi / T_d",
+    "description": "An approximate slower cooling law for a nonrelativistic ELDER dark gas after kinetic decoupling from the visible bath.",
+    "theoryIds": [
+      "elder-relic"
+    ],
+    "sourceIds": [
+      "kuflik-elder-2015"
+    ],
+    "tags": [
+      "ELDER",
+      "dark temperature",
+      "kinetic decoupling"
+    ],
+    "formulaType": "approximation",
+    "assumptions": [
+      "ELDER thermal history after kinetic decoupling while 3-to-2 self-annihilations maintain dark chemical equilibrium.",
+      "Dark sector separately conserves comoving entropy; visible-sector entropy is treated as adiabatic with a proportional to T^-1 over the displayed interval.",
+      "T_d is the visible-sector temperature at elastic decoupling, and x_d=m_chi/T_d is positive; T below T_d in the epoch under discussion.",
+      "This approximate temperature history is not a universal decoupling bound or a detector prediction."
+    ],
+    "variables": [
+      "T': dark-sector temperature",
+      "T: ordinary visible plasma temperature",
+      "T_d: plasma temperature when elastic scattering decouples",
+      "x_d: m_chi/T_d, dark-particle mass divided by decoupling temperature"
+    ],
+    "regime": "Approximate nonrelativistic 3-to-2 cannibal epoch of the original ELDER mechanism; not valid prior to elastic decoupling or after chemical freeze-out.",
+    "units": "T', T and T_d are temperatures or energies in k_B=1 units; x_d and the logarithm argument are dimensionless.",
+    "theoryRelationship": "Approximate model-dependent consequence of separately conserved dark-sector entropy in the original ELDER proposal.",
+    "metadataReview": "explicit",
+    "reviewedAt": "2026-10-29",
+    "curationBatch": "dark-matter-dm1a-simp-elder-20261029",
+    "sourceLocations": [
+      {
+        "sourceId": "kuflik-elder-2015",
+        "locator": "arXiv:1512.04545v1, printed p.2 / PDF page 2, Eq. (2) following entropy equation Eq. (1); visually inspected the plus sign and 3 x_d^-1 logarithm.",
+        "url": "https://arxiv.org/pdf/1512.04545v1#page=2"
+      }
+    ]
+  }
+];
+ const existing=new Set(window.QI_FORMULAS.formulas.map(x=>x.id));
+ for(const f of formulas)if(existing.has(f.id))throw new Error('DM-1A duplicate formula '+f.id);
+ window.QI_FORMULAS.formulas.push(...formulas);
+})();

@@ -8,10 +8,10 @@ test('catalog and formula dropdowns filter reset and report no matches',async({p
   await expect(page.locator('#resultCount')).toHaveText(`${expected} results`);await expect(page.locator('#catalog .catalog-card')).toHaveCount(expected);await page.locator(selector).selectOption('');
  }
  await page.locator('#search').fill('no-such-synthetic-theory-qa');await expect(page.locator('#resultCount')).toHaveText('0 results');await expect(page.locator('#catalog')).toContainText('No theories match');
- await page.locator('#resetView').click();await page.getByRole('button',{name:'Catalog',exact:true}).click();await expect(page.locator('#search')).toHaveValue('');await expect(page.locator('#resultCount')).toHaveText('483 results');
+ await page.locator('#resetView').click();await page.getByRole('button',{name:'Catalog',exact:true}).click();await expect(page.locator('#search')).toHaveValue('');await expect(page.locator('#resultCount')).toHaveText('485 results');
  await page.getByRole('button',{name:'Formula atlas',exact:true}).click();
  const category=await page.locator('#formulaCategory option').nth(1).getAttribute('value');await page.locator('#formulaCategory').selectOption(category);const total=await page.locator('#formulaGrid .formula-card').count();expect(total).toBeGreaterThan(0);await expect(page.locator('#formulaGrid .formula-meta > span:first-child')).toHaveText(Array(total).fill(category));
  const type=await page.locator('#formulaGrid .formula-role').first().textContent();await page.locator('#formulaType').selectOption(type);const filtered=await page.locator('#formulaGrid .formula-card').count();expect(filtered).toBeGreaterThan(0);await expect(page.locator('#formulaGrid .formula-role')).toHaveText(Array(filtered).fill(type));
- await page.locator('#formulaSearch').fill('no-such-synthetic-formula-qa');await expect(page.locator('#formulaCount')).toHaveText('0 / 460 formulas');await expect(page.locator('#formulaGrid .formula-card')).toHaveCount(0);
- await page.locator('#formulaSearch').fill('');await page.locator('#formulaCategory').selectOption('');await page.locator('#formulaType').selectOption('');await expect(page.locator('#formulaCount')).toHaveText('460 / 460 formulas');expect(errors).toEqual([]);
+ await page.locator('#formulaSearch').fill('no-such-synthetic-formula-qa');await expect(page.locator('#formulaCount')).toHaveText('0 / 464 formulas');await expect(page.locator('#formulaGrid .formula-card')).toHaveCount(0);
+ await page.locator('#formulaSearch').fill('');await page.locator('#formulaCategory').selectOption('');await page.locator('#formulaType').selectOption('');await expect(page.locator('#formulaCount')).toHaveText('464 / 464 formulas');expect(errors).toEqual([]);
 });

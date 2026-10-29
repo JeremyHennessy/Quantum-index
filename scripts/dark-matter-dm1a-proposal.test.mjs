@@ -3,9 +3,16 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import {loadRuntime} from './category-trust-census.mjs';
+import {readPreDm1aFile} from './dm1a-integration-baseline.mjs';
+
 
 const pack=JSON.parse(fs.readFileSync('research/DARK_MATTER_DM1A_SIMP_ELDER_PROPOSED_RECORDS_2026-10-29.json','utf8'));
-const runtime=loadRuntime();
+function loadBeforeDm1a(){
+ const s={window:{}};vm.createContext(s);
+ for(const f of ['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','passports.js'])vm.runInContext(readPreDm1aFile(f,'utf8'),s);
+ return s.window;
+}
+const runtime=loadBeforeDm1a();
 const ids=collection=>new Set(collection.map(r=>r.id));
 const asPlain=value=>JSON.parse(JSON.stringify(value));
 const base=pack.baselineMain;
@@ -100,7 +107,7 @@ test('ELDER approximations reflect the decoupling sequence without claiming a un
 });
 
 test('candidate-only in-memory integration preserves old records and yields projected counts',()=>{
-  const w=loadRuntime();
+  const w=loadBeforeDm1a();
   const before={theories:asPlain(w.QI_DATA.theories),sources:asPlain(w.QI_DATA.sources),relations:asPlain(w.QI_DATA.relations),formulas:asPlain(w.QI_FORMULAS.formulas)};
   // Simulation only: the repository files and actual application are untouched.
   w.QI_DATA.sources.push(...pack.sources);

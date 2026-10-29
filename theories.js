@@ -3560,3 +3560,102 @@ for(const source of sources)if(window.QI_DATA.sources.some(item=>item.id===sourc
 const targets=window.QI_DATA.theories.filter(item=>item.id==="quantum-instruments");
 if(targets.length!==1||JSON.stringify(targets[0].sources)!==JSON.stringify(["davies-lewis-1970"]))throw new Error("Unexpected quantum-instruments source baseline");
 window.QI_DATA.sources.push(...sources);targets[0].sources.push("okamura-ozawa-instruments-2016");})();
+
+
+// DM-1A: source-reviewed SIMP/ELDER integration, 2026-10-29. Existing records above are unchanged.
+(()=>{
+ const sources=[
+  {
+    "id": "hochberg-simp-mechanism-2014",
+    "title": "Mechanism for Thermal Relic Dark Matter of Strongly Interacting Massive Particles (arXiv:1402.5143v2, The SIMP Miracle)",
+    "authors": "Yonit Hochberg, Eric Kuflik, Tomer Volansky, Jay G. Wacker",
+    "year": 2014,
+    "type": "primary paper; original preprint v2 visually inspected",
+    "url": "https://arxiv.org/pdf/1402.5143v2",
+    "doi": "10.1103/PhysRevLett.113.171301",
+    "inspectedPages": [
+      "PDF p.2 / printed p.2, Eqs. (5)-(6)",
+      "PDF p.4 / printed p.4, Eq. (21)"
+    ],
+    "limits": "Original simplified thermal 3-to-2 SIMP paradigm, not a universal dark-matter or self-interaction model."
+  },
+  {
+    "id": "kuflik-elder-2015",
+    "title": "Elastically Decoupling Dark Matter (arXiv:1512.04545v1; published 2016)",
+    "authors": "Eric Kuflik, Maxim Perelstein, Nicolas Rey-Le Lorier, Yu-Dai Tsai",
+    "year": 2015,
+    "type": "primary preprint; original 2015 v1 visually inspected; journal 2016",
+    "url": "https://arxiv.org/pdf/1512.04545v1",
+    "doi": "10.1103/PhysRevLett.116.221302",
+    "inspectedPages": [
+      "PDF p.1 / printed p.1, introduction and decoupling order",
+      "PDF p.2 / printed p.2, Eqs. (1)-(2)"
+    ],
+    "limits": "A particular elastically-decoupling cold thermal relic with a separate cannibal epoch; not every dark-sector interaction or all thermal relics."
+  }
+];
+ const theories=[
+  {
+    "id": "simp-relic",
+    "name": "Strongly Interacting Massive Particle (SIMP) 3-to-2 relic mechanism",
+    "year": 2014,
+    "era": "2000–2014",
+    "category": "Astroparticle physics & cosmology",
+    "status": "active mechanism",
+    "summary": "A proposed dark-matter thermal relic whose abundance can be set by dark-sector 3-to-2 number-changing interactions while weaker visible-sector scattering maintains kinetic equilibrium.",
+    "core": "In the original SIMP scenario, dark 3-to-2 reactions determine chemical freeze-out while interactions with the visible bath remove heat; this differs from ordinary 2-to-2 WIMP freeze-out.",
+    "tags": [
+      "SIMP",
+      "dark matter",
+      "3-to-2",
+      "thermal relic",
+      "freeze-out",
+      "hidden sector"
+    ],
+    "aliases": [
+      "SIMP dark matter",
+      "SIMP miracle",
+      "strongly interacting massive particles"
+    ],
+    "kind": "cosmological mechanism",
+    "provenance": "primary-sourced",
+    "sources": [
+      "hochberg-simp-mechanism-2014"
+    ],
+    "lastReviewed": "2026-10-29"
+  },
+  {
+    "id": "elder-relic",
+    "name": "Elastically Decoupling Relic (ELDER) dark matter",
+    "year": 2015,
+    "era": "2015–present",
+    "category": "Astroparticle physics & cosmology",
+    "status": "active mechanism",
+    "summary": "A proposed cold thermal dark-matter relic whose abundance is mainly fixed by elastic-scattering decoupling from ordinary matter before its dark-sector 3-to-2 reactions freeze out.",
+    "core": "Visible-sector kinetic decoupling occurs while dark 3-to-2 self-reactions continue, generating a separate cannibal epoch before chemical freeze-out.",
+    "tags": [
+      "ELDER",
+      "dark matter",
+      "kinetic decoupling",
+      "cannibalization",
+      "3-to-2",
+      "thermal relic"
+    ],
+    "aliases": [
+      "ELastically DEcoupling Relic",
+      "ELDER dark matter"
+    ],
+    "kind": "cosmological mechanism",
+    "provenance": "primary-sourced",
+    "sources": [
+      "kuflik-elder-2015"
+    ],
+    "lastReviewed": "2026-10-29"
+  }
+];
+ const sourceIds=new Set(window.QI_DATA.sources.map(x=>x.id)),theoryIds=new Set(window.QI_DATA.theories.map(x=>x.id));
+ for(const x of sources)if(sourceIds.has(x.id))throw new Error('DM-1A duplicate source '+x.id);
+ for(const x of theories)if(theoryIds.has(x.id))throw new Error('DM-1A duplicate theory '+x.id);
+ window.QI_DATA.sources.push(...sources);
+ window.QI_DATA.theories.push(...theories);
+})();

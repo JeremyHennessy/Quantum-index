@@ -823,3 +823,12 @@ window.QI_PROBLEMS.problems.push(...[
   ]
 }))row[key]=[...new Set([...(row[key]||[]),...values])];})();
 window.QI_PROBLEMS.scope="Nine linked scientific problems organize existing and source-qualified additions without claiming resolution.";
+
+
+// DM-1A: source-reviewed SIMP/ELDER integration, 2026-10-29. Existing records above are unchanged.
+(()=>{
+ const problem=window.QI_PROBLEMS.problems.find(p=>p.id==='dark-matter');
+ const group=problem?.approachGroups?.find(g=>g.name==='Particle and field candidates');
+ if(!group || !group.theoryIds.includes('self-interacting-dark-matter') || group.theoryIds.includes('simp-relic') || group.theoryIds.includes('elder-relic'))throw new Error('DM-1A unexpected dark-matter problem group');
+ group.theoryIds.push('simp-relic','elder-relic');
+})();

@@ -5,15 +5,15 @@ _Last audited: 2026-09-22_
 ## Current formula corpus
 
 <!-- coverage:start -->
-- **460** formula entries across **30** categories
-- **326** theory entries with linked formulas
+- **464** formula entries across **30** categories
+- **328** theory entries with linked formulas
 - **111** documented formula gaps
-- **274** formulas with explicit metadata review; **186** with baseline metadata
+- **278** formulas with explicit metadata review; **186** with baseline metadata
 
 | Formula category | Entries |
 |---|---:|
 | Angular momentum | 3 |
-| Astroparticle physics & cosmology | 28 |
+| Astroparticle physics & cosmology | 32 |
 | Atomic and AMO physics | 3 |
 | Beyond standard quantum theory | 2 |
 | Collapse theories | 6 |

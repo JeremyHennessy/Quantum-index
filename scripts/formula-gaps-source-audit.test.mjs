@@ -1,3 +1,4 @@
+import {readPreDm1aFile} from './dm1a-integration-baseline.mjs';
 import {readPreCiProjectSplitFile} from './ci-project-split-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -14,7 +15,7 @@ const ledger=JSON.parse(fs.readFileSync('research/FORMULA_GAPS_INTEGRITY_2026-10
 const files=['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','passports.js'];
 const prior={window:{}};vm.createContext(prior);
 for(const file of files)vm.runInContext(readPreFormulaGapsFile(file,'utf8'),prior);
-const old=prior.window,current=loadRuntime(),plain=value=>JSON.parse(JSON.stringify(value));
+const old=prior.window,current=(()=>{const s={window:{}};vm.createContext(s);for(const f of files)vm.runInContext(readPreDm1aFile(f,'utf8'),s);return s.window;})(),plain=value=>JSON.parse(JSON.stringify(value));
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const targets=new Map(audit.formulas.map(f=>[f.theoryIds[0],f.id]));
 
