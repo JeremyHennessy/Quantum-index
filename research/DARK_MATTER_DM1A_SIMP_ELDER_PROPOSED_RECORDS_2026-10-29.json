@@ -198,7 +198,7 @@
       "sourceLocations": [
         {
           "sourceId": "hochberg-simp-mechanism-2014",
-          "locator": "arXiv:1402.5143v2, printed p.2 / PDF page 2, Eq. (6) immediately after 3-to-2 freeze-out condition Eq. (5); source explicitly describes alpha_eff as effective strength.",
+          "locator": "arXiv:1402.5143v2, printed p.2 / PDF page 2, Eq. (6) immediately after 3-to-2 freeze-out condition Eq. (5); source explicitly describes alpha_eff as effective strength. Original PDF page visually inspected on 29 October 2026.",
           "url": "https://arxiv.org/pdf/1402.5143v2#page=2"
         }
       ]
@@ -243,7 +243,7 @@
       "sourceLocations": [
         {
           "sourceId": "kuflik-elder-2015",
-          "locator": "arXiv:1512.04545v1, printed p.2 / PDF page 2, Eq. (1), first displayed equality; the second proportionality in Eq. (1) depends on additional cosmological approximations.",
+          "locator": "arXiv:1512.04545v1, printed p.2 / PDF page 2, Eq. (1), first displayed equality; the second proportionality in Eq. (1) depends on additional cosmological approximations. Original PDF page visually inspected on 29 October 2026.",
           "url": "https://arxiv.org/pdf/1512.04545v1#page=2"
         }
       ]
