@@ -62,3 +62,26 @@ test('source-review proposal retains latest-value, cosmology, and independent re
  assert.match(d,/NOT SHIPPED/);assert.match(d,/not an automatically current 2026/i);
 });
 
+
+test('2026 PDG current-review source is visually located and does not create a duplicate canonical mass record',()=>{
+ const q=proposal.currentReview,comparison=q.comparisonTo2016;
+ assert.equal(q.sourceId,'dm2-pdg-rpp-axions-2026');
+ assert.equal(q.publishedPdfStamp,'2026-06-01');
+ assert.equal(q.reviewRevision,'August 2025');
+ assert.equal(q.status,'source-reviewed-current-reference-proposal-not-integrated');
+ assert.ok(q.reviewedSourceLevel.includes('visually inspected'));
+ assert.equal(q.math.length,3);
+ for(const x of q.math)assert.ok(x.sourceLocator.includes('p.')&&x.assumptions);
+ assert.ok(q.math[1].sourceLocator.includes('(89.3)'));
+ const atFa1e12GeV=(5.691*(1e9/1e12))*1000; // source meV -> micro-eV
+ assert.ok(Math.abs(atFa1e12GeV-5.691)<1e-12);
+ assert.ok(Math.abs(comparison.older2016CentralMicroEVAtFa1e12-5.70)<1e-12);
+ assert.ok(Math.abs(comparison.newer2026CentralMicroEVAtFa1e12-atFa1e12GeV)<1e-12);
+ assert.ok(Math.abs(comparison.newer2026MicroEVUncertainty-0.051)<1e-12);
+ assert.match(q.integrationPolicy,/No second standalone formula card/);
+ assert.equal(proposal.formulaProposals.length,4);
+ const d=fs.readFileSync('docs/DARK_MATTER_DM2A_AXION_SOURCE_REVIEW_2026-10-30.md','utf8');
+ assert.match(d,/2026 PDG current-reference comparison/);
+ assert.match(d,/5\.691\(51\)/);
+ assert.match(d,/not ship two duplicative/i);
+});
