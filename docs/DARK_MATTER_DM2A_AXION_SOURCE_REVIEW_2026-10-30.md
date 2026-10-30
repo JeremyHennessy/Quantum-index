@@ -15,6 +15,16 @@ Four proposed canonical/source-scoped mathematical records:
 
 Every proposal includes versioned source locator, variables, units, assumptions and nonclaims. Source ID `dm2-dicortona-qcd-axion-2016` is **proposed and not yet appended** to the main bibliography.
 
+## 2026 PDG current-reference comparison (independently checked)
+
+The official **2026 Particle Data Group** review, *Axions and Other Similar Particles* (authors O'Hare, Rybka, Safdi and Winslow; revised August 2025, PDF stamped **1 June 2026**) was inspected as an actual PDF page image, [source](https://pdg.lbl.gov/2026/reviews/rpp2026-rev-axions.pdf).
+
+- **Printed p.2 / PDF index 1, Eq. (89.2):** the unshifted-`barTheta` axion–gluon effective coupling `(a/f_a - barTheta)*alpha_s/(8pi)*G*Gtilde`. The 2016 author Eq. (1) writes the theta-shifted form; these are different field conventions, **not contradictory anomaly physics**.
+- **Printed p.2 / PDF index 1, Eq. (89.3):** `m_a = 5.691(51) meV × (10^9 GeV/f_a)`, equivalent to **5.691(51) micro-eV** for `f_a=10^12 GeV`. This is a **more recent reviewed numerical estimate** than the preserved 2016 `5.70(7) micro-eV`, rather than a second independent QCD axion theory.
+- **Printed p.3 / PDF index 2, Eqs. (89.5)–(89.6):** source defines the axion-photon tensor convention and writes `g_agammagamma=alpha/(2pi f_a)*(E/N - 1.92(4))`. The anomaly ratio **E/N** remains model-dependent.
+
+One future canonical mass formula should carry versioned source-era estimates; **do not ship two duplicative mass formulas** merely because a central value changed. The **2016 formula proposal remains unchanged** in the machine ledger; the 2026 PDG evidence is an added comparison, not a silent replacement. The 2026 PDG review is not the 1978 original axion proposal and does not prove that axions make up dark matter.
+
 ## Distinct hold: axion as dark matter
 
 The 2016 paper explains nonthermal axion misalignment, finite-temperature potential uncertainty, and the distinction between PQ breaking before/after inflation. **Do not invent a universal axion relic-abundance relation.** Direct review of the 1983 original production papers and their assumptions comes next. No experiment or dark-matter detection is claimed. The presence of `axion` as a QFT node is not the same as proving it is the cosmic dark matter.
