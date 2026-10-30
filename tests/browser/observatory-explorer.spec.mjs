@@ -59,7 +59,7 @@ test('source record, planned release and problem links retain their precise stat
   await expect.poll(()=>page.evaluate(()=>window.QI_OBSERVATORY_PREVIEW_READY===true)).toBe(true);
   await expect(page.locator('#programmeDetail .detail-title')).toHaveText('Euclid');
   const link=page.locator('#programmeDetail .problem-links a').first();
-  await expect(link).toHaveAttribute('href',/\/#\/problems\?problem=/);
+  await expect(link).toHaveAttribute('href',/\/index\.html#\/problems\?problem=/);
   expect(errors).toEqual([]);
 });
 
