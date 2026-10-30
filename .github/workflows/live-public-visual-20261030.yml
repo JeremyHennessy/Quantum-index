@@ -1,0 +1,33 @@
+name: Live Quantum Index visual regression investigation
+on:
+  push:
+    branches: ["diagnostics/live-visual-regression-20261030"]
+
+permissions:
+  contents: read
+
+jobs:
+  live-check:
+    strategy:
+      fail-fast: false
+      matrix:
+        project: [chromium, webkit]
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/playwright/python:v1.63.0-noble@sha256:72bd171a9ffc2b4b59532aaa6210e21014d07093120dc25528870c0b840da1f0
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci --ignore-scripts
+      - name: Inspect real public classic and Explorer pages (no production writes)
+        run: npx playwright test tests/browser/live-public-visual-20261030.spec.mjs --project=${{ matrix.project }} --workers=1 --retries=0
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-visual-${{ matrix.project }}
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7
