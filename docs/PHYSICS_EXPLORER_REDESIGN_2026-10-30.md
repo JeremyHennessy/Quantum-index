@@ -18,7 +18,7 @@ This page must **not** silently replace the live homepage before browser testing
 - All **485** accepted theory/framework records in the **14** existing scientific categories, without copying or changing records.
 - A populated subject sidebar with category counts and active state. It collapses into a horizontal topic rail on smaller screens, matching the Observatory interaction.
 - Search matching theory titles, summaries, core ideas, aliases, tags and related equation names/descriptions.
-- Scientific-status filters derived from original recorded statuses, not fabricated labels.
+- Seven ergonomic **editorial status-label groups** rather than 49 overflowing status buttons. Each original exact recorded status remains visible and unchanged in the theory inspector; the grouped filters are explicitly navigation aids, not new scientific classifications.
 - Three first-class curated Problems: dark matter, the measurement problem, and quantum gravity. Each filters the existing approach-group IDs and provides source-aware context.
 - An inspectable theory panel with original year, kind/status/provenance, scientific core, tags, representative formulas, linked Evidence and explicit limitations, Research Questions, typed relations, and original bibliography links.
 - Selected-theory shareable URL query (`?theory=`); research-problem selection via `?problem=`. No independent new theory/relation assertion.
