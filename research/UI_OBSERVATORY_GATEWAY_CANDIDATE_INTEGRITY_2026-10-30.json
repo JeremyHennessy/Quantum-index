@@ -1,0 +1,47 @@
+{
+  "status": "review-candidate",
+  "schemaVersion": "qi-ui-gateway-v1",
+  "reviewedAt": "2026-10-30",
+  "baselineSha": "9c647d0836c892c54cfcf7d89e3550ccc87b5839",
+  "purpose": "Add a direct Observatory Explorer entry in existing Explore area, preserving all approved views and scientific records",
+  "files": {
+    "index.html": {
+      "beforeSha256": "b464c8478c83974dfbab204a39249e4f124531c4129c2ff15a5c315fc74fc121",
+      "afterSha256": "e0d29b194525e16b73457a4b52db3cf449bf16702e5690ffce2920eb501ffa0f",
+      "operations": [
+        {
+          "kind": "replace",
+          "beforeText": "        <div id=\"exploreCards\" class=\"explore-grid\"></div>",
+          "afterText": "        <a class=\"observatory-gateway\" href=\"./docs/observatory-explorer.html\" aria-label=\"Open the Observatory Explorer research experience\">\n          <span class=\"observatory-gateway-symbol\" aria-hidden=\"true\">◎</span>\n          <span class=\"observatory-gateway-copy\">\n            <span class=\"observatory-gateway-eyebrow\">NEW · OBSERVATIONAL INTELLIGENCE</span>\n            <strong>Discover the science behind the sky.</strong>\n            <span>Explore observatories, source-linked datasets, studies and upcoming research milestones.</span>\n          </span>\n          <span class=\"observatory-gateway-go\">Open Observatory Explorer <span aria-hidden=\"true\">↗</span></span>\n        </a>\n        <div id=\"exploreCards\" class=\"explore-grid\"></div>"
+        },
+        {
+          "kind": "replace",
+          "beforeText": "./styles.css?v=2c053050733e9418",
+          "afterText": "./styles.css?v=6c38fa8ee868f967"
+        }
+      ]
+    },
+    "styles.css": {
+      "beforeSha256": "2c053050733e941893cc1e9513c6a26e95168312d0748290b9101b417840b5b1",
+      "afterSha256": "6c38fa8ee868f967c3f83969f838440ab49630d24830487c898d632c99f1db5e",
+      "operations": [
+        {
+          "kind": "append",
+          "addedText": "\n/* Observatory Explorer gateway: additive to the approved Explore layout and visual system. */\n.observatory-gateway{display:grid;grid-template-columns:50px minmax(0,1fr) auto;gap:16px;align-items:center;margin:20px 0 0;padding:19px 20px;border:1px solid #bcdde5;border-radius:18px;background:linear-gradient(110deg,#e5f8f9 0%,#f5f5ff 65%,#fffaf0 100%);color:#17313f;text-decoration:none;box-shadow:0 9px 24px rgba(43,83,99,.06);transition:border-color .16s,box-shadow .16s,transform .16s}\n.observatory-gateway:hover{border-color:#61b3c2;box-shadow:0 15px 30px rgba(43,83,99,.11);transform:translateY(-2px)}\n.observatory-gateway:focus-visible{outline:3px solid #0e8fa3;outline-offset:3px}\n.observatory-gateway-symbol{width:50px;height:50px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(145deg,#0e8fa3,#6674c9);color:white;font-size:32px;line-height:1}\n.observatory-gateway-copy{display:grid;gap:5px;min-width:0}\n.observatory-gateway-eyebrow{font-size:9px;font-weight:850;letter-spacing:.09em;color:#0c7f93}\n.observatory-gateway-copy strong{font-size:20px;letter-spacing:-.03em;line-height:1.2}\n.observatory-gateway-copy>span:last-child{font-size:12px;line-height:1.55;color:#587784}\n.observatory-gateway-go{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;border-radius:10px;background:#0e8fa3;padding:12px 14px;color:#fff;font-size:11px;font-weight:750}\n@media(max-width:850px){.observatory-gateway{grid-template-columns:45px minmax(0,1fr);gap:12px}.observatory-gateway-go{grid-column:2;justify-self:start}.observatory-gateway-symbol{width:45px;height:45px;font-size:29px}}\n@media(max-width:480px){.observatory-gateway{padding:15px;gap:11px}.observatory-gateway-copy strong{font-size:17px}.observatory-gateway-copy>span:last-child{font-size:11px}.observatory-gateway-go{white-space:normal;text-align:left}.observatory-gateway-eyebrow{font-size:8px}}\n"
+        }
+      ]
+    },
+    "docs/responsive-check.html": {
+      "beforeSha256": "0d56c57d26e0fc44207dca40ebc80e8a88c51e422e2984c6318405b8bfa16407",
+      "afterSha256": "34854b476f0d0e715d50a8ef95e7b1a13f08580a67695231152230259ab5aca4",
+      "operations": [
+        {
+          "kind": "replace",
+          "beforeText": "index.html?v=b464c8478c83974d#",
+          "afterText": "index.html?v=e0d29b194525e16b#",
+          "occurrences": 2
+        }
+      ]
+    }
+  }
+}
