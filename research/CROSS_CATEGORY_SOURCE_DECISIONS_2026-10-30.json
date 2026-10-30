@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-30",
+  "mainBaseline": "228cd84230d0eaef8325dad4a94dc81ad8cf5a27",
+  "parentIntake": "research/ALL_CATEGORY_CANDIDATES_2026-10-29.json",
+  "reviewStatus": "bounded-identity-screen-source-abstracts-not-math-review",
+  "sourceEvidence": [
+    {
+      "id": "qem-temme-bravyi-gambetta-2016",
+      "authors": "Kristan Temme, Sergey Bravyi, Jay M. Gambetta",
+      "title": "Error Mitigation for Short-Depth Quantum Circuits",
+      "preprintYear": 2016,
+      "journalYear": 2017,
+      "url": "https://arxiv.org/abs/1612.02058",
+      "doi": "10.1103/PhysRevLett.119.180509",
+      "inspection": "Author abstract and APS journal abstract; extrapolation and quasiprobability reweighting; no equation-page review"
+    },
+    {
+      "id": "qem-li-benjamin-2016",
+      "authors": "Ying Li and Simon C. Benjamin",
+      "title": "Efficient Variational Quantum Simulator Incorporating Active Error Minimization",
+      "preprintYear": 2016,
+      "journalYear": 2017,
+      "url": "https://doi.org/10.1103/PhysRevX.7.021050",
+      "doi": "10.1103/PhysRevX.7.021050",
+      "inspection": "Publisher abstract and historical author-preprint date; noise amplification/extrapolation; no equation-page review"
+    },
+    {
+      "id": "qem-cai-2023",
+      "authors": "Zhenyu Cai et al.",
+      "title": "Quantum Error Mitigation",
+      "journalYear": 2023,
+      "url": "https://doi.org/10.1103/RevModPhys.95.045005",
+      "doi": "10.1103/RevModPhys.95.045005",
+      "inspection": "RMP review abstract, methodological breadth and limitations; review not original invention or equation review"
+    },
+    {
+      "id": "noninvertible-kaidi-ohmori-zheng-2022",
+      "authors": "Justin Kaidi, Kantaro Ohmori, Yunqin Zheng",
+      "title": "Kramers-Wannier-like Duality Defects in (3+1)D Gauge Theories",
+      "journalYear": 2022,
+      "url": "https://doi.org/10.1103/PhysRevLett.128.111601",
+      "doi": "10.1103/PhysRevLett.128.111601",
+      "inspection": "APS original-paper abstract: higher-dimensional noninvertible topological defects, specific 4D gauge examples; not historical first noninvertible defect"
+    },
+    {
+      "id": "noninvertible-schafer-nameki-2024",
+      "authors": "Sakura Schäfer-Nameki",
+      "title": "ICTP lectures on (non-)invertible generalized symmetries",
+      "journalYear": 2024,
+      "url": "https://doi.org/10.1016/j.physrep.2024.01.007",
+      "doi": "10.1016/j.physrep.2024.01.007",
+      "inspection": "Physics Reports review abstract: noninvertible fusion/topological-defect hierarchy; not source of earliest Ising duality"
+    }
+  ],
+  "decisions": [
+    {
+      "candidate": "Celestial holography",
+      "disposition": "ALREADY_COVERED",
+      "existingId": "celestial-holography",
+      "reason": "First-class entity is already shipped; research depth can expand via source-specific conformal-primary/amplitude relations. No new node."
+    },
+    {
+      "candidate": "Fracton phases and subsystem symmetries",
+      "disposition": "ALREADY_COVERED_PARENT",
+      "existingId": "fracton-phases",
+      "reason": "Fracton phases and restricted mobility are indexed. Subsystem-symmetry refinements need model-level granularity and are not a duplicate umbrella."
+    },
+    {
+      "candidate": "Quantum scars and weak ergodicity breaking",
+      "disposition": "ALREADY_COVERED_PARENT",
+      "existingId": "quantum-many-body-scars",
+      "reason": "Quantum many-body scar framework already exists. Specific PXP or scar embedding mechanisms are submodels."
+    },
+    {
+      "candidate": "Schwinger–Keldysh closed-time-path formalism",
+      "disposition": "ALREADY_COVERED",
+      "existingId": "schwinger-keldysh",
+      "reason": "Closed-time-path formalism exists as its own source-backed entity; investigate contour equations instead of adding identity."
+    },
+    {
+      "candidate": "Resource theory of quantum coherence",
+      "disposition": "ALREADY_COVERED",
+      "existingId": "coherence-resource-theory",
+      "reason": "Resource theory of coherence already exists; distinguish free-operation choices as subtypes."
+    },
+    {
+      "candidate": "Nonlocal ghost-free gravity",
+      "disposition": "ALREADY_COVERED_PARENT",
+      "existingId": "infinite-derivative-gravity",
+      "reason": "Ghost-free infinite-derivative/nonlocal gravity is indexed; no separate umbrella absent."
+    },
+    {
+      "candidate": "Quantum error mitigation and probabilistic error cancellation",
+      "disposition": "SOURCE_SUPPORTED_IDENTITY_HOLD_MATH",
+      "suggestedId": "quantum-error-mitigation",
+      "existingRelatedIds": [
+        "quantum-error-correction",
+        "quantum-simulation"
+      ],
+      "sourceIds": [
+        "qem-temme-bravyi-gambetta-2016",
+        "qem-li-benjamin-2016",
+        "qem-cai-2023"
+      ],
+      "reason": "Zero-noise extrapolation and quasi-probability error cancellation are distinct noise-reduction paradigms from correcting encoded logical qubits. Exact earliest scope and defining equations not yet source-located; do not add to live runtime."
+    },
+    {
+      "candidate": "Noninvertible generalized symmetries",
+      "disposition": "SOURCE_SUPPORTED_IDENTITY_HOLD_ORIGIN_MATH",
+      "suggestedId": "noninvertible-generalized-symmetries",
+      "existingRelatedIds": [
+        "topological-qft",
+        "bf-theory"
+      ],
+      "sourceIds": [
+        "noninvertible-kaidi-ohmori-zheng-2022",
+        "noninvertible-schafer-nameki-2024"
+      ],
+      "reason": "Fusion of non-invertible topological defects need not form an ordinary group; source-scope class is distinct from generic TQFT. Pre-2022 2D duality defects prevent claiming 2022 as earliest origin; formal fusion/source-locator review required."
+    }
+  ],
+  "acceptance": "This is an independent source/identity intake. Before science runtime ADD, independently inspect original historical sources and exact mathematical definitions with assumptions, units and regimes; test links and maintain approved UI. All existing IDs remain immutable.",
+  "nonClaims": [
+    "No new scientific catalog entry or formula is shipped by this decision ledger.",
+    "No literature-sweep freshness certification is claimed.",
+    "A publisher abstract cannot verify exact defining equations or universality.",
+    "There are historical 2D noninvertible defects; 2022 is a modern 4D example, not origin of the entire subject.",
+    "2016 preprint years for quantum error-mitigation examples are not proof that the field began in 2016."
+  ]
+}
