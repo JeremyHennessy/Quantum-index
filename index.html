@@ -6,7 +6,7 @@
   <meta name="description" content="Quantum Index — a source-aware map of fundamental physics, equations, evidence and open questions." />
   <title>Quantum Index</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="./styles.css?v=2c053050733e9418" />
+  <link rel="stylesheet" href="./styles.css?v=6cc1b366df03925d" />
 </head>
 <body>
   <header class="topbar">
@@ -28,6 +28,10 @@
         <p class="eyebrow">FUNDAMENTAL PHYSICS ATLAS</p>
         <h2>Explore the ideas shaping modern physics.</h2>
         <p class="hero-copy">Move through theories, equations, evidence, historical lineage and open research while keeping the source trail visible.</p>
+        <div class="hero-entry-actions" aria-label="Start exploring">
+          <a class="hero-entry-link primary" href="#/problems">Start with a question</a>
+          <a class="hero-entry-link" href="#/catalog">Browse theories</a>
+        </div>
       </div>
       <div id="stats" class="stats"></div>
     </section>
@@ -398,6 +402,28 @@
     document.addEventListener('keydown',() => { if (activeAt !== null) inputs++; });
     document.addEventListener('scroll',() => { if (activeAt !== null) scrolled = 1; },{passive:true,capture:true});
     current = readSection(); activate();
+  })();
+  </script>
+  <script id="qi-hero-entry-navigation">
+  // Isolated navigation enhancement. The approved application renderer is not modified.
+  (() => {
+    const destinations = new Map([['#/problems', 'problemsView'], ['#/catalog', 'catalogView']]);
+    const reveal = id => {
+      const target=document.getElementById(id), header=document.querySelector('.topbar');
+      if (!target) return;
+      const top=window.scrollY+target.getBoundingClientRect().top-(header?.getBoundingClientRect().height||0)-12;
+      window.scrollTo({top:Math.max(0,top),behavior:'auto'});
+    };
+    for (const link of document.querySelectorAll('.hero-entry-link')) {
+      link.addEventListener('click', event => {
+        const route=link.getAttribute('href'), id=destinations.get(route);
+        if (!id) return;
+        event.preventDefault();
+        if (location.hash===route) { reveal(id); return; }
+        window.addEventListener('hashchange', () => reveal(id), {once:true});
+        location.hash=route;
+      });
+    }
   })();
   </script>
 </body>
