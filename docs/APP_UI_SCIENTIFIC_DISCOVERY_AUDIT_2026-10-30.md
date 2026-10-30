@@ -2,9 +2,9 @@
 
 **Date:** October 30, 2026
 **Pinned reference:** main 43dfd3d6467bfa6f9f38c2aa568307fa1da4de37
-**Status:** REVIEW AND ISOLATED DRAFT CANDIDATE. Not a production publication or approved visual replacement.
+**Status:** RESEARCH/UX AUDIT ONLY. Initial UI experiment failed protected historical integrity checks and was fully reverted; no new runtime code remains in the branch.
 **Sources inspected:** Public page structure, repository index.html, styles.css, app.js, Problems/Evidence/Developments data, active scientific PR metadata, existing browser tests, approved release documentation and previous UI-preservation discussions.
-**Limit:** An actual current-candidate browser screenshot has not yet been independently reviewed in this audit. Existing browser-test screenshots are historical evidence only. Native iPhone Safari verification is not claimed.
+**Limit:** Pinned pre-change desktop and mobile screenshots from the previous successful browser run were inspected. The rejected UI candidate did not complete all release gates or receive visual acceptance. Native iPhone Safari verification is not claimed.
 
 ## 1. What must be preserved
 
@@ -69,7 +69,7 @@ Start research-only. Integrate contextual links inside existing Problems/Evidenc
 
 ## 5. First candidate change list
 
-The separately staged navigation pilot:
+The **reverted** trial proposed:
 - Adds Explore Find a theory or concept input that passes a trimmed search to the existing Catalog route.
 - Adds four already-curated cosmology Problem shortcuts.
 - Adds a visible-only-on-mobile grouped navigation select for all 13 current views.
@@ -78,7 +78,7 @@ The separately staged navigation pilot:
 - Updates the exact content-hashed app, CSS and responsive-check references.
 - Adds focused Playwright checks for desktop palette and tabs, mobile jump/overflow, topic route accuracy, and catalog search/deep-link/back.
 
-**No production science data records or accepted UI files are changed until reviewed release authorization.**
+**No production science data records or accepted UI files were changed. The original runtime, CSS and preview bytes were independently restored in the draft branch.**
 
 ## 6. Release / rollback gates
 
@@ -93,3 +93,17 @@ The separately staged navigation pilot:
 - [ ] Reject or revert this isolated candidate if there is any visual or functional regression.
 
 Next scientific delivery should be a **separate research-only observatory source census**. Avoid mixing a scientific migration and a user-interface change in one difficult-to-revert release.
+
+
+## 7. Actual baseline screenshot review and failed experiment receipt (30 October)
+
+**Read-only visual inspection** of successful previous PR #110 run 41079067936:
+- 1280 × 720 desktop image (browser-report-chromium artifact 12989313198): The light hero and ten statistic cards use essentially the entire first viewport. The restrained color palette, elegant typography and rounded cards are appealing and worth preserving, but the reader reaches view navigation only below the first fold.
+- 390 × 844 mobile image from the same artifact: The hero headline and statistic grid occupy more than the initial mobile viewport. The navigation and task-oriented Explore content are below this vertical introduction. This is visual evidence for reducing *time to the first actionable entry* while retaining the graphic style, not an excuse to remove or radically restyle the hero.
+- Map and progression images from map-diagnostic artifact 12987934417: Existing interactive maps and their side detail/lineage panels retain useful scientific visual structure. Small map text and vertically extensive progression views may deserve follow-up usability measurement, but no regression or broken operation was established by screenshot inspection alone.
+
+**Reversible experiment:** UI proposal original draft #112 head ecd6cc6e171b6cba241223192fd8691e3009abf0 added Explore search, four existing Problem links, a grouped mobile jump selector and browser tests. Exact CI run 41091701551's validation job reported **306 Node cases, 276 passed and 30 failed**. The failures were caused by existing historical snapshots rejecting undeclared changes to app.js, index.html, styles.css and docs/responsive-check.html, including DM-1A/analytics/map checkpoints. This is an enforceable preservation barrier; do **not** loosen it or claim that the experimental UI passed.
+
+**Rollback completed in the draft branch:** All four changed runtime/preview files were restored from pinned main 43dfd3d6467bfa6f9f38c2aa568307fa1da4de37 using their exact original blob contents. The prototype-specific browser test file was deleted. The subsequent GitHub compare returned **one added audit Markdown document only**, no app/UI/science changes. The rejected experiment has not been merged or deployed.
+
+**New release prerequisite:** Before another navigation code proposal, independently review how the project intends to accept *new, explicitly authorized UI revisions* while preserving every previously accepted scientific/historical checkpoint. Introduce a narrowly scoped, versioned acceptance mechanism rather than editing old receipts or bypassing protections. Keep this acceptance work separate from the cosmetic navigation design and separate from new cosmology science releases.
