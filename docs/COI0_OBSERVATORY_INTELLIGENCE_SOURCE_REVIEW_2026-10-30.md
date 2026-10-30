@@ -13,11 +13,11 @@ This is the first bounded cohort, **not all observatories worldwide**. The 30 na
 
 ## Current deliverable
 
-- 25 authority/source records with exact URLs, organization names, review scopes and date checked.
+- 27 authority/source records with exact URLs, organization names, review scopes and date checked.
 - 30 programme/mission/survey/instrument/observatory candidate identities, with type and domain and existing Problem linkage explicitly editorial (never empirical evidence).
 - 18 release/analysis product identifiers with explicit version and public observations / public analysis only / rights restricted / publication only / planned / archive API status.
 - Six publication-title and external identifier candidates linked to programmes and releases, with no promoted science claims.
-- Five future schedule candidates with exact or approximate precision and confirmedActual set to false.
+- Six future schedule candidates with exact or approximate precision and confirmedActual set to false.
 - A self-contained fail-closed Node test checking unique identities, existing Problem IDs, references, release-version semantics, access status, impossible dates and negative mutations.
 - No production theory, formula, graph relation, Evidence, DevelopmentEvent, Passport, app, CSS, workspace, CI, dependency, Pages or historical ledger change.
 
