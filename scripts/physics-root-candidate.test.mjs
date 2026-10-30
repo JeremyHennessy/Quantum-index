@@ -70,7 +70,7 @@ test('approved runtime, Observatory visuals, science corpus and saved research r
  assert.equal(sha(fs.readFileSync('scripts/analytics.test.mjs')),'2654359bd9cac73d5d47d3c88574c783659cb2f75fba6a4d525cd65ae0cfe3bb');
  assert.match(index,/<script id="qi-engagement-tracker">/);
  assert.match(index,/class="tab active" data-view="explore"/);
- assert.match(index,/id="researchNote"/);
+ assert.match(fs.readFileSync('app.js','utf8'),/id="researchNote"/);
  const former=reverseDeclaredUiRevision(Buffer.from(index),'index.html',manifest).toString();
  assert.ok(!former.includes('qi-default-physics-explorer'),'Original approved page had no new default routing');
 });
