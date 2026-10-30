@@ -603,3 +603,12 @@ html{scrollbar-color:#a8c4ce #edf3f6}
 .trust-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:1rem}
 .trust-summary div{min-width:0}.trust-summary dt{font-weight:700}.trust-summary dd{margin:.35rem 0}
 #recordTrust summary{cursor:pointer;padding:.8rem 0;min-height:44px}
+
+/* First-fold research navigation candidate — additive only, no existing class overrides. */
+.hero-entry-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.hero-entry-link{display:inline-flex;min-height:44px;align-items:center;justify-content:center;text-align:center;text-decoration:none;padding:10px 16px;border:1px solid #cbdbe2;border-radius:12px;background:rgba(255,255,255,.92);color:#17313f;font-size:13px;font-weight:720;transition:border-color .16s ease,background .16s ease}
+.hero-entry-link:hover{border-color:#0e8fa3;background:#edf9fb}
+.hero-entry-link:focus-visible{outline:3px solid #3aa9b9;outline-offset:3px}
+.hero-entry-link.primary{background:#0e8fa3;border-color:#0e8fa3;color:#fff}
+.hero-entry-link.primary:hover{background:#08788b;border-color:#08788b}
+@media(max-width:480px){.hero-entry-actions{gap:8px}.hero-entry-link{flex:1 1 100%}}
