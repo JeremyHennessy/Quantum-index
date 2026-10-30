@@ -156,7 +156,7 @@
     },
     {
       "title": "Current axion mass coefficient",
-      "gate": "Compare 2016 authors' NLO result with versioned 2025/2026 PDG precision inputs before presenting any numerical value as current."
+      "gate": "2026 PDG Eq. (89.3) at visually reviewed printed p.2 gives 5.691(51) micro-eV ×(10^12 GeV/f_a), versus 2016 5.70(7); independently verify dates, calculation inputs, versioned refs and historical preservation before selecting a single canonical runtime numerical card."
     },
     {
       "title": "Axion-like-particle taxonomy",
@@ -167,7 +167,8 @@
     "No new theory, bibliography, formula, graph edge, empirical Evidence, UI or deployed asset is modified by this proposal",
     "Versioned author HTML was checked directly for Eqs (1), (22), (26), (45); PDF screenshot/printed-page parity was not independently established",
     "This review neither redefines 1978 theory origin nor certifies all axion literature as current",
-    "No dark matter particle is reported as detected"
+    "No dark matter particle is reported as detected",
+    "The 2026 PDG review is a distinct source and is only staged in this proposal; historical 2016 formula objects remain intact, and the 2026 coefficient is not published in runtime."
   ],
   "nextGates": [
     "Independent page-image review of exact published PDF and the versioned HTML equation/notation parity",
@@ -175,5 +176,49 @@
     "Append-only integration on separate verified baseline without weakening historical integrity ledgers",
     "Node validation, full Chromium/WebKit MathJax responsive and scroll endpoint tests",
     "Merge, Pages and independently verified served-site acceptance"
-  ]
+  ],
+  "currentReview": {
+    "sourceId": "dm2-pdg-rpp-axions-2026",
+    "title": "Axions and Other Similar Particles",
+    "authors": "C. A. J. O'Hare; G. Rybka; B. Safdi; L. Winslow",
+    "publication": "Particle Data Group, Review of Particle Physics 2026",
+    "reviewRevision": "August 2025",
+    "publishedPdfStamp": "2026-06-01",
+    "url": "https://pdg.lbl.gov/2026/reviews/rpp2026-rev-axions.pdf",
+    "status": "source-reviewed-current-reference-proposal-not-integrated",
+    "sourceRole": "Authoritative 2026 PDG review, not first historical discovery paper and not a dark-matter detection",
+    "reviewedSourceLevel": "Original 2026 PDG PDF visually inspected on printed pp.2–3 (PDF zero-index pages 1–2); equations 89.2, 89.3, 89.5, 89.6.",
+    "math": [
+      {
+        "id": "qcd-axion-pdg-2026-gluon",
+        "sourceLocator": "printed p.2 / PDF index 1, Eq. (89.2)",
+        "equation": "L=(a/f_a - barTheta)*(alpha_s/8pi)*G*Gtilde",
+        "meaning": "QCD anomaly coupling in PDG's explicit theta-angle convention, not a claim the 2016 source's theta-shifted Eq. (1) has identical field origin",
+        "assumptions": "The color-anomaly normalization is absorbed into f_a; full effective model may have further couplings"
+      },
+      {
+        "id": "qcd-axion-pdg-2026-mass",
+        "sourceLocator": "printed p.2 / PDF index 1, Eq. (89.3)",
+        "latex": "m_a=5.691(51)\\left(\\frac{10^9\\,\\mathrm{GeV}}{f_a}\\right)\\mathrm{meV}",
+        "numericExpression": "5.691(51) meV × (10^9 GeV/f_a)",
+        "equivalentAtFa1e12GeV": "5.691(51) micro-eV",
+        "assumptions": "QCD axion T=0; PDG review NNLO QED/chiral corrections and specified QCD input assumptions; not a generic ALP mass"
+      },
+      {
+        "id": "qcd-axion-pdg-2026-photon",
+        "sourceLocator": "printed p.3 / PDF index 2, Eqs. (89.5)–(89.6)",
+        "equation": "g_agammagamma = alpha/(2pi f_a)*(E/N - 1.92(4))",
+        "assumptions": "Model-specific E/N and source-defined electromagnetic tensor conventions"
+      }
+    ],
+    "comparisonTo2016": {
+      "olderSourceId": "dm2-dicortona-qcd-axion-2016",
+      "older2016CentralMicroEVAtFa1e12": 5.7,
+      "older2016CombinedMicroEVUncertainty": 0.07,
+      "newer2026CentralMicroEVAtFa1e12": 5.691,
+      "newer2026MicroEVUncertainty": 0.051,
+      "comparison": "The numeric estimate was refined between the two dated sources. Retain 2016 as historical provenance and use the 2026 review for a dated current-reference numerical display after independent acceptance. Do not create two duplicate canonical mass identities."
+    },
+    "integrationPolicy": "No second standalone formula card for an updated coefficient; preserve source-specific dates and methods, attach original and PDG review to one canonical mass relation with clearly labeled source-era numerical values."
+  }
 }
