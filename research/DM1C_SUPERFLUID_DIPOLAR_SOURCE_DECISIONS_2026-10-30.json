@@ -19,6 +19,19 @@
       "scope": "Nonrelativistic gravitational-polarization/dipolar-dark-matter toy model; not a complete GR medium action"
     },
     {
+      "id": "dm1c-blanchet-gr-dipoles-2006",
+      "title": "Dipolar Particles in General Relativity",
+      "authors": "Luc Blanchet",
+      "firstPost": "2006-09-26",
+      "arxiv": "gr-qc/0609121v1",
+      "journalYear": 2007,
+      "journal": "Classical and Quantum Gravity 24, 3541–3570",
+      "url": "https://arxiv.org/abs/gr-qc/0609121",
+      "doi": "10.1088/0264-9381/24/14/002",
+      "inspected": "Official original arXiv version history and abstract; exact GR particle action equation unreviewed",
+      "scope": "Pre-2008 general-relativistic dipolar-particle action and internal stabilization potential; model distinct from 2008 collective dipolar-fluid action"
+    },
+    {
       "id": "dm1c-blanchet-letiec-gr-2008",
       "title": "Model of Dark Matter and Dark Energy Based on Gravitational Polarization",
       "authors": "Luc Blanchet; Alexandre Le Tiec",
@@ -73,14 +86,14 @@
     {
       "id": "dm1c-hossenfelder-mistele-2022",
       "title": "Galactic mass-to-light ratios with superfluid dark matter",
-      "authors": "M. Mistele; S. McGaugh; S. Hossenfelder",
-      "firstPost": null,
-      "arxiv": null,
+      "authors": "Tobias Mistele; Stacy McGaugh; Sabine Hossenfelder",
+      "firstPost": "2022-01-18",
+      "arxiv": "2201.07282v1",
       "journalYear": 2022,
       "journal": "Astronomy & Astrophysics",
-      "url": "https://doi.org/10.1051/0004-6361/202243216",
+      "url": "https://arxiv.org/abs/2201.07282",
       "doi": "10.1051/0004-6361/202243216",
-      "inspected": "Journal conclusion and model appendix; check full citation details before adding this as a formal bibliography record",
+      "inspected": "Official arXiv first-post metadata and journal conclusion/appendix; not reproduced numerical fits",
       "scope": "Model-comparison/critical analysis; cannot be treated as experimental falsification of all superfluid dark matter variants"
     },
     {
@@ -115,11 +128,12 @@
       ],
       "sourceIds": [
         "dm1c-blanchet-polarization-2006",
+        "dm1c-blanchet-gr-dipoles-2006",
         "dm1c-blanchet-letiec-gr-2008",
         "dm1c-blanchet-letiec-refinement-2009"
       ],
-      "submodelCaveat": "2006 nonrelativistic polarization vs 2008 GR medium action and 2017 bimetric EFT are not interchangeable",
-      "nextGate": "Visually inspect original source equations and decide 2006 umbrella origin, 2008 relativistic subtype, and exact source-specific variable definitions"
+      "submodelCaveat": "2006 quasi-Newtonian polarization, September 2006 GR dipolar-particle action, 2008 collective GR dipolar-fluid action and later bimetric EFT are separate models",
+      "nextGate": "Visually inspect equations for May 2006 quasi-Newtonian and September 2006 GR particle action, 2008 GR fluid-action refinement and relationship to subsequent implementations"
     },
     {
       "id": "superfluid-dark-matter",
