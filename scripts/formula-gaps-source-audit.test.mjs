@@ -1,3 +1,4 @@
+import {readPreDm1aFile} from './dm1a-integration-baseline.mjs';
 import {readPreCiProjectSplitFile} from './ci-project-split-baseline.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -14,7 +15,7 @@ const ledger=JSON.parse(fs.readFileSync('research/FORMULA_GAPS_INTEGRITY_2026-10
 const files=['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','passports.js'];
 const prior={window:{}};vm.createContext(prior);
 for(const file of files)vm.runInContext(readPreFormulaGapsFile(file,'utf8'),prior);
-const old=prior.window,current=loadRuntime(),plain=value=>JSON.parse(JSON.stringify(value));
+const old=prior.window,current=(()=>{const s={window:{}};vm.createContext(s);for(const f of files)vm.runInContext(readPreDm1aFile(f,'utf8'),s);return s.window;})(),plain=value=>JSON.parse(JSON.stringify(value));
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const targets=new Map(audit.formulas.map(f=>[f.theoryIds[0],f.id]));
 
@@ -105,8 +106,8 @@ test('serial gap, response and thermal projections restore exact checkpoints and
   for(const [file,entry]of Object.entries(ledger.files)){
     const raw=fs.readFileSync(file);assert.equal(hash(readPreCiProjectSplitFile(file)),entry.afterSha256,file);
     assert.equal(hash(readPreFormulaGapsFile(file)),entry.beforeSha256,file);assert.equal(readPreFormulaGapsFile(file,'utf8'),entry.beforeText,file);
-    assert.throws(()=>projectPreFormulaGaps(Buffer.concat([raw,Buffer.from('undeclared')]),file),/undeclared (?:formula-gap integration|CI project-split|engagement presentation) mutation/);
-    assert.throws(()=>projectPreFormulaGaps(Buffer.from(entry.beforeText),file),/undeclared (?:formula-gap integration|CI project-split|engagement presentation) mutation/);
+    assert.throws(()=>projectPreFormulaGaps(Buffer.concat([raw,Buffer.from('undeclared')]),file),/undeclared (?:DM-1A integration|formula-gap integration|CI project-split|engagement presentation) mutation/);
+    assert.throws(()=>projectPreFormulaGaps(Buffer.from(entry.beforeText),file),/undeclared (?:DM-1A integration|formula-gap integration|CI project-split|engagement presentation) mutation/);
   }
   for(const [file,expected]of Object.entries(ledger.unchangedFiles))assert.equal(hash(readPreCiProjectSplitFile(file)),expected,file);
   for(const [file,expected]of Object.entries(ledger.newFiles))assert.equal(hash(readPreCiProjectSplitFile(file)),expected,file);
@@ -134,9 +135,9 @@ test('all historical response assertions survive exact declared projection subst
 
 test('existing browser assertions change only exact current totals, not interactions or expectations',()=>{
   let expected=ledger.files['tests/browser/filter-controls.spec.mjs'].beforeText.replace("'0 / 457 formulas'","'0 / 460 formulas'").replace("'457 / 457 formulas'","'460 / 460 formulas'");
-  assert.equal(fs.readFileSync('tests/browser/filter-controls.spec.mjs','utf8'),expected);
+  assert.equal(readPreDm1aFile('tests/browser/filter-controls.spec.mjs','utf8'),expected);
   expected=ledger.files['tests/browser/repository-links.spec.mjs'].beforeText.replace("toContain('271')","toContain('274')");
-  assert.equal(fs.readFileSync('tests/browser/repository-links.spec.mjs','utf8'),expected);
+  assert.equal(readPreDm1aFile('tests/browser/repository-links.spec.mjs','utf8'),expected);
 });
 
 test('independent finite KMS matrix-basis checks, invariances and six convention-negative controls pass',()=>{
