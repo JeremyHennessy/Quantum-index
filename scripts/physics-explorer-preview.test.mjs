@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import {reverseDeclaredUiRevision} from './ui-revision-checkpoint.mjs';
+const uiCandidate=JSON.parse(fs.readFileSync('research/UI_PHYSICS_ROOT_CANDIDATE_2026-10-30.json','utf8'));
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 
@@ -36,9 +38,11 @@ test('Physics Explorer uses exact original source assets and scientific record i
 });
 
 test('new explorer is additive: approved live atlas renderer and page bytes remain immutable',()=>{
-  assert.equal(checksum(fs.readFileSync('index.html')),'b464c8478c83974dfbab204a39249e4f124531c4129c2ff15a5c315fc74fc121');
+  // A separately declared root selector is now intentional. Preserve exact old bytes by inversion.
+  assert.equal(checksum(fs.readFileSync('index.html')),uiCandidate.files['index.html'].afterSha256);
+  assert.equal(checksum(reverseDeclaredUiRevision(fs.readFileSync('index.html'),'index.html',uiCandidate)),'b464c8478c83974dfbab204a39249e4f124531c4129c2ff15a5c315fc74fc121');
+  assert.match(fs.readFileSync('index.html','utf8'),/id="qi-default-physics-explorer"/);
   assert.equal(checksum(fs.readFileSync('app.js')),'650b38708ca3ce89289ecdde52124ca8ab90acf04a575fb721dcb0189fa8d0d1');
-  assert.ok(!fs.readFileSync('index.html','utf8').includes('physics-explorer'));
   assert.ok(!fs.readFileSync('app.js','utf8').includes('physics-explorer'));
   assert.ok(fs.existsSync('docs/observatory-explorer.css'));
   assert.ok(fs.existsSync('docs/observatory-explorer.js'));

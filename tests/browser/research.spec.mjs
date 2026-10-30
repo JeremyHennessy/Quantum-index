@@ -152,7 +152,8 @@ test('Evidence view preserves constraint wording and mobile containment',async({
 
 
 test('Explore is the researcher home and routes into major workflows',async({page})=>{
-  await page.goto('/');
+  // Explicit classic entry remains available after the new default is accepted.
+  await page.goto('/index.html#/explore');
   await expect(page.locator('#exploreView')).toHaveClass(/active/);
   await expect(page.locator('#exploreCards .explore-card')).toHaveCount(10);
   await expect(page.locator('#exploreDevelopments .explore-mini').first()).toBeVisible();

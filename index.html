@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Quantum Index — a source-aware map of fundamental physics, equations, evidence and open questions." />
   <title>Quantum Index</title>
+  <script id="qi-default-physics-explorer">
+    // A no-hash directory landing selects the approved Physics Explorer.
+    // All legacy #/ routes, the explicit index.html page and ?classic=1 remain unchanged.
+    (() => {
+      if (location.pathname !== '/' && location.pathname !== '/Quantum-index/') return;
+      if (location.href.includes('#') || new URLSearchParams(location.search).get('classic') === '1') return;
+      const next = new URL('docs/physics-explorer.html', location.href);
+      next.search = location.search;
+      location.replace(next.href);
+    })();
+  </script>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="./styles.css?v=2c053050733e9418" />
 </head>
