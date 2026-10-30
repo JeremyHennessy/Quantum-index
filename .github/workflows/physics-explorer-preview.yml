@@ -1,0 +1,35 @@
+name: Physics Explorer isolated visual acceptance
+on:
+  push:
+    branches: ["preview/physics-explorer-capture-20261030"]
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    strategy:
+      fail-fast: false
+      matrix:
+        project: [chromium, webkit]
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/playwright/python:v1.63.0-noble@sha256:72bd171a9ffc2b4b59532aaa6210e21014d07093120dc25528870c0b840da1f0
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci --ignore-scripts
+      - name: Check source catalogue and new preview integrity
+        run: node --test scripts/physics-explorer-preview.test.mjs
+      - name: Capture new Physics Explorer screens and interactions
+        run: npx playwright test tests/browser/physics-explorer.spec.mjs --project=${{ matrix.project }} --workers=1 --retries=0
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: physics-explorer-preview-${{ matrix.project }}
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7
