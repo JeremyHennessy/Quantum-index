@@ -2,7 +2,7 @@
 
 **Date:** October 30, 2026
 **Status:** DRAFT / NEW CONTENT VIEW, NOT A SHIPPED OR SCIENTIFICALLY CERTIFIED ATLAS
-**Parent review:** COI-0 observational registry, PR #115, source census pinned at `298b3e61fa8bc01879c9f8ebcda1f94f0d1bcdbe`.
+**Accepted data baseline:** COI-0 observational registry, merged PR #115 at main commit `3ed99d33d8e67ceac2d1779094813b2f855f9ebc` following full Node, Chromium and WebKit validation. The preview mirrors those source-census records.
 
 ## Why this exists
 
@@ -55,7 +55,7 @@ The already-present GitHub Pages package copies `docs/`, so a future reviewed me
 
 ## Acceptance gates
 
-- [ ] PR #115's authoritative source census has completed exact-head Node, Chromium and WebKit gates, independently reviewed, and merged before the child feature.
+- [x] PR #115's authoritative source census passed exact-head Node, Chromium and WebKit gates, and was merged as `3ed99d33d8e67ceac2d1779094813b2f855f9ebc` before this separate preview.
 - [ ] New preview's mirrored JSON matches the authoritative research data bytes exactly.
 - [ ] New Node tests pass, including data-count, status and source integrity.
 - [ ] Both Chromium and mobile WebKit complete the new browsing tests, source links, filtering and no-overflow checks at 320, 390 and 1280 widths.
