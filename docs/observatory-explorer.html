@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore observatories, research releases, source-linked studies, and future cosmology milestones. A source-qualified Quantum Index research preview.">
+  <title>Observatory Explorer · Quantum Index</title>
+  <link rel="stylesheet" href="./observatory-explorer.css">
+  <script defer src="./observatory-explorer.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#researchWorkspace">Skip to research explorer</a>
+  <header class="site-header">
+    <div class="identity">
+      <a class="brand-link" href="../index.html#/explore" aria-label="Quantum Index home">
+        <span class="brand-mark" aria-hidden="true">Q</span>
+        <span><strong>Quantum Index</strong><small>Observational Intelligence</small></span>
+      </a>
+      <span class="section-label">Research preview</span>
+    </div>
+    <a class="return-link" href="../index.html#/explore">Back to physics atlas <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <div class="app-shell">
+    <aside class="side-rail" aria-label="Research subject navigation">
+      <p class="rail-eyebrow">EXPLORE THE UNIVERSE</p>
+      <h2>Research lenses</h2>
+      <p>Follow instruments, their public products, and what is still planned.</p>
+      <nav id="domainNav" class="domain-nav" aria-label="Filter by scientific domain"></nav>
+      <div class="rail-note">
+        <span class="tiny-symbol" aria-hidden="true">◆</span>
+        <strong>Scientific trust</strong>
+        <p>This is a registry of source-linked metadata, not a ranking of scientific theories or proof of any experimental claim.</p>
+      </div>
+    </aside>
+
+    <main id="researchWorkspace" tabindex="-1">
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="hero-content">
+          <p class="eyebrow"><span class="pulse" aria-hidden="true"></span> THE OBSERVATIONAL UNIVERSE <span class="preview-flag">RESEARCH DATA PREVIEW</span></p>
+          <h1 id="heroTitle">From sky surveys<br><em>to scientific evidence.</em></h1>
+          <p class="hero-description">Explore the observatories behind modern cosmology. Follow published data, analysis products and future milestones, with the original sources always one click away.</p>
+          <a href="#researchCatalogue" class="primary-action">Explore the programmes <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="orbital" aria-hidden="true">
+          <div class="orbital-label">OBSERVATIONAL PATHWAYS</div>
+          <svg class="orbit-illustration" viewBox="0 0 470 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="234" cy="168" r="141" stroke="#98cdd5" stroke-width="1" stroke-dasharray="4 9"/>
+            <circle cx="234" cy="168" r="97" stroke="#b3a9e3" stroke-width="1.5" opacity=".7"/>
+            <circle cx="234" cy="168" r="55" stroke="#badce6" stroke-width="1"/>
+            <path d="M45 168H425M234 10V326" stroke="#d1e7ec" stroke-width="1" stroke-dasharray="3 7"/>
+            <path d="M90 68L373 280M91 271L377 66" stroke="#dce9f2" opacity=".8"/>
+            <circle cx="234" cy="168" r="29" fill="#17313f"/>
+            <circle cx="234" cy="168" r="17" fill="#0e8fa3"/>
+            <circle cx="234" cy="168" r="5" fill="#fff"/>
+            <circle cx="234" cy="27" r="7" fill="#667de4"/>
+            <circle cx="371" cy="169" r="7" fill="#0e8fa3"/>
+            <circle cx="169" cy="245" r="7" fill="#f0a84e"/>
+            <circle cx="138" cy="168" r="6" fill="#98cdd5"/>
+            <circle cx="319" cy="125" r="5" fill="#899ed6"/>
+            <text x="248" y="22" fill="#426775" font-size="11" font-family="sans-serif">CMB</text>
+            <text x="384" y="173" fill="#426775" font-size="11" font-family="sans-serif">SURVEYS</text>
+            <text x="45" y="268" fill="#426775" font-size="11" font-family="sans-serif">PARTICLES</text>
+            <text x="250" y="314" fill="#426775" font-size="11" font-family="sans-serif">SIGNALS</text>
+          </svg>
+          <div class="orbit-caption">Facility <span>→</span> release <span>→</span> publication <span>→</span> question</div>
+        </div>
+      </section>
+
+      <section id="summaryCounters" class="summary-counters" aria-label="Research registry totals" aria-live="polite">
+        <div><strong>—</strong><span>programmes</span></div><div><strong>—</strong><span>release records</span></div><div><strong>—</strong><span>studies</span></div><div><strong>—</strong><span>milestones</span></div>
+      </section>
+
+      <section class="featured-lenses" aria-labelledby="lensTitle">
+        <div class="section-heading">
+          <div><p class="eyebrow">PICK A DIRECTION</p><h2 id="lensTitle">Follow a scientific question</h2></div>
+          <p>These are navigation pathways, not claims of experimental confirmation.</p>
+        </div>
+        <div class="lens-grid">
+          <button type="button" class="lens-card lens-a" data-lens="large-scale-structure">
+            <span class="lens-num">01 / COSMIC EXPANSION</span>
+            <strong>Why is the universe accelerating?</strong>
+            <span>Surveys, dark energy and the structure of the cosmos</span>
+            <span class="lens-action">Explore surveys <span aria-hidden="true">↗</span></span>
+          </button>
+          <button type="button" class="lens-card lens-b" data-lens="cmb">
+            <span class="lens-num">02 / EARLY UNIVERSE</span>
+            <strong>What can the oldest light reveal?</strong>
+            <span>Microwave-background experiments and inflation</span>
+            <span class="lens-action">Explore the CMB <span aria-hidden="true">↗</span></span>
+          </button>
+          <button type="button" class="lens-card lens-c" data-lens="dark-matter-direct">
+            <span class="lens-num">03 / UNSEEN MATTER</span>
+            <strong>What is dark matter made of?</strong>
+            <span>Particle-search programmes and carefully scoped limits</span>
+            <span class="lens-action">Explore detectors <span aria-hidden="true">↗</span></span>
+          </button>
+        </div>
+      </section>
+
+      <section id="researchCatalogue" class="catalogue" aria-labelledby="catalogueTitle">
+        <div class="section-heading catalogue-heading">
+          <div><p class="eyebrow">OBSERVATORY REGISTRY</p><h2 id="catalogueTitle">Instruments, missions &amp; surveys</h2></div>
+          <p id="updatedIndicator">Verified metadata source: 30 October 2026</p>
+        </div>
+        <div class="explorer-toolbar">
+          <div class="search-group">
+            <label for="registrySearch">Find an experiment, instrument or release</label>
+            <input id="registrySearch" type="search" placeholder="Try Euclid, Planck, DESI, gravitational waves…" autocomplete="off">
+          </div>
+          <div class="release-filter-group" aria-label="Filter by data availability">
+            <span class="control-label">DATA ACCESS</span>
+            <div id="accessFilters" class="access-filters"></div>
+          </div>
+        </div>
+        <div class="explorer-layout">
+          <div class="programme-pane">
+            <div class="pane-heading"><h3>Programmes</h3><span id="resultCount" aria-live="polite"></span></div>
+            <div id="programmeList" class="programme-list"></div>
+          </div>
+          <aside class="programme-detail" id="programmeDetail" aria-live="polite" aria-label="Selected programme details">
+            <p>Select a programme to inspect its evidence trail and data status.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="milestone-section" aria-labelledby="milestoneTitle">
+        <div class="section-heading">
+          <div><p class="eyebrow">RESEARCH HORIZON</p><h2 id="milestoneTitle">What's been achieved. What's next.</h2></div>
+          <p>Completed milestones and future plans have different evidence requirements.</p>
+        </div>
+        <div id="milestoneList" class="milestone-list"></div>
+      </section>
+
+      <footer class="footer">
+        <div><strong>Quantum Index</strong><p>A source-aware scientific atlas. Observatory records are intake metadata, not independent validation of each physical result.</p></div>
+        <a href="../index.html#/explore">Return to Quantum Index <span aria-hidden="true">↗</span></a>
+      </footer>
+    </main>
+  </div>
+  <div id="fatalError" class="fatal-error" role="alert" hidden></div>
+</body>
+</html>
