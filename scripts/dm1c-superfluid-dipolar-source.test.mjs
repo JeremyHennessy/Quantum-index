@@ -28,6 +28,10 @@ test('specific primary historical preprint years do not get replaced by journal 
  const early=refs.get('dm1c-berezhiani-khoury-brief-2015');
  const later=refs.get('dm1c-berezhiani-khoury-full-2015');
  assert.equal(old.firstPost,'2006-05-24');assert.equal(old.journalYear,2007);
+ const earlyGR=refs.get('dm1c-blanchet-gr-dipoles-2006');
+ assert.equal(earlyGR.firstPost,'2006-09-26');assert.equal(earlyGR.journalYear,2007);
+ assert.equal(earlyGR.arxiv,'gr-qc/0609121v1');
+ assert.ok(earlyGR.firstPost<rel.firstPost);
  assert.equal(rel.firstPost,'2008-04-22');assert.equal(rel.journalYear,2008);
  assert.equal(early.firstPost,'2015-06-25');assert.equal(later.firstPost,'2015-07-03');
  assert.ok(early.firstPost<later.firstPost);
