@@ -213,6 +213,22 @@
       "publisher": "SKA Observatory",
       "checkedAt": "2026-10-30",
       "reviewScope": "official source page"
+    },
+    {
+      "id": "roman-launch-nasa-2026",
+      "title": "NASA release 26-071 — Roman Space Telescope launch August 30, 2026",
+      "url": "https://www.nasa.gov/news-release/nasas-dark-universe-seeking-nancy-grace-roman-space-telescope-launches/",
+      "publisher": "NASA",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official achieved launch event, time and spacecraft; independent of later science releases"
+    },
+    {
+      "id": "roman-commissioning-nasa-2026",
+      "title": "NASA October 22, 2026 — Roman enters final science commissioning phase",
+      "url": "https://science.nasa.gov/blogs/roman/2026/10/22/nasas-roman-space-telescope-enters-final-commissioning-phase/",
+      "publisher": "NASA",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official science commissioning status as reported October 22; not confirmation of full routine survey operation"
     }
   ],
   "programmes": [
@@ -477,14 +493,16 @@
       "kind": "mission",
       "domain": "large-scale-structure",
       "sourceIds": [
-        "roman-mast"
+        "roman-mast",
+        "roman-launch-nasa-2026",
+        "roman-commissioning-nasa-2026"
       ],
       "relatedProblemIds": [
         "dark-energy-expansion",
         "dark-matter"
       ],
-      "programState": "planned",
-      "reviewNote": "Mission planned; simulated/test data are not launched survey products.",
+      "programState": "science-commissioning",
+      "reviewNote": "NASA confirms mission launched August 30, 2026 and was in final science commissioning on October 22, 2026. Full public survey products and routine mission operations must be assessed separately.",
       "provenanceLevel": "official-archive-or-programme-page",
       "evidencePromotion": false
     },
@@ -933,13 +951,15 @@
       "title": "Roman observational science data (future)",
       "access": "planned-no-observational-products",
       "sourceIds": [
-        "roman-mast"
+        "roman-mast",
+        "roman-launch-nasa-2026",
+        "roman-commissioning-nasa-2026"
       ],
       "availableOn": null,
       "datePrecision": null,
       "version": null,
       "claimReviewStatus": "discovery-metadata-only",
-      "reviewNotes": "Future MAST public data; test data not mislabeled as space survey observations."
+      "reviewNotes": "Mission launched August 30, 2026; NASA reports science commissioning in October. Future public survey releases remain distinct from commissioning instrument observations or simulated test products."
     },
     {
       "id": "lisa-future",
@@ -982,17 +1002,18 @@
       "confirmedActual": false
     },
     {
-      "id": "roman-launch-window-2026",
+      "id": "roman-launch-2026",
       "programmeId": "roman",
-      "event": "Roman planned launch window",
-      "date": "late 2026",
-      "precision": "approximate",
-      "state": "planned",
+      "event": "Roman Space Telescope successfully launched",
+      "date": "2026-08-30",
+      "precision": "day",
+      "state": "completed",
       "sourceIds": [
-        "roman-mast"
+        "roman-launch-nasa-2026"
       ],
-      "confirmedActual": false,
-      "notes": "Source describes planned late-2026 launch; no exact month/day or guaranteed date."
+      "confirmedActual": true,
+      "notes": "NASA release 26-071 confirms August 30, 2026 launch at 07:26 EDT. A successful launch is not a public science-survey data release.",
+      "actualSourceId": "roman-launch-nasa-2026"
     },
     {
       "id": "lisa-launch-2035",
@@ -1017,6 +1038,20 @@
         "ska-timeline"
       ],
       "confirmedActual": false
+    },
+    {
+      "id": "roman-science-commissioning-2026",
+      "programmeId": "roman",
+      "event": "NASA reports Roman in final science commissioning",
+      "date": "2026-10-22",
+      "precision": "day",
+      "state": "observed",
+      "sourceIds": [
+        "roman-commissioning-nasa-2026"
+      ],
+      "confirmedActual": true,
+      "actualSourceId": "roman-commissioning-nasa-2026",
+      "notes": "Official status report as of Oct 22, 2026, not a claim that commissioning finished or all surveys are active."
     }
   ],
   "studies": [
