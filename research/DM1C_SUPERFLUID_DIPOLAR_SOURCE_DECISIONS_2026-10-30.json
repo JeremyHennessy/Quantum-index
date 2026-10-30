@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-30",
+  "baseMain": "2beb8fc3e4eb6d45092c4880349b056f9e1b3091",
+  "status": "research-identity-source-intake-only-no-runtime-change",
+  "principle": "Earliest inspected preprint of a named model differs from the origin of all concepts in the broader family; published journal year differs from preprint year.",
+  "sources": [
+    {
+      "id": "dm1c-blanchet-polarization-2006",
+      "title": "Gravitational polarization and the phenomenology of MOND",
+      "authors": "Luc Blanchet",
+      "firstPost": "2006-05-24",
+      "arxiv": "astro-ph/0605637v1",
+      "journalYear": 2007,
+      "journal": "Classical and Quantum Gravity 24, 3529",
+      "url": "https://arxiv.org/abs/astro-ph/0605637",
+      "doi": "10.1088/0264-9381/24/14/001",
+      "inspected": "Official arXiv version history and abstract; no original PDF equation-page inspection",
+      "scope": "Nonrelativistic gravitational-polarization/dipolar-dark-matter toy model; not a complete GR medium action"
+    },
+    {
+      "id": "dm1c-blanchet-gr-dipoles-2006",
+      "title": "Dipolar Particles in General Relativity",
+      "authors": "Luc Blanchet",
+      "firstPost": "2006-09-26",
+      "arxiv": "gr-qc/0609121v1",
+      "journalYear": 2007,
+      "journal": "Classical and Quantum Gravity 24, 3541–3570",
+      "url": "https://arxiv.org/abs/gr-qc/0609121",
+      "doi": "10.1088/0264-9381/24/14/002",
+      "inspected": "Official original arXiv version history and abstract; exact GR particle action equation unreviewed",
+      "scope": "Pre-2008 general-relativistic dipolar-particle action and internal stabilization potential; model distinct from 2008 collective dipolar-fluid action"
+    },
+    {
+      "id": "dm1c-blanchet-letiec-gr-2008",
+      "title": "Model of Dark Matter and Dark Energy Based on Gravitational Polarization",
+      "authors": "Luc Blanchet; Alexandre Le Tiec",
+      "firstPost": "2008-04-22",
+      "arxiv": "0804.3518v1",
+      "journalYear": 2008,
+      "journal": "Physical Review D 78, 024031",
+      "url": "https://arxiv.org/abs/0804.3518",
+      "doi": "10.1103/PhysRevD.78.024031",
+      "inspected": "Author-original arXiv abstract and publisher abstract; full action equation not source-page-inspected",
+      "scope": "General-relativistic model of dipolar medium; LambdaCDM-like behavior at first-order cosmological perturbations with MOND galaxy regime under weak clustering"
+    },
+    {
+      "id": "dm1c-blanchet-letiec-refinement-2009",
+      "title": "Dipolar dark matter and dark energy",
+      "authors": "Luc Blanchet; Alexandre Le Tiec",
+      "firstPost": "2009-01-20",
+      "arxiv": "0901.3114",
+      "journalYear": 2009,
+      "journal": "Physical Review D 80, 023524",
+      "url": "https://doi.org/10.1103/PhysRevD.80.023524",
+      "doi": "10.1103/PhysRevD.80.023524",
+      "inspected": "Publisher abstract and stated dependence on 2008 paper; not full PDF equation page",
+      "scope": "Alternative physically motivated GR matter action; should not supersede prior-year identity"
+    },
+    {
+      "id": "dm1c-berezhiani-khoury-brief-2015",
+      "title": "Dark Matter Superfluidity and Galactic Dynamics",
+      "authors": "Lasha Berezhiani; Justin Khoury",
+      "firstPost": "2015-06-25",
+      "arxiv": "1506.07877v1",
+      "journalYear": 2016,
+      "journal": "Physics Letters B 753, 639–643",
+      "url": "https://arxiv.org/abs/1506.07877",
+      "doi": "10.1016/j.physletb.2015.12.054",
+      "inspected": "Author-original arXiv full HTML and journal abstract; model claims and P~rho^3 accessible, no visual equation-page review",
+      "scope": "Phenomenological superfluid dark matter whose phonons mediate MOND-like baryon response in certain galactic conditions"
+    },
+    {
+      "id": "dm1c-berezhiani-khoury-full-2015",
+      "title": "Theory of Dark Matter Superfluidity",
+      "authors": "Lasha Berezhiani; Justin Khoury",
+      "firstPost": "2015-07-03",
+      "arxiv": "1507.01019v1",
+      "journalYear": 2015,
+      "journal": "Physical Review D 92, 103510",
+      "url": "https://arxiv.org/abs/1507.01019",
+      "doi": "10.1103/PhysRevD.92.103510",
+      "inspected": "Author original full arXiv HTML with first section and model framing; equations for full action not visually rechecked",
+      "scope": "Longer companion treatment to June 2015 short paper; scale- and phase-dependent proposed phenomenology"
+    },
+    {
+      "id": "dm1c-hossenfelder-mistele-2022",
+      "title": "Galactic mass-to-light ratios with superfluid dark matter",
+      "authors": "Tobias Mistele; Stacy McGaugh; Sabine Hossenfelder",
+      "firstPost": "2022-01-18",
+      "arxiv": "2201.07282v1",
+      "journalYear": 2022,
+      "journal": "Astronomy & Astrophysics",
+      "url": "https://arxiv.org/abs/2201.07282",
+      "doi": "10.1051/0004-6361/202243216",
+      "inspected": "Official arXiv first-post metadata and journal conclusion/appendix; not reproduced numerical fits",
+      "scope": "Model-comparison/critical analysis; cannot be treated as experimental falsification of all superfluid dark matter variants"
+    },
+    {
+      "id": "dm1c-blanchet-heisenberg-larrouturou-2023",
+      "title": "Absence of gravitational polarization mechanism in the canonical bimetric theory",
+      "authors": "Luc Blanchet; Lavinia Heisenberg; François Larrouturou",
+      "firstPost": null,
+      "arxiv": null,
+      "journalYear": 2023,
+      "journal": "Physical Review D 107, 124021",
+      "url": "https://doi.org/10.1103/PhysRevD.107.124021",
+      "doi": "10.1103/PhysRevD.107.124021",
+      "inspected": "Publisher abstract only, not full original derivation",
+      "scope": "No-go result for a specified canonical bimetric implementation; not a general refutation of Blanchet/Le Tiec 2008 GR fluid model"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dipolar-dark-matter",
+      "currentState": "not-shipped",
+      "identityDisposition": "ADD_AFTER_FULL_SOURCE_MATH_AND_SCOPE_REVIEW",
+      "modelFamily": "Gravitationally polarizable dark medium",
+      "earliestFoundPreprintYear": 2006,
+      "confidence": "Strong for model lineage to Blanchet 2006; not a universal first-work claim",
+      "precursorIds": [
+        "mond",
+        "teves"
+      ],
+      "otherRelatedIds": [
+        "lambda-cdm",
+        "bimetric-gravity"
+      ],
+      "sourceIds": [
+        "dm1c-blanchet-polarization-2006",
+        "dm1c-blanchet-gr-dipoles-2006",
+        "dm1c-blanchet-letiec-gr-2008",
+        "dm1c-blanchet-letiec-refinement-2009"
+      ],
+      "submodelCaveat": "2006 quasi-Newtonian polarization, September 2006 GR dipolar-particle action, 2008 collective GR dipolar-fluid action and later bimetric EFT are separate models",
+      "nextGate": "Visually inspect equations for May 2006 quasi-Newtonian and September 2006 GR particle action, 2008 GR fluid-action refinement and relationship to subsequent implementations"
+    },
+    {
+      "id": "superfluid-dark-matter",
+      "currentState": "not-shipped",
+      "identityDisposition": "ADD_AFTER_FULL_SOURCE_MATH_AND_SCOPE_REVIEW",
+      "modelFamily": "Phase-specific self-interacting dark matter/phonon-mediated MOND-like effect",
+      "earliestFoundPreprintYear": 2015,
+      "confidence": "High for named Berezhiani-Khoury model; not a claim about all superfluid DM attempts",
+      "precursorIds": [
+        "self-interacting-dark-matter",
+        "mond"
+      ],
+      "otherRelatedIds": [
+        "lambda-cdm",
+        "fuzzy-dark-matter"
+      ],
+      "sourceIds": [
+        "dm1c-berezhiani-khoury-brief-2015",
+        "dm1c-berezhiani-khoury-full-2015"
+      ],
+      "submodelCaveat": "Do not conflate ultralight fuzzy scalar DM with the eV-scale strongly interacting superfluid scenario; phase validity differs across galaxies and clusters",
+      "nextGate": "Source-check specific phonon effective action/normalizations and galactic/cluster phase regimes from original PDF; compare model-dependent constraints"
+    }
+  ],
+  "mathCandidates": [
+    {
+      "id": "dm1c-superfluid-polytropic-scaling",
+      "candidateTheoryId": "superfluid-dark-matter",
+      "state": "SCHEMATIC_RESEARCH_ONLY",
+      "plain": "P proportional to rho^3",
+      "sourceId": "dm1c-berezhiani-khoury-brief-2015",
+      "location": "Original arXiv short-paper body, galactic dark superfluid equation-of-state paragraph",
+      "scope": "Model-dependent polytropic equation of state; proportionality alone not a complete pressure law; no canonical formula card until exact action/constant checked"
+    },
+    {
+      "id": "dm1c-dipolar-polarization",
+      "candidateTheoryId": "dipolar-dark-matter",
+      "state": "HOLD_EXACT_ACTION_AND_REGIME",
+      "plain": null,
+      "sourceId": "dm1c-blanchet-letiec-gr-2008",
+      "location": "Original 2008 GR action and perturbative assumptions require full equation-page inspection",
+      "scope": "Do not substitute a Newtonian phenomenological MOND relation for the full 2008 GR dipolar-fluid action"
+    }
+  ],
+  "caveats": [
+    "Both models speculative; observational consistency is model dependent and not experimental identification of a particle.",
+    "The 2023 canonical bimetric no-go is scoped to that formulation, not a universal disproof of all dipolar fluids.",
+    "Do not claim 2008 is earliest dipolar idea when Blanchet 2006 exists.",
+    "Do not claim later 2015 long superfluid paper predates the June 2015 short paper.",
+    "Read-only source review; sources and math unshipped; no formula or Evidence record added.",
+    "Page-image/PDF mathematical transcription independently needs visual review before numerical/physical claims."
+  ],
+  "nextGates": [
+    "Perform original equation-level visual verification with page/section locators for each candidate",
+    "Decide canonical source-defined actions and original 2006/2008 submodel identities",
+    "Independent mathematical assumptions, stability/viability constraints and physical dimensional analysis",
+    "Isolated additive integration with new outer historical projection, no accepted bytes rewritten",
+    "Full Chromium and WebKit, main/Pages and served-file acceptance"
+  ]
+}
