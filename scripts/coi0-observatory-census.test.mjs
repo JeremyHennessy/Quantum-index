@@ -32,9 +32,12 @@ function validate(d){
  assert.equal(d.programmes.length,30);
  assert.equal(d.releases.length,18);
  assert.equal(d.milestones.length,5);
+ assert.equal(d.studies.length,6);
  const s=uniq(d.sources.map(x=>x.id),'source id'),p=uniq(d.programmes.map(x=>x.id),'programme id');
  uniq(d.releases.map(x=>x.id),'release id');
  uniq(d.milestones.map(x=>x.id),'milestone id');
+ uniq(d.studies.map(x=>x.id),'study id');
+ const releases=new Set(d.releases.map(x=>x.id));
  for(const source of d.sources){
    assert.ok(source.id && source.title && source.publisher && source.reviewScope);
    assert.match(source.url,/^https:\/\//,source.id);
@@ -62,6 +65,14 @@ function validate(d){
      checkDate(release.availableOn,release.datePrecision);
    }
    if(release.access==='planned-no-observational-products') assert.ok(!release.confirmedActual,'Do not present planned release as completed');
+ }
+ for(const study of d.studies){
+   assert.ok(study.title && study.year && study.reviewScope,study.id);
+   assert.match(study.url,/^https:\/\/(doi\.org|arxiv\.org)\//,study.id);
+   assert.equal(study.evidencePromoted,false,'Citation is not a scientific verdict');
+   for(const id of study.sourceIds)assert.ok(s.has(id),'Unknown study source '+id);
+   for(const id of study.programmeIds)assert.ok(p.has(id),'Unknown study programme '+id);
+   for(const id of study.releaseIds)assert.ok(releases.has(id),'Unknown cited release '+id);
  }
  for(const milestone of d.milestones){
    assert.ok(p.has(milestone.programmeId),milestone.id);
@@ -97,6 +108,7 @@ test('Rubin restricted data, Euclid scheduled release and tentative launch are n
 test('A bibliography entry and science-facility listing do not promote Evidence or modify runtime',()=>{
  assert.ok(data.programmes.every(x=>x.evidencePromotion===false));
  assert.ok(data.releases.every(x=>x.claimReviewStatus==='discovery-metadata-only'));
+ assert.ok(data.studies.every(x=>x.evidencePromoted===false));
  assert.ok(!fs.readFileSync('index.html','utf8').includes('COI0_OBSERVATORY_AND_RELEASE_CENSUS'));
  assert.ok(!fs.readFileSync('app.js','utf8').includes('COI0_OBSERVATORY_AND_RELEASE_CENSUS'));
 });
@@ -107,4 +119,5 @@ test('Unknown source links, foreign problem IDs, invalid access and fictitious m
  change(x=>{x.releases.find(y=>y.id==='rubin-edp2').access='public-data';});
  change(x=>{x.milestones[0].confirmedActual=true;});
  change(x=>{x.releases[0].availableOn='2026-10-99';});
+ change(x=>{x.studies[0].releaseIds=['unknown-release'];});
 });
