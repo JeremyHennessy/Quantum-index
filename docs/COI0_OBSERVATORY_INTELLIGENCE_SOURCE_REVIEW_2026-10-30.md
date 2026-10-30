@@ -13,7 +13,7 @@ This is the first bounded cohort, **not all observatories worldwide**. The 30 na
 
 ## Current deliverable
 
-- 27 authority/source records with exact URLs, organization names, review scopes and date checked.
+- 28 authority/source records with exact URLs, organization names, review scopes and date checked.
 - 30 programme/mission/survey/instrument/observatory candidate identities, with type and domain and existing Problem linkage explicitly editorial (never empirical evidence).
 - 18 release/analysis product identifiers with explicit version and public observations / public analysis only / rights restricted / publication only / planned / archive API status.
 - Six publication-title and external identifier candidates linked to programmes and releases, with no promoted science claims.
@@ -23,7 +23,7 @@ This is the first bounded cohort, **not all observatories worldwide**. The 30 na
 
 ## Critical source distinctions verified October 30, 2026
 
-- **DESI:** Public DR1 spectra (released March 19, 2025) are different from DR2 cosmological supporting chains/likelihood products. The DESI DR2 underlying spectra and redshifts are NOT publicly released at this review. Never call DR2 a publicly released full spectroscopic catalogue. Official links: https://data.desi.lbl.gov/doc/releases/ and https://data.desi.lbl.gov/doc/papers/.
+- **DESI:** DR1 spectra were publicly released March 19, 2025. Separate *DR2-derived* cosmology MCMC chains and maximization outputs first became public October 6, 2025, before the full DR2 spectroscopic release. Additional July 30, 2026 Lyman-alpha results are later study milestones, **not the original public DR2-chains release date**. Underlying DR2 spectra and redshifts are NOT publicly released at this review. Official links: https://data.desi.lbl.gov/doc/releases/ , https://data.desi.lbl.gov/doc/papers/ and https://www.desi.lbl.gov/2025/10/06/desi-dr2-cosmology-chains-and-data-products-released/.
 - **Rubin:** Early DP2 (July 27, 2026) exists but is restricted to Rubin data rights holders through Rubin Science Platform. Complete DP2 has an October–December 2026 expectation, not verified delivered. Sources: https://dp2.lsst.io/v/SP-3082/index.html and https://dp2.lsst.io/access/index.html.
 - **Euclid:** Q2 public data June 24, 2026; DR1 Foundation planned November 12, 2026; later roadmap dates prospective. Source: https://euclid.caltech.edu/page/data-release-timeline.
 - **SDSS:** DR20 publicly available July 30, 2026 with a specific release paper. Source: https://www.sdss.org/science/publications/data-release-publications/.
