@@ -8,7 +8,7 @@
   "files": {
     "index.html": {
       "beforeSha256": "b464c8478c83974dfbab204a39249e4f124531c4129c2ff15a5c315fc74fc121",
-      "afterSha256": "2753c08d6ecb3246a0bfe5921eb51dfae982b0f512d6fad5bd2ab10827570c8e",
+      "afterSha256": "777bc9450d1fa2d9ce588ff2fcdf4ce9f602c8f67731987273d31ee70dc9db4d",
       "operations": [
         {
           "kind": "replace",
@@ -23,7 +23,7 @@
         {
           "kind": "replace",
           "beforeText": "./app.js?v=650b38708ca3ce89",
-          "afterText": "./app.js?v=851a52503aeebb53"
+          "afterText": "./app.js?v=7acfc45cb9845e46"
         }
       ]
     },
@@ -39,12 +39,12 @@
     },
     "docs/responsive-check.html": {
       "beforeSha256": "0d56c57d26e0fc44207dca40ebc80e8a88c51e422e2984c6318405b8bfa16407",
-      "afterSha256": "30acdb2f865620b6eb5c2d31473197514c3af33cd4f84a4bb731009ad326098b",
+      "afterSha256": "93e139aea4a83d1a4760c7ad0f4e104ad30006064aa6aee8ef42ae430c915cab",
       "operations": [
         {
           "kind": "replace",
           "beforeText": "index.html?v=b464c8478c83974d#",
-          "afterText": "index.html?v=2753c08d6ecb3246#",
+          "afterText": "index.html?v=777bc9450d1fa2d9#",
           "occurrences": 2
         }
       ]
@@ -73,12 +73,12 @@
     },
     "app.js": {
       "beforeSha256": "650b38708ca3ce89289ecdde52124ca8ab90acf04a575fb721dcb0189fa8d0d1",
-      "afterSha256": "851a52503aeebb530b287751dea4161e6ae0fd7a4a9392fe36c279c40b661af9",
+      "afterSha256": "7acfc45cb9845e46b10815e5861ab4adcbfcda18b3a05bd339742084a07f5f53",
       "operations": [
         {
           "kind": "replace",
           "beforeText": "  window.addEventListener(\"hashchange\",applyRoute);",
-          "afterText": "  window.addEventListener(\"hashchange\",applyRoute);\n  // Only the two new first-screen links scroll to their already-existing routed destination.\n  $(\".hero-entry-link\").forEach(link=>link.addEventListener(\"click\",event=>{\n    const route=link.getAttribute(\"href\");\n    const destination=route===\"#/problems\"?\"#problemsView\":route===\"#/catalog\"?\"#catalogView\":null;\n    if(!destination)return;\n    event.preventDefault();\n    const show=()=>{\n      const section=$(destination),header=$(\".topbar\");\n      if(!section)return;\n      const top=window.scrollY+section.getBoundingClientRect().top-(header?.getBoundingClientRect().height||0)-12;\n      window.scrollTo({top:Math.max(0,top),behavior:\"auto\"});\n    };\n    if(location.hash===route){navigate(route);show();}\n    else{window.addEventListener(\"hashchange\",show,{once:true});navigate(route);}\n  }));"
+          "afterText": "  window.addEventListener(\"hashchange\",applyRoute);\n  // Only the two new first-screen links scroll to their already-existing routed destination.\n  $$(\".hero-entry-link\").forEach(link=>link.addEventListener(\"click\",event=>{\n    const route=link.getAttribute(\"href\");\n    const destination=route===\"#/problems\"?\"#problemsView\":route===\"#/catalog\"?\"#catalogView\":null;\n    if(!destination)return;\n    event.preventDefault();\n    const show=()=>{\n      const section=$(destination),header=$(\".topbar\");\n      if(!section)return;\n      const top=window.scrollY+section.getBoundingClientRect().top-(header?.getBoundingClientRect().height||0)-12;\n      window.scrollTo({top:Math.max(0,top),behavior:\"auto\"});\n    };\n    if(location.hash===route){navigate(route);show();}\n    else{window.addEventListener(\"hashchange\",show,{once:true});navigate(route);}\n  }));"
         }
       ]
     }
