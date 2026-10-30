@@ -893,7 +893,11 @@
       "datePrecision": null,
       "version": "API v2",
       "claimReviewStatus": "discovery-metadata-only",
-      "reviewNotes": "Collaborative archive includes multiple detector facilities. Event versions and pagination must be preserved."
+      "reviewNotes": "Collaborative archive includes multiple detector facilities. Event versions and pagination must be preserved. Shared facilities referenced explicitly; a single GWOSC release is not exclusively LIGO data.",
+      "sharedProgramIds": [
+        "virgo",
+        "kagra"
+      ]
     },
     {
       "id": "lz-2026-extended",
@@ -981,14 +985,14 @@
       "id": "roman-launch-window-2026",
       "programmeId": "roman",
       "event": "Roman planned launch window",
-      "date": "2026-Q4",
-      "precision": "quarter",
+      "date": "late 2026",
+      "precision": "approximate",
       "state": "planned",
       "sourceIds": [
         "roman-mast"
       ],
       "confirmedActual": false,
-      "notes": "Source says late 2026; the quarter is a search/indexing approximation, not an official exact quarter."
+      "notes": "Source describes planned late-2026 launch; no exact month/day or guaranteed date."
     },
     {
       "id": "lisa-launch-2035",
