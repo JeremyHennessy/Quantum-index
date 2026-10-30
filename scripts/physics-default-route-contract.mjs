@@ -8,7 +8,8 @@
 export function proposedPhysicsDefaultTarget(value) {
   const incoming = value instanceof URL ? value : new URL(String(value));
   if (incoming.protocol !== 'https:' && incoming.protocol !== 'http:') return null;
-  if (incoming.hash) return null;
+  // An explicitly supplied '#', even with an empty fragment, is a legacy route intent.
+  if (incoming.href.includes('#')) return null;
   if (incoming.pathname !== '/' && incoming.pathname !== '/Quantum-index/') return null;
   if (incoming.searchParams.get('classic') === '1') return null;
 
