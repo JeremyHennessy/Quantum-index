@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-30",
+  "acceptedMainBaseline": "2beb8fc3e4eb6d45092c4880349b056f9e1b3091",
+  "state": "source-checked-equation-proposal-no-runtime-change",
+  "existingTheoryId": "axion",
+  "existingTheoryOriginYear": 1978,
+  "existingParentSources": [
+    "peccei-quinn-1977",
+    "weinberg-axion-1978"
+  ],
+  "existingBaselineCounts": {
+    "theories": 485,
+    "formulas": 464
+  },
+  "source": {
+    "id": "dm2-dicortona-qcd-axion-2016",
+    "title": "The QCD axion, precisely",
+    "authors": "Giovanni Grilli di Cortona; Edward Hardy; Javier Pardo Vega; Giovanni Villadoro",
+    "originalArxivPosted": "2015-11-09",
+    "reviewedPreprintVersion": "1511.02867v2",
+    "versionDate": "2016-01-08",
+    "journalYear": 2016,
+    "journal": "JHEP 01 (2016) 034",
+    "doi": "10.1007/JHEP01(2016)034",
+    "url": "https://arxiv.org/html/1511.02867v2",
+    "reviewLevel": "Exact equations and surrounding scope checked against versioned author arXiv HTML of the source manuscript and publisher bibliographic record. No original PDF screenshot inspection or independent full derivation claimed.",
+    "role": "Author primary theoretical derivation and 2016 numerical prediction; not original 1977–78 axion prediction or a 2026 update"
+  },
+  "formulaProposals": [
+    {
+      "theoryIds": [
+        "axion"
+      ],
+      "sourceIds": [
+        "dm2-dicortona-qcd-axion-2016"
+      ],
+      "sourceVersion": "1511.02867v2",
+      "reviewState": "source-matched-research-proposal-not-integrated",
+      "role": "source-scoped formula",
+      "id": "qcd-axion-gluon-anomaly-interaction-2016",
+      "title": "QCD axion–gluon topological interaction (term)",
+      "latex": "\\mathcal{L}_{aG\\tilde{G}}=\\frac{a}{f_a}\\frac{\\alpha_s}{8\\pi}G_{\\mu\\nu}\\tilde{G}^{\\mu\\nu}",
+      "plain": "L_aGtildeG = (a/f_a) alpha_s/(8 pi) G_munu Gtilde^munu",
+      "sourceLocation": "Section 2, Eq. (1), second term; author arXiv v2 HTML",
+      "formulaType": "defining component",
+      "variables": [
+        "a: canonically normalized axion field",
+        "f_a: effective QCD anomaly-normalized axion decay constant",
+        "alpha_s: strong coupling over 4pi",
+        "G_munu and dual Gtilde_munu: QCD gluon field strength and its dual, color indices summed implicitly"
+      ],
+      "assumptions": [
+        "Low-energy effective theory below PQ and electroweak breaking scales; leading order in 1/f_a and weak couplings",
+        "The quoted interaction is ONLY the second term of complete Eq. (1), which also includes kinetic, photon and derivative matter interactions",
+        "Color anomaly normalization is absorbed into f_a; theta angle removed by field shift per source",
+        "Do not apply this QCD-specific term as a universal defining relation for generic ALPs"
+      ],
+      "units": "In natural units Lagrangian density has energy^4; a/f_a dimensionless, G_munu Gtilde^munu energy^4",
+      "nonClaim": "Not a complete QCD axion Lagrangian, not a statement about all axion-like particles."
+    },
+    {
+      "theoryIds": [
+        "axion"
+      ],
+      "sourceIds": [
+        "dm2-dicortona-qcd-axion-2016"
+      ],
+      "sourceVersion": "1511.02867v2",
+      "reviewState": "source-matched-research-proposal-not-integrated",
+      "role": "source-scoped formula",
+      "id": "qcd-axion-topological-susceptibility-mass-2016",
+      "title": "Zero-temperature QCD axion topological-susceptibility mass",
+      "latex": "m_a^2=\\frac{\\chi_{\\mathrm{top}}}{f_a^2}",
+      "plain": "m_a^2 = chi_top / f_a^2",
+      "sourceLocation": "Section 2.1, Eq. (22), final equality; author arXiv v2 HTML",
+      "formulaType": "canonical relation",
+      "variables": [
+        "m_a: zero-temperature QCD axion mass",
+        "chi_top: physical QCD topological susceptibility at theta=0",
+        "f_a: normalized QCD axion decay constant"
+      ],
+      "assumptions": [
+        "QCD axion arising from the anomalous QCD theta coupling in the source's normalization",
+        "Evaluate mass at T=0 in the source's Section 2; finite-temperature susceptibility changes",
+        "General QCD relation rather than an arbitrary ALP mass formula"
+      ],
+      "units": "chi_top has energy^4 and f_a has energy; chi_top/f_a^2 is energy^2",
+      "nonClaim": "Not experimental identification of dark matter; does not fix f_a without an independent measurement."
+    },
+    {
+      "theoryIds": [
+        "axion"
+      ],
+      "sourceIds": [
+        "dm2-dicortona-qcd-axion-2016"
+      ],
+      "sourceVersion": "1511.02867v2",
+      "reviewState": "source-matched-research-proposal-not-integrated",
+      "role": "source-scoped formula",
+      "id": "qcd-axion-nlo-mass-estimate-2016",
+      "title": "2016 NLO QCD axion mass estimate",
+      "latex": "m_a=5.70(7)\\,\\mu\\mathrm{eV}\\left(\\frac{10^{12}\\,\\mathrm{GeV}}{f_a}\\right)",
+      "plain": "m_a = 5.70(7) micro-eV * (10^12 GeV / f_a)",
+      "sourceLocation": "Section 2.1, Eq. (26), second equality, plus uncertainties following Eq. (26)",
+      "formulaType": "approximate numerical QCD result",
+      "variables": [
+        "m_a: QCD axion mass at T=0 in microelectronvolts",
+        "f_a: QCD-normalized axion decay constant measured in GeV",
+        "5.70(7): combined author 2016 uncertainty, corresponding to separate 5.70(6)(4) uncertainties"
+      ],
+      "assumptions": [
+        "Original authors' 2016 NLO chiral perturbation/QCD input values, not claimed current as of 2026",
+        "Applies to QCD axion, NOT generic ALPs with independent masses/couplings",
+        "Numerical uncertainty comes from quark-mass ratio and higher-order QCD inputs"
+      ],
+      "units": "m_a expressed in microelectronvolts; 10^12 GeV / f_a dimensionless",
+      "nonClaim": "A dated 2016 theoretical mass relation, not a universal dark-matter detection or latest PDG precision."
+    },
+    {
+      "theoryIds": [
+        "axion"
+      ],
+      "sourceIds": [
+        "dm2-dicortona-qcd-axion-2016"
+      ],
+      "sourceVersion": "1511.02867v2",
+      "reviewState": "source-matched-research-proposal-not-integrated",
+      "role": "source-scoped formula",
+      "id": "qcd-axion-photon-coupling-2016",
+      "title": "Model-dependent 2016 QCD axion–photon coupling",
+      "latex": "g_{a\\gamma\\gamma}=\\frac{\\alpha_{\\mathrm{em}}}{2\\pi f_a}\\left[\\frac{E}{N}-1.92(4)\\right]",
+      "plain": "g_agg = alpha_em/(2 pi f_a) * (E/N - 1.92(4))",
+      "sourceLocation": "Section 2.3, Eq. (45), first equality and explanation; author arXiv v2 HTML",
+      "formulaType": "model-dependent low-energy coupling",
+      "variables": [
+        "g_agg: axion-photon coupling with inverse-energy units",
+        "alpha_em: electromagnetic fine-structure constant",
+        "E/N: model-dependent electromagnetic-to-color PQ anomaly ratio",
+        "1.92(4): authors' 2016 model-independent QCD contribution and uncertainty"
+      ],
+      "assumptions": [
+        "QCD axion with anomaly-normalized f_a and the source's effective theory",
+        "E/N varies by ultraviolet axion model; KSVZ and DFSZ may take distinct values",
+        "Near E/N=1.92 cancellations make model-specific photon coupling small; neither zero nor universality is imposed",
+        "Finite-temperature, generic ALP and time-dependent couplings not implied"
+      ],
+      "units": "g_agg has energy^-1, alpha_em and E/N dimensionless, f_a energy",
+      "nonClaim": "A model-dependent coupling, not a model-independent detectable lower bound for every QCD axion."
+    }
+  ],
+  "additionalHolds": [
+    {
+      "title": "Misalignment dark-matter relic abundance",
+      "gate": "Independently inspect original Preskill-Wise-Wilczek, Abbott-Sikivie, and Dine-Fischler (1983) equation pages, finite-T susceptibility assumptions, pre/post-inflation symmetry breaking and cosmic string/domain-wall contributions before adding a relic formula."
+    },
+    {
+      "title": "Current axion mass coefficient",
+      "gate": "2026 PDG Eq. (89.3) at visually reviewed printed p.2 gives 5.691(51) micro-eV ×(10^12 GeV/f_a), versus 2016 5.70(7); independently verify dates, calculation inputs, versioned refs and historical preservation before selecting a single canonical runtime numerical card."
+    },
+    {
+      "title": "Axion-like-particle taxonomy",
+      "gate": "Keep generic ALPs distinct from the QCD axion; axion-gluon relation and mass are not automatically valid for an ALP with arbitrary UV origin."
+    }
+  ],
+  "nonClaims": [
+    "No new theory, bibliography, formula, graph edge, empirical Evidence, UI or deployed asset is modified by this proposal",
+    "Versioned author HTML was checked directly for Eqs (1), (22), (26), (45); PDF screenshot/printed-page parity was not independently established",
+    "This review neither redefines 1978 theory origin nor certifies all axion literature as current",
+    "No dark matter particle is reported as detected",
+    "The 2026 PDG review is a distinct source and is only staged in this proposal; historical 2016 formula objects remain intact, and the 2026 coefficient is not published in runtime."
+  ],
+  "nextGates": [
+    "Independent page-image review of exact published PDF and the versioned HTML equation/notation parity",
+    "Source/derivation and competing current-estimate review for numerical formulas",
+    "Append-only integration on separate verified baseline without weakening historical integrity ledgers",
+    "Node validation, full Chromium/WebKit MathJax responsive and scroll endpoint tests",
+    "Merge, Pages and independently verified served-site acceptance"
+  ],
+  "currentReview": {
+    "sourceId": "dm2-pdg-rpp-axions-2026",
+    "title": "Axions and Other Similar Particles",
+    "authors": "C. A. J. O'Hare; G. Rybka; B. Safdi; L. Winslow",
+    "publication": "Particle Data Group, Review of Particle Physics 2026",
+    "reviewRevision": "August 2025",
+    "publishedPdfStamp": "2026-06-01",
+    "url": "https://pdg.lbl.gov/2026/reviews/rpp2026-rev-axions.pdf",
+    "status": "source-reviewed-current-reference-proposal-not-integrated",
+    "sourceRole": "Authoritative 2026 PDG review, not first historical discovery paper and not a dark-matter detection",
+    "reviewedSourceLevel": "Original 2026 PDG PDF visually inspected on printed pp.2–3 (PDF zero-index pages 1–2); equations 89.2, 89.3, 89.5, 89.6.",
+    "math": [
+      {
+        "id": "qcd-axion-pdg-2026-gluon",
+        "sourceLocator": "printed p.2 / PDF index 1, Eq. (89.2)",
+        "equation": "L=(a/f_a - barTheta)*(alpha_s/8pi)*G*Gtilde",
+        "meaning": "QCD anomaly coupling in PDG's explicit theta-angle convention, not a claim the 2016 source's theta-shifted Eq. (1) has identical field origin",
+        "assumptions": "The color-anomaly normalization is absorbed into f_a; full effective model may have further couplings"
+      },
+      {
+        "id": "qcd-axion-pdg-2026-mass",
+        "sourceLocator": "printed p.2 / PDF index 1, Eq. (89.3)",
+        "latex": "m_a=5.691(51)\\left(\\frac{10^9\\,\\mathrm{GeV}}{f_a}\\right)\\mathrm{meV}",
+        "numericExpression": "5.691(51) meV × (10^9 GeV/f_a)",
+        "equivalentAtFa1e12GeV": "5.691(51) micro-eV",
+        "assumptions": "QCD axion T=0; PDG review NNLO QED/chiral corrections and specified QCD input assumptions; not a generic ALP mass"
+      },
+      {
+        "id": "qcd-axion-pdg-2026-photon",
+        "sourceLocator": "printed p.3 / PDF index 2, Eqs. (89.5)–(89.6)",
+        "equation": "g_agammagamma = alpha/(2pi f_a)*(E/N - 1.92(4))",
+        "assumptions": "Model-specific E/N and source-defined electromagnetic tensor conventions"
+      }
+    ],
+    "comparisonTo2016": {
+      "olderSourceId": "dm2-dicortona-qcd-axion-2016",
+      "older2016CentralMicroEVAtFa1e12": 5.7,
+      "older2016CombinedMicroEVUncertainty": 0.07,
+      "newer2026CentralMicroEVAtFa1e12": 5.691,
+      "newer2026MicroEVUncertainty": 0.051,
+      "comparison": "The numeric estimate was refined between the two dated sources. Retain 2016 as historical provenance and use the 2026 review for a dated current-reference numerical display after independent acceptance. Do not create two duplicate canonical mass identities."
+    },
+    "integrationPolicy": "No second standalone formula card for an updated coefficient; preserve source-specific dates and methods, attach original and PDG review to one canonical mass relation with clearly labeled source-era numerical values."
+  }
+}
