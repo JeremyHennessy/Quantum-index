@@ -4,11 +4,16 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
+import {reverseDeclaredUiRevision} from './ui-revision-checkpoint.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const ledger=JSON.parse(fs.readFileSync(new URL('../research/DM1A_INTEGRATION_INTEGRITY_2026-10-29.json',import.meta.url)));
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
+// Outer, exact-hash review candidate. Does not modify previous source ledgers.
+const uiCandidate=JSON.parse(fs.readFileSync(new URL('../research/UI_FIRST_FOLD_CANDIDATE_INTEGRITY_2026-10-30.json',import.meta.url)));
+
 
 export function projectPreDm1a(bytes,relative){
+ bytes=reverseDeclaredUiRevision(bytes,relative,uiCandidate);
  bytes=Buffer.isBuffer(bytes)?bytes:Buffer.from(bytes);
  const entry=ledger.files[relative];
  if(!entry)return bytes;
