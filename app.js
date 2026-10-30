@@ -986,6 +986,21 @@
   document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>navigate(b.dataset.view==="compare"?comparisonHash(compareIds):b.dataset.view==="questions"?questionHash():b.dataset.view==="problems"?problemHash():b.dataset.view==="evidence"?evidenceHash():["map","catalog","timeline","formula","lineage"].includes(b.dataset.view)?viewHash(b.dataset.view):`#/${b.dataset.view}`)));
   $("#clearComparison").addEventListener("click",()=>navigate("#/compare"));
   window.addEventListener("hashchange",applyRoute);
+  // Only the two new first-screen links scroll to their already-existing routed destination.
+  $(".hero-entry-link").forEach(link=>link.addEventListener("click",event=>{
+    const route=link.getAttribute("href");
+    const destination=route==="#/problems"?"#problemsView":route==="#/catalog"?"#catalogView":null;
+    if(!destination)return;
+    event.preventDefault();
+    const show=()=>{
+      const section=$(destination),header=$(".topbar");
+      if(!section)return;
+      const top=window.scrollY+section.getBoundingClientRect().top-(header?.getBoundingClientRect().height||0)-12;
+      window.scrollTo({top:Math.max(0,top),behavior:"auto"});
+    };
+    if(location.hash===route){navigate(route);show();}
+    else{window.addEventListener("hashchange",show,{once:true});navigate(route);}
+  }));
   $("#search").addEventListener("input",e=>{state.search=e.target.value;rememberFilters();renderGraph();renderTimeline();renderCatalog();});
   $("#categoryFilter").addEventListener("change",e=>{state.category=e.target.value;rememberFilters();renderGraph();renderTimeline();renderCatalog();});
   $("#kindFilter").addEventListener("change",e=>{state.kind=e.target.value;rememberFilters();renderGraph();renderTimeline();renderCatalog();});
