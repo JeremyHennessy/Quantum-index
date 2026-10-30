@@ -14,7 +14,8 @@ const uniq=(array,label)=>{
  assert.equal(new Set(array).size,array.length,'Duplicate '+label);
  return new Set(array);
 };
-const allowedProgrammeStates=new Set(['not-assessed','science-operations','planned']);
+const allowedProgrammeStates=new Set(['not-assessed','science-operations','science-commissioning','planned']);
+const allowedMilestoneStates=new Set(['planned','completed','observed']);
 const allowedAccess=new Set(['public-observational-products','public-analysis-products-only','rights-restricted-observational-products','published-result-only','planned-no-observational-products','public-archive-api','unknown']);
 const allowedPrecision=new Set(['day','month','quarter','year','approximate','unspecified']);
 const patternByPrecision={day:/^\d{4}-\d{2}-\d{2}$/,month:/^\d{4}-\d{2}$/,quarter:/^\d{4}-Q[1-4]$/,year:/^\d{4}$/,approximate:/^late \d{4}$/};
@@ -79,9 +80,19 @@ function validate(d){
    assert.ok(allowedPrecision.has(milestone.precision),milestone.id);
    if(milestone.date!==null)checkDate(milestone.date,milestone.precision);
    else assert.equal(milestone.precision,'unspecified');
-   assert.equal(milestone.state,'planned');
-   assert.equal(milestone.confirmedActual,false,'Planned date must never imply confirmed actual');
+   assert.ok(allowedMilestoneStates.has(milestone.state),'Unknown milestone state '+milestone.state);
    for(const id of milestone.sourceIds)assert.ok(s.has(id),'Unknown milestone source '+id);
+   if(milestone.state==='planned'){
+     assert.equal(milestone.confirmedActual,false,'Planned date must never imply confirmed actual');
+     assert.ok(!milestone.actualSourceId,'Planned milestone cannot have an achieved-event source');
+   }else{
+     assert.equal(milestone.confirmedActual,true,'Completed/observed milestone needs authoritative actual evidence');
+     assert.equal(milestone.precision,'day','Actual milestone needs verified day-level date');
+     assert.ok(milestone.date<=d.reviewedAt,'Observed/completed event cannot postdate the review');
+     assert.ok(milestone.actualSourceId,'Missing achieved-event source');
+     assert.ok(s.has(milestone.actualSourceId),'Actual source missing from registry');
+     assert.ok(milestone.sourceIds.includes(milestone.actualSourceId),'Actual source must be associated with this milestone');
+   }
  }
  return true;
 }
@@ -96,14 +107,24 @@ test('DESI DR1 spectra and DR2 analysis products are not conflated',()=>{
  assert.equal(b.access,'public-analysis-products-only');
  assert.match(b.reviewNotes,/NOT publicly released/);
 });
-test('Rubin restricted data, Euclid scheduled release and tentative launch are not labelled public',()=>{
+test('Rubin restricted data and Euclid scheduled release remain distinct from Roman confirmed launch',()=>{
  const rubin=data.releases.find(x=>x.id==='rubin-edp2');
  const euclid=data.releases.find(x=>x.id==='euclid-dr1-foundation');
- const roman=data.milestones.find(x=>x.id==='roman-launch-window-2026');
+ const romanFuture=data.releases.find(x=>x.id==='roman-future');
+ const romanLaunch=data.milestones.find(x=>x.id==='roman-launch-2026');
+ const romanCommissioning=data.milestones.find(x=>x.id==='roman-science-commissioning-2026');
  assert.equal(rubin.access,'rights-restricted-observational-products');
  assert.equal(euclid.access,'planned-no-observational-products');
- assert.equal(roman.precision,'approximate');
- assert.equal(roman.confirmedActual,false);
+ assert.equal(romanFuture.access,'planned-no-observational-products','Launched telescope does not imply public scientific survey products');
+ assert.equal(romanLaunch.state,'completed');
+ assert.equal(romanLaunch.date,'2026-08-30');
+ assert.equal(romanLaunch.confirmedActual,true);
+ assert.equal(romanLaunch.actualSourceId,'roman-launch-nasa-2026');
+ assert.equal(romanCommissioning.state,'observed');
+ assert.equal(romanCommissioning.date,'2026-10-22');
+ assert.equal(romanCommissioning.confirmedActual,true);
+ assert.equal(romanCommissioning.actualSourceId,'roman-commissioning-nasa-2026');
+ assert.equal(data.programmes.find(x=>x.id==='roman').programState,'science-commissioning');
 });
 test('A bibliography entry and science-facility listing do not promote Evidence or modify runtime',()=>{
  assert.ok(data.programmes.every(x=>x.evidencePromotion===false));
@@ -118,6 +139,11 @@ test('Unknown source links, foreign problem IDs, invalid access and fictitious m
  change(x=>{x.programmes[0].relatedProblemIds=['invented-problem'];});
  change(x=>{x.releases.find(y=>y.id==='rubin-edp2').access='public-data';});
  change(x=>{x.milestones[0].confirmedActual=true;});
+ change(x=>{x.programmes.find(p=>p.id==='roman').programState='unverified-science-operation';});
+ change(x=>{x.milestones.find(y=>y.id==='roman-launch-2026').confirmedActual=false;});
+ change(x=>{x.milestones.find(y=>y.id==='roman-launch-2026').actualSourceId='invented-source';});
+ change(x=>{x.milestones.find(y=>y.id==='roman-science-commissioning-2026').date='2027-01-01';});
+ change(x=>{x.milestones.find(y=>y.id==='roman-launch-2026').state='planned';});
  change(x=>{x.releases[0].availableOn='2026-10-99';});
  change(x=>{x.studies[0].releaseIds=['unknown-release'];});
 });
