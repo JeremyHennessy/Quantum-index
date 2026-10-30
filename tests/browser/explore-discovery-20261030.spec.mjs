@@ -2,7 +2,7 @@ import {test,expect} from '@playwright/test';
 
 const originalTabs=['explore','map','timeline','lineage','catalog','formula','compare','problems','evidence','questions','learn','workspace','coverage'];
 
-test('existing desktop navigation, route IDs and approved palette stay in place',async({page})=>{
+test('existing desktop navigation, route IDs and approved palette stay in place',async({page},info)=>{
   const errors=[];page.on('pageerror',error=>errors.push(error.message));
   await page.setViewportSize({width:1280,height:900});
   await page.goto('/#/explore');
@@ -16,6 +16,9 @@ test('existing desktop navigation, route IDs and approved palette stay in place'
     accent:getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()
   }));
   expect(palette).toEqual({bg:'#f5f8fa',text:'#17313f',accent:'#0e8fa3'});
+  const shot=info.outputPath('desktop-explore-navigation.png');
+  await page.screenshot({path:shot,fullPage:false});
+  await info.attach('desktop-explore-navigation',{path:shot,contentType:'image/png'});
   expect(errors).toEqual([]);
 });
 
@@ -39,6 +42,10 @@ test('mobile section jump routes to every existing tool without hiding original 
   await page.setViewportSize({width:320,height:800});
   await page.goto('/#/explore');
   await expect(page.locator('#viewJump')).toBeVisible();
+  expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
+  const homeShot=info.outputPath('mobile-explore-navigation.png');
+  await page.screenshot({path:homeShot,fullPage:false});
+  await info.attach('mobile-explore-navigation',{path:homeShot,contentType:'image/png'});
   const jumpValues=await page.locator('#viewJump option[value]:not([value=""])').evaluateAll(items=>items.map(item=>item.value));
   expect([...jumpValues].sort()).toEqual([...originalTabs].sort());
   await expect(page.locator('.tabs .tab')).toHaveCount(13);
