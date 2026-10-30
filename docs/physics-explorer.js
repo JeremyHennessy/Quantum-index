@@ -31,7 +31,17 @@
   let db=null;
   let state={category:ALL,status:ALL,search:"",problem:ALL,selected:""};
   let byId,sourceById,problemById,formulasByTheory,evidenceByTheory,questionsByTheory,relationsByTheory;
-  let categories=[],statusValues=[];
+  let categories=[];
+  // Editorial navigation families only. The exact, recorded scientific status remains unmodified.
+  const statusFacets=[
+    {id:"all",label:"All statuses",test:()=>true},
+    {id:"established",label:"Established labels",test:s=>s.startsWith("established")},
+    {id:"active",label:"Active research",test:s=>s.startsWith("active")||s==="research proposal"},
+    {id:"alternatives",label:"Alternatives / candidates",test:s=>s.startsWith("alternative")||s.startsWith("candidate")||s.startsWith("speculative")},
+    {id:"interpretation",label:"Interpretations",test:s=>s==="interpretation"},
+    {id:"historical",label:"Historical",test:s=>s.startsWith("historical")},
+    {id:"other",label:"Other labels",test:s=>!["established","active","alternative","candidate","speculative","interpretation","historical"].some(prefix=>s.startsWith(prefix))&&s!=="research proposal"}
+  ];
 
   function registerLinked(sourceArray,targetMap,field){
     for(const record of sourceArray){
@@ -70,7 +80,7 @@
       }
     }
     categories=[...new Set(db.theories.map(t=>t.category))].sort((a,b)=>a.localeCompare(b));
-    statusValues=[...new Set(db.theories.map(t=>t.status))].sort((a,b)=>a.localeCompare(b));
+    // All labels stay on their original records. Sidebar groups are convenience filters only.
     const params=new URLSearchParams(location.search);
     const requested=params.get("theory");
     const problem=params.get("problem");
@@ -117,7 +127,7 @@
     const included=state.problem===ALL?null:problemTheories(state.problem);
     const rows=db.theories.filter(t=>{
       if(state.category!==ALL&&t.category!==state.category)return false;
-      if(state.status!==ALL&&t.status!==state.status)return false;
+      if(state.status!==ALL&&!statusFacets.find(f=>f.id===state.status)?.test(t.status))return false;
       if(included&&!included.has(t.id))return false;
       if(!q)return true;
       const formulas=(formulasByTheory.get(t.id)||[]).map(f=>[f.name,f.description,f.plain].join(" ")).join(" ");
@@ -153,13 +163,13 @@
   }
   function renderStatuses(){
     const group=$("#statusFilters");clear(group);
-    for(const status of [ALL,...statusValues]){
-      const button=el("button","status-filter",status===ALL?"All statuses":status);
+    for(const facet of statusFacets){
+      const button=el("button","status-filter",facet.label);
       button.type="button";
-      button.dataset.status=status;
-      button.setAttribute("aria-pressed",String(state.status===status));
+      button.dataset.status=facet.id;
+      button.setAttribute("aria-pressed",String(state.status===facet.id));
       button.addEventListener("click",()=>{
-        state.status=status;
+        state.status=facet.id;
         renderStatuses();
         renderList();
       });
