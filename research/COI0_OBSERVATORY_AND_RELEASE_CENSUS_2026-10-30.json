@@ -71,6 +71,14 @@
       "reviewScope": "official source page"
     },
     {
+      "id": "desi-dr2-chains-2025",
+      "title": "DESI DR2 cosmology chains and data products first released October 6, 2025",
+      "url": "https://www.desi.lbl.gov/2025/10/06/desi-dr2-cosmology-chains-and-data-products-released/",
+      "publisher": "DESI Collaboration",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "Official October 6, 2025 public DR2-derived MCMC chain and maximization result release; distinct from full unreleased DR2 spectra/redshifts and later July 2026 study updates"
+    },
+    {
       "id": "sdss-dr20",
       "title": "SDSS data release publications",
       "url": "https://www.sdss.org/science/publications/data-release-publications/",
@@ -764,13 +772,14 @@
       "title": "DESI DR2 BAO and Lyman-alpha cosmology supporting analysis",
       "access": "public-analysis-products-only",
       "sourceIds": [
-        "desi-papers"
+        "desi-papers",
+        "desi-dr2-chains-2025"
       ],
-      "availableOn": "2026-07-30",
+      "availableOn": "2025-10-06",
       "datePrecision": "day",
       "version": "DR2",
       "claimReviewStatus": "discovery-metadata-only",
-      "reviewNotes": "DR2 BAO chains/posterior products released; underlying DR2 spectra/redshifts NOT publicly released."
+      "reviewNotes": "The initial public DR2-derived BAO cosmology chains and posterior-maximization products were released October 6, 2025. Additional July 30, 2026 Lyman-alpha studies are linked separately. Underlying DR2 spectra/redshifts are NOT publicly released at this review."
     },
     {
       "id": "sdss-dr20",
