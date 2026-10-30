@@ -1,0 +1,85 @@
+/* Physics Explorer builds on the exact approved Observatory Explorer visual system.
+   These selectors affect this new page only; existing atlas and observatory files are unchanged. */
+.physics-hero{min-height:360px}
+.physics-hero .hero-description{max-width:540px}
+.physics-hero .hero h1{line-height:1.05}
+.header-links{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:9px}
+.header-links a{display:inline-flex;align-items:center;gap:5px;text-decoration:none;font-size:11px;font-weight:730;padding:10px 12px;border-radius:10px;border:1px solid transparent;color:#387286;white-space:nowrap}
+.header-links a:hover{background:#eff9fb;border-color:#d1e5ed}
+.header-links .return-link{border-color:#cbdfe6;background:#f8fbfc}
+.domain-button{font-size:11px}
+.domain-button .symbol{font-size:12px}
+.domain-nav{top:84px}
+.side-rail .rail-note{position:static;margin-top:28px}
+.lens-card{min-height:210px}
+.lens-card strong{font-size:18px}
+.explorer-toolbar{align-items:end}
+.status-filter[aria-pressed="true"]{background:#e4f5f6;color:#067b8f;border-color:#8fcdd5}
+.status-filter{border:1px solid #d7e5e9;background:#f9fcfd;padding:8px 10px;border-radius:9px;font-size:10px;font-weight:700;color:#5f7c89}
+#theoryList{min-height:115px}
+.theory-card{display:block;width:100%;padding:16px 19px;text-align:left;background:#fff;border:0;border-bottom:1px solid #edf2f5;color:var(--ink);cursor:pointer}
+.theory-card:last-child{border-bottom:0}
+.theory-card:hover{background:#f8fcfd}
+.theory-card[aria-pressed="true"]{background:#ecf9fb;box-shadow:inset 3px 0 0 #0e8fa3}
+.theory-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.theory-card .kind{font-size:9px;letter-spacing:.06em;color:#3f8290;text-transform:uppercase;font-weight:790}
+.theory-card .year{font-size:10px;font-weight:770;color:#768e9d}
+.theory-card strong{display:block;font-size:14px;margin:7px 0;line-height:1.3}
+.theory-card p{color:#66818d;font-size:10.7px;line-height:1.55;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.theory-card .status{display:inline-block;color:#598192;background:#f0f7f8;border-radius:7px;font-size:9px;padding:6px 8px;margin-top:10px;font-weight:730}
+.problem-context{border:1px solid #c9dfe6;border-radius:18px;background:linear-gradient(115deg,#e7f7f9,#f8f8ff);padding:21px;margin-bottom:14px}
+.problem-context .problem-label{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:#10869a;font-weight:850}
+.problem-context h3{font-size:25px;letter-spacing:-.035em;margin:6px 0 8px;line-height:1.18}
+.problem-context>p{color:#5b7481;font-size:12px;line-height:1.6;max-width:960px;margin:6px 0 14px}
+.problem-context .problem-approaches{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
+.problem-context .approach-label{font-size:10px;background:#fff9;color:#47788b;border:1px solid #d1e5e8;padding:7px 9px;border-radius:8px}
+.problem-context .problem-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.problem-context .problem-actions a,.problem-context .problem-actions button{border:1px solid #9bd0d8;border-radius:9px;background:#fff;padding:9px 13px;color:#08758a;font-weight:780;font-size:11px;text-decoration:none}
+.problem-context .problem-actions button:hover,.problem-context .problem-actions a:hover{background:#e8f9fb}
+.programme-detail{scroll-margin-top:88px}
+.programme-detail .detail-title{margin-bottom:15px}
+.detail-overview{font-size:12.5px;line-height:1.75;color:#536f7e;margin:0 0 18px}
+.detail-core{font-size:12px;line-height:1.65;color:#3c5d6b;background:#f4f9fa;border-left:3px solid #0e8fa3;padding:12px 14px;margin:12px 0}
+.detail-label{font-size:11px;text-transform:uppercase;font-weight:820;letter-spacing:.07em;color:#63818d}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.topic-tag{font-size:10px;padding:7px 8px;background:#f0f6f8;color:#446f80;border-radius:8px}
+.detail-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:17px}
+.detail-link{display:inline-flex;align-items:center;gap:5px;text-decoration:none;color:#0b748a;background:#eaf6f8;border:1px solid #cee5ea;padding:9px 11px;border-radius:9px;font-size:11px;font-weight:780}
+.detail-link:hover{background:#dff2f5;border-color:#a9d2de}
+.detail-link.primary-link{background:#0e8fa3;color:#fff;border-color:#0e8fa3}
+.meta-line{color:#63818e;font-size:11px;line-height:1.5}
+.formula-preview{background:#f8fcfd;border:1px solid #dfebef;padding:12px 13px;border-radius:12px;margin:9px 0}
+.formula-preview strong{display:block;font-size:12px}
+.formula-preview code{display:block;background:#f0f7fa;white-space:normal;overflow-wrap:anywhere;padding:10px;border-radius:7px;margin-top:9px;font-size:11px;color:#26546b}
+.formula-preview p{font-size:10px;line-height:1.6;color:#647f8d}
+.research-reference{padding:12px;border:1px solid #dce9ee;border-radius:12px;margin:9px 0;background:#f9fcfd}
+.research-reference strong{display:block;font-size:12px;line-height:1.45}
+.research-reference p{font-size:10px;line-height:1.5;color:#66818e;margin:6px 0}
+.research-reference a{font-size:10px;color:#08758a;font-weight:750;overflow-wrap:anywhere}
+.research-connection{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;width:100%;padding:12px;margin:8px 0;border:1px solid #dce9ec;border-radius:11px;background:#f8fcfd;text-align:left;color:#17313f}
+.research-connection:hover{border-color:#8cc5d0;background:#eaf7fa}
+.research-connection strong{display:block;font-size:11px;line-height:1.4}
+.research-connection span{font-size:9px;color:#68828f}
+.research-connection em{font-style:normal;font-size:9px;white-space:nowrap;color:#547f8d}
+.evidence-preview{padding:13px;border:1px solid #dce9ed;border-radius:12px;background:#f9fcfd;margin:9px 0}
+.evidence-preview strong{font-size:11px;display:block}
+.evidence-preview p{font-size:10.5px;color:#617986;line-height:1.6}
+.evidence-preview .caution{color:#8f6956}
+.source-list{display:grid;gap:7px}
+.source-link-item{display:block;border:1px solid #d9e9ed;background:#f7fcfd;padding:11px 12px;border-radius:9px;text-decoration:none;color:#0b7890}
+.source-link-item:hover{border-color:#69b9c6;background:#eaf9fb}
+.source-link-item strong{font-size:11px;line-height:1.45;display:block}
+.source-link-item small{display:block;color:#627d89;margin-top:5px;font-size:10px}
+.detail-section>h3{color:#234c5f}
+.empty-copy{padding:14px}
+.research-tools-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.research-tool-link{display:flex;flex-direction:column;gap:8px;text-decoration:none;min-height:170px;border:1px solid #d8e6eb;border-radius:17px;background:#fff;padding:19px;color:#17313f;box-shadow:0 6px 18px rgba(45,76,92,.045)}
+.research-tool-link:hover{border-color:#91cbd4;background:#f9fefe;box-shadow:0 11px 24px rgba(45,76,92,.10)}
+.research-tool-link .tool-icon{font-size:25px;color:#0e8fa3}
+.research-tool-link strong{font-size:15px}
+.research-tool-link>span:last-child{font-size:11px;color:#66818e;line-height:1.5}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap}
+@media(max-width:1260px){.research-tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.header-links{gap:4px}.header-links a{padding:8px 9px}}
+@media(max-width:1050px){.side-rail .domain-nav{gap:4px}.side-rail .domain-button{white-space:nowrap}.side-rail .rail-note{display:none}}
+@media(max-width:760px){.site-header{flex-wrap:wrap;gap:5px}.header-links{justify-content:flex-start;width:100%;padding:0 0 0 40px}.header-links a{font-size:10px;padding:6px 8px}.physics-hero{min-height:0}.problem-context{padding:16px}.problem-context h3{font-size:22px}.lens-grid{grid-template-columns:1fr}.research-tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.research-tool-link{min-height:150px}.release-filter-group{min-width:0}.programme-detail{max-height:none;position:static}.footer-links{margin-top:14px}}
+@media(max-width:430px){.header-links{padding-left:0;justify-content:flex-start}.header-links a{font-size:9px;padding:5px 7px}.physics-hero .hero-content{padding-top:29px}.physics-hero .hero h1{font-size:32px}.research-tools-grid{grid-template-columns:1fr}.research-tool-link{min-height:115px}.detail-actions{flex-direction:column}.detail-link{justify-content:center}.theory-card{padding:15px}.problem-context .problem-actions{display:grid}}
