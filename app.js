@@ -987,7 +987,7 @@
   $("#clearComparison").addEventListener("click",()=>navigate("#/compare"));
   window.addEventListener("hashchange",applyRoute);
   // Only the two new first-screen links scroll to their already-existing routed destination.
-  $(".hero-entry-link").forEach(link=>link.addEventListener("click",event=>{
+  $$(".hero-entry-link").forEach(link=>link.addEventListener("click",event=>{
     const route=link.getAttribute("href");
     const destination=route==="#/problems"?"#problemsView":route==="#/catalog"?"#catalogView":null;
     if(!destination)return;
