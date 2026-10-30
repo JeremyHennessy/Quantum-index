@@ -13,8 +13,11 @@ const uiCandidate=JSON.parse(fs.readFileSync(new URL('../research/UI_FIRST_FOLD_
 
 
 export function projectPreDm1a(bytes,relative){
- bytes=reverseDeclaredUiRevision(bytes,relative,uiCandidate);
  bytes=Buffer.isBuffer(bytes)?bytes:Buffer.from(bytes);
+ const preDm1a=ledger.files[relative]?.beforeSha256;
+ // Idempotent legacy callers may supply the exact historically approved pre-DM1A bytes.
+ if(preDm1a && hash(bytes)===preDm1a)return bytes;
+ bytes=reverseDeclaredUiRevision(bytes,relative,uiCandidate);
  const entry=ledger.files[relative];
  if(!entry)return bytes;
  const got=hash(bytes);
