@@ -1,0 +1,966 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-10-29",
+  "baselineMain": "228cd84230d0eaef8325dad4a94dc81ad8cf5a27",
+  "status": "identity-and-source-intake-only",
+  "nonClaims": [
+    "No catalog records, formulas, experimental Evidence or GUI changes are shipped by this ledger.",
+    "A source abstract verifies the narrow named mechanism, not its detailed equations, viability or universal accuracy.",
+    "A source attached to a theory cannot validate every mathematical claim or graph relationship.",
+    "ADD means candidate identity supported; NOT source-qualified for immediate live addition.",
+    "Candidate year or broad family origin is not inferred from later reviews.",
+    "No dark-matter particle detection or favored explanation is asserted."
+  ],
+  "baselineStructuralCounts": {
+    "theories": 483,
+    "formulas": 460,
+    "documentedFormulaGaps": 111,
+    "sources": 610,
+    "relations": 614,
+    "sourceBackedRelations": 130,
+    "evidenceRecords": 21,
+    "passports": 35
+  },
+  "verifiedExistingTheoryIds": [
+    "lambda-cdm",
+    "wimp-dark-matter",
+    "axion",
+    "fuzzy-dark-matter",
+    "sterile-neutrino-dark-matter",
+    "self-interacting-dark-matter",
+    "primordial-black-hole-dark-matter",
+    "dark-photon",
+    "freeze-in-dark-matter",
+    "asymmetric-dark-matter",
+    "mond",
+    "teves",
+    "entropic-gravity",
+    "mimetic-gravity",
+    "conformal-gravity"
+  ],
+  "sourceIntakeLimit": "Publisher/arXiv abstracts and review indexes; no original full-text equation-page verification was performed in this pass.",
+  "sourceIntake": [
+    {
+      "id": "dm-simp-hochberg-2014",
+      "title": "Mechanism for Thermal Relic Dark Matter of Strongly Interacting Massive Particles",
+      "authors": "Y. Hochberg, E. Kuflik, T. Volansky, J. G. Wacker",
+      "year": 2014,
+      "type": "primary",
+      "url": "https://doi.org/10.1103/PhysRevLett.113.171301",
+      "inspected": "APS publisher abstract; physical 3-to-2 freeze-out claim; equations and full text not inspected"
+    },
+    {
+      "id": "dm-elder-kuflik-2016",
+      "title": "Elastically Decoupling Dark Matter",
+      "authors": "E. Kuflik, M. Perelstein, N. Rey-Le Lorier, Y.-D. Tsai",
+      "year": 2016,
+      "type": "primary",
+      "url": "https://doi.org/10.1103/PhysRevLett.116.221302",
+      "inspected": "PubMed publisher abstract and 2015 arXiv abstract; elastic-scattering relic-density mechanism; equations not inspected"
+    },
+    {
+      "id": "dm-superfluid-berezhiani-2015",
+      "title": "Theory of Dark Matter Superfluidity",
+      "authors": "L. Berezhiani, J. Khoury",
+      "year": 2015,
+      "type": "primary",
+      "url": "https://doi.org/10.1103/PhysRevD.92.103510",
+      "inspected": "APS publisher abstract; proposed galactic superfluid core and MOND-like phonon response; equations not inspected"
+    },
+    {
+      "id": "dm-dipolar-blanchet-2008",
+      "title": "Model of Dark Matter and Dark Energy Based on Gravitational Polarization",
+      "authors": "L. Blanchet, A. Le Tiec",
+      "year": 2008,
+      "type": "primary",
+      "url": "https://doi.org/10.1103/PhysRevD.78.024031",
+      "inspected": "APS publisher abstract; gravitational polarization and first-order cosmological comparison; equations not inspected"
+    },
+    {
+      "id": "dm-atomic-cyr-racine-2013",
+      "title": "Cosmology of Atomic Dark Matter",
+      "authors": "F.-Y. Cyr-Racine, K. Sigurdson",
+      "year": 2013,
+      "type": "primary",
+      "url": "https://doi.org/10.1103/PhysRevD.87.103515",
+      "inspected": "APS publisher abstract; oppositely charged hidden fermions and dark radiation; equations not inspected"
+    },
+    {
+      "id": "dm-dao-cyr-racine-2014",
+      "title": "Constraints on Large-Scale Dark Acoustic Oscillations from Cosmology",
+      "authors": "F.-Y. Cyr-Racine, R. de Putter, A. Raccanelli, K. Sigurdson",
+      "year": 2014,
+      "type": "primary",
+      "url": "https://doi.org/10.1103/PhysRevD.89.063517",
+      "inspected": "APS publisher abstract; dark-matter/radiation coupled fluid and characteristic sound horizon; equations not inspected"
+    },
+    {
+      "id": "dm-wdm-bode-2001",
+      "title": "Halo Formation in Warm Dark Matter Models",
+      "authors": "P. Bode, J. P. Ostriker, N. Turok",
+      "year": 2001,
+      "type": "primary",
+      "url": "https://arxiv.org/abs/astro-ph/0010389",
+      "inspected": "Author arXiv abstract; WDM halo effects in one model; NOT verified as earliest origin of warm dark matter"
+    },
+    {
+      "id": "dm-alp-irastorza-2018",
+      "title": "New Experimental Approaches in the Search for Axion-Like Particles",
+      "authors": "I. G. Irastorza, J. Redondo",
+      "year": 2018,
+      "type": "authoritative review",
+      "url": "https://arxiv.org/abs/1801.08127",
+      "inspected": "Author arXiv and journal abstract; ALP family broadly distinguished from the QCD axion; no original model origin or equation reviewed"
+    },
+    {
+      "id": "dm-composite-bramante-2026",
+      "title": "Very Heavy and Composite Dark Matter: Theory and Experimental Searches",
+      "authors": "J. Bramante",
+      "year": 2026,
+      "type": "authoritative review",
+      "url": "https://doi.org/10.1146/annurev-nucl-100324-114307",
+      "inspected": "2026 Annual Reviews abstract; composite, dissipative, and very heavy sectors; not a single primary-origin paper"
+    },
+    {
+      "id": "dm-pion-alfano-2026",
+      "title": "Surveying the Theory Space of Pion Dark Matter",
+      "authors": "A. Alfano, N. Evans, S. Kulkarni, W. Porod",
+      "year": 2026,
+      "type": "primary",
+      "url": "https://doi.org/10.1007/JHEP05(2026)199",
+      "inspected": "2026 publisher abstract; several dark pion effective theories; not proof of all dark-QCD models"
+    },
+    {
+      "id": "dm-axion-tech-berlin-2025",
+      "title": "New Technologies for Axion and Dark Photon Searches",
+      "authors": "A. Berlin, Y. Kahn",
+      "year": 2025,
+      "type": "authoritative review",
+      "url": "https://doi.org/10.1146/annurev-nucl-121423-101015",
+      "inspected": "2025 Annual Reviews abstract; experimental technology landscape; not a first-definition source"
+    },
+    {
+      "id": "dm-pdg-2026",
+      "title": "Review of Particle Physics 2026",
+      "authors": "Particle Data Group",
+      "year": 2026,
+      "type": "authoritative review",
+      "url": "https://pdg.lbl.gov/2026/",
+      "inspected": "Official 2026 index and topical scope; not individual formula/parameter-limit audits"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "simp-relic",
+      "title": "SIMP 3-to-2 thermal-relic mechanism",
+      "disposition": "ADD",
+      "priority": 1,
+      "relatedTheoryIds": [
+        "self-interacting-dark-matter",
+        "wimp-dark-matter"
+      ],
+      "sourceRefs": [
+        "dm-simp-hochberg-2014"
+      ],
+      "reason": "Distinct number-changing 3→2 freeze-out rather than conventional 2→2 WIMP annihilation.",
+      "nextGate": "primary abstract reviewed; full equation, thermal-history assumptions and locator pending",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "elder-relic",
+      "title": "Elastically Decoupling Relic (ELDER)",
+      "disposition": "ADD",
+      "priority": 1,
+      "relatedTheoryIds": [
+        "wimp-dark-matter",
+        "freeze-in-dark-matter"
+      ],
+      "sourceRefs": [
+        "dm-elder-kuflik-2016"
+      ],
+      "reason": "Distinct kinetic-decoupling-controlled thermal relic; not identical to SIMP freeze-out.",
+      "nextGate": "primary abstract reviewed; manuscript 2015 versus journal 2016 origin and exact math pending",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "superfluid-dark-matter",
+      "title": "Galactic superfluid dark matter",
+      "disposition": "ADD",
+      "priority": 1,
+      "relatedTheoryIds": [
+        "fuzzy-dark-matter",
+        "mond",
+        "self-interacting-dark-matter"
+      ],
+      "sourceRefs": [
+        "dm-superfluid-berezhiani-2015"
+      ],
+      "reason": "Galactic superfluid phase with phonon-mediated MOND-like phenomenology, not generic fuzzy scalar matter.",
+      "nextGate": "primary abstract reviewed; action/normalization and galaxy/cluster assumptions pending",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "dipolar-dark-matter",
+      "title": "Dipolar gravitationally polarizable dark medium",
+      "disposition": "ADD",
+      "priority": 1,
+      "relatedTheoryIds": [
+        "mond",
+        "lambda-cdm"
+      ],
+      "sourceRefs": [
+        "dm-dipolar-blanchet-2008"
+      ],
+      "reason": "Gravitational polarization model within GR; not the same formalism as MOND or TeVeS.",
+      "nextGate": "primary abstract reviewed; stress-energy/action and perturbative limits pending",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "atomic-dark-matter",
+      "title": "Atomic dark matter",
+      "disposition": "ADD",
+      "priority": 1,
+      "relatedTheoryIds": [
+        "dark-photon",
+        "self-interacting-dark-matter"
+      ],
+      "sourceRefs": [
+        "dm-atomic-cyr-racine-2013"
+      ],
+      "reason": "Hidden-sector U(1) bound-state and dark-radiation cosmology; not a synonym for dark photons.",
+      "nextGate": "primary abstract reviewed; equations, dark recombination and DAO links pending",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "dark-acoustic-oscillations",
+      "title": "Dark acoustic oscillations",
+      "disposition": "ADD",
+      "priority": 1,
+      "relatedTheoryIds": [
+        "dark-photon",
+        "lambda-cdm"
+      ],
+      "sourceRefs": [
+        "dm-dao-cyr-racine-2014"
+      ],
+      "reason": "Distinct coupled DM–dark-radiation structure-formation framework, better represented as a mechanism than a particle species.",
+      "nextGate": "primary abstract reviewed; full coupled Boltzmann/fluid equations pending",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "warm-dark-matter",
+      "title": "Warm dark matter cosmology",
+      "disposition": "HOLD_ORIGIN",
+      "priority": 1,
+      "relatedTheoryIds": [
+        "lambda-cdm",
+        "sterile-neutrino-dark-matter"
+      ],
+      "sourceRefs": [
+        "dm-wdm-bode-2001"
+      ],
+      "reason": "Independent free-streaming/structure-suppression model family; existing sterile-neutrino tag is not a substitute.",
+      "nextGate": "earliest historical origin unverified; model-dependent transfer functions must not be universalized",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "axion-like-particles",
+      "title": "Generic axion-like particle dark-matter family",
+      "disposition": "HOLD_ORIGIN",
+      "priority": 1,
+      "relatedTheoryIds": [
+        "axion",
+        "fuzzy-dark-matter"
+      ],
+      "sourceRefs": [
+        "dm-alp-irastorza-2018"
+      ],
+      "reason": "ALP mass-coupling relation need not obey the QCD axion constraint.",
+      "nextGate": "2018 review is not original axionlike-model source; exact defining Lagrangian review pending",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "dark-qcd",
+      "title": "Confining hidden non-Abelian / dark-QCD sectors",
+      "disposition": "HOLD_ORIGIN",
+      "priority": 1,
+      "relatedTheoryIds": [
+        "self-interacting-dark-matter"
+      ],
+      "sourceRefs": [
+        "dm-pion-alfano-2026",
+        "dm-composite-bramante-2026"
+      ],
+      "reason": "Umbrella model family encompassing dark pions/baryons/glueballs; subtypes need separate granularity decision.",
+      "nextGate": "2026 sources establish current work but not original hidden-confinement origin",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "higgs-portal-scalar-dm",
+      "title": "Higgs-portal scalar dark matter",
+      "disposition": "HOLD",
+      "priority": 1,
+      "relatedTheoryIds": [
+        "wimp-dark-matter"
+      ],
+      "sourceRefs": [
+        "dm-pdg-2026"
+      ],
+      "reason": "Canonical explicit renormalizable portal benchmark, not equivalent to the generic WIMP umbrella.",
+      "nextGate": "locate original singlet model, scalar potential, symmetry and exclusion scope",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "inert-doublet-dm",
+      "title": "Inert-doublet dark matter",
+      "disposition": "HOLD",
+      "priority": 2,
+      "relatedTheoryIds": [
+        "wimp-dark-matter"
+      ],
+      "sourceRefs": [],
+      "reason": "Electroweak multi-scalar stable candidate with a different field content from a singlet portal.",
+      "nextGate": "primary origin and model-defined symmetry review required",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "minimal-electroweak-dm",
+      "title": "Minimal electroweak multiplet dark matter",
+      "disposition": "HOLD",
+      "priority": 2,
+      "relatedTheoryIds": [
+        "wimp-dark-matter"
+      ],
+      "sourceRefs": [],
+      "reason": "Minimal EW-charge multiplets can be non-supersymmetric and are not all neutralinos.",
+      "nextGate": "locate original multiplet construction and loop splittings",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "neutralino-dm",
+      "title": "Neutralino dark-matter realizations",
+      "disposition": "SUBTYPE",
+      "priority": 2,
+      "relatedTheoryIds": [
+        "wimp-dark-matter",
+        "supersymmetry"
+      ],
+      "sourceRefs": [
+        "dm-pdg-2026"
+      ],
+      "reason": "Specific SUSY mixed neutral states; subtype/Passport, not a new generic WIMP.",
+      "nextGate": "check true SUSY parent ID and original neutralino review",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "wino-higgsino-dm",
+      "title": "Wino and higgsino dominated relics",
+      "disposition": "SUBTYPE",
+      "priority": 2,
+      "relatedTheoryIds": [
+        "wimp-dark-matter",
+        "supersymmetry"
+      ],
+      "sourceRefs": [],
+      "reason": "Distinct annihilation/coannihilation and electroweak spectrum within SUSY candidate landscape.",
+      "nextGate": "separate from neutralino generic only when detailed source supports granularity",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "sneutrino-dm",
+      "title": "Sneutrino dark matter",
+      "disposition": "SUBTYPE",
+      "priority": 3,
+      "relatedTheoryIds": [
+        "wimp-dark-matter",
+        "supersymmetry"
+      ],
+      "sourceRefs": [],
+      "reason": "Viability depends on representation, chirality and model assumptions.",
+      "nextGate": "primary origin/constraints pending",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "gravitino-axino",
+      "title": "Gravitino and axino relic candidates",
+      "disposition": "SUBTYPE",
+      "priority": 3,
+      "relatedTheoryIds": [
+        "supersymmetry",
+        "axion"
+      ],
+      "sourceRefs": [],
+      "reason": "Superpartners are distinct from axions and generic WIMPs; model-dependent nonthermal scenarios.",
+      "nextGate": "separate superWIMP/axino mechanisms after source review",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "scotogenic-dm",
+      "title": "Scotogenic neutrino-mass/dark-matter frameworks",
+      "disposition": "HOLD",
+      "priority": 2,
+      "relatedTheoryIds": [
+        "seesaw-mechanism",
+        "sterile-neutrino-dark-matter"
+      ],
+      "sourceRefs": [],
+      "reason": "Dark-sector stabilization can be linked to radiative neutrino masses.",
+      "nextGate": "requires Ma 2006 original and follow-on review before identity",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "millicharged-dm",
+      "title": "Millicharged dark matter",
+      "disposition": "HOLD",
+      "priority": 2,
+      "relatedTheoryIds": [
+        "dark-photon"
+      ],
+      "sourceRefs": [],
+      "reason": "Small effective electromagnetic charge is not identical to a massive dark photon.",
+      "nextGate": "identify charge generation and astrophysical constraints",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "hidden-valley-dm",
+      "title": "Hidden-valley sectors",
+      "disposition": "SUBTYPE",
+      "priority": 3,
+      "relatedTheoryIds": [
+        "dark-photon"
+      ],
+      "sourceRefs": [],
+      "reason": "Model family with rich hidden spectroscopy; umbrella overlap with confining dark QCD.",
+      "nextGate": "should not duplicate dark-QCD without clear distinguishing scale/couplings",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "mirror-matter",
+      "title": "Mirror matter / mirror dark sectors",
+      "disposition": "HOLD",
+      "priority": 2,
+      "relatedTheoryIds": [
+        "dark-photon"
+      ],
+      "sourceRefs": [],
+      "reason": "Parity/mirror sectors can host dark constituents but are not just atomic dark matter.",
+      "nextGate": "primary origins and cosmological regime pending",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "dissipative-dark-matter",
+      "title": "Dissipative dark matter and dark disks",
+      "disposition": "HOLD",
+      "priority": 2,
+      "relatedTheoryIds": [
+        "self-interacting-dark-matter"
+      ],
+      "sourceRefs": [
+        "dm-composite-bramante-2026"
+      ],
+      "reason": "Dark cooling and collapse have distinct dynamics compared with elastic self-interaction.",
+      "nextGate": "identify benchmark models and constraints",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "ultralight-vector-dm",
+      "title": "Ultralight vector-field dark matter",
+      "disposition": "HOLD",
+      "priority": 2,
+      "relatedTheoryIds": [
+        "fuzzy-dark-matter",
+        "dark-photon"
+      ],
+      "sourceRefs": [
+        "dm-axion-tech-berlin-2025"
+      ],
+      "reason": "Vector field condensates and polarizations differ from scalar fuzzy DM.",
+      "nextGate": "locate vector dynamics and constraints",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "dark-baryon-meson-glueball",
+      "title": "Dark baryon / meson / glueball candidates",
+      "disposition": "SUBTYPE",
+      "priority": 2,
+      "relatedTheoryIds": [
+        "self-interacting-dark-matter"
+      ],
+      "sourceRefs": [
+        "dm-pion-alfano-2026"
+      ],
+      "reason": "Submodels of confined hidden sectors; not automatically three first-class entries.",
+      "nextGate": "scope dark-QCD umbrella before splitting",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "dark-qballs-nuggets",
+      "title": "Q-balls, quark nuggets and macroscopic dark objects",
+      "disposition": "HOLD",
+      "priority": 3,
+      "relatedTheoryIds": [
+        "primordial-black-hole-dark-matter"
+      ],
+      "sourceRefs": [
+        "dm-composite-bramante-2026"
+      ],
+      "reason": "Composite/macroscopic alternatives are not primordial black holes; do not claim equivalent dynamics.",
+      "nextGate": "original sources and exact object-class distinctions pending",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "boson-stars",
+      "title": "Boson and axion stars as dark structures",
+      "disposition": "SUBTYPE",
+      "priority": 3,
+      "relatedTheoryIds": [
+        "fuzzy-dark-matter"
+      ],
+      "sourceRefs": [],
+      "reason": "Gravitational bound structures are not automatically separate dark matter particle hypotheses.",
+      "nextGate": "consider structure/phenomenology record rather than theory identity",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "coannihilation",
+      "title": "Coannihilation freeze-out",
+      "disposition": "MECHANISM_ONLY",
+      "priority": 2,
+      "relatedTheoryIds": [
+        "wimp-dark-matter"
+      ],
+      "sourceRefs": [],
+      "reason": "Multiple nearby species enter an effective reaction network; existing WIMP Boltzmann card is single species.",
+      "nextGate": "consider source-scoped equation/Production mechanism; no automatic new theory",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "forbidden-annihilation",
+      "title": "Forbidden-channel freeze-out",
+      "disposition": "HOLD",
+      "priority": 3,
+      "relatedTheoryIds": [
+        "wimp-dark-matter"
+      ],
+      "sourceRefs": [],
+      "reason": "Thermally activated final states can change relic abundance near thresholds.",
+      "nextGate": "derive source-specific reaction and regime before entry",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "semiannihilation",
+      "title": "Semi-annihilating dark matter",
+      "disposition": "HOLD",
+      "priority": 2,
+      "relatedTheoryIds": [
+        "self-interacting-dark-matter"
+      ],
+      "sourceRefs": [],
+      "reason": "Number-changing 2→2 reactions with dark matter in both initial and final states; distinct from 3→2 SIMP.",
+      "nextGate": "source review and portal assumptions pending",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "cannibal-dark-sector",
+      "title": "Cannibal 3-to-2 dark-sector thermodynamics",
+      "disposition": "HOLD",
+      "priority": 2,
+      "relatedTheoryIds": [
+        "self-interacting-dark-matter"
+      ],
+      "sourceRefs": [],
+      "reason": "Sector temperature evolution under number-changing self-reactions differs from visible-bath-coupled SIMP.",
+      "nextGate": "source equations needed before separately cataloging",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "superwimp-decay",
+      "title": "Late decay / superWIMP production",
+      "disposition": "MECHANISM_ONLY",
+      "priority": 3,
+      "relatedTheoryIds": [
+        "wimp-dark-matter"
+      ],
+      "sourceRefs": [],
+      "reason": "Parent-particle late decays generate the relic; not universally WIMP freeze-out.",
+      "nextGate": "candidate formula/mechanism rather than automatic entity",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "gravitational-production",
+      "title": "Gravitational dark-matter production",
+      "disposition": "MECHANISM_ONLY",
+      "priority": 2,
+      "relatedTheoryIds": [
+        "inflationary-cosmology",
+        "reheating-preheating"
+      ],
+      "sourceRefs": [],
+      "reason": "Spacetime expansion can produce decoupled relics; source-specific field/vacuum required.",
+      "nextGate": "quantization and reheating assumptions pending",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "axion-misalignment",
+      "title": "Axion field misalignment production",
+      "disposition": "FORMULA_ONLY",
+      "priority": 1,
+      "relatedTheoryIds": [
+        "axion"
+      ],
+      "sourceRefs": [],
+      "reason": "Source-scoped relic mechanism belongs under existing axion rather than a duplicate theory.",
+      "nextGate": "exact reference and equation review to fill linked axion formula gap",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "pbhs-mass-function",
+      "title": "Extended primordial-black-hole mass functions",
+      "disposition": "FORMULA_ONLY",
+      "priority": 2,
+      "relatedTheoryIds": [
+        "primordial-black-hole-dark-matter"
+      ],
+      "sourceRefs": [],
+      "reason": "Distribution and formation-regime variant of existing PBH DM entry.",
+      "nextGate": "qualify source assumptions and distinguish radiation era from other mechanisms",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "nfw-halo",
+      "title": "NFW dark-matter halo density profile",
+      "disposition": "MODEL_ONLY",
+      "priority": 1,
+      "relatedTheoryIds": [
+        "lambda-cdm"
+      ],
+      "sourceRefs": [],
+      "reason": "Astrophysical empirical/simulation parameterization, not a new fundamental DM particle theory.",
+      "nextGate": "add source-located profile to model/formula layer",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "einasto-burkert",
+      "title": "Einasto and Burkert halo-density profiles",
+      "disposition": "MODEL_ONLY",
+      "priority": 2,
+      "relatedTheoryIds": [
+        "lambda-cdm"
+      ],
+      "sourceRefs": [],
+      "reason": "Comparative halo-fitting functions with different inner profiles.",
+      "nextGate": "separate empirical fit from physical particle claim",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "standard-halo-model",
+      "title": "Standard Halo Model for direct detection",
+      "disposition": "MODEL_ONLY",
+      "priority": 1,
+      "relatedTheoryIds": [
+        "wimp-dark-matter"
+      ],
+      "sourceRefs": [],
+      "reason": "Nuisance/velocity assumptions used to infer recoil constraints.",
+      "nextGate": "source verified model and uncertainties; not a particle identity",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "small-scale-crises",
+      "title": "Cusp-core / missing satellites / too-big-to-fail",
+      "disposition": "PROBLEM_ONLY",
+      "priority": 1,
+      "relatedTheoryIds": [
+        "lambda-cdm",
+        "self-interacting-dark-matter",
+        "fuzzy-dark-matter"
+      ],
+      "sourceRefs": [],
+      "reason": "Tensions and astrophysical systematics are scientific problems, not independent dark-matter theories.",
+      "nextGate": "augment dark-matter Problem with discriminators and caveats",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "galaxy-clusters",
+      "title": "Merging-cluster lensing and Bullet Cluster",
+      "disposition": "EVIDENCE_ONLY",
+      "priority": 1,
+      "relatedTheoryIds": [
+        "lambda-cdm",
+        "mond"
+      ],
+      "sourceRefs": [],
+      "reason": "Specific lensing/gas offsets are measurements with model assumptions.",
+      "nextGate": "dated data and independent sources; avoid general exclusion claims",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "lyman-alpha",
+      "title": "Lyman-alpha forest small-scale constraints",
+      "disposition": "EVIDENCE_ONLY",
+      "priority": 1,
+      "relatedTheoryIds": [
+        "fuzzy-dark-matter",
+        "sterile-neutrino-dark-matter"
+      ],
+      "sourceRefs": [],
+      "reason": "Model-converted power-spectrum limits are sensitive to thermal-history and astrophysical nuisance assumptions.",
+      "nextGate": "versioned dataset and model scope required",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "rotation-curves",
+      "title": "Galaxy rotation-curve scaling relations",
+      "disposition": "EVIDENCE_ONLY",
+      "priority": 1,
+      "relatedTheoryIds": [
+        "mond",
+        "lambda-cdm"
+      ],
+      "sourceRefs": [],
+      "reason": "Observational regularities must not be treated as proof of a unique theory.",
+      "nextGate": "source and uncertainty provenance needed",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "axion-searches",
+      "title": "Axion/ALP direct search constraints",
+      "disposition": "EVIDENCE_ONLY",
+      "priority": 2,
+      "relatedTheoryIds": [
+        "axion"
+      ],
+      "sourceRefs": [
+        "dm-axion-tech-berlin-2025"
+      ],
+      "reason": "Limits are date, detector and coupling dependent, not global statements about axion existence.",
+      "nextGate": "per-experiment bound with units and confidence",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "pbh-observations",
+      "title": "PBH microlensing, merger, evaporation bounds",
+      "disposition": "EVIDENCE_ONLY",
+      "priority": 2,
+      "relatedTheoryIds": [
+        "primordial-black-hole-dark-matter"
+      ],
+      "sourceRefs": [],
+      "reason": "PBH abundance constraints depend on mass function and accretion assumptions.",
+      "nextGate": "separate observational channel records",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "hot-dark-matter",
+      "title": "Hot dark matter / relativistic relic cosmology",
+      "disposition": "HOLD",
+      "priority": 3,
+      "relatedTheoryIds": [
+        "lambda-cdm",
+        "neutrino-mixing"
+      ],
+      "sourceRefs": [],
+      "reason": "Hot relic free-streaming differs from warm/cold classes; verify whether concept belongs to cosmology or neutrino model subtype.",
+      "nextGate": "historical origin and exact modeling scope pending",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "mixed-dark-matter",
+      "title": "Mixed cold/warm/hot dark-matter components",
+      "disposition": "HOLD",
+      "priority": 3,
+      "relatedTheoryIds": [
+        "lambda-cdm"
+      ],
+      "sourceRefs": [],
+      "reason": "Distinct transfer-function mixtures; avoid splitting arbitrary fractions into theories.",
+      "nextGate": "model-comparison evidence required",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "decaying-dark-matter",
+      "title": "Decaying dark-matter cosmology",
+      "disposition": "HOLD",
+      "priority": 2,
+      "relatedTheoryIds": [
+        "lambda-cdm"
+      ],
+      "sourceRefs": [],
+      "reason": "Lifetime-dependent cosmological framework distinct from stable CDM.",
+      "nextGate": "original study and constrained decay channels pending",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "dark-matter-baryon-scattering",
+      "title": "Dark-matter–baryon scattering cosmology",
+      "disposition": "HOLD",
+      "priority": 2,
+      "relatedTheoryIds": [
+        "lambda-cdm"
+      ],
+      "sourceRefs": [],
+      "reason": "Interaction with visible matter modifies CMB and structure growth; distinguish from dark-radiation scattering.",
+      "nextGate": "source-specific effective interaction needed",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "chameleon-screened-gravity",
+      "title": "Screened modified-gravity phenomenology",
+      "disposition": "RELATION_ONLY",
+      "priority": 3,
+      "relatedTheoryIds": [
+        "scalar-tensor-gravity",
+        "horndeski-gravity"
+      ],
+      "sourceRefs": [],
+      "reason": "Existing gravity framework may encompass some cases; not all address the dark-matter problem.",
+      "nextGate": "do not treat as DM replacement without galaxy/cluster quantitative predictions",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "cold-dark-matter",
+      "title": "Cold dark matter as ΛCDM component",
+      "disposition": "ALREADY_COVERED",
+      "priority": 0,
+      "relatedTheoryIds": [
+        "lambda-cdm"
+      ],
+      "sourceRefs": [],
+      "reason": "Cold dark matter is an explicit component of the existing ΛCDM theory; no duplicate entry.",
+      "nextGate": "use theory's physical-matter-component field or model link",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "qcd-axion",
+      "title": "QCD axion",
+      "disposition": "ALREADY_COVERED",
+      "priority": 0,
+      "relatedTheoryIds": [
+        "axion"
+      ],
+      "sourceRefs": [],
+      "reason": "Already indexed as axion theory; distinguish broad ALP family.",
+      "nextGate": "existing entry is the parent for axion production and constraints",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "sterile-neutrino-production",
+      "title": "Sterile-neutrino dark matter",
+      "disposition": "ALREADY_COVERED",
+      "priority": 0,
+      "relatedTheoryIds": [
+        "sterile-neutrino-dark-matter"
+      ],
+      "sourceRefs": [],
+      "reason": "A directly indexed candidate; specific nonresonant/resonant production can be submodels.",
+      "nextGate": "avoid duplicate umbrella",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "sidm",
+      "title": "Self-interacting dark matter",
+      "disposition": "ALREADY_COVERED",
+      "priority": 0,
+      "relatedTheoryIds": [
+        "self-interacting-dark-matter"
+      ],
+      "sourceRefs": [],
+      "reason": "Indexed already; velocity-dependent, anisotropic and mediator regimes remain open depth.",
+      "nextGate": "source-specific math rather than new base theory",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "primordial-black-hole-relic",
+      "title": "Primordial-black-hole dark matter",
+      "disposition": "ALREADY_COVERED",
+      "priority": 0,
+      "relatedTheoryIds": [
+        "primordial-black-hole-dark-matter"
+      ],
+      "sourceRefs": [],
+      "reason": "Existing class, with incomplete formation/abundance depth.",
+      "nextGate": "extend existing entry",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "dark-photon-framework",
+      "title": "Dark photon / kinetic mixing",
+      "disposition": "ALREADY_COVERED",
+      "priority": 0,
+      "relatedTheoryIds": [
+        "dark-photon"
+      ],
+      "sourceRefs": [],
+      "reason": "Existing dark-photon entry; vector dark matter not necessarily identical.",
+      "nextGate": "keep mediator versus DM composition separate",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "freeze-in-production",
+      "title": "Freeze-in FIMP production",
+      "disposition": "ALREADY_COVERED",
+      "priority": 0,
+      "relatedTheoryIds": [
+        "freeze-in-dark-matter"
+      ],
+      "sourceRefs": [],
+      "reason": "Existing freeze-in mechanism with one canonical sourced decay kernel.",
+      "nextGate": "extend regimes rather than duplicate",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "asymmetric-relic",
+      "title": "Asymmetric dark matter",
+      "disposition": "ALREADY_COVERED",
+      "priority": 0,
+      "relatedTheoryIds": [
+        "asymmetric-dark-matter"
+      ],
+      "sourceRefs": [],
+      "reason": "Existing catalogued mechanism.",
+      "nextGate": "different asymmetry-generation models may be subtypes",
+      "shipStatus": "research-only-not-shipped"
+    },
+    {
+      "id": "mond-relativity",
+      "title": "MOND and TeVeS alternatives",
+      "disposition": "ALREADY_COVERED",
+      "priority": 0,
+      "relatedTheoryIds": [
+        "mond",
+        "teves"
+      ],
+      "sourceRefs": [],
+      "reason": "Both have dedicated entries and already qualified mathematics.",
+      "nextGate": "do not mislabel them direct evidence against microscopic DM",
+      "shipStatus": "research-only-not-shipped"
+    }
+  ],
+  "stages": [
+    {
+      "stage": "DM-0",
+      "name": "Exact catalog identity and duplicates audit",
+      "acceptance": "Authoritative names/aliases and candidate dispositions, machine-checked against live main; no runtime mutation."
+    },
+    {
+      "stage": "DM-1",
+      "name": "First bounded primary-source scientific additions",
+      "acceptance": "Review full text and exact equation locators for SIMP, ELDER, atomic/dark-acoustic, superfluid and dipolar; ship only independently qualified records, small separate PRs."
+    },
+    {
+      "stage": "DM-2",
+      "name": "Existing model and source depth",
+      "acceptance": "Axion defining formula and misalignment; WIMP model assumptions; PBH/sterile/fuzzy comparison; no silent change to approved records."
+    },
+    {
+      "stage": "DM-3",
+      "name": "Empirical Evidence and discriminators",
+      "acceptance": "Versioned observational/detector source, bounds with model assumptions and confidence; no speculative claims promoted."
+    },
+    {
+      "stage": "DM-4",
+      "name": "Cross-links, graph evidence, and held identities",
+      "acceptance": "Promote only relation-specific evidence; source-review other held families; release in independently verified slices."
+    }
+  ]
+}
