@@ -7,7 +7,7 @@ import {reverseDeclaredUiRevision} from './ui-revision-checkpoint.mjs';
 const manifest=JSON.parse(fs.readFileSync('research/UI_FIRST_FOLD_CANDIDATE_INTEGRITY_2026-10-30.json','utf8'));
 const dm1a=JSON.parse(fs.readFileSync('research/DM1A_INTEGRATION_INTEGRITY_2026-10-29.json','utf8'));
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
-const files=['index.html','styles.css','docs/responsive-check.html','scripts/dm1a-integration-baseline.mjs','scripts/dm1a-integration.test.mjs'];
+const files=['index.html','styles.css','docs/responsive-check.html','scripts/dm1a-integration-baseline.mjs','scripts/dm1a-integration.test.mjs','app.js'];
 
 test('every exact candidate file reverses to its pinned original bytes',()=>{
  assert.equal(manifest.status,'review-candidate');
@@ -25,7 +25,7 @@ test('every exact candidate file reverses to its pinned original bytes',()=>{
 });
 
 test('every pre-existing DM-1A protected UI byte remains reconstructable',()=>{
- for(const file of ['index.html','styles.css','docs/responsive-check.html']){
+ for(const file of ['index.html','styles.css','docs/responsive-check.html','app.js']){
   const before=reverseDeclaredUiRevision(fs.readFileSync(file),file,manifest);
   const ledgerRecord=dm1a.files[file];
   const immutable=dm1a.unchangedFiles[file];
@@ -34,9 +34,10 @@ test('every pre-existing DM-1A protected UI byte remains reconstructable',()=>{
  }
 });
 test('first-fold candidate makes no changes to application renderer or scientific runtime',()=>{
- for(const path of ['app.js','theories.js','formulas.js','evidence.js','problems.js','workspace.js']){
+ for(const path of ['theories.js','formulas.js','evidence.js','problems.js','workspace.js']){
   assert.ok(!Object.hasOwn(manifest.files,path),path+' is not an authorized UI candidate delta');
  }
+ assert.ok(Object.hasOwn(manifest.files,'app.js'),'A dedicated hero-link scroll handler is an explicit candidate delta');
  const html=fs.readFileSync('index.html','utf8');
  assert.match(html,/class="hero-entry-actions"/);
  assert.match(html,/href="#\/problems"/);
