@@ -58,7 +58,7 @@ test('first-class inspector preserves correct scientific scope and navigable lin
   assert.match(js,/That does not mean it lacks mathematics/);
   assert.match(js,/Source-linked is not equivalent to independently verified/);
   assert.match(js,/Editorial \/ unsourced/);
-  assert.match(js,/\.\.\/index\.html#\/workspace/);
+  assert.match(html,/href="\.\.\/index\.html#\/workspace"/);
   assert.match(html,/href="\.\/observatory-explorer\.html"/);
   assert.match(html,/href="\.\.\/index\.html#\/explore"/);
 });
