@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore 485 source-aware theories and frameworks, their equations, evidence and open questions using the Observatory Explorer design.">
+  <title>Physics Explorer · Quantum Index</title>
+  <link rel="stylesheet" href="./observatory-explorer.css">
+  <link rel="stylesheet" href="./physics-explorer.css">
+  <script src="../theories.js"></script>
+  <script src="../formulas.js"></script>
+  <script src="../problems.js"></script>
+  <script src="../evidence.js"></script>
+  <script src="../questions.js"></script>
+  <script src="../developments.js"></script>
+  <script src="../passports.js"></script>
+  <script defer src="./physics-explorer.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#physicsContent">Skip to physics explorer</a>
+  <header class="site-header">
+    <div class="identity">
+      <a class="brand-link" href="./physics-explorer.html" aria-label="Quantum Index Physics Explorer">
+        <span class="brand-mark" aria-hidden="true">Q</span>
+        <span><strong>Quantum Index</strong><small>Physics Explorer</small></span>
+      </a>
+      <span class="section-label">Explorer preview</span>
+    </div>
+    <nav class="header-links" aria-label="Other Quantum Index experiences">
+      <a href="./observatory-explorer.html">Observatories <span aria-hidden="true">↗</span></a>
+      <a href="../index.html#/workspace">My research</a>
+      <a class="return-link" href="../index.html#/explore">Classic atlas <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <div class="app-shell">
+    <aside class="side-rail" aria-label="Scientific topic navigation">
+      <p class="rail-eyebrow">THE PHYSICS LANDSCAPE</p>
+      <h2>Research topics</h2>
+      <p>Start with a subject. Find a framework, inspect its evidence, then follow its connections.</p>
+      <nav id="topicNav" class="domain-nav" aria-label="Filter frameworks by subject"></nav>
+      <div class="rail-note">
+        <span class="tiny-symbol" aria-hidden="true">◇</span>
+        <strong>Read with context</strong>
+        <p>Historical origins, source attachment, theoretical status and empirical evidence are different things. Connections may be editorial or source-backed.</p>
+      </div>
+    </aside>
+
+    <main id="physicsContent" tabindex="-1">
+      <section class="hero physics-hero" aria-labelledby="physicsTitle">
+        <div class="hero-content">
+          <p class="eyebrow"><span class="pulse" aria-hidden="true"></span> FUNDAMENTAL PHYSICS ATLAS <span class="preview-flag">INTERACTIVE RESEARCH PREVIEW</span></p>
+          <h1 id="physicsTitle">The ideas behind<br><em>the universe, connected.</em></h1>
+          <p class="hero-description">Follow theories from their foundations to their mathematics, observations, and unresolved questions. Explore the same source-aware Quantum Index through a clearer research workspace.</p>
+          <a href="#theoryCatalogue" class="primary-action">Explore the theory atlas <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="orbital" aria-hidden="true">
+          <div class="orbital-label">CONNECTED SCIENTIFIC IDEAS</div>
+          <svg class="orbit-illustration" viewBox="0 0 470 340" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <circle cx="234" cy="168" r="141" stroke="#98cdd5" stroke-dasharray="4 9"/>
+            <circle cx="234" cy="168" r="98" stroke="#b3a9e3" stroke-width="1.5" opacity=".75"/>
+            <circle cx="234" cy="168" r="56" stroke="#badce6"/>
+            <path d="M72 171L395 171M234 5V330M116 71L354 270M93 263L376 68" stroke="#d1e7ec" stroke-dasharray="3 8"/>
+            <path d="M234 27L318 103L370 168L299 270L169 244L97 168L163 84Z" stroke="#93b8d7" stroke-width="1.4" opacity=".8"/>
+            <path d="M318 103L234 168L169 244M163 84L234 168L370 168" stroke="#9fadd8" stroke-width="1.1"/>
+            <circle cx="234" cy="168" r="30" fill="#17313f"/>
+            <circle cx="234" cy="168" r="18" fill="#0e8fa3"/>
+            <circle cx="234" cy="168" r="6" fill="white"/>
+            <circle cx="234" cy="27" r="7" fill="#667de4"/>
+            <circle cx="318" cy="103" r="7" fill="#e2ae64"/>
+            <circle cx="370" cy="168" r="7" fill="#0e8fa3"/>
+            <circle cx="299" cy="270" r="7" fill="#667de4"/>
+            <circle cx="169" cy="244" r="7" fill="#0e8fa3"/>
+            <circle cx="97" cy="168" r="7" fill="#e2ae64"/>
+            <circle cx="163" cy="84" r="7" fill="#667de4"/>
+            <text x="246" y="21" fill="#426775" font-family="sans-serif" font-size="11">THEORY</text>
+            <text x="381" y="172" fill="#426775" font-family="sans-serif" font-size="11">EVIDENCE</text>
+            <text x="312" y="293" fill="#426775" font-family="sans-serif" font-size="11">EQUATIONS</text>
+            <text x="19" y="263" fill="#426775" font-family="sans-serif" font-size="11">QUESTIONS</text>
+          </svg>
+          <div class="orbit-caption">Question <span>→</span> theory <span>→</span> math <span>→</span> evidence</div>
+        </div>
+      </section>
+
+      <section id="summaryCounters" class="summary-counters" aria-label="Scientific atlas totals" aria-live="polite">
+        <div><strong>—</strong><span>theories &amp; frameworks</span></div>
+        <div><strong>—</strong><span>formula records</span></div>
+        <div><strong>—</strong><span>research questions</span></div>
+        <div><strong>—</strong><span>evidence records</span></div>
+      </section>
+
+      <section class="featured-lenses" aria-labelledby="questionTitle">
+        <div class="section-heading">
+          <div><p class="eyebrow">START WITH THE SCIENCE</p><h2 id="questionTitle">What are we trying to understand?</h2></div>
+          <p>Enter through a real scientific problem, then explore its competing approaches.</p>
+        </div>
+        <div class="lens-grid">
+          <button class="lens-card lens-a" type="button" data-problem="dark-matter">
+            <span class="lens-num">01 / ASTROPARTICLE PHYSICS</span>
+            <strong>What is dark matter?</strong>
+            <span>Explore particle candidates, cosmological models and experimental constraints.</span>
+            <span class="lens-action">Explore the problem <span aria-hidden="true">↗</span></span>
+          </button>
+          <button class="lens-card lens-b" type="button" data-problem="measurement-problem">
+            <span class="lens-num">02 / FOUNDATIONS</span>
+            <strong>How does a measurement become real?</strong>
+            <span>Interpretations, decoherence and proposed quantum dynamics.</span>
+            <span class="lens-action">Explore the problem <span aria-hidden="true">↗</span></span>
+          </button>
+          <button class="lens-card lens-c" type="button" data-problem="quantum-gravity">
+            <span class="lens-num">03 / SPACETIME</span>
+            <strong>Can gravity and quantum theory fit together?</strong>
+            <span>Holography, quantum geometry and testable alternatives.</span>
+            <span class="lens-action">Explore the problem <span aria-hidden="true">↗</span></span>
+          </button>
+        </div>
+      </section>
+
+      <section class="catalogue" id="theoryCatalogue" aria-labelledby="catalogueTitle">
+        <div class="section-heading catalogue-heading">
+          <div><p class="eyebrow">THEORY &amp; FRAMEWORK CATALOGUE</p><h2 id="catalogueTitle">Explore the ideas of physics</h2></div>
+          <p id="catalogueScope">Original scientific records and source trail, not new or simulated findings.</p>
+        </div>
+        <div id="problemContext" class="problem-context" hidden></div>
+        <div class="explorer-toolbar">
+          <div class="search-group">
+            <label for="theorySearch">Search theories, concepts or equations</label>
+            <input id="theorySearch" type="search" autocomplete="off" placeholder="Dark matter, entanglement, spacetime, quantum field…">
+          </div>
+          <div class="release-filter-group" aria-label="Filter by scientific status">
+            <span class="control-label">SCIENTIFIC STATUS</span>
+            <div id="statusFilters" class="access-filters"></div>
+          </div>
+        </div>
+        <div class="explorer-layout">
+          <div class="programme-pane">
+            <div class="pane-heading"><h3>Catalogued ideas</h3><span id="resultCount" role="status" aria-live="polite">Loading</span></div>
+            <div class="programme-list" id="theoryList" aria-label="Theories and frameworks"></div>
+          </div>
+          <aside id="theoryDetail" class="programme-detail" aria-label="Selected theory and evidence" aria-live="polite">
+            <p>Choose a scientific framework to examine its assumptions, equations, sources and links.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="milestone-section" aria-labelledby="relatedResearchTitle">
+        <div class="section-heading">
+          <div><p class="eyebrow">GO DEEPER</p><h2 id="relatedResearchTitle">Keep following the research</h2></div>
+          <p>The original interactive tools remain available in the full atlas.</p>
+        </div>
+        <div class="research-tools-grid">
+          <a class="research-tool-link" href="../index.html#/map"><span class="tool-icon">◎</span><strong>Network map</strong><span>Explore typed, inspectable relationships.</span></a>
+          <a class="research-tool-link" href="../index.html#/lineage"><span class="tool-icon">◇</span><strong>Thought trees</strong><span>Follow historical development and branches.</span></a>
+          <a class="research-tool-link" href="../index.html#/compare"><span class="tool-icon">≋</span><strong>Compare theories</strong><span>Study scope, assumptions and limits side by side.</span></a>
+          <a class="research-tool-link" href="../index.html#/workspace"><span class="tool-icon">✎</span><strong>My research</strong><span>Return to your bookmarks and saved notes.</span></a>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div><strong>Quantum Index</strong><p>Source-aware scientific exploration. Reviewed metadata does not establish experimental confirmation or exhaust all research.</p></div>
+        <div class="footer-links"><a href="../index.html#/explore">Full original atlas <span aria-hidden="true">↗</span></a><a href="./observatory-explorer.html">Observatory Explorer <span aria-hidden="true">↗</span></a></div>
+      </footer>
+    </main>
+  </div>
+  <div id="fatalError" class="fatal-error" role="alert" hidden></div>
+</body>
+</html>
