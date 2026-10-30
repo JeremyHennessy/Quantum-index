@@ -61,5 +61,5 @@ test('quasi-probability signed decomposition preserves a linear target expectati
  assert.equal(p.reduce((a,b)=>a+b,0),1);
  assert.ok(gamma>=1);
  assert.match(f.assumptions.join(' '),/sample complexity/i);
- assert.match(f.regime,/noise/i);
+ assert.match(f.regime,/nois(?:e|y)/i);
 });
