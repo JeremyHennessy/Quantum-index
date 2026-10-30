@@ -603,24 +603,3 @@ html{scrollbar-color:#a8c4ce #edf3f6}
 .trust-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:1rem}
 .trust-summary div{min-width:0}.trust-summary dt{font-weight:700}.trust-summary dd{margin:.35rem 0}
 #recordTrust summary{cursor:pointer;padding:.8rem 0;min-height:44px}
-
-/* Additive Explore discovery + mobile section shortcut. Prior palette, layout, cards, graphs and tabs unchanged. */
-.view-jumpbar{display:none}
-.explore-quickfind{max-width:760px;margin:20px 0 0}
-.explore-quickfind>label{display:block;margin:0 0 7px;color:#56717f;font-size:11px;font-weight:750;letter-spacing:.04em;text-transform:uppercase}
-.explore-find-row{display:flex;gap:9px;min-width:0}
-.explore-find-row input{flex:1;min-width:0;height:44px;border:1px solid #cbdbe2;border-radius:11px;background:#fff;color:#17313f;padding:0 13px}
-.explore-find-row input:focus,.view-jumpbar select:focus{outline:none;border-color:#3aa9b9;box-shadow:var(--focus)}
-.explore-find-row button{min-height:44px;white-space:nowrap}
-.explore-topics{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0 0}
-.explore-topics>span{font-size:11px;font-weight:700;color:#647d8b}
-.explore-topics .link-button{padding:7px 10px;font-size:11px}
-@media(max-width:760px){
-  .view-jumpbar{display:block;margin:6px 0 2px;min-width:0}
-  .view-jumpbar label{display:block;margin:0 0 6px;font-size:11px;font-weight:750;color:#607684}
-  .view-jumpbar select{display:block;width:100%;min-width:0;height:44px;border:1px solid #cbdbe2;border-radius:11px;background:#fff;color:#17313f;padding:0 12px}
-}
-@media(max-width:480px){
-  .explore-find-row{flex-direction:column}
-  .explore-find-row button{width:100%;justify-content:center}
-}
