@@ -7,7 +7,7 @@ import {reverseDeclaredUiRevision} from './ui-revision-checkpoint.mjs';
 const manifest=JSON.parse(fs.readFileSync('research/UI_FIRST_FOLD_CANDIDATE_INTEGRITY_2026-10-30.json','utf8'));
 const dm1a=JSON.parse(fs.readFileSync('research/DM1A_INTEGRATION_INTEGRITY_2026-10-29.json','utf8'));
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
-const files=['index.html','styles.css','docs/responsive-check.html','scripts/dm1a-integration-baseline.mjs','scripts/dm1a-integration.test.mjs','app.js'];
+const files=['index.html','styles.css','docs/responsive-check.html','scripts/dm1a-integration-baseline.mjs','scripts/dm1a-integration.test.mjs'];
 
 test('every exact candidate file reverses to its pinned original bytes',()=>{
  assert.equal(manifest.status,'review-candidate');
@@ -37,7 +37,10 @@ test('first-fold candidate makes no changes to application renderer or scientifi
  for(const path of ['theories.js','formulas.js','evidence.js','problems.js','workspace.js']){
   assert.ok(!Object.hasOwn(manifest.files,path),path+' is not an authorized UI candidate delta');
  }
- assert.ok(Object.hasOwn(manifest.files,'app.js'),'A dedicated hero-link scroll handler is an explicit candidate delta');
+ assert.ok(!Object.hasOwn(manifest.files,'app.js'),'Approved renderer must remain outside the candidate delta');
+ assert.equal(hash(fs.readFileSync('app.js')),'650b38708ca3ce89289ecdde52124ca8ab90acf04a575fb721dcb0189fa8d0d1','renderer must match approved byte baseline');
+ assert.equal(hash(fs.readFileSync('scripts/analytics.test.mjs')),'2654359bd9cac73d5d47d3c88574c783659cb2f75fba6a4d525cd65ae0cfe3bb','historical analytics tests must remain immutable');
+ assert.match(fs.readFileSync('index.html','utf8'),/id="qi-hero-entry-navigation"/);
  const html=fs.readFileSync('index.html','utf8');
  assert.match(html,/class="hero-entry-actions"/);
  assert.match(html,/href="#\/problems"/);
