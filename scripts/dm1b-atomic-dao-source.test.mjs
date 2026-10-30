@@ -41,7 +41,7 @@ test('binding energy is a source-located unshipped model equation with explicit 
  assert.ok(f.assumptions.length>=3);
  const mu=m1*m2/(m1+m2),b=a*a*mu/2;
  assert.ok(b>0&&b<mu);
- assert.equal((2*b)/(mu*a*a),1);
+ assert.ok(Math.abs((2*b)/(mu*a*a)-1) < 1e-12, 'floating-point normalized binding-energy identity');
  assert.ok(data.heldFormulaOrEvidence.some(x=>/sound horizon/i.test(x.subject)));
  assert.ok(data.heldFormulaOrEvidence.some(x=>/constraint/i.test(x.subject)));
 });
