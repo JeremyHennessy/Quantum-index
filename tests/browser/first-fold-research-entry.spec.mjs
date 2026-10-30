@@ -18,6 +18,7 @@ test('first-fold navigation preserves all existing routes, cards and light palet
  await page.locator('.hero-entry-link.primary').click();
  await expect(page).toHaveURL(/#\/problems$/);
  await expect(page.locator('#problemDetail .problem-title')).toBeVisible();
+ await expect.poll(()=>page.locator('#problemsView').evaluate(el=>Math.round(el.getBoundingClientRect().top))).toBeLessThan(180);
  expect(errors).toEqual([]);
 });
 test('first-fold links remain visible at 390 and 320 pixels before statistics, without overflow',async({page},info)=>{
@@ -37,6 +38,7 @@ test('first-fold links remain visible at 390 and 320 pixels before statistics, w
   await page.locator('.hero-entry-link',{hasText:'Browse theories'}).click();
   await expect(page).toHaveURL(/#\/catalog$/);
   await expect(page.locator('#catalogView')).toHaveClass(/active/);
+  await expect.poll(()=>page.locator('#catalogView').evaluate(el=>Math.round(el.getBoundingClientRect().top))).toBeLessThan(180);
   await expect(page.locator('nav.tabs .tab')).toHaveCount(13);
  }
  expect(errors).toEqual([]);
