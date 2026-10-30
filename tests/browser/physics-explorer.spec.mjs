@@ -99,6 +99,7 @@ test('Physics Explorer retains visual hierarchy and fully usable browsing at 390
     await page.locator('#theorySearch').fill('Hawking radiation');
     await page.locator('#theoryList .theory-card[data-theory="hawking-radiation"]').click();
     await expect(page.locator('#theoryDetail .detail-title')).toHaveText('Hawking radiation');
+    await expect.poll(()=>page.locator('#theoryDetail').evaluate(el=>Math.round(el.getBoundingClientRect().top)),{timeout:6000}).toBeLessThan(180);
     expect(await page.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBeTruthy();
     const shot=info.outputPath('physics-explorer-inspector-mobile-'+width+'.png');
     await page.screenshot({path:shot,fullPage:false});
