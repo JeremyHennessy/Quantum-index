@@ -17,7 +17,7 @@ This is the first bounded cohort, **not all observatories worldwide**. The 30 na
 - 30 programme/mission/survey/instrument/observatory candidate identities, with type and domain and existing Problem linkage explicitly editorial (never empirical evidence).
 - 18 release/analysis product identifiers with explicit version and public observations / public analysis only / rights restricted / publication only / planned / archive API status.
 - Six publication-title and external identifier candidates linked to programmes and releases, with no promoted science claims.
-- Six future schedule candidates with exact or approximate precision and confirmedActual set to false.
+- Six dated/undated milestone records: four planned future events (confirmedActual false) and two independently sourced Roman milestones already achieved/observed in 2026 (confirmedActual true). Planned and actual statuses remain separate.
 - A self-contained fail-closed Node test checking unique identities, existing Problem IDs, references, release-version semantics, access status, impossible dates and negative mutations.
 - No production theory, formula, graph relation, Evidence, DevelopmentEvent, Passport, app, CSS, workspace, CI, dependency, Pages or historical ledger change.
 
@@ -30,8 +30,9 @@ This is the first bounded cohort, **not all observatories worldwide**. The 30 na
 - **SPHEREx:** IRSA identifies QR3 products September 2026 and an April 2026 correction to QR2 headers. Version/correction state matters. Source: https://irsa.ipac.caltech.edu/Missions/spherex.html.
 - **SPT:** D1 maps and lensing results are indexed at its official page. Associated data links do not imply every product is public at every referenced subsite. Check each product's release state. Source: https://pole.uchicago.edu/public/Data%20Releases.html.
 - **IceCube:** IceTracks-DR2 spans 2008–2022, 14 years, with revised calibrations. Avoid an invented exact release day. Source: https://icecube.wisc.edu/science/data-releases/.
+- **Roman:** NASA confirms the August 30, 2026 launch and a separate October 22, 2026 report of entering final science commissioning. These are achieved mission milestones, not publicly released Roman survey datasets. Sources: https://www.nasa.gov/news-release/nasas-dark-universe-seeking-nancy-grace-roman-space-telescope-launches/ and https://science.nasa.gov/blogs/roman/2026/10/22/nasas-roman-space-telescope-enters-final-commissioning-phase/.
 - **GWOSC:** API v2 supports public read-only events and strain with pagination/throttling. Multi-detector events must not be assigned solely to LIGO, Virgo or KAGRA without event-level membership. Source: https://gwosc.org/api/.
-- **Roman, LISA, SKA:** Future data, launch plans, science verification and future public products are not already observed. Sources: https://archive.stsci.edu/missions-and-data/roman , https://www.esa.int/Science_Exploration/Space_Science/LISA and https://www.skao.int/en/science-users/647/timeline-science.
+- **Roman, LISA, SKA:** Roman's August 30, 2026 launch and October 22 science-commissioning status are observed official milestones, but future public survey releases remain planned. LISA and SKA science milestones are prospective. Sources: https://archive.stsci.edu/missions-and-data/roman , https://www.esa.int/Science_Exploration/Space_Science/LISA and https://www.skao.int/en/science-users/647/timeline-science.
 
 ## Proposed scientific record architecture
 
