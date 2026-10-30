@@ -18,6 +18,11 @@ const allowedProgrammeStates=new Set(['not-assessed','science-operations','plann
 const allowedAccess=new Set(['public-observational-products','public-analysis-products-only','rights-restricted-observational-products','published-result-only','planned-no-observational-products','public-archive-api','unknown']);
 const allowedPrecision=new Set(['day','month','quarter','year','approximate','unspecified']);
 const patternByPrecision={day:/^\d{4}-\d{2}-\d{2}$/,month:/^\d{4}-\d{2}$/,quarter:/^\d{4}-Q[1-4]$/,year:/^\d{4}$/,approximate:/^late \d{4}$/};
+const checkDate=(value,precision)=>{
+  assert.match(value,patternByPrecision[precision]);
+  if(precision==='day')assert.equal(new Date(value+'T00:00:00Z').toISOString().slice(0,10),value,'Impossible calendar day');
+  if(precision==='month')assert.ok(Number(value.slice(5))>=1&&Number(value.slice(5))<=12,'Invalid calendar month');
+};
 
 function validate(d){
  assert.equal(d.publicationStatus,'RESEARCH_ONLY_NOT_RUNTIME');
@@ -54,14 +59,14 @@ function validate(d){
    if(release.availableOn===null)assert.equal(release.datePrecision,null);
    else{
      assert.ok(allowedPrecision.has(release.datePrecision),release.id);
-     assert.match(release.availableOn,patternByPrecision[release.datePrecision],release.id);
+     checkDate(release.availableOn,release.datePrecision);
    }
    if(release.access==='planned-no-observational-products') assert.ok(!release.confirmedActual,'Do not present planned release as completed');
  }
  for(const milestone of d.milestones){
    assert.ok(p.has(milestone.programmeId),milestone.id);
    assert.ok(allowedPrecision.has(milestone.precision),milestone.id);
-   if(milestone.date!==null)assert.match(milestone.date,patternByPrecision[milestone.precision],milestone.id);
+   if(milestone.date!==null)checkDate(milestone.date,milestone.precision);
    else assert.equal(milestone.precision,'unspecified');
    assert.equal(milestone.state,'planned');
    assert.equal(milestone.confirmedActual,false,'Planned date must never imply confirmed actual');
