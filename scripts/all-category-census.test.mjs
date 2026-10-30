@@ -9,10 +9,14 @@ const result=buildCrossCategoryAudit(w,ledger);
 test('all actual categories have a scoped, distinct candidate queue and zero runtime mutations',()=>{
  assert.equal(ledger.baselineMain,'228cd84230d0eaef8325dad4a94dc81ad8cf5a27');
  assert.equal(result.totals.categories,14);
- assert.equal(result.totals.catalogTheories,483);
- assert.equal(result.totals.formulaRecords,460);
- assert.equal(result.totals.formulaGaps,111);
- assert.equal(result.totals.editorialRelations,484);
+ // This intake was captured against the 483-theory/460-formula historical main.
+ // Live execution must match the current generated coverage, not freeze the old counts.
+ const coverage=JSON.parse(fs.readFileSync('docs/coverage.json','utf8'));
+ assert.equal(result.totals.catalogTheories,coverage.theories);
+ assert.equal(result.totals.formulaRecords,coverage.formulas);
+ assert.equal(result.totals.formulaGaps,coverage.formulaGaps);
+ assert.equal(result.totals.editorialRelations,coverage.editorialRelations);
+ assert.equal(result.totals.sourceBackedRelations,coverage.sourcedRelations);
  assert.equal(result.totals.candidates,64);
  assert.equal(ledger.candidateCount,64);
  assert.deepEqual(new Set(ledger.groups.map(g=>g.category)),new Set(w.QI_DATA.theories.map(t=>t.category)));
