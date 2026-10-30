@@ -11,6 +11,7 @@ One deliberate product hypothesis: when visitors can enter existing research wor
 
 Candidate changes:
 - Two small CTA links inside the *existing* hero immediately after its copy: Start with a question (existing Problems), Browse theories (existing Catalog).
+- One link-specific click handler in app.js: only these new hero links scroll the already-routed Problems/Catalog section below the sticky header into view. No modification to normal tab routing, map rendering, scientific logic or workspace.
 - A CSS-only addition at the end of styles.css for the two links. No existing theme variables or class styles overwritten. Responsive links stack at narrow widths.
 - Existing static asset hashes in index.html and two responsive preview hashes updated.
 - A fully declared SHA256 candidate rollback manifest with exact before/after bytes for the three UI files, the small historical-source projector bridge and its original integrity test.
