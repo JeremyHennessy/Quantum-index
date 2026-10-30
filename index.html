@@ -335,7 +335,7 @@
   <script src="./workspace.js?v=de553a16db91ad46"></script>
   <script src="./sourced-paths.js?v=ca3c8c04c5a9fc65"></script>
   <script src="./research-navigation.js?v=90ca00fac77c3e12"></script>
-  <script src="./app.js?v=7acfc45cb9845e46"></script>
+  <script src="./app.js?v=650b38708ca3ce89"></script>
   <script src="./analytics.js?v=23eb589ce52a3273"></script>
   <script id="qi-engagement-tracker">
   // Standalone telemetry: no UI/router changes and no reads of notes or workspace.
@@ -402,6 +402,28 @@
     document.addEventListener('keydown',() => { if (activeAt !== null) inputs++; });
     document.addEventListener('scroll',() => { if (activeAt !== null) scrolled = 1; },{passive:true,capture:true});
     current = readSection(); activate();
+  })();
+  </script>
+  <script id="qi-hero-entry-navigation">
+  // Isolated navigation enhancement. The approved application renderer is not modified.
+  (() => {
+    const destinations = new Map([['#/problems', 'problemsView'], ['#/catalog', 'catalogView']]);
+    const reveal = id => {
+      const target=document.getElementById(id), header=document.querySelector('.topbar');
+      if (!target) return;
+      const top=window.scrollY+target.getBoundingClientRect().top-(header?.getBoundingClientRect().height||0)-12;
+      window.scrollTo({top:Math.max(0,top),behavior:'auto'});
+    };
+    for (const link of document.querySelectorAll('.hero-entry-link')) {
+      link.addEventListener('click', event => {
+        const route=link.getAttribute('href'), id=destinations.get(route);
+        if (!id) return;
+        event.preventDefault();
+        if (location.hash===route) { reveal(id); return; }
+        window.addEventListener('hashchange', () => reveal(id), {once:true});
+        location.hash=route;
+      });
+    }
   })();
   </script>
 </body>
