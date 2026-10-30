@@ -29,7 +29,7 @@ function validate(d){
  assert.equal(d.publicationStatus,'RESEARCH_ONLY_NOT_RUNTIME');
  assert.equal(d.schemaVersion,'coi0-research-v1');
  assert.match(d.baselineMainSha,/^[a-f0-9]{40}$/);
- assert.equal(d.sources.length,27);
+ assert.equal(d.sources.length,28);
  assert.equal(d.programmes.length,30);
  assert.equal(d.releases.length,18);
  assert.equal(d.milestones.length,6);
@@ -105,6 +105,8 @@ test('DESI DR1 spectra and DR2 analysis products are not conflated',()=>{
  const a=data.releases.find(x=>x.id==='desi-dr1'),b=data.releases.find(x=>x.id==='desi-dr2-analysis');
  assert.equal(a.access,'public-observational-products');
  assert.equal(b.access,'public-analysis-products-only');
+ assert.equal(b.availableOn,'2025-10-06','Date is first public derived chains, not the later 2026 Lyman-alpha paper');
+ assert.ok(b.sourceIds.includes('desi-dr2-chains-2025'));
  assert.match(b.reviewNotes,/NOT publicly released/);
 });
 test('Rubin restricted data and Euclid scheduled release remain distinct from Roman confirmed launch',()=>{
