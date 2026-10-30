@@ -6,7 +6,7 @@
   <meta name="description" content="Quantum Index — a source-aware map of fundamental physics, equations, evidence and open questions." />
   <title>Quantum Index</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="./styles.css?v=aba4a94fc9520a52" />
+  <link rel="stylesheet" href="./styles.css?v=2c053050733e9418" />
 </head>
 <body>
   <header class="topbar">
@@ -76,53 +76,11 @@
       <button class="tab" data-view="coverage">Coverage</button>
     </nav>
 
-    <div class="view-jumpbar">
-      <label for="viewJump">Jump to a section</label>
-      <select id="viewJump" aria-label="Jump to a section">
-        <option value="">Choose a section…</option>
-        <optgroup label="Discover">
-          <option value="explore">Explore</option>
-          <option value="problems">Problems</option>
-          <option value="catalog">Catalog</option>
-          <option value="evidence">Evidence</option>
-          <option value="questions">Research questions</option>
-        </optgroup>
-        <optgroup label="Visualize">
-          <option value="map">Network map</option>
-          <option value="timeline">Timeline</option>
-          <option value="lineage">Thought trees</option>
-        </optgroup>
-        <optgroup label="Learn and compare">
-          <option value="formula">Formula atlas</option>
-          <option value="compare">Compare</option>
-          <option value="learn">Learning paths</option>
-        </optgroup>
-        <optgroup label="My tools">
-          <option value="workspace">My research</option>
-          <option value="coverage">Coverage</option>
-        </optgroup>
-      </select>
-    </div>
-
     <section id="exploreView" class="view active" aria-label="Explore Quantum Index">
       <div class="explore-intro card">
         <p class="eyebrow">START WITH YOUR QUESTION</p>
         <h3>Choose how you want to explore fundamental physics</h3>
         <p class="muted">Move from scientific problems to competing approaches, equations, evidence, recent developments, research questions and primary literature.</p>
-        <form id="exploreFindForm" class="explore-quickfind" role="search">
-          <label for="exploreFind">Find a theory or concept</label>
-          <div class="explore-find-row">
-            <input id="exploreFind" type="search" placeholder="e.g. dark matter, Planck, entanglement" autocomplete="off" required />
-            <button class="ghost" type="submit">Search catalog</button>
-          </div>
-        </form>
-        <div class="explore-topics" aria-label="Cosmology research starting points">
-          <span>Start with cosmology:</span>
-          <a class="ghost link-button" href="#/problems?problem=dark-matter">Dark matter</a>
-          <a class="ghost link-button" href="#/problems?problem=dark-energy-expansion">Dark energy</a>
-          <a class="ghost link-button" href="#/problems?problem=inflation-mechanism">Inflation</a>
-          <a class="ghost link-button" href="#/problems?problem=primordial-quantum-classical">Primordial universe</a>
-        </div>
         <div id="exploreCards" class="explore-grid"></div>
       </div>
       <div class="explore-columns">
@@ -373,7 +331,7 @@
   <script src="./workspace.js?v=de553a16db91ad46"></script>
   <script src="./sourced-paths.js?v=ca3c8c04c5a9fc65"></script>
   <script src="./research-navigation.js?v=90ca00fac77c3e12"></script>
-  <script src="./app.js?v=fd6375983862cc98"></script>
+  <script src="./app.js?v=650b38708ca3ce89"></script>
   <script src="./analytics.js?v=23eb589ce52a3273"></script>
   <script id="qi-engagement-tracker">
   // Standalone telemetry: no UI/router changes and no reads of notes or workspace.
