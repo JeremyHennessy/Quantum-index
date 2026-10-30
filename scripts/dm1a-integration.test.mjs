@@ -4,6 +4,9 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import {projectPreDm1a,readPreDm1aFile} from './dm1a-integration-baseline.mjs';
+import {reverseDeclaredUiRevision} from './ui-revision-checkpoint.mjs';
+const uiCandidate=JSON.parse(fs.readFileSync('research/UI_FIRST_FOLD_CANDIDATE_INTEGRITY_2026-10-30.json','utf8'));
+
 import {loadRuntime} from './category-trust-census.mjs';
 const pack=JSON.parse(fs.readFileSync('research/DARK_MATTER_DM1A_SIMP_ELDER_PROPOSED_RECORDS_2026-10-29.json','utf8'));
 const ledger=JSON.parse(fs.readFileSync('research/DM1A_INTEGRATION_INTEGRITY_2026-10-29.json','utf8'));
@@ -22,12 +25,12 @@ test('DM-1A restores every protected source byte exactly and rejects undeclared 
  assert.equal(ledger.sourceProposalSha256,hash(fs.readFileSync('research/DARK_MATTER_DM1A_SIMP_ELDER_PROPOSED_RECORDS_2026-10-29.json')));
  for(const [file,entry]of Object.entries(ledger.files)){
   const bytes=fs.readFileSync(file);
-  assert.equal(hash(bytes),entry.afterSha256,file);
+  assert.equal(hash(reverseDeclaredUiRevision(bytes,file,uiCandidate)),entry.afterSha256,file);
   assert.equal(hash(readPreDm1aFile(file)),entry.beforeSha256,file);
-  assert.throws(()=>projectPreDm1a(Buffer.concat([bytes,Buffer.from('undeclared')]),file),/undeclared DM-1A/,file);
+  assert.throws(()=>projectPreDm1a(Buffer.concat([bytes,Buffer.from('undeclared')]),file),/(?:undeclared DM-1A|unexpected UI candidate mutation)/,file);
   assert.equal(hash(projectPreDm1a(readPreDm1aFile(file),file)),entry.beforeSha256,file);
  }
- for(const [file,expected] of Object.entries(ledger.unchangedFiles))assert.equal(hash(fs.readFileSync(file)),expected,'approved untouched '+file);
+ for(const [file,expected] of Object.entries(ledger.unchangedFiles))assert.equal(hash(reverseDeclaredUiRevision(fs.readFileSync(file),file,uiCandidate)),expected,'approved untouched '+file);
 });
 
 test('DM-1A only appends precisely the four source-reviewed classes and references',()=>{
