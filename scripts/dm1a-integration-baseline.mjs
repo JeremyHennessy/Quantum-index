@@ -17,7 +17,9 @@ export function projectPreDm1a(bytes,relative){
  const preDm1a=ledger.files[relative]?.beforeSha256;
  // Idempotent legacy callers may supply the exact historically approved pre-DM1A bytes.
  if(preDm1a && hash(bytes)===preDm1a)return bytes;
- bytes=reverseDeclaredUiRevision(bytes,relative,uiCandidate);
+ // Recognized candidate bytes go through the outer checkpoint; other inputs retain the legacy fail-closed path.
+ const candidate=uiCandidate.files?.[relative];
+ if(candidate && hash(bytes)===candidate.afterSha256)bytes=reverseDeclaredUiRevision(bytes,relative,uiCandidate);
  const entry=ledger.files[relative];
  if(!entry)return bytes;
  const got=hash(bytes);
