@@ -1,0 +1,1177 @@
+{
+  "schemaVersion": "coi0-research-v1",
+  "reviewedAt": "2026-10-30",
+  "baselineMainSha": "43dfd3d6467bfa6f9f38c2aa568307fa1da4de37",
+  "publicationStatus": "RESEARCH_ONLY_NOT_RUNTIME",
+  "scope": "First bounded candidate registry of officially indexed astronomical facilities, instruments, surveys and archive products. Neither exhaustive nor independently reviewed science claims. No inference that facility data validates a theory.",
+  "invariantRules": [
+    "Programme is distinct from observatory instrument, survey, scientific publication and dataset release.",
+    "Related Problem links are editorial navigation, not empirical support or historical influence.",
+    "An accessible paper or analysis chain does not imply underlying observations are public.",
+    "A forecast or planned release is not an achieved observation.",
+    "Dates are precision-scoped; unknown actual release dates remain null.",
+    "Do not ingest raw bulk science files or full copyrighted papers.",
+    "No new theory, formula, Evidence record, UI or provenance promotion is made by this research registry."
+  ],
+  "sources": [
+    {
+      "id": "lambda-cmb",
+      "title": "NASA LAMBDA — hosted CMB experiments",
+      "url": "https://lambda.gsfc.nasa.gov/product/",
+      "publisher": "NASA GSFC",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official archive index; not individual experiment recency review"
+    },
+    {
+      "id": "act-dr6",
+      "title": "ACT DR6 Data Products",
+      "url": "https://act.princeton.edu/act-dr6-data-products",
+      "publisher": "Atacama Cosmology Telescope / Princeton",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "spt-releases",
+      "title": "South Pole Telescope data releases",
+      "url": "https://pole.uchicago.edu/public/Data%20Releases.html",
+      "publisher": "South Pole Telescope / University of Chicago",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "spt-news",
+      "title": "South Pole Telescope science highlights",
+      "url": "https://pole.uchicago.edu/public/News.html",
+      "publisher": "South Pole Telescope / University of Chicago",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "simons-operations",
+      "title": "Simons Observatory begins science operations",
+      "url": "https://www.simonsfoundation.org/news/now-fully-online-simons-observatory-begins-probe-of-universes-birth/",
+      "publisher": "Simons Foundation",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "desi-data",
+      "title": "DESI official spectroscopic data releases",
+      "url": "https://data.desi.lbl.gov/doc/releases/",
+      "publisher": "DESI Collaboration / LBNL",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "desi-papers",
+      "title": "DESI published DR2 results and analysis products",
+      "url": "https://data.desi.lbl.gov/doc/papers/",
+      "publisher": "DESI Collaboration / LBNL",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "desi-dr2-chains-2025",
+      "title": "DESI DR2 cosmology chains and data products first released October 6, 2025",
+      "url": "https://www.desi.lbl.gov/2025/10/06/desi-dr2-cosmology-chains-and-data-products-released/",
+      "publisher": "DESI Collaboration",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "Official October 6, 2025 public DR2-derived MCMC chain and maximization result release; distinct from full unreleased DR2 spectra/redshifts and later July 2026 study updates"
+    },
+    {
+      "id": "sdss-dr20",
+      "title": "SDSS data release publications",
+      "url": "https://www.sdss.org/science/publications/data-release-publications/",
+      "publisher": "SDSS Collaboration",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "des-access",
+      "title": "Dark Energy Survey data access policy",
+      "url": "https://www.darkenergysurvey.org/the-des-project/data-access/",
+      "publisher": "Dark Energy Survey",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "euclid-timeline",
+      "title": "Euclid public release timeline",
+      "url": "https://euclid.caltech.edu/page/data-release-timeline",
+      "publisher": "Euclid / NASA IPAC",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "rubin-dp2",
+      "title": "Rubin Data Preview 2 documentation and access",
+      "url": "https://dp2.lsst.io/v/SP-3082/index.html",
+      "publisher": "NSF-DOE Vera C. Rubin Observatory",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "rubin-policy",
+      "title": "Rubin early DP2 access policy",
+      "url": "https://dp2.lsst.io/access/index.html",
+      "publisher": "NSF-DOE Vera C. Rubin Observatory",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "roman-mast",
+      "title": "Roman mission and planned public archive",
+      "url": "https://archive.stsci.edu/missions-and-data/roman",
+      "publisher": "STScI / MAST",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "spherex-irsa",
+      "title": "IRSA SPHEREx releases",
+      "url": "https://irsa.ipac.caltech.edu/Missions/spherex.html",
+      "publisher": "NASA IPAC / IRSA",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "delve-noirlab",
+      "title": "DELVE Survey DR2 catalogue",
+      "url": "https://datalab.noirlab.edu/data/delve",
+      "publisher": "NSF NOIRLab Data Lab",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "mast-jwst",
+      "title": "MAST JWST archive",
+      "url": "https://archive.stsci.edu/missions-and-data/jwst",
+      "publisher": "STScI / MAST",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "mast-home",
+      "title": "MAST multi-mission archival access",
+      "url": "https://archive.stsci.edu/",
+      "publisher": "STScI / MAST",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "alma-archive",
+      "title": "ALMA archival data and proprietary-period guidance",
+      "url": "https://almascience.nao.ac.jp/alma-data/alma-data-b-1",
+      "publisher": "ALMA Science Portal / NAOJ",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "fermi-fssc",
+      "title": "NASA Fermi science data access",
+      "url": "https://fermi.gsfc.nasa.gov/ssc/data/access/",
+      "publisher": "NASA Fermi Science Support Center",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "lz-status",
+      "title": "LZ experiment official result overview",
+      "url": "https://lz.lbl.gov/",
+      "publisher": "LZ Collaboration / LBNL",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "xenonnt-news",
+      "title": "XENONnT 2026 solar neutrino result",
+      "url": "https://xenon-website.lngs.infn.it/xenonnt-first-measurement-of-low-energy-solar-neutrinos-scattering-off-electrons/",
+      "publisher": "XENON Collaboration",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "icecube-releases",
+      "title": "IceCube public data releases",
+      "url": "https://icecube.wisc.edu/science/data-releases/",
+      "publisher": "IceCube Collaboration",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "gwosc-v2",
+      "title": "GWOSC public read-only API v2",
+      "url": "https://gwosc.org/api/",
+      "publisher": "Gravitational Wave Open Science Center",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "lisa-esa",
+      "title": "ESA LISA mission and scheduled launch",
+      "url": "https://www.esa.int/Science_Exploration/Space_Science/LISA",
+      "publisher": "European Space Agency",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "ska-timeline",
+      "title": "SKAO science verification and timeline",
+      "url": "https://www.skao.int/en/science-users/647/timeline-science",
+      "publisher": "SKA Observatory",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official source page"
+    },
+    {
+      "id": "roman-launch-nasa-2026",
+      "title": "NASA release 26-071 — Roman Space Telescope launch August 30, 2026",
+      "url": "https://www.nasa.gov/news-release/nasas-dark-universe-seeking-nancy-grace-roman-space-telescope-launches/",
+      "publisher": "NASA",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official achieved launch event, time and spacecraft; independent of later science releases"
+    },
+    {
+      "id": "roman-commissioning-nasa-2026",
+      "title": "NASA October 22, 2026 — Roman enters final science commissioning phase",
+      "url": "https://science.nasa.gov/blogs/roman/2026/10/22/nasas-roman-space-telescope-enters-final-commissioning-phase/",
+      "publisher": "NASA",
+      "checkedAt": "2026-10-30",
+      "reviewScope": "official science commissioning status as reported October 22; not confirmation of full routine survey operation"
+    }
+  ],
+  "programmes": [
+    {
+      "id": "planck",
+      "name": "Planck",
+      "kind": "mission",
+      "domain": "cmb",
+      "sourceIds": [
+        "lambda-cmb"
+      ],
+      "relatedProblemIds": [
+        "inflation-mechanism",
+        "primordial-quantum-classical"
+      ],
+      "programState": "not-assessed",
+      "reviewNote": "Archived CMB products listed at NASA LAMBDA; no new literature sweep is implied.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "wmap",
+      "name": "Wilkinson Microwave Anisotropy Probe (WMAP)",
+      "kind": "mission",
+      "domain": "cmb",
+      "sourceIds": [
+        "lambda-cmb"
+      ],
+      "relatedProblemIds": [
+        "inflation-mechanism",
+        "primordial-quantum-classical"
+      ],
+      "programState": "not-assessed",
+      "reviewNote": "NASA LAMBDA archive listing only.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "act",
+      "name": "Atacama Cosmology Telescope (ACT)",
+      "kind": "observatory",
+      "domain": "cmb",
+      "sourceIds": [
+        "act-dr6"
+      ],
+      "relatedProblemIds": [
+        "inflation-mechanism",
+        "primordial-quantum-classical"
+      ],
+      "programState": "not-assessed",
+      "reviewNote": "DR6 data products documented at Princeton.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "spt",
+      "name": "South Pole Telescope (SPT)",
+      "kind": "observatory",
+      "domain": "cmb",
+      "sourceIds": [
+        "spt-releases"
+      ],
+      "relatedProblemIds": [
+        "inflation-mechanism",
+        "primordial-quantum-classical"
+      ],
+      "programState": "not-assessed",
+      "reviewNote": "SPT-3G data products have source-linked public releases.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "bicep-keck",
+      "name": "BICEP/Keck",
+      "kind": "experiment",
+      "domain": "cmb",
+      "sourceIds": [
+        "lambda-cmb"
+      ],
+      "relatedProblemIds": [
+        "inflation-mechanism",
+        "primordial-quantum-classical"
+      ],
+      "programState": "not-assessed",
+      "reviewNote": "NASA LAMBDA lists BICEP/Keck products; do not infer active status.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "simons",
+      "name": "Simons Observatory",
+      "kind": "observatory",
+      "domain": "cmb",
+      "sourceIds": [
+        "simons-operations"
+      ],
+      "relatedProblemIds": [
+        "inflation-mechanism",
+        "primordial-quantum-classical"
+      ],
+      "programState": "science-operations",
+      "reviewNote": "Source confirms fully online October 22, 2026; public data release not inferred.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "class",
+      "name": "Cosmology Large Angular Scale Surveyor (CLASS)",
+      "kind": "experiment",
+      "domain": "cmb",
+      "sourceIds": [
+        "lambda-cmb"
+      ],
+      "relatedProblemIds": [
+        "inflation-mechanism",
+        "primordial-quantum-classical"
+      ],
+      "programState": "not-assessed",
+      "reviewNote": "Listed in NASA LAMBDA experiment index.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "polarbear",
+      "name": "POLARBEAR",
+      "kind": "experiment",
+      "domain": "cmb",
+      "sourceIds": [
+        "lambda-cmb"
+      ],
+      "relatedProblemIds": [
+        "inflation-mechanism",
+        "primordial-quantum-classical"
+      ],
+      "programState": "not-assessed",
+      "reviewNote": "Listed in NASA LAMBDA experiment index.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "quijote",
+      "name": "QUIJOTE",
+      "kind": "experiment",
+      "domain": "cmb",
+      "sourceIds": [
+        "lambda-cmb"
+      ],
+      "relatedProblemIds": [
+        "inflation-mechanism",
+        "primordial-quantum-classical"
+      ],
+      "programState": "not-assessed",
+      "reviewNote": "Listed in NASA LAMBDA experiment index.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "spider",
+      "name": "SPIDER",
+      "kind": "experiment",
+      "domain": "cmb",
+      "sourceIds": [
+        "lambda-cmb"
+      ],
+      "relatedProblemIds": [
+        "inflation-mechanism",
+        "primordial-quantum-classical"
+      ],
+      "programState": "not-assessed",
+      "reviewNote": "Listed in NASA LAMBDA experiment index.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "desi",
+      "name": "Dark Energy Spectroscopic Instrument (DESI)",
+      "kind": "survey",
+      "domain": "large-scale-structure",
+      "sourceIds": [
+        "desi-data"
+      ],
+      "relatedProblemIds": [
+        "dark-energy-expansion",
+        "dark-matter"
+      ],
+      "programState": "not-assessed",
+      "reviewNote": "DR1 spectra distinct from DR2 cosmological analysis products.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "sdss",
+      "name": "Sloan Digital Sky Survey (SDSS)",
+      "kind": "survey",
+      "domain": "large-scale-structure",
+      "sourceIds": [
+        "sdss-dr20"
+      ],
+      "relatedProblemIds": [
+        "dark-energy-expansion",
+        "dark-matter"
+      ],
+      "programState": "not-assessed",
+      "reviewNote": "Public DR20 recorded July 30, 2026.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "des",
+      "name": "Dark Energy Survey (DES)",
+      "kind": "survey",
+      "domain": "large-scale-structure",
+      "sourceIds": [
+        "des-access"
+      ],
+      "relatedProblemIds": [
+        "dark-energy-expansion",
+        "dark-matter"
+      ],
+      "programState": "not-assessed",
+      "reviewNote": "Raw and reduced data have different access schedules.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "euclid",
+      "name": "Euclid",
+      "kind": "mission",
+      "domain": "large-scale-structure",
+      "sourceIds": [
+        "euclid-timeline"
+      ],
+      "relatedProblemIds": [
+        "dark-energy-expansion",
+        "dark-matter"
+      ],
+      "programState": "not-assessed",
+      "reviewNote": "Q2 public; DR1 Foundation scheduled, not completed.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "rubin",
+      "name": "Vera C. Rubin Observatory / LSST",
+      "kind": "observatory",
+      "domain": "large-scale-structure",
+      "sourceIds": [
+        "rubin-dp2"
+      ],
+      "relatedProblemIds": [
+        "dark-energy-expansion",
+        "dark-matter"
+      ],
+      "programState": "not-assessed",
+      "reviewNote": "EDP2 is restricted to data-rights holders, not generally public.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "roman",
+      "name": "Nancy Grace Roman Space Telescope",
+      "kind": "mission",
+      "domain": "large-scale-structure",
+      "sourceIds": [
+        "roman-mast",
+        "roman-launch-nasa-2026",
+        "roman-commissioning-nasa-2026"
+      ],
+      "relatedProblemIds": [
+        "dark-energy-expansion",
+        "dark-matter"
+      ],
+      "programState": "science-commissioning",
+      "reviewNote": "NASA confirms mission launched August 30, 2026 and was in final science commissioning on October 22, 2026. Full public survey products and routine mission operations must be assessed separately.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "spherex",
+      "name": "SPHEREx",
+      "kind": "mission",
+      "domain": "large-scale-structure",
+      "sourceIds": [
+        "spherex-irsa"
+      ],
+      "relatedProblemIds": [
+        "inflation-mechanism",
+        "dark-energy-expansion"
+      ],
+      "programState": "not-assessed",
+      "reviewNote": "IRSA hosts QR2/QR3, with documented reprocessing.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "delve",
+      "name": "DECam Local Volume Exploration (DELVE)",
+      "kind": "survey",
+      "domain": "large-scale-structure",
+      "sourceIds": [
+        "delve-noirlab"
+      ],
+      "relatedProblemIds": [
+        "dark-matter"
+      ],
+      "programState": "not-assessed",
+      "reviewNote": "NOIRLab DR2 catalogue available; relatedProblemIds is navigation not evidence.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "jwst",
+      "name": "James Webb Space Telescope (JWST)",
+      "kind": "mission",
+      "domain": "astrophysics",
+      "sourceIds": [
+        "mast-jwst"
+      ],
+      "relatedProblemIds": [],
+      "programState": "not-assessed",
+      "reviewNote": "MAST archive supports programme and exposure queries.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "hst",
+      "name": "Hubble Space Telescope (HST)",
+      "kind": "mission",
+      "domain": "astrophysics",
+      "sourceIds": [
+        "mast-home"
+      ],
+      "relatedProblemIds": [],
+      "programState": "not-assessed",
+      "reviewNote": "MAST has Hubble holdings; status not assessed.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "alma",
+      "name": "Atacama Large Millimeter/submillimeter Array (ALMA)",
+      "kind": "array",
+      "domain": "astrophysics",
+      "sourceIds": [
+        "alma-archive"
+      ],
+      "relatedProblemIds": [],
+      "programState": "not-assessed",
+      "reviewNote": "Public and still-proprietary observations are distinct.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "fermi-lat",
+      "name": "Fermi Large Area Telescope (LAT)",
+      "kind": "instrument",
+      "domain": "high-energy-sky",
+      "sourceIds": [
+        "fermi-fssc"
+      ],
+      "relatedProblemIds": [
+        "dark-matter"
+      ],
+      "programState": "not-assessed",
+      "reviewNote": "Survey data and evolving source catalogues are public; no universal DM constraint.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "lz",
+      "name": "LUX-ZEPLIN (LZ)",
+      "kind": "experiment",
+      "domain": "dark-matter-direct",
+      "sourceIds": [
+        "lz-status"
+      ],
+      "relatedProblemIds": [
+        "dark-matter"
+      ],
+      "programState": "not-assessed",
+      "reviewNote": "2026 candidate signal and exclusion claims require model/statistical caveats.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "xenonnt",
+      "name": "XENONnT",
+      "kind": "experiment",
+      "domain": "dark-matter-direct",
+      "sourceIds": [
+        "xenonnt-news"
+      ],
+      "relatedProblemIds": [
+        "dark-matter"
+      ],
+      "programState": "not-assessed",
+      "reviewNote": "Official 2026 solar neutrino science item; not a dark-matter detection.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "icecube",
+      "name": "IceCube Neutrino Observatory",
+      "kind": "observatory",
+      "domain": "multimessenger",
+      "sourceIds": [
+        "icecube-releases"
+      ],
+      "relatedProblemIds": [],
+      "programState": "not-assessed",
+      "reviewNote": "IceTracks DR2 spans 2008–2022 and 14 years.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "ligo",
+      "name": "LIGO",
+      "kind": "observatory",
+      "domain": "gravitational-waves",
+      "sourceIds": [
+        "gwosc-v2"
+      ],
+      "relatedProblemIds": [],
+      "programState": "not-assessed",
+      "reviewNote": "GWOSC publishes collaborative GW catalogues, events and strain.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "virgo",
+      "name": "Virgo",
+      "kind": "observatory",
+      "domain": "gravitational-waves",
+      "sourceIds": [
+        "gwosc-v2"
+      ],
+      "relatedProblemIds": [],
+      "programState": "not-assessed",
+      "reviewNote": "GWOSC is a collaboration-level archive; individual facility association needs event detail.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "kagra",
+      "name": "KAGRA",
+      "kind": "observatory",
+      "domain": "gravitational-waves",
+      "sourceIds": [
+        "gwosc-v2"
+      ],
+      "relatedProblemIds": [],
+      "programState": "not-assessed",
+      "reviewNote": "GWOSC is a collaboration-level archive; not all catalog events involve all detectors.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "lisa",
+      "name": "Laser Interferometer Space Antenna (LISA)",
+      "kind": "mission",
+      "domain": "gravitational-waves",
+      "sourceIds": [
+        "lisa-esa"
+      ],
+      "relatedProblemIds": [],
+      "programState": "planned",
+      "reviewNote": "ESA has planned 2035 launch; no real LISA observatory data yet.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    },
+    {
+      "id": "skao",
+      "name": "SKA Observatory (SKAO)",
+      "kind": "observatory",
+      "domain": "radio-astronomy",
+      "sourceIds": [
+        "ska-timeline"
+      ],
+      "relatedProblemIds": [],
+      "programState": "not-assessed",
+      "reviewNote": "Science verification/operations phased; no definite dates asserted.",
+      "provenanceLevel": "official-archive-or-programme-page",
+      "evidencePromotion": false
+    }
+  ],
+  "releases": [
+    {
+      "id": "act-dr6-products",
+      "programmeId": "act",
+      "title": "ACT DR6 data products",
+      "access": "public-observational-products",
+      "sourceIds": [
+        "act-dr6"
+      ],
+      "availableOn": null,
+      "datePrecision": null,
+      "version": "DR6",
+      "claimReviewStatus": "discovery-metadata-only",
+      "reviewNotes": "ACT/Planck map products, MCMC chains and likelihood tools have distinct download paths."
+    },
+    {
+      "id": "spt3g-d1-2026",
+      "programmeId": "spt",
+      "title": "SPT-3G D1 lensing/maps products",
+      "access": "public-observational-products",
+      "sourceIds": [
+        "spt-releases",
+        "spt-news"
+      ],
+      "availableOn": "2026-08-31",
+      "datePrecision": "day",
+      "version": "D1",
+      "claimReviewStatus": "discovery-metadata-only",
+      "reviewNotes": "CMB lensing products and paper; check individual product DOI/format before quantitative ingestion."
+    },
+    {
+      "id": "desi-dr1",
+      "programmeId": "desi",
+      "title": "DESI Main Survey spectroscopic DR1",
+      "access": "public-observational-products",
+      "sourceIds": [
+        "desi-data"
+      ],
+      "availableOn": "2025-03-19",
+      "datePrecision": "day",
+      "version": "DR1",
+      "claimReviewStatus": "discovery-metadata-only",
+      "reviewNotes": "DR1 public spectra; data CC BY 4.0, cite collaboration."
+    },
+    {
+      "id": "desi-dr2-analysis",
+      "programmeId": "desi",
+      "title": "DESI DR2 BAO and Lyman-alpha cosmology supporting analysis",
+      "access": "public-analysis-products-only",
+      "sourceIds": [
+        "desi-papers",
+        "desi-dr2-chains-2025"
+      ],
+      "availableOn": "2025-10-06",
+      "datePrecision": "day",
+      "version": "DR2",
+      "claimReviewStatus": "discovery-metadata-only",
+      "reviewNotes": "The initial public DR2-derived BAO cosmology chains and posterior-maximization products were released October 6, 2025. Additional July 30, 2026 Lyman-alpha studies are linked separately. Underlying DR2 spectra/redshifts are NOT publicly released at this review."
+    },
+    {
+      "id": "sdss-dr20",
+      "programmeId": "sdss",
+      "title": "Sloan Digital Sky Survey DR20",
+      "access": "public-observational-products",
+      "sourceIds": [
+        "sdss-dr20"
+      ],
+      "availableOn": "2026-07-30",
+      "datePrecision": "day",
+      "version": "DR20",
+      "claimReviewStatus": "discovery-metadata-only",
+      "reviewNotes": "Official SDSS release publication; products and caveats must be reviewed per dataset."
+    },
+    {
+      "id": "euclid-q2",
+      "programmeId": "euclid",
+      "title": "Euclid Quick Data Release 2",
+      "access": "public-observational-products",
+      "sourceIds": [
+        "euclid-timeline"
+      ],
+      "availableOn": "2026-06-24",
+      "datePrecision": "day",
+      "version": "Q2",
+      "claimReviewStatus": "discovery-metadata-only",
+      "reviewNotes": "Public quick release is not the complete future DR1."
+    },
+    {
+      "id": "euclid-dr1-foundation",
+      "programmeId": "euclid",
+      "title": "Euclid DR1 Foundation",
+      "access": "planned-no-observational-products",
+      "sourceIds": [
+        "euclid-timeline"
+      ],
+      "availableOn": "2026-11-12",
+      "datePrecision": "day",
+      "version": "DR1 Foundation",
+      "claimReviewStatus": "discovery-metadata-only",
+      "reviewNotes": "Official schedule only; not yet released as of 2026-10-30."
+    },
+    {
+      "id": "rubin-edp2",
+      "programmeId": "rubin",
+      "title": "Rubin Early Data Preview 2",
+      "access": "rights-restricted-observational-products",
+      "sourceIds": [
+        "rubin-dp2",
+        "rubin-policy"
+      ],
+      "availableOn": "2026-07-27",
+      "datePrecision": "day",
+      "version": "EDP2",
+      "claimReviewStatus": "discovery-metadata-only",
+      "reviewNotes": "DP2 access via Rubin Science Platform limited to rights holders; catalogue and deep coadds."
+    },
+    {
+      "id": "rubin-full-dp2",
+      "programmeId": "rubin",
+      "title": "Rubin DP2 complete image products",
+      "access": "planned-no-observational-products",
+      "sourceIds": [
+        "rubin-dp2"
+      ],
+      "availableOn": "2026-Q4",
+      "datePrecision": "quarter",
+      "version": "DP2",
+      "claimReviewStatus": "discovery-metadata-only",
+      "reviewNotes": "Official Oct–Dec 2026 expected window; no invented exact release date."
+    },
+    {
+      "id": "spherex-qr3",
+      "programmeId": "spherex",
+      "title": "SPHEREx Quick Release 3",
+      "access": "public-observational-products",
+      "sourceIds": [
+        "spherex-irsa"
+      ],
+      "availableOn": "2026-09",
+      "datePrecision": "month",
+      "version": "QR3",
+      "claimReviewStatus": "discovery-metadata-only",
+      "reviewNotes": "IRSA QR3 available. Previous QR2 header corrections illustrate version specificity."
+    },
+    {
+      "id": "delve-dr2",
+      "programmeId": "delve",
+      "title": "DELVE DR2 optical catalogue",
+      "access": "public-observational-products",
+      "sourceIds": [
+        "delve-noirlab"
+      ],
+      "availableOn": null,
+      "datePrecision": null,
+      "version": "DR2",
+      "claimReviewStatus": "discovery-metadata-only",
+      "reviewNotes": "Catalogue with griz processing; not identical to DES survey data."
+    },
+    {
+      "id": "fermi-4fgl-dr4",
+      "programmeId": "fermi-lat",
+      "title": "Fermi LAT 4FGL-DR4 catalogue",
+      "access": "public-observational-products",
+      "sourceIds": [
+        "fermi-fssc"
+      ],
+      "availableOn": null,
+      "datePrecision": null,
+      "version": "4FGL-DR4",
+      "claimReviewStatus": "discovery-metadata-only",
+      "reviewNotes": "Official 14-year catalog listed; spectral quality flags apply."
+    },
+    {
+      "id": "icetracks-dr2",
+      "programmeId": "icecube",
+      "title": "IceTracks DR2 fourteen-year neutrino dataset",
+      "access": "public-observational-products",
+      "sourceIds": [
+        "icecube-releases"
+      ],
+      "availableOn": null,
+      "datePrecision": null,
+      "version": "IceTracks-DR2",
+      "claimReviewStatus": "discovery-metadata-only",
+      "reviewNotes": "2008–2022; reprocessing and calibrations differ from previous public versions."
+    },
+    {
+      "id": "gwosc-v2",
+      "programmeId": "ligo",
+      "title": "GWOSC event catalogues and strain files (API v2)",
+      "access": "public-archive-api",
+      "sourceIds": [
+        "gwosc-v2"
+      ],
+      "availableOn": null,
+      "datePrecision": null,
+      "version": "API v2",
+      "claimReviewStatus": "discovery-metadata-only",
+      "reviewNotes": "Collaborative archive includes multiple detector facilities. Event versions and pagination must be preserved. Shared facilities referenced explicitly; a single GWOSC release is not exclusively LIGO data.",
+      "sharedProgramIds": [
+        "virgo",
+        "kagra"
+      ]
+    },
+    {
+      "id": "lz-2026-extended",
+      "programmeId": "lz",
+      "title": "LZ 2026 extended recoil-window science result",
+      "access": "published-result-only",
+      "sourceIds": [
+        "lz-status"
+      ],
+      "availableOn": "2026-09",
+      "datePrecision": "month",
+      "version": null,
+      "claimReviewStatus": "discovery-metadata-only",
+      "reviewNotes": "Public paper/result; not a public raw event-by-event dataset or proven dark matter detection."
+    },
+    {
+      "id": "xenonnt-2026-nu",
+      "programmeId": "xenonnt",
+      "title": "XENONnT low-energy solar-neutrino result",
+      "access": "published-result-only",
+      "sourceIds": [
+        "xenonnt-news"
+      ],
+      "availableOn": "2026-08-31",
+      "datePrecision": "day",
+      "version": null,
+      "claimReviewStatus": "discovery-metadata-only",
+      "reviewNotes": "Neutrino observation is distinct from a dark matter claim."
+    },
+    {
+      "id": "roman-future",
+      "programmeId": "roman",
+      "title": "Roman observational science data (future)",
+      "access": "planned-no-observational-products",
+      "sourceIds": [
+        "roman-mast",
+        "roman-launch-nasa-2026",
+        "roman-commissioning-nasa-2026"
+      ],
+      "availableOn": null,
+      "datePrecision": null,
+      "version": null,
+      "claimReviewStatus": "discovery-metadata-only",
+      "reviewNotes": "Mission launched August 30, 2026; NASA reports science commissioning in October. Future public survey releases remain distinct from commissioning instrument observations or simulated test products."
+    },
+    {
+      "id": "lisa-future",
+      "programmeId": "lisa",
+      "title": "LISA gravitational-wave observation datasets (future)",
+      "access": "planned-no-observational-products",
+      "sourceIds": [
+        "lisa-esa"
+      ],
+      "availableOn": "2035",
+      "datePrecision": "year",
+      "version": null,
+      "claimReviewStatus": "discovery-metadata-only",
+      "reviewNotes": "This is a launch year target, not a scheduled data release."
+    }
+  ],
+  "milestones": [
+    {
+      "id": "euclid-dr1-foundation-2026",
+      "programmeId": "euclid",
+      "event": "DR1 Foundation scheduled availability",
+      "date": "2026-11-12",
+      "precision": "day",
+      "state": "planned",
+      "sourceIds": [
+        "euclid-timeline"
+      ],
+      "confirmedActual": false
+    },
+    {
+      "id": "rubin-dp2-full-2026",
+      "programmeId": "rubin",
+      "event": "Complete DP2 expected",
+      "date": "2026-Q4",
+      "precision": "quarter",
+      "state": "planned",
+      "sourceIds": [
+        "rubin-dp2"
+      ],
+      "confirmedActual": false
+    },
+    {
+      "id": "roman-launch-2026",
+      "programmeId": "roman",
+      "event": "Roman Space Telescope successfully launched",
+      "date": "2026-08-30",
+      "precision": "day",
+      "state": "completed",
+      "sourceIds": [
+        "roman-launch-nasa-2026"
+      ],
+      "confirmedActual": true,
+      "notes": "NASA release 26-071 confirms August 30, 2026 launch at 07:26 EDT. A successful launch is not a public science-survey data release.",
+      "actualSourceId": "roman-launch-nasa-2026"
+    },
+    {
+      "id": "lisa-launch-2035",
+      "programmeId": "lisa",
+      "event": "LISA planned launch",
+      "date": "2035",
+      "precision": "year",
+      "state": "planned",
+      "sourceIds": [
+        "lisa-esa"
+      ],
+      "confirmedActual": false
+    },
+    {
+      "id": "ska-verification",
+      "programmeId": "skao",
+      "event": "Science Verification before regular science cycles",
+      "date": null,
+      "precision": "unspecified",
+      "state": "planned",
+      "sourceIds": [
+        "ska-timeline"
+      ],
+      "confirmedActual": false
+    },
+    {
+      "id": "roman-science-commissioning-2026",
+      "programmeId": "roman",
+      "event": "NASA reports Roman in final science commissioning",
+      "date": "2026-10-22",
+      "precision": "day",
+      "state": "observed",
+      "sourceIds": [
+        "roman-commissioning-nasa-2026"
+      ],
+      "confirmedActual": true,
+      "actualSourceId": "roman-commissioning-nasa-2026",
+      "notes": "Official status report as of Oct 22, 2026, not a claim that commissioning finished or all surveys are active."
+    }
+  ],
+  "studies": [
+    {
+      "id": "coi-study-desi-dr2-bao-2025",
+      "title": "DESI DR2 Results II: Measurements of Baryon Acoustic Oscillations and Cosmological Constraints",
+      "year": 2025,
+      "publicationKind": "collaboration-preprint",
+      "url": "https://arxiv.org/abs/2503.14738",
+      "programmeIds": [
+        "desi"
+      ],
+      "releaseIds": [
+        "desi-dr2-analysis"
+      ],
+      "sourceIds": [
+        "desi-papers"
+      ],
+      "reviewScope": "official paper index and identifier; full statistical likelihood not independently reanalyzed",
+      "evidencePromoted": false
+    },
+    {
+      "id": "coi-study-desi-dr2-lya-2026",
+      "title": "DESI DR2 Results IV: Alcock-Paczynski Measurements from the Lyman Alpha Forest and Cosmological Constraints",
+      "year": 2026,
+      "publicationKind": "collaboration-preprint",
+      "url": "https://arxiv.org/abs/2607.27410",
+      "programmeIds": [
+        "desi"
+      ],
+      "releaseIds": [
+        "desi-dr2-analysis"
+      ],
+      "sourceIds": [
+        "desi-papers"
+      ],
+      "reviewScope": "official paper index and identifier only; no new constraint claims inferred",
+      "evidencePromoted": false
+    },
+    {
+      "id": "coi-study-sdss-dr20-2026",
+      "title": "The Twentieth Data Release of the Sloan Digital Sky Survey",
+      "year": 2026,
+      "publicationKind": "collaboration-preprint",
+      "url": "https://arxiv.org/abs/2607.26149",
+      "programmeIds": [
+        "sdss"
+      ],
+      "releaseIds": [
+        "sdss-dr20"
+      ],
+      "sourceIds": [
+        "sdss-dr20"
+      ],
+      "reviewScope": "official DR20 publication link; distinct from scientific theory paper",
+      "evidencePromoted": false
+    },
+    {
+      "id": "coi-study-rubin-dp2-2026",
+      "title": "The Vera C. Rubin Observatory Data Preview 2",
+      "year": 2026,
+      "publicationKind": "official-dataset-paper",
+      "url": "https://doi.org/10.71929/rubin/3377440",
+      "programmeIds": [
+        "rubin"
+      ],
+      "releaseIds": [
+        "rubin-edp2"
+      ],
+      "sourceIds": [
+        "rubin-dp2"
+      ],
+      "reviewScope": "official dataset citation; data rights not waived",
+      "evidencePromoted": false
+    },
+    {
+      "id": "coi-study-spt-d1-lensing-2026",
+      "title": "SPT-3G D1: Quadratic-Estimator CMB Lensing Reconstruction and Cosmology",
+      "year": 2026,
+      "publicationKind": "collaboration-preprint",
+      "url": "https://arxiv.org/abs/2608.31136",
+      "programmeIds": [
+        "spt"
+      ],
+      "releaseIds": [
+        "spt3g-d1-2026"
+      ],
+      "sourceIds": [
+        "spt-releases",
+        "spt-news"
+      ],
+      "reviewScope": "official SPT release index; verify exact analysis file versions before quantitative use",
+      "evidencePromoted": false
+    },
+    {
+      "id": "coi-study-lz-extended-2026",
+      "title": "Search for dark matter particle interactions in an extended nuclear recoil energy window with the LUX-ZEPLIN (LZ) experiment",
+      "year": 2026,
+      "publicationKind": "collaboration-preprint",
+      "url": "https://arxiv.org/abs/2609.02823",
+      "programmeIds": [
+        "lz"
+      ],
+      "releaseIds": [
+        "lz-2026-extended"
+      ],
+      "sourceIds": [
+        "lz-status"
+      ],
+      "reviewScope": "official 2026 result and repository-linked preprint; not evidence for confirmed dark matter particle",
+      "evidencePromoted": false
+    }
+  ]
+}
