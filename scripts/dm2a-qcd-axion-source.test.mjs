@@ -59,6 +59,6 @@ test('source-review proposal retains latest-value, cosmology, and independent re
  assert.ok(proposal.additionalHolds.some(x=>/Axion-like/.test(x.title)));
  assert.ok(proposal.nextGates.some(x=>/page-image/.test(x)));
  const d=fs.readFileSync('docs/DARK_MATTER_DM2A_AXION_SOURCE_REVIEW_2026-10-30.md','utf8');
- assert.match(d,/NOT SHIPPED/);assert.match(d,/not automatically current 2026/i);
+ assert.match(d,/NOT SHIPPED/);assert.match(d,/not an automatically current 2026/i);
 });
 
