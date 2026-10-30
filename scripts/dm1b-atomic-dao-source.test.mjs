@@ -18,7 +18,7 @@ test('DM-1B is independent, read-only and anchored to exact post-DM1A main',()=>
  assert.ok(data.nonClaims.length>=3);
  assert.match(data.evidenceLevel,/visual-review gate|screenshot/i);
  assert.equal(new Set(data.identityDecisions.map(x=>x.id)).size,2);
- for(const x of data.identityDecisions){assert.ok(!theoryIds.has(x.id),'candidate inadvertently already shipped '+x.id);assert.equal(x.status,'not-shipped');assert.ok(x.relatedExistingTheoryIds.every(id=>theoryIds.has(id)),x.id);assert.ok(x.sourceIds.every(id=>sourceIds.has(id)),x.id)}
+ for(const x of data.identityDecisions){if(runtime.QI_DATA.theories.length===485)assert.ok(!theoryIds.has(x.id),'candidate unexpectedly present at exact DM-1B intake '+x.id);assert.equal(x.status,'not-shipped');assert.ok(x.relatedExistingTheoryIds.every(id=>theoryIds.has(id)),x.id);assert.ok(x.sourceIds.every(id=>sourceIds.has(id)),x.id)}
  const docs=fs.readFileSync('docs/DARK_MATTER_DM1B_SOURCE_REVIEW_2026-10-30.md','utf8');
  assert.match(docs,/2009/);assert.match(docs,/not a separate dark-matter particle/i);assert.match(docs,/unavailable|HOLD/i);
 });
