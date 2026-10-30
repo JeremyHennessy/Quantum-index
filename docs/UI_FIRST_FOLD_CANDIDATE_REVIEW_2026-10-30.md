@@ -11,7 +11,7 @@ One deliberate product hypothesis: when visitors can enter existing research wor
 
 Candidate changes:
 - Two small CTA links inside the *existing* hero immediately after its copy: Start with a question (existing Problems), Browse theories (existing Catalog).
-- One link-specific click handler in app.js: only these new hero links scroll the already-routed Problems/Catalog section below the sticky header into view. No modification to normal tab routing, map rendering, scientific logic or workspace.
+- One isolated page-entry link handler in index.html: only these hero links scroll their already-routed Problems/Catalog sections below the sticky header. The existing app.js renderer and scripts/analytics.test.mjs remain byte-identical to the accepted main baseline. No modification to normal tab routing, map rendering, scientific logic or workspace.
 - A CSS-only addition at the end of styles.css for the two links. No existing theme variables or class styles overwritten. Responsive links stack at narrow widths.
 - Existing static asset hashes in index.html and two responsive preview hashes updated.
 - A fully declared SHA256 candidate rollback manifest with exact before/after bytes for the three UI files, the small historical-source projector bridge and its original integrity test.
@@ -48,3 +48,7 @@ These two links are NOT a global search and no new observatory data is shipped i
 - [ ] If unaccepted, revert the isolated branch (no production files altered).
 
 Future enhancements such as categorized sections, cross-scope searches, extra cosmology entry cards or an observatory view belong to separate, independently reviewed release candidates.
+
+## Separate CI preservation correction
+
+The prior draft #117 head changed scripts/analytics.test.mjs to accept new app.js bytes, triggering six old exact-byte historical CI failures. This isolated replacement instead restores both app.js and scripts/analytics.test.mjs to exact accepted main bytes and moves the strictly scoped click-scroll handler to the end of index.html. The new outer manifest continues to reconstruct index.html, stylesheet and responsive preview exactly, and the new regression assertions guard immutable renderer and test hashes. This is a new candidate pending the complete Node and browser gates; it is not yet an accepted solution.
