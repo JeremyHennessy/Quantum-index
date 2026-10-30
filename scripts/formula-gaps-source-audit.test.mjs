@@ -137,7 +137,7 @@ test('existing browser assertions change only exact current totals, not interact
   let expected=ledger.files['tests/browser/filter-controls.spec.mjs'].beforeText.replace("'0 / 457 formulas'","'0 / 460 formulas'").replace("'457 / 457 formulas'","'460 / 460 formulas'");
   assert.equal(readPreDm1aFile('tests/browser/filter-controls.spec.mjs','utf8'),expected);
   expected=ledger.files['tests/browser/repository-links.spec.mjs'].beforeText.replace("toContain('271')","toContain('274')");
-  assert.equal(fs.readFileSync('tests/browser/repository-links.spec.mjs','utf8'),expected);
+  assert.equal(readPreDm1aFile('tests/browser/repository-links.spec.mjs','utf8'),expected);
 });
 
 test('independent finite KMS matrix-basis checks, invariances and six convention-negative controls pass',()=>{
