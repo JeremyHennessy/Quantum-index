@@ -28,10 +28,10 @@ function validate(d){
  assert.equal(d.publicationStatus,'RESEARCH_ONLY_NOT_RUNTIME');
  assert.equal(d.schemaVersion,'coi0-research-v1');
  assert.match(d.baselineMainSha,/^[a-f0-9]{40}$/);
- assert.equal(d.sources.length,25);
+ assert.equal(d.sources.length,27);
  assert.equal(d.programmes.length,30);
  assert.equal(d.releases.length,18);
- assert.equal(d.milestones.length,5);
+ assert.equal(d.milestones.length,6);
  assert.equal(d.studies.length,6);
  const s=uniq(d.sources.map(x=>x.id),'source id'),p=uniq(d.programmes.map(x=>x.id),'programme id');
  uniq(d.releases.map(x=>x.id),'release id');
