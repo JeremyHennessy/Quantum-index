@@ -894,6 +894,7 @@
   function switchView(view){
     state.view=view;
     document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.view===view));
+    $("#viewJump").value=view==="theory"?"":view;
     $$(".view").forEach(v=>v.classList.remove("active"));
     $("#"+view+"View").classList.add("active");
     if(view==="explore") renderExplore();
@@ -984,6 +985,15 @@
     document.title="Quantum Index";
   }
   document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>navigate(b.dataset.view==="compare"?comparisonHash(compareIds):b.dataset.view==="questions"?questionHash():b.dataset.view==="problems"?problemHash():b.dataset.view==="evidence"?evidenceHash():["map","catalog","timeline","formula","lineage"].includes(b.dataset.view)?viewHash(b.dataset.view):`#/${b.dataset.view}`)));
+  $("#viewJump").addEventListener("change",event=>{
+    const target=$(".tabs .tab").find(button=>button.dataset.view===event.target.value);
+    if(target)target.click();
+  });
+  $("#exploreFindForm").addEventListener("submit",event=>{
+    event.preventDefault();
+    const query=$("#exploreFind").value.trim();
+    if(query)navigate("#/catalog?search="+encodeURIComponent(query));
+  });
   $("#clearComparison").addEventListener("click",()=>navigate("#/compare"));
   window.addEventListener("hashchange",applyRoute);
   $("#search").addEventListener("input",e=>{state.search=e.target.value;rememberFilters();renderGraph();renderTimeline();renderCatalog();});
