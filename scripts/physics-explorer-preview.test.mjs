@@ -32,7 +32,7 @@ test('Physics Explorer uses exact original source assets and scientific record i
   assert.match(html,/src="\.\.\/formulas\.js"/);
   assert.match(html,/src="\.\.\/problems\.js"/);
   assert.match(html,/src="\.\.\/evidence\.js"/);
-  assert.match(html,/src="\.\/observatory-explorer\.css"/);
+  assert.match(html,/href="\.\/observatory-explorer\.css"/);
 });
 
 test('new explorer is additive: approved live atlas renderer and page bytes remain immutable',()=>{
