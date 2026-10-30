@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-30",
+  "baseMain": "2beb8fc3e4eb6d45092c4880349b056f9e1b3091",
+  "status": "source-located-research-proposal-not-integrated",
+  "scope": "Atomic dark matter identity and dark acoustic oscillation taxonomy; no production formula/theory/evidence/graph changes",
+  "evidenceLevel": "Original versioned PDF text and primary publisher/arXiv metadata inspected; screenshot rendering unavailable in this review. Equation transcription remains an explicit visual-review gate before production.",
+  "nonClaims": [
+    "Not a first-ever claim for all mirror/composite dark matter",
+    "No dark matter detection or universal laboratory bound",
+    "No source-qualified DAO transfer-function or constraint equation accepted",
+    "No existing theory, formula, relationship or UI mutation"
+  ],
+  "sources": [
+    {
+      "id": "dm1b-kaplan-atomic-dark-matter-2009",
+      "title": "Atomic Dark Matter",
+      "authors": "David E. Kaplan; Gordan Z. Krnjaic; Keith R. Rehermann; Christopher M. Wells",
+      "arxiv": "0909.0753v1",
+      "firstPosted": "2009-09-03",
+      "journalYear": 2010,
+      "doi": "10.1088/1475-7516/2010/05/021",
+      "url": "https://arxiv.org/pdf/0909.0753v1",
+      "checked": "Original arXiv v1 version metadata, introduction and PDF second page Eq. (2) via text extraction; visual page review not completed",
+      "modelScope": "An explicit hidden-U(1) two-fermion dark proton/electron atomic candidate; prior mirror/composite ideas predate this model"
+    },
+    {
+      "id": "dm1b-cyrracine-sigurdson-2012",
+      "title": "The Cosmology of Atomic Dark Matter",
+      "authors": "Francis-Yan Cyr-Racine; Kris Sigurdson",
+      "arxiv": "1209.5752v1",
+      "firstPosted": "2012-09-25",
+      "journalYear": 2013,
+      "doi": "10.1103/PhysRevD.87.103515",
+      "url": "https://arxiv.org/pdf/1209.5752v1",
+      "checked": "Original arXiv submission date and author abstract with text-extracted early dark-radiation/DAO discussion; no visual equation inspection",
+      "modelScope": "Atomic dark recombination plus dark photon bath and the resulting acoustic/structure effects"
+    },
+    {
+      "id": "dm1b-cyrracine-dao-2013",
+      "title": "Constraints on Large-Scale Dark Acoustic Oscillations from Cosmology",
+      "authors": "Francis-Yan Cyr-Racine; Roland de Putter; Alvise Raccanelli; Kris Sigurdson",
+      "arxiv": "1310.3278v1",
+      "firstPosted": "2013-10-11",
+      "journalYear": 2014,
+      "doi": "10.1103/PhysRevD.89.063517",
+      "url": "https://arxiv.org/pdf/1310.3278v1",
+      "checked": "Original arXiv submission and primary publisher abstract; observational limits read as paper-specific, no visual equation inspection",
+      "modelScope": "A selected DM–dark-radiation interacting fraction; linear-scale CMB and matter-power predictions under paper assumptions"
+    }
+  ],
+  "identityDecisions": [
+    {
+      "id": "atomic-dark-matter",
+      "name": "Atomic dark matter",
+      "disposition": "ADD_AFTER_EQUATION_AND_ORIGIN_GATE",
+      "status": "not-shipped",
+      "proposedYear": 2009,
+      "yearMeaning": "First arXiv posting of Kaplan et al.'s explicit two-fermion hidden-U(1) model; not the first possible atomic/composite/mirror dark matter idea",
+      "kind": "specific particle/atomic model family",
+      "sourceIds": [
+        "dm1b-kaplan-atomic-dark-matter-2009",
+        "dm1b-cyrracine-sigurdson-2012"
+      ],
+      "relatedExistingTheoryIds": [
+        "asymmetric-dark-matter",
+        "self-interacting-dark-matter",
+        "dark-photon"
+      ],
+      "notes": "Dark proton and dark electron recombine to bound states under a new U(1) interaction. This is not an established DM identification. Check earlier atomic/mirror/composite literature before assigning umbrella origin."
+    },
+    {
+      "id": "dark-acoustic-oscillations",
+      "name": "Dark acoustic oscillations",
+      "disposition": "HOLD_TAXONOMY",
+      "status": "not-shipped",
+      "proposedYear": null,
+      "yearMeaning": "Evidence for DAO behavior in the 2012 and 2013 papers; historical origin and status as distinct framework versus model feature remains unresolved",
+      "kind": "dark-sector perturbation effect/signature, not a particle species",
+      "sourceIds": [
+        "dm1b-cyrracine-sigurdson-2012",
+        "dm1b-cyrracine-dao-2013"
+      ],
+      "relatedExistingTheoryIds": [
+        "lambda-cdm",
+        "self-interacting-dark-matter",
+        "dark-photon"
+      ],
+      "notes": "Sound waves arise from coupled interacting dark matter and dark radiation before decoupling. Do not misclassify as a new particle, a universal signal, or experimental confirmation."
+    }
+  ],
+  "formulaCandidates": [
+    {
+      "id": "atomic-dark-hydrogen-binding-energy-2009",
+      "state": "TEXT_LOCATED_VISUAL_HOLD",
+      "intendedTheoryId": "atomic-dark-matter",
+      "sourceId": "dm1b-kaplan-atomic-dark-matter-2009",
+      "location": "arXiv:0909.0753v1, PDF page 2 (zero-based PDF index 1), original Eq. (2)",
+      "latex": "B=\\tfrac12\\alpha_D^2\\mu_H,\\quad\\mu_H=\\frac{m_e m_p}{m_e+m_p}",
+      "plain": "B = (1/2) alpha_D^2 mu_H; mu_H = m_e*m_p/(m_e+m_p)",
+      "formulaType": "model-scoped canonical",
+      "assumptions": [
+        "Hydrogen-like Coulombic dark bound state with massless U(1) dark photon",
+        "Nonrelativistic two-body bound state of opposite dark charges with reduced mass mu_H",
+        "No strong-coupling, screened plasma, excited-state or dark-molecule corrections"
+      ],
+      "units": "Natural units: alpha_D dimensionless; mu_H and binding energy B each have energy units",
+      "nonClaim": "Not a universal binding-energy formula for arbitrary hidden sectors; not a measured mass or detection",
+      "gate": "Visually confirm exact equation and notation on versioned original PDF, then independent scientific and browser/MathJax review before runtime admission"
+    }
+  ],
+  "heldFormulaOrEvidence": [
+    {
+      "subject": "DAO sound horizon and coupled Einstein–Boltzmann perturbations",
+      "reason": "Find exact versioned original equation/page and perturbation-gauge limits before choosing one representative; do not substitute a generic baryon-acoustic integral without stating dark-fluid assumptions"
+    },
+    {
+      "subject": "2014 interacting-fraction constraint",
+      "reason": "Historical, model and data specific. The quoted ~5% bound is not a universal current observation or exclusion; require updated datasets and independent uncertainty review before Evidence addition"
+    }
+  ],
+  "nextGates": [
+    "Resolve atomic-model umbrella versus specific 2009 construction through earlier primary literature",
+    "Complete independent visual equation review of Kaplan Eq. (2) and original source conventions",
+    "Decide whether DAO is a first-class phenomenological framework or a model feature/formula rather than particle theory",
+    "Preserve existing runtime scientific identities and historical ledgers",
+    "Only then prepare isolated DM-1B runtime integration and verify full Node, two browser engines, Pages, and served assets"
+  ]
+}
