@@ -603,3 +603,16 @@ html{scrollbar-color:#a8c4ce #edf3f6}
 .trust-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:1rem}
 .trust-summary div{min-width:0}.trust-summary dt{font-weight:700}.trust-summary dd{margin:.35rem 0}
 #recordTrust summary{cursor:pointer;padding:.8rem 0;min-height:44px}
+
+/* Observatory Explorer gateway: additive to the approved Explore layout and visual system. */
+.observatory-gateway{display:grid;grid-template-columns:50px minmax(0,1fr) auto;gap:16px;align-items:center;margin:20px 0 0;padding:19px 20px;border:1px solid #bcdde5;border-radius:18px;background:linear-gradient(110deg,#e5f8f9 0%,#f5f5ff 65%,#fffaf0 100%);color:#17313f;text-decoration:none;box-shadow:0 9px 24px rgba(43,83,99,.06);transition:border-color .16s,box-shadow .16s,transform .16s}
+.observatory-gateway:hover{border-color:#61b3c2;box-shadow:0 15px 30px rgba(43,83,99,.11);transform:translateY(-2px)}
+.observatory-gateway:focus-visible{outline:3px solid #0e8fa3;outline-offset:3px}
+.observatory-gateway-symbol{width:50px;height:50px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(145deg,#0e8fa3,#6674c9);color:white;font-size:32px;line-height:1}
+.observatory-gateway-copy{display:grid;gap:5px;min-width:0}
+.observatory-gateway-eyebrow{font-size:9px;font-weight:850;letter-spacing:.09em;color:#0c7f93}
+.observatory-gateway-copy strong{font-size:20px;letter-spacing:-.03em;line-height:1.2}
+.observatory-gateway-copy>span:last-child{font-size:12px;line-height:1.55;color:#587784}
+.observatory-gateway-go{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;border-radius:10px;background:#0e8fa3;padding:12px 14px;color:#fff;font-size:11px;font-weight:750}
+@media(max-width:850px){.observatory-gateway{grid-template-columns:45px minmax(0,1fr);gap:12px}.observatory-gateway-go{grid-column:2;justify-self:start}.observatory-gateway-symbol{width:45px;height:45px;font-size:29px}}
+@media(max-width:480px){.observatory-gateway{padding:15px;gap:11px}.observatory-gateway-copy strong{font-size:17px}.observatory-gateway-copy>span:last-child{font-size:11px}.observatory-gateway-go{white-space:normal;text-align:left}.observatory-gateway-eyebrow{font-size:8px}}
