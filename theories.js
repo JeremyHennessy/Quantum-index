@@ -3684,3 +3684,17 @@ window.QI_DATA.sources.push(...sources);targets[0].sources.push("okamura-ozawa-i
  for(const r of relations){if(oldRelations.has(r.from+'|'+r.to+'|'+r.type))throw new Error('DM-1A relation collision '+r.from+' → '+r.to);if(r.confidence!=='editorial'||r.sourceIds.length!==0)throw new Error('Unexpected DM-1A relation confidence');}
  window.QI_DATA.relations.push(...relations);
 })();
+
+// 2026-11-01 source-reviewed NFW halo-profile bibliography record.
+(() => {
+  const id = 'navarro-frenk-white-1997';
+  if (window.QI_DATA.sources.some(source => source.id === id)) throw new Error('Duplicate NFW source ' + id);
+  window.QI_DATA.sources.push({
+    id,
+    title: 'A Universal Density Profile from Hierarchical Clustering',
+    authors: 'Julio F. Navarro, Carlos S. Frenk, Simon D. M. White',
+    year: 1997,
+    type: 'primary source',
+    url: 'https://arxiv.org/abs/astro-ph/9611107v4'
+  });
+})();

@@ -1,11 +1,15 @@
 import {test,expect} from '@playwright/test';
-import {baoIntegrationManifest,loadPreBaoRuntime} from '../../scripts/bao-integration-baseline.mjs';
+import {baoIntegrationManifest,loadPreBaoRuntime,nfwIntegrationManifest} from '../../scripts/bao-integration-baseline.mjs';
 
 const formulaSnapshot=baoIntegrationManifest.files['formulas.js'];
 const formulaBefore=Buffer.from(formulaSnapshot.beforeBase64,'base64');
 const formulaAfter=Buffer.from(formulaSnapshot.afterBase64,'base64');
 const baoFormulaIds=[...formulaAfter.subarray(formulaBefore.length).toString('utf8').matchAll(/"id":"([^"]+)"/g)].map(([,id])=>id);
-const expectedFormulaCount=loadPreBaoRuntime().QI_FORMULAS.formulas.length+baoFormulaIds.length;
+const nfwFormulaSnapshot=nfwIntegrationManifest.files['formulas.js'];
+const nfwFormulaBefore=Buffer.from(nfwFormulaSnapshot.beforeBase64,'base64');
+const nfwFormulaAfter=Buffer.from(nfwFormulaSnapshot.afterBase64,'base64');
+const nfwFormulaIds=[...nfwFormulaAfter.subarray(nfwFormulaBefore.length).toString('utf8').matchAll(/"id":"([^"]+)"/g)].map(([,id])=>id);
+const expectedFormulaCount=loadPreBaoRuntime().QI_FORMULAS.formulas.length+baoFormulaIds.length+nfwFormulaIds.length;
 
 async function openPhysics(page){
   const errors=[];
