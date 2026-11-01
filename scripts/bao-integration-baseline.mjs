@@ -13,6 +13,8 @@ const manifestPath=new URL('../research/BAO_FORMULA_INTEGRATION_INTEGRITY_2026-1
 const manifestBytes=fs.readFileSync(manifestPath);
 const nfwManifestPath=new URL('../research/NFW_HALO_INTEGRATION_INTEGRITY_2026-11-01.json',import.meta.url);
 const nfwManifestBytes=fs.readFileSync(nfwManifestPath);
+const axionManifestPath=new URL('../research/QCD_AXION_INTEGRATION_INTEGRITY_2026-11-01.json',import.meta.url);
+const axionManifestBytes=fs.readFileSync(axionManifestPath);
 const productPaths=[
   'README.md','docs/CONTINUATION.md','docs/COVERAGE.md','docs/FORMULA_AUDIT.md',
   'docs/FORMULA_COVERAGE.md','docs/RESEARCH_PROFILES.md','docs/coverage.json',
@@ -42,6 +44,26 @@ const nfwProjector=createBaoProjector(nfwManifestBytes,{
   expectedBaseMain:'b4693ddf09738106df60a36ab97579c5cc702da0',
   allowedPaths:nfwPaths
 });
+const axionProductPaths=[
+  'README.md','docs/CONTINUATION.md','docs/COVERAGE.md','docs/FORMULA_AUDIT.md',
+  'docs/FORMULA_COVERAGE.md','docs/RESEARCH_PROFILES.md','docs/coverage.json',
+  'docs/responsive-check.html','formulas.js','index.html','theories.js'
+];
+const axionPathAllowlist=[
+  'scripts/bao-integration-scope.test.mjs',
+  'scripts/nfw-halo-profile.test.mjs',
+  'scripts/dm2a-qcd-axion-source.test.mjs','scripts/axion-integration.test.mjs',
+  'tests/browser/filter-controls.spec.mjs','tests/browser/axion-misalignment.spec.mjs',
+  'tests/browser/physics-explorer.spec.mjs','tests/browser/repository-links.spec.mjs'
+];
+const axionProjector=createBaoProjector(axionManifestBytes,{
+  expectedManifestSha256:'6d81bc7f1e452a7e47cf9e16b92c9ffa68c315e5a9a99c82c0484ea7dc978c2d',
+  expectedSchema:'qi-qcd-axion-integration-v1',
+  expectedBaseMain:'9e8ae083d0a9906bb9316b1b081cb50df899fecf',
+  allowedPaths:[...axionProductPaths,...axionPathAllowlist]
+});
+assert.deepEqual(axionProjector.manifest.productPaths,axionProductPaths,'QCD axion product path scope changed');
+assert.deepEqual(axionProjector.manifest.integrationPaths,axionPathAllowlist,'QCD axion test path scope changed');
 assert.deepEqual(projector.manifest.productPaths,productPaths,'BAO product path scope changed');
 assert.deepEqual(projector.manifest.integrationPaths,integrationPaths,'BAO integration path scope changed');
 
@@ -54,12 +76,22 @@ function relativePath(file){
 }
 
 export function projectPreNfw(bytes,relative){
-  return nfwProjector.project(bytes,relative);
+  const current=Buffer.from(bytes),snapshot=nfwProjector.snapshot(relative);
+  if(snapshot&&(current.equals(snapshot.before)||current.equals(snapshot.after)))return nfwProjector.project(current,relative);
+  return nfwProjector.project(axionProjector.project(current,relative),relative);
+}
+
+export function projectPreAxion(bytes,relative){
+  const current=Buffer.from(bytes),nfw=nfwProjector.snapshot(relative),bao=projector.snapshot(relative);
+  if(nfw&&current.equals(nfw.before))return current;
+  if(bao&&current.equals(bao.before))return current;
+  return axionProjector.project(current,relative);
 }
 
 export function projectPreBao(bytes,relative){
   const snapshot=projector.snapshot(relative),current=Buffer.from(bytes);
   if(snapshot&&current.equals(snapshot.before))return current;
+  if(snapshot&&current.equals(snapshot.after))return projector.project(current,relative);
   return projector.project(projectPreNfw(current,relative),relative);
 }
 
@@ -71,6 +103,12 @@ export function readPreBaoFile(file,options){
 
 export function readPreNfwFile(file,options){
   const relative=relativePath(file),bytes=projectPreNfw(fs.readFileSync(file),relative);
+  const encoding=typeof options==='string'?options:options?.encoding;
+  return encoding?bytes.toString(encoding):bytes;
+}
+
+export function readPreAxionFile(file,options){
+  const relative=relativePath(file),bytes=projectPreAxion(fs.readFileSync(file),relative);
   const encoding=typeof options==='string'?options:options?.encoding;
   return encoding?bytes.toString(encoding):bytes;
 }
@@ -93,6 +131,11 @@ export function loadPreNfwRuntime(){
   }
   return sandbox.window;
 }
+export function loadPreAxionRuntime(){
+  const sandbox={window:{}};vm.createContext(sandbox);
+  for(const file of runtimeFiles)vm.runInContext(readPreAxionFile(file,'utf8'),sandbox,{filename:file});
+  return sandbox.window;
+}
 
 export const baoIntegrationManifest=projector.manifest;
 export const baoIntegrationPaths=projector.paths;
@@ -100,3 +143,7 @@ export const baoProductPaths=Object.freeze(productPaths);
 export const baoIntegrationTestPaths=Object.freeze(integrationPaths);
 export const nfwIntegrationManifest=nfwProjector.manifest;
 export const nfwIntegrationPaths=nfwProjector.paths;
+export const axionIntegrationManifest=axionProjector.manifest;
+export const axionIntegrationPaths=axionProjector.paths;
+export const axionProductPathList=Object.freeze(axionProductPaths);
+export const axionIntegrationTestPathList=Object.freeze(axionPathAllowlist);

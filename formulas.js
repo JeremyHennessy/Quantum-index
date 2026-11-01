@@ -14573,3 +14573,94 @@ window.QI_FORMULAS.formulas.push(...formulas);})();
  for(const f of additions)if(existing.has(f.id))throw new Error('Duplicate NFW formula '+f.id);
  window.QI_FORMULAS.formulas.push(...additions);
 })();
+
+// 2026-11-01 source-reviewed QCD axion relations; excludes relic abundance.
+(()=>{
+ const additions=[
+  {
+   "id":"qcd-axion-topological-susceptibility-mass-2016",
+   "name":"QCD axion mass from topological susceptibility",
+   "category":"Astroparticle physics & cosmology",
+   "latex":"m_a^2=\\frac{\\chi_{\\rm top}}{f_a^2},\\qquad m_a=5.691(51)\\,\\mathrm{meV}\\left(\\frac{10^9\\,\\mathrm{GeV}}{f_a}\\right)\\;(T=0)",
+   "plain":"At zero temperature, m_a^2 = chi_top/f_a^2; the 2026 PDG reports m_a = 5.691(51) meV * (10^9 GeV/f_a).",
+   "description":"The physical QCD axion mass is fixed by the zero-temperature QCD topological susceptibility. The separately sourced 2026 PDG coefficient is an NNLO+QED estimate, not a new measurement.",
+   "theoryIds":["axion"],
+   "sourceIds":["dm2-dicortona-qcd-axion-2016","dm2-pdg-rpp-axions-2026"],
+   "tags":["QCD axion","topological susceptibility","axion mass","strong CP"],
+   "formulaType":"canonical",
+   "assumptions":[
+    "This relation is for the physical QCD axion with the color-anomaly-normalized decay constant f_a, evaluated at T=0; chi_top is the physical full-QCD topological susceptibility.",
+    "The effective axion mass relation is taken at leading order in 1/f_a and assumes no additional mass-generating mechanism beyond QCD.",
+    "The 2026 PDG coefficient is its reported NNLO+QED estimate, not a new measurement; the parenthetical ±0.051 in the displayed normalization is a theoretical estimate uncertainty, not an experimental confidence interval.",
+    "Generic axion-like particles need not obey this QCD mass relation, and it does not imply that axions constitute the dark matter."
+   ],
+   "variables":[
+    "m_a: zero-temperature mass of the QCD axion",
+    "chi_top: physical full-QCD topological susceptibility at theta=0, with units of energy^4",
+    "f_a: color-anomaly-normalized QCD axion decay constant, with units of energy",
+    "T: temperature; the displayed mass normalization is for T=0"
+   ],
+   "regime":"Zero-temperature physical QCD axion mass relation; the numerical coefficient is the PDG 2026 NNLO+QED estimate and is not a generic-ALP relation or a dark-matter detection.",
+   "units":"m_a and f_a have energy units; chi_top has energy^4, so chi_top/f_a^2 has energy^2. The ratio 10^9 GeV/f_a is dimensionless; the displayed numerical mass is in meV.",
+   "theoryRelationship":"A QCD-specific consequence of the axion's anomalous color coupling, linked to the existing axion theory; it is not a general mass-coupling identity for arbitrary ALPs.",
+   "metadataReview":"explicit",
+   "reviewedAt":"2026-11-01",
+   "curationBatch":"qcd-axion-misalignment-2026-11-01",
+   "sourceLocations":[
+    {
+     "sourceId":"dm2-dicortona-qcd-axion-2016",
+     "locator":"Version 1511.02867v2, PDF Eq. (18), printed p. 8 (PDF page 9): zero-temperature physical-QCD mass relation; leading order in 1/f_a.",
+     "url":"https://arxiv.org/pdf/1511.02867v2"
+    },
+    {
+     "sourceId":"dm2-pdg-rpp-axions-2026",
+     "locator":"Eq. (89.3), printed p. 2: the 2026 PDG directly displays the NNLO+QED mass estimate 5.691(51) meV × (10^9 GeV/f_a).",
+     "url":"https://pdg.lbl.gov/2026/reviews/rpp2026-rev-axions.pdf"
+    }
+   ]
+  },
+  {
+   "id":"qcd-axion-homogeneous-misalignment-eom-2016",
+   "name":"Homogeneous QCD axion misalignment equation",
+   "category":"Astroparticle physics & cosmology",
+   "latex":"\\ddot a+3H\\dot a+m_a^2(T)f_a\\sin\\left(\\frac{a}{f_a}\\right)=0",
+   "plain":"ä + 3H ȧ + m_a^2(T) f_a sin(a/f_a) = 0",
+   "description":"The homogeneous axion zero mode evolves in an expanding FLRW background under the source's cosine-potential approximation; the equation alone does not determine a relic abundance.",
+   "theoryIds":["axion"],
+   "sourceIds":["dm2-dicortona-qcd-axion-2016"],
+   "tags":["QCD axion","misalignment","homogeneous field","equation of motion"],
+   "formulaType":"approximation",
+   "assumptions":[
+    "This is a homogeneous zero-mode equation in cosmic proper time in an FLRW background: spatial gradients are neglected and H=Rdot/R.",
+    "The axion field a is canonically normalized about the potential minimum, f_a is constant, and the temperature history T(t) and effective mass m_a(T) are prescribed background functions.",
+    "The sine force follows from the source's cosine-like dilute-instanton-gas potential approximation; it is neither the exact low-temperature QCD potential nor a small-angle linearization.",
+    "The source's pre-inflationary context assumes PQ symmetry broke before inflation and was not restored during reheating, so the initial angle is homogeneous on observable scales.",
+    "The equation describes field dynamics only; it does not by itself determine relic abundance and omits string and domain-wall contributions."
+   ],
+   "variables":[
+    "a: canonically normalized homogeneous axion field",
+    "t: cosmic proper time",
+    "H=Rdot/R: FLRW Hubble expansion rate for scale factor R(t)",
+    "m_a(T): temperature-dependent effective QCD axion mass in the stated potential approximation",
+    "f_a: constant color-anomaly-normalized QCD axion decay constant",
+    "T(t): prescribed cosmological temperature history"
+   ],
+   "regime":"Homogeneous pre-inflationary QCD axion misalignment dynamics under a cosine-potential approximation in FLRW; not a relic-density formula or a complete treatment of spatial fluctuations and defects.",
+   "units":"In natural units, a and f_a have energy units, m_a and H have energy (inverse-time) units, and each term has energy^3; t has inverse-energy units.",
+   "theoryRelationship":"A source-scoped approximation for the existing QCD axion theory; its homogeneous cosmological setup does not define generic ALP dynamics or assert a dark-matter abundance.",
+   "metadataReview":"explicit",
+   "reviewedAt":"2026-11-01",
+   "curationBatch":"qcd-axion-misalignment-2026-11-01",
+   "sourceLocations":[
+    {
+     "sourceId":"dm2-dicortona-qcd-axion-2016",
+     "locator":"Version 1511.02867v2, PDF Eq. (60), printed p. 23 (PDF page 24): homogeneous zero-mode equation under the stated pre-inflationary and dilute-instanton-gas cosine-potential assumptions.",
+     "url":"https://arxiv.org/pdf/1511.02867v2"
+    }
+   ]
+  }
+ ];
+ const existing=new Set(window.QI_FORMULAS.formulas.map(f=>f.id));
+ for(const f of additions)if(existing.has(f.id))throw new Error('Duplicate QCD axion formula '+f.id);
+ window.QI_FORMULAS.formulas.push(...additions);
+})();

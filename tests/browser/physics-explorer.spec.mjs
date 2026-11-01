@@ -1,5 +1,5 @@
 import {test,expect} from '@playwright/test';
-import {baoIntegrationManifest,loadPreBaoRuntime,nfwIntegrationManifest} from '../../scripts/bao-integration-baseline.mjs';
+import {baoIntegrationManifest,loadPreBaoRuntime,nfwIntegrationManifest,axionIntegrationManifest} from '../../scripts/bao-integration-baseline.mjs';
 
 const formulaSnapshot=baoIntegrationManifest.files['formulas.js'];
 const formulaBefore=Buffer.from(formulaSnapshot.beforeBase64,'base64');
@@ -9,7 +9,11 @@ const nfwFormulaSnapshot=nfwIntegrationManifest.files['formulas.js'];
 const nfwFormulaBefore=Buffer.from(nfwFormulaSnapshot.beforeBase64,'base64');
 const nfwFormulaAfter=Buffer.from(nfwFormulaSnapshot.afterBase64,'base64');
 const nfwFormulaIds=[...nfwFormulaAfter.subarray(nfwFormulaBefore.length).toString('utf8').matchAll(/"id":"([^"]+)"/g)].map(([,id])=>id);
-const expectedFormulaCount=loadPreBaoRuntime().QI_FORMULAS.formulas.length+baoFormulaIds.length+nfwFormulaIds.length;
+const axionFormulaSnapshot=axionIntegrationManifest.files['formulas.js'];
+const axionFormulaBefore=Buffer.from(axionFormulaSnapshot.beforeBase64,'base64');
+const axionFormulaAfter=Buffer.from(axionFormulaSnapshot.afterBase64,'base64');
+const axionFormulaIds=[...axionFormulaAfter.subarray(axionFormulaBefore.length).toString('utf8').matchAll(/"id":"([^"]+)"/g)].map(([,id])=>id);
+const expectedFormulaCount=loadPreBaoRuntime().QI_FORMULAS.formulas.length+baoFormulaIds.length+nfwFormulaIds.length+axionFormulaIds.length;
 
 async function openPhysics(page){
   const errors=[];

@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {loadRuntime} from './category-trust-census.mjs';
+import {loadPreAxionRuntime} from './bao-integration-baseline.mjs';
 const proposal=JSON.parse(fs.readFileSync('research/DM2A_QCD_AXION_FORMULA_SOURCE_PROPOSAL_2026-10-30.json','utf8'));
-const runtime=loadRuntime(),ids=new Set(runtime.QI_FORMULAS.formulas.map(f=>f.id));
+const runtime=loadPreAxionRuntime(),ids=new Set(runtime.QI_FORMULAS.formulas.map(f=>f.id));
 
 test('axion equation proposal does not rewrite existing approved science or invent a new theory',()=>{
  assert.equal(proposal.acceptedMainBaseline,'2beb8fc3e4eb6d45092c4880349b056f9e1b3091');
@@ -17,10 +17,8 @@ test('axion equation proposal does not rewrite existing approved science or inve
  assert.equal(proposal.source.originalArxivPosted,'2015-11-09');
  assert.equal(proposal.source.versionDate,'2016-01-08');
  assert.equal(proposal.formulaProposals.length,4);
- if(runtime.QI_DATA.theories.length===485 && runtime.QI_FORMULAS.formulas.length===464){
-  assert.equal(runtime.QI_FORMULAS.formulas.filter(f=>f.theoryIds.includes('axion')).length,0);
-  for(const f of proposal.formulaProposals)assert.ok(!ids.has(f.id),'unexpected pre-existing identity '+f.id);
- }
+ assert.equal(runtime.QI_FORMULAS.formulas.filter(f=>f.theoryIds.includes('axion')).length,0);
+ for(const f of proposal.formulaProposals)assert.ok(!ids.has(f.id),'unexpected historical pre-axion identity '+f.id);
  assert.ok(proposal.nonClaims.some(x=>/not yet|not.*modified|No new theory/i.test(x)));
 });
 test('each scoped QCD equation is source/version-located, distinct and mathematically dimensioned',()=>{
