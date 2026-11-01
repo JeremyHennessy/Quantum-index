@@ -7,6 +7,7 @@ import vm from 'node:vm';
 import {fileURLToPath} from 'node:url';
 import assert from 'node:assert/strict';
 import {createBaoProjector} from './bao-projection-core.mjs';
+import {projectBeforePostNfw} from './post-nfw-checkpoint.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
 const manifestPath=new URL('../research/BAO_FORMULA_INTEGRATION_INTEGRITY_2026-11-01.json',import.meta.url);
@@ -54,7 +55,7 @@ function relativePath(file){
 }
 
 export function projectPreNfw(bytes,relative){
-  return nfwProjector.project(bytes,relative);
+  return nfwProjector.project(projectBeforePostNfw(bytes,relative),relative);
 }
 
 export function projectPreBao(bytes,relative){
