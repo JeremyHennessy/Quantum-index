@@ -3698,3 +3698,28 @@ window.QI_DATA.sources.push(...sources);targets[0].sources.push("okamura-ozawa-i
     url: 'https://arxiv.org/abs/astro-ph/9611107v4'
   });
 })();
+// 2026-11-01 primary and review sources for the scoped QCD axion formulas.
+(()=>{
+ const sources=[
+  {
+   id:'dm2-dicortona-qcd-axion-2016',
+   title:'The QCD axion, precisely',
+   authors:'Giovanni Grilli di Cortona, Edward Hardy, Javier Pardo Vega, Giovanni Villadoro',
+   year:2016,
+   type:'primary source',
+   url:'https://arxiv.org/abs/1511.02867v2'
+  },
+  {
+   id:'dm2-pdg-rpp-axions-2026',
+   title:'Axions and Other Similar Particles',
+   authors:'C. A. J. O’Hare, G. Rybka, B. Safdi, L. Winslow',
+   year:2026,
+   type:'authoritative review',
+   url:'https://pdg.lbl.gov/2026/reviews/rpp2026-rev-axions.pdf'
+  }
+ ];
+ for(const source of sources){
+  if(window.QI_DATA.sources.some(item=>item.id===source.id))throw new Error('Duplicate QCD axion source '+source.id);
+  window.QI_DATA.sources.push(source);
+ }
+})();

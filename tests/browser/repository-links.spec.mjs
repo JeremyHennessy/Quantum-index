@@ -1,7 +1,7 @@
 import {test,expect} from '@playwright/test';
-import {nfwIntegrationManifest} from '../../scripts/bao-integration-baseline.mjs';
+import {axionIntegrationManifest} from '../../scripts/bao-integration-baseline.mjs';
 const ownRepo=/(?:github\.com|raw\.githubusercontent\.com|api\.github\.com\/repos)\/JeremyHennessy\/Quantum-index(?:[\/#?]|$)/i;
-const expectedExplicitFormulaMetadata=JSON.parse(Buffer.from(nfwIntegrationManifest.files['docs/coverage.json'].afterBase64,'base64').toString('utf8')).explicitFormulaMetadata;
+const expectedExplicitFormulaMetadata=JSON.parse(Buffer.from(axionIntegrationManifest.files['docs/coverage.json'].afterBase64,'base64').toString('utf8')).explicitFormulaMetadata;
 test('all app views omit own-repository links and retain methodology and citations',async({page,request},info)=>{
  test.setTimeout(180000);const errors=[];page.on('pageerror',error=>errors.push(error.message));if(info.project.name==='webkit')await page.setViewportSize({width:320,height:700});
  await page.goto('/#/explore');

@@ -10,13 +10,16 @@ const expected=[
  '.github/workflows/validate.yml',
  'research/BAO_FORMULA_INTEGRATION_INTEGRITY_2026-11-01.json',
  'research/NFW_HALO_INTEGRATION_INTEGRITY_2026-11-01.json',
+ 'research/QCD_AXION_INTEGRATION_INTEGRITY_2026-11-01.json',
  'scripts/bao-integration-baseline.mjs','scripts/bao-integration-scope.test.mjs',
  'scripts/bao-integration.test.mjs','scripts/bao-projection-core.mjs',
+ 'scripts/axion-integration.test.mjs','scripts/dm2a-qcd-axion-source.test.mjs',
  'scripts/ci-project-split.test.mjs',
  'scripts/dm1a-integration-baseline.mjs','scripts/dm1a-integration.test.mjs',
  'scripts/formula-gaps-source-audit.test.mjs','scripts/physics-explorer-preview.test.mjs','scripts/nfw-halo-profile.test.mjs','tests/browser/bao-formulas.spec.mjs',
  'tests/browser/filter-controls.spec.mjs','tests/browser/astro-formula-review.spec.mjs',
- 'tests/browser/physics-explorer.spec.mjs','tests/browser/repository-links.spec.mjs','tests/browser/nfw-halo-profile.spec.mjs'
+ 'tests/browser/physics-explorer.spec.mjs','tests/browser/repository-links.spec.mjs','tests/browser/nfw-halo-profile.spec.mjs',
+ 'tests/browser/axion-misalignment.spec.mjs'
 ].sort();
 
 test('complete BAO candidate change scope contains no unlisted tracked or new files',t=>{

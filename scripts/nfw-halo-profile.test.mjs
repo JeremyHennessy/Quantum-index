@@ -3,8 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
-import {loadRuntime} from './category-trust-census.mjs';
-import {nfwIntegrationManifest,nfwIntegrationPaths,loadPreNfwRuntime,projectPreNfw} from './bao-integration-baseline.mjs';
+import {nfwIntegrationManifest,nfwIntegrationPaths,loadPreNfwRuntime,loadPreAxionRuntime,projectPreNfw,projectPreAxion} from './bao-integration-baseline.mjs';
 
 const sandbox={window:{}};
 vm.createContext(sandbox);
@@ -70,7 +69,7 @@ test('NFW formula meets the catalog formula schema and rejects missing provenanc
 });
 
 test('NFW catalog integration adds only the declared approximation and bibliography source',()=>{
-  const baseline=loadPreNfwRuntime(),current=loadRuntime();
+  const baseline=loadPreNfwRuntime(),current=loadPreAxionRuntime();
   const prior=plain(baseline.QI_FORMULAS.formulas),added=current.QI_FORMULAS.formulas.filter(item=>item.id===formulaId);
   assert.equal(added.length,1);
   assert.equal(current.QI_FORMULAS.formulas.length,prior.length+1);
@@ -95,7 +94,9 @@ test('NFW history projection accepts only exact baseline or candidate bytes',()=
   assert.deepEqual(nfwIntegrationPaths,[...Object.keys(nfwIntegrationManifest.files)].sort());
   for(const file of nfwIntegrationPaths){
     const raw=fs.readFileSync(file),entry=nfwIntegrationManifest.files[file];
-    assert.equal(hash(raw),entry.afterSha256,file+': exact candidate');
+  const nfwCandidate=projectPreAxion(raw,file);
+  assert.equal(hash(nfwCandidate),entry.afterSha256,file+': exact NFW candidate');
+  assert.deepEqual(nfwCandidate,Buffer.from(entry.afterBase64,'base64'),file+': NFW candidate bytes');
     const projected=projectPreNfw(raw,file);
     assert.equal(hash(projected),entry.beforeSha256,file+': exact merged-main snapshot');
     assert.deepEqual(projected,Buffer.from(entry.beforeBase64,'base64'),file+': before bytes');
