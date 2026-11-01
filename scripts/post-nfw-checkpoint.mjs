@@ -8,7 +8,8 @@ const bytes=fs.readFileSync(manifestUrl);
 const expectedManifestBlob='e6095796475ecf62d5975bccd8dfc733a024e808';
 const gitBlobHash=input=>{
  const data=Buffer.from(input);
- return createHash('sha1').update('blob '+data.length+'\\0'.replace('\\0','\\x00')).update(data).digest('hex');
+ const header=Buffer.from('blob '+data.length+String.fromCharCode(0));
+ return createHash('sha1').update(header).update(data).digest('hex');
 };
 if(gitBlobHash(bytes)!==expectedManifestBlob)throw Error('post-NFW manifest changed from independently pinned Git blob');
 export const postNfwManifest=JSON.parse(bytes.toString('utf8'));
