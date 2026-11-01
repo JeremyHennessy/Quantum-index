@@ -33,7 +33,12 @@ function syntheticManifest({before='baseline',after='baseline\nadded',kind='appe
 
 test('BAO manifest pins exact product and integration path sets and every recorded byte pair',()=>{
  assert.deepEqual(baoProductPaths,expectedProductPaths);
- assert.deepEqual(baoIntegrationTestPaths,['tests/browser/filter-controls.spec.mjs','scripts/formula-gaps-source-audit.test.mjs','scripts/ci-project-split.test.mjs','.github/workflows/validate.yml']);
+ assert.deepEqual(baoIntegrationTestPaths,[
+  'tests/browser/filter-controls.spec.mjs','scripts/formula-gaps-source-audit.test.mjs',
+  'scripts/ci-project-split.test.mjs','.github/workflows/validate.yml',
+  'tests/browser/astro-formula-review.spec.mjs','tests/browser/physics-explorer.spec.mjs',
+  'tests/browser/repository-links.spec.mjs'
+ ]);
  assert.deepEqual(baoIntegrationPaths,[...expectedProductPaths,...baoIntegrationTestPaths].sort());
  assert.equal(baoIntegrationManifest.baseMain,'d0e51baaf8611263ddbb9e1a97a8478ca63e8d96');
  assert.equal(baoIntegrationManifest.reportedOriginalLocalCommit,'8d73703974e9b8ce6f15f886808bd137c80defe4');

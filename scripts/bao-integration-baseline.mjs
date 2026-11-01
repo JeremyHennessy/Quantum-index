@@ -16,9 +16,14 @@ const productPaths=[
   'docs/FORMULA_COVERAGE.md','docs/RESEARCH_PROFILES.md','docs/coverage.json',
   'docs/responsive-check.html','formulas.js','index.html'
 ];
-const integrationPaths=['tests/browser/filter-controls.spec.mjs','scripts/formula-gaps-source-audit.test.mjs','scripts/ci-project-split.test.mjs','.github/workflows/validate.yml'];
+const integrationPaths=[
+  'tests/browser/filter-controls.spec.mjs','scripts/formula-gaps-source-audit.test.mjs',
+  'scripts/ci-project-split.test.mjs','.github/workflows/validate.yml',
+  'tests/browser/astro-formula-review.spec.mjs','tests/browser/physics-explorer.spec.mjs',
+  'tests/browser/repository-links.spec.mjs'
+];
 const projector=createBaoProjector(manifestBytes,{
-  expectedManifestSha256:'2124964d5a0762fb219523fb0f69ca1149529ef983279df517416ac1c330e629',
+  expectedManifestSha256:'bbc9e7a5655ee76ea34839f0d4240f52071b8121ca3c92d9642e05c6219a5fcc',
   allowedPaths:[...productPaths,...integrationPaths]
 });
 assert.deepEqual(projector.manifest.productPaths,productPaths,'BAO product path scope changed');

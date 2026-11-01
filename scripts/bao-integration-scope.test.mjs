@@ -14,7 +14,8 @@ const expected=[
  'scripts/ci-project-split.test.mjs',
  'scripts/dm1a-integration-baseline.mjs','scripts/dm1a-integration.test.mjs',
  'scripts/formula-gaps-source-audit.test.mjs','scripts/physics-explorer-preview.test.mjs','tests/browser/bao-formulas.spec.mjs',
- 'tests/browser/filter-controls.spec.mjs'
+ 'tests/browser/filter-controls.spec.mjs','tests/browser/astro-formula-review.spec.mjs',
+ 'tests/browser/physics-explorer.spec.mjs','tests/browser/repository-links.spec.mjs'
 ].sort();
 
 test('complete BAO candidate change scope contains no unlisted tracked or new files',t=>{
