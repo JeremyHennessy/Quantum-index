@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import {loadRuntime} from './category-trust-census.mjs';
+import {projectBeforePostNfw} from './post-nfw-checkpoint.mjs';
 import {nfwIntegrationManifest,nfwIntegrationPaths,loadPreNfwRuntime,projectPreNfw} from './bao-integration-baseline.mjs';
 
 const sandbox={window:{}};
@@ -94,14 +95,14 @@ test('NFW history projection accepts only exact baseline or candidate bytes',()=
   assert.equal(nfwIntegrationManifest.baseMain,'b4693ddf09738106df60a36ab97579c5cc702da0');
   assert.deepEqual(nfwIntegrationPaths,[...Object.keys(nfwIntegrationManifest.files)].sort());
   for(const file of nfwIntegrationPaths){
-    const raw=fs.readFileSync(file),entry=nfwIntegrationManifest.files[file];
+    const raw=projectBeforePostNfw(fs.readFileSync(file),file),entry=nfwIntegrationManifest.files[file];
     assert.equal(hash(raw),entry.afterSha256,file+': exact candidate');
     const projected=projectPreNfw(raw,file);
     assert.equal(hash(projected),entry.beforeSha256,file+': exact merged-main snapshot');
     assert.deepEqual(projected,Buffer.from(entry.beforeBase64,'base64'),file+': before bytes');
     assert.deepEqual(projectPreNfw(projected,file),projected,file+': exact before bytes remain accepted');
-    assert.throws(()=>projectPreNfw(Buffer.concat([raw,Buffer.from([0])]),file),/undeclared BAO mutation/,file+': rejects appended mutation');
+    assert.throws(()=>projectPreNfw(Buffer.concat([raw,Buffer.from([0])]),file),/undeclared (?:BAO|post-NFW) mutation/,file+': rejects appended mutation');
     const altered=Buffer.from(raw);altered[Math.floor(altered.length/2)]^=1;
-    assert.throws(()=>projectPreNfw(altered,file),/undeclared BAO mutation/,file+': rejects interior-byte mutation');
+    assert.throws(()=>projectPreNfw(altered,file),/undeclared (?:BAO|post-NFW) mutation/,file+': rejects interior-byte mutation');
   }
 });
