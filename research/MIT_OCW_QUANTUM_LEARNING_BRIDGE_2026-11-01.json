@@ -79,7 +79,7 @@
       "coursePage": "https://ocw.mit.edu/courses/8-06-quantum-physics-iii-spring-2018/pages/lecture-notes/",
       "unitUrl": "https://ocw.mit.edu/courses/8-06-quantum-physics-iii-spring-2018/a0889c5ca8a479c3e56c544d646fb770_MIT8_06S18ch1.pdf",
       "locators": [
-        "Chapter 1, section 1, printed p. 1, Eq. (1.2) (H(lambda)=H0+lambda delta H)",
+        "Chapter 1, section 1, printed p. 1, Eq. (1.0.2) (H(lambda)=H0+lambda delta H)",
         "Chapter 1, section 1, printed p. 8, Eqs. (1.1.36)–(1.1.37) (nondegenerate energy corrections)"
       ],
       "theoryIds": [
