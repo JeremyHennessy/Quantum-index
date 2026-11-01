@@ -46,3 +46,15 @@ test('pinned BAO-to-NFW acceptance diff rejects undeclared paths and missing pat
  assert.notDeepEqual([...actual,'future-unreviewed-file.js'].sort(),actual,'undeclared path changes historical file list');
  assert.notDeepEqual(actual.slice(1),actual,'missing historical path must fail');
 });
+
+test('pre-NFW snapshots remain valid only when byte-exact; later mutations still fail',()=>{
+ const nfw=JSON.parse(fs.readFileSync('research/NFW_HALO_INTEGRATION_INTEGRITY_2026-11-01.json','utf8'));
+ for(const path of paths){
+  const record=nfw.files[path];
+  if(!record)continue;
+  const older=Buffer.from(record.beforeBase64,'base64');
+  assert.deepEqual(projectBeforePostNfw(older,path),older,path+': exact older NFW state');
+  const corrupted=Buffer.concat([older,Buffer.from([0])]);
+  assert.throws(()=>projectBeforePostNfw(corrupted,path),/undeclared post-NFW mutation/,path+': corrupted older NFW state');
+ }
+});
