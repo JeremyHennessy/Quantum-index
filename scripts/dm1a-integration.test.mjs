@@ -1,33 +1,44 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
-import {projectPreDm1a,readPreDm1aFile} from './dm1a-integration-baseline.mjs';
-import {loadRuntime} from './category-trust-census.mjs';
+import {projectPreDm1a,readPreDm1aFile,repositoryRelativePath} from './dm1a-integration-baseline.mjs';
+import {loadPreBaoRuntime,projectPreBao,readPreBaoFile} from './bao-integration-baseline.mjs';
 const pack=JSON.parse(fs.readFileSync('research/DARK_MATTER_DM1A_SIMP_ELDER_PROPOSED_RECORDS_2026-10-29.json','utf8'));
 const ledger=JSON.parse(fs.readFileSync('research/DM1A_INTEGRATION_INTEGRITY_2026-10-29.json','utf8'));
 const hash=x=>createHash('sha256').update(x).digest('hex');
 const plain=x=>JSON.parse(JSON.stringify(x));
+const repositoryRoot=fileURLToPath(new URL('../',import.meta.url));
 const runtimeFiles=['theories.js','developments.js','evidence.js','formulas.js','formula-audit.js','profiles.js','questions.js','problems.js','passports.js'];
 function oldRuntime(){
  const s={window:{}};vm.createContext(s);
  for(const f of runtimeFiles)vm.runInContext(readPreDm1aFile(f,'utf8'),s);
  return s.window;
 }
-const before=oldRuntime(),now=loadRuntime();
+const before=oldRuntime(),now=loadPreBaoRuntime();
+
+test('DM-1A reader canonicalizes native separators and rejects repository escapes',()=>{
+ assert.equal(repositoryRelativePath(path.join(repositoryRoot,'formulas.js')),'formulas.js');
+ assert.equal(hash(readPreDm1aFile(path.join(repositoryRoot,'formulas.js'))),ledger.files['formulas.js'].beforeSha256);
+ assert.throws(()=>repositoryRelativePath(path.resolve(repositoryRoot,'..','outside.js')),/escapes the repository/);
+ const literalBackslash=repositoryRelativePath(path.join(repositoryRoot,'literal\\backslash'));
+ assert.equal(literalBackslash,path.sep==='\\'?'literal/backslash':'literal\\backslash');
+});
 
 test('DM-1A restores every protected source byte exactly and rejects undeclared mutations',()=>{
  assert.equal(ledger.baseMain,'228cd84230d0eaef8325dad4a94dc81ad8cf5a27');
  assert.equal(ledger.sourceProposalSha256,hash(fs.readFileSync('research/DARK_MATTER_DM1A_SIMP_ELDER_PROPOSED_RECORDS_2026-10-29.json')));
  for(const [file,entry]of Object.entries(ledger.files)){
   const bytes=fs.readFileSync(file);
-  assert.equal(hash(bytes),entry.afterSha256,file);
+  assert.equal(hash(projectPreBao(bytes,file)),entry.afterSha256,file);
   assert.equal(hash(readPreDm1aFile(file)),entry.beforeSha256,file);
-  assert.throws(()=>projectPreDm1a(Buffer.concat([bytes,Buffer.from('undeclared')]),file),/undeclared DM-1A/,file);
+  assert.throws(()=>projectPreDm1a(Buffer.concat([bytes,Buffer.from('undeclared')]),file),/undeclared (?:BAO|DM-1A)/,file);
   assert.equal(hash(projectPreDm1a(readPreDm1aFile(file),file)),entry.beforeSha256,file);
  }
- for(const [file,expected] of Object.entries(ledger.unchangedFiles))assert.equal(hash(fs.readFileSync(file)),expected,'approved untouched '+file);
+ for(const [file,expected] of Object.entries(ledger.unchangedFiles))assert.equal(hash(projectPreBao(fs.readFileSync(file),file)),expected,'approved untouched '+file);
 });
 
 test('DM-1A only appends precisely the four source-reviewed classes and references',()=>{
@@ -56,7 +67,7 @@ test('DM-1A only appends precisely the four source-reviewed classes and referenc
 });
 
 test('DM-1A generated coverage, freshness and hash assets match the accepted new runtime',()=>{
- const c=JSON.parse(fs.readFileSync('docs/coverage.json','utf8'));
+ const c=JSON.parse(readPreBaoFile('docs/coverage.json','utf8'));
  const f=JSON.parse(fs.readFileSync('docs/freshness.json','utf8'));
  const expected=pack.expectedAfterIntegration;
  for(const field of ['theories','sources','formulas','formulaBearing','formulaGaps','relations','editorialRelations','sourceBackedRelations','explicitFormulaMetadata','primarySourced']){
