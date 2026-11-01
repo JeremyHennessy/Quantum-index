@@ -5,6 +5,7 @@ import {createHash} from 'node:crypto';
 import {spawnSync} from 'node:child_process';
 import {projectPreCiProjectSplit,readPreCiProjectSplitFile} from './ci-project-split-baseline.mjs';
 import {projectPreEngagement} from './engagement-baseline.mjs';
+import {readPreBaoFile} from './bao-integration-baseline.mjs';
 const ledger=JSON.parse(fs.readFileSync('research/CI_PROJECT_SPLIT_INTEGRITY_2026-10-26.json'));
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const matrixExpression='$'+'{{ matrix.project }}';
@@ -24,14 +25,14 @@ test('CI project split preserves all 281 baseline paths and rejects changed or s
   const raw=fs.readFileSync(file);assert.equal(hash(projectPreEngagement(raw,file)),entry.afterSha256,file);
   assert.equal(hash(readPreCiProjectSplitFile(file)),entry.beforeSha256,file);
   assert.equal(readPreCiProjectSplitFile(file,'utf8'),entry.beforeText,file);
-  assert.throws(()=>projectPreCiProjectSplit(Buffer.from(entry.beforeText),file),/undeclared (?:DM-1A integration|CI project-split|engagement presentation) mutation/);
-  assert.throws(()=>projectPreCiProjectSplit(Buffer.concat([raw,Buffer.from('undeclared')]),file),/undeclared (?:DM-1A integration|CI project-split|engagement presentation) mutation/);
+  assert.throws(()=>projectPreCiProjectSplit(Buffer.from(entry.beforeText),file),/undeclared (?:BAO|DM-1A integration|CI project-split|engagement presentation) mutation/);
+  assert.throws(()=>projectPreCiProjectSplit(Buffer.concat([raw,Buffer.from('undeclared')]),file),/undeclared (?:BAO|DM-1A integration|CI project-split|engagement presentation) mutation/);
  }
  for(const [file,want]of Object.entries(ledger.unchangedFiles))assert.equal(hash(projectPreEngagement(fs.readFileSync(file),file)),want,file);
  for(const [file,want]of Object.entries(ledger.newFiles))assert.equal(hash(projectPreEngagement(fs.readFileSync(file),file)),want,file);
 });
 test('only browser project scheduling and artifact names change; package still requires every matrix job',()=>{
- const raw=fs.readFileSync('.github/workflows/validate.yml','utf8');assert.equal(raw,expectedWorkflow());
+ const raw=readPreBaoFile('.github/workflows/validate.yml','utf8');assert.equal(raw,expectedWorkflow());
  assert.match(raw,/project: \[chromium, webkit\]/);assert.match(raw,/fail-fast: false/);assert.match(raw,/max-parallel: 2/);
  assert.match(raw,/  browser:[\s\S]*?timeout-minutes: 35/);
  assert.match(raw,/  package:[\s\S]*?    needs: \[validate, browser\]/);

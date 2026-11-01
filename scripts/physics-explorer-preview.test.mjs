@@ -1,18 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import vm from 'node:vm';
 import {createHash} from 'node:crypto';
+import {loadPreBaoRuntime,readPreBaoFile} from './bao-integration-baseline.mjs';
 
-const html=fs.readFileSync('docs/physics-explorer.html','utf8');
+const html=readPreBaoFile('docs/physics-explorer.html','utf8');
 const css=fs.readFileSync('docs/physics-explorer.css','utf8');
 const js=fs.readFileSync('docs/physics-explorer.js','utf8');
 const checksum=buffer=>createHash('sha256').update(buffer).digest('hex');
-const scope={window:{}};
-vm.createContext(scope);
-for(const asset of ['theories.js','formulas.js','developments.js','questions.js','evidence.js','problems.js','passports.js']){
-  vm.runInContext(fs.readFileSync(asset,'utf8'),scope,{filename:asset});
-}
+const scope={window:loadPreBaoRuntime()};
 const d=scope.window.QI_DATA;
 
 test('Physics Explorer uses exact original source assets and scientific record identities',()=>{
@@ -36,7 +32,7 @@ test('Physics Explorer uses exact original source assets and scientific record i
 });
 
 test('new explorer is additive: approved live atlas renderer and page bytes remain immutable',()=>{
-  assert.equal(checksum(fs.readFileSync('index.html')),'b464c8478c83974dfbab204a39249e4f124531c4129c2ff15a5c315fc74fc121');
+  assert.equal(checksum(readPreBaoFile('index.html')),'b464c8478c83974dfbab204a39249e4f124531c4129c2ff15a5c315fc74fc121');
   assert.equal(checksum(fs.readFileSync('app.js')),'650b38708ca3ce89289ecdde52124ca8ab90acf04a575fb721dcb0189fa8d0d1');
   assert.ok(!fs.readFileSync('index.html','utf8').includes('physics-explorer'));
   assert.ok(!fs.readFileSync('app.js','utf8').includes('physics-explorer'));

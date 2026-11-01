@@ -12,10 +12,10 @@ Updated 21 October 2026. This is the single continuation entry point; dated rele
 - **356** primary-sourced; **129** review-sourced; **0** catalogued-only entries
 - **616** relationships: **130** source-backed; **486** editorial
 - **41** thought trees
-- **464** formulas across **30** categories
+- **466** formulas across **30** categories
 - **328** entries with linked formulas; **111** documented formula gaps
 - Other audit classes: **11** interpretations, **16** conceptual, **18** theorem-first, **1** thought experiment
-- Formula metadata: **278** explicitly reviewed; **186** baseline records
+- Formula metadata: **280** explicitly reviewed; **186** baseline records
 - **16** reviewed DevelopmentEvents through **2026**
 
 Source attachment and formula presence are structural coverage measures, not verification of every claim or complete mathematical coverage.

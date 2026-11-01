@@ -14437,3 +14437,92 @@ window.QI_FORMULAS.formulas.push(...formulas);})();
  for(const f of formulas)if(existing.has(f.id))throw new Error('DM-1A duplicate formula '+f.id);
  window.QI_FORMULAS.formulas.push(...formulas);
 })();
+
+// 2026-10-31 source-reviewed BAO standard-ruler relations.
+(()=>{
+ const additions=[
+  {
+   "id":"bao-drag-sound-horizon",
+   "name":"Comoving sound horizon at baryon drag",
+   "category":"Astroparticle physics & cosmology",
+   "latex":"r_{\\rm d}=\\int_{z_{\\rm d}}^{\\infty}\\frac{c_s(z)}{H(z)}\\,dz",
+   "plain":"r_d = integral from z_d to infinity of c_s(z)/H(z) dz",
+   "description":"Comoving pre-drag sound horizon that sets the BAO standard-ruler scale; its numerical calibration depends on the pre-recombination expansion and species content.",
+   "theoryIds":["lambda-cdm"],
+   "sourceIds":["desi-dr2-cosmology-2025"],
+   "tags":["BAO","sound horizon","baryon drag","standard ruler"],
+   "formulaType":"defining",
+   "assumptions":[
+    "The background is described by an expanding FLRW history with H(z)>0 over the integral; z is cosmological redshift.",
+    "c_s(z) is the sound speed of the coupled photon-baryon fluid and z_d is the baryon-drag epoch, not the photon last-scattering redshift z_*.",
+    "This integral defines a comoving length; it is not itself a measured BAO peak or a fixed numerical value.",
+    "Evaluating r_d requires a specified early-universe expansion and sound-speed history. The paper's approximate numerical calibration assumes standard pre-recombination physics and is not universal."
+   ],
+   "variables":[
+    "r_d: comoving sound horizon at the baryon-drag epoch",
+    "z_d: redshift at which photon drag on baryons ends",
+    "c_s(z): photon-baryon fluid sound speed at redshift z",
+    "H(z): Hubble expansion rate at redshift z",
+    "z: cosmological redshift, dimensionless"
+   ],
+   "regime":"Early-universe photon-baryon acoustic propagation integrated up to the baryon-drag epoch (distinct from photon last scattering); excludes late-time BAO distance conversion and does not fix an early-universe model.",
+   "units":"z and z_d dimensionless; c_s is speed and H is inverse time, so r_d has units of length (e.g. Mpc). In c=1 units, time and length use the same units.",
+   "theoryRelationship":"Source-defined BAO ruler relation linked to LambdaCDM as the catalog's baseline cosmology; the definition is not exclusive to LambdaCDM and its value changes if early-universe physics changes.",
+   "metadataReview":"explicit",
+   "reviewedAt":"2026-10-31",
+   "curationBatch":"bao-standard-ruler-formulas-2026-10-31",
+   "sourceLocations":[
+    {
+     "sourceId":"desi-dr2-cosmology-2025",
+     "locator":"DESI DR2 Results II, Introduction, Eq. (1): definition of the comoving sound horizon at the baryon-drag epoch; accompanying text identifies c_s as the photon-baryon sound speed, z_d as the drag redshift, and states the standard pre-recombination-physics qualification.",
+     "url":"https://arxiv.org/html/2503.14738v3"
+    }
+   ]
+  },
+  {
+   "id":"bao-flat-transverse-radial-distance-ratios",
+   "name":"Flat-universe transverse and radial BAO distance ratios",
+   "category":"Astroparticle physics & cosmology",
+   "latex":"\\frac{D_{\\rm M}(z)}{r_{\\rm d}},\\qquad \\frac{D_{\\rm H}(z)}{r_{\\rm d}},\\qquad D_{\\rm M}(z)=\\frac{c}{H_0}\\int_0^z\\frac{dz'}{H(z')/H_0}\\;(\\Omega_{\\rm K}=0),\\qquad D_{\\rm H}(z)=\\frac{c}{H(z)}",
+   "plain":"D_M(z)/r_d and D_H(z)/r_d; for Omega_K=0, D_M(z)=(c/H0) integral from 0 to z of dz'/(H(z')/H0); D_H(z)=c/H(z)",
+   "description":"The dimensionless transverse and radial BAO observables, with the flat-FLRW transverse distance and Hubble distance definitions used to interpret them.",
+   "theoryIds":["lambda-cdm"],
+   "sourceIds":["desi-dr2-cosmology-2025"],
+   "tags":["BAO","distance ratios","transverse distance","Hubble distance","expansion history"],
+   "formulaType":"defining",
+   "assumptions":[
+    "The displayed transverse-distance integral explicitly assumes spatially flat FLRW geometry, Omega_K=0; curved models require the curvature-dependent distance relation and are not covered by that integral here.",
+    "D_M is the transverse comoving distance and D_H is the radial Hubble distance; z is the effective redshift of the analyzed tracer bin.",
+    "In anisotropic BAO analyses, the fitted dimensionless observables include D_M/r_d and D_H/r_d under the stated template and analysis choices; absolute distances require an external or model-based calibration of r_d.",
+    "The ratios are observables used in cosmological inference, not direct measurements of dark-energy microphysics or model-independent determinations of H_0.",
+    "Inference uses a fiducial template and validated conversion to distance ratios, with residual modeling effects included in systematic uncertainties; the DESI paper reports final distance measurements and uncertainties that do not depend on the chosen fiducial cosmology. Constraints still reflect tracer selection, covariance and analysis choices; this card gives definitions, not a DESI measurement or likelihood."
+   ],
+   "variables":[
+    "D_M(z): transverse comoving distance to redshift z",
+    "D_H(z)=c/H(z): radial Hubble distance at redshift z",
+    "r_d: comoving sound horizon at the baryon-drag epoch",
+    "H(z): Hubble expansion rate at redshift z",
+    "H_0: present Hubble expansion rate",
+    "c: speed of light",
+    "Omega_K: curvature density parameter; set to zero in the displayed D_M integral",
+    "z,z': cosmological redshifts, dimensionless"
+   ],
+   "regime":"BAO distance interpretation in a spatially flat FLRW background; the displayed D_M expression is not the curved-universe distance formula and does not by itself specify a likelihood or calibration of r_d.",
+   "units":"D_M, D_H, r_d and c/H_0 have units of length (e.g. Mpc); D_M/r_d and D_H/r_d, z, Omega_K and H(z)/H_0 are dimensionless; H and H_0 are inverse time.",
+   "theoryRelationship":"Source-defined BAO distance observables linked to LambdaCDM as a baseline for expansion-history inference; the geometric definitions can be used with other expansion models, subject to their assumptions and the stated flatness restriction.",
+   "metadataReview":"explicit",
+   "reviewedAt":"2026-10-31",
+   "curationBatch":"bao-standard-ruler-formulas-2026-10-31",
+   "sourceLocations":[
+    {
+     "sourceId":"desi-dr2-cosmology-2025",
+     "locator":"DESI DR2 Results II, Introduction, Eq. (4) for flat-universe D_M and Eq. (5) for D_H; immediately following Eq. (5), text states that BAO directly constrains D_M/r_d and D_H/r_d. Eq. (3) is the separate curvature-dependent D_M relation.",
+     "url":"https://arxiv.org/html/2503.14738v3"
+    }
+   ]
+  }
+ ];
+ const existing=new Set(window.QI_FORMULAS.formulas.map(f=>f.id));
+ for(const f of additions)if(existing.has(f.id))throw new Error('Duplicate BAO formula '+f.id);
+ window.QI_FORMULAS.formulas.push(...additions);
+})();
