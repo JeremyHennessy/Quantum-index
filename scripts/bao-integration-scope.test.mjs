@@ -8,15 +8,13 @@ const expected=[
  'docs/FORMULA_COVERAGE.md','docs/RESEARCH_PROFILES.md','docs/coverage.json',
  'docs/responsive-check.html','formulas.js','index.html','theories.js',
  '.github/workflows/validate.yml',
- 'docs/MIT_OCW_QUANTUM_LEARNING_2026-11-01.md',
-  'research/MIT_OCW_QUANTUM_LEARNING_BRIDGE_2026-11-01.json',
-  'research/BAO_FORMULA_INTEGRATION_INTEGRITY_2026-11-01.json',
+ 'research/BAO_FORMULA_INTEGRATION_INTEGRITY_2026-11-01.json',
  'research/NFW_HALO_INTEGRATION_INTEGRITY_2026-11-01.json',
  'scripts/bao-integration-baseline.mjs','scripts/bao-integration-scope.test.mjs',
  'scripts/bao-integration.test.mjs','scripts/bao-projection-core.mjs',
  'scripts/ci-project-split.test.mjs',
  'scripts/dm1a-integration-baseline.mjs','scripts/dm1a-integration.test.mjs',
- 'scripts/formula-gaps-source-audit.test.mjs','scripts/physics-explorer-preview.test.mjs','scripts/mit-ocw-learning-bridge.test.mjs','scripts/nfw-halo-profile.test.mjs','tests/browser/bao-formulas.spec.mjs',
+ 'scripts/formula-gaps-source-audit.test.mjs','scripts/physics-explorer-preview.test.mjs','scripts/nfw-halo-profile.test.mjs','tests/browser/bao-formulas.spec.mjs',
  'tests/browser/filter-controls.spec.mjs','tests/browser/astro-formula-review.spec.mjs',
  'tests/browser/physics-explorer.spec.mjs','tests/browser/repository-links.spec.mjs','tests/browser/nfw-halo-profile.spec.mjs'
 ].sort();
