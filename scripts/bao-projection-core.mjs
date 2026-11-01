@@ -30,13 +30,13 @@ function deepFreeze(value){
   return value;
 }
 
-export function createBaoProjector(manifestBytes,{expectedManifestSha256,allowedPaths}){
+export function createBaoProjector(manifestBytes,{expectedManifestSha256,allowedPaths,expectedSchema='qi-bao-formula-integration-v1',expectedBaseMain='d0e51baaf8611263ddbb9e1a97a8478ca63e8d96'}){
   manifestBytes=Buffer.from(manifestBytes);
   assert.match(expectedManifestSha256,/^[a-f0-9]{64}$/,'invalid pinned BAO manifest digest');
   assert.equal(sha256(manifestBytes),expectedManifestSha256,'BAO manifest digest mismatch');
   const manifest=JSON.parse(manifestBytes.toString('utf8'));
-  assert.equal(manifest.schema,'qi-bao-formula-integration-v1','unexpected BAO manifest schema');
-  assert.equal(manifest.baseMain,'d0e51baaf8611263ddbb9e1a97a8478ca63e8d96','unexpected BAO base main');
+  assert.equal(manifest.schema,expectedSchema,'unexpected integration manifest schema');
+  assert.equal(manifest.baseMain,expectedBaseMain,'unexpected integration base main');
   const expected=[...allowedPaths].map(canonicalPath).sort();
   const actual=Object.keys(manifest.files||{}).map(canonicalPath).sort();
   assert.deepEqual(actual,expected,'BAO manifest file allowlist mismatch');

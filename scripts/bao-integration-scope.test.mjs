@@ -6,16 +6,17 @@ const base='d0e51baaf8611263ddbb9e1a97a8478ca63e8d96';
 const expected=[
  'README.md','docs/CONTINUATION.md','docs/COVERAGE.md','docs/FORMULA_AUDIT.md',
  'docs/FORMULA_COVERAGE.md','docs/RESEARCH_PROFILES.md','docs/coverage.json',
- 'docs/responsive-check.html','formulas.js','index.html',
+ 'docs/responsive-check.html','formulas.js','index.html','theories.js',
  '.github/workflows/validate.yml',
  'research/BAO_FORMULA_INTEGRATION_INTEGRITY_2026-11-01.json',
+ 'research/NFW_HALO_INTEGRATION_INTEGRITY_2026-11-01.json',
  'scripts/bao-integration-baseline.mjs','scripts/bao-integration-scope.test.mjs',
  'scripts/bao-integration.test.mjs','scripts/bao-projection-core.mjs',
  'scripts/ci-project-split.test.mjs',
  'scripts/dm1a-integration-baseline.mjs','scripts/dm1a-integration.test.mjs',
- 'scripts/formula-gaps-source-audit.test.mjs','scripts/physics-explorer-preview.test.mjs','tests/browser/bao-formulas.spec.mjs',
+ 'scripts/formula-gaps-source-audit.test.mjs','scripts/physics-explorer-preview.test.mjs','scripts/nfw-halo-profile.test.mjs','tests/browser/bao-formulas.spec.mjs',
  'tests/browser/filter-controls.spec.mjs','tests/browser/astro-formula-review.spec.mjs',
- 'tests/browser/physics-explorer.spec.mjs','tests/browser/repository-links.spec.mjs'
+ 'tests/browser/physics-explorer.spec.mjs','tests/browser/repository-links.spec.mjs','tests/browser/nfw-halo-profile.spec.mjs'
 ].sort();
 
 test('complete BAO candidate change scope contains no unlisted tracked or new files',t=>{

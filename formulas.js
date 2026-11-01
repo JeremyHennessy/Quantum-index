@@ -14526,3 +14526,50 @@ window.QI_FORMULAS.formulas.push(...formulas);})();
  for(const f of additions)if(existing.has(f.id))throw new Error('Duplicate BAO formula '+f.id);
  window.QI_FORMULAS.formulas.push(...additions);
 })();
+
+// 2026-11-01 source-reviewed ΛCDM halo-model representative.
+(() => {
+ const additions=[
+  {
+   "id":"nfw-cold-dark-matter-halo-density-profile",
+   "name":"NFW spherical cold-dark-matter halo density profile",
+   "category":"Astroparticle physics & cosmology",
+   "latex":"\\rho(r)=\\rho_{\\rm crit}\\,\\frac{\\delta_{\\rm c}}{(r/r_{\\rm s})(1+r/r_{\\rm s})^2}",
+   "plain":"rho(r) = rho_crit delta_c / [(r/r_s)(1 + r/r_s)^2]",
+   "description":"A two-parameter density fit for spherically averaged equilibrium cold-dark-matter halos in the original hierarchical-clustering simulations.",
+   "theoryIds":["lambda-cdm"],
+   "sourceIds":["navarro-frenk-white-1997"],
+   "tags":["dark matter halo","NFW","density profile","simulation fit"],
+   "formulaType":"approximation",
+   "assumptions":[
+    "This is the empirical fitting form reported for spherically averaged equilibrium halos in collisionless hierarchical-clustering simulations, not a fundamental dark-matter particle equation.",
+    "The source reports a good fit over about two decades in radius, from the gravitational-softening scale to approximately the virial radius; the fit has a central r^-1 and large-radius r^-3 density slope.",
+    "The characteristic density delta_c and scale radius r_s are halo-dependent fit parameters; Eq. (1) alone does not determine them or establish that every observed halo follows this profile.",
+    "The paper's profile is a simulation result and parameterization, not direct observational evidence for a dark-matter particle or a universal exact halo structure."
+   ],
+   "variables":[
+    "rho(r): spherically averaged halo mass density at radius r",
+    "rho_crit: critical density of the cosmological model at the stated epoch",
+    "delta_c: dimensionless characteristic overdensity parameter",
+    "r: distance from the halo center",
+    "r_s: halo scale radius"
+   ],
+   "regime":"Spherically averaged equilibrium cold-dark-matter halos formed by dissipationless hierarchical clustering; source-supported as a finite-range simulation fit, not a general observed or exact profile.",
+   "units":"rho(r) and rho_crit have mass-density units; delta_c and r/r_s are dimensionless; r and r_s have units of length.",
+   "theoryRelationship":"Linked to LambdaCDM only as an existing cosmological context, not as a separate dark-matter theory: the source studies multiple cosmological backgrounds, the profile equation has no explicit cosmological-constant term, and this association does not claim the fit is unique to LambdaCDM or establish a particle identity or the empirical status of a particular halo.",
+   "metadataReview":"explicit",
+   "reviewedAt":"2026-11-01",
+   "curationBatch":"nfw-halo-model-2026-11-01",
+   "sourceLocations":[
+    {
+     "sourceId":"navarro-frenk-white-1997",
+     "locator":"Navarro, Frenk & White, §1, Eq. (1), printed p. 2: rho/rho_crit = delta_c/[(r/r_s)(1+r/r_s)^2]; text immediately following defines r_s and delta_c. §3.2, printed p. 7, describes the approximately two-decade fit range.",
+     "url":"https://arxiv.org/pdf/astro-ph/9611107v4#page=2"
+    }
+   ]
+  }
+ ];
+ const existing=new Set(window.QI_FORMULAS.formulas.map(f=>f.id));
+ for(const f of additions)if(existing.has(f.id))throw new Error('Duplicate NFW formula '+f.id);
+ window.QI_FORMULAS.formulas.push(...additions);
+})();

@@ -6,7 +6,7 @@ import {createHash} from 'node:crypto';
 import {createBaoProjector} from './bao-projection-core.mjs';
 import {
   baoIntegrationManifest,baoIntegrationPaths,baoProductPaths,baoIntegrationTestPaths,
-  loadPreBaoRuntime,projectPreBao,readPreBaoFile
+  loadPreBaoRuntime,loadPreNfwRuntime,projectPreBao,projectPreNfw,readPreBaoFile,readPreNfwFile
 } from './bao-integration-baseline.mjs';
 import {loadRuntime} from './category-trust-census.mjs';
 import {projectPreDm1a,readPreDm1aFile} from './dm1a-integration-baseline.mjs';
@@ -44,12 +44,12 @@ test('BAO manifest pins exact product and integration path sets and every record
  assert.equal(baoIntegrationManifest.reportedOriginalLocalCommit,'8d73703974e9b8ce6f15f886808bd137c80defe4');
  assert.match(baoIntegrationManifest.recoveryNote,/not present in this checkout/);
  for(const file of baoIntegrationPaths){
-  const entry=baoIntegrationManifest.files[file],snapshot=Buffer.from(fs.readFileSync(file));
+  const entry=baoIntegrationManifest.files[file],snapshot=projectPreNfw(fs.readFileSync(file),file);
   assert.ok(entry,file);
   assert.equal(hash(snapshot),entry.afterSha256,file+': candidate bytes');
   assert.equal(hash(projectPreBao(snapshot,file)),entry.beforeSha256,file+': exact pre-BAO bytes');
   assert.equal(projectPreBao(snapshot,file).toString('base64'),entry.beforeBase64,file+': immutable before bytes');
-  assert.equal(entry.afterBase64,fs.readFileSync(file).toString('base64'),file+': exact after bytes');
+  assert.equal(entry.afterBase64,snapshot.toString('base64'),file+': exact after bytes');
  }
 });
 
@@ -68,17 +68,17 @@ test('BAO projection accepts only exact before or exact candidate bytes and reje
  for(const file of baoIntegrationPaths){
   const bytes=fs.readFileSync(file),entry=baoIntegrationManifest.files[file];
   assert.deepEqual(projectPreBao(bytes,file),Buffer.from(entry.beforeBase64,'base64'),file);
-  assert.throws(()=>projectPreBao(Buffer.concat([bytes,Buffer.from([0])]),file),/undeclared BAO mutation/,file+': appended byte');
+  assert.throws(()=>projectPreBao(Buffer.concat([bytes,Buffer.from([0])]),file),/undeclared (?:BAO|NFW) mutation/,file+': appended byte');
   const altered=Buffer.from(bytes);altered[Math.floor(altered.length/2)]^=1;
-  assert.throws(()=>projectPreBao(altered,file),/undeclared BAO mutation/,file+': one-byte mutation');
+  assert.throws(()=>projectPreBao(altered,file),/undeclared (?:BAO|NFW) mutation/,file+': one-byte mutation');
  }
  const formulaBytes=fs.readFileSync('formulas.js'),anchor=Buffer.from('Comoving pre-drag sound horizon');
  const index=formulaBytes.indexOf(anchor);assert.ok(index>0);
  const alteredFormula=Buffer.from(formulaBytes);alteredFormula[index]^=1;
- assert.throws(()=>projectPreBao(alteredFormula,'formulas.js'),/undeclared BAO mutation/);
- const indexBytes=fs.readFileSync('index.html'),wrongVersion=Buffer.from(indexBytes.toString('utf8').replace('cbc4d5d42b00f7ca','0000000000000000'));
+ assert.throws(()=>projectPreBao(alteredFormula,'formulas.js'),/undeclared (?:BAO|NFW) mutation/);
+ const indexBytes=fs.readFileSync('index.html'),formulaVersion=hash(fs.readFileSync('formulas.js')).slice(0,16),wrongVersion=Buffer.from(indexBytes.toString('utf8').replace(`formulas.js?v=${formulaVersion}`,`formulas.js?v=${'0'.repeat(16)}`));
  assert.notDeepEqual(wrongVersion,indexBytes);
- assert.throws(()=>projectPreBao(wrongVersion,'index.html'),/undeclared BAO mutation/);
+ assert.throws(()=>projectPreBao(wrongVersion,'index.html'),/undeclared (?:BAO|NFW) mutation/);
  assert.doesNotThrow(()=>projectPreBao(Buffer.from('unlisted'),'scripts/not-in-scope.mjs'));
  assert.throws(()=>projectPreBao(Buffer.from('aliased'),'../formulas.js'),/alias component/);
 });
@@ -104,7 +104,7 @@ test('pure projector validates its pin, allowlist, byte hashes, base64 and path 
  const extra=syntheticManifest({mutate:value=>{value.files['extra.txt']={...value.files['x.txt']};}});
  assert.throws(()=>createBaoProjector(extra.bytes,{expectedManifestSha256:extra.digest,allowedPaths:['x.txt']}),/allowlist mismatch/);
  const wrongBase=syntheticManifest({mutate:value=>{value.baseMain='wrong';}});
- assert.throws(()=>createBaoProjector(wrongBase.bytes,{expectedManifestSha256:wrongBase.digest,allowedPaths:['x.txt']}),/unexpected BAO base main/);
+ assert.throws(()=>createBaoProjector(wrongBase.bytes,{expectedManifestSha256:wrongBase.digest,allowedPaths:['x.txt']}),/unexpected integration base main/);
 });
 
 test('projector snapshots return the recorded kind and public manifest metadata cannot alter projection',()=>{
@@ -120,7 +120,7 @@ test('projector snapshots return the recorded kind and public manifest metadata 
 });
 
 test('live runtime contains exactly two source-qualified BAO definitions and preserves unrelated records',()=>{
- const baseline=loadPreBaoRuntime(),current=loadRuntime();
+ const baseline=loadPreBaoRuntime(),current=loadPreNfwRuntime();
  const oldFormulas=plain(baseline.QI_FORMULAS.formulas),added=current.QI_FORMULAS.formulas.filter(f=>formulaIds.includes(f.id));
  assert.equal(current.QI_FORMULAS.formulas.length,466);
  assert.equal(added.length,2);
@@ -164,7 +164,7 @@ test('live runtime contains exactly two source-qualified BAO definitions and pre
  lambda.formulaIds.push(...formulaIds);
  assert.deepEqual(plain(current.QI_FORMULA_AUDIT),expectedAudit,'formula audit changes only through derived Lambda-CDM formula IDs');
  for(const key of Object.keys(baseline))if(!['QI_FORMULAS','QI_FORMULA_AUDIT'].includes(key))assert.deepEqual(plain(current[key]),plain(baseline[key]),key);
- const coverage=JSON.parse(fs.readFileSync('docs/coverage.json','utf8'));
+ const coverage=JSON.parse(readPreNfwFile('docs/coverage.json','utf8'));
  assert.equal(coverage.formulas,466);assert.equal(coverage.explicitFormulaMetadata,280);
  assert.equal(coverage.theories,485);assert.equal(coverage.sources,612);assert.equal(coverage.formulaCategories,30);
  const priorCoverage=JSON.parse(readPreBaoFile('docs/coverage.json','utf8'));
