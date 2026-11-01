@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-11-01",
+  "reviewedAgainstMain": "9e8ae083d0a9906bb9316b1b081cb50df899fecf",
+  "publicationStatus": "research-only-not-shipped",
+  "provenanceClass": "pedagogical-course-material",
+  "governingRule": "An OCW explanation does not establish a theory's historical priority, experimental verification, current research consensus, or completeness. Original research papers and experimental collaborations remain the appropriate authorities for those separate claims.",
+  "linkingRule": "theoryIds and formulaIds are navigational crosswalks to existing catalog records, not modifications, new graph edges, or claims that OCW originally published those formulas.",
+  "reuseRule": "Link to MIT-hosted OCW course and notes; preserve citation and create original commentary and self-worked calculations. No course PDFs, figures, or transcribed lecture text are republished.",
+  "lessons": [
+    {
+      "id": "ocw-805-two-state-spin",
+      "title": "Two-state Hilbert spaces, spin and time evolution",
+      "courseCode": "8.05",
+      "courseName": "Quantum Physics II",
+      "lecturer": "Barton Zwiebach",
+      "term": "Fall 2013",
+      "module": "Chapter 7 — Two-State Systems",
+      "coursePage": "https://ocw.mit.edu/courses/8-05-quantum-physics-ii-fall-2013/pages/lecture-notes/",
+      "unitUrl": "https://ocw.mit.edu/courses/8-05-quantum-physics-ii-fall-2013/7c376a3b5b27e5ea586a7e37b85a05d3_MIT8_05F13_Chap_07.pdf",
+      "locators": [
+        "Chapter 7, section 1, printed p. 1 (two-state description)",
+        "Chapter 7, section 2, printed p. 3, Eqs. (2.8) and (2.10) (spin Hamiltonian and time evolution)"
+      ],
+      "theoryIds": [
+        "quantum-information"
+      ],
+      "formulaIds": [
+        "qubit-state",
+        "spin-half",
+        "unitary-evolution"
+      ],
+      "usefulAddition": "Use a two-dimensional subspace as a concrete example of amplitudes, relative phase and unitary motion. Explain how a spin-1/2 measurement basis changes predicted probabilities.",
+      "selfWorkedCheck": "For a state (|up>+|down>)/sqrt(2) under H=-gamma B S_z, the relative phase changes with angular rate gamma B; the probabilities in the z basis stay one-half each.",
+      "assumptions": "Uniform time-independent magnetic field along z; isolated spin; unit-normalized state; sign of gamma is conventional.",
+      "nonClaims": [
+        "A qubit abstraction does not assert that its carrier has no other physical degrees of freedom.",
+        "Unitary dynamics does not itself describe a measurement outcome or any experimental qubit fidelity."
+      ]
+    },
+    {
+      "id": "ocw-805-tensor-entanglement",
+      "title": "Tensor products, Bell pairs and reduced states",
+      "courseCode": "8.05",
+      "courseName": "Quantum Physics II",
+      "lecturer": "Barton Zwiebach",
+      "term": "Fall 2013",
+      "module": "Chapter 8 — Multiparticle States and Tensor Products",
+      "coursePage": "https://ocw.mit.edu/courses/8-05-quantum-physics-ii-fall-2013/pages/lecture-notes/",
+      "unitUrl": "https://ocw.mit.edu/courses/8-05-quantum-physics-ii-fall-2013/ffe665c0cba2eae19a83e88dec42925c_MIT8_05F13_Chap_08.pdf",
+      "locators": [
+        "Chapter 8, section 1, printed p. 3, Eq. (1.6) (composite-state dimension)",
+        "Chapter 8, sections 2–3, printed pp. 9–10, including Eq. (3.52) (separability/Bell-state example)"
+      ],
+      "theoryIds": [
+        "entanglement-theory",
+        "quantum-information",
+        "bell"
+      ],
+      "formulaIds": [
+        "bell-state"
+      ],
+      "usefulAddition": "Distinguish an entangled joint pure state from the local mixed state of either subsystem; tie the tensor-product rule to the meaning of a Bell pair.",
+      "selfWorkedCheck": "For |Phi+>=(|00>+|11>)/sqrt(2), the 2x2 coefficient determinant is 1/2, so the state is not a product; tracing out either qubit gives I/2.",
+      "assumptions": "Two distinguishable two-level systems for the example; normalized pure joint state and standard computational basis.",
+      "nonClaims": [
+        "Entanglement alone is not a demonstrated Bell-inequality violation without specifying measurements and statistics.",
+        "A maximally mixed local state cannot transmit information faster than light."
+      ]
+    },
+    {
+      "id": "ocw-806-perturbation-two-level",
+      "title": "Nondegenerate perturbation theory and an exact comparison",
+      "courseCode": "8.06",
+      "courseName": "Quantum Physics III",
+      "lecturer": "Barton Zwiebach",
+      "term": "Spring 2018",
+      "module": "Chapter 1 — Time-independent Perturbation Theory",
+      "coursePage": "https://ocw.mit.edu/courses/8-06-quantum-physics-iii-spring-2018/pages/lecture-notes/",
+      "unitUrl": "https://ocw.mit.edu/courses/8-06-quantum-physics-iii-spring-2018/a0889c5ca8a479c3e56c544d646fb770_MIT8_06S18ch1.pdf",
+      "locators": [
+        "Chapter 1, section 1, printed p. 1, Eq. (1.2) (H(lambda)=H0+lambda delta H)",
+        "Chapter 1, section 1, printed p. 8, Eqs. (1.1.36)–(1.1.37) (nondegenerate energy corrections)"
+      ],
+      "theoryIds": [
+        "wave-mechanics"
+      ],
+      "formulaIds": [
+        "perturb-first-energy",
+        "perturb-second-energy"
+      ],
+      "usefulAddition": "Demonstrate why the denominator E_n^(0)-E_m^(0) controls the small-coupling approximation, using an exactly diagonalizable two-state Hamiltonian.",
+      "selfWorkedCheck": "For H0=diag(0,Delta), V=epsilon sigma_x and Delta>0, the ground energy is [Delta-sqrt(Delta^2+4(lambda epsilon)^2)]/2; at small |lambda epsilon|/Delta it is -(lambda epsilon)^2/Delta plus higher-order terms.",
+      "assumptions": "Nondegenerate unperturbed levels; Delta>0; Hermitian perturbation and |lambda epsilon|<<Delta.",
+      "nonClaims": [
+        "The expansion is not reliable near degeneracy without a changed method.",
+        "An algebraic worked check is not an observed energy shift in a laboratory."
+      ]
+    },
+    {
+      "id": "ocw-8324-yang-mills-conventions",
+      "title": "Gauge-covariant derivatives and Yang–Mills field strength",
+      "courseCode": "8.324",
+      "courseName": "Relativistic Quantum Field Theory II",
+      "lecturer": "Hong Liu",
+      "term": "Fall 2010",
+      "module": "Lecture 3 — Non-Abelian Gauge Theory",
+      "coursePage": "https://ocw.mit.edu/courses/8-324-relativistic-quantum-field-theory-ii-fall-2010/pages/lecture-notes/",
+      "unitUrl": "https://ocw.mit.edu/courses/8-324-relativistic-quantum-field-theory-ii-fall-2010/fa941a1dfc792c352ff23669a23f02de_MIT8_324F10_Lecture3.pdf",
+      "locators": [
+        "Lecture 3, printed p. 2, Eqs. (14) and (16) (D_mu and commutator field strength)",
+        "Lecture 3, printed p. 3, Eqs. (19) and (21) (gauge action/field-strength components)"
+      ],
+      "theoryIds": [
+        "yang-mills",
+        "qed"
+      ],
+      "formulaIds": [
+        "covariant-derivative",
+        "yang-mills-field",
+        "yang-mills-lagrangian"
+      ],
+      "usefulAddition": "Explain which sign convention is used, why the commutator generates nonlinear terms in a non-Abelian field, and how the Abelian limit differs.",
+      "selfWorkedCheck": "Under D_mu=partial_mu-i g A_mu, [D_mu,D_nu]=-i g F_munu with F_munu=partial_mu A_nu-partial_nu A_mu-i g[A_mu,A_nu]. For commuting A_mu the commutator term vanishes.",
+      "assumptions": "Hermitian matrix-valued generators, D_mu=partial_mu-i g A_mu and the lecture's Lie algebra conventions; normalization of Tr(T^a T^b) must be supplied to compare action prefactors.",
+      "nonClaims": [
+        "Changing D_mu sign convention changes corresponding F_munu sign conventions; formulas must be reconciled before modifying existing records.",
+        "This is pedagogical gauge-theory mathematics, not a new experimental finding or replacement for primary Yang–Mills literature."
+      ]
+    },
+    {
+      "id": "ocw-18435-qec-repetition",
+      "title": "What three-qubit repetition codes correct—and what they do not",
+      "courseCode": "18.435J",
+      "courseName": "Quantum Computation",
+      "lecturer": "Peter Shor (course); lecture scribed by Dah-Yoh Lim",
+      "term": "Fall 2003",
+      "module": "Lecture 16 — Quantum Error Correction",
+      "coursePage": "https://ocw.mit.edu/courses/18-435j-quantum-computation-fall-2003/pages/lecture-notes/",
+      "unitUrl": "https://ocw.mit.edu/courses/18-435j-quantum-computation-fall-2003/91bddd9a25a390ed70bacc5f80f6c23a_qc_lec16.pdf",
+      "locators": [
+        "Lecture 16, printed pp. 1–2 (three-qubit bit-flip repetition code and need to handle phase errors separately)"
+      ],
+      "theoryIds": [
+        "quantum-error-correction"
+      ],
+      "formulaIds": [],
+      "usefulAddition": "Give a specific syndrome calculation and contrast correctable single-X errors with an undetected logical-Z action in the repetition code.",
+      "selfWorkedCheck": "Encode alpha|0>+beta|1> as alpha|000>+beta|111>. A physical X on qubit 2 reverses both Z1Z2 and Z2Z3 parities; a Z on qubit 1 changes alpha|000>+beta|111> to alpha|000>-beta|111> and leaves both parity checks +1.",
+      "assumptions": "Ideal encoding, measurement and correction; a single Pauli error in the exercise; the specific code has bit-flip distance three but does not protect an arbitrary qubit from an arbitrary single-qubit error.",
+      "nonClaims": [
+        "Encoding is a linear isometry, not cloning an unknown quantum state.",
+        "The elementary repetition code does not independently establish practical fault tolerance or the general Knill–Laflamme criterion."
+      ]
+    }
+  ]
+}
