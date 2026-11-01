@@ -2,7 +2,7 @@
 
 **Reviewed:** 2026-11-01  
 **State:** research/teaching content only; not published in the Quantum Index UI or promoted to scientific records  
-**Intake:** main \`9e8ae083d0a9906bb9316b1b081cb50df899fecf\`  
+**Intake:** main `9e8ae083d0a9906bb9316b1b081cb50df899fecf`  
 **Machine-readable links and limitations:** [source-located course crosswalk](../research/MIT_OCW_QUANTUM_LEARNING_BRIDGE_2026-11-01.json)
 
 ## What this adds, and what it does not
@@ -31,7 +31,7 @@ e^{-i\gamma Bt/2}|\downarrow\rangle}{\sqrt 2}.
 
 A \(z\)-basis measurement still gives each result with probability \(1/2\). A measurement in a transverse basis can respond to the changing phase. This distinction connects the state-vector, measurement and dynamics concepts rather than presenting each equation in isolation.
 
-**Existing catalog:** \`quantum-information\`; \`qubit-state\`, \`spin-half\`, \`unitary-evolution\`. **Boundary:** an isolated, constant-field spin illustration; not a claim about actual hardware coherence or measurement dynamics.
+**Existing catalog:** `quantum-information`; `qubit-state`, `spin-half`, `unitary-evolution`. **Boundary:** an isolated, constant-field spin illustration; not a claim about actual hardware coherence or measurement dynamics.
 
 ### 2. A Bell pair is pure jointly and mixed locally
 
@@ -52,7 +52,7 @@ A product two-qubit state has a rank-one coefficient matrix. Here \(\det C=1/2\)
 
 That local state contains no information about which superposed term the pair occupies. Entanglement, a violation of a particular Bell inequality, and a communication protocol are **three distinct claims**: specify measurements and statistics before claiming a Bell violation, and do not imply faster-than-light signalling.
 
-**Existing catalog:** \`entanglement-theory\`, \`quantum-information\`, \`bell\` (the latter as an onward study link); \`bell-state\`. **Boundary:** ideal normalized pure Bell state for distinguishable qubits, not a measured Bell experiment.
+**Existing catalog:** `entanglement-theory`, `quantum-information`, `bell` (the latter as an onward study link); `bell-state`. **Boundary:** ideal normalized pure Bell state for distinguishable qubits, not a measured Bell experiment.
 
 ### 3. Why second-order perturbation theory has a denominator
 
@@ -76,7 +76,7 @@ E_-(\lambda)=\frac{\Delta-\sqrt{\Delta^2+4\lambda^2\epsilon^2}}{2}
 
 The perturbative answer matches the exact low-coupling expansion. As the unperturbed gap \(\Delta\) approaches zero, the expansion parameter \(|\lambda\epsilon|/\Delta\) grows, warning that ordinary nondegenerate perturbation theory is not reliable near degeneracy.
 
-**Existing catalog:** \`wave-mechanics\`; \`perturb-first-energy\`, \`perturb-second-energy\`. **Boundary:** two stationary levels and a nondegenerate expansion, not a new theory ID or empirical measurement.
+**Existing catalog:** `wave-mechanics`; `perturb-first-energy`, `perturb-second-energy`. **Boundary:** two stationary levels and a nondegenerate expansion, not a new theory ID or empirical measurement.
 
 ### 4. The non-Abelian term follows from the gauge-covariant derivative
 
@@ -93,7 +93,7 @@ For an Abelian gauge group, \([A_\mu,A_\nu]=0\). With noncommuting matrix-valued
 
 Different texts choose other signs or generator normalizations. Reconciling conventions is required **before** comparing or editing a formula card; an apparent sign mismatch does not automatically mean either source is wrong.
 
-**Existing catalog:** \`yang-mills\`, \`qed\`; \`covariant-derivative\`, \`yang-mills-field\`, \`yang-mills-lagrangian\`. **Boundary:** standard classical gauge-field mathematics underpinning QFT; no new measured prediction or replacement for original Yang–Mills primary source.
+**Existing catalog:** `yang-mills`, `qed`; `covariant-derivative`, `yang-mills-field`, `yang-mills-lagrangian`. **Boundary:** standard classical gauge-field mathematics underpinning QFT; no new measured prediction or replacement for original Yang–Mills primary source.
 
 ### 5. Three-qubit bit-flip protection is not full quantum error correction
 
@@ -111,7 +111,7 @@ Consider ideal parity checks \(Z_1Z_2\) and \(Z_2Z_3\). A single \(X_2\) bit fli
 
 The encoding maps one unknown state into a three-qubit code space: it does **not** make three independent clones. More sophisticated codes address both X and Z errors and need distinct source support for general error-correction conditions.
 
-**Existing catalog:** \`quantum-error-correction\`. **Boundary:** noiseless checks and a stipulated single Pauli error. Do not reattribute the separately source-reviewed \`knill-laflamme\` formula to these introductory lecture pages.
+**Existing catalog:** `quantum-error-correction`. **Boundary:** noiseless checks and a stipulated single Pauli error. Do not reattribute the separately source-reviewed `knill-laflamme` formula to these introductory lecture pages.
 
 ## Source and publication controls
 
@@ -119,7 +119,7 @@ The encoding maps one unknown state into a three-qubit code space: it does **not
 - Each link in the JSON crosswalk points to an **already existing** theory or formula ID. It is an editorial teaching relationship, not a source-backed graph edge or a new experimental Evidence item.
 - The material must be checked independently before any runtime data integration. Existing source IDs, formula metadata, historical reviews, saved workspace/notes, classic routes, and the approved Observatory / Physics Explorer assets are unchanged.
 - A new user-facing teaching experience would be a **separate visual candidate**, subject to open Issue #128, screenshots, browser checks and explicit acceptance. No UI work is part of this batch.
-- Before considering a release: review exact PDF locators and mathematics, run \`npm test\`, \`npm run validate\`, Chromium/WebKit, inspect exact-head screenshots where UI is affected, and separately verify any merge, Pages deployment, and served assets. A draft PR is not a release.
+- Before considering a release: review exact PDF locators and mathematics, run `npm test`, `npm run validate`, Chromium/WebKit, inspect exact-head screenshots where UI is affected, and separately verify any merge, Pages deployment, and served assets. A draft PR is not a release.
 
 ## Next bounded learning batches
 
