@@ -56,7 +56,7 @@ That local state contains no information about which superposed term the pair oc
 
 ### 3. Why second-order perturbation theory has a denominator
 
-**Read:** [MIT 8.06 Quantum Physics III, chapter 1, Perturbation Theory](https://ocw.mit.edu/courses/8-06-quantum-physics-iii-spring-2018/a0889c5ca8a479c3e56c544d646fb770_MIT8_06S18ch1.pdf) — Barton Zwiebach (2018), §1 printed p. 1 Eq. (1.2), printed p. 8 Eqs. (1.1.36)–(1.1.37).
+**Read:** [MIT 8.06 Quantum Physics III, chapter 1, Perturbation Theory](https://ocw.mit.edu/courses/8-06-quantum-physics-iii-spring-2018/a0889c5ca8a479c3e56c544d646fb770_MIT8_06S18ch1.pdf) — Barton Zwiebach (2018), §1 printed p. 1 Eq. (1.0.2), printed p. 8 Eqs. (1.1.36)–(1.1.37).
 
 For a nondegenerate unperturbed energy \(E_n^{(0)}\), a common second-order formula is
 
