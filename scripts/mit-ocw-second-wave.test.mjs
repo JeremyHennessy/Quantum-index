@@ -53,7 +53,7 @@ test('Berry-spin latitude calculation and allowed gauge winding agree modulo 2pi
  assert.ok(Math.abs(gammaAnalytical+Math.PI/2)<1e-12);
  assert.ok(Math.abs(Math.sin((gammaAnalytical+4*Math.PI)-gammaAnalytical))<1e-12,'closed-loop winding');
  assert.match(bridge.lessons[0].nonClaims.join(' '),/modulo 2pi/);
- assert.match(guide,/For an open path, endpoint phases matter/);
+ assert.match(guide,/For an \*open\* path, endpoint phases matter/);
 });
 
 test('Yukawa first Born amplitude, wave-number transfer and dimensions are not conflated',()=>{
