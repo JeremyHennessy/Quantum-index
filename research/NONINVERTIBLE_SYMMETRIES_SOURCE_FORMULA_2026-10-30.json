@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-30",
+  "baseMain": "228cd84230d0eaef8325dad4a94dc81ad8cf5a27",
+  "status": "specific-example-fusion-rule-source-checked-not-integrated",
+  "candidateTheory": {
+    "id": "noninvertible-generalized-symmetries",
+    "category": "Quantum field theory",
+    "originYear": null,
+    "disposition": "HOLD_ORIGIN_AND_FULL_FORMALISM",
+    "existingRelatedTheoryIds": [
+      "topological-qft",
+      "bf-theory"
+    ],
+    "scope": "Generalized symmetry structure built from topological defects whose fusion need not have group-like inverses; critical Ising illustrates a special 1+1D realization, not a universal multiplication law."
+  },
+  "source": {
+    "id": "kaidi-ohmori-zheng-2021-preprint-2022-prl",
+    "title": "Kramers-Wannier-like Duality Defects in (3+1)D Gauge Theories",
+    "authors": "Justin Kaidi, Kantaro Ohmori, Yunqin Zheng",
+    "firstPreprintYear": 2021,
+    "publisherYear": 2022,
+    "doi": "10.1103/PhysRevLett.128.111601",
+    "paperUrl": "https://scoap3-prod-backend.s3.cern.ch/media/files/68532/10.1103/PhysRevLett.128.111601.pdf",
+    "inspectedScope": "Journal PDF pp.1–2 visually reviewed; Eq. (1) is the 2D critical Ising prototype, Eq. (5) a conditional 3D defect on a 3-manifold; not an early-history sweep"
+  },
+  "formulaCandidate": {
+    "id": "ising-noninvertible-duality-defect-fusion",
+    "name": "Critical Ising Kramers–Wannier noninvertible defect fusion",
+    "latex": "\\mathcal{N}\\times\\mathcal{N}=\\mathbf{1}+\\eta_{\\mathbb{Z}_2}",
+    "plain": "N × N = 1 + eta_Z2",
+    "formulaType": "defining",
+    "description": "Source's illustrative fusion relation for the Kramers–Wannier duality defect line in the 1+1-dimensional critical Ising conformal field theory.",
+    "theoryIds": [
+      "noninvertible-generalized-symmetries"
+    ],
+    "sourceIds": [
+      "kaidi-ohmori-zheng-2021-preprint-2022-prl"
+    ],
+    "assumptions": [
+      "The setting is the 1+1D critical Ising CFT, not an arbitrary (3+1)D gauge theory.",
+      "N denotes a topological Kramers–Wannier duality defect line; η_Z2 denotes the invertible Z2 symmetry defect.",
+      "Fusion produces a sum of distinct topological defect sectors rather than the identity alone; therefore N has no group inverse within this fusion category.",
+      "This is an illustrative special case and is not the complete defining action or fusion rule of all noninvertible generalized symmetries."
+    ],
+    "variables": [
+      "N: Kramers–Wannier duality defect line",
+      "1: trivial topological defect",
+      "eta_Z2: invertible Z2 symmetry defect",
+      "×: topological-defect fusion, not ordinary matrix multiplication"
+    ],
+    "units": "All symbols are abstract topological fusion-category elements; no physical SI units.",
+    "regime": "Critical 2D Ising CFT; not a universal numerical prediction or a 4D gauge-theory result.",
+    "sourceLocation": {
+      "url": "https://scoap3-prod-backend.s3.cern.ch/media/files/68532/10.1103/PhysRevLett.128.111601.pdf#page=1",
+      "locator": "PRL 128 (2022) 111601, printed p.111601-1, left column, Eq. (1), immediately followed by the non-invertibility explanation."
+    },
+    "review": "specific-printed-equation-reviewed-candidate-only"
+  },
+  "futureMathHold": {
+    "subject": "3+1D Kramers–Wannier-like defect fusion",
+    "sourceLocation": "PRL 128 111601, printed p.111601-2, Eq. (5)",
+    "scope": "Depends on M3 spin/topology, H^0/H_2 groups, Q(Sigma) triple-intersection term, L(Sigma) surface defect, gauged Z2 one-form symmetry and anomaly data.",
+    "decision": "HOLD until independent exact normalization/convention and applicability review; do not reuse Ising Eq. (1) as general 4D formula."
+  },
+  "releaseConditions": [
+    "Do not assign 2021 or 2022 as the historical origin of all noninvertible symmetries; earlier 2D duality defect constructions require review.",
+    "Distinguish Ising fusion exemplar from higher-dimensional defect construction and from general tensor-category principles.",
+    "Full mathematical source review and separate exact-head Node/Chromium/WebKit acceptance are required before a live science record.",
+    "Preserve all approved existing catalog identities, UI, relationship provenance and data counts."
+  ],
+  "nonClaims": [
+    "No field-theoretic discovery or experimental proof claimed.",
+    "No runtime theory or formula was changed.",
+    "Eq. (1) is explicitly a model-specific illustration, not a universal formalism.",
+    "This intake does not resolve all fusion-category historical priority."
+  ]
+}
