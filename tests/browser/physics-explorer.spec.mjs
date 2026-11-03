@@ -1,4 +1,15 @@
 import {test,expect} from '@playwright/test';
+import {baoIntegrationManifest,loadPreBaoRuntime,nfwIntegrationManifest} from '../../scripts/bao-integration-baseline.mjs';
+
+const formulaSnapshot=baoIntegrationManifest.files['formulas.js'];
+const formulaBefore=Buffer.from(formulaSnapshot.beforeBase64,'base64');
+const formulaAfter=Buffer.from(formulaSnapshot.afterBase64,'base64');
+const baoFormulaIds=[...formulaAfter.subarray(formulaBefore.length).toString('utf8').matchAll(/"id":"([^"]+)"/g)].map(([,id])=>id);
+const nfwFormulaSnapshot=nfwIntegrationManifest.files['formulas.js'];
+const nfwFormulaBefore=Buffer.from(nfwFormulaSnapshot.beforeBase64,'base64');
+const nfwFormulaAfter=Buffer.from(nfwFormulaSnapshot.afterBase64,'base64');
+const nfwFormulaIds=[...nfwFormulaAfter.subarray(nfwFormulaBefore.length).toString('utf8').matchAll(/"id":"([^"]+)"/g)].map(([,id])=>id);
+const expectedFormulaCount=loadPreBaoRuntime().QI_FORMULAS.formulas.length+baoFormulaIds.length+nfwFormulaIds.length;
 
 async function openPhysics(page){
   const errors=[];
@@ -10,7 +21,7 @@ async function openPhysics(page){
 
 test('Physics Explorer shows complete original catalogue in Observatory visual system',async({page},info)=>{
   const errors=await openPhysics(page);
-  await expect(page.locator('#summaryCounters strong')).toHaveText(['485','464','60','21']);
+  await expect(page.locator('#summaryCounters strong')).toHaveText(['485',String(expectedFormulaCount),'60','21']);
   await expect(page.locator('#topicNav .domain-button')).toHaveCount(15);
   await expect(page.locator('#theoryList .theory-card')).toHaveCount(485);
   await expect(page.locator('#theoryDetail .detail-title')).toBeVisible();

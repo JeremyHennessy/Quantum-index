@@ -10,11 +10,12 @@ test('three astroparticle formulas show independent source locations and safe Ma
  for(const row of examples){
   await page.goto('/#/formula?theory='+row.id+'&review=explicit');
   const panel=page.locator('#formulaGrid');
-  await expect(panel.locator('.formula-card')).toHaveCount(1);
-  await expect(panel).toContainText(row.name);
-  await expect(panel.locator('a[href="'+row.url+'"]')).toBeVisible();
-  await expect(panel.locator('mjx-container')).toHaveCount(1,{timeout:30000});
-  await expect(panel.locator('mjx-container [data-mml-node="merror"], mjx-container [fill="red"], mjx-container [stroke="red"]')).toHaveCount(0);
+  const card=panel.locator('.formula-card').filter({has:page.getByRole('heading',{name:row.name,exact:true})});
+  await expect(card).toHaveCount(1);
+  await expect(card).toContainText(row.name);
+  await expect(card.locator('a[href="'+row.url+'"]')).toBeVisible();
+  await expect(card.locator('mjx-container')).toHaveCount(1,{timeout:30000});
+  await expect(card.locator('mjx-container [data-mml-node="merror"], mjx-container [fill="red"], mjx-container [stroke="red"]')).toHaveCount(0);
  }
  for(const width of [1280,390]){
   await page.setViewportSize({width,height:900});

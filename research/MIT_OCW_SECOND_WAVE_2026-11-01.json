@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-11-01",
+  "reviewedAgainstMain": "32a4a0a74af766e7854320f890a1bcd8e8417a0a",
+  "publicationStatus": "research-only-not-shipped",
+  "provenanceClass": "pedagogical-course-material",
+  "scope": "Second independent MIT OCW worked-learning batch; cross-links existing formulas, not new theory, source-backed graph edges, or empirical Evidence.",
+  "reuseRule": "Only original explanations and numerical worked examples. Link to official MIT-hosted PDFs; do not copy course PDFs, figures, or extended text.",
+  "lessons": [
+    {
+      "id": "mit-ocw-806-berry-gauge",
+      "name": "Berry connection, gauge transformation and closed-loop geometric phase",
+      "courseCode": "8.06",
+      "courseTitle": "Quantum Physics III",
+      "lecturer": "Barton Zwiebach",
+      "term": "Spring 2018",
+      "pdf": "https://ocw.mit.edu/courses/8-06-quantum-physics-iii-spring-2018/95ffb7405e75bec4f75564318e173ce0_MIT8_06S18ch6.pdf",
+      "coursePage": "https://ocw.mit.edu/courses/8-06-quantum-physics-iii-spring-2018/pages/lecture-notes/",
+      "locators": [
+        "Chapter 6 section 5, printed p. 14, Eqs. (5.15)–(5.22): Berry gauge transformation and curvature",
+        "Chapter 6 section 5, printed p. 15, Eqs. (5.23)–(5.27): gauge-invariant curvature and spin-1/2 solid angle"
+      ],
+      "theoryIds": [
+        "berry-phase"
+      ],
+      "formulaIds": [
+        "berry-connection",
+        "berry-curvature"
+      ],
+      "workedExample": "For |n+>=(cos(theta/2), exp(i phi) sin(theta/2)), A_phi=-sin²(theta/2). At theta=pi/3 the latitude loop encloses Omega=pi and gamma=-pi/2 modulo 2pi.",
+      "assumptions": "An isolated, normalized, smooth nondegenerate instantaneous eigenstate followed adiabatically around a closed parameter-space loop; distinguish dynamic from geometric phase.",
+      "nonClaims": [
+        "The connection changes under local phase-gauge choices; physical closed-loop holonomy is gauge invariant modulo 2pi under allowed single-valued gauge changes.",
+        "An adiabatic approximation fails near uncontrolled degeneracies or rapid driving; this example does not establish any experimental quantum-hardware performance."
+      ]
+    },
+    {
+      "id": "mit-ocw-806-born-scattering",
+      "name": "First Born scattering amplitude, momentum transfer and validity",
+      "courseCode": "8.06",
+      "courseTitle": "Quantum Physics III",
+      "lecturer": "Barton Zwiebach",
+      "term": "Spring 2018",
+      "pdf": "https://ocw.mit.edu/courses/8-06-quantum-physics-iii-spring-2018/45dbd7038c3e969491eceeae86c44d42_MIT8_06S18ch7.pdf",
+      "coursePage": "https://ocw.mit.edu/courses/8-06-quantum-physics-iii-spring-2018/pages/lecture-notes/",
+      "locators": [
+        "Chapter 7 section 7.3.1, printed p. 148, Eqs. (7.3.30)–(7.3.33): weak-potential amplitude and wave-number transfer",
+        "Chapter 7 section 7.3.1, printed p. 149, Eq. (7.3.37): Yukawa potential example"
+      ],
+      "theoryIds": [
+        "wave-mechanics"
+      ],
+      "formulaIds": [
+        "born-scattering",
+        "differential-cross-section"
+      ],
+      "workedExample": "For V(r)=beta exp(-mu r)/r, f_Born(K)=-2m beta/[hbar²(K²+mu²)]. At m=hbar=beta=mu=k=1 and theta=pi/2, K=sqrt(2), f=-2/3 and d sigma/d Omega=4/9.",
+      "assumptions": "Elastic nonrelativistic spinless potential scattering, short-range Yukawa force, reduced mass m and wave-number transfer K=k_out-k_in with |K|=2k sin(theta/2); Born series first order requires a sufficiently weak scattering perturbation.",
+      "nonClaims": [
+        "K in the exponential has inverse-length units and is not a physical momentum unless multiplied by hbar.",
+        "A high incident energy may help a short-range weak-potential approximation, but does not universally guarantee Born convergence or establish QFT scattering amplitudes."
+      ]
+    },
+    {
+      "id": "mit-ocw-805-spin-addition",
+      "name": "Two spin-1/2 states: triplet and singlet decomposition",
+      "courseCode": "8.05",
+      "courseTitle": "Quantum Physics II",
+      "lecturer": "Barton Zwiebach",
+      "term": "Fall 2013",
+      "pdf": "https://ocw.mit.edu/courses/8-05-quantum-physics-ii-fall-2013/f27e44d7b761cec0ef1d01734f0a23b8_MIT8_05F13_Chap_10.pdf",
+      "coursePage": "https://ocw.mit.edu/courses/8-05-quantum-physics-ii-fall-2013/pages/lecture-notes/",
+      "locators": [
+        "Chapter 10 section 2, printed p. 4, Eqs. (2.8)–(2.10): 1/2 tensor 1/2 decomposes as 1 direct-sum 0",
+        "Chapter 10 section 2, printed p. 5, Eqs. (2.17)–(2.18): normalized symmetric triplet m=0 and antisymmetric singlet"
+      ],
+      "theoryIds": [
+        "quantum-information",
+        "heisenberg-spin-model"
+      ],
+      "formulaIds": [
+        "cg-expansion"
+      ],
+      "workedExample": "Triplet states are |up up>, (|up down>+|down up>)/sqrt(2), |down down>; singlet is (|up down>-|down up>)/sqrt(2). Total S² eigenvalues are 2 hbar² and 0 respectively.",
+      "assumptions": "Two distinguishable spin-1/2 factors with total S=S1+S2, standard Condon–Shortley relative-phase convention and hbar-normalized ladder operators.",
+      "nonClaims": [
+        "The spin factor is not a complete state for identical particles without satisfying total exchange symmetry including spatial degrees of freedom.",
+        "Clebsch–Gordan coefficients are basis-change data; their existence is not an experiment proving particle entanglement or a historical relationship between catalog entities."
+      ]
+    }
+  ]
+}
