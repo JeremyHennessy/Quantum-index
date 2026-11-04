@@ -82,3 +82,20 @@ test('negative mutations fail closed on release rights and empirical promotion',
     assert.throws(() => assertReadOnlyDESIGate(altered), 'unsafe mutation was accepted');
   }
 });
+
+test('DESI Eq. 26 correlated distance pair reproduces Eq. 25 full-shape AP precision', () => {
+  const dM = 39.32;
+  const dH = 8.600;
+  const sigmaM = 0.33;
+  const sigmaH = 0.066;
+  const rho = 0.225;
+  const ratio = dM / dH;
+  const sigmaRatio = ratio * Math.sqrt(
+    (sigmaM / dM) ** 2 + (sigmaH / dH) ** 2
+      - 2 * rho * (sigmaM / dM) * (sigmaH / dH),
+  );
+  assert.ok(Math.abs(ratio - 4.572) < 0.001, 'full-shape distance ratio mismatch');
+  assert.ok(Math.abs(sigmaRatio - 0.046) < 0.001, 'covariance-aware AP uncertainty mismatch');
+  const independentSigma = ratio * Math.hypot(sigmaM / dM, sigmaH / dH);
+  assert.ok(independentSigma - sigmaRatio > 0.004, 'ignoring covariance must change uncertainty');
+});
