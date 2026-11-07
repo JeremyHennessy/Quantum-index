@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "coi2-euclid-preflight-v1",
+  "reviewedAt": "2026-11-06",
+  "baselineMainSha": "e20e4943da879ea879e3054aba8db75cfb0eeabe",
+  "publicationStatus": "RESEARCH_ONLY_NOT_RUNTIME",
+  "scope": "Euclid DR1 Foundation/Complete product and release-state qualification, without new observational constraints or Evidence promotion.",
+  "sourceRecords": [
+    {
+      "id": "euclid-nasa-ipac-dr1-overview",
+      "url": "https://euclid.caltech.edu/page/euclid-dr1",
+      "publisher": "NASA/IPAC Euclid NASA Science Center",
+      "sourceRole": "official-mission-release-scope",
+      "checkedAt": "2026-11-06"
+    },
+    {
+      "id": "euclid-nasa-ipac-dr1-foundation",
+      "url": "https://euclid.caltech.edu/page/euclid-dr1-foundation",
+      "publisher": "NASA/IPAC Euclid NASA Science Center",
+      "sourceRole": "official-foundation-product-definition",
+      "checkedAt": "2026-11-06"
+    },
+    {
+      "id": "euclid-nasa-ipac-dr1-complete",
+      "url": "https://euclid.caltech.edu/page/euclid-dr1-complete",
+      "publisher": "NASA/IPAC Euclid NASA Science Center",
+      "sourceRole": "official-complete-product-definition",
+      "checkedAt": "2026-11-06"
+    },
+    {
+      "id": "euclid-nasa-ipac-release-timeline",
+      "url": "https://euclid.caltech.edu/page/data-release-timeline",
+      "publisher": "NASA/IPAC Euclid NASA Science Center",
+      "sourceRole": "official-release-schedule-not-actual-delivery",
+      "checkedAt": "2026-11-06"
+    }
+  ],
+  "existingIds": {
+    "programmeId": "euclid",
+    "publicQuickReleaseId": "euclid-q2",
+    "foundationReleaseId": "euclid-dr1-foundation",
+    "foundationMilestoneId": "euclid-dr1-foundation-2026"
+  },
+  "q2Baseline": {
+    "releaseDate": "2026-06-24",
+    "access": "public-observational-products",
+    "sourceIds": [
+      "euclid-nasa-ipac-release-timeline"
+    ],
+    "doesNotImply": "Q2 availability does not establish DR1 Foundation or DR1 Complete availability."
+  },
+  "foundation": {
+    "targetDate": "2026-11-12",
+    "targetPrecision": "day",
+    "dateStatus": "planned",
+    "confirmedActual": false,
+    "actualReleaseDate": null,
+    "publicDataAvailabilityVerified": false,
+    "access": "planned-no-observational-products",
+    "estimatedWideSurveyAreaSqDeg": 1900,
+    "includedProductFamilies": [
+      "LE1 VIS/NISP raw data",
+      "LE2 VIS/NIR stacked frames and catalogs",
+      "LE2 SIR 2D frames and 1D spectra",
+      "LE2 MER mosaics, segmentation and catalogs",
+      "LE2 PHZ and SPE catalogs",
+      "deep field and selected calibration products"
+    ],
+    "excludedProductSet": "DR1 Foundation excludes products in subsection 3.2.7 of Euclid Science Archive product list EUCL-ESAC-RP-8-017.",
+    "sourceIds": [
+      "euclid-nasa-ipac-dr1-overview",
+      "euclid-nasa-ipac-dr1-foundation",
+      "euclid-nasa-ipac-release-timeline"
+    ],
+    "claimStatus": "official-planned-release-scope-only",
+    "evidencePromoted": false
+  },
+  "complete": {
+    "targetDate": "mid-2027",
+    "targetPrecision": "approximate",
+    "dateStatus": "planned",
+    "confirmedActual": false,
+    "actualReleaseDate": null,
+    "publicDataAvailabilityVerified": false,
+    "access": "planned-no-observational-products",
+    "higherLevelProducts": [
+      "weak-lensing correlation and mass-map products",
+      "galaxy-clustering correlation and related science products"
+    ],
+    "sourceIds": [
+      "euclid-nasa-ipac-dr1-overview",
+      "euclid-nasa-ipac-dr1-complete"
+    ],
+    "claimStatus": "official-planned-release-scope-only",
+    "evidencePromoted": false
+  },
+  "promotionRule": "After the target date, do not automatically mark Foundation public or infer validated weak-lensing/galaxy-clustering cosmology results. Require dated official release confirmation, exact product/release identifiers, documented access rights and separate claim-specific paper/data review. Keep this dated preflight immutable."
+}
