@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-08",
+  "status": "RESEARCH_ONLY_UNMERGED_NO_RUNTIME_ADMISSION",
+  "baseMain": "7ba1c0647e7734192f3a8fbd420baddccdb89ba8",
+  "priorProposal": {
+    "pullRequest": 108,
+    "branchHead": "08f068856faa0fc429e3c726fe298da54a9f5ac4",
+    "sourceReviewPath": "research/QEM_SOURCE_MATH_REVIEW_2026-10-30.md",
+    "candidateId": "quantum-error-mitigation"
+  },
+  "umbrellaOriginYear": null,
+  "priorityClaim": "NO_UMBRELLA_PRIORITY_CLAIM",
+  "sources": [
+    {
+      "id": "qem-li-benjamin-2016",
+      "type": "primary-paper",
+      "authors": [
+        "Ying Li",
+        "Simon C. Benjamin"
+      ],
+      "title": "Efficient Variational Quantum Simulator Incorporating Active Error Minimization",
+      "firstPreprint": "2016-11-28",
+      "preprint": "https://arxiv.org/abs/1611.09301",
+      "published": "2017-06-29",
+      "journal": "Physical Review X 7, 021050",
+      "doi": "10.1103/PhysRevX.7.021050",
+      "sourceLocator": "Publisher article Section VII.A (error reduction), Eqs. (27)-(28), Fig. 4(a), printed pp. 8-9",
+      "claimQualification": "Noise amplification and low-order extrapolation in a variational-simulation protocol under controllable stochastic-noise assumptions; not sole historical invention of the QEM umbrella.",
+      "inspection": "ArXiv dated record and APS publisher text and PDF-extracted equation context inspected; PDF screenshot retrieval failed, so no independent pixel-level review is claimed."
+    },
+    {
+      "id": "qem-temme-bravyi-gambetta-2016",
+      "type": "primary-paper",
+      "authors": [
+        "Kristan Temme",
+        "Sergey Bravyi",
+        "Jay M. Gambetta"
+      ],
+      "title": "Error Mitigation for Short-Depth Quantum Circuits",
+      "firstPreprint": "2016-12-06",
+      "preprint": "https://arxiv.org/abs/1612.02058",
+      "published": "2017-11-03",
+      "journal": "Physical Review Letters 119, 180509",
+      "doi": "10.1103/PhysRevLett.119.180509",
+      "sourceLocator": "arXiv:1612.02058v3, PDF p. 2, Eqs. (2)-(4) and Eq. (6): noise-response expansion, moment constraints, finite-estimation-error bound.",
+      "claimQualification": "Richardson noise extrapolation and a distinct quasiprobability resampling method; original Eq. (4) has inconsistent dummy-index lettering per PR #108 review.",
+      "inspection": "Official arXiv v3 PDF text and APS journal metadata inspected; PDF screenshot retrieval failed, so no new visual-pixel review is claimed."
+    },
+    {
+      "id": "qem-endo-benjamin-li-2018",
+      "type": "primary-followup-paper",
+      "authors": [
+        "Suguru Endo",
+        "Simon C. Benjamin",
+        "Ying Li"
+      ],
+      "title": "Practical Quantum Error Mitigation for Near-Future Applications",
+      "published": "2018-07-26",
+      "journal": "Physical Review X 8, 031027",
+      "doi": "10.1103/PhysRevX.8.031027",
+      "sourceLocator": "Publisher abstract and published introduction",
+      "claimQualification": "A later comparison/practical extension, not priority evidence for the umbrella QEM origin.",
+      "inspection": "Publisher abstract and bibliographic metadata reviewed; no novel equation from this paper is transcribed."
+    }
+  ],
+  "derivedEstimator": {
+    "scope": "Independent sampling-variance derivation for the source-proposed Richardson observable estimator; toy model only, not measured hardware.",
+    "noiseScales": [
+      1,
+      2
+    ],
+    "weights": [
+      2,
+      -1
+    ],
+    "expansion": "E(c lambda)=E0+a c lambda+b (c lambda)^2+O(lambda^3)",
+    "example": {
+      "ideal": 0.73,
+      "linear": 0.31,
+      "quadratic": 0.08
+    },
+    "samplingAssumptions": [
+      "Independent shot estimates at distinct noise scales",
+      "Unbiased per-scale sample means for the actual noisy observable",
+      "Known, correctly implemented noise scaling for the bias-cancellation statement",
+      "Equal per-shot variance of 1 only for the illustrative shot-budget comparison; not asserted for real devices",
+      "Fixed total shot budget does not include circuit-time or calibration overhead"
+    ],
+    "budget": {
+      "totalShots": 300,
+      "equalShotVariances": [
+        1,
+        1
+      ],
+      "directAllocation": [
+        300
+      ],
+      "equalAllocation": [
+        150,
+        150
+      ],
+      "optimalAllocation": [
+        200,
+        100
+      ],
+      "directVariance": 0.0033333333333333335,
+      "equalAllocationVariance": 0.03333333333333333,
+      "optimalAllocationVariance": 0.03,
+      "minimumVarianceOverhead": 9,
+      "secondOrderScales": [
+        1,
+        2,
+        3
+      ],
+      "secondOrderWeights": [
+        3,
+        -3,
+        1
+      ],
+      "secondOrderMinimumVarianceOverhead": 49
+    },
+    "resultQualification": "Linear truncation bias cancels under the assumed expansion but quadratic-and-higher bias, independent measurement variance, correlated drift, calibration errors and model mismatch remain."
+  },
+  "releaseDecision": "HOLD_RESEARCH_ONLY_DO_NOT_PROMOTE_THEORY_FORMULA_OR_EVIDENCE",
+  "releaseGates": [
+    "Cross-check current exact IDs/aliases against active main before identity admission",
+    "Independent broader historical-priority review; do not derive umbrella origin from the earliest of these two preprints",
+    "Source-page and equation/notation review including any PDF-visual limitations",
+    "Preserve approved six Explorer files, all existing science/runtime records, historical ledgers and default routes",
+    "Run new standalone Node tests and entire repository Node/QA/map/Chromium/WebKit gates on the exact PR head",
+    "Inspect actual browser screenshot artifacts; do not infer any live-site visual fix from CI alone",
+    "Check merged main, Pages and served assets independently if any future reviewed release is authorized"
+  ],
+  "noModification": [
+    "theories.js",
+    "formulas.js",
+    "evidence.js",
+    "app.js",
+    "index.html",
+    "docs/coverage.json",
+    "historical ledgers",
+    "approved Explorer assets"
+  ]
+}
