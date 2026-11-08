@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
 const pack=JSON.parse(fs.readFileSync(new URL('../research/QEM_ZNE_SAMPLING_PRIORITY_2026-11-08.json',import.meta.url),'utf8'));
-const close=(actual,expected,tol=1e-12)=>assert.ok(Math.abs(actual-expected)<tol,\`expected \${actual} ≈ \${expected}\`);
+const close=(actual,expected,tol=1e-12)=>assert.ok(Math.abs(actual-expected)<tol,`expected ${actual} ≈ ${expected}`);
 const weights=(scale)=>scale.map((x,i)=>scale.reduce((p,y,j)=>i===j?p:p*(-y)/(x-y),1));
 const variance=(w,v,n)=>w.reduce((sum,wi,i)=>sum+wi*wi*v[i]/n[i],0);
 
