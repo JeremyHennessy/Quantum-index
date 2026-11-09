@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "coi3-rubin-dp2-scope-v1",
+  "reviewedAt": "2026-11-09",
+  "baselineMainSha": "7ba1c0647e7734192f3a8fbd420baddccdb89ba8",
+  "publicationStatus": "RESEARCH_ONLY_NOT_RUNTIME",
+  "purpose": "Claim-safe official Rubin Early DP2 versus Full DP2 image-product and access preflight. No new observation ingestion, Evidence record, scientific claim, user-facing code, or existing-registry mutation.",
+  "sourceRecords": [
+    {
+      "id": "rubin-dp2-official-overview-2026-11-09",
+      "url": "https://dp2.lsst.io/",
+      "publisher": "NSF-DOE Vera C. Rubin Observatory",
+      "sourceRole": "official-current-dp2-phase-and-scope",
+      "checkedAt": "2026-11-09",
+      "pageLastModified": "2026-11-04"
+    },
+    {
+      "id": "rubin-dp2-official-products-2026-11-09",
+      "url": "https://dp2.lsst.io/products/index.html",
+      "publisher": "NSF-DOE Vera C. Rubin Observatory",
+      "sourceRole": "official-product-family-availability",
+      "checkedAt": "2026-11-09",
+      "pageLastModified": "2026-11-04"
+    },
+    {
+      "id": "rubin-dp2-official-access-2026-11-09",
+      "url": "https://dp2.lsst.io/access/index.html",
+      "publisher": "NSF-DOE Vera C. Rubin Observatory",
+      "sourceRole": "official-data-rights-and-platform-access",
+      "checkedAt": "2026-11-09",
+      "pageLastModified": "2026-11-04"
+    }
+  ],
+  "existingIds": {
+    "programmeId": "rubin",
+    "earlyReleaseId": "rubin-edp2",
+    "fullReleaseId": "rubin-full-dp2",
+    "fullMilestoneId": "rubin-dp2-full-2026"
+  },
+  "early": {
+    "label": "Early Data Preview 2 (EDP2)",
+    "releasedOn": "2026-07-27",
+    "releaseConfirmed": true,
+    "access": "rights-restricted-observational-products",
+    "publicToAll": false,
+    "accessPlatform": "Rubin Science Platform (RSP)",
+    "availableImageFamilies": [
+      "deep_coadd"
+    ],
+    "restrictedUntilFullImageFamilies": [
+      "raw",
+      "visit",
+      "difference",
+      "template"
+    ],
+    "catalogFamiliesAvailable": [
+      "Object",
+      "Source and forced source",
+      "Difference image analysis",
+      "Solar System",
+      "observational metadata"
+    ],
+    "catalogsIncludeVisitAndDifferenceMeasurements": true,
+    "doesNotImplyImagePixelsAvailableForAllCatalogMeasurements": true,
+    "evidencePromoted": false,
+    "sourceIds": [
+      "rubin-dp2-official-overview-2026-11-09",
+      "rubin-dp2-official-products-2026-11-09",
+      "rubin-dp2-official-access-2026-11-09"
+    ]
+  },
+  "full": {
+    "label": "Full Data Preview 2 (additional image products)",
+    "expectedMonth": "2026-12",
+    "precision": "month",
+    "dateStatus": "expected-not-actual",
+    "actualReleaseDate": null,
+    "confirmedActual": false,
+    "fullProductDeliveryVerified": false,
+    "productFamiliesExpected": [
+      "raw",
+      "visit",
+      "difference",
+      "template"
+    ],
+    "accessStatusAfterRelease": "not-independently-verified",
+    "publicToAll": false,
+    "evidencePromoted": false,
+    "sourceIds": [
+      "rubin-dp2-official-overview-2026-11-09",
+      "rubin-dp2-official-products-2026-11-09",
+      "rubin-dp2-official-access-2026-11-09"
+    ]
+  },
+  "datasetContext": {
+    "processing": "Rubin Science Pipelines v30",
+    "instrument": "LSSTCam",
+    "observationWindow": "2025-04 to 2026-01",
+    "approximateDeepCoaddAndCatalogAreaSqDeg": 3000,
+    "approximateSingleEpochCatalogAreaSqDeg": 15000,
+    "caution": "Approximate documentation-scale processing/coverage descriptions, not a claim that restricted individual visit/difference image pixel files are delivered in EDP2; not cosmological measurements."
+  },
+  "claims": [
+    {
+      "claim": "Early DP2 data are accessible to RSP data-rights holders, not the general public.",
+      "status": "OFFICIAL_POLICY",
+      "sourceId": "rubin-dp2-official-access-2026-11-09"
+    },
+    {
+      "claim": "All published EDP2 catalogs and deep_coadd image products are listed as available; EDP2 does not deliver raw/visit/difference/template pixel images.",
+      "status": "OFFICIAL_PRODUCT_SCOPE",
+      "sourceId": "rubin-dp2-official-products-2026-11-09"
+    },
+    {
+      "claim": "Full DP2 is expected December 2026; actual completion and product-level availability are not verified at review time.",
+      "status": "OFFICIAL_PLANNED_RELEASE_ONLY",
+      "sourceId": "rubin-dp2-official-overview-2026-11-09"
+    }
+  ],
+  "promotionRule": "Do not infer that an expected month establishes actual Full DP2 delivery, that publicly readable documentation grants dataset rights, or that catalog measurements establish availability of their parent visit/difference pixel images. Require dated official completion, sampled release/product entitlement and version, and separate claim-specific study/likelihood review before any Evidence promotion. Add a new dated delivery receipt; do not rewrite this snapshot."
+}
