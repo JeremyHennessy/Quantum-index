@@ -57,7 +57,7 @@ function verify(d){
  assert.equal(d.claims.length,3);
  for(const c of d.claims)assert.ok(sourceIds.has(c.sourceId)&&c.status.startsWith('OFFICIAL_'));
  assert.match(d.promotionRule,/new dated delivery receipt/);
- assert.match(d.promotionRule,/data-rights/);
+ assert.match(d.promotionRule,/dataset rights/);
  return true;
 }
 
