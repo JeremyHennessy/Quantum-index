@@ -6,7 +6,7 @@ const review=JSON.parse(fs.readFileSync('research/COI3_RUBIN_DP2_RELEASE_ACCESS_
 const previous=JSON.parse(fs.readFileSync('research/COI0_OBSERVATORY_AND_RELEASE_CENSUS_2026-10-30.json','utf8'));
 const exactSources=new Set(['https://dp2.lsst.io/','https://dp2.lsst.io/products/index.html','https://dp2.lsst.io/access/index.html']);
 const unique=(xs,label)=>assert.equal(new Set(xs).size,xs.length,'Duplicate '+label);
-const validDate=d=>/^\\d{4}-\\d{2}-\\d{2}$/.test(d)&&new Date(d+'T00:00:00Z').toISOString().slice(0,10)===d;
+const validDate=d=>/^\d{4}-\d{2}-\d{2}$/.test(d)&&new Date(d+'T00:00:00Z').toISOString().slice(0,10)===d;
 
 function verify(d){
  assert.equal(d.schemaVersion,'coi3-rubin-dp2-scope-v1');
