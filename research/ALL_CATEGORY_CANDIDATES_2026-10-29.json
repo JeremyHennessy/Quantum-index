@@ -1,0 +1,985 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-29",
+  "baselineMain": "228cd84230d0eaef8325dad4a94dc81ad8cf5a27",
+  "status": "cross-category-research-intake-only",
+  "scope": "All 14 top-level scientific categories; exact-name/alias cross-check must run against current runtime before promotion.",
+  "interpretation": "A queued item is not a proven missing theory; a category is not closed by a fixed number of entries.",
+  "candidateCount": 64,
+  "categoryCount": 14,
+  "groups": [
+    {
+      "category": "Historical foundations",
+      "candidates": [
+        {
+          "name": "Sommerfeld relativistic old-quantum atomic model",
+          "reviewDisposition": "SUBMODEL",
+          "rationale": "Bohr–Sommerfeld quantization is historically distinct but may belong under old quantum theory.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Einstein–Brillouin–Keller quantization",
+          "reviewDisposition": "FORMALISM_REVIEW",
+          "rationale": "Semiclassical quantization should be checked against WKB and existing semiclassical frameworks.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Stern–Gerlach measurement interpretation",
+          "reviewDisposition": "EVIDENCE_OR_HISTORY",
+          "rationale": "Historical experiment and spin formalism are not automatically a theory.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Franck–Hertz excitation experiment",
+          "reviewDisposition": "EVIDENCE_OR_HISTORY",
+          "rationale": "Foundational experiment; avoid inventing a standalone theory.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Formulations",
+      "candidates": [
+        {
+          "name": "Schwinger–Keldysh closed-time-path formalism",
+          "reviewDisposition": "FORMALISM_REVIEW",
+          "rationale": "Check existing Kadanoff–Baym, nonequilibrium and contour frameworks for an exact formalism.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Tomonaga–Schwinger interaction-picture equation",
+          "reviewDisposition": "FORMULA_OR_DEPTH",
+          "rationale": "Covariant evolution is already indexed; prioritize equation/source depth, not a duplicate.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Dirac–Frenkel time-dependent variational principle",
+          "reviewDisposition": "FORMALISM_REVIEW",
+          "rationale": "Potentially distinct variational formulation, but check existing TDVP/quantum many-body aliases.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Stochastic Schrödinger equations",
+          "reviewDisposition": "FORMULA_OR_DEPTH",
+          "rationale": "May already be covered by quantum trajectories and quantum filtering.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Foundations & interpretations",
+      "candidates": [
+        {
+          "name": "PBR theorem and ψ-ontology constraints",
+          "reviewDisposition": "THEOREM_REVIEW",
+          "rationale": "Distinguish no-go theorem from interpretation and existing ontological-model entries.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Leggett–Garg macrorealism inequality",
+          "reviewDisposition": "THEOREM_OR_EVIDENCE",
+          "rationale": "Temporal correlation inequality, not a generic collapse theory.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Wigner's friend extended no-go variants",
+          "reviewDisposition": "SUBMODEL",
+          "rationale": "Frauchiger–Renner is already represented; do not duplicate umbrella.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Perspectival modal interpretations",
+          "reviewDisposition": "SUBMODEL",
+          "rationale": "Previously dispositioned as subtype under modal interpretations.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Quantum field theory",
+      "candidates": [
+        {
+          "name": "Noninvertible generalized symmetries",
+          "reviewDisposition": "ORIGIN_REVIEW",
+          "rationale": "Existing symmetry and topological QFT coverage must be checked before promotion.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Conformal bootstrap numerical island methods",
+          "reviewDisposition": "SUBMODEL",
+          "rationale": "Existing conformal bootstrap umbrella; likely mathematical/application depth.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Constructive phi-four in three dimensions",
+          "reviewDisposition": "SUBMODEL",
+          "rationale": "Historical audit explicitly holds constructive φ4_3 as model-level subtype.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Schwinger–Dyson functional equations",
+          "reviewDisposition": "FORMULA_OR_DEPTH",
+          "rationale": "Check existing Dyson/Green-function and QFT equations for exact coverage.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Transverse-momentum-dependent factorization",
+          "reviewDisposition": "FORMALISM_REVIEW",
+          "rationale": "Check existing SCET, DGLAP and QCD evolution for a distinct factorization framework.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Quantum information & open systems",
+      "candidates": [
+        {
+          "name": "Quantum error mitigation and probabilistic error cancellation",
+          "reviewDisposition": "FRAMEWORK_REVIEW",
+          "rationale": "Separate error mitigation from fault-tolerant error correction.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Quantum combs and process tensor variants",
+          "reviewDisposition": "SUBMODEL",
+          "rationale": "Both umbrellas are already indexed; check specialized versions.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Quantum causal inference interventions",
+          "reviewDisposition": "SUBMODEL",
+          "rationale": "Quantum causal models already indexed; review intervention calculus depth.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Resource theory of quantum coherence",
+          "reviewDisposition": "FRAMEWORK_REVIEW",
+          "rationale": "Check broad resource theories and coherence metrics for a distinct umbrella.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Fault-tolerant lattice surgery",
+          "reviewDisposition": "SUBMODEL",
+          "rationale": "Likely code-level operational technique under surface/stabilizer codes.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Quantum gravity & spacetime",
+      "candidates": [
+        {
+          "name": "Nonlocal ghost-free gravity",
+          "reviewDisposition": "ORIGIN_REVIEW",
+          "rationale": "Differentiate infinite-derivative gravity from local higher-curvature frameworks.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Asymptotic safety matter-gravity fixed points",
+          "reviewDisposition": "SUBMODEL",
+          "rationale": "Asymptotic safety already indexed; matter sectors may be model depth.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Relative locality and curved momentum space",
+          "reviewDisposition": "SUBMODEL",
+          "rationale": "Earlier queue explicitly calls for distinct subfamilies.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Entanglement wedge reconstruction beyond AdS/CFT",
+          "reviewDisposition": "FORMULA_OR_DEPTH",
+          "rationale": "Check existing holographic QEC/island entries.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Celestial holography",
+          "reviewDisposition": "FRAMEWORK_REVIEW",
+          "rationale": "Distinct boundary approach may be missing as first-class framework; original sources needed.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Quantum cosmology",
+      "candidates": [
+        {
+          "name": "Wheeler–DeWitt minisuperspace models",
+          "reviewDisposition": "SUBMODEL",
+          "rationale": "Existing Wheeler–DeWitt umbrella; specify minisuperspace reduction and factor ordering.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Third quantization and group-field cosmology",
+          "reviewDisposition": "SUBMODEL",
+          "rationale": "Group-field cosmology exists; check separate third-quantized program.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Loop quantum cosmology bounce prescriptions",
+          "reviewDisposition": "SUBMODEL",
+          "rationale": "Existing LQC and polymer cosmology should not be duplicated.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Hartle–Hawking no-boundary refinements",
+          "reviewDisposition": "SUBMODEL",
+          "rationale": "Compare existing no-boundary and Lorentzian/Picard–Lefschetz branches.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Mathematical structures",
+      "candidates": [
+        {
+          "name": "Quantum Markov semigroups and detailed balance",
+          "reviewDisposition": "FORMULA_OR_DEPTH",
+          "rationale": "KMS, GKSL and noncommutative probability already indexed; review structural bridges.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Operator-algebraic modular theory",
+          "reviewDisposition": "FRAMEWORK_REVIEW",
+          "rationale": "Tomita–Takesaki modular automorphisms may warrant distinct formalism if absent.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Noninvertible fusion categories",
+          "reviewDisposition": "FORMALISM_REVIEW",
+          "rationale": "Check fusion-category/anyon and noninvertible-symmetry identities.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Higher-categorical quantum field theory",
+          "reviewDisposition": "SUBMODEL",
+          "rationale": "Likely extension of TQFT/category framework; requires original mathematical source.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Quantum optics & AMO",
+      "candidates": [
+        {
+          "name": "Trapped-ion Mølmer–Sørensen entangling gate",
+          "reviewDisposition": "MODEL_OR_FORMULA",
+          "rationale": "Specific gate/interaction, not automatically a broad theory.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Dicke superradiance and subradiance",
+          "reviewDisposition": "FRAMEWORK_REVIEW",
+          "rationale": "Check existing Dicke/Jaynes–Cummings, quantum optics and collective emission.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Electromagnetically induced transparency storage",
+          "reviewDisposition": "SUBMODEL",
+          "rationale": "EIT already indexed; storage is an application/submodel.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Rydberg atom quantum simulators and blockade gates",
+          "reviewDisposition": "SUBMODEL",
+          "rationale": "Rydberg blockade already indexed; gate implementations are submodels.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Quantum many-body & condensed matter",
+      "candidates": [
+        {
+          "name": "Wavefunction matching for quantum many-body problems",
+          "reviewDisposition": "ORIGIN_REVIEW",
+          "rationale": "Freshness queue names a 2024 computational framework; original identity still pending.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Tensor-network TDVP evolution",
+          "reviewDisposition": "FORMULA_OR_DEPTH",
+          "rationale": "Tensor networks/MPS already indexed; review time-dependent variational evolution.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Quantum scars and weak ergodicity breaking",
+          "reviewDisposition": "FRAMEWORK_REVIEW",
+          "rationale": "Check ETH/MBL/quantum chaos and scars existing catalog coverage.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Fracton phases and subsystem symmetries",
+          "reviewDisposition": "FRAMEWORK_REVIEW",
+          "rationale": "Potential distinct phases; check topological order and stabilizer codes.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Non-Fermi liquids and strange metals",
+          "reviewDisposition": "FRAMEWORK_REVIEW",
+          "rationale": "Check SYK, Kondo and critical Fermi-surface models.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Quantum chemistry & electronic structure",
+      "candidates": [
+        {
+          "name": "Selected configuration interaction and CIPSI",
+          "reviewDisposition": "MODEL_OR_METHOD",
+          "rationale": "Granularity decision under configuration interaction methods.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Coupled-cluster triples and CCSD(T)",
+          "reviewDisposition": "SUBMODEL",
+          "rationale": "Check coupled-cluster umbrella; method variants should not become blanket theories.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "GW plus Bethe–Salpeter equation spectroscopy",
+          "reviewDisposition": "FORMULA_OR_DEPTH",
+          "rationale": "Check existing GW/BSE and electronic excitation models.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Multireference DMRG perturbation methods",
+          "reviewDisposition": "SUBMODEL",
+          "rationale": "Existing DMRG-SCF/CASPT2/NEVPT2 may already cover parent methods.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Astroparticle physics & cosmology",
+      "candidates": [
+        {
+          "name": "Warm dark matter",
+          "reviewDisposition": "ORIGIN_REVIEW",
+          "rationale": "Already held in dedicated dark-matter census; do not create a duplicate.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Axion-like particle dark matter",
+          "reviewDisposition": "ORIGIN_REVIEW",
+          "rationale": "Distinct from QCD axion; held for primary-source origin and Lagrangian.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Atomic dark matter and dark acoustic oscillations",
+          "reviewDisposition": "IN_PROGRESS_SEPARATE",
+          "rationale": "Source review underway on DM-1B; do not duplicate work.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Higgs-portal scalar dark matter",
+          "reviewDisposition": "ORIGIN_REVIEW",
+          "rationale": "Separate benchmark from generic WIMP; primary model source required.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Linear cosmological perturbations and Einstein–Boltzmann transfer",
+          "reviewDisposition": "FORMALISM_REVIEW",
+          "rationale": "Check existing cosmology frameworks; not every observational method is a theory.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Primordial non-Gaussianity frameworks",
+          "reviewDisposition": "MODEL_OR_FORMULA",
+          "rationale": "Source-specific bispectrum templates and inflation assumptions.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Nuclear quantum theory",
+      "candidates": [
+        {
+          "name": "Coupled-cluster nuclear structure",
+          "reviewDisposition": "FRAMEWORK_REVIEW",
+          "rationale": "Check existing nuclear shell/NCSM/IMSRG and electronic coupled-cluster analogues.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Lattice EFT for nuclei",
+          "reviewDisposition": "FRAMEWORK_REVIEW",
+          "rationale": "Distinguish nuclear lattice EFT from lattice QCD.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Nuclear quantum Monte Carlo methods",
+          "reviewDisposition": "MODEL_OR_METHOD",
+          "rationale": "Ab-initio algorithms need consistent computational-method granularity.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Ab-initio symmetry-adapted no-core shell model",
+          "reviewDisposition": "SUBMODEL",
+          "rationale": "Specialized NCSM variant; original framework already represented.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Electroweak nuclear response and neutrino–nucleus EFT",
+          "reviewDisposition": "FORMULA_OR_DEPTH",
+          "rationale": "Link chiral EFT and detector response, not an experimental detection theory.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Beyond standard quantum theory",
+      "candidates": [
+        {
+          "name": "Nonlinear density-matrix dynamics",
+          "reviewDisposition": "ORIGIN_REVIEW",
+          "rationale": "Differentiate from Doebner–Goldin and objective-collapse models.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Quaternionic quantum mechanics experimental bounds",
+          "reviewDisposition": "FORMULA_OR_EVIDENCE",
+          "rationale": "Theory vs tests must remain separate; historical queue includes this.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Real-Hilbert-space quantum mechanics tests",
+          "reviewDisposition": "SUBMODEL",
+          "rationale": "Check existing real quantum theory and modal frameworks.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Hybrid classical–quantum stochastic dynamics",
+          "reviewDisposition": "FRAMEWORK_REVIEW",
+          "rationale": "Compare Hall–Reginatto configuration ensemble and postquantum classical gravity.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        },
+        {
+          "name": "Superselection-modified dynamics",
+          "reviewDisposition": "ALREADY_COVERED_REVIEW",
+          "rationale": "DHR superselection framework was reconciled as covering prior umbrella; only specific new dynamics warrant ADD.",
+          "verification": "identity-unverified",
+          "sourceStatus": "primary-source-check-required",
+          "releaseStatus": "research-only",
+          "sourceQueue": [
+            "research/CANDIDATES.md",
+            "research/CANDIDATE_AUDIT.md",
+            "research/EXHAUSTIVENESS_AUDIT.md",
+            "docs/FRESHNESS.md"
+          ]
+        }
+      ]
+    }
+  ],
+  "acceptance": [
+    "Check catalog ID, title, aliases, tags and related parent identities before deciding ADD.",
+    "Check primary origin, formal distinguishing content, exact math page, and historical date before new theory or formula.",
+    "Keep experimental data and observational methods separate from theories.",
+    "Preserve approved runtime, UI, generated assets, historical ledgers and open DM-1A/DM-1B branches.",
+    "Only a distinct source-qualified research release with full CI and browser verification can promote entries."
+  ]
+}
