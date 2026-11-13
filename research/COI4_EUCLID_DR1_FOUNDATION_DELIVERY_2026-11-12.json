@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "coi4-euclid-foundation-delivery-v1",
+  "reviewedAt": "2026-11-12",
+  "baselineMainSha": "53af2bfc6cc4d744e9f3f89cf2f1ede7ff36eb90",
+  "publicationStatus": "RESEARCH_ONLY_NOT_RUNTIME",
+  "historicalPreflight": "research/COI2_EUCLID_DR1_PRODUCT_SPLIT_2026-11-06.json",
+  "existingIds": {
+    "programmeId": "euclid",
+    "publicQuickReleaseId": "euclid-q2",
+    "foundationReleaseId": "euclid-dr1-foundation",
+    "foundationMilestoneId": "euclid-dr1-foundation-2026"
+  },
+  "sources": [
+    {
+      "id": "esa-release",
+      "url": "https://www.esa.int/articles/about-us/directorates/science/euclid/euclid-lays-the-foundation-for-its-best-ever-3d-map-of-the-universe",
+      "publisher": "ESA",
+      "publishedOn": "2026-11-12",
+      "checkedAt": "2026-11-12",
+      "role": "dated-official-achieved-release"
+    },
+    {
+      "id": "irsa-overview",
+      "url": "https://irsa.ipac.caltech.edu/data/Euclid/docs/overview_dr1.html",
+      "publisher": "NASA/IPAC IRSA",
+      "checkedAt": "2026-11-12",
+      "role": "official-archive-product-and-access-description"
+    },
+    {
+      "id": "irsa-sir-doi",
+      "url": "https://www.ipac.caltech.edu/doi/10.26131/IRSA680",
+      "publisher": "NASA/IPAC",
+      "checkedAt": "2026-11-12",
+      "role": "specific-archive-product-doi"
+    },
+    {
+      "id": "nasa-foundation-scope",
+      "url": "https://euclid.caltech.edu/page/euclid-dr1-foundation",
+      "publisher": "Euclid NASA Science Center",
+      "checkedAt": "2026-11-12",
+      "role": "official-foundation-product-scope"
+    },
+    {
+      "id": "nasa-complete-scope",
+      "url": "https://euclid.caltech.edu/page/euclid-dr1-complete",
+      "publisher": "Euclid NASA Science Center",
+      "checkedAt": "2026-11-12",
+      "role": "official-future-complete-product-scope"
+    }
+  ],
+  "foundation": {
+    "name": "Euclid Data Release 1 - Foundation (DR1-Foundation)",
+    "actualReleaseDate": "2026-11-12",
+    "status": "released-confirmed-by-ESA-and-IRSA",
+    "publicReleaseDeclared": true,
+    "sourceIds": [
+      "esa-release",
+      "irsa-overview"
+    ],
+    "archiveDocumentationRetrieved": true,
+    "productDoiRecordRetrieved": true,
+    "individualFileDownloadVerified": false,
+    "fullCatalogServiceCompletenessVerified": false,
+    "interactiveDataSpaceQueryVerified": false,
+    "accessCaveat": "IRSA says DR1 catalogs are being added incrementally over the coming weeks; ESA Data Space interactive JavaScript portal and actual file queries were not exercised.",
+    "estimatedWideSurveyAreaSqDeg": 1900,
+    "esaApproxMillionGB": 1.7,
+    "irsaApproxPB": 1.8,
+    "volumeQualification": "Approximate differently rounded/scoped ESA and IRSA descriptions, not a reconciled byte count.",
+    "reportedCounts": {
+      "galaxiesMoreThan": 900000000,
+      "strongLensingCandidatesApprox": 15000,
+      "quasarCandidatesMoreThan": 60000000,
+      "spectraSourcesMoreThan": 160000000
+    },
+    "countsQualification": "ESA announcement descriptors, not independent source classification, validated per-object redshifts or dark-energy/dark-matter constraints.",
+    "includedProductFamilies": [
+      "LE1 VIS/NISP raw data",
+      "LE2 VIS and NIR stacks and catalogues",
+      "LE2 SIR 2D spectral frames and 1D spectra",
+      "LE2 MER mosaics, segmentation and catalogues",
+      "LE2 PHZ and SPE catalogues",
+      "Deep Fields and selected calibration data"
+    ],
+    "specificProduct": {
+      "name": "Euclid DR1 Level 2 SIR 1-D Spectra",
+      "doi": "10.26131/IRSA680",
+      "sourceId": "irsa-sir-doi",
+      "individualFileRetrieved": false
+    },
+    "scientificEvidencePromoted": false,
+    "claimStatus": "OFFICIAL_DATA_RELEASE_METADATA_NOT_SCIENCE_EVIDENCE"
+  },
+  "complete": {
+    "name": "Euclid DR1 Complete",
+    "expected": "mid-2027",
+    "dateStatus": "future-not-actual",
+    "confirmedReleased": false,
+    "actualReleaseDate": null,
+    "highLevelProductsExpected": [
+      "weak-lensing statistics",
+      "galaxy-clustering statistics",
+      "cluster-related high-level products"
+    ],
+    "sourceIds": [
+      "nasa-complete-scope",
+      "irsa-overview"
+    ],
+    "scientificEvidencePromoted": false
+  },
+  "scienceAdmission": {
+    "status": "NO_NEW_COSMOLOGICAL_CONSTRAINT",
+    "requirements": "Specific published study, exact product versions, calibrations, sample selection, measurement uncertainties/covariance, likelihood, model/priors and claim-specific limitations.",
+    "darkEnergyMeasurementAdmitted": false,
+    "darkMatterTheoryValidated": false,
+    "weakLensingLikelihoodReleased": false
+  },
+  "preservation": [
+    "research/COI2_EUCLID_DR1_PRODUCT_SPLIT_2026-11-06.json",
+    "research/COI0_OBSERVATORY_AND_RELEASE_CENSUS_2026-10-30.json",
+    "approved Explorer HTML/CSS/JS",
+    "classic routes and index.html",
+    "theories.js",
+    "formulas.js",
+    "evidence.js",
+    "historical safeguards and analytics ledgers"
+  ],
+  "mergeGate": "DRAFT_ONLY_PENDING_EXACT_HEAD_NODE_CHROMIUM_WEBKIT_AND_SCREENSHOTS"
+}
