@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "coi5-spherex-dr1-release-v1",
+  "reviewedAt": "2026-11-14",
+  "baselineMainSha": "68b9011d2a9045682b853145a887ef1aebac2b74",
+  "publicationStatus": "RESEARCH_ONLY_NOT_RUNTIME",
+  "existingIds": {
+    "programmeId": "spherex",
+    "quickReleaseId": "spherex-qr3",
+    "originalSourceId": "spherex-irsa"
+  },
+  "sources": [
+    {
+      "id": "irsa-news",
+      "url": "https://irsa.ipac.caltech.edu/news.html",
+      "publisher": "NASA/IPAC IRSA",
+      "publishedOn": "2026-11-12",
+      "checkedAt": "2026-11-14",
+      "role": "dated-official-release-confirmation"
+    },
+    {
+      "id": "irsa-overview",
+      "url": "https://irsa.ipac.caltech.edu/data/SPHEREx/docs/overview_dr1.html",
+      "publisher": "NASA/IPAC IRSA",
+      "checkedAt": "2026-11-14",
+      "role": "official-product-families-and-dois"
+    },
+    {
+      "id": "irsa-releases",
+      "url": "https://irsa.ipac.caltech.edu/spherex-archive-documentation/spherex-data-releases/",
+      "publisher": "NASA/IPAC IRSA",
+      "checkedAt": "2026-11-14",
+      "role": "release-lineage-and-future-roadmap"
+    },
+    {
+      "id": "irsa-access",
+      "url": "https://irsa.ipac.caltech.edu/spherex-archive-documentation/spherex-data-access/",
+      "publisher": "NASA/IPAC IRSA",
+      "checkedAt": "2026-11-14",
+      "role": "archive-access-method-and-ingestion-caveat"
+    },
+    {
+      "id": "image-doi",
+      "url": "https://www.ipac.caltech.edu/doi/10.26131/IRSA678",
+      "publisher": "NASA/IPAC",
+      "checkedAt": "2026-11-14",
+      "role": "specific-public-spectral-images-dataset-doi"
+    },
+    {
+      "id": "cube-doi",
+      "url": "https://www.ipac.caltech.edu/doi/10.26131/IRSA679",
+      "publisher": "NASA/IPAC",
+      "checkedAt": "2026-11-14",
+      "role": "specific-public-all-sky-cube-dataset-doi"
+    }
+  ],
+  "release": {
+    "programmeName": "Spectro-Photometer for the History of the Universe, Epoch of Reionization and Ices Explorer (SPHEREx)",
+    "name": "SPHEREx Data Release 1 (DR1)",
+    "status": "released-confirmed-by-IRSA",
+    "actualReleaseDate": "2026-11-12",
+    "dateEvidence": "IRSA dated news; DR1 archive overview independently describes released products",
+    "access": "public-archive-products",
+    "sourceIds": [
+      "irsa-news",
+      "irsa-overview",
+      "irsa-access"
+    ],
+    "productFamilies": [
+      {
+        "type": "reprocessed-spectral-images",
+        "doi": "10.26131/IRSA678",
+        "sourceId": "image-doi",
+        "surveys": [
+          1,
+          2
+        ]
+      },
+      {
+        "type": "spectral-all-sky-cube",
+        "doi": "10.26131/IRSA679",
+        "sourceId": "cube-doi",
+        "nominalChannels": 102,
+        "wavelengthMicrons": {
+          "minimum": 0.75,
+          "maximum": 5
+        }
+      }
+    ],
+    "documentationRetrieved": true,
+    "doiRecordsRetrieved": true,
+    "individualFitsDownloadVerified": false,
+    "siaQueryExecuted": false,
+    "scienceCatalogueReleasedAsPartOfDr1": false,
+    "archiveCaveat": "IRSA documents on-premises/cloud access and SIA2 collection identifiers, but actual file/query success was not independently exercised. Weekly ingestion can leave SIA2 about a day behind other access layers.",
+    "scientificEvidencePromoted": false,
+    "claimStatus": "PUBLIC_DATA_RELEASE_METADATA_NOT_COSMOLOGICAL_EVIDENCE"
+  },
+  "lineage": {
+    "qr3": {
+      "existingReleaseId": "spherex-qr3",
+      "status": "released-weekly",
+      "surveys": [
+        3,
+        4
+      ],
+      "started": "2026-09",
+      "intendedJointUseWithDr1": true
+    },
+    "qr2": {
+      "searchable": false,
+      "directDownloadUntil": "2027-02",
+      "supersededBy": "DR1 + QR3",
+      "crossCalibrationCaution": true
+    },
+    "qr1": {
+      "retired": "2026-02",
+      "current": false
+    }
+  },
+  "planned": {
+    "highReliabilitySourceCatalogueV1": {
+      "expected": "2027-08",
+      "releasedConfirmed": false
+    },
+    "dr2AndSourceCatalogueV2": {
+      "expected": "2027-12",
+      "releasedConfirmed": false
+    },
+    "sourceId": "irsa-releases",
+    "timelineQualification": "IRSA timeline estimates; do not treat as achieved milestones"
+  },
+  "archiveAccess": {
+    "sourceId": "irsa-access",
+    "protocol": "IVOA-SIA2",
+    "dr1WideCollection": "spherex_dr1",
+    "dr1DeepCollection": "spherex_dr1_deep",
+    "dr1CubeCollection": "spherex_dr1_cube",
+    "qr3WideCollection": "spherex_qr3",
+    "qr3DeepCollection": "spherex_qr3_deep",
+    "catalogNotImpliedByImageServices": true,
+    "actualQueryVerified": false
+  },
+  "scienceAdmission": {
+    "status": "NO_NEW_INFLATION_OR_DARK_ENERGY_CONSTRAINT",
+    "requirements": "A specific published analysis, calibrated product versions, selection function, uncertainties and covariance, model/priors, reproducibility and claim-specific limitations must be evaluated before Evidence promotion.",
+    "inflationConstraintEstablished": false,
+    "darkEnergyEvidenceAdmitted": false,
+    "releasedSourceCatalogueClaimed": false
+  },
+  "preservation": [
+    "approved Explorer HTML/CSS/JS",
+    "research/COI0_OBSERVATORY_AND_RELEASE_CENSUS_2026-10-30.json",
+    "docs/observatory-registry.json",
+    "historical BAO/NFW guards",
+    "classic routes, map, notes and analytics"
+  ]
+}
