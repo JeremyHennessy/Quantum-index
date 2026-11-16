@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "coi6-roman-commissioning-v1",
+  "reviewedAt": "2026-11-16",
+  "baselineMainSha": "a60397f017c5c0bfc2bf88be046320a00c9d28de",
+  "publicationStatus": "RESEARCH_ONLY_NOT_RUNTIME",
+  "existingIds": {
+    "programmeId": "roman",
+    "futureReleaseId": "roman-future",
+    "mastSourceId": "roman-mast",
+    "launchSourceId": "roman-launch-nasa-2026",
+    "commissioningSourceId": "roman-commissioning-nasa-2026"
+  },
+  "sources": [
+    {
+      "id": "nasa-launch",
+      "url": "https://science.nasa.gov/mission/roman-space-telescope/roman-launch/",
+      "publishedOn": "2026-08-30",
+      "role": "official-achieved-launch"
+    },
+    {
+      "id": "nasa-commissioning",
+      "url": "https://science.nasa.gov/blogs/roman/2026/10/22/nasas-roman-space-telescope-enters-final-commissioning-phase/",
+      "publishedOn": "2026-10-22",
+      "role": "official-science-commissioning-transition"
+    },
+    {
+      "id": "nasa-alignment",
+      "url": "https://science.nasa.gov/blogs/roman/2026/11/13/instruments-on-nasas-roman-space-telescope-get-in-sync-for-science/",
+      "publishedOn": "2026-11-13",
+      "role": "official-instrument-alignment-progress"
+    },
+    {
+      "id": "nasa-forecast",
+      "url": "https://science.nasa.gov/blogs/roman/2026/09/01/nasa-roman-space-telescopes-antenna-visor-deployed/",
+      "publishedOn": "2026-09-01",
+      "role": "original-first-images-forecast"
+    },
+    {
+      "id": "stsci-open-policy",
+      "url": "https://www.stsci.edu/contents/news-releases/2026/news-2026-401",
+      "publishedOn": null,
+      "role": "public-science-data-policy-not-product-release"
+    }
+  ],
+  "programme": {
+    "name": "Nancy Grace Roman Space Telescope",
+    "launchDate": "2026-08-30",
+    "launchTimeEdt": "07:26",
+    "launchStatus": "achieved",
+    "commissioningPhaseEntered": "2026-10-22",
+    "statusAsOf": "2026-11-13",
+    "operatingPhase": "science-commissioning",
+    "scienceOperationsStartedVerified": false,
+    "releaseScope": "commissioning-milestone-not-public-science-data"
+  },
+  "alignment": {
+    "reportedOn": "2026-11-13",
+    "wideFieldInstrumentDetectorCount": 18,
+    "action": "adjusted-instrument-alignment-and-guide-star-position-model",
+    "result": "NASA reports successful internal optical/pointing alignment",
+    "coronagraphDeformableMirrorActiveStarlightControlCompleted": false,
+    "releasedCosmologicalAnalysis": false,
+    "directScientificMeasurementClaim": false
+  },
+  "dataAccess": {
+    "statedFutureDataPolicy": "immediate-public-science-data-with-no-exclusive-period",
+    "actualPublicScienceProductReleaseVerified": false,
+    "archiveScienceBytesIndependentlyRetrieved": false,
+    "commissioningExposuresEquivalentToSurveyProducts": false,
+    "simulatedOrTestDataEquivalentToMissionScience": false,
+    "status": "policy-verified-product-availability-not-established"
+  },
+  "futureMilestones": [
+    {
+      "id": "first-images",
+      "expectedPeriod": "early-2027",
+      "sourceId": "nasa-forecast",
+      "projectionDated": "2026-09-01",
+      "releasedConfirmed": false
+    },
+    {
+      "id": "routine-science-operations",
+      "expectedPeriod": null,
+      "sourceId": "nasa-alignment",
+      "releasedConfirmed": false
+    }
+  ],
+  "scienceAdmission": {
+    "noNewCosmologicalEvidence": true,
+    "darkEnergyConstraintEstablished": false,
+    "darkMatterDetectionEstablished": false,
+    "sciencePaperReviewed": false,
+    "requirements": "Specific public science product and calibration, a published analysis, measured quantity, sample and selection function, uncertainty and covariance, cosmological model/priors and claim limitations before any Evidence record."
+  },
+  "preservation": [
+    "original COI-0 census and Observatory programme IDs",
+    "approved Physics/Observatory Explorer HTML/CSS/JS",
+    "classic root, routes, maps, notes and analytics",
+    "historical BAO/NFW immutable tests"
+  ]
+}
