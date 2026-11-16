@@ -140,3 +140,7 @@ Compare uses curated Theory Passports when available, including their assumption
 ## Lattice-model curation
 
 Three lattice-model Theory Passports (SSH, Aubry–André and Holstein) extend the original ten hubs, with five source-located representative equations and per-record review dates. The static SSH limit, ideal quasiperiodic model and quantum-phonon model are not treated as interchangeable. See `docs/RELEASE_LATTICE_CURATION_2026-10-07.md` for mathematical checks, preservation boundaries and release verification requirements.
+
+## Proposed academic direction (future only)
+
+The [Academic & Research Edition product roadmap](docs/ACADEMIC_PRODUCT_ROADMAP_2026-10-21.md) records possible student, instructor and research workflows, an evidence-gated classroom pilot and an ordered backlog. **It is a proposal, not an implemented feature set or a claim of university adoption.** Scientific completeness and accepted UI/workspace behavior remain independently controlled.
