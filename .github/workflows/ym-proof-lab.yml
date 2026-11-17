@@ -19,6 +19,19 @@ jobs:
     steps:
       - name: Checkout pinned research branch
         uses: actions/checkout@v4
+      - name: Generate pinned Lake dependency manifest
+        working-directory: research/ym-mass-gap-20261117/lean
+        shell: bash
+        run: |
+          set -euo pipefail
+          tempdir="$(mktemp -d)"
+          trap 'rm -rf "$tempdir"' EXIT
+          curl -fsSL https://github.com/leanprover/elan/releases/download/v4.2.2/elan-x86_64-unknown-linux-gnu.tar.gz -o "$tempdir/elan.tar.gz"
+          tar -xzf "$tempdir/elan.tar.gz" -C "$tempdir"
+          "$tempdir/elan-init" -y --default-toolchain none --no-modify-path
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          test -s lake-manifest.json
       - name: Compile Lean 4 mathematical toy controls and audit axioms
         uses: leanprover/lean-action@v1
         env:
