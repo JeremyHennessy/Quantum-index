@@ -111,7 +111,7 @@ Run in the isolated `phase4/` directory (or let the dedicated branch-scoped work
 
 `OPENBLAS_NUM_THREADS=1 python -m unittest -v test_phase4_three_plaquette`
 
-The local prototype passed **17/17 tests** on Python 3.11/NumPy 2.3.5/SymPy 1.14/opt_einsum 3.4. The test initially requested an out-of-scope cutoff n=5; that fixture was corrected to stay within the deliberately bounded implementation. No physical model equation was changed. Exact-head GitHub CI is a separate required admission gate.
+The local prototype passed **17/17 tests** on Python 3.13.5/NumPy 2.3.5/SymPy 1.14/opt_einsum 3.4. The test initially requested an out-of-scope cutoff n=5; that fixture was corrected to stay within the deliberately bounded implementation. No physical model equation was changed. Exact-head GitHub CI is a separate required admission gate.
 
 No experiment here produced a four-dimensional continuum Yang–Mills mass gap, a unique thermodynamic limit, a formal Lean proof of the three-plaquette model, peer review, or a substantiated literature-novel theorem.
 
