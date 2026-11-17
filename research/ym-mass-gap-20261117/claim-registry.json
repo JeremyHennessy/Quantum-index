@@ -67,6 +67,27 @@
       "statement": "A local, gauge-invariant, scale-adaptive high-representation tail estimate could in principle control physical infrared correlations through interacting Wilson-lattice limits. Need explicit two-plaquette Gauss-law calculation, source-verified Wigner-6j matrix elements, and countertests at varying coupling and size.",
       "source": "research/ym-mass-gap-20261117/VOLUME_LEAKAGE_NEGATIVE_CONTROL.md",
       "falsifier": "A failure of any proposed local bound to remain controlled with increased representation cutoff, physical volume, or continuum scaling rejects the specific estimate; even local success on finite graphs is not the Clay problem"
+    },
+    {
+      "id": "YM-PH2-GAUSS-01",
+      "status": "exact-finite-graph-derived-and-locally-tested-not-Lean-proved",
+      "statement": "For the connected two-square SU(2) open graph (six vertices, seven links) with no external charges and all link spins j<=1/2, exactly four Gauss-law-singlet spin-network states exist: (2jL,2jR,2jS)=(0,0,0),(1,0,1),(0,1,1),(1,1,0). Electric energies / alpha are 0,3,3,9/2.",
+      "source": "research/ym-mass-gap-20261117/CONNECTED_TWO_PLAQUETTE_AUDIT.md",
+      "verification": "Two independent Wilson matrix methods, explicit six-vertex gauge covariance, 12 local tests; full infinite interacting spectrum not calculated; novelty not assessed"
+    },
+    {
+      "id": "YM-PH2-TRIPLET-LEAK-01",
+      "status": "exact-local-representation-falsifier-with-independent-tests",
+      "statement": "For normalized right single-loop state |R> and left fundamental Wilson multiplication W_L, ||P_(jmax=1/2) W_L |R>||²=1/4 and ||(I-P) W_L |R>||²=3/4. This single operator action invalidates automatic negligible high-shared-link-spin leakage at that cutoff, but not all cutoff or continuum estimates.",
+      "source": "research/ym-mass-gap-20261117/CONNECTED_TWO_PLAQUETTE_AUDIT.md",
+      "verification": "SU(2) character convolution, 6j/CG magnitude check and independent exact Haar-degree cubature; 12 Node tests; no Lean proof or novelty claim"
+    },
+    {
+      "id": "YM-PH2-TAIL-01",
+      "status": "open-no-proof",
+      "statement": "For the complete, connected two-plaquette SU(2) jmax=1 electric/spin-network basis, reproduce all Wilson magnetic matrix elements independently, then formulate and falsify a scale-adaptive local representation-tail estimate. No four-dimensional uniform infrared bound is available.",
+      "source": "research/ym-mass-gap-20261117/CONNECTED_TWO_PLAQUETTE_AUDIT.md",
+      "falsifier": "If increasing complete spin cutoff or adverse couplings invalidates the proposed inequality, reject the inequality; never interpret a selective five-state gap as true convergence"
     }
   ]
 }
