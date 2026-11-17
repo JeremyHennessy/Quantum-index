@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "snapshotDate": "2026-11-17",
+  "baselineMain": "a60397f017c5c0bfc2bf88be046320a00c9d28de",
+  "scope": "research-only; no public app or approved UI changes",
+  "claims": [
+    {
+      "id": "YM-SPEC-01",
+      "status": "official-specification",
+      "statement": "Every compact simple G; nontrivial 4D Yang-Mills on R^4 satisfying required axioms with positive physical mass gap.",
+      "source": "https://www.claymath.org/wp-content/uploads/2022/06/yangmills.pdf#page=6"
+    },
+    {
+      "id": "YM-EXT-01",
+      "status": "external-initial-assessment-unreproduced",
+      "statement": "2026-11-10 group assessment supports existence construction, not unique infinite-volume limit or mass gap.",
+      "source": "https://github.com/yang-mills-group/YM"
+    },
+    {
+      "id": "YM-TOY-01",
+      "status": "elementary-derivation-and-local-tests",
+      "statement": "diag(0,1,2) has spectral gap one for every n.",
+      "source": "gap-benchmark.mjs"
+    },
+    {
+      "id": "YM-TOY-02",
+      "status": "elementary-counterexample-and-local-tests",
+      "statement": "diag(0,1/n,2) has positive finite-n gaps but no uniform lower bound.",
+      "source": "gap-benchmark.mjs"
+    },
+    {
+      "id": "YM-IR-01",
+      "status": "open-no-proof",
+      "statement": "Noncircular physical-scale infrared estimate uniform across continuum and infinite-volume limits.",
+      "source": "https://www.claymath.org/wp-content/uploads/2022/06/yangmills.pdf#page=6"
+    },
+    {
+      "id": "YM-BRIDGE-01",
+      "status": "open-no-proof",
+      "statement": "Carry justified lattice estimates to reconstructed continuum Hamiltonian spectrum, with verified phase and limit assumptions.",
+      "source": "https://github.com/yang-mills-group/YM"
+    }
+  ]
+}
