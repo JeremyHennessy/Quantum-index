@@ -1,0 +1,31 @@
+name: YM Phase 3 complete j1 and all-cutoff falsification
+on:
+  push:
+    branches:
+      - research/ym-phase3-complete-j1-tail-falsifier-20261117
+    paths:
+      - 'research/ym-mass-gap-20261117/phase3/**'
+      - '.github/workflows/ym-phase3-controls.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  independent-j1-proof-controls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact research commit
+        uses: actions/checkout@v4
+      - name: Configure pinned Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: research/ym-mass-gap-20261117/phase3/requirements.txt
+      - name: Install pinned SymPy and NumPy
+        run: python -m pip install -r research/ym-mass-gap-20261117/phase3/requirements.txt
+      - name: Run independent CG, 6j, Haar, finite-cutoff and counterexample tests
+        working-directory: research/ym-mass-gap-20261117/phase3
+        run: python -m unittest -v test_phase3_complete_j1
