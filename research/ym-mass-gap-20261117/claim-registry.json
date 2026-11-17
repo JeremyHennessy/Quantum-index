@@ -39,6 +39,34 @@
       "status": "open-no-proof",
       "statement": "Carry justified lattice estimates to reconstructed continuum Hamiltonian spectrum, with verified phase and limit assumptions.",
       "source": "https://github.com/yang-mills-group/YM"
+    },
+    {
+      "id": "YM-PLAQUETTE-01",
+      "status": "mathematically-derived-model-specific-not-formally-verified",
+      "statement": "For the explicitly defined class-function SU(2) one-plaquette Jacobi Hamiltonian with alpha=1,beta=1/2, min-max and a complete infinite-representation-tail quadratic-form estimate give E1-E0 >= 3/2 - sqrt(21/20)/2 > 79/80. This does not establish a 4D continuum physical mass gap or novelty.",
+      "source": "research/ym-mass-gap-20261117/PLAQUETTE_CERTIFICATE.md",
+      "verification": "11 local Node tests passed; on-branch model-control CI passed at 1b4fc4a7; human proof review and Lean formalization of this bound not performed"
+    },
+    {
+      "id": "YM-TRUNC-FAIL-01",
+      "status": "numerical-counterexample-to-fixed-truncation-accuracy",
+      "statement": "At alpha=0.01,beta=25, an eight-state one-plaquette truncation yields approximately 8.6903 while a 128-state truncation yields approximately 0.9969; without tail bounds a fixed cutoff is not a physical gap certificate.",
+      "source": "research/ym-mass-gap-20261117/plaquette-certificate.test.mjs",
+      "verification": "Independent NumPy reference and 11 local Node tests; numerical not an exact continuum statement"
+    },
+    {
+      "id": "YM-VOLUME-FAIL-01",
+      "status": "elementary-algebraic-counterexample-and-local-tests",
+      "statement": "For N noninteracting SU(2) single-plaquette copies with rank-one all-trivial-character P0, the norm of (I-P0) H_N P0 is beta sqrt(N), while the decoupled Hamiltonian's first gap is independent of N. Thus that global coupling norm is not automatically volume-uniform.",
+      "source": "research/ym-mass-gap-20261117/VOLUME_LEAKAGE_NEGATIVE_CONTROL.md",
+      "verification": "Direct orthogonality argument; five local Node tests passed; not an interacting lattice model"
+    },
+    {
+      "id": "YM-LOCAL-TAIL-HYP-01",
+      "status": "open-hypothesis-no-proof",
+      "statement": "A local, gauge-invariant, scale-adaptive high-representation tail estimate could in principle control physical infrared correlations through interacting Wilson-lattice limits. Need explicit two-plaquette Gauss-law calculation, source-verified Wigner-6j matrix elements, and countertests at varying coupling and size.",
+      "source": "research/ym-mass-gap-20261117/VOLUME_LEAKAGE_NEGATIVE_CONTROL.md",
+      "falsifier": "A failure of any proposed local bound to remain controlled with increased representation cutoff, physical volume, or continuum scaling rejects the specific estimate; even local success on finite graphs is not the Clay problem"
     }
   ]
 }
