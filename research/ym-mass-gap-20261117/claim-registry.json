@@ -179,6 +179,34 @@
       "statement": "Can a gauge-invariant local or conditionally localized energy-weighted estimate avoid the extensive 2Np beta penalty and support a physically uniform infrared bound in increasing lattice volume and then 4D continuum scaling? No such theorem established.",
       "source": "research/ym-mass-gap-20261117/phase4/PHASE4_RESEARCH_REPORT.md",
       "falsifier": "Test a connected four-plaquette graph with one local excitation and distinct global/local resolvent estimates, including coupling scaling; reject bounds that grow with volume or assume the gap"
+    },
+    {
+      "id": "YM-PH5-FOUR-PLAQUETTE-BASIS-01",
+      "status": "independently-tested-complete-jhalf-Hamiltonian-j1-basis-only",
+      "statement": "For open connected SU2 ladder of four squares (10 vertices, 13 links), full-link j<=1/2 physical Hilbert space dimension is 16 and all retained magnetic matrix elements are exactly reproduced by independent character-fusion and 8-axis Haar degree<=3 calculations. Complete link-spin j<=1 basis has dimension 233 and its electric Casimir spectrum is enumerated; the 233-state magnetic Hamiltonian is NOT independently validated.",
+      "source": "research/ym-mass-gap-20261117/phase5/PHASE5_RESEARCH_REPORT.md",
+      "verification": "15/15 local tests, source-phase4 comparison; pinned exact-head GitHub CI pending at this recording"
+    },
+    {
+      "id": "YM-PH5-LOCAL-BARE-01",
+      "status": "exact-finite-ladder-character-identity-not-novelty-assessed",
+      "statement": "For each finite N>=2, low-spin gauge-invariant psi_N=chi_1/2(G1), complete low-spin P_N and Q_N, ||Q_N W_N psi_N||^2=7/4 and beta^2<QWpsi,(alpha H_E-z)^(-1)QWpsi>=beta^2[1/(8alpha-z)+(3/4)/(13alpha/2-z)] if denominators positive. At alpha=1,beta=1/2,z=0 result 25/416, independent of N.",
+      "source": "research/ym-mass-gap-20261117/phase5/PHASE5_RESEARCH_REPORT.md",
+      "verification": "SU2 character fusion, exact half-spin Haar/character-matrix tests and known Phase2 triplet coefficient; no claim about full resolvent or mass gap"
+    },
+    {
+      "id": "YM-PH5-DISTANT-LOOP-FALSIFIER-01",
+      "status": "exact-perturbative-restricted-model-falsifier",
+      "statement": "Let eta_N=chi_spin1(G1) and R_N(beta)=<eta_N,[Q_N(alpha H_E-beta W_N)Q_N-z]^(-1)eta_N>. For each finite N>=3 within Neumann domain 2N|beta|<5alpha-z, exact coefficient of beta^2 equals [(15alpha-z)^(-1)+(1/3)(9alpha-z)^(-1)+(2/3)(12alpha-z)^(-1)+(N-2)(11alpha-z)^(-1)]/(8alpha-z)^2. At alpha=1,z=0, coefficient difference R4-R3 is +1/704, disproving strict invariance of the UNSUBTRACTED resolvent under adding a distant face.",
+      "source": "research/ym-mass-gap-20261117/phase5/PHASE5_RESEARCH_REPORT.md",
+      "verification": "Exact SU2 Wigner6j recoupling channel probabilities (1/3,2/3), fourth-moment Haar normalization, fraction algebra and local tests. Perturbative coefficient only; full finite-beta comparison not claimed"
+    },
+    {
+      "id": "YM-PH5-CONNECTED-RESPONSE-OPEN",
+      "status": "open-hypothesis-no-proof",
+      "statement": "Does a rigorously defined gauge-invariant connected/vacuum-subtracted local resolvent admit a bound independent of added distant plaquettes without assuming a mass gap? Prior unsbtracted resolvent localization was falsified at beta^2. No all-order, infinite-volume or 4D physical result yet.",
+      "source": "research/ym-mass-gap-20261117/phase5/NEGATIVE_RESULTS.md",
+      "falsifier": "Define explicit vacuum subtraction and test order beta^3,beta^4 with n=3,4 and adverse coupling, including noncircular spectral assumptions"
     }
   ]
 }
