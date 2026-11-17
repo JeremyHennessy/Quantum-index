@@ -130,6 +130,55 @@
       "statement": "For this fixed finite graph, Q_J H Q_J >= [alpha C(J+1/2)-4 beta] Q_J. This supports investigation of energy-weighted Schur-type errors at fixed couplings, not physically uniform continuum/volume control.",
       "source": "research/ym-mass-gap-20261117/phase3/PHASE3_RESEARCH_REPORT.md",
       "falsifier": "Test energy-weighted estimate on a connected three-plaquette system and a physically justified coupling scaling, retaining adverse parameters."
+    },
+    {
+      "id": "YM-PH4-THREE-PLAQUETTE-J1-01",
+      "status": "verified-locally-finite-graph-no-4d-claim",
+      "statement": "The connected open SU2 three-plaquette chain with ten links/eight vertices has complete Gauss-law dimensions 8 (j<=1/2), 49 (j<=1), 187 (j<=3/2). All 49x49 magnetic entries agree between degree-qualified Haar 24-cell integration and independent CG product integration to 3e-13. The basis reconstruction is a shared dependency.",
+      "source": "research/ym-mass-gap-20261117/phase4/PHASE4_RESEARCH_REPORT.md",
+      "verification": "17 local Python regression tests; exact-head GitHub CI pending at write time; no formal Lean or peer review"
+    },
+    {
+      "id": "YM-PH4-RAW-TAIL-13-FOURTHS",
+      "status": "exact-rational-finite-model",
+      "statement": "For the three-plaquette complete j<=1/2 projector, K=PW²P-(PWP)² has exactly rational 8x8 entries and largest eigenvalue 13/4. Therefore ||QWP||²=13/4 in the full untruncated finite graph; the two-plaquette counterpart is 5/2.",
+      "source": "research/ym-mass-gap-20261117/phase4/PHASE4_RESEARCH_REPORT.md",
+      "verification": "Exact integer quaternion 24-cell moments and SymPy exact eigenvalues; independent CG one-step numerical check; no claim of literature novelty"
+    },
+    {
+      "id": "YM-PH4-LOCAL-ELECTRIC-FLOOR",
+      "status": "ordinary-mathematical-derivation-restricted-graph",
+      "statement": "For a trivalent or degree-2 simple plaquette ladder without triangles/parallel edges, if P_J limits all link spins to J, then Q_J H_E Q_J >= j*(2j+3) Q_J where j=J+1/2. This uses local Gauss-law triangle inequalities, convexity of Casimir, and distinct adjacent edges.",
+      "source": "research/ym-mass-gap-20261117/phase4/PHASE4_RESEARCH_REPORT.md",
+      "verification": "Proof in report, finite enumeration tests, no formal Lean theorem and no 4D uniform-gap inference"
+    },
+    {
+      "id": "YM-PH4-WEIGHTED-RESOLVENT",
+      "status": "conditional-standard-operator-inequality-not-original",
+      "statement": "If F=alpha*j*(2j+3)-z>2Np*beta, then (QHQ-z)^(-1)<=D^(-1)/(1-2Np*beta/F), D=alpha H_E|Q-z. Hence ||(QHQ-z)^(-1/2)QHP||² is bounded by beta² times the finite one-step energy-weighted matrix norm divided by (1-eta).",
+      "source": "research/ym-mass-gap-20261117/phase4/PHASE4_RESEARCH_REPORT.md",
+      "verification": "Quadratic-form comparison and inverse monotonicity; numerical matrix evaluations approximate; no new 4D result"
+    },
+    {
+      "id": "YM-PH4-GLOBAL-VOLUME-FAIL",
+      "status": "exact-counterexample-to-naive-volume-inference",
+      "statement": "At alpha=1,beta=1/2,z=0,J=1/2, the crude certified global bound on ||B(z)||² worsens from 5/24 for two plaquettes to 13/32 for three. At (2+1)D source scaling alpha=1,beta=1 (a=1,g²=2), the three-plaquette sufficient denominator is negative.",
+      "source": "research/ym-mass-gap-20261117/phase4/NEGATIVE_RESULTS.md",
+      "verification": "Exact finite-graph fractions and cutoff/physical-coupling negative controls; does not show true gap absent"
+    },
+    {
+      "id": "YM-PH4-RAW6J-SIGN-FAIL",
+      "status": "falsified-shortcut-retained",
+      "statement": "Naive multiplication of bare Wigner6j factors without vertex phase conventions yields a negative matrix element where independent full-link Haar and CG integration give the positive value +sqrt(2/3). The shortcut is rejected, not the actual recoupling formalism.",
+      "source": "research/ym-mass-gap-20261117/phase4/NEGATIVE_RESULTS.md",
+      "verification": "Explicit spin-network state pair, independent mathematical integration checks"
+    },
+    {
+      "id": "YM-PH4-LOCAL-CONDITIONAL-OPEN",
+      "status": "open-hypothesis-no-proof",
+      "statement": "Can a gauge-invariant local or conditionally localized energy-weighted estimate avoid the extensive 2Np beta penalty and support a physically uniform infrared bound in increasing lattice volume and then 4D continuum scaling? No such theorem established.",
+      "source": "research/ym-mass-gap-20261117/phase4/PHASE4_RESEARCH_REPORT.md",
+      "falsifier": "Test a connected four-plaquette graph with one local excitation and distinct global/local resolvent estimates, including coupling scaling; reject bounds that grow with volume or assume the gap"
     }
   ]
 }
