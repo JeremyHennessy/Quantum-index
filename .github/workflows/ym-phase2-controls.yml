@@ -5,6 +5,8 @@ on:
       - research/ym-phase2-connected-two-plaquette-20261117
     paths:
       - 'research/ym-mass-gap-20261117/two-plaquette*'
+      - 'research/ym-mass-gap-20261117/full-tail-gap.test.mjs'
+      - 'research/ym-mass-gap-20261117/FULL_TAIL_GAP_CERTIFICATE.md'
       - 'research/ym-mass-gap-20261117/CONNECTED_TWO_PLAQUETTE_AUDIT.md'
       - '.github/workflows/ym-phase2-controls.yml'
   workflow_dispatch:
@@ -25,4 +27,4 @@ jobs:
           node-version: '22.16.0'
       - name: Run Phase 2 connected gauge and regression controls
         run: |
-          node --test research/ym-mass-gap-20261117/two-plaquette.test.mjs research/ym-mass-gap-20261117/gap-benchmark.test.mjs research/ym-mass-gap-20261117/plaquette-certificate.test.mjs research/ym-mass-gap-20261117/volume-leakage.test.mjs
+          node --test research/ym-mass-gap-20261117/two-plaquette.test.mjs research/ym-mass-gap-20261117/full-tail-gap.test.mjs research/ym-mass-gap-20261117/gap-benchmark.test.mjs research/ym-mass-gap-20261117/plaquette-certificate.test.mjs research/ym-mass-gap-20261117/volume-leakage.test.mjs

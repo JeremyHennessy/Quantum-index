@@ -88,6 +88,27 @@
       "statement": "For the complete, connected two-plaquette SU(2) jmax=1 electric/spin-network basis, reproduce all Wilson magnetic matrix elements independently, then formulate and falsify a scale-adaptive local representation-tail estimate. No four-dimensional uniform infrared bound is available.",
       "source": "research/ym-mass-gap-20261117/CONNECTED_TWO_PLAQUETTE_AUDIT.md",
       "falsifier": "If increasing complete spin cutoff or adverse couplings invalidates the proposed inequality, reject the inequality; never interpret a selective five-state gap as true convergence"
+    },
+    {
+      "id": "YM-PH2-FULL-TAIL-NORM-01",
+      "status": "exact-finite-graph-infinite-spin-identity-tested-not-Lean-proved",
+      "statement": "For the connected SU(2) two-plaquette graph and P the complete j<=1/2 link-spin singlet space, W=Wleft+Wright gives spectrum(PW(I-P)WP)={0,1,3/2,5/2}; hence ||(I-P)W P||=sqrt(5/2). This identity includes every omitted spin representation, not merely the explicit triplet.",
+      "source": "research/ym-mass-gap-20261117/FULL_TAIL_GAP_CERTIFICATE.md",
+      "verification": "Symbolic SU(2) Haar moments checked independently against 24-point exact fourth-moment cubature; local tests; scientific novelty not established"
+    },
+    {
+      "id": "YM-PH2-FINITE-GAP-01",
+      "status": "restricted-model-analytic-proof-not-Lean-formalized",
+      "statement": "For the complete untruncated connected two-plaquette physical SU(2) Hilbert space with H=alpha HE-beta(Wleft+Wright) at alpha=1,beta=1/2, minmax with complete high-spin tail and QHQ>=9/2 yields E1-E0>5/2 (chosen energy units). No infinite-volume or continuum implication.",
+      "source": "research/ym-mass-gap-20261117/FULL_TAIL_GAP_CERTIFICATE.md",
+      "verification": "Exact Sylvester determinant (15-4sqrt(11))/8>0, independent symbolic simplification and numerical controls; Lean proof and peer review still pending"
+    },
+    {
+      "id": "YM-PH2-FINITE-GAP-LIMIT-01",
+      "status": "method-failure-under-adverse-parameters",
+      "statement": "The same two-block comparison turns nonpositive for alpha=0.1,beta=1; this invalidates treating the strong-electric finite-graph certificate as a uniform physical scaling or continuum mass gap.",
+      "source": "research/ym-mass-gap-20261117/FULL_TAIL_GAP_CERTIFICATE.md",
+      "verification": "Direct evaluation of rigorous bound; no inference about exact weak-coupling spectral gap"
     }
   ]
 }
