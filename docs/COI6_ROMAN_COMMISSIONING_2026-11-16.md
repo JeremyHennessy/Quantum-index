@@ -1,4 +1,4 @@
-# COI-6 — Roman commissioning and science-data qualification (16 November 2026)
+# COI-6 — Roman commissioning and science-data qualification (16 November 2026; updated 17 November)
 
 **Research-only; not a live Observatory or scientific Evidence release.** Source main: `a60397f017c5c0bfc2bf88be046320a00c9d28de`. The 30 October COI-0 census already records mission `roman`, launch on 30 August and transition into science commissioning on 22 October. This addition does **not** duplicate those identities or rewrite the historic census.
 
@@ -12,7 +12,7 @@ The subsequent [13 November NASA instrument report](https://science.nasa.gov/blo
 
 [STScI's Roman Research Nexus announcement](https://www.stsci.edu/contents/news-releases/2026/news-2026-401) says Roman **science data are intended for immediate public availability, without a proprietary period**. This is a policy statement; it is **not evidence that a particular science FITS product has been publicly released**. No actual Roman public science product file, reproducible archive query or survey data bytes were independently retrieved in this review. Do not infer their availability from a simulation, metadata entry, test exposure or in-mission data flow.
 
-NASA's [1 September commissioning update](https://science.nasa.gov/blogs/roman/2026/09/01/nasa-roman-space-telescopes-antenna-visor-deployed/) anticipated first public images **by early 2027**. Preserve that as a dated forecast, not a guaranteed date or a confirmed November 2026 product. Later official announcements must supersede it when independently checked.
+NASA's [1 September commissioning update](https://science.nasa.gov/blogs/roman/2026/09/01/nasa-roman-space-telescopes-antenna-visor-deployed/) had anticipated first public images **by early 2027**. A later [NASA media advisory issued 17 November](https://www.nasa.gov/news-release/nasa-invites-media-public-to-view-roman-telescopes-first-images/) **supersedes that forecast** with a specific first-image public unveiling scheduled for **7 December 2026 at 3:30 p.m. EST**, during the AGU meeting, via NASA's live stream and website. On **17 November**, the unveiling is **announced, not accomplished**. Published outreach images are not interchangeable with independently retrieved calibrated survey products, a Roman data-release accession, or published cosmological constraints.
 
 ## Admission and integrity
 
