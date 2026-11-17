@@ -53,4 +53,4 @@ jobs:
         uses: actions/checkout@v4
       - name: Run isolated mathematical regression and counterexample tests
         run: |
-          node --test research/ym-mass-gap-20261117/gap-benchmark.test.mjs research/ym-mass-gap-20261117/plaquette-certificate.test.mjs
+          node --test research/ym-mass-gap-20261117/gap-benchmark.test.mjs research/ym-mass-gap-20261117/plaquette-certificate.test.mjs research/ym-mass-gap-20261117/volume-leakage.test.mjs
