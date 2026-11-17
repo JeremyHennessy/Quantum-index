@@ -1,0 +1,33 @@
+name: YM proof lab (isolated research branch)
+
+on:
+  push:
+    branches:
+      - research/ym-mass-gap-preflight-20261117
+    paths:
+      - 'research/ym-mass-gap-20261117/lean/**'
+      - '.github/workflows/ym-proof-lab.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lean-toy-controls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout pinned research branch
+        uses: actions/checkout@v4
+      - name: Compile Lean 4 mathematical toy controls and audit axioms
+        uses: leanprover/lean-action@v1
+        env:
+          LEAN_NUM_THREADS: '1'
+        with:
+          lake-package-directory: research/ym-mass-gap-20261117/lean
+          auto-config: false
+          build: true
+          test: false
+          use-mathlib-cache: true
+          axiom-audit: true
+          axiom-audit-root: YMGapToy
