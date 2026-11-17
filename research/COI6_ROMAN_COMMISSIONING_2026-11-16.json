@@ -1,6 +1,6 @@
 {
   "schemaVersion": "coi6-roman-commissioning-v1",
-  "reviewedAt": "2026-11-16",
+  "reviewedAt": "2026-11-17",
   "baselineMainSha": "a60397f017c5c0bfc2bf88be046320a00c9d28de",
   "publicationStatus": "RESEARCH_ONLY_NOT_RUNTIME",
   "existingIds": {
@@ -40,6 +40,12 @@
       "url": "https://www.stsci.edu/contents/news-releases/2026/news-2026-401",
       "publishedOn": null,
       "role": "public-science-data-policy-not-product-release"
+    },
+    {
+      "id": "nasa-first-images-advisory",
+      "url": "https://www.nasa.gov/news-release/nasa-invites-media-public-to-view-roman-telescopes-first-images/",
+      "publishedOn": "2026-11-17",
+      "role": "official-scheduled-first-images-not-achieved-release"
     }
   ],
   "programme": {
@@ -48,7 +54,7 @@
     "launchTimeEdt": "07:26",
     "launchStatus": "achieved",
     "commissioningPhaseEntered": "2026-10-22",
-    "statusAsOf": "2026-11-13",
+    "statusAsOf": "2026-11-17",
     "operatingPhase": "science-commissioning",
     "scienceOperationsStartedVerified": false,
     "releaseScope": "commissioning-milestone-not-public-science-data"
@@ -73,10 +79,14 @@
   "futureMilestones": [
     {
       "id": "first-images",
-      "expectedPeriod": "early-2027",
-      "sourceId": "nasa-forecast",
-      "projectionDated": "2026-09-01",
-      "releasedConfirmed": false
+      "expectedPeriod": "2026-12-07",
+      "sourceId": "nasa-first-images-advisory",
+      "projectionDated": "2026-11-17",
+      "releasedConfirmed": false,
+      "previousExpectedPeriod": "early-2027",
+      "previousProjectionDated": "2026-09-01",
+      "scheduledTimeEst": "15:30",
+      "status": "announced-not-yet-published"
     },
     {
       "id": "routine-science-operations",
