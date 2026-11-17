@@ -15,7 +15,7 @@ namespace YMGapToy
 def fixedGap (_n : ℕ) : ℝ := 1
 
 /-- Exact first gap of the collapsing three-level toy Hamiltonian. -/
-def collapsingGap (n : ℕ) : ℝ := 1 / ((n : ℝ) + 1)
+noncomputable def collapsingGap (n : ℕ) : ℝ := 1 / ((n : ℝ) + 1)
 
 /-- Hₙ has the same positive lower bound at every cutoff. -/
 theorem fixed_gap_has_uniform_lower_bound :
