@@ -5,7 +5,7 @@ on:
     branches:
       - research/ym-mass-gap-preflight-20261117
     paths:
-      - 'research/ym-mass-gap-20261117/lean/**'
+      - 'research/ym-mass-gap-20261117/**'
       - '.github/workflows/ym-proof-lab.yml'
   workflow_dispatch:
 
@@ -44,3 +44,13 @@ jobs:
           use-mathlib-cache: true
           axiom-audit: true
           axiom-audit-root: YMGapToy
+
+  model-controls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact research commit
+        uses: actions/checkout@v4
+      - name: Run isolated mathematical regression and counterexample tests
+        run: |
+          node --test research/ym-mass-gap-20261117/gap-benchmark.test.mjs research/ym-mass-gap-20261117/plaquette-certificate.test.mjs
