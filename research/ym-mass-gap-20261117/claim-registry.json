@@ -207,6 +207,41 @@
       "statement": "Does a rigorously defined gauge-invariant connected/vacuum-subtracted local resolvent admit a bound independent of added distant plaquettes without assuming a mass gap? Prior unsbtracted resolvent localization was falsified at beta^2. No all-order, infinite-volume or 4D physical result yet.",
       "source": "research/ym-mass-gap-20261117/phase5/NEGATIVE_RESULTS.md",
       "falsifier": "Define explicit vacuum subtraction and test order beta^3,beta^4 with n=3,4 and adverse coupling, including noncircular spectral assumptions"
+    },
+    {
+      "id": "YM-PH6-PH5-REPRO-01",
+      "status": "exact-rational-reproduction-of-distinct-observable",
+      "statement": "The Phase5 high-spin-Q resolvent coefficients R3=743/190080 and R4=1013/190080 at alpha=1,z=0 differ by 1/704. This is NOT literally a subtraction term of the new vacuum-centered physical G_N.",
+      "source": "research/ym-mass-gap-20261117/phase6/PHASE6_RESEARCH_REPORT.md",
+      "verification": "Exact channel-denominator identity plus Phase5 prior recoupling tests"
+    },
+    {
+      "id": "YM-PH6-PHYSICAL-BETA2-01",
+      "status": "restricted-finite-volume-analytic-derivation-with-independent-algebraic-tests",
+      "statement": "For each finite open SU2 N-plaquette ladder N>=2, alpha>0,s>0, local O=W1, normalized interacting vacuum Omega and centered O, [beta²] G_N(s,beta) is independent of N; at alpha=s=1 exactly -6647/71280.",
+      "source": "research/ym-mass-gap-20261117/phase6/PHASE6_RESEARCH_REPORT.md",
+      "verification": "Five-term exact cancellation and independently constructed reachable-state sparse perturbation; initial local 13/13 tests; GitHub exact-head validation required; no novelty or continuum claim"
+    },
+    {
+      "id": "YM-PH6-OMISSION-FAIL-01",
+      "status": "exact-counterexamples-to-incomplete-vacuum-subtraction",
+      "statement": "Omitting second-order vacuum normalization leaves false per-remote-face beta² term 1/[9alpha²(s+3alpha)]; omitting the vacuum energy shift leaves 1/[3alpha(s+3alpha)^2]. Both are nonzero and must not be interpreted as physical propagation.",
+      "source": "research/ym-mass-gap-20261117/phase6/NEGATIVE_RESULTS.md",
+      "verification": "Symbolic identities and adversarial omission tests"
+    },
+    {
+      "id": "YM-PH6-CENTER-PARITY-01",
+      "status": "exact-finite-graph-center-symmetry",
+      "statement": "A -I center flip on one unique top link per plaquette unitarily maps H_N(beta) to H_N(-beta) and local O=W1 to -O. For the isolated analytic finite-volume ground G_N(s,beta) is even in beta; odd orders vanish.",
+      "source": "research/ym-mass-gap-20261117/phase6/PHASE6_RESEARCH_REPORT.md",
+      "verification": "Group-center argument and explicit matrix parity regression; no volume-uniform result"
+    },
+    {
+      "id": "YM-PH6-BETA4-OPEN",
+      "status": "open-no-proof",
+      "statement": "The first unresolved even volume-difference coefficient [beta^4](G4-G3) has not been computed with a full fusion-complete high-spin Hamiltonian. No true connected remote-interaction order or nonperturbative exponential decay is established.",
+      "source": "research/ym-mass-gap-20261117/phase6/NEGATIVE_RESULTS.md",
+      "falsifier": "Reproduce full exact beta4 coefficient with required SU2 spins and independent magnetic matrix checks; preserve failure if the proposed locality cancels imperfectly"
     }
   ]
 }
