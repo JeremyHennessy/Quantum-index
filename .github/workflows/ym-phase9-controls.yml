@@ -1,0 +1,62 @@
+name: YM Phase 9 published-theorem mapping and open-lemma controls
+on:
+  push:
+    branches:
+      - research/ym-phase9-strong-electric-locality-20261118
+    paths:
+      - 'research/ym-mass-gap-20261117/phase9/**'
+      - 'research/ym-mass-gap-20261117/claim-registry.json'
+      - '.github/workflows/ym-phase9-controls.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-qualified-strong-coupling-mapping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+      PHASE8_PARENT: '1cfe6f386849aed65b5b12e843972e4106524921'
+    steps:
+      - name: Checkout exact Phase 9 research head with history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Pin Python and math dependencies
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: research/ym-mass-gap-20261117/phase8/requirements.txt
+      - name: Install qualified Phase 8 dependencies
+        run: python -m pip install -r research/ym-mass-gap-20261117/phase8/requirements.txt
+      - name: Preserve exact Phase 8 and older artifacts
+        run: |
+          git diff --name-only "$PHASE8_PARENT" HEAD | tee /tmp/phase9_changed.txt
+          if grep -Ev '^research/ym-mass-gap-20261117/phase9/|^research/ym-mass-gap-20261117/claim-registry.json$|^\.github/workflows/ym-phase9-controls.yml$' /tmp/phase9_changed.txt; then
+            echo "ERROR: unapproved source outside Phase 9 changed"
+            exit 1
+          fi
+          python - <<'PY'
+          import json,subprocess
+          from pathlib import Path
+          p='research/ym-mass-gap-20261117/claim-registry.json'
+          old=json.loads(subprocess.check_output(['git','show','1cfe6f386849aed65b5b12e843972e4106524921:'+p],text=True))
+          new=json.loads(Path(p).read_text())
+          assert new['claims'][:len(old['claims'])]==old['claims']
+          assert len(new['claims'])>=len(old['claims'])
+          print('append-only claims preserved:',len(old['claims']),'->',len(new['claims']))
+          PY
+      - name: Recheck Phase 8 independent original-link controls
+        working-directory: research/ym-mass-gap-20261117/phase8
+        run: python -m unittest -v test_phase8_independent
+      - name: Recheck exact Phase 8 sixth-order full-spin result
+        working-directory: research/ym-mass-gap-20261117/phase8
+        run: python -m unittest -v test_phase8
+      - name: Check Phase 9 mapping and conditional algebra without promoting a new theorem
+        working-directory: research/ym-mass-gap-20261117/phase9
+        run: python -m unittest -v test_phase9_local_mapping
