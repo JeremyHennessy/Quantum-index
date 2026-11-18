@@ -1,0 +1,79 @@
+name: YM Phase 11 exact probe and continuum-scope controls
+on:
+  push:
+    branches:
+      - research/ym-phase11-local-probe-20261118
+    paths:
+      - 'research/ym-mass-gap-20261117/phase11/**'
+      - 'research/ym-mass-gap-20261117/claim-registry.json'
+      - '.github/workflows/ym-phase11-controls.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  local-probe-research-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+      PHASE10_PARENT: '0b79953a68ec866a04126eb40bead69076e28874'
+    steps:
+      - name: Check out exact Phase 11 head with immutable history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Pin Python and prior qualified dependencies
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: research/ym-mass-gap-20261117/phase8/requirements.txt
+      - name: Install unchanged exact-math requirements
+        run: python -m pip install -r research/ym-mass-gap-20261117/phase8/requirements.txt
+      - name: Verify exact ancestor and no earlier research or production changes
+        run: |
+          echo "EXACT_HEAD_SHA=$(git rev-parse HEAD)"
+          git diff --name-only "$PHASE10_PARENT" HEAD | tee /tmp/ym_phase11_diff.txt
+          if grep -Ev '^research/ym-mass-gap-20261117/phase11/|^research/ym-mass-gap-20261117/claim-registry.json$|^\.github/workflows/ym-phase11-controls.yml$' /tmp/ym_phase11_diff.txt; then
+            echo 'ERROR: unexpected non-Phase11 file change'
+            exit 1
+          fi
+          python - <<'PY'
+          import json,subprocess
+          from pathlib import Path
+          p='research/ym-mass-gap-20261117/claim-registry.json'
+          original=json.loads(subprocess.check_output(['git','show','0b79953a68ec866a04126eb40bead69076e28874:'+p],text=True))
+          current=json.loads(Path(p).read_text())
+          assert len(original['claims'])==55
+          assert current['claims'][:55]==original['claims']
+          assert len(current['claims'])==60
+          print('APPEND_ONLY_CLAIMS: 55 -> 60 (original 55 preserved)')
+          PY
+      - name: Phase 5 high-spin counterexample regressions
+        working-directory: research/ym-mass-gap-20261117/phase5
+        run: python -m unittest -v test_phase5_local
+      - name: Phase 6 full physical response regressions
+        working-directory: research/ym-mass-gap-20261117/phase6
+        run: python -m unittest -v test_phase6
+      - name: Phase 7 exact connected-support regressions
+        working-directory: research/ym-mass-gap-20261117/phase7
+        run: python -m unittest -v test_phase7
+      - name: Phase 8 independent Gauss spin completeness
+        working-directory: research/ym-mass-gap-20261117/phase8
+        run: python -m unittest -v test_phase8_independent
+      - name: Phase 8 exact untruncated sixth-order regressions
+        working-directory: research/ym-mass-gap-20261117/phase8
+        run: python -m unittest -v test_phase8
+      - name: Phase 9 locality mapping and conditional tail controls
+        working-directory: research/ym-mass-gap-20261117/phase9
+        run: python -m unittest -v test_phase9_local_mapping
+      - name: Phase 10 Laplace and complex Riesz counterexamples
+        working-directory: research/ym-mass-gap-20261117/phase10
+        run: python -m unittest -v test_phase10_one_route
+      - name: Phase 11 independent probe and source-field derivations
+        working-directory: research/ym-mass-gap-20261117/phase11
+        run: python -m unittest -v test_phase11_probe

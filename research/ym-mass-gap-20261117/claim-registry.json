@@ -382,6 +382,41 @@
       "statement": "The published weak-coupling complex-eigenbranch theorem for the finite spatial SU2 strip holds only for sufficiently small |beta|/alpha. In the source-qualified (2+1)D convention alpha=g²/2, beta=2/(a²g²), beta/alpha=4/(a²(g²)²); fixed positive g² and a→0 exit that regime. No 4D construction or Yang–Mills mass-gap theorem follows.",
       "source": "research/ym-mass-gap-20261117/phase10/NEGATIVE_RESULTS.md",
       "verification": "Source-qualified Kogut–Susskind normalization and exact algebraic scaling; no continuum extrapolation."
+    },
+    {
+      "id": "YM-PH11-EXACT-LOCAL-PROBE-IDENTITY-01",
+      "status": "rigorously-derived-finite-volume-analytic-reduction-independent-exact-controls",
+      "statement": "For every finite no-charge original-link untruncated SU2 N-plaquette Hamiltonian and fixed alpha,s>0, where the vacuum-origin rank-one Riesz eigenbranch E_N(z), P_N(z) is isolated and H_N(z)-E_N(z)+s invertible, the gauge-neutral two-level probe shift obeys [lambda²](E_N^probe(z,lambda)-E_N(z))=-Tr[P_N O(H_N-E_N+s)^-1 O], and the physical holomorphic centered response F_N(s,z) equals minus that coefficient minus mu_N(z)²/s with mu=Tr(P_N O). Valid for locally admitted complex z with nonorthogonal P; no N-independent radius or continuum claim.",
+      "source": "research/ym-mass-gap-20261117/phase11/LOCAL_PROBE_IDENTITY.md",
+      "verification": "General analytic Feshbach/reduced-resolvent derivation including left/right normalization, explicit vacuum-pole subtraction and operator domains; independent exact 4x4 characteristic-polynomial and 2x2 Riesz check at z=0,1/3,i/5. Established standard perturbation method, no originality claim."
+    },
+    {
+      "id": "YM-PH11-LOCAL-SOURCE-AND-REAL-DEFECT-01",
+      "status": "rigorous-finite-volume-source-Hellmann-Feynman-and-real-uniform-minmax",
+      "statement": "For the same analytic finite-volume eigenbranch H_N(z,h)=H_N(z)-hW1, mu_N(z)=-[h](E_N(z,h)-E_N(z)). For real parameters in the ground-branch regime, |E_N^probe(z,lambda)-E_N(z)|<=2|lambda| and |E_N(z,h)-E_N(z)|<=2|h| independent of N, by the variational principle and ||W1||<=2. These real bounds do not prove jointly complex-uniform analyticity.",
+      "source": "research/ym-mass-gap-20261117/phase11/LOCAL_PROBE_IDENTITY.md",
+      "verification": "Analytic rank-one left/right eigenvalue derivative, exact independent 2x2 determinant derivative; real perturbation operator-norm inequality and min-max theorem."
+    },
+    {
+      "id": "YM-PH11-COMPLEX-DEFECT-POLYDISK-OPEN-01",
+      "status": "open-unproved-joint-complex-multiparameter-local-energy-majorant",
+      "statement": "The required N-independent common complex z×lambda and z×h bidisks and uniform bounds on D_N(z,lambda)=E_N^probe-E_N and L_N(z,h)=E_N(z,h)-E_N(z) remain UNPROVED. If established, Cauchy gives |F_N(s,z)|<=C_D/rho²+(C_h/eta)²/s and, combined with Phase7 exact support, an exponential absolute connected coefficient tail. This is a conditional implication, NOT a verified physical locality theorem.",
+      "source": "research/ym-mass-gap-20261117/phase11/ONE_DECISIVE_LEMMA_OR_COUNTEREXAMPLE.md",
+      "verification": "Derived exact finite-N probe/source identities, Cauchy coefficient bounds and Phase7 support theorem; 2020 paper one-parameter theorem does not explicitly imply required joint uniform defect estimates."
+    },
+    {
+      "id": "YM-PH11-2026-RESPONSE-THEOREM-SCOPE-01",
+      "status": "published-response-theory-relevant-but-not-directly-applicable",
+      "statement": "Henheik and Wessel, Response Theory for Locally Gapped Systems (J Stat Phys 193, article 151, 2026), uses uniformly finite-dimensional local Hilbert spaces and bounded SLT operators (section 2, Theorem 4.1) for local-gap adiabatic response. The original-link SU2 Hamiltonian has infinite-dimensional L²(SU2) local factors and unbounded electric Casimirs, so a direct application to its exact complex Riesz probe susceptibility is unqualified. Del Vecchio et al. 2020 proves single complex parameter eigenbranch analyticity, not the stated N-uniform joint source/probe energy-defect bounds.",
+      "source": "research/ym-mass-gap-20261117/phase11/LOCAL_ENERGY_SHIFT_THEOREM_AUDIT.md",
+      "verification": "Inspected full open 2026 primary article §1–2/4, original 2020 PDF §1.1 and Theorems 3.6/3.8, Yarotsky 2006 original Theorem1 and §2 multi-site Schwarz/cluster proof; access limits for 2004/2005 full text retained."
+    },
+    {
+      "id": "YM-PH11-CONTINUUM-DIRECTION-PIVOT-01",
+      "status": "scientific-relevance-decision-not-mathematical-no-go",
+      "statement": "The restricted SU2 finite spatial strip and its fixed-spacing strong-electric analytic regime do not establish a credible proven route to four-dimensional continuum Yang-Mills: beta/alpha=4/[a²(g²)²] under the source-qualified (2+1)D fixed g² scaling diverges as a→0. Recommended PIVOT from further routine strong-electric strip perturbative phases to a source-only audit of 4D constructive weak-coupling lattice gauge theory, reflection positivity, renormalization and the first rigorous continuum/infrared obstruction. A pivot is not a mathematical theorem or Clay progress.",
+      "source": "research/ym-mass-gap-20261117/phase11/CONTINUUM_RELEVANCE_DECISION.md",
+      "verification": "Official Jaffe-Witten Clay R4 all-compact-simple-groups target, source-qualified 2+1D coupling normalization and January 2026 mathematical-physics review; no continuum scaling claim promoted."
     }
   ]
 }
