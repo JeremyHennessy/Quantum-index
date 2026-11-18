@@ -1,0 +1,59 @@
+name: YM Phase 12 constructive 4D source audit preservation
+on:
+  push:
+    branches:
+      - research/ym-phase12-4d-constructive-frontier-20261118
+    paths:
+      - 'research/ym-mass-gap-20261117/phase12/**'
+      - 'research/ym-mass-gap-20261117/claim-registry.json'
+      - '.github/workflows/ym-phase12-source-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-audit-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PHASE11_PARENT: '8e7f88082a73638478b00819450ad0a8de968026'
+    steps:
+      - name: Check out exact isolated audit branch with history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify only Phase 12 documents, registry append and isolated workflow changed
+        run: |
+          echo "EXACT_HEAD_SHA=$(git rev-parse HEAD)"
+          git diff --check "$PHASE11_PARENT" HEAD
+          git diff --name-only "$PHASE11_PARENT" HEAD | tee /tmp/ym_phase12_changed.txt
+          if grep -Ev '^research/ym-mass-gap-20261117/phase12/|^research/ym-mass-gap-20261117/claim-registry.json$|^\.github/workflows/ym-phase12-source-audit.yml$' /tmp/ym_phase12_changed.txt; then
+            echo 'ERROR: protected historical research, production or unrelated file changed'
+            exit 1
+          fi
+          python - <<'PY'
+          import json,subprocess
+          from pathlib import Path
+          root=Path('research/ym-mass-gap-20261117')
+          registry=root/'claim-registry.json'
+          original=json.loads(subprocess.check_output(
+              ['git','show','8e7f88082a73638478b00819450ad0a8de968026:'+str(registry)],text=True))
+          current=json.loads(registry.read_text())
+          assert len(original['claims'])==60 and len(current['claims'])==65
+          assert current['claims'][:60]==original['claims']
+          assert len({c['id'] for c in current['claims']})==len(current['claims'])
+          required=(
+              'CONSTRUCTIVE_4D_THEOREM_MAP.md',
+              'FOUR_DIMENSIONAL_REGULATOR_AUDIT.md',
+              'CONTEMPORARY_CLAIMS_REVIEW.md',
+              'ONE_OPEN_QUANTITATIVE_LEMMA.md',
+              'NEGATIVE_RESULTS.md',
+              'RESEARCH_DIRECTION_DECISION.md',
+          )
+          for f in required:
+              p=root/'phase12'/f
+              assert p.is_file() and len(p.read_text())>1000, str(p)
+          print('SOURCE_AUDIT: six new reports present; five claims appended; 60 historical claims unchanged')
+          print('SCOPE: preservation/source-integrity only; not mathematical proof or literature certification')
+          PY
