@@ -417,6 +417,41 @@
       "statement": "The restricted SU2 finite spatial strip and its fixed-spacing strong-electric analytic regime do not establish a credible proven route to four-dimensional continuum Yang-Mills: beta/alpha=4/[a²(g²)²] under the source-qualified (2+1)D fixed g² scaling diverges as a→0. Recommended PIVOT from further routine strong-electric strip perturbative phases to a source-only audit of 4D constructive weak-coupling lattice gauge theory, reflection positivity, renormalization and the first rigorous continuum/infrared obstruction. A pivot is not a mathematical theorem or Clay progress.",
       "source": "research/ym-mass-gap-20261117/phase11/CONTINUUM_RELEVANCE_DECISION.md",
       "verification": "Official Jaffe-Witten Clay R4 all-compact-simple-groups target, source-qualified 2+1D coupling normalization and January 2026 mathematical-physics review; no continuum scaling claim promoted."
+    },
+    {
+      "id": "YM-PH12-4D-WILSON-REGULATOR-DEFINED-01",
+      "status": "source-qualified-finite-4d-regulator-definition-not-continuum-theorem",
+      "statement": "For finite 4D Euclidean periodic SU(2) Wilson lattice (aZ/LZ)^4, normalized fundamental trace, each oriented link SU2 and normalized Haar, the probability law dmu=Z^-1 exp[-b sum_p(1-1/2 ReTr U_p)] product_e dHaar is a positive gauge-invariant finite-regulator definition. A genuine physical continuum requires renormalized gauge-invariant fields, UV a->0 at specified bare-coupling running, IR L->infinity, OS positivity/reconstruction and a separate positive physical spectral gap. It is not the (2+1)D strong-electric model.",
+      "source": "research/ym-mass-gap-20261117/phase12/FOUR_DIMENSIONAL_REGULATOR_AUDIT.md",
+      "verification": "Official Jaffe-Witten §4, Nov10 2026 group assessment §3–6 Eq(3), checked reviewer Lean AcceptanceSpec.lean; no claim of continuum from positive finite Haar law."
+    },
+    {
+      "id": "YM-PH12-HISTORICAL-RESTRICTED-4D-01",
+      "status": "source-qualified-published-restricted-constructive-results-not-regulator-free-solution",
+      "statement": "Balaban 1987–1989 4D Wilson-lattice small-field/RG/large-field work has a small-effective-coupling hypothesis in the 1989 Theorem1; proof of companion estimate cited unpublished as of its 1989 introduction was not independently traced to a later publication. Magnen–Rivasseau–Sénéor 1993 pure SU2 four-dimensional regularized axial-gauge construction keeps a fixed infrared cutoff and covers the trivial topological sector. Osterwalder–Seiler 1978 fixed-lattice reflection positivity and strong-coupling infinite-volume analyticity do not complete a weak-bare-coupling continuum Yang–Mills existence/gap theorem.",
+      "source": "research/ym-mass-gap-20261117/phase12/CONSTRUCTIVE_4D_THEOREM_MAP.md",
+      "verification": "Primary author-uploaded 1993 article abstract/introduction; 1987/1989 journal metadata and 1989 available introductory theorem transcription (full theorem proof not independently audited); 1978 publisher abstract only. Historical regulator hypotheses explicitly retained."
+    },
+    {
+      "id": "YM-PH12-OCT26-LEAN-GROUP-CLAIM-NO-GAP-01",
+      "status": "technically-formalized-existence-claim-with-qualified-independent-group-assessment-no-gap",
+      "statement": "Yang-Mills group's 2026-11-10 assessment judges OpenAI's 2026-10-28 Lean construction of continuum pure YM from 4D Wilson scaling limits to establish QFT/Wightman existence for each compact simple group, via selected UV at fixed physical volume and subsequential IR/pure-phase OS reconstruction. Group reports verified kernel/axiom/Comparator checks but says full human understanding incomplete; uniqueness and a positive physical mass gap are expressly OPEN. Actual checks AcceptanceSpec.lean/CombinedAcceptance.lean encode a common Wilson family, selected OS/source properties, not a mass-gap theorem. External community acceptance and all physical semantics not independently reproduced here.",
+      "source": "research/ym-mass-gap-20261117/phase12/CONTEMPORARY_CLAIMS_REVIEW.md",
+      "verification": "Group Nov10 public full assessment §§4–12 and direct GitHub review of AcceptanceSpec blob c8ba61da441bd8052877d789d2f67de78a4cccd6 and CombinedAcceptance blob 2b22d1c94ca5b21fdfaae89e97e6c05ad7096af9; no claim we reran Lean."
+    },
+    {
+      "id": "YM-PH12-FULL-2026-PUBLISHED-GAP-CLAIM-UNQUALIFIED-01",
+      "status": "published-claim-full-proof-inaccessible-independent-acceptance-unverified",
+      "statement": "Faizal–Shabir, Fortschritte der Physik DOI10.1002/prop.70097, first published April 20 2026, claims 4D SU(N) reflection-positive continuum construction, uniform transfer gap, confinement and weak/strong trajectory identification. Publisher and arXiv abstract available but full proof and regulator-uniform estimates were inaccessible; publication alone does not establish independent mathematical acceptance or refutation. Other November 2026 preprints remain unreviewed or explicitly conditional. Clay still labels full existence-and-gap problem unsolved.",
+      "source": "research/ym-mass-gap-20261117/phase12/CONTEMPORARY_CLAIMS_REVIEW.md",
+      "verification": "Wiley DOI publisher bibliographic/abstract primary page, arxiv abstract 2606.19362 dated June9 2026, inspected dated Yang-Mills-group review scope; no line-by-line theorem audit possible."
+    },
+    {
+      "id": "YM-PH12-DENSE-OS-DECAY-OPEN-CLUSTER-SHORTCUT-FALSIFIED-01",
+      "status": "precise-open-conditional-physical-time-exponential-lemma-plus-exact-general-counterexample",
+      "statement": "Conditional on a selected 4D SU2 OS-positive continuum component with unique vacuum and dense centered gauge-invariant field-created states, it remains unproved that all their positive-time connected correlators satisfy C_f(t)<=K_f exp(-m t) for a single m>0 in physical units independent of cutoff, volume and f. Spectral calculus and density would then yield σ(H)⊂{0}∪[m,∞). Qualitative clustering plus reflection positivity does NOT imply a gap: exact ℂΩ⊕L²([0,∞),e^-λdλ), H=0⊕M_λ, C_A(t)=1/(1+t) has clustering and positive Euclidean semigroup but continuous spectrum to 0. This toy falsifies only the general inference, not SU2 YM.",
+      "source": "research/ym-mass-gap-20261117/phase12/ONE_OPEN_QUANTITATIVE_LEMMA.md",
+      "verification": "Exact spectral theorem with positive measure and strong limit e^-tH→P_vac; elementary Laplace integral yields 1/(1+t), non-exponential; selected source chain group's Nov10 assessment §8 item3 explicitly leaves mass gap open. No numerical simulator."
     }
   ]
 }
