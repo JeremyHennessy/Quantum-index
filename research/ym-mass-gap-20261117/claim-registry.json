@@ -312,6 +312,41 @@
       "statement": "No N-independent analyticity radius or absolute connected-Taylor-remainder bound for G_N(s,beta)−G_(N−1)(s,beta) has been established, and no continuum or 4D physical Yang–Mills mass-gap theorem follows. The elementary Kato bound shrinks as 1/N and is insufficient to settle the actual locality question.",
       "source": "research/ym-mass-gap-20261117/phase8/NEGATIVE_RESULTS.md",
       "falsifier": "Map assumptions of published weak-interaction lattice theorems to original-link SU2 Hamiltonian; distinguish any uniform gap or local ground-state expectation estimate from the specific connected imaginary-time resolvent and its coefficientwise l1 tail."
+    },
+    {
+      "id": "YM-PH9-STRONG-ELECTRIC-GAP-PRECEDENT-01",
+      "status": "established-published-weak-interaction-gap-applied-to-restricted-original-link-Hamiltonian",
+      "statement": "At fixed alpha>0 in the sufficiently small magnetic coupling region 2|beta|<=c_*(3alpha/4,5) with an unspecified positive published threshold, the unrestricted SU2 original-link Hamiltonian satisfies the hypotheses of established weakly interacting product-vacuum spectral-gap stability theorems. Each link local L2(SU2) has on-site gap 3alpha/4, Wilson multipliers are bounded local interactions of range <=5 and norm <=2|beta|. Its unique full ground is gauge invariant; restricting to Gauss singlets preserves the resulting N-uniform positive spectral gap. This is NOT novel or a continuum theorem.",
+      "source": "research/ym-mass-gap-20261117/phase9/PHASE9_RESEARCH_REPORT.md",
+      "verification": "Original-link geometric embedding and 2022 Henheik-Teufel-Wessel Theorem 3 hypotheses, cited earlier Yarotsky gap theorem; independent Phase 9 original-graph tests. Numerical threshold/gap unavailable; original 2006 periodic-translation assumptions are not silently imported."
+    },
+    {
+      "id": "YM-PH9-EQUALTIME-BOUND-KNOWN-01",
+      "status": "published-LPPL-theorem-application-equal-time-only",
+      "statement": "For bounded observables A supported on the four original links of face 1, under sufficiently small beta relative to alpha, the difference between N and N−1 face ground expectations obeys |omega_N(A)−omega_(N−1)(A)|<=exp(4c1+5c2)||A|| exp(−3c2(N−1)) for N>=3, with unspecified published c1,c2>0 independent of N. This is a direct application of 2022 Theorem 3 to a bounded last-face perturbation, not a new theorem or a claim for the global centered resolvent.",
+      "source": "research/ym-mass-gap-20261117/phase9/PRIOR_ART_AND_THEOREM_MAP.md",
+      "verification": "Four-link support Y={0,1,2,5}, last-face X_N={3(N−1),3(N−1)+1,3(N−1)+2,3N+2}, exact distance 3(N−1)−5 verified for N=3..24."
+    },
+    {
+      "id": "YM-PH9-CENTERED-G-UNIFORM-SCALAR-01",
+      "status": "conditional-on-established-real-beta-strong-coupling-gap-not-difference-locality",
+      "statement": "In the small real-coupling regime where the published theorem yields an N-uniform physical gap gamma_*>0, the complete vacuum-centered physical response satisfies 0<=G_N(s,beta)<=4/(s+gamma_*) for all s>0 and N, since Var(W1)<=||W1||²<=4. This does not bound G_N−G_(N−1) or absolute Taylor coefficients.",
+      "source": "research/ym-mass-gap-20261117/phase9/PHASE9_RESEARCH_REPORT.md",
+      "verification": "Elementary spectral theorem on the centered vacuum-orthogonal vector, with the physical gap derived from published product-vacuum stability rather than assumed."
+    },
+    {
+      "id": "YM-PH9-COMPLEX-RESOLVENT-TAIL-OPEN-01",
+      "status": "unproved-uniform-complex-coupling-analytic-lemma",
+      "statement": "The proposed absolute tail sum_(k>=2(N−1)) |c_(N,k)| |beta|^k <= A q^(N−1) for the true physical G_N−G_(N−1) remains OPEN. It would follow via Cauchy plus Phase7 support if the proper Riesz-projector analytic continuation F_N(s,z) had a common N-independent complex-beta disk |z|<=r and uniform bound M. Real-beta gap and equal-time LPPL do not establish this missing lemma.",
+      "source": "research/ym-mass-gap-20261117/phase9/ONE_PRECISE_OPEN_LEMMA.md",
+      "verification": "Conditional Cauchy formula gives A=2M/(1−beta0/r), q=(beta0/r)^2 for 0<=beta0<r; the physical uniform holomorphy and bound are explicitly NOT verified."
+    },
+    {
+      "id": "YM-PH9-CONTINUUM-TRANSFER-REJECTED-01",
+      "status": "rejected-unjustified-strong-coupling-to-continuum-inference",
+      "statement": "The fixed-spacing (2+1)D Hamiltonian convention alpha=g²/2, beta=2/(a²g²) has beta/alpha=4/(a²(g²)²). At fixed positive dimensionful g² this leaves any fixed sufficiently strong-electric small-beta/alpha regime as a->0; no four-dimensional all-compact-simple-group quantum Yang-Mills proof follows.",
+      "source": "research/ym-mass-gap-20261117/phase9/NEGATIVE_RESULTS.md",
+      "verification": "Exact rational scaling test plus source-qualified SU2 Hamiltonian convention. Coupling renormalization and physical scaling are not inferred from the simple test."
     }
   ]
 }
