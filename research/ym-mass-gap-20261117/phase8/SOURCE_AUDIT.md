@@ -1,0 +1,35 @@
+# Phase 8 — independent source, conventions, and novelty audit
+
+Date: 2026-11-18 UTC. Research-only. Binding parent: RESEARCH_CHARTER.md.
+Primary immutable comparison parent: Phase 7 `2d211370c1e0132a5cd4a9d102768da4e69d06f9`.
+Production main at intake: `a60397f017c5c0bfc2bf88be046320a00c9d28de`.
+
+## Established primary literature inspected
+
+1. **Jaffe and Witten, official Clay statement**, *Quantum Yang–Mills Theory*, §4 p.6: https://www.claymath.org/wp-content/uploads/2022/06/yangmills.pdf . The target is a nontrivial **four-dimensional** Yang–Mills quantum field theory on R^4 for **every compact simple gauge group**, with axiomatic properties and a finite positive mass gap: a nonzero separation in the physical Hamiltonian spectrum above vacuum. §5 distinguishes exponential clustering as a *consequence* of a gap. Neither is supplied by our finite ladder. Clay's current public description: https://www.claymath.org/millennium/yang-mills-the-maths-gap/.
+2. **Ebner, Schäfer, Seidl, Müller, Yao**, *Entanglement entropy of (2+1)-dimensional SU(2) lattice gauge theory on plaquette chains*, *Phys. Rev. D* **110**, 014505 (2024), §II Eq. (1), https://doi.org/10.1103/PhysRevD.110.014505 . The published Kogut–Susskind electric link Casimir plus fundamental plaquette Wilson trace Hamiltonian; electric basis imposes local Gauss singlets; recoupling employs Wigner 6j symbols. Published work explicitly warns that low-spin truncation can change physical properties. This is an existing **(2+1)D spatial chain** model, not ours to claim as an invention.
+3. **Communications Physics (2025)**, *Entanglement properties of SU(2) gauge theory*, §“SU(2) lattice gauge theory”, https://www.nature.com/articles/s42005-025-02298-5 . Its displayed equation uses H=(g²/2)∑_links E² - [2/(a²g²)]∑_plaquettes Tr∏U. Thus alpha=g²/2, beta=2/(a²g²) in its conventions. This physical scaling cannot be held in a fixed strong-electric perturbation neighbourhood as a→0 without additional analysis.
+4. **Bastianello and Sotiriadis**, *Cluster expansion for ground states of local Hamiltonians*, *Nucl. Phys. B* **909**, 1020 (2016), https://arxiv.org/abs/1601.02532 . Its construction relates cluster amplitudes, locality and local observables, with perturbation-theory consistency. The *type* of finite-order connected-support cancellation is already covered by standard linked/cluster reasoning. We have **not** established that our particular rational coefficient is new relative to the whole published literature.
+5. **DLMF** §34.3, Wigner 3j orthogonality and phase conventions: https://dlmf.nist.gov/34.3 . Spin-network/Peter–Weyl normalization is also checked explicitly in the code instead of trusting an unspecified raw 6j phase shortcut.
+
+## Mathematical and operator conventions
+
+- Group: SU(2), normalized probability Haar on each of 13 original links, no external charges, residual gauge invariance at all 10 vertices, four open square faces.
+- Spins: integer labels `n=2j`. Electric link Casimir `j(j+1)=n(n+2)/4`. Electric H_E is the sum over original links, not over independent face-loop coordinates.
+- Magnetic Wilson operator: `W_i=Tr_(fundamental) U_(face i)=chi_(1/2)`, **unnormalized trace** with `chi_(1/2)(I)=2`; it is a bounded self-adjoint multiplication operator, not half the trace.
+- The link orientation is top left→right, bottom left→right, vertical top→bottom. A face trace is oriented around the square. SU(2) characters are real, so reversed loop holonomy has the same trace.
+- Local intertwiners: for degree 3 use exact real Wigner 3j tensors with the order of incident edges in `EDGES`; for incoming legs convert via `epsilon_(m,-m)=(-1)^(j-m)`; degree-2 singlet is epsilon divided by sqrt(2j+1). Multiply network by ∏_edges sqrt(2j+1). Raw 6j sign products without these conventions are explicitly *not* used.
+- Tree gauge fixing leaves one independent bottom-edge SU(2) chord per face. Original-link spin networks give exact coefficient tensors on the four chords. Residual simultaneous conjugation is respected; no tensor-product claim for the full physical Gauss-law Hilbert space is made.
+- Method A: exact Wigner 3j contraction and analytic SU(2) Peter–Weyl/CG character integration. The untoggled chord integral is `∫ D^j_(ab)^* D^k_(cd)=δ_jk δ_ac δ_bd/(2j+1)`; the toggled 0↔1/2 chord uses `∫D^(1/2) chi_(1/2)=δ/2`. The corresponding explicit rational matrix is represented with a diagonal weighted metric `3^t`, t=#of triplet shared links.
+- Method B: construct the four chord matrix-element integrals using an **independent exact quaternion cubature**. SU(2)≅S³; the eight points ±e_a, a=0,...,3, with weights 1/8 integrate **all coordinate polynomials of total degree ≤3** exactly: constants agree, odd monomials vanish by antipodal parity, and second moments are δ_ab/4. Every retained chord spin is 0 or 1/2, so the product of two wavefunctions and one fundamental Wilson trace has degree at most 1+1+1=3 **per chord coordinate**. Thus product quadrature is exactly qualified for these matrix entries. It is *not* qualified to integrate generic j=1 squared character norms or fourth-degree polynomials, which earlier research already disproved.
+- Both integration methods use the same original-link Wigner-3j basis coefficient tensors: they are **independent integral evaluations, not wholly independent constructions of the physical basis**. Direct original 13-link gauge covariance at all 10 vertices, exact triangle/parity enumeration, independent numerical full-link Gram matrix and old projected channel rules cover part, but not all, of this shared dependency. Specialist external review remains absent.
+- Two coefficient algorithms further differ: (A) exact multi-degree Rayleigh–Schrödinger recursion for unnormalized vacuum, energy, Dyson resolvent, norm division; (B) independent nilpotent-polynomial-ring fixed-point/Feshbach equation plus Dyson fixed point and geometric reciprocal for normalization. The first uses Method A matrices and the second Method B matrices.
+- No unexamined floating-point eigenspectrum or guessed rational reconstruction enters the coefficient. Fractions are constructed from exact symbolic Wigner values, algebraic square roots and exact SU(2) integrals.
+
+## Literature novelty classification
+
+**Established methods; restricted exact model-specific calculation.** A precise 4-face sixth-order rational connected coefficient was not identified in the targeted literature reviewed, but that is *not evidence of originality or priority*. No independent mathematical physicist has reviewed the result. The finite-order support theorem is a special case of familiar linked-support methods, not an asserted new continuum locality theorem.
+
+## Limits of the review
+
+The selected literature sources and their identified equations were examined; no exhaustive literature/systematic citation search or external review is claimed. A later source showing the identical calculation must be acknowledged as precedent, with the numerical result retained as a valid independent reproduction if verified.
