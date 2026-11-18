@@ -284,6 +284,34 @@
       "statement": "The full untruncated [beta^6](G4-G3) is not yet calculated. Minimal even connected support is beta_2² beta_3² beta_4², but whether its coefficient cancels remains unproved; no volume-uniform perturbation radius, continuum physical gap or 4D result is known.",
       "source": "research/ym-mass-gap-20261117/phase7/PHASE7_RESEARCH_REPORT.md",
       "falsifier": "Use exact SU2 fusion-complete reachable basis and independently verified higher-spin magnetic matrix elements plus interacting-vacuum fourth/sixth-order corrections"
+    },
+    {
+      "id": "YM-PH8-FULL-BETA6-EXACT-RESTRICTED-01",
+      "status": "exact-rational-restricted-finite-ladder-candidate-independent-local-controls-exact-head-ci-gated",
+      "statement": "On the complete untruncated physical no-charge SU(2) finite four-face open ladder with alpha=s=1 and interacting-vacuum-centered Wilson resolvent, the perturbatively complete mixed coefficient [b2² b3² b4²]G4|b1=0 equals +1504856360495713/3397652693362287360000. The physical model is infinite dimensional; only the contributing finite-order channels are enumerated. This is not an infinite-volume or continuum mass-gap result.",
+      "source": "research/ym-mass-gap-20261117/phase8/PHASE8_RESEARCH_REPORT.md",
+      "verification": "Independent center/factorization reduction; original-link spin bounds and 34-channel Gauss constraints; exact CG/Peter-Weyl versus degree-qualified quaternion Haar integrals; two rational perturbative algorithms. Both integrations share original-link Wigner-3j tensor construction, so independent full physical-basis correspondence review remains open. Exact-head workflow verdict is recorded separately in draft PR."
+    },
+    {
+      "id": "YM-PH8-GAUSS-FUSION-COMPLETE-01",
+      "status": "exact-finite-order-reachability-certificate-with-explicit-shared-basis-caveat",
+      "statement": "The target monomial contains precisely two W1 external, two each of W2,W3,W4 magnetic insertions. SU2 fundamental fusion bounds all original horizontal and outer-vertical j≤1/2 and all three shared-vertical j≤1. The full original-link Gauss singlet solutions within these bounds are 34; no higher representation can contribute to this coefficient. This is not an invariant finite-beta truncation.",
+      "source": "research/ym-mass-gap-20261117/phase8/PHASE8_RESEARCH_REPORT.md",
+      "verification": "Original phase8_probe enumeration and separately written original-13-link direct Gauss enumeration test_phase8_independent.py; the two CG/Haar magnetic integration routes share the underlying exact 3j network coefficient tensors."
+    },
+    {
+      "id": "YM-PH8-TRUNCATED-SIGN-FALSIFIED-01",
+      "status": "exact-negative-control-previous-projected-sign-inference-falsified",
+      "statement": "At alpha=s=1, the j≤1/2 projected sixth-order difference is −41497429/42323383872 whereas the full-spin finite-order target is positive; the projected sign is invalid for the physical response. Previous Phase 5 +1/704 unsubtracted Q resolvent and Phase 6 −6647/71280 centered full response remain distinct, preserved.",
+      "source": "research/ym-mass-gap-20261117/phase8/NEGATIVE_RESULTS.md",
+      "verification": "Exact rational two-method coefficient checks, one-face character-fusion control, and unchanged Phase 5–7 regressions."
+    },
+    {
+      "id": "YM-PH8-VOLUME-UNIFORM-CONTINUUM-OPEN-01",
+      "status": "open-unproved-bridge",
+      "statement": "No N-independent analyticity radius or absolute connected-Taylor-remainder bound for G_N(s,beta)−G_(N−1)(s,beta) has been established, and no continuum or 4D physical Yang–Mills mass-gap theorem follows. The elementary Kato bound shrinks as 1/N and is insufficient to settle the actual locality question.",
+      "source": "research/ym-mass-gap-20261117/phase8/NEGATIVE_RESULTS.md",
+      "falsifier": "Map assumptions of published weak-interaction lattice theorems to original-link SU2 Hamiltonian; distinguish any uniform gap or local ground-state expectation estimate from the specific connected imaginary-time resolvent and its coefficientwise l1 tail."
     }
   ]
 }
