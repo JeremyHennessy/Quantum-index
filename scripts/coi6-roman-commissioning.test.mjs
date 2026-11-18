@@ -24,7 +24,7 @@ function verify(d) {
     commissioningSourceId: 'roman-commissioning-nasa-2026',
   });
   assert.equal(d.sources.length, 6);
-  assert.equal(new Set(d.sources.map(s => s.id)).size, 5);
+  assert.equal(new Set(d.sources.map(s => s.id)).size, urls.size);
   for (const s of d.sources) assert.equal(s.url, urls.get(s.id), 'unexpected or reassigned official source');
   assert.equal(d.sources.find(s => s.id === 'nasa-alignment').publishedOn, '2026-11-13');
   assert.equal(d.programme.launchDate, '2026-08-30');
