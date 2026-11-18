@@ -347,6 +347,41 @@
       "statement": "The fixed-spacing (2+1)D Hamiltonian convention alpha=g²/2, beta=2/(a²g²) has beta/alpha=4/(a²(g²)²). At fixed positive dimensionful g² this leaves any fixed sufficiently strong-electric small-beta/alpha regime as a->0; no four-dimensional all-compact-simple-group quantum Yang-Mills proof follows.",
       "source": "research/ym-mass-gap-20261117/phase9/NEGATIVE_RESULTS.md",
       "verification": "Exact rational scaling test plus source-qualified SU2 Hamiltonian convention. Coupling renormalization and physical scaling are not inferred from the simple test."
+    },
+    {
+      "id": "YM-PH10-REAL-LAPLACE-EXACT-01",
+      "status": "rigorous-elementary-finite-volume-spectral-calculus-identity-not-new-physics",
+      "statement": "For any fixed finite gauge-invariant SU2 N-plaquette Hamiltonian at real beta with H−E0>=0 and s>0, the exact physical vacuum-centered G_N(s,beta) equals ∫_0^∞e^(−st)<v_N,e^(−t(H−E0)}v_N>dt, v_N=(W1−<Ω,W1Ω>)Ω. The integrand equals <Ω,W1 e^(−tK)W1Ω>−<Ω,W1Ω>² and is nonnegative; no interacting gap is needed for integral convergence. No N-uniform beta derivatives, complex semigroup or infinite-volume limit is inferred.",
+      "source": "research/ym-mass-gap-20261117/phase10/DYNAMICAL_RESOLVENT_BRIDGE.md",
+      "verification": "Exact spectral theorem with operator-norm Bochner bound e^(−st); independent finite Hermitian two-level symbolic Laplace identity check; no SU2 finite-beta cutoff substitution."
+    },
+    {
+      "id": "YM-PH10-COMPLEX-LIE-SCHWINGER-RECOVERED-01",
+      "status": "published-theorem-applied-to-restricted-complex-eigenbranch-only",
+      "statement": "Del Vecchio–Fröhlich–Pizzo–Rossi (JFA 2020) Theorems 3.6 and 3.8 imply a common N-independent small complex magnetic-coupling disk with an analytic isolated vacuum-origin eigenbranch and uniform spectral distance for the full original-link SU2 ladder, after grouping links into N+1 nearest-neighbour column sites with onsite gap 3alpha/4 and bounded face-Wilson pair interactions ||W||<=2. The one-dimensional eigenbranch is gauge invariant and the physical restriction inherits isolation. This does NOT assert a uniform Riesz projection norm, global shifted-inverse bound, complex centered F_N bound or continuum theorem.",
+      "source": "research/ym-mass-gap-20261117/phase10/THEOREM_APPLICABILITY_AUDIT.md",
+      "verification": "Inspected primary university-hosted 2020 PDF §1.1–1.2 Eqs(1.4)–(1.17), Lemma 3.2 Eq(3.24), Theorems 3.6/3.8; exact column-site original-link locality and electric gap checked independently. No invented quantitative coupling threshold."
+    },
+    {
+      "id": "YM-PH10-GLOBAL-RIESZ-NORM-INFERENCE-FALSE-01",
+      "status": "exact-algebraic-falsification-of-general-complex-spectral-to-norm-inference-not-physical-su2-counterexample",
+      "statement": "A decoupled N-site analytic two-level model h(z)=[[0,−z],[−z,1]] has a common complex eigenbranch and uniform excitation spectral distance, but at z=i/4 its rank-one global Riesz projector has norm (2/sqrt(3))^N. Therefore complex spectral isolation does not by itself imply N-independent global Riesz projector or inverse norm bounds. This different toy model does not falsify the SU2 centered-local-resolvent conjecture; its own local centered response is exactly N-independent.",
+      "source": "research/ym-mass-gap-20261117/phase10/ONE_DECISIVE_LEMMA_OR_COUNTEREXAMPLE.md",
+      "verification": "Exact symbolic p²=p, hp=e_-p, Tr(p†p)=4/3, n-fold tensor norm, and centered local response for n=1,2; no numerical extrapolation."
+    },
+    {
+      "id": "YM-PH10-LOCAL-COMPLEX-FN-UNIFORM-OPEN-01",
+      "status": "open-nonselfadjoint-centered-resolvent-locality-lemma",
+      "statement": "For fixed alpha,s>0, the existence of an N-independent complex disk on which the Riesz-projection-defined centered physical F_N(s,z) has an invertible global shifted resolvent and a uniformly bounded scalar norm M remains UNKNOWN, despite a published common complex eigenbranch disk. Consequently the absolute connected coefficient-tail estimate via Cauchy plus Phase7 zeros remains conditional; the smallest useful test is a complex-coupling local dynamical/imaginary-time linked-cluster majorant for F_N, not a full global Riesz projection bound.",
+      "source": "research/ym-mass-gap-20261117/phase10/ONE_DECISIVE_LEMMA_OR_COUNTEREXAMPLE.md",
+      "verification": "Primary complex Lie-Schwinger source checked for actual conclusion; nonnormal toy falsifier rejects tempting norm inference; no theorem giving F_N uniform bound was admitted."
+    },
+    {
+      "id": "YM-PH10-CONTINUUM-BOUNDARY-01",
+      "status": "restricted-strong-electric-scope-not-four-dimensional-continuum",
+      "statement": "The published weak-coupling complex-eigenbranch theorem for the finite spatial SU2 strip holds only for sufficiently small |beta|/alpha. In the source-qualified (2+1)D convention alpha=g²/2, beta=2/(a²g²), beta/alpha=4/(a²(g²)²); fixed positive g² and a→0 exit that regime. No 4D construction or Yang–Mills mass-gap theorem follows.",
+      "source": "research/ym-mass-gap-20261117/phase10/NEGATIVE_RESULTS.md",
+      "verification": "Source-qualified Kogut–Susskind normalization and exact algebraic scaling; no continuum extrapolation."
     }
   ]
 }
