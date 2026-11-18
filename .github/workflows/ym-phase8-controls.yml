@@ -1,0 +1,54 @@
+name: YM Phase 8 exact SU2 sixth-order acceptance
+on:
+  push:
+    branches:
+      - research/ym-phase8-sixth-order-fusion-20261118
+    paths:
+      - 'research/ym-mass-gap-20261117/phase8/**'
+      - 'research/ym-mass-gap-20261117/claim-registry.json'
+      - '.github/workflows/ym-phase8-controls.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  full-sixth-order-proof-controls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Checkout exact Phase 8 research head
+        uses: actions/checkout@v4
+      - name: Setup pinned Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: research/ym-mass-gap-20261117/phase8/requirements.txt
+      - name: Install pinned exact-math dependencies
+        run: python -m pip install -r research/ym-mass-gap-20261117/phase8/requirements.txt
+      - name: Recheck unchanged Phase 5 negative controls
+        working-directory: research/ym-mass-gap-20261117/phase5
+        run: python -m unittest -v test_phase5_local
+      - name: Recheck unchanged Phase 6 physical connected response
+        working-directory: research/ym-mass-gap-20261117/phase6
+        run: python -m unittest -v test_phase6
+      - name: Recheck unchanged Phase 7 linked support
+        working-directory: research/ym-mass-gap-20261117/phase7
+        run: python -m unittest -v test_phase7
+      - name: Independently enumerate full 13-link spin channels
+        working-directory: research/ym-mass-gap-20261117/phase8
+        run: python -m unittest -v test_phase8_independent
+      - name: Validate Phase 8 all exact SU2 matrix and coefficient checks
+        working-directory: research/ym-mass-gap-20261117/phase8
+        run: python -m unittest -v test_phase8
+      - name: Exact rational two-method reproduction
+        working-directory: research/ym-mass-gap-20261117/phase8
+        run: python phase8_two_methods.py
+      - name: Original-link gauge-covariance control
+        working-directory: research/ym-mass-gap-20261117/phase8
+        run: python phase8_gauge_controls.py
