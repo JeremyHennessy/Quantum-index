@@ -24,7 +24,7 @@ A direct local cluster expansion yielding a uniform coefficient absolute majoran
 
 ### Why this one lemma matters (exact conditional deduction)
 
-Phase 7 proved c_(N,k)=[z^k](G_N−G_(N−1))=0 for all 0<=k<2d, d=N−1. If the complex-disk lemma holds, Cauchy's formula gives |c_(N,k)|<=2M/r^k. Hence for any 0<=beta0<r and all real |beta|<=beta0:
+Phase 7 proved c_(N,k)=[z^k](G_N−G_(N−1))=0 for all 0<=k<2d, d=N−1. If the complex-disk lemma holds, Cauchy's formula gives |c_(N,k)|<=2M/r^k. Hence for any 0<beta0<r and all real |beta|<=beta0:
 
   sum_(k>=2d)|c_(N,k)| |beta|^k
   <= [2M/(1−beta0/r)] (beta0/r)^(2d)
