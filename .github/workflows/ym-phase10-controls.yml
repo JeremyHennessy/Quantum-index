@@ -1,0 +1,75 @@
+name: YM Phase 10 complex eigenbranch and centered dynamical research controls
+on:
+  push:
+    branches:
+      - research/ym-phase10-complex-resolvent-audit-20261118
+    paths:
+      - 'research/ym-mass-gap-20261117/phase10/**'
+      - 'research/ym-mass-gap-20261117/claim-registry.json'
+      - '.github/workflows/ym-phase10-controls.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  phase10-research-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+      PHASE9_PARENT: '50f07ceb0db117d2e4d9d46a14a79c947d666971'
+    steps:
+      - name: Checkout exact research branch and historical ancestry
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up pinned Python dependencies
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: research/ym-mass-gap-20261117/phase8/requirements.txt
+      - name: Install prequalified Phase 8 math requirements
+        run: python -m pip install -r research/ym-mass-gap-20261117/phase8/requirements.txt
+      - name: Fail closed on prior research and production modifications
+        run: |
+          echo "EXACT_HEAD_SHA=$(git rev-parse HEAD)"
+          git diff --name-only "$PHASE9_PARENT" HEAD | tee /tmp/ym_phase10_diff.txt
+          if grep -Ev '^research/ym-mass-gap-20261117/phase10/|^research/ym-mass-gap-20261117/claim-registry.json$|^\.github/workflows/ym-phase10-controls.yml$' /tmp/ym_phase10_diff.txt; then
+            echo "ERROR: non-Phase10 file unexpectedly changed"
+            exit 1
+          fi
+          python - <<'PY'
+          import subprocess,json
+          from pathlib import Path
+          path='research/ym-mass-gap-20261117/claim-registry.json'
+          before=json.loads(subprocess.check_output(['git','show','50f07ceb0db117d2e4d9d46a14a79c947d666971:'+path],text=True))
+          after=json.loads(Path(path).read_text())
+          assert before['claims']==after['claims'][:len(before['claims'])]
+          assert len(after['claims'])==len(before['claims'])+5
+          print('PHASE10_APPEND_ONLY_CLAIMS:',len(before['claims']),'->',len(after['claims']))
+          PY
+      - name: Phase 5 original Q-resolvent negative controls
+        working-directory: research/ym-mass-gap-20261117/phase5
+        run: python -m unittest -v test_phase5_local
+      - name: Phase 6 complete physical response controls
+        working-directory: research/ym-mass-gap-20261117/phase6
+        run: python -m unittest -v test_phase6
+      - name: Phase 7 connected-support controls
+        working-directory: research/ym-mass-gap-20261117/phase7
+        run: python -m unittest -v test_phase7
+      - name: Phase 8 independent original-link Gauss checks
+        working-directory: research/ym-mass-gap-20261117/phase8
+        run: python -m unittest -v test_phase8_independent
+      - name: Phase 8 exact full SU2 sixth-order controls
+        working-directory: research/ym-mass-gap-20261117/phase8
+        run: python -m unittest -v test_phase8
+      - name: Phase 9 real strong-electric theorem mapping controls
+        working-directory: research/ym-mass-gap-20261117/phase9
+        run: python -m unittest -v test_phase9_local_mapping
+      - name: Phase 10 real Laplace and nonnormal exact counterexample
+        working-directory: research/ym-mass-gap-20261117/phase10
+        run: python -m unittest -v test_phase10_one_route
