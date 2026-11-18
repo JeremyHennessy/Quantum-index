@@ -1,0 +1,11 @@
+# Phase 7 — falsifications and unverified boundaries
+
+1. **A fixed j<=1/2 projection is not the full connected response.** Its exact beta² coefficient is -589/3168 while the full untruncated Phase 6 result is -6647/71280. Both calculations are valid for their own models. A zero beta^4 *difference* in the truncated model is supporting control, NOT an untruncated gap or coefficient proof.
+2. **A source-plaquette magnetic factor is not required in the connected support monomial.** Source O=W1 is inserted externally twice, so (0,2,2,2) is an allowed first remote-face multiexponent at total degree six. The initial incorrect support-enumerator test expected an extra beta_1² and failed; it was corrected before publishing.
+3. **Uncentered does not necessarily mean nonlocal under disconnected perturbations.** The uncentered normalized two-point function is physically different from the centered correlation, but still factorizes when a distant component is disconnected. A first test expected a false nonlocal effect and was corrected. *Omitting the interacting vacuum-energy shift*, in contrast, does produce a false remote effect in the exact projected model.
+4. **Keep Phase 5 Q-resolvent counterexample.** Its +1/704 at beta² is real for that different observable. It does not contradict support locality of the vacuum-centered physical G_N.
+5. **Do not report nonzero beta^6 in full SU(2).** The j<=1/2 projection gives -41497429/42323383872 for N=4 minus N=3, but the actual untruncated sixth-order coefficient is OPEN; the projected model is already quantitatively wrong at beta².
+6. **No uniform volume or continuum conclusion.** A finite-N analytic neighbourhood was established from isolated electric vacuum, but its crude radius deteriorates with N; vanishing finitely many Taylor coefficients does not prove nonperturbative locality or mass-gap persistence.
+7. **No novelty/formal-proof claim.** The linked-cluster support mechanism has published precedents. The specialized SU(2) argument is explicit but not Lean-formalized or reviewed by an external mathematical physicist.
+
+Highest-priority falsifier: determine the exact full-Hilbert beta^6 coefficient with a fusion-complete basis and independently checked recoupling/Haar matrix elements; do not extrapolate the projected result.

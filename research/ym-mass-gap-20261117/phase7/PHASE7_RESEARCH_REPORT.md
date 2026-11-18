@@ -1,0 +1,76 @@
+# Quantum Index — Phase 7: exact fourth-order connected-response locality
+
+**Research date: November 18, 2026 UTC. Status: proved within the stated complete finite SU(2) spatial-ladder Hamiltonian; independently verified algebraic and cutoff controls; NOT Lean-formalized, independently peer-reviewed, literature-original, or a proof of four-dimensional continuum Yang–Mills.**
+
+## Preservation, original scientific baseline, and sources
+
+Repository: JeremyHennessy/Quantum-index. Approved main at intake: a60397f017c5c0bfc2bf88be046320a00c9d28de. Research parent: Phase 6 PR #150, exact commit 6dc47b7afbbe5d6e9e6eb6aed43541dcb951d495; its dedicated research workflow #44203532860 passed 13/13, and separate catalog run #44203725015 had concluded successfully by this intake. Phase 7 is additive in an isolated draft branch and targets Phase 6. No changes to prior research receipts, UI, science catalog, production runtime, or deployment.
+
+Established (2+1)D Hamiltonian lattice SU(2) framework: Ebner et al., Phys. Rev. D 110, 014505 (2024), section II Eq. (1), https://doi.org/10.1103/PhysRevD.110.014505 and Communications Physics (2025), https://www.nature.com/articles/s42005-025-02298-5. Established connected/linked-cluster perturbation theory: https://arxiv.org/abs/1601.02532 and https://pmc.ncbi.nlm.nih.gov/articles/PMC11120707/ . This work establishes a special-case finite-order identity by a direct argument; **the method and type of locality theorem have substantial literature precedent**, so do not claim a new theorem of mathematical physics.
+
+## Full untruncated finite-graph definition and analytic domain
+
+Fix a finite open two-row ladder with N>=2 square plaquettes, 2(N+1) vertices, 3N+1 links, no external charges, gauge group SU(2). On K_N=L²(SU(2)^{E_N}, product normalized Haar), let Hphys_N be the SU(2) vertex-gauge-invariant closed subspace. No link-spin cutoff is imposed: j ranges over all nonnegative half-integers. H_E=sum_e C_e (nonnegative link electric Casimir) is self-adjoint with compact resolvent on the finite graph. Its unique normalized zero-energy gauge-invariant vacuum is the constant function |0>. The least nonzero physical electric energy is 3 (four fundamental j=1/2 links around a square), hence alpha H_E has positive pure-electric vacuum isolation 3alpha for alpha>0.
+
+Let W_i be multiplication by the real SU(2) fundamental Wilson character Tr_F of oriented plaquette i. W_i is bounded self-adjoint, ||W_i||<=2. With independent real couplings b=(b_1,...,b_N), H_N(b)=alpha H_E−sum_i b_i W_i is self-adjoint on the electric domain. For each fixed finite N, the unique ground branch E0,N(b) and normalized Omega_N(b) are analytic around b=0; a simple sufficient isolation neighbourhood is 2 sum_i |b_i|<3alpha/2. That radius is NOT uniform in N under b_i=beta.
+
+With alpha,s>0 and O=W_1 define the PHYSICAL centered response
+
+G_N(s,b)=<v_N,(H_N(b)−E0,N(b)+s)^(-1)v_N>,
+v_N=[O−<Omega_N,O Omega_N>I] Omega_N, ||Omega_N||=1.
+
+The resolvent exists for real b in the admitted finite-volume regime because H_N−E0,N>=0 and s>0. The response is real analytic in all b_i near zero. Under uniform b_i=beta write G_N(s,beta). This observable is **not** the Phase 5 high-spin-Q complementary resolvent of a spin-one state.
+
+## Exact operator-theoretic finite-order locality result
+
+**Theorem (restricted finite-ladder linked support).** For every fixed finite N>=3, alpha>0 and s>0,
+
+[beta^k](G_N(s,beta)−G_(N−1)(s,beta)) = 0  for all integers 0<=k<2(N−1).
+
+In particular **[beta^4](G_4(s,beta)−G_3(s,beta))=0**. The first *permitted* contribution involving a fourth plaquette is beta^6. It is NOT established that this sixth-order coefficient is nonzero in the full untruncated theory. For each fixed finite N, the difference is O_N(beta^{2(N−1)}) near zero; no constant uniform in N is asserted.
+
+### Proof, gate A — separate exact center symmetries
+
+Every face i possesses a unique top horizontal link e_i not belonging to any other face. Multiply that link's SU(2) group variable by its central -I. This is a unitary change of variables preserving Haar, commuting with all local vertex SU(2) gauge transformations, and commuting with the electric link Laplacian/Casimir. It changes W_i to -W_i and leaves W_j unchanged for j!=i. For i=1 the local observable O also changes sign; since v enters the resolvent bilinearly, this sign disappears. For all i, H_N(b) is unitarily mapped to H_N(b_1,...,-b_i,...,b_N), the unique analytic ground maps accordingly up to a phase, and G_N is therefore **even in each b_i independently**. Thus a nonzero multivariate Taylor monomial has even exponent for every face.
+
+### Proof, gate B — disconnected active-face factorization
+
+Set couplings outside a chosen active set S to zero. If the active face-adjacency graph has two components A and B separated by at least one inactive face, their original SU(2) link supports and vertex supports are disjoint. The electric-vacuum cyclic subspace generated by the active Wilson multipliers and electric resolvents consists of gauge-invariant functions of active link variables with unused links in the spin-zero sector. It is an invariant, indeed reducing, subspace of the Hamiltonian: electric Casimirs preserve the trivial representation on unused links and the active Wilson multipliers cannot excite them. Product Haar, independent Gauss constraints at disjoint vertex sets, and the sum-of-link-Casimirs decomposition give an exact tensor product of component cyclic subspaces and component Hamiltonians. This is a property of the vacuum-generated sector, **not** a claim that every globally gauge-invariant sector factorizes.
+
+For sufficiently small couplings the analytic ground state branch from the unique pure-electric vacuum lies in that sector and factorizes as Omega_A tensor Omega_B, with E0=E0,A+E0,B. If the local observable O=W1 belongs to A, then the centered vector is v_A tensor Omega_B; the shifted full resolvent acting on it reduces to the component A resolvent, since (H_B−E0,B)Omega_B=0. The connected response is therefore entirely independent of couplings in B. Appending a last plaquette with its coupling set to zero likewise leaves the original response unchanged. All assertions apply in the unique finite-volume analytic neighbourhood, with no assumed interacting infinite-volume mass gap.
+
+### Proof, gate C — multivariate linked support and degree
+
+Take a Taylor monomial of G_N involving the last face N. If any intervening face 2,...,N−1 is absent from its support, the last face lies in an active component disconnected from the first-plaquette observable; factorization forces that monomial coefficient to be zero. Consequently any surviving last-face monomial requires **every face 2,...,N**. By independent center symmetry each such face must appear to a positive even power, therefore at least 2. Its total degree is at least 2(N−1). Terms of G_N not involving the last coupling agree with G_(N−1) by the spin-zero inactive-edge embedding. Setting all b_i=beta proves the theorem. There is no representation-cutoff hypothesis anywhere in this proof.
+
+This is a restricted linked-cluster argument, not a complete bound on the physical correlation length or a proof of the Yang–Mills gap.
+
+## Phase 5/6 independent reproduction
+
+From prior unmodified source and exact rational channel-denominator identities:
+
+[beta²](R_4−R_3)=1/704 for the **different** high-spin-Q resolvent at alpha=1,z=0.
+
+[beta²]G_N(1,beta)=−6647/71280 for every finite N>=2 for the PHYSICAL centered observable at alpha=s=1.
+
+Both are reproduced as separate invariants. The Phase 6 derivation includes the interacting normalized vacuum, ground energy, observable mean and resolvent corrections; no old result was silently revised.
+
+## Separate, deliberately incomplete spin-cutoff diagnostic
+
+An **independently written** rational coefficient recursion (phase7_rational_series.py) constructs the normalized ground, centered observable and shifted resolvent for the complete *j<=1/2 projection* of the finite SU(2) ladder, N=2..5. It uses only exact Fraction arithmetic and spin-half character-fusion matrices. It is NOT the untruncated theory and must never be used to certify an untruncated individual beta^4 coefficient.
+
+At alpha=s=1, the projected beta² coefficient equals **-589/3168**, different from the untruncated Phase 6 value **-6647/71280** by **+1201/12960** (untruncated minus projected). This is a decisive **negative control** showing the projection misses genuine high-spin intermediate contributions.
+
+Within the projected model, the exact beta^4 coefficient equals 8133173/52690176 for both N=3 and N=4; their difference is zero, consistent with but NOT proving the full-Hilbert theorem. The closer N=3 versus N=2 difference is nonzero, +314467/52690176, showing that not every added plaquette is automatically invisible at fourth order. At beta^6 the projected N=4 minus N=3 difference is **-41497429/42323383872**, NONZERO; the actual untruncated sixth-order coefficient is **unknown**, not equal to that fraction by assumption. The center symmetry, factorization, and selected-coupling independence were checked with exact fractions at multiple alpha,s values.
+
+The original-link SU(2) quaternion test independently changes each unique top edge U_e to -U_e and checks the appropriate Wilson trace sign while other plaquettes remain fixed. Exact coefficient enumeration verifies that the minimal even connected last-face monomial for four plaquettes is (0,2,2,2).
+
+During preflight four assertions initially failed from two **test** misconceptions: the connected-support enumerator mistakenly demanded an explicit magnetic insertion on source face 1, even though external O=W1 already supplies source support; and an adversarial check assumed a fully normalized but *uncentered* local resolvent must itself be nonlocal. Both assumptions were rejected. An uncentered two-point response is a different observable (it includes a vacuum pole), but it too factorizes under distant disconnected active Hamiltonian components if ground normalization and energy shift remain correct. The test assertions were corrected; the physics source equations were not changed. Leaving out the vacuum-energy shift in the exact projected recursion **does** produce a false distant coefficient.
+
+## Verification, limitations, and next exact gate
+
+Local Python 3.13.5/NumPy 2.3.5/SymPy 1.14.0: **16 new Phase 7 tests passing**, and **13 unchanged Phase 6 regression tests passing**. GitHub CI at the **final** Phase 7 commit is a separate acceptance gate. All new scientific code blobs were checked against locally tested Git hashes.
+
+No independent specialist peer review or Lean 4 proof was completed; publication novelty is unverified and probably covered by standard linked-cluster methods. Neither a common convergence radius as N grows, an all-orders correlation bound, physical exponential decay, infinite-volume or continuum limit, nor a nontrivial 3+1D gauge theory is established. The Clay requirement for every compact simple gauge group remains unsolved.
+
+**Single smallest next mathematical test:** compute the full *untruncated* coefficient [beta^6](G_4−G_3) using only the exactly reachable SU(2) spin networks, with an independently proved fusion-completeness gate (conservative upper link spin j<=4 from six magnetic and two external fundamental insertions). Independently verify matrix elements and the exact vacuum/normalization corrections. Test whether the first **permitted** connected term actually survives rather than assuming it does.

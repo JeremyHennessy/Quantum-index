@@ -242,6 +242,48 @@
       "statement": "The first unresolved even volume-difference coefficient [beta^4](G4-G3) has not been computed with a full fusion-complete high-spin Hamiltonian. No true connected remote-interaction order or nonperturbative exponential decay is established.",
       "source": "research/ym-mass-gap-20261117/phase6/NEGATIVE_RESULTS.md",
       "falsifier": "Reproduce full exact beta4 coefficient with required SU2 spins and independent magnetic matrix checks; preserve failure if the proposed locality cancels imperfectly"
+    },
+    {
+      "id": "YM-PH7-LINKED-SUPPORT-01",
+      "status": "finite-volume-mathematical-derivation-not-Lean-or-peer-reviewed",
+      "statement": "For complete untruncated SU2 open N-square ladder, alpha,s>0 and finite N>=3, the physical vacuum-centered first-face resolvent G_N has [beta^k](G_N-G_(N-1))=0 whenever 0<=k<2(N-1). Proof: per-face central -I parity plus exact product-Haar/electric-vacuum cyclic factorization of disconnected active plaquette components.",
+      "source": "research/ym-mass-gap-20261117/phase7/PHASE7_RESEARCH_REPORT.md",
+      "verification": "Written physical Hilbert/domain proof with independent exact center on link variables and exact-rational cutoff/sparse support tests; local 16 new tests and inherited 13; no source novelty or 4D claim"
+    },
+    {
+      "id": "YM-PH7-DELTA4-EXACT-ZERO-01",
+      "status": "direct-corollary-of-restricted-analytic-finite-volume-theorem",
+      "statement": "For the full untruncated finite SU2 ladders, every alpha>0,s>0 satisfies [beta^4](G_4(s,beta)-G_3(s,beta))=0. First permitted remote-face order is beta^6, not necessarily nonzero.",
+      "source": "research/ym-mass-gap-20261117/phase7/PHASE7_RESEARCH_REPORT.md",
+      "verification": "Independent face-center parity + disconnected support factorization proof; selected cutoff exact rational checks are separate and not a full representation verification"
+    },
+    {
+      "id": "YM-PH7-TRUNC-MISLEADING-01",
+      "status": "exact-rational-negative-control",
+      "statement": "At alpha=s=1 the complete link-spin j<=1/2 *projected* model has [beta²]G=-589/3168, different from the untruncated Phase 6 result -6647/71280 by 1201/12960. Thus a projected coefficient cannot stand in for full high-spin contributions.",
+      "source": "research/ym-mass-gap-20261117/phase7/NEGATIVE_RESULTS.md",
+      "verification": "Independent exact Fraction coefficient recursion; Phase6 full-spin symbolic result checked unchanged"
+    },
+    {
+      "id": "YM-PH7-PROJECTED-BETA6-NOT-FULL",
+      "status": "truncation-only-diagnostic-not-a-full-spin-claim",
+      "statement": "In the complete j<=1/2 projected model, the exact-rational [beta^6](G4-G3)=-41497429/42323383872. This is NOT established for the full untruncated SU2 system.",
+      "source": "research/ym-mass-gap-20261117/phase7/NEGATIVE_RESULTS.md",
+      "verification": "Exact rational recursive perturbation calculation; high-spin non-invariance explicitly demonstrated at beta²"
+    },
+    {
+      "id": "YM-PH7-UNCENTERED-QUAL-01",
+      "status": "corrected-adversarial-assumption",
+      "statement": "Uncentered normalized two-point resolvents can still factorize under disconnected active couplings; centering is essential for the chosen connected physical observable, but lack of centering does not by itself imply remote nonlocality. Omitting the vacuum-energy shift does invalidate the factorization calculation.",
+      "source": "research/ym-mass-gap-20261117/phase7/NEGATIVE_RESULTS.md",
+      "verification": "A failed initial test assumption was corrected after comparing exact rational coefficients for disconnected active components"
+    },
+    {
+      "id": "YM-PH7-FULL-BETA6-OPEN",
+      "status": "open-no-proof",
+      "statement": "The full untruncated [beta^6](G4-G3) is not yet calculated. Minimal even connected support is beta_2² beta_3² beta_4², but whether its coefficient cancels remains unproved; no volume-uniform perturbation radius, continuum physical gap or 4D result is known.",
+      "source": "research/ym-mass-gap-20261117/phase7/PHASE7_RESEARCH_REPORT.md",
+      "falsifier": "Use exact SU2 fusion-complete reachable basis and independently verified higher-spin magnetic matrix elements plus interacting-vacuum fourth/sixth-order corrections"
     }
   ]
 }
