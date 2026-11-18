@@ -58,7 +58,7 @@ There exist r>0 and M<infinity such that every finite-ladder *physical centered 
   sup_(N>=2) sup_(|z|=r) |G_N(s,z)| <= M.
 (Alternatively use a closed disk r with a slightly larger holomorphic neighbourhood.) Here complex z is the **magnetic coupling**, not the Laplace parameter s. The continuation must retain the correct normalized analytic vacuum and E0 shifts and be independent of N.
 
-**Conditional algebraic implication (proved; no physical holomorphy claim):** Let d=N−1 and f_N(z)=G_N(s,z)-G_(N−1)(s,z). The above hypothesis yields |f_N(z)|<=2M on the circle |z|=r. Cauchy's integral formula gives |c_(N,k)|<=2M/r^k; Phase 7's proven support cancellation gives c_(N,k)=0 for k<2d. Therefore for each 0<=beta0<r and |beta|<=beta0,
+**Conditional algebraic implication (proved; no physical holomorphy claim):** Let d=N−1 and f_N(z)=G_N(s,z)-G_(N−1)(s,z). The above hypothesis yields |f_N(z)|<=2M on the circle |z|=r. Cauchy's integral formula gives |c_(N,k)|<=2M/r^k; Phase 7's proven support cancellation gives c_(N,k)=0 for k<2d. Therefore for each 0<beta0<r and |beta|<=beta0,
 $$
  \sum_{k\ge 2d}|c_{N,k}|\,|\beta|^k
  \le {2M\over 1-\beta_0/r}\left({\beta_0\over r}\right)^{2d}
