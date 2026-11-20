@@ -1,0 +1,32 @@
+{
+  "status": "review-candidate",
+  "purpose": "Restore existing first-party Cloudflare Web Analytics to the approved Physics Explorer without changing layout or private-data behavior",
+  "baselineSha": "d98b1984ae72d0dfcb4737ea0f837a32fcd185cc",
+  "reviewedAt": "2026-10-30",
+  "approvedVisualBlobs": {
+    "html": "95e1f89bfdde39c658d61623b9c04d88c8b43116",
+    "css": "05214700468583d1ddec9571769a8f6219550fd0",
+    "js": "05b02787350058d7ff27a4c1908712443f5e5358"
+  },
+  "siteTag": "62199771b17647a2b10bfdf2ce35081e",
+  "sourceToken": "f402f014fafa46fd946dad89b1561973",
+  "cloudflareAutoInstall": false,
+  "files": {
+    "docs/physics-explorer.html": {
+      "beforeSha256": "dda23bdbbf10467f345fe86b06863e6722901339886b3a188afc6f3d063c7f1d",
+      "afterSha256": "d3a207336bae609473cea696b4c8d69e6226de28cd4f49e56ad9024ce26c7fbb",
+      "operations": [
+        {
+          "kind": "replace",
+          "beforeText": "  <script defer src=\"./physics-explorer.js\"></script>",
+          "afterText": "  <script defer src=\"./physics-explorer.js\"></script>\n  <script defer src=\"../analytics.js\"></script>"
+        },
+        {
+          "kind": "replace",
+          "beforeText": "Source-aware scientific exploration. Reviewed metadata does not establish experimental confirmation or exhaust all research.",
+          "afterText": "Source-aware scientific exploration. Reviewed metadata does not establish experimental confirmation or exhaust all research. On quantumindex.site, cookieless Cloudflare Web Analytics measures visits and page performance; it does not read private notes or search text."
+        }
+      ]
+    }
+  }
+}
