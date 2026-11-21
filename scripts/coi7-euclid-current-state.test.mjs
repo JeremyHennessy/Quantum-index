@@ -11,7 +11,7 @@ const achieved = fs.readFileSync(receiptPath);
 const registry = JSON.parse(archived);
 const receipt = JSON.parse(achieved);
 const gitBlob = bytes => createHash('sha1').update(Buffer.concat([
-  Buffer.from(`blob ${bytes.length}\\0`), bytes
+  Buffer.from(`blob ${bytes.length}\0`), bytes
 ])).digest('hex');
 const copy = x => structuredClone(x);
 
