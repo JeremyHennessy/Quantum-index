@@ -18,6 +18,8 @@ const unique = rows => Array.isArray(rows) && rows.every(x => x && typeof x.id =
  */
 export function projectEuclidFoundation(registry, receipt, asOf) {
   requireTrue(validDay(asOf), 'invalid as-of day');
+  requireTrue(asOf >= '2026-10-30' && asOf <= '2026-11-21',
+    'as-of date outside independently reviewed October 30–November 21 interval; refresh official release sources');
   requireTrue(registry?.schemaVersion === 'coi0-research-v1' &&
     registry.reviewedAt === '2026-10-30' &&
     registry.publicationStatus === 'RESEARCH_ONLY_NOT_RUNTIME', 'unexpected archived registry');
