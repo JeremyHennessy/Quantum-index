@@ -38,7 +38,7 @@ test('Only after documented actual release can a source-qualified public-Foundat
   assert.equal(now.milestone.actualSourceId, now.newSources[0].id);
   assert.equal(now.newSources.length, 2);
   assert.equal(new Set(now.newSources.map(x => x.id)).size, 2);
-  assert.ok(now.newSources.every(x => /^https:\\/\\//.test(x.url)));
+  assert.ok(now.newSources.every(x => /^https:\/\//.test(x.url)));
   assert.ok(now.release.sourceIds.every(x =>
     registry.sources.some(s => s.id === x) || now.newSources.some(s => s.id === x)));
   assert.equal(JSON.stringify(registry), before, 'No mutation to approved registry');
