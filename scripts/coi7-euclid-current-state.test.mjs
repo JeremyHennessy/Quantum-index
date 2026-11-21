@@ -82,4 +82,6 @@ test('Fabricated delivery, missing official evidence, false current status and s
   falsifyRegistry(d => d.releases.push(copy(d.releases.find(x=>x.id==='euclid-dr1-foundation'))));
   falsifyRegistry(d => d.sources.push({id:'euclid-dr1f-esa-actual-2026-11-12'}));
   assert.throws(() => projectEuclidFoundation(registry, receipt, '2026-11-99'), /fail-closed/);
+  assert.throws(() => projectEuclidFoundation(registry, receipt, '2026-11-22'), /fail-closed/,
+    'Never treat a November 21 source review as proof of future DR1 Complete status');
 });
