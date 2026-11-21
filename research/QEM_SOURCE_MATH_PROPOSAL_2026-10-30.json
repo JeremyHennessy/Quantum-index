@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-10-30",
+  "baseMain": "228cd84230d0eaef8325dad4a94dc81ad8cf5a27",
+  "status": "source-located-equation-proposal-not-integrated",
+  "candidateTheory": {
+    "id": "quantum-error-mitigation",
+    "name": "Quantum error mitigation",
+    "category": "Quantum information & open systems",
+    "disposition": "HOLD_PENDING_HISTORICAL_IDENTITY_AND_MATH_REVIEW",
+    "currentPresence": "absent from exact 483-theory main baseline",
+    "relatedExistingTheoryIds": [
+      "quantum-error-correction",
+      "quantum-simulation"
+    ],
+    "originYear": null,
+    "scope": "Algorithms to estimate ideal/noiseless observables from noisy quantum-device experiments without necessarily encoding logical qubits; not equivalent to fault-tolerant error correction.",
+    "nonclaims": [
+      "Different methods demand different noise models, device controls and sample overheads.",
+      "No guarantee of scalable or efficient mitigation for arbitrary noise and circuit depth.",
+      "The 2016 preprint date of one source is not certified as the earliest origin of all error mitigation."
+    ]
+  },
+  "versionedPrimarySource": {
+    "id": "temme-bravyi-gambetta-qem-2016v3",
+    "authors": "Kristan Temme, Sergey Bravyi, Jay M. Gambetta",
+    "title": "Error mitigation for short-depth quantum circuits",
+    "firstPreprintYear": 2016,
+    "inspectedVersion": "arXiv:1612.02058v3 (6 November 2017)",
+    "journalYear": 2017,
+    "doi": "10.1103/PhysRevLett.119.180509",
+    "url": "https://arxiv.org/pdf/1612.02058v3",
+    "reviewLevel": "specific equation pages p2–3 visually inspected, not a comprehensive physical proof"
+  },
+  "formulaCandidates": [
+    {
+      "id": "qem-richardson-noise-extrapolation",
+      "name": "Noise-scaled Richardson error-mitigation estimator",
+      "latex": "\\widehat{E}_{K}^{(n)}(\\lambda)=\\sum_{j=0}^{n}\\gamma_j\\widehat{E}_{K}(c_j\\lambda)",
+      "plain": "Ehat_K^(n)(lambda) = sum_{j=0}^n gamma_j Ehat_K(c_j lambda)",
+      "formulaType": "approximation",
+      "description": "Noise-scaled, weighted extrapolation of measured expectation values toward the zero-noise value, assuming the noise-response function admits a controlled small-λ expansion.",
+      "theoryIds": [
+        "quantum-error-mitigation"
+      ],
+      "sourceIds": [
+        "temme-bravyi-gambetta-qem-2016v3"
+      ],
+      "assumptions": [
+        "Noise strength λ can be controllably rescaled to c_j λ while the target ideal circuit stays unchanged.",
+        "Small effective expansion parameter such as N T λ and a suitable noise-independent generator/controlled series remainder in the original paper.",
+        "Weights satisfy sum_j gamma_j=1 and sum_j gamma_j c_j^k=0 for k=1,...,n; original printed Eq. (4) has inconsistent summation dummy-index lettering in its first equality, normalized here to j.",
+        "Finite shot noise and imperfect noise-model manipulation can increase uncertainty; the formal O(λ^{n+1}) cancellation concerns truncation bias, not arbitrary finite-data error."
+      ],
+      "variables": [
+        "Ehat_K(c_j lambda): measured expectation estimate at scaled noise c_j λ",
+        "lambda: nonnegative noise-rate parameter",
+        "c_j: distinct positive scaling factors, c_0=1",
+        "gamma_j: real cancellation weights determined by moment constraints",
+        "n: extrapolation order"
+      ],
+      "regime": "Source's short-depth/weak effective-noise setting; not general correction of arbitrary uncharacterized hardware errors.",
+      "units": "Expectation values share the units of observable A; c_j, gamma_j are dimensionless; λ has the inverse units of the scaling convention for L.",
+      "sourceLocation": {
+        "url": "https://arxiv.org/pdf/1612.02058v3#page=2",
+        "locator": "Printed and PDF page 2, Eq. (3) with coefficient constraints Eq. (4); mathematically consistent dummy index used, with source typo noted."
+      },
+      "metadataReview": "source-page-reviewed-candidate-only"
+    },
+    {
+      "id": "qem-quasiprobability-ideal-noisy-map",
+      "name": "Ideal circuit as signed mixture of noisy circuits",
+      "latex": "\\mathcal U_{\\boldsymbol\\beta}=\\gamma_{\\boldsymbol\\beta}\\sum_{\\boldsymbol\\alpha\\in\\Omega_L}P_{\\boldsymbol\\beta}(\\boldsymbol\\alpha)\\sigma_{\\boldsymbol\\beta}(\\boldsymbol\\alpha)\\mathcal O_{\\boldsymbol\\alpha}",
+      "plain": "U_beta = gamma_beta sum_{alpha in Omega_L} P_beta(alpha) sigma_beta(alpha) O_alpha",
+      "formulaType": "defining",
+      "description": "Quasi-probability representation of an ideal circuit channel as a signed, normalized weighted combination of implementable noisy circuit channels.",
+      "theoryIds": [
+        "quantum-error-mitigation"
+      ],
+      "sourceIds": [
+        "temme-bravyi-gambetta-qem-2016v3"
+      ],
+      "assumptions": [
+        "Implementable noisy gate operations form a sufficiently expressive, well-characterized basis to represent required ideal gates and composed circuits.",
+        "P_beta(alpha) is a normalized, efficiently sampleable nonnegative distribution and sigma_beta(alpha) belongs to {+1,-1}.",
+        "gamma_beta≥1 is the sampling-overhead normalization from absolute signed coefficients, and sample complexity can grow quadratically with it.",
+        "This formal relation is not a claim that noise-free gates are physically produced, nor that model identification, state-preparation and measurement errors vanish."
+      ],
+      "variables": [
+        "U_beta: ideal composite quantum channel",
+        "O_alpha: implementable noisy circuit channel indexed by alpha",
+        "Omega_L: set of length-L noisy operation sequences",
+        "P_beta(alpha): sampling probability for noisy circuit alpha",
+        "sigma_beta(alpha): sign ±1",
+        "gamma_beta: nonnegative quasi-probability overhead factor"
+      ],
+      "regime": "Source's probabilistic cancellation scheme with known/characterized Markovian noisy operations, potentially substantial sampling overhead.",
+      "units": "All superoperators and weights act on density operators; coefficients P, sigma, gamma are dimensionless.",
+      "sourceLocation": {
+        "url": "https://arxiv.org/pdf/1612.02058v3#page=3",
+        "locator": "Printed and PDF page 3, Eq. (7), and the statistical overhead discussion following Eqs. (8)–(10)."
+      },
+      "metadataReview": "source-page-reviewed-candidate-only"
+    }
+  ],
+  "releaseGates": [
+    "Verify historical framework origin independently of these 2016/2017 method sources; do not invent first year.",
+    "Independently review original paper definitions/assumptions and correct exact estimator coefficients and channel conditions.",
+    "Add one theory identity only after original-source and granularity review, then both formula cards with source links and explicit limitations.",
+    "Protect all original 483 entities and prior exact-byte historical ledgers; include Node algebra checks, generated coverage/freshness/assets, Chromium/WebKit math and screen width checks, exact-head merge and served hashes."
+  ],
+  "limitations": [
+    "This is not shipped; formulas use candidate-only theory ID and must not be loaded into runtime before its identity is accepted.",
+    "The versioned v3 PDF equations were visually checked on pages 2 and 3, but the entire paper was not independently rederived.",
+    "This is a precise research proposal, not evidence of a novel experiment, discovered particle or general quantum advantage."
+  ]
+}
