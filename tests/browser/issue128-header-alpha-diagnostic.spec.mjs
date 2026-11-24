@@ -27,11 +27,13 @@ for (const target of [
     await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
     await shot('mobile-initial');
     await page.locator('#theorySearch').fill('Hawking radiation');
-    const card=page.locator('#theoryList .theory-card').filter({hasText:/Hawking radiation/i}).first();
+    // Pin the exact record visible in the first experiment's screenshots.
+    const card=page.locator('#theoryList .theory-card').filter({has:page.locator('strong').filter({hasText:/^Black-hole remnant scenarios$/})});
+    await expect(card).toHaveCount(1);
     await expect(card).toBeVisible();
     await card.click();
     const detail=page.locator('#theoryDetail');
-    await expect(detail).toContainText('Hawking radiation');
+    await expect(detail.locator('.detail-title')).toHaveText('Black-hole remnant scenarios');
     // Align the inspector immediately below the sticky header. Unlike the
     // initial-view smoke test, this puts preceding content behind that header.
     const scrollTarget=await page.evaluate(()=>{
@@ -41,7 +43,10 @@ for (const target of [
       window.scrollTo({top:y,behavior:'instant'});
       return y;
     });
-    await expect.poll(()=>page.evaluate(()=>Math.round(window.scrollY))).toBe(scrollTarget);
+    // Chromium rounded the requested 2504 to 2506 on both live and checkout,
+    // including retries. Allow only a 3-CSS-pixel initial alignment tolerance;
+    // A/B/A geometry and actual scroll remain exactly equal below.
+    await expect.poll(()=>page.evaluate(y=>Math.abs(window.scrollY-y),scrollTarget)).toBeLessThanOrEqual(3);
     const snapshot=()=>page.evaluate(()=>{
       const h=document.querySelector('.site-header'),d=document.querySelector('#theoryDetail');
       const s=getComputedStyle(h),b=h.getBoundingClientRect(),p=d.getBoundingClientRect();
@@ -53,6 +58,8 @@ for (const target of [
     const settle=()=>page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
     await settle();
     const before=await snapshot();
+    expect(Math.abs(before.scrollY-scrollTarget)).toBeLessThanOrEqual(3);
+    expect(Math.abs(before.detail[1]-(before.header[1]+before.header[3]+8))).toBeLessThanOrEqual(3);
     expect(before.position).toBe('sticky');
     expect(before.backgroundColor).toBe('rgba(255, 255, 255, 0.94)');
     await shot('A-original-translucent');
@@ -70,7 +77,7 @@ for (const target of [
       restored=await snapshot();
       await shot('A-restored');
       const path=info.outputPath('header-alpha-observations.json');
-      writeFileSync(path,JSON.stringify({target:target.name,browserName,before,changed,restored,failures},null,2));
+      writeFileSync(path,JSON.stringify({target:target.name,browserName,selectedTitle:'Black-hole remnant scenarios',scrollTarget,before,changed,restored,failures},null,2));
       await info.attach('header-alpha-observations',{path,contentType:'application/json'});
     }
     // Do not claim visual equivalence or a cause from DOM assertions alone.
