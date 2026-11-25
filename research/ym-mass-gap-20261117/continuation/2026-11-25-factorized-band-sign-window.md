@@ -1,0 +1,46 @@
+# A factorization-preserving band frame and the improved bulk sign window
+
+**2026-11-25 | Fixed spatial lattice, continuous time | Research only; no continuum claim.**
+
+The [disconnected Wilson control](2026-11-25-quartic-riesz-frame-obstruction.md) disproves uniform quartic locality in the global projection frame. The exact Gram frame of the [dressed spectral edge](2026-11-25-dressed-bulk-spectral-edge.md) avoids that artifact. Here its fixed-order Taylor locality is verified and applied to the **original** Haar/free-terminal witness, not to a dressed approximation. For every \(0<\theta<1/3\), the witness satisfies
+\[
+ h_{\infty,\gamma}(T)<0
+ \quad(0<T\le\gamma^{-\theta})
+\]
+for all sufficiently small positive γ depending on θ. The argument does not reach the interaction scale \(T\asymp\gamma^{-2}\).
+
+## Exact product-respecting coordinates
+
+For a finite box let \(H=L+zV\), vacuum eigenvalue \(\lambda_0\), vacuum projection \(P_0\) and isolated energy-six band projection \(P_b\). Use [Kato's Riesz contours](https://link.springer.com/book/10.1007/978-3-642-66282-9) on \(|z|\le d/N\), where N bounds the numbers of edges and plaquettes. Analytically normalize \(\Psi=P_0 1/\sqrt{(1,P_0 1)}\), where \((f,g)=\int fg\) is the complex bilinear pairing (not the Hermitian inner product). All relevant operators are transpose symmetric under this pairing; \(\Psi^\top\Psi=1\), \(P_0=\Psi\Psi^\top\), and the square root is chosen near one. Set \(Yd_x=P_b\tau_x\Psi\) for every plaquette, \(G=Y^\top Y\), \(W=Y^\top(H-\lambda_0+6)Y\). At real coupling these are the dressed real Gram filters, with the sign of the energy moment appropriate to H. At complex coupling use the contour analytic continuation, not a real-axis smooth functional calculus. The estimates \(\|G\|,\|W\|\le C N\) follow on this disc from bounded individual sources, a uniform contour norm bound on \(P_b(H-\lambda_0+6)\), and \(\|Y\|\le C\sqrt N\). No complex locality theorem is invoked.
+
+If the Hamiltonian is a product of independent Wilson components, a column with observable \(\tau_x\) in one component lies exactly in that component's excited band with all others in their vacua. The vacuum contribution has been removed by \(P_b\). Thus G and W are block diagonal by the component of x, and so is their Gram-normalized operator. In particular the cross-component entries from the nonorthogonal global Riesz frame vanish identically, not just through fourth order. Under the center cochain \(z\mapsto-z\) each plaquette source changes sign and the normalized vacuum transforms covariantly by uniqueness; consequently G and W are even. At zero, \(G=I/4,\ W=0,\ W'=0\).
+
+## All fixed Taylor orders have uniformly summable spatial kernels
+
+Let f denote any entry of G or W. For real small z the established [two-support truncation](2026-11-25-dressed-bulk-spectral-edge.md) applies: keep only interactions supported in the union of radius-r neighborhoods of its two observables. The entry from this truncated Hamiltonian, \(f_r\), approximates f with error \(O_M(r^{-M})\) for every M, uniformly in the finite box, positions, and real small z. For clarity, use a fixed smooth spectral cutoff equal to one on the actual uniform band, or its bounded spectral-energy moment for W. Heisenberg-filter locality and uniformly gapped ground-state spectral flow apply along deletion of distant plaquettes, as in [Nachtergaele–Sims–Young](https://arxiv.org/abs/1810.02428) with [Yarotsky's spectral confinement](https://arxiv.org/abs/math-ph/0411042). For each truncated system only \(O(r^3)\) interaction terms remain, so \(f_r\) and \(f_{2r}\) are holomorphic with uniformly bounded *entry* on \(|z|\le c r^{-3}\), by the same bounded-perturbation contours. Dummy free factors tensor out in their vacuum. This complex disc is independent of the distance between the two neighborhoods.
+
+To compare their coefficient of degree j, apply the jth forward difference of \(f_{2r}-f_r\) at the real points \(0,h,\ldots,jh\), divided by \(j!\,h^j\). It extracts that Taylor coefficient up to \(O_j(h r^{3(j+1)})\) by the bounded holomorphic discs and the vanishing of differences of lower-degree polynomials. The absolute value of the divided difference is at most \(C_{j,M} r^{-M} h^{-j}\) by the real truncation estimates. For any desired power \(r^{-b}\), first take h a sufficiently small inverse power of r, then choose M sufficiently large. This bounds the difference of coefficients by \(C_{j,b}r^{-b}\). In particular convergence of real values by itself was not used as if it implied convergence of complex derivatives.
+
+Telescope dyadically until the truncated box contains the whole finite Hamiltonian; the resulting tail is bounded by an arbitrary inverse power of the initial radius, with constants depending on the fixed order. For distant observables start with a radius proportional to their distance but small enough to separate the two retained systems by the plaquette range; that starting entry is identically zero by product factorization. For nearby observables start from a fixed radius and bound its coefficient by Cauchy. Hence for every fixed j each Taylor coefficient kernel of G and W is bounded by \(C_{j,b}(1+\mathrm{dist}(x,y))^{-b}\) for any b. The weighted or unweighted Schur norm, and thus the operator norm, is bounded uniformly across open boxes at each such order. This statement makes no uniform-in-j analytic radius assertion.
+
+## Return to the free boundary with a relative estimate
+
+Fix an even integer \(k\ge4\). Taylor expansion to order \(k-1\) in the operator norm, with the global complex contour bound CN, now gives
+\[
+ \|G-I/4\|+\|W\|\le C_k\bigl(|z|^2+N(C|z|N)^k\bigr).
+\]
+The low coefficients are uniformly bounded by the previous section; the tail uses a Cauchy circle in the fixed disc for \(zN\). Choose a small \(d_k\) and
+\[
+ r_{N,k}(T)=d_k\min(T^{-1/2},N^{-1-1/k}T^{-1/k}).
+\]
+On this disc, the displayed norm bound is O(1/T). Thus \(G^{-1/2}\) exists by its convergent power series; \(U=YG^{-1/2}\) is an exact bilinear isometry onto the band, \(U^\top U=I\), \(UU^\top=P_b\). In its coordinates the centered band generator is exactly \(-6I+G^{-1/2}WG^{-1/2}\) with correction O(1/T). The cost of mapping from and to the Hilbert space is bounded by \(CN\), not assumed uniform for complex z. Therefore the shifted band semigroup is bounded by \(CN e^{-6t}\) for \(0\le t\le T\). The Riesz similarity argument of the [earlier complex-box proof](2026-11-25-polynomial-noncancellation-window.md) still controls the higher block by \(C e^{-(6+c)t}\) and the vacuum by its rank-one projection; it is used only for these estimates, not as the effective band frame.
+
+When \(N\le C_2T^3\) and T is large, use the same \(t_s=\log(C_0N)+2\) heat smoothing. On the new complex disc \(|z|N\le d_k T^{-1/k}=o(1/\log T)\). The vacuum denominator is \(1+o(1)\) in sup norm after removing \(\exp(T\lambda_0)\) by the earlier smoothing argument; the excitation correction is at most \(CN e^{-6(T-t_s)}\) and tends to zero. Centering the numerator by its vacuum ratio removes the rank-one contribution exactly. Its L² norm is at most \(CN e^{-6T}\), so \(e^{6T}|h_{\Lambda,z}(T)|\le CN\) holomorphically on the whole new disc. All of these statements concern the exact normalized quotient with terminal vector 1, even though G and W are constructed from dressed sources.
+
+Fix \(\theta<1/3\) and choose k with \(\theta(3+4/k)<1\). Take \(L=\log(1/\gamma)\); earlier results cover \(T\le L^2\). Above that and below \(\gamma^{-\theta}\), the exact coefficient of degree j in the bulk witness is that in a box with \(N=O((j+1)^3)\) by [connected cumulant locality](2026-11-25-infinite-volume-logarithmic-sign-window.md). For \(j\le J=\lceil14T/L\rceil\le T\), Cauchy on the new disc bounds its scaled contribution by \(C(j+1)^3q_j^j\), with
+\[
+ q_j=C_k\gamma\max(\sqrt T,(j+1)^{3+3/k}T^{1/k}).
+\]
+For every j through J, \(q_j\le1/4\) for small γ, since \(\gamma T^{3+4/k}\to0\) uniformly on the interval. For j through \(\lceil4L/\log 4\rceil\) the stronger bound \(q_j=O(\gamma^{4/5})\) holds by the two displayed powers. All even coefficients vanish, so the sum from degree 3 in these early orders is \(O(\gamma^{12/5})\); the remaining orders through J are \(O((1+L)^3\gamma^4)\) in the scaled units. The absolute bulk Taylor tail after J is still \(O((\gamma T/d_0)^{J+1})\) by the polymer analytic radius \(d_0/T\). It is \(O(e^{-8.4T})\) since \(\log(d_0/(\gamma T))\ge(3/5)L\) for small γ. Both errors are negligible compared with the exact negative linear term, of size \(\gamma e^{-6T}\) on this range. This proves the claimed window.
+
+The comparison controls include disjoint component factorization (which fails in the global Riesz frame), bounded spectral moments rather than unbounded filters, finite-difference recovery rather than differentiating an unproved uniform real remainder, and explicit polynomial losses in complex norms. The result is not uniform as \(\theta\uparrow1/3\). Reaching the true crossover would require uniform control in Taylor order, a relative finite-time boundary cluster expansion, or a stronger complex localization argument; neither the exact late sign nor the continuum mass gap follows.
