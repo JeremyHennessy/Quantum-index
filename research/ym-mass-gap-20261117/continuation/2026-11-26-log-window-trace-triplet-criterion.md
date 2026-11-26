@@ -1,0 +1,15 @@
+# A multiplicative log-scale window is equivalent to the trace-triplet target
+
+**2026-11-26 UTC. Analytic criterion only. No matched Wilson estimate or mass-gap claim.**
+
+Use the [existing identity-channel reduction](2026-11-26-triple-identity-channel-and-centering.md). On a fixed compact separated shape set K let H(L,u)=r¹²G₃(ru), r=e^(−L), with the specified ordered Wilson limits at each r and a fixed signed trace convention. Let A(u)=−9K₃(u)/(2π⁶) for the previous SU(2) perturbative convention. Assume H(L)→0 in the sup norm on K. Then for any fixed b>1 the following are equivalent:
+- L⁴ H(L)→A.
+- L⁴[H(L)−H(bL)]→(1−b⁻⁴)A.
+
+Necessity follows from H(bL)=(bL)⁻⁴[A+o(1)]. For sufficiency, the normalized difference telescopes over L,bL,b²L,… to L⁴H(L). Its leading terms form a geometric series summing to A, since the weights are (1−b⁻⁴)b^(−4j). The error is bounded in sup norm by (1−b⁻⁴)⁻¹ times sup over t≥L of ‖t⁴[H(t)−H(bt)]−(1−b⁻⁴)A‖. The anchor H→0 is necessary for reconstruction from differences alone: adding a constant field of shapes changes none of the differences. Alternatively a sequence of endpoint scales with vanishing H along each checked orbit supplies the anchor, but a check on one sparse orbit cannot establish full-scale convergence.
+
+For b=2 the endpoints are r and r² and the coefficient is 15A/16. This test is strictly less demanding than the [adjacent step criterion](2026-11-26-dyadic-shell-test-for-trace-triplet.md) on all real L. For a scalar diagnostic, set h=log 2 and H(L)=A L⁻⁴+L⁻⁵ sin(πL/h) for constant A. The wider window converges with the claimed coefficient, while L⁵[H(L)−H(L+h)]=4hA+2sin(πL/h)+o(1), with different subsequential limits at L=(2n+1/2)h and L=(2n+3/2)h. An implementation locked to L=nh+L₀ has the same oscillation for generic offsets, although at L₀=0 it misses the oscillation altogether.
+
+**Discrete scale implementation.** On a fixed cutoff-to-physical matching route with log-grid L=nh, let Hₙ=H(nh). The condition at b=2 controls the signed sum Σ_{k=n}^{2n−1}(Hₖ−Hₖ₊₁); it requires no bounds for individual terms. Checking only n=2ʲn₀ gives only those log-scales. Extending a result from every integer n to all L requires an interpolation estimate: it suffices that sup_{0≤s≤h}(nh)⁴‖H(nh+s)−H(nh)‖→0. Mere continuity in L cannot ensure it. The same condition and bound hold in the Banach space obtained by retaining any bounded linear packet pairing instead of pointwise sup norms; that gives a witness for that specified packet, not a kernel estimate.
+
+The prior O(r^(7/2)) error in H from grade-zero matching and fixed-viewer centering is negligible at both window endpoints after multiplying by L⁴. This allows one to audit a signed window in the unselected scalar and transfer a result, without estimating the centering contribution at every intermediate step. The new source question is whether the actual Wilson RG controls the signed total from r to r² and anchors H to zero for the matched field. Neither follows from unscaled free-profile convergence for other labels. No Lean replay.
