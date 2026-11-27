@@ -1,0 +1,25 @@
+{
+  "cutoff": 18,
+  "degree": 5,
+  "energies": {
+    "perimeter": {
+      "computed_approximate_model_residual": 1.3142053811314611e-17,
+      "energy": 1.1079116246797844e-05
+    },
+    "vacuum": {
+      "computed_approximate_model_residual": 2.220458754825301e-16,
+      "energy": 1.0000376909099806
+    }
+  },
+  "phase_fixed_trial_amplitude": 9.147007104749595e-10,
+  "scope": "floating-point trial only, no infinite operator residual or nonzero claim",
+  "spatial_b": 0.01,
+  "support_counts": [
+    130,
+    266,
+    499,
+    873,
+    1446,
+    2290
+  ]
+}
