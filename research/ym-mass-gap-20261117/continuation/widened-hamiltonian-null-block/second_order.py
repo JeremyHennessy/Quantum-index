@@ -223,3 +223,5 @@ if __name__=='__main__':
     verify_rescaled_law(spectral_slices,q)
     from separated_channel import verify as verify_separated_channel
     verify_separated_channel()
+    from cubic_mixing import verify as verify_cubic_mixing
+    verify_cubic_mixing()
