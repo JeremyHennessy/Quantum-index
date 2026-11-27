@@ -221,3 +221,5 @@ if __name__=='__main__':
     verify_uniform_residual()
     from rescaled_law import verify_rescaled_law
     verify_rescaled_law(spectral_slices,q)
+    from separated_channel import verify as verify_separated_channel
+    verify_separated_channel()
