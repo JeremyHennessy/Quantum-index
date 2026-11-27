@@ -209,3 +209,5 @@ if __name__=='__main__':
     q,curvature=run_complement(spectral_slices,p_minus)
     from locality import verify_locality
     verify_locality(spectral_gram,q,curvature)
+    from cubic_locality import verify_cubic_locality
+    verify_cubic_locality(spectral_gram,q,curvature)
