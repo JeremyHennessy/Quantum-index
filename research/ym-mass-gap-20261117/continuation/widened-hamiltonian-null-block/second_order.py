@@ -206,4 +206,6 @@ if __name__=='__main__':
     verify_local_kernels()
     p_minus,*_=run()
     from complement import run_complement
-    run_complement(spectral_slices,p_minus)
+    q,curvature=run_complement(spectral_slices,p_minus)
+    from locality import verify_locality
+    verify_locality(spectral_gram,q,curvature)

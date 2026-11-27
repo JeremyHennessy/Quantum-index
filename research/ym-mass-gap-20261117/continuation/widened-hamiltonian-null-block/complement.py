@@ -101,3 +101,4 @@ def run_complement(spectral_slices,p_minus):
     print("complement: direct probe free squared amplitude",(q.T*G*q)[0])
     from visibility import verify_interval
     verify_interval(slopes_plus,p,k,len(ell),(q.T*G*q)[0])
+    return [(m,net,ell[m]) for m,net in ent if m in ell and len(net)==1],k
