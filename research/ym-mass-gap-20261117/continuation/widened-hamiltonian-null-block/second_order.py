@@ -213,3 +213,5 @@ if __name__=='__main__':
     verify_cubic_locality(spectral_gram,q,curvature)
     from aggregated import verify_aggregated
     verify_aggregated(spectral_gram,q)
+    from cubic_parity import verify_cubic_parity
+    verify_cubic_parity()
