@@ -137,13 +137,8 @@ def verify_local_kernels():
     assert count==4288
     print("independent quaternion pointwise kernel checks",count)
 
-def run():
-    ent,G,A=mat(D); T=G.inv()*A
-    X,Y=[rmat(ent,G,c) for c in "XY"]
-    I=S.eye(len(ent))
-    N=S.Matrix.hstack(*(T.col_join(X+I).col_join(Y+I)).nullspace())
-    assert N.cols==7
-    assert all((m.bit_count()%2==1) for (m,_),row in zip(ent,N.tolist()) if any(row))
+def spectral_slices(ent,G,A,N):
+    """Lift exactly to the finite set of spins reached by one face insertion."""
     active=[i for i, row in enumerate(N.tolist()) if any(row)]
     groups=defaultdict(list)
     for i in active:
@@ -160,8 +155,18 @@ def run():
                     if block is None:energy[e]=block=S.zeros(len(ent))
                     block[i,j]+=v/4
                     if (i,f)!=(j,g):block[j,i]+=v/4
-    assert len(groups)==110 and len(active)==44
     assert energy[30].extract(active,active)==(A*G.inv()*A).extract(active,active)
+    return energy,len(active),len(groups)
+
+def run():
+    ent,G,A=mat(D); T=G.inv()*A
+    X,Y=[rmat(ent,G,c) for c in "XY"]
+    I=S.eye(len(ent))
+    N=S.Matrix.hstack(*(T.col_join(X+I).col_join(Y+I)).nullspace())
+    assert N.cols==7
+    assert all((m.bit_count()%2==1) for (m,_),row in zip(ent,N.tolist()) if any(row))
+    energy,n_active,n_groups=spectral_slices(ent,G,A,N)
+    assert (n_active,n_groups)==(44,110)
     GN=N.T*G*N
     decomp={e:N.T*M*N for e,M in sorted(energy.items())}
     assert all(M==M.T and M.is_positive_semidefinite for M in decomp.values())
@@ -199,4 +204,6 @@ def run():
 
 if __name__=='__main__':
     verify_local_kernels()
-    run()
+    p_minus,*_=run()
+    from complement import run_complement
+    run_complement(spectral_slices,p_minus)
