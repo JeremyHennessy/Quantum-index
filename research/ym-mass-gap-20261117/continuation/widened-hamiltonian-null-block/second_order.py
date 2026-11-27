@@ -219,3 +219,5 @@ if __name__=='__main__':
     verify_dressing(spectral_gram,q)
     from residual import verify_uniform_residual
     verify_uniform_residual()
+    from rescaled_law import verify_rescaled_law
+    verify_rescaled_law(spectral_slices,q)
