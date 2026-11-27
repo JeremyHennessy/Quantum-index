@@ -74,9 +74,9 @@ def run_complement(spectral_slices,p_minus):
         return P.exquo(S.Poly(x**n,x)).monic()
     assert nonzero_first_order_form(-1)==S.Poly(xodd_linear_minus,x).monic()
     assert nonzero_first_order_form(1)==S.Poly(xodd_linear_plus,x).monic()
-    a,b=(S.Poly(f,x) for f in (xodd_linear_minus,xodd_linear_plus))
-    assert a.eval(0) and b.eval(0)
-    assert S.gcd(a,a.diff()).degree()==S.gcd(b,b.diff()).degree()==S.gcd(a,b).degree()==0
+    slopes_minus,slopes_plus=(S.Poly(f,x) for f in (xodd_linear_minus,xodd_linear_plus))
+    assert slopes_minus.eval(0) and slopes_plus.eval(0)
+    assert S.gcd(slopes_minus,slopes_minus.diff()).degree()==S.gcd(slopes_plus,slopes_plus.diff()).degree()==S.gcd(slopes_minus,slopes_plus).degree()==0
     bins=[(-261,-260),(-250,-249),(-229,-228),(-224,-223),
           (-221,-220),(-213,-212),(-206,-205)]
     for a,b in bins:
@@ -99,3 +99,5 @@ def run_complement(spectral_slices,p_minus):
     print("complement: original projected squared derivative",(z.T*GB[:7,:7]*z)[0])
     print("total X odd: 31 mutually distinct branches near 0; 24 original-probe, 25 with direct probe")
     print("complement: direct probe free squared amplitude",(q.T*G*q)[0])
+    from visibility import verify_interval
+    verify_interval(slopes_plus,p,k,len(ell),(q.T*G*q)[0])
