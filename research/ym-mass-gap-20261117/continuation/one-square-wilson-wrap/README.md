@@ -1,0 +1,21 @@
+# Exact-arithmetic wraparound check on one open SU(2) Wilson square
+
+November 27, 2026 UTC. Finite fixed lattice, four spatial links forming a single **open spatial plaquette**, periodic time of four steps, anisotropic Wilson weights β_time = 1 and β_space = 1/100. This is an actual Wilson transfer calculation in this geometry, not a simulation of a growing spatial lattice or the 4D continuum. Run `python3 control.py` here (standard library only). All asserted bounds use rational arithmetic; printed decimals are for readability.
+
+## Physical transfer reduction
+
+After the Gauss-law projection, all physical spatial states on the open square are class functions of the single holonomy P. The orthonormal character basis χ_n has labels n≥0 (dimension n+1). With W=tr(P)/2, multiplication by W sends χ_n to (χ_(n+1)+χ_(n−1))/2 with χ_(−1)=0. The [positive Wilson transfer](https://bib-pubdb1.desy.de/record/396349) has physical one-step operator S=MKM, where M=exp(β_space W/2) and K is the temporally normalized convolution on the four spatial links. For the single-link normalized central weight exp(tr(U)/2), Schur's lemma and the SU(2) character integral give Fourier multiplier a_n=I_(n+1)(1)/I_1(1). Specifically its numerator is proportional to (I_n−I_(n+2))/(n+1)=2I_(n+1), using Haar class-angle weight (2/π)sin²θ. Each of the four links contributes a_n when applied to χ_n(P), so K is diagonal with a_n⁴. The projected periodic Wilson moments are traces of products of S and W in this physical space. An overall temporal normalization cancels.
+
+The Bessel series yields a_n≤(1/2)^n/(n+1)! term by term relative to I_1. The top eigenvalue λ0(S)≥⟨1,S1⟩≥(∫M dHaar)²≥1 by Jensen. The nonzero spectrum of S equals that of K^(1/2)M²K^(1/2), which is bounded by e^β_space K in quadratic forms. For n≥1, min–max and the decreasing factorial majorant therefore give λ_n(S)/λ0(S)≤ e^β_space [(1/2)^n/(n+1)!]^4. In particular the vacuum is simple. Using e^(1/100)≤100/99, the excited transfer trace of the normalized T=S/λ0 is bounded by R_s≤[(100/99)/256]^s /(1−6^(−4s)) for integer s≥1. This is an independent estimate, not a bound obtained from the measured correlator.
+
+## Certified moments and result
+
+The script takes Bessel terms k=0…10, bounds each unused tail by twice its first term, rounds down retained a_n⁴ for n≤4, and bounds the omitted trace by the factorial majorant. It replaces M by its degree-five Taylor polynomial with uniform remainder at most 2(β_space/2)^6/6!. On the five retained input characters all paths stay within the represented output range, including the adjacent multiplication by W used in the traces. Thus the finite computation has only the stated omission and rounding errors. The trace-norm operator error is bounded by 4 times the K trace error plus 8 times the M operator error: both M norms are <2 and the approximate K trace is <2. Both S norms are <2. Telescoping any four-step trace with norm-one insertions gives error ≤4·2³ times the operator trace-norm error; the same estimate applies to the partition trace and to the one-point numerator. The exact partition trace is ≥1; approximate normalized expectations have modulus ≤1 by positivity and Cauchy–Schwarz. Ratio propagation costs at most twice that trace error, and squaring the mean costs at most four times it. Final absolute enclosure for each connected periodic value is below 6.84×10⁻¹³. The [wraparound conversion](../2026-11-27-periodic-wrap-vacuum-witness-bounds.md) then gives the following outward-rounded vacuum intervals:
+
+| Time steps j | Periodic connected value (approx.) | Certified vacuum interval |
+| --- | ---: | ---: |
+| 0 | 0.249996833125 | [0.24999683118, 0.24999683319] |
+| 1 | 0.000832109435 | [0.00083186274, 0.00083210944] |
+| 2 | 0.00000553919633 | [0.0000027691130, 0.0000027695986] |
+
+At the midpoint, the raw periodic signal is about twice the vacuum signal. For threshold q=1/100, the corrected two-time witness c_2−q c_1 is strictly negative, with upper bound below −5.54×10⁻⁶. This is consistent with the separately derived bound λ1/λ0≤0.003945708. The witness is a control/run-through of the certification procedure, not a second proof of a gap from finite moments. The next size test has genuinely overlapping spatial plaquettes; the scalar character diagonalization alone will not suffice.
