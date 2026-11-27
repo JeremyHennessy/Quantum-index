@@ -64,3 +64,7 @@ tail_per_t2=4*t*t/(rho**4*(1-(t/rho)**2))
 assert coef.lo-tail_per_t2>Q(".000005")
 print('coefficient interval',float(coef.lo),float(coef.hi))
 print('maximum higher-order remainder / t²',float(tail_per_t2))
+
+reduced = a**8 * (1-c**2)**2 / (32*(a**3-c)*(a**5-c)*(a**3*c-1)*(a**5*c-1))
+assert Q(".00000914")<reduced.lo<=reduced.hi<Q(".00000916")
+assert max(reduced.lo,coef.lo)<=min(reduced.hi,coef.hi)

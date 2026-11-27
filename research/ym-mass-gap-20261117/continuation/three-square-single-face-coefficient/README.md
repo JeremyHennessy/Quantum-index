@@ -27,6 +27,12 @@ Putting together the second derivative at the vacuum, the second derivative at t
 ```
 The signs nearly cancel. The exact rational interval from the positive Bessel series is (9.14×10⁻⁶, 9.16×10⁻⁶), not zero. This is the coefficient for the amplitude, not for its square. Run `python3 verify.py` (standard library only) to check the six paths, Bessel arithmetic, and constants.
 
+Clearing denominators in the six-term expression gives the simpler identity
+```
+a^8 (1−c²)² / [32 (a³−c)(a⁵−c)(a³c−1)(a⁵c−1)].
+```
+The reduced expression has verified positive sign on any region where a³<c<1, 0<a<1, and the two targeted eigenbranches satisfy the same isolation and differentiation assumptions. At equality of the perimeter and end-pair eigenvalues (for example c=a), the derivation using a simple perimeter eigenvalue no longer applies, even if the simplified fraction itself is finite. The fraction is not an isotropic overlap certificate.
+
 ## An explicit nonzero interval
 
 On the diagonal b_i=t use the analytic scalar A(t)=⟨o,P_o(t) F₁ P₀(t)0⟩ with the two Riesz projectors. It has the same mixed coefficient as unit real eigenvectors: reference overlap factors start at one, and the constant and linear transition terms vanish. The previous relative-resolvent estimates extend to complex |t|≤ρ=.01 with ‖tΣF_i‖≤.03; the perimeter contour is unchanged and the vacuum contour of radius 1/3 has ‖(K−w)⁻¹K‖≤3. Both interacting projector norms are <2, so |A(t)|≤4. The simultaneous center flip makes A even (the perimeter and F₁ each change sign). Thus higher terms are bounded by 4(|t|/ρ)^4/[1−(|t|/ρ)²]. For real 0<t≤10⁻⁷, this is at most 4.000001×10⁻⁶ t². Since the true unit-state overlap is at least |A(t)| in magnitude, it exceeds 5×10⁻⁶ t² there.
