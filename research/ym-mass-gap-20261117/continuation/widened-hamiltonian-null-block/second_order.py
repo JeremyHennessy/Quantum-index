@@ -215,3 +215,5 @@ if __name__=='__main__':
     verify_aggregated(spectral_gram,q)
     from cubic_parity import verify_cubic_parity
     verify_cubic_parity()
+    from dressing import verify_dressing
+    verify_dressing(spectral_gram,q)
