@@ -225,3 +225,5 @@ if __name__=='__main__':
     verify_separated_channel()
     from cubic_mixing import verify as verify_cubic_mixing
     verify_cubic_mixing()
+    from folded_cubic import verify as verify_folded_cubic
+    verify_folded_cubic()
