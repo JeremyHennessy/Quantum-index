@@ -187,6 +187,14 @@ filter parameter γ=1/8. Equation (6.11)'s generator
     D_γ(g) = ∫ W_γ(t) τ_t^{H(g)}(−V) dt
 
 depends only on the path and γ, not the choice of spectral patch.
+For the printed odd kernel (6.34)–(6.39) and dynamics
+τ_t(A)=e^(itH)Ae^(−itH), choose U′=+iD_γ U for transport from
+P(0) to P(g) (equivalently use −D_γ in a minus-i evolution).
+Indeed for an outside eigenvector q and inside eigenvector p,
+(D_γ)_qp=i H′_qp/(E_q−E_p), so i[D_γ,P]_qp=P′_qp; the adjoint
+off-diagonal block and vanishing diagonal derivatives finish
+the projection identity. This fixes the generator orientation
+without relying on a potentially opposite printed ODE sign.
 The same finite-volume unitary U_g therefore transports *both*
 P₀ and P15 exactly along the real interval. This works regardless
 of either patch's multiplicity. The flow is genuinely quasi-local
