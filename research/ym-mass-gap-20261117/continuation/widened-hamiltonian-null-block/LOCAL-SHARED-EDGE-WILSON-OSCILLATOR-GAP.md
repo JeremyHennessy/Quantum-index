@@ -1,0 +1,24 @@
+# Actual interacting two-square Wilson graph: unconditioned large-t physical oscillator
+
+Use two squares sharing exactly one ordinary link and its endpoints; include only their seven union links and two plaquette terms. Base the square holonomies \(A,B\) at the same endpoint of the shared link, and choose their loop orientations to traverse that link first in the same direction. Inversion of one plaquette loop leaves its normalized Wilson trace unchanged. The metric is unit-quaternion round on each independent edge. In dimensionless units take \(t>0\); simultaneous center flips of one separate edge in each square interchange \(t\) and \(-t\). The assertions concern the **unconditioned** finite graph, not any fixed raw spectator slice.
+
+On the subspace of functions of the two based products, Haar pushes to the normalized independent product Haar (one can independently average a separate edge in each square conditional on all other links). Its kinetic form is
+\[
+ \int_{G^2}\left{3|\nabla_A F|^2+3|\nabla_B F|^2+
+   \sum_{a=1}^3 |(X_A^a+X_B^a)F|^2\right\}\,dA\,dB,
+\]
+where \(X^a\) is the derivative under left multiplication by the corresponding unit Lie generator. For each private square edge, varying it while the others are fixed makes the corresponding holonomy traverse a Haar-preserving translate or inverse of it, hence contributes precisely one group-gradient form; there are three such edges for each loop. For the shared edge, the holonomies start with the same link, so its left translation gives the simultaneous left vector in the display. This form preserves the physical subspace of simultaneous-conjugation invariants; a spanning-tree gauge containing the shared link leaves precisely a pair of independent based holonomies with a common residual conjugation. The kinetic form is smooth and uniformly elliptic since it dominates three times the product-round form. At the identity pair its real tangent matrix on \((x_A,x_B)\in\mathbb R^3\oplus\mathbb R^3\) is
+\[
+ \begin{pmatrix} 4I_3 & I_3 \\ I_3 & 4I_3\end{pmatrix}.
+\]
+
+The Hamiltonian subtracts \(t(\operatorname{Re}A+\operatorname{Re}B)\), with a unique maximizing pair \((I,I)\). Hence the scaled shifted form for \((H+2t)/\sqrt t\) has a six-dimensional oscillator limit. For a proof, use the charts \(A=\exp(t^{-1/4}x)\), \(B=\exp(t^{-1/4}y)\). On every compact coordinate domain the normalized metric data converge to the displayed tangent form, while the potential converges to \((|x|^2+|y|^2)/2\). Globally the scaled positive potential is at least \(2(|x|^2+|y|^2)/\pi^2\) up to the cut loci of measure zero, by \(1-\cos\theta\ge2\theta^2/\pi^2\) on the entire round radial range. Compactly supported smooth trial subspaces yield the upper min–max bound. For the lower bound take finitely many orthonormal modes of bounded scaled energy. Product ellipticity and convergence yield local weak \(H^1\)/strong \(L^2\) compactness in rescaled charts; the global potential inequality bounds the probability tail by a constant times the inverse squared coordinate radius. Consequently limits retain their norms and orthogonality. Lower semicontinuity on growing interiors gives the lower min–max bound. The same proof applies inside the invariant sector: normal-coordinate conjugation rotates both Lie coordinates by the same \(SO(3)\) rotation, so invariance passes to local limits, and support cutoffs based on the joint radius and group averaging supply a compactly supported invariant form core.
+
+Put \(x_+=(x+y)/\sqrt2\), \(x_-=(x-y)/\sqrt2\). The limiting oscillator is
+\[
+ H_{\rm osc}= -5\Delta_{x_+}-3\Delta_{x_-}
+          +\tfrac12(|x_+|^2+|x_-|^2).
+\]
+Its lowest energy is \(3(\sqrt{5/2}+\sqrt{3/2})\). Its unrestricted first excitation in these holonomy coordinates is one quantum in \(x_-\), with gap \(\sqrt6\); the three first states transform as a vector under simultaneous rotations. The physical invariant subspace has none of those states, nor any one-quantum states in \(x_+\). Two quanta in the slower \(x_-\) oscillator include the scalar radial second state (its degree-two polynomial is a constant-subtracted multiple of \(|x_-|^2\)). All other excitation energies with at least two quanta are at least \(2\sqrt6\). In particular the graph's physical unconditioned gap is asymptotic to \(2\sqrt6\,\sqrt t\), while the first excitation in the larger two-holonomy extension above the same unique positive vacuum costs \(\sqrt6\,\sqrt t\). The latter is not a statement about all non-gauge-invariant modes in the full seven-link configuration space.
+
+The calculation gives an exact large-coupling check for the mixed electric term and for the physical symmetry restriction on a genuinely interacting finite gauge graph. It does not control the conditional density at antipodal products, which samples the ground state far from its concentrating well, or the large-volume or continuum gap.
