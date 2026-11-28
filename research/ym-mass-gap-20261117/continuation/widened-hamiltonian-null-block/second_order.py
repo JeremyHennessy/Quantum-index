@@ -227,3 +227,5 @@ if __name__=='__main__':
     verify_cubic_mixing()
     from folded_cubic import verify as verify_folded_cubic
     verify_folded_cubic()
+    from regular_sheet import verify as verify_regular_sheet
+    verify_regular_sheet()
