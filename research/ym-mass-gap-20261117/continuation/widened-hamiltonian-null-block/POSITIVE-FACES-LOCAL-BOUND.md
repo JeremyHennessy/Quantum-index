@@ -1,0 +1,27 @@
+# Local reference bounds on all positive coordinate faces
+
+2026-11-28 UTC. This closes the fixed-spacing reference estimate locally around the three faces \(X_i=2\) at \(E=-13/336\). It does not establish the bound over the interior of the reference torus, a physical Poisson response, or a continuum result.
+
+The [minus parity sector is gapped](POSITIVE-FACE-MINUS-GAP.md). All [flat-factor zeros](POSITIVE-FACE-FLAT-INTERSECTIONS-AND-LOCAL-BOUND.md) have already been treated. The diagonal and the two edges of the \((S,u)\) domain are the [certified symmetry lines](RESIDUAL-SYMMETRY-LINES-AND-LOCAL-BOUND.md), and the corners are gapped. It remains to bound the plus residual alone at strict physical interior points.
+
+## Smooth individual energy curves
+
+In the interior, \(S=X_j+X_k,\ u=X_jX_k\) are real-analytic angular coordinates. The elementary characteristic \(p_6\) has constant nonzero \(u\) derivative. At an eigenvalue of a two-parameter Hermitian pencil, nullity at least two would force every first determinant derivative to vanish; hence each elementary eigenvalue is simple in this chart. Each can be taken real analytically, and \(p_6=0\) gives a locally invertible change of coordinates between \(u\) and that elementary eigenvalue \(\lambda\) at fixed \(S\).
+
+The [exact algebraic elimination in the elementary-energy chart](POSITIVE-FACE-ENERGY-CHART.md) shows that \(G(S,\lambda)=Q_+(E-\lambda,S,U(S,\lambda))\) has **no finite simultaneous zero of \(G,G_S,G_\lambda\)**. Here \(U\) is the unique \(u\) solving \(p_6(\lambda,S,u)=0\). Therefore, for every elementary branch \(\lambda_i(S,u)\), the scalar factor \(q_i=Q_+(E-\lambda_i,S,u)\) has a nonzero plane gradient at any of its zeros. Away from \(F=0\), the energy is not a removed flat companion level, and a nonzero factor gradient forces the matching companion eigenvalue to be simple. Each crossing thus gives a smooth curve with a nonzero energy derivative in some tangent direction. Two different elementary branches matching the target require two different companion levels.
+
+## Simultaneous threshold curves
+
+Up to an everywhere nonzero constant, the plus residual equals \(\prod_i q_i\). Its primitive polynomial \(f(S,u)\) has degree ten in \(u\) with constant nonzero leading coefficient. Its \(u\)-discriminant \(d(S)\) has degree 210. Exact arithmetic shows that \(\gcd(d,d')\) has degree 77 and is square-free, so **every complex root of \(d\) has multiplicity at most two**.
+
+Here is the local implication, without enumerating those projection roots. At a common root \((S_0,u_0)\), every vanishing \(q_i\) has a monic Weierstrass polynomial in \(u-u_0\), with analytic coefficients in \(S-S_0\), up to a nonvanishing factor. No \(q_i(S_0,u)\) is identically zero since \(f(S_0,u)\) is not identically zero. The product of these monic polynomials is the monic local factor of \(f\) whose roots tend to \(u_0\). Factors whose roots tend to different \(u\) values have unit cross resultants. The polynomial discriminant product identity applies also to the local analytic coefficients: the order in \(S-S_0\) is the sum of the individual discriminant orders and twice the orders of pairwise resultants. Each pair of vanishing branches contributes at least two. No term in this sum is negative, and none is identically zero since \(d\) is nonzero.
+
+Consequently at most two branches can meet. If two meet and either has zero \(u\) derivative, its Weierstrass polynomial has degree at least two with all roots coalescing at \(u_0\); its own discriminant contributes at least one further order. This would yield at least three, impossible. Both branches at a double point must therefore be graphs \(u=h_i(S)\). If their first derivatives agree, the resultant \(h_1-h_2\) has order at least two and the discriminant has order at least four, again impossible. The two curves must cross transversely. This argument does not assert the number or locations of such double points.
+
+## Consequence for the reference bound
+
+At a single residual crossing, choose a tangent with positive energy derivative. At a transverse double crossing, the two energy gradients are independent, so there is a single tangent making both derivatives positive. Along the face, the simple elementary and companion eigenprojections give a tensor resolution of the target cluster. In that frame, the first compressed derivative is diagonal with the computed scalar slopes: derivatives of projections contribute no within-cluster term when restricted to eigenvalue zero. Thus in both cases it is definite. Extending this tangent to an ambient analytic chart and using continuity gives the [monotone Cauchy–Green local resolvent bound](FLAT-CRITICAL-INTERSECTIONS-AND-LOCAL-BOUND.md). The remaining modes have a local gap. The compact face has a finite subcover, giving uniform bounds for finite-coordinate reference resolvent entries with smooth localization near it.
+
+The [negative-face result](NEGATIVE-PLANE-INTERSECTIONS-AND-LOCAL-BOUND.md) is separate. Together these results cover neighborhoods of all six coordinate faces, not the complementary open-torus interior.
+
+Replay the exact projection discriminant: **python positive_plus_discriminant.py positive-face-pencils.json**. SHA-256 of its canonical primitive coefficient lists: \(d\) **9a6f21ba9aade713d7f4d63d4033a5460747081ed9b4608aeee47bf05fa4d8ee**, \(\gcd(d,d')\) **042c8eebb63116e894f71ad7a473c0a21e62318f277f51cdec78ecd6b15b8fe7**.
