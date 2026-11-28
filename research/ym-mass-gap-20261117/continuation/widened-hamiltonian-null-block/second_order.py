@@ -229,3 +229,5 @@ if __name__=='__main__':
     verify_folded_cubic()
     from regular_sheet import verify as verify_regular_sheet
     verify_regular_sheet()
+    from full_folded_source import verify_tail as verify_full_folded_tail
+    verify_full_folded_tail()

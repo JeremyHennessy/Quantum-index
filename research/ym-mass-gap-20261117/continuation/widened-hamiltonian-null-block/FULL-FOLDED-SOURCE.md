@@ -1,0 +1,29 @@
+# The full folded cubic source in the zero-momentum fibre
+
+2026-11-28 · Fixed spatial spacing, quadratic/cubic coefficient operators at zero total momentum only. Parent: [folded matrix element](FOLDED-CUBIC.md), [bounded reduced inverse](FIXED-MOMENTUM-SLOPE-INVERSE.md), and [one-sheet criterion](ONE-SHEET-RESOLVENT-BOUND.md).
+
+**The full invariant vector \(w=\mathcal C_3 b\) is now assembled exactly. It has 562 nonzero invariant circuit coordinates on 510 reflection orbits, including 208 orbits in complete detached four-plus-six first-order blocks.** In the channel used for the [regular-sheet reference test](REGULAR-REFERENCE-SHEET.md), take an xy elementary plaquette and an xy rectangle long in x with relative anchor \((z,y,x)=(0,-1,-3)\). The coefficient on that unit trace-product coordinate is \(-1/75264\). This proves the full source has nonzero coordinates in detached blocks. It does not certify a nonzero on-shell amplitude even on the regular reference sheet.
+
+## Full finite source construction
+
+Use the same sign convention as in the earlier fold. With \(N=\ker T\) projected in the full electric-15 fibre, \(S=T^{-1}\) off the kernel and zero on it, and \(B\) the vacuum-subtracted quadratic operator, the source for the unnormalized \(b\) is
+\[
+w=N\left(Bx-B_3b\right),\qquad x=S B b.
+\]
+The preceding calculation supplied one pairing of \(w\); this calculation retains every output coordinate.
+
+The reduced inverse solve in the three complete first-order closures gives 114 nonzero invariant circuit coefficients on 101 representative supports for \(x\). To compute its quadratic image, evaluate the repeated touching faces with the matching local vacuum counterterm, and both orders of every adjacent pair meeting a source. For the canonical cubic image, enumerate connected multisets of three faces meeting the input and include the anticommutator with the two-resolvent term before dropping disconnected clusters. Use all binary output supports of ten edges, not only simple loops, and enforce complete local intertwiner ranks. Before null projection these two images give 975 and 64 candidate support labels, respectively, when evaluated on their chosen source representatives; their reflection-quotient union has 430 labels. These are candidate counts, not matrix-element counts.
+
+To project without truncation, enumerate the complete one-face resonant-toggle closure of these candidates on the reflection quotient, using the shape pivot and every full circuit's reflected image. This produces 94 mutually disjoint reducing blocks with 819 support orbits in total. This quotient suffices because the source is invariant under the eight coordinate sign reflections; it is not assumed invariant under all cubic rotations. In each odd block let \(U\) span the null of the exact rectangular first-order form \(C\), \(G_o\) be the odd circuit metric, and \(v\) be the raw odd form of \(Bx-B_3b\). The projected vector is \(U(U^*G_oU)^{-1}U^*v\). All arithmetic is rational. Summing the quadratic norm on mutually orthogonal blocks gives the full squared norm (approximately \(0.000424726203332784\)); the verifier prints the exact rational.
+
+## Detached cross-check
+
+A detached block here means the four plaquette and all companion orientations of the six-loop rectangle or hexagon block have no shared vertices or common incident plaquette. Testing a single hexagon would be insufficient. Complete such blocks reduce the actual first-order \(T\); their null projections can be computed separately using the exact low-band kernel. This is a first-order decomposition. The quadratic operator need not be the free convolution at every such displacement, and the locations designated reference versus defect in a chosen on-shell splitting remain to be specified.
+
+The independent detached calculation finds 190 nonzero raw folded coefficients from \(Bx\), with zero canonical \(B_3b\) coefficients there. Completing the cube companions for null compression gives exactly 208 nonzero projected reflection-orbit coefficients. The assembly also independently recovers the prior near pairing against the normalized convention for d. The full-vector assembly checks each of these numbers, with stabilizer multiplicities accounted for, against direct projection using the separate 16-orientation six-loop kernel (the rectangle is a singleton). In the xy rectangle witness above the unit coefficient is unchanged by null projection. This gives a reproducible exact test of the actual \(w\), not just a reference control or a single component of \(w\).
+
+## Reproduce and use
+
+Run **python3 full_folded_source.py** (Python 3.12, SymPy 1.14) for the whole vector and the detached cross-check. An optional **--output path.json** records the exact rational vector in a new file. Each record contains canonical occupied links, the single representative's oriented trace circuits, and decimal-integer numerator/denominator. That coefficient multiplies the **sum of all eight reflected and reanchored circuits**, including repeated stabilizer images. Do not read it as an orthonormal coefficient or drop reflection multiplicities. The exact sorted JSON has SHA-256 **91677331e506551f9d0cb636ba250b4ac97c8019606e17ca955cf1fe11f51bda** (310,326 bytes including the final newline). The standalone **--tail** check runs the independent fast subset replay and is also added to **python3 second_order.py**.
+
+The complete defect matrix in a common reference-coordinate convention has not been computed here. No compact range solve, one-sheet nuisance rank test, boundary integral, or positive on-shell density is asserted. Nonzero separated coordinate support is compatible with shell cancellation. The result makes those next finite tests address the real source rather than a surrogate; it says nothing about physical scattering, isolated particles, or a continuum mass gap.
